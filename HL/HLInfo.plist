@@ -9,7 +9,7 @@
 	<key>CFBundleGetInfoString</key>
 	<string>HL.framework 2.4.2, © 2010-2011 Mark Douma. HLLib 2.4.2 © 2006-2011 Ryan Gregg.</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.markdouma.HL.framework</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>

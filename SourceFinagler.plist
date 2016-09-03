@@ -325,12 +325,12 @@
 			<string>Source VGUI Menu file</string>
 			<key>CFBundleTypeRole</key>
 			<string>None</string>
-			<key>LSTypeIsPackage</key>
-			<false/>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>com.valvesoftware.source.menu</string>
 			</array>
+			<key>LSTypeIsPackage</key>
+			<false/>
 		</dict>
 		<dict>
 			<key>CFBundleTypeIconFile</key>
@@ -640,7 +640,7 @@
 	<key>CFBundleIconFile</key>
 	<string>sourceFinagler</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.markdouma.SourceFinagler</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -653,6 +653,8 @@
 	<string>H2Oƒ</string>
 	<key>CFBundleVersion</key>
 	<string>202</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.developer-tools</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2010-2011 Mark Douma. All rights reserved.</string>
 	<key>NSMainNibFile</key>

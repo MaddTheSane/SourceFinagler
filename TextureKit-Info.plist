@@ -9,7 +9,7 @@
 	<key>CFBundleGetInfoString</key>
 	<string>TextureKit.framework 2.0.2, © 2010-2011 Mark Douma. All rights reserved.</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.markdouma.TextureKit.framework</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>

@@ -6,10 +6,10 @@
 	<string>English</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
-	<key>CFBundleIdentifier</key>
-	<string>com.nvidia.NVCore.framework</string>
 	<key>CFBundleGetInfoString</key>
 	<string>NVCore.framework 2.1.0, © 2007-2011 NVIDIA Corporation</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>
