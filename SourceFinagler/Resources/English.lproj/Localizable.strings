@@ -1,0 +1,330 @@
+﻿/* No comment provided by engineer. */
+"Sorry, but you need at least Mac OS X 10.5 on an Intel-based Mac to run this application!" = "Sorry, but you need at least Mac OS X 10.5 on an Intel-based Mac to run this application!";
+
+/* No comment provided by engineer. */
+"Source Finagler is only intended for Intel-based Macs!" = "Source Finagler is only intended for Intel-based Macs!";
+
+/* No comment provided by engineer. */
+"Source Finagler only works with Mac OS X 10.5 or greater!" = "Source Finagler only works with Mac OS X 10.5 or greater!";
+
+
+/* No comment provided by engineer. */
+"Quit" = "Quit";
+
+/* No comment provided by engineer. */
+"Visit Webpage" = "Visit Webpage";
+
+
+/* No comment provided by engineer. */
+"Please reinstall the application." = "Please reinstall the application.";
+
+/* No comment provided by engineer. */
+"Source Finagler could not locate the file because the following AppleScript error was encountered." = "Source Finagler could not locate the file because the following AppleScript error was encountered.";
+
+/* No comment provided by engineer. */
+"OK" = "OK";
+
+
+/* No comment provided by engineer. */
+"Show View Options" = "Show View Options";
+
+/* No comment provided by engineer. */
+"Hide View Options" = "Hide View Options";
+
+/* No comment provided by engineer. */
+"Show Inspector" = "Show Inspector";
+
+/* No comment provided by engineer. */
+"Hide Inspector" = "Hide Inspector";
+
+/* No comment provided by engineer. */
+"Show Path Bar" = "Show Path Bar";
+
+/* No comment provided by engineer. */
+"Hide Path Bar" = "Hide Path Bar";
+
+
+/* No comment provided by engineer. */
+"Quick Look %lu Items" = "Quick Look %lu Items";
+
+/* No comment provided by engineer. */
+"Quick Look \"%@\"" = "Quick Look “%@”";
+
+/* No comment provided by engineer. */
+"Quick Look" = "Quick Look";
+
+/* No comment provided by engineer. */
+"Close Quick Look" = "Close Quick Look";
+
+/* No comment provided by engineer. */
+"Move to Trash" = "Move to Trash";
+
+
+/* No comment provided by engineer. */
+"Copy" = "Copy";
+
+/* No comment provided by engineer. */
+"Paste" = "Paste";
+
+
+
+/* No comment provided by engineer. */
+"Copy \"%@\"" = "Copy “%@”";
+
+/* No comment provided by engineer. */
+"Copy %lu Items" = "Copy %lu Items";
+
+
+/* No comment provided by engineer. */
+"Paste Item" = "Paste Item";
+
+/* No comment provided by engineer. */
+"Paste Items" = "Paste Items";
+
+
+/* Undo support	*/
+
+/* No comment provided by engineer. */
+"Copy of %lu Items" = "Copy of %lu Items";
+
+/* No comment provided by engineer. */
+"Copy of \"%@\"" = "Copy of “%@”";
+
+/* No comment provided by engineer. */
+"Move of %lu Items" = "Move of %lu Items";
+
+/* No comment provided by engineer. */
+"Move of \"%@\"" = "Move of “%@”";
+
+
+/* No comment provided by engineer. */
+"Copying %lu item to \"%@\"" = "Copying %1$lu item to “%2$@”";
+
+/* No comment provided by engineer. */
+"Copying %lu items to \"%@\"" = "Copying %1$lu items to “%2$@”";
+
+
+/* No comment provided by engineer. */
+"Preparing to copy %lu item" = "Preparing to copy %lu item";
+
+/* No comment provided by engineer. */
+"Preparing to copy %lu items" = "Preparing to copy %lu items";
+
+/* No comment provided by engineer. */
+"Preparing to copy to \"%@\"" = "Preparing to copy to “%@”";
+
+
+
+/* No comment provided by engineer. */
+"%@ of %@" = "%1$@ of %2$@";
+
+
+
+
+
+
+/* status indicator icons	*/
+
+/* No comment provided by engineer. */
+"Inside %@" = "Inside %@";
+
+/* No comment provided by engineer. */
+"No Changes" = "No Changes";
+
+/* No comment provided by engineer. */
+"Indicates that the items in this window are inside a %@" = "Indicates that the items in this window are inside a %@";
+
+/* No comment provided by engineer. */
+"Indicates that you cannot add or change the contents of this %@" = "Indicates that you cannot add or change the contents of this %@";
+
+
+
+/* No comment provided by engineer. */
+"Source Addon file" = "Source Addon file";
+
+/* No comment provided by engineer. */
+"Source Level" = "Source Level";
+
+/* No comment provided by engineer. */
+"Source Package file" = "Source Package file";
+
+/* No comment provided by engineer. */
+"Source Texture Package file" = "Source Texture Package file";
+
+/* No comment provided by engineer. */
+"Source Xbox Package file" = "Source Xbox Package file";
+
+/* No comment provided by engineer. */
+"Steam Cache file" = "Steam Cache file";
+
+/* No comment provided by engineer. */
+"Steam Non-Cache file" = "Steam Non-Cache file";
+
+/* No comment provided by engineer. */
+"Source Game Archive" = "Source Game Archive";
+
+
+
+
+
+
+/* No comment provided by engineer. */
+"%@ item, %@ available" = "%1$@ item, %2$@ available";
+
+/* No comment provided by engineer. */
+"%@ items, %@ available" = "%1$@ items, %2$@ available";
+
+/* String for when only 1 item is selected */
+"%lu(single) of %@ selected, %@ available" = "%1$u of %2$@ selected, %3$@ available";
+
+/* String for when more than one item is selected */
+"%lu(multiple) of %@ selected, %@ available" = "%1$u of %2$@ selected, %3$@ available";
+
+/* No comment provided by engineer. */
+"Multiple items selected" = "Multiple items selected";
+
+
+
+/* No comment provided by engineer. */
+" Info" = " Info";
+/* No comment provided by engineer. */
+"Info" = "Info";
+
+/* No comment provided by engineer. */
+"--" = "--";
+
+
+/*	view menu	*/
+
+/* No comment provided by engineer. */
+"as List" = "as List";
+
+/* No comment provided by engineer. */
+"as Columns" = "as Columns";
+
+
+/*	MDViewOptions	*/
+/* No comment provided by engineer. */
+"View Options" = "View Options";
+
+/* No comment provided by engineer. */
+"Email: %@" = "Email: %@";
+
+
+/* No comment provided by engineer. */
+"Size" = "Size";
+
+
+/* No comment provided by engineer. */
+"Today" = "Today";
+
+/* No comment provided by engineer. */
+"Tomorrow" = "Tomorrow";
+
+/* No comment provided by engineer. */
+"Yesterday" = "Yesterday";
+
+
+/* No comment provided by engineer. */
+"Zero KB" = "Zero KB";
+
+/* No comment provided by engineer. */
+"1 KB" = "1 KB";
+
+
+/* No comment provided by engineer. */
+" bytes" = " bytes";
+
+/* No comment provided by engineer. */
+" KB" = " KB";
+
+/* No comment provided by engineer. */
+" MB" = " MB";
+
+/* No comment provided by engineer. */
+" GB" = " GB";
+
+/* No comment provided by engineer. */
+" TB" = " TB";
+
+/* No comment provided by engineer. */
+" PB" = " PB";
+
+/* No comment provided by engineer. */
+" EB" = " EB";
+
+
+/* No comment provided by engineer. */
+"Zero KB (Zero bytes)" = "Zero KB (Zero bytes)";
+
+/* No comment provided by engineer. */
+"1 KB (%@ bytes)" = "1 KB (%@ bytes)";
+
+/* No comment provided by engineer. */
+"%@ KB (%@ bytes)" = "%1$@ KB (%2$@ bytes)";
+
+/* No comment provided by engineer. */
+"%@ MB (%@ bytes)" = "%1$@ MB (%2$@ bytes)";
+
+/* No comment provided by engineer. */
+"%@ GB (%@ bytes)" = "%1$@ GB (%2$@ bytes)";
+
+/* No comment provided by engineer. */
+"%@ TB (%@ bytes)" = "%1$@ TB (%2$@ bytes)";
+
+/* No comment provided by engineer. */
+"%@ PB (%@ bytes)" = "%1$@ PB (%2$@ bytes)";
+
+/* No comment provided by engineer. */
+"%@ EB (%@ bytes)" = "%1$@ EB (%2$@ bytes)";
+
+
+/* No comment provided by engineer. */
+"%f x %f" = "%1$f × %2$f";
+
+
+/* No comment provided by engineer. */
+"Source Addon Installation" = "Source Addon Installation";
+
+/* No comment provided by engineer. */
+"No Source Addons were installed." = "No Source Addons were installed.";
+
+/* No comment provided by engineer. */
+"%@ was successfully installed." = "%@ was successfully installed.";
+
+/* No comment provided by engineer. */
+"%@ and %@ were successfully installed." = "%1$@ and %2$@ were successfully installed.";
+
+
+/* No comment provided by engineer. */
+"%@, " = "%@, ";
+
+/* No comment provided by engineer. */
+"and %@ were successfully installed." = "and %@ were successfully installed.";
+
+
+
+/* No comment provided by engineer. */
+"%@ items were successfully installed." = "%@ items were successfully installed.";
+
+
+
+
+/* No comment provided by engineer. */
+"Play" = "Play";
+
+/* No comment provided by engineer. */
+"Play the animated image" = "Play the animated image";
+
+/* No comment provided by engineer. */
+"Stop" = "Stop";
+
+/* No comment provided by engineer. */
+"Stop playing the animated image" = "Stop playing the animated image";
+
+/* No comment provided by engineer. */
+"The image-creation and manipulation feature is still a work in progress." = "The image-creation and manipulation feature is still a work in progress.";
+
+/* No comment provided by engineer. */
+"Many operations do not work properly yet." = "Many operations do not work properly yet.";
+

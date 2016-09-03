@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+    <dependencies>
+        <deployment version="1050" identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="MDOtherAppsHelperController">
+            <connections>
+                <outlet property="gamesController" destination="858" id="1085"/>
+                <outlet property="helpButton" destination="1095" id="1155"/>
+                <outlet property="tableView" destination="1042" id="1200"/>
+                <outlet property="usbOverdriveIconButton" destination="1462" id="1471"/>
+                <outlet property="usbOverdriveView" destination="1466" id="1470"/>
+                <outlet property="usbOverdriveWindow" destination="1407" id="1472"/>
+                <outlet property="view" destination="696" id="974"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application"/>
+        <customView id="696" userLabel="view">
+            <rect key="frame" x="0.0" y="0.0" width="634" height="437"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <pathControl focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" id="1053">
+                    <rect key="frame" x="1" y="237" width="633" height="20"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <pathCell key="cell" controlSize="small" selectable="YES" focusRingType="none" alignment="left" id="1068">
+                        <font key="font" metaFont="smallSystem"/>
+                        <url key="url" string="file://localhost/Applications/"/>
+                        <color key="backgroundColor" red="0.82352941180000006" green="0.82352941180000006" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
+                    </pathCell>
+                    <connections>
+                        <binding destination="858" name="value" keyPath="selection.executableURL" id="1484"/>
+                    </connections>
+                </pathControl>
+                <textField verticalHuggingPriority="750" id="1054">
+                    <rect key="frame" x="12" y="208" width="71" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Game:" id="1067">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" id="1056">
+                    <rect key="frame" x="108" y="208" width="483" height="17"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" title="Portal" id="1065">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="858" name="value" keyPath="selection.displayName" id="1073"/>
+                    </connections>
+                </textField>
+                <textField verticalHuggingPriority="750" id="1057">
+                    <rect key="frame" x="85" y="183" width="506" height="17"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" title="Not helped" id="1064">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="858" name="value" keyPath="selection.helpedStateString" id="1075"/>
+                    </connections>
+                </textField>
+                <textField verticalHuggingPriority="750" id="1058">
+                    <rect key="frame" x="12" y="183" width="71" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Status:" id="1063">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="1039">
+                    <rect key="frame" x="0.0" y="258" width="634" height="179"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <clipView key="contentView" id="2u3-Mz-EPo">
+                        <rect key="frame" x="1" y="23" width="632" height="155"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" autosaveName="tableView2.0" headerView="1043" id="1042" customClass="MDTableView">
+                                <rect key="frame" x="0.0" y="0.0" width="632" height="155"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <size key="intercellSpacing" width="3" height="2"/>
+                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                <tableColumns>
+                                    <tableColumn identifier="runningStateImage" editable="NO" width="20" minWidth="20" maxWidth="20" id="1048">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                        </tableHeaderCell>
+                                        <imageCell key="dataCell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="1050"/>
+                                        <sortDescriptor key="sortDescriptorPrototype" selector="compare:" sortKey="isRunning"/>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="858" name="value" keyPath="arrangedObjects.runningStateImage" id="1480"/>
+                                        </connections>
+                                    </tableColumn>
+                                    <tableColumn identifier="displayName" editable="NO" width="463" minWidth="40" maxWidth="1000" id="1044">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Game">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="1047" customClass="MDImageTextCell">
+                                            <font key="font" metaFont="cellTitle"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveNumericalCompare:" sortKey="displayName"/>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="858" name="value" keyPath="arrangedObjects.displayName" id="1078">
+                                                <dictionary key="options">
+                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
+                                    </tableColumn>
+                                    <tableColumn identifier="helpedStateString" editable="NO" width="140" minWidth="40" maxWidth="1000" id="1045">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="   Status">
+                                            <font key="font" metaFont="systemMedium" size="11"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="1046">
+                                            <font key="font" metaFont="cellTitle"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="helpedStateString"/>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="858" name="textColor" keyPath="arrangedObjects.helpedStateColor" id="1205"/>
+                                            <binding destination="858" name="value" keyPath="arrangedObjects.helpedStateString" id="1077">
+                                                <dictionary key="options">
+                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
+                                    </tableColumn>
+                                </tableColumns>
+                                <connections>
+                                    <outlet property="dataSource" destination="-2" id="1268"/>
+                                    <outlet property="delegate" destination="-2" id="1153"/>
+                                    <outlet property="menu" destination="1142" id="1147"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="1041">
+                        <rect key="frame" x="1" y="266" width="753" height="15"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="1040">
+                        <rect key="frame" x="754" y="17" width="15" height="249"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <tableHeaderView key="headerView" id="1043">
+                        <rect key="frame" x="0.0" y="0.0" width="632" height="23"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </tableHeaderView>
+                </scrollView>
+                <button toolTip="Refresh status of applications" verticalHuggingPriority="750" id="1090">
+                    <rect key="frame" x="596" y="206" width="18" height="19"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSRefreshTemplate" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1091">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="cellTitle"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="refresh:" target="-2" id="1092"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" id="1095">
+                    <rect key="frame" x="355" y="12" width="265" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    <buttonCell key="cell" type="push" title="Help Other Apps Recognize Game" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1096">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                        <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                    </buttonCell>
+                    <connections>
+                        <action selector="helpApps:" target="-2" id="1141"/>
+                        <binding destination="858" name="enabled" keyPath="selection.isHelped" id="1151">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" id="1097">
+                    <rect key="frame" x="189" y="12" width="166" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    <buttonCell key="cell" type="push" title="Restore to Default" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1098">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="restoreToDefault:" target="-2" id="1140"/>
+                        <binding destination="858" name="enabled" keyPath="selection.isHelped" id="1149"/>
+                    </connections>
+                </button>
+                <imageView id="1052">
+                    <rect key="frame" x="88" y="208" width="16" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="1069"/>
+                    <connections>
+                        <binding destination="858" name="value" keyPath="selection.icon" id="1076">
+                            <dictionary key="options">
+                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </imageView>
+                <textField verticalHuggingPriority="750" id="1458">
+                    <rect key="frame" x="17" y="86" width="600" height="84"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" selectable="YES" sendsActionOnEndEditing="YES" allowsEditingTextAttributes="YES" id="1459">
+                        <font key="font" metaFont="smallSystem"/>
+                        <string key="title">Use this feature to help allow other Mac OS X applications to better recognize Source games as applications. For example, if you use third-party mouse software such as SteerMouse or USBOverdrive, “helping” Valve’s games will allow you to add a custom profile for each game. It may also help if you are using the Simple Finder and/or Parental controls.
+
+Note: You can also double-click on a game in the list to launch it (it will be helped automatically if necessary).</string>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <customView id="1466">
+                    <rect key="frame" x="20" y="20" width="166" height="26"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button id="1462">
+                            <rect key="frame" x="7" y="3" width="16" height="16"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSApplicationIcon" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="1463">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="showUSBOverdriveTip:" target="-2" id="1469"/>
+                            </connections>
+                        </button>
+                        <button id="1464">
+                            <rect key="frame" x="145" y="1" width="16" height="16"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="noteIcon" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="1465">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="showUSBOverdriveTip:" target="-2" id="1467"/>
+                            </connections>
+                        </button>
+                        <button verticalHuggingPriority="750" id="1474">
+                            <rect key="frame" x="24" y="0.0" width="118" height="17"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <buttonCell key="cell" type="recessed" title="USB Overdrive Tip" bezelStyle="recessed" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1475">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="cellTitle"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="showUSBOverdriveTip:" target="-2" id="1476"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </customView>
+                <button id="1485">
+                    <rect key="frame" x="18" y="57" width="391" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <buttonCell key="cell" type="check" title="Automatically help games whenever Steam updates them" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="1486">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="toggleEnableAgent:" target="-2" id="1490"/>
+                        <binding destination="1487" name="value" keyPath="selection.enableSourceFinaglerAgent" id="1489"/>
+                    </connections>
+                </button>
+            </subviews>
+        </customView>
+        <arrayController objectClassName="VSGame" automaticallyPreparesContent="YES" avoidsEmptySelection="NO" automaticallyRearrangesObjects="YES" id="858" userLabel="gamesController">
+            <declaredKeys>
+                <string>icon</string>
+                <string>executablePath</string>
+                <string>displayName</string>
+                <string>isHelped</string>
+                <string>helpedStateString</string>
+                <string>helpedStateColor</string>
+                <string>isRunning</string>
+                <string>runningStateImage</string>
+                <string>executableURL</string>
+            </declaredKeys>
+            <connections>
+                <binding destination="-2" name="contentArray" keyPath="games" id="1051"/>
+                <binding destination="-2" name="sortDescriptors" keyPath="sortDescriptors" id="1491"/>
+            </connections>
+        </arrayController>
+        <menu id="1142" userLabel="contextualMenu">
+            <items>
+                <menuItem title="Help/Unhelp Games" id="1326">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="toggleHelpApps:" target="-2" id="1327"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="1321"/>
+                <menuItem title="Reveal in Finder" id="1143">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="revealInFinder:" target="-2" id="1154"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <connections>
+                <outlet property="delegate" destination="-2" id="1148"/>
+            </connections>
+        </menu>
+        <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="1407" userLabel="usbOverdriveWindow">
+            <windowStyleMask key="styleMask" titled="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="235" y="267" width="489" height="253"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
+            <view key="contentView" id="1408">
+                <rect key="frame" x="0.0" y="0.0" width="489" height="253"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField verticalHuggingPriority="750" id="1349">
+                        <rect key="frame" x="17" y="141" width="455" height="70"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" id="1350">
+                            <font key="font" metaFont="smallSystem"/>
+                            <string key="title">When attempting to target a specific application, the USB Overdrive preference pane for System Preferences has a bug that won’t allow you to choose the plain “hl2_osx” file (after the attempt, System Preferences is unresponsive). Instead, you should choose the special “hl2_osx (for USB Overdrive).app” application bundle, as shown in the image below:</string>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" id="1347">
+                        <rect key="frame" x="17" y="219" width="118" height="14"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="USB Overdrive Note:" id="1348">
+                            <font key="font" metaFont="smallSystemBold"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <imageView id="1329">
+                        <rect key="frame" x="104" y="47" width="280" height="89"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" image="usbOverdriveNote" id="1330"/>
+                    </imageView>
+                    <button verticalHuggingPriority="750" id="1409">
+                        <rect key="frame" x="390" y="12" width="85" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1410">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="ok:" target="-2" id="1473"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+        </window>
+        <objectController id="1487" userLabel="mediator">
+            <declaredKeys>
+                <string>enableSourceFinaglerAgent</string>
+            </declaredKeys>
+            <connections>
+                <binding destination="-2" name="contentObject" keyPath="self" id="1488"/>
+            </connections>
+        </objectController>
+    </objects>
+    <resources>
+        <image name="NSApplicationIcon" width="128" height="128"/>
+        <image name="NSRefreshTemplate" width="11" height="15"/>
+        <image name="noteIcon" width="16" height="16"/>
+        <image name="usbOverdriveNote" width="264" height="73"/>
+    </resources>
+</document>
