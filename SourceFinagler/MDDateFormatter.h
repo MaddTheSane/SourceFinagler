@@ -22,15 +22,13 @@
 
 
 
- enum {    // date and time format styles
+typedef NS_ENUM(NSInteger, MDDateFormatterStyle) {    // date and time format styles
     MDDateFormatterNoStyle		=	kCFDateFormatterNoStyle,
     MDDateFormatterShortStyle	=	kCFDateFormatterShortStyle,
     MDDateFormatterMediumStyle	=	kCFDateFormatterMediumStyle,
     MDDateFormatterLongStyle	=	kCFDateFormatterLongStyle,
     MDDateFormatterFullStyle	=	kCFDateFormatterFullStyle
 };
-
-typedef CFDateFormatterStyle MDDateFormatterStyle;
 
 
 @interface MDDateFormatter : NSFormatter <NSCoding, NSCopying> {
@@ -46,13 +44,11 @@ typedef CFDateFormatterStyle MDDateFormatterStyle;
 	
 	
 }
-- (id)initWithStyle:(MDDateFormatterStyle)aStyle isRelative:(BOOL)value;
+- (instancetype)initWithStyle:(MDDateFormatterStyle)aStyle isRelative:(BOOL)value;
 
-- (MDDateFormatterStyle)style;
-- (void)setStyle:(MDDateFormatterStyle)value;
+@property  MDDateFormatterStyle style;
 
-- (BOOL)isRelative;
-- (void)setRelative:(BOOL)value;
+@property (getter=isRelative) BOOL relative;
 
 @end
 

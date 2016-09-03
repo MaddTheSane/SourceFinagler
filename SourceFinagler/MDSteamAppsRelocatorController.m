@@ -37,20 +37,20 @@ NSString * const MDSteamBundleIdentifierKey = @"com.valvesoftware.steam";
 
 
 
-- (id)init {
+- (instancetype)init {
 	if ((self = [super init])) {
 		steamManager = [[VSSteamManager defaultManager] retain];
 		
 		NSString *currentPath = [steamManager steamAppsPath];
 		
 		if (currentPath) {
-			[self setCurrentURL:[NSURL fileURLWithPath:currentPath]];
+			self.currentURL = [NSURL fileURLWithPath:currentPath];
 		} 
 		
-		[self setSteamIsRunning:MDInfoForProcessWithBundleIdentifier(MDSteamBundleIdentifierKey) != nil];
+		self.steamIsRunning = MDInfoForProcessWithBundleIdentifier(MDSteamBundleIdentifierKey) != nil;
 		
-		[[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self selector:@selector(applicationDidLaunch:) name:NSWorkspaceDidLaunchApplicationNotification object:nil];
-		[[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self selector:@selector(applicationDidTerminate:) name:NSWorkspaceDidTerminateApplicationNotification object:nil];
+		[[NSWorkspace sharedWorkspace].notificationCenter addObserver:self selector:@selector(applicationDidLaunch:) name:NSWorkspaceDidLaunchApplicationNotification object:nil];
+		[[NSWorkspace sharedWorkspace].notificationCenter addObserver:self selector:@selector(applicationDidTerminate:) name:NSWorkspaceDidTerminateApplicationNotification object:nil];
 	}
 	return self;
 }
@@ -60,7 +60,7 @@ NSString * const MDSteamBundleIdentifierKey = @"com.valvesoftware.steam";
 	[currentURL release];
 	[proposedNewPath release];
 	[steamManager release];
-	[[[NSWorkspace sharedWorkspace] notificationCenter] removeObserver:self];
+	[[NSWorkspace sharedWorkspace].notificationCenter removeObserver:self];
 	[super dealloc];
 }
 
@@ -92,8 +92,8 @@ NSString * const MDSteamBundleIdentifierKey = @"com.valvesoftware.steam";
 #if VS_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	NSDictionary *userInfo = [notification userInfo];
-	if ([[userInfo objectForKey:@"NSApplicationBundleIdentifier"] isEqualToString:MDSteamBundleIdentifierKey]) {
+	NSDictionary *userInfo = notification.userInfo;
+	if ([userInfo[@"NSApplicationBundleIdentifier"] isEqualToString:MDSteamBundleIdentifierKey]) {
 		[self setSteamIsRunning:YES];
 		[statusField setStringValue:NSLocalizedString(@"Steam cannot be running", @"")];
 		
@@ -112,7 +112,7 @@ NSString * const MDSteamBundleIdentifierKey = @"com.valvesoftware.steam";
 	if (steamDidLaunch) {
 		NSString *currentPath = [steamManager steamAppsPath];
 		if (currentPath) {
-			[self setCurrentURL:[NSURL fileURLWithPath:currentPath]];
+			self.currentURL = [NSURL fileURLWithPath:currentPath];
 			steamDidLaunch = NO;
 			
 		} else {
@@ -127,10 +127,10 @@ NSString * const MDSteamBundleIdentifierKey = @"com.valvesoftware.steam";
 #if VS_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	NSDictionary *userInfo = [notification userInfo];
-	if ([[userInfo objectForKey:@"NSApplicationBundleIdentifier"] isEqualToString:MDSteamBundleIdentifierKey]) {
+	NSDictionary *userInfo = notification.userInfo;
+	if ([userInfo[@"NSApplicationBundleIdentifier"] isEqualToString:MDSteamBundleIdentifierKey]) {
 		[self setSteamIsRunning:NO];
-		[statusField setStringValue:@""];
+		statusField.stringValue = @"";
 	}
 }
 
@@ -171,15 +171,15 @@ NSString * const MDSteamBundleIdentifierKey = @"com.valvesoftware.steam";
 
 - (void)controlTextDidChange:(NSNotification *)notification {
 //	NSLog(@"[%@ %@] newPath == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), newPath);
-	[self setProposedNewPath:[[newPathField stringValue] stringByStandardizingPath]];
+	self.proposedNewPath = newPathField.stringValue.stringByStandardizingPath;
 	
 	NSString *status = nil;
 	
 	BOOL isValid = [steamManager isProposedRelocationPathValid:proposedNewPath errorDescription:&status];
 	
-	[self setCanCreate:isValid];
+	self.canCreate = isValid;
 	if (status) {
-		[statusField setStringValue:status];
+		statusField.stringValue = status;
 	}
 	
 }
@@ -189,7 +189,7 @@ NSString * const MDSteamBundleIdentifierKey = @"com.valvesoftware.steam";
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	if (currentURL) {
-		[[NSWorkspace sharedWorkspace] revealInFinder:[NSArray arrayWithObject:[currentURL path]]];
+		[[NSWorkspace sharedWorkspace] revealInFinder:@[currentURL.path]];
 		
 	}
 	
@@ -200,7 +200,7 @@ NSString * const MDSteamBundleIdentifierKey = @"com.valvesoftware.steam";
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	if (currentURL) {
-		if ([filename isEqualToString:[currentURL path]]) {
+		if ([filename isEqualToString:currentURL.path]) {
 			NSLog(@"returning no");
 			return NO;
 		}
@@ -229,19 +229,19 @@ NSString * const MDSteamBundleIdentifierKey = @"com.valvesoftware.steam";
 	NSInteger result = [openPanel runModal];
 	
 	if (result == NSFileHandlingPanelOKButton) {
-		NSArray *fileURLs = [openPanel URLs];
-		if (fileURLs && [fileURLs count]) {
-			NSString *filePath = [[fileURLs objectAtIndex:0] path];
-			[self setProposedNewPath:filePath];
+		NSArray *fileURLs = openPanel.URLs;
+		if (fileURLs && fileURLs.count) {
+			NSString *filePath = [fileURLs[0] path];
+			self.proposedNewPath = filePath;
 		}
 		
 		NSString *status = nil;
 		
 		BOOL isValid = [steamManager isProposedRelocationPathValid:proposedNewPath errorDescription:&status];
 		
-		[self setCanCreate:isValid];
+		self.canCreate = isValid;
 		if (status) {
-			[statusField setStringValue:status];
+			statusField.stringValue = status;
 		}
 	}
 	
@@ -255,9 +255,9 @@ NSString * const MDSteamBundleIdentifierKey = @"com.valvesoftware.steam";
 #endif
 	NSError *error = nil;
 	if ([steamManager relocateSteamAppsToPath:proposedNewPath error:&error]) {
-		[statusField setStringValue:@"Success"];
+		statusField.stringValue = @"Success";
 		[self setCanCreate:NO];
-		[self setCurrentURL:[NSURL fileURLWithPath:proposedNewPath]];
+		self.currentURL = [NSURL fileURLWithPath:proposedNewPath];
 		[statusField performSelector:@selector(setStringValue:) withObject:@"" afterDelay:10.0];
 		
 	} else {

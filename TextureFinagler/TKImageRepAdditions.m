@@ -17,7 +17,7 @@
 
 
 - (NSString *)imageUID {
-	return [NSString stringWithFormat:@"%lu", (unsigned long)[self hash]];
+	return [NSString stringWithFormat:@"%lu", (unsigned long)self.hash];
 }
 
 
@@ -30,7 +30,7 @@
 }
 
 - (NSString *)imageTitle {
-	return [NSString stringWithFormat:@"%lupx x %lupx", (unsigned long)[self size].width, (unsigned long)[self size].height];
+	return [NSString stringWithFormat:@"%lupx x %lupx", (unsigned long)self.size.width, (unsigned long)self.size.height];
 }
 
 
@@ -38,7 +38,7 @@
 #if TK_DEBUG
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	CGImageRef imageRef = [self CGImage];
+	CGImageRef imageRef = self.CGImage;
 	CGDataProviderRef provider = CGImageGetDataProvider(imageRef);
 	CGImageSourceRef imageSource = CGImageSourceCreateWithDataProvider(provider, NULL);
 	

@@ -59,7 +59,7 @@ static TKImageInspectorController *sharedController = nil;
 	return self;
 }
 
-- (id)init {
+- (instancetype)init {
 	if ((self = [super initWithWindowNibName:@"TKImageInspector"])) {
 		// force load nib?
 		[self window];
@@ -75,7 +75,7 @@ static TKImageInspectorController *sharedController = nil;
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	
-	[(NSPanel *)[self window] setBecomesKeyOnlyIfNeeded:YES];
+	[(NSPanel *)self.window setBecomesKeyOnlyIfNeeded:YES];
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowDidBecomeMain:) name:NSWindowDidBecomeMainNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowDidResignMain:) name:NSWindowDidResizeNotification object:nil];
@@ -91,7 +91,7 @@ static TKImageInspectorController *sharedController = nil;
 	if (appIsTerminating) return;
 
 	
-	NSWindow *window = [notification object];
+	NSWindow *window = notification.object;
 	NSDocument *document = [[NSDocumentController sharedDocumentController] documentForWindow:window];
 	
 	if (document == nil) return;
@@ -153,7 +153,7 @@ static TKImageInspectorController *sharedController = nil;
 	if (aTableView == tableView) {
 		TKImageChannel *imageChannel = [dataSource imageChannelAtIndex:rowIndex];
 		
-		return [imageChannel valueForKey:[tableColumn identifier]];
+		return [imageChannel valueForKey:tableColumn.identifier];
 		
 	}
 	return nil;
@@ -165,9 +165,9 @@ static TKImageInspectorController *sharedController = nil;
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	if (aTableView == tableView) {
-		if ([[tableColumn identifier] isEqual:@"name"]) {
+		if ([tableColumn.identifier isEqual:@"name"]) {
 			TKImageChannel *imageChannel = [dataSource imageChannelAtIndex:rowIndex];
-			[(TKImageChannelCell *)cell setImage:[imageChannel image]];
+			((TKImageChannelCell *)cell).image = imageChannel.image;
 		}
 	}
 }
@@ -178,9 +178,9 @@ static TKImageInspectorController *sharedController = nil;
 	NSLog(@"[%@ %@] object == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), object);
 #endif
 	if (aTableView == tableView) {
-		if ([[tableColumn identifier] isEqual:@"enabled"]) {
+		if ([tableColumn.identifier isEqual:@"enabled"]) {
 			TKImageChannel *imageChannel = [dataSource imageChannelAtIndex:rowIndex];
-			[imageChannel setEnabled:[object boolValue]];
+			imageChannel.enabled = [object boolValue];
 			
 			if ([object boolValue]) {
 				if ([dataSource respondsToSelector:@selector(imageInspectorController:didEnableImageChannel:)]) {
@@ -217,9 +217,9 @@ static TKImageInspectorController *sharedController = nil;
 #endif
 	
 	TKShouldShowImageInspector = YES;
-	[[self window] orderFront:nil];
+	[self.window orderFront:nil];
 	
-	NSWindow *mainWindow = [NSApp mainWindow];
+	NSWindow *mainWindow = NSApp.mainWindow;
 	NSDocument *document = [[NSDocumentController sharedDocumentController] documentForWindow:mainWindow];
 	
 	if (document == nil) return;
@@ -246,7 +246,7 @@ static TKImageInspectorController *sharedController = nil;
 #endif
 	if (appIsTerminating) return;
 	
-	if ([notification object] == [self window]) {
+	if (notification.object == self.window) {
 		if (dataSource && [dataSource respondsToSelector:@selector(endImageInspectorControl:)]) {
 			[(TKImageDocument *)dataSource endImageInspectorControl:self];
 		}

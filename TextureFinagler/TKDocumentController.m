@@ -36,11 +36,11 @@ NSString * const TKApplicationBundleIdentifier = @"com.markdouma.SourceFinagler"
 //		NSLog(@"[%@ %@] docTypes == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), docTypes);
 	
 		for (NSDictionary *docType in docTypes) {
-			NSString *docClass = [docType objectForKey:@"NSDocumentClass"];
+			NSString *docClass = docType[@"NSDocumentClass"];
 			if (docClass) {
-				NSArray *contentTypes = [docType objectForKey:@"LSItemContentTypes"];
-				if (contentTypes && [contentTypes count]) {
-					NSString *utiType = [contentTypes objectAtIndex:0];
+				NSArray *contentTypes = docType[@"LSItemContentTypes"];
+				if (contentTypes && contentTypes.count) {
+					NSString *utiType = contentTypes[0];
 					if (![utiType isEqualToString:(NSString *)kUTTypeImage]) {
 						[supportedDocTypes addObject:utiType];
 					}
@@ -61,8 +61,7 @@ NSString * const TKApplicationBundleIdentifier = @"com.markdouma.SourceFinagler"
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 	static NSArray *documentClassNames = nil;
 	if (documentClassNames == nil) {
-		documentClassNames = [[NSArray arrayWithObjects:
-							   @"TKImageDocument",
+		documentClassNames = [@[@"TKImageDocument",
 							   @"TKModelDocument",
 							   @"TKVMTMaterialDocument",
 							   @"MDGCFDocument",
@@ -72,7 +71,7 @@ NSString * const TKApplicationBundleIdentifier = @"com.markdouma.SourceFinagler"
 							   @"MDVPKDocument",
 							   @"MDWADDocument",
 							   @"MDSGADocument",
-							   @"MDXZPDocument", nil] retain];
+							   @"MDXZPDocument"] retain];
 	}
 	return documentClassNames;
 }
@@ -88,7 +87,7 @@ NSString * const TKApplicationBundleIdentifier = @"com.markdouma.SourceFinagler"
 	
 	FSRef itemRef;
 	
-	if (![[absURL path] getFSRef:&itemRef error:outError]) {
+	if (![absURL.path getFSRef:&itemRef error:outError]) {
 		return nil;
 	}
 	
@@ -170,11 +169,11 @@ NSString * const TKApplicationBundleIdentifier = @"com.markdouma.SourceFinagler"
     NSArray *readExts = nil;
 	
 	NSDictionary *utiDeclarations = [(NSDictionary *)UTTypeCopyDeclaration((CFStringRef)typeName) autorelease];
-	NSDictionary *utiSpec = [utiDeclarations objectForKey:(NSString *)kUTTypeTagSpecificationKey];
+	NSDictionary *utiSpec = utiDeclarations[(NSString *)kUTTypeTagSpecificationKey];
 	if (utiSpec) {
-		id extensions = [utiSpec objectForKey:(NSString *)kUTTagClassFilenameExtension];
+		id extensions = utiSpec[(NSString *)kUTTagClassFilenameExtension];
 		if ([extensions isKindOfClass:[NSString class]]) {
-			readExts = [NSArray arrayWithObject:extensions];
+			readExts = @[extensions];
 		} else if ([extensions isKindOfClass:[NSArray class]]) {
 			readExts = [NSArray arrayWithArray:extensions];
 		}

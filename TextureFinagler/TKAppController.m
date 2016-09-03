@@ -105,7 +105,7 @@ static NSArray *appClassNames = nil;
 	@synchronized(self) {
 		
 		if (appClassNames == nil) {
-			appClassNames = [[[NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"TKAppController" ofType:@"plist"]] objectForKey:@"TKAppControllerClassNames"] retain];
+			appClassNames = [[NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"TKAppController" ofType:@"plist"]][@"TKAppControllerClassNames"] retain];
 		}
 		
 		SInt32 MDFullSystemVersion = 0;
@@ -123,7 +123,7 @@ static NSArray *appClassNames = nil;
 		/*	enabled is an NSNumber, not a YES or NO value. If enabled is nil, we assume the default sound effect setting, which is enabled. Only if enabled is non-nil do we have an actual YES or NO answer to examine	*/
 		
 		if (enabled) {
-			MDPlaySoundEffects = (BOOL)[enabled intValue];
+			MDPlaySoundEffects = (BOOL)enabled.intValue;
 		} else {
 			MDPlaySoundEffects = YES;
 		}
@@ -137,75 +137,75 @@ static NSArray *appClassNames = nil;
 		MDUserDefaults *userDefaults = [MDUserDefaults standardUserDefaults];
 		
 		
-		finderListViewFontSize = [[[userDefaults objectForKey:@"StandardViewOptions" forAppIdentifier:TKFinderBundleIdentifierKey inDomain:MDUserDefaultsUserDomain] objectForKey:@"ListViewOptions"] objectForKey:@"FontSize"];
-		finderListViewIconSize = [[[userDefaults objectForKey:@"StandardViewOptions" forAppIdentifier:TKFinderBundleIdentifierKey inDomain:MDUserDefaultsUserDomain] objectForKey:@"ListViewOptions"] objectForKey:@"IconSize"];
+		finderListViewFontSize = [userDefaults objectForKey:@"StandardViewOptions" forAppIdentifier:TKFinderBundleIdentifierKey inDomain:MDUserDefaultsUserDomain][@"ListViewOptions"][@"FontSize"];
+		finderListViewIconSize = [userDefaults objectForKey:@"StandardViewOptions" forAppIdentifier:TKFinderBundleIdentifierKey inDomain:MDUserDefaultsUserDomain][@"ListViewOptions"][@"IconSize"];
 		
-		finderColumnViewFontAndIconSize = [[[userDefaults objectForKey:@"StandardViewOptions" forAppIdentifier:TKFinderBundleIdentifierKey inDomain:MDUserDefaultsUserDomain] objectForKey:@"ColumnViewOptions"] objectForKey:@"FontSize"];
+		finderColumnViewFontAndIconSize = [userDefaults objectForKey:@"StandardViewOptions" forAppIdentifier:TKFinderBundleIdentifierKey inDomain:MDUserDefaultsUserDomain][@"ColumnViewOptions"][@"FontSize"];
 		
-		[defaultValues setObject:[NSNumber numberWithInteger:MDListViewMode] forKey:MDDocumentViewModeKey];
+		defaultValues[MDDocumentViewModeKey] = @(MDListViewMode);
 		
 		if (finderListViewFontSize) {
-			[defaultValues setObject:finderListViewFontSize forKey:MDListViewFontSizeKey];
+			defaultValues[MDListViewFontSizeKey] = finderListViewFontSize;
 		} else {
-			[defaultValues setObject:[NSNumber numberWithInteger:defaultFontSize] forKey:MDListViewFontSizeKey];
+			defaultValues[MDListViewFontSizeKey] = @defaultFontSize;
 		}
 		
 		if (finderListViewIconSize) {
-			[defaultValues setObject:finderListViewIconSize forKey:MDListViewIconSizeKey];
+			defaultValues[MDListViewIconSizeKey] = finderListViewIconSize;
 		} else {
-			[defaultValues setObject:[NSNumber numberWithInteger:defaultIconSize] forKey:MDListViewIconSizeKey];
+			defaultValues[MDListViewIconSizeKey] = @defaultIconSize;
 		}
 		
 		if (finderColumnViewFontAndIconSize) {
-			[defaultValues setObject:finderColumnViewFontAndIconSize forKey:MDBrowserFontAndIconSizeKey];
+			defaultValues[MDBrowserFontAndIconSizeKey] = finderColumnViewFontAndIconSize;
 		} else {
-			[defaultValues setObject:[NSNumber numberWithInteger:defaultBrowserViewFontAndIconSize] forKey:MDBrowserFontAndIconSizeKey];
+			defaultValues[MDBrowserFontAndIconSizeKey] = @defaultBrowserViewFontAndIconSize;
 		}
 		
-		[defaultValues setObject:[NSNumber numberWithBool:NO] forKey:MDShouldShowInvisibleItemsKey];
+		defaultValues[MDShouldShowInvisibleItemsKey] = @NO;
 		
-		[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:MDShouldShowKindColumnKey];
-		[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:MDShouldShowSizeColumnKey];
+		defaultValues[MDShouldShowKindColumnKey] = @YES;
+		defaultValues[MDShouldShowSizeColumnKey] = @YES;
 		
-		[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:MDBrowserShouldShowIconsKey];
-		[defaultValues setObject:[NSNumber numberWithBool:YES] forKey:MDBrowserShouldShowPreviewKey];
+		defaultValues[MDBrowserShouldShowIconsKey] = @YES;
+		defaultValues[MDBrowserShouldShowPreviewKey] = @YES;
 		
-		[defaultValues setObject:[NSNumber numberWithInteger:MDBrowserSortByName] forKey:MDBrowserSortByKey];
+		defaultValues[MDBrowserSortByKey] = @(MDBrowserSortByName);
 		
-		[defaultValues setObject:[NSNumber numberWithBool:NO] forKey:MDShouldShowInspectorKey];
-		[defaultValues setObject:[NSNumber numberWithBool:NO] forKey:MDShouldShowQuickLookKey];
+		defaultValues[MDShouldShowInspectorKey] = @NO;
+		defaultValues[MDShouldShowQuickLookKey] = @NO;
 		
-		[defaultValues setObject:[NSNumber numberWithBool:NO] forKey:TKShouldShowImageInspectorKey];
+		defaultValues[TKShouldShowImageInspectorKey] = @NO;
 		
-		[defaultValues setObject:[NSNumber numberWithUnsignedInteger:TKLaunchTimeActionOpenMainWindow] forKey:TKLaunchTimeActionKey];
+		defaultValues[TKLaunchTimeActionKey] = @(TKLaunchTimeActionOpenMainWindow);
 		
-		[defaultValues setObject:[[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey] forKey:TKLastVersionRunKey];
+		defaultValues[TKLastVersionRunKey] = [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey];
 		
 		if ([[NSUserDefaults standardUserDefaults] objectForKey:TKLastSpotlightImporterVersionKey] == nil) {
 			needSpotlightReimport = YES;
 			NSLog(@"[%@ %@] needSpotlightReimport = YES", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 		}
-		[defaultValues setObject:[[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey] forKey:TKLastSpotlightImporterVersionKey];
+		defaultValues[TKLastSpotlightImporterVersionKey] = [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey];
 		
 		if ([[NSUserDefaults standardUserDefaults] objectForKey:TKLastSourceAddonFinaglerVersionKey] == nil) {
 			needSourceAddonFinaglerRegister = YES;
 			NSLog(@"[%@ %@] needSourceAddonFinaglerRegister = YES", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 		}
-		[defaultValues setObject:[[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey] forKey:TKLastSourceAddonFinaglerVersionKey];
+		defaultValues[TKLastSourceAddonFinaglerVersionKey] = [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey];
 		
-		[defaultValues setObject:[NSNumber numberWithBool:NO] forKey:TKQuitAfterAllWindowsClosedKey];
+		defaultValues[TKQuitAfterAllWindowsClosedKey] = @NO;
 		
-		[defaultValues setObject:[NSNumber numberWithBool:NO] forKey:MDShouldShowViewOptionsKey];
+		defaultValues[MDShouldShowViewOptionsKey] = @NO;
 		
 		
-		[defaultValues setObject:[NSNumber numberWithUnsignedInteger:TKSteamAppsRelocatorView] forKey:MDCurrentViewKey];
+		defaultValues[MDCurrentViewKey] = @(TKSteamAppsRelocatorView);
 		[[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
-		[[NSUserDefaultsController sharedUserDefaultsController] setInitialValues:defaultValues];
+		[NSUserDefaultsController sharedUserDefaultsController].initialValues = defaultValues;
 		
 	}
 }
 
-- (id)init {
+- (instancetype)init {
 	if ((self = [super init])) {
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(lastWindowDidClose:) name:TKLastWindowDidCloseNotification object:nil];
 
@@ -300,23 +300,23 @@ static NSArray *appClassNames = nil;
 	
 	// from setupUI, since it only needs to be done once
 	
-	[emailMenuItem setTitle:[NSString stringWithFormat:NSLocalizedString(@"Email: %@", @""), TKEmailAddress]];
+	emailMenuItem.title = [NSString stringWithFormat:NSLocalizedString(@"Email: %@", @""), TKEmailAddress];
 	NSImage *emailAppImage = [[NSWorkspace sharedWorkspace] iconForApplicationForURL:[NSURL URLWithString:TKEmailStaticURLString]];
 	if (emailAppImage) {
-		[emailAppImage setSize:NSMakeSize(16.0,16.0)];
-		[emailMenuItem setImage:emailAppImage];
+		emailAppImage.size = NSMakeSize(16.0,16.0);
+		emailMenuItem.image = emailAppImage;
 	}
 	
 	NSImage *chatAppImage = [[NSWorkspace sharedWorkspace] iconForApplicationForURL:[NSURL URLWithString:TKiChatURLString]];
 	if (chatAppImage) {
-		[chatAppImage setSize:NSMakeSize(16.0,16.0)];
-		[chatMenuItem setImage:chatAppImage];
+		chatAppImage.size = NSMakeSize(16.0,16.0);
+		chatMenuItem.image = chatAppImage;
 	}
 	
 	NSImage *webAppImage = [[NSWorkspace sharedWorkspace] iconForApplicationForURL:[NSURL URLWithString:TKWebpage]];
 	if (webAppImage) {
-		[webAppImage setSize:NSMakeSize(16.0,16.0)];
-		[webpageMenuItem setImage:webAppImage];
+		webAppImage.size = NSMakeSize(16.0,16.0);
+		webpageMenuItem.image = webAppImage;
 	}
 	
 	MDShouldShowInspector = [[userDefaults objectForKey:MDShouldShowInspectorKey] boolValue];
@@ -350,7 +350,7 @@ static NSArray *appClassNames = nil;
 	[self switchView:self];
 	
 	
-	[NSApp setServicesProvider:self];
+	NSApp.servicesProvider = self;
 	
 	if ([[[NSUserDefaults standardUserDefaults] objectForKey:TKLaunchTimeActionKey] unsignedIntegerValue] & TKLaunchTimeActionOpenMainWindow) {
 		[window makeKeyAndOrderFront:nil];
@@ -374,7 +374,7 @@ static NSArray *appClassNames = nil;
 			if (status) {
 				NSLog(@"[%@ %@] LSRegisterURL() returned %d", NSStringFromClass([self class]), NSStringFromSelector(_cmd), (int)status);
 			} else {
-				[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:currentVersion] forKey:TKLastSourceAddonFinaglerVersionKey];
+				[[NSUserDefaults standardUserDefaults] setObject:@(currentVersion) forKey:TKLastSourceAddonFinaglerVersionKey];
 			}
 		}
 	}
@@ -445,7 +445,7 @@ static NSArray *appClassNames = nil;
 	[steamAppsRelocatorController cleanup];
 	[otherAppsHelperController cleanup];
 	
-	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithUnsignedInteger:currentView] forKey:MDCurrentViewKey];
+	[[NSUserDefaults standardUserDefaults] setObject:@(currentView) forKey:MDCurrentViewKey];
 }
 
 - (NSUndoManager *)globalUndoManager {
@@ -464,10 +464,10 @@ static NSArray *appClassNames = nil;
 #endif
 	
 	if (TKSystemVersion == TKLeopard) {
-		[viewMenu setItemArray:[NSArray arrayWithObjects:viewModeAsListMenuItem,[NSMenuItem separatorItem], viewTogglePathBarMenuItem, [NSMenuItem separatorItem], viewToggleToolbarShownMenuItem,viewCustomizeToolbarMenuItem,[NSMenuItem separatorItem],viewOptionsMenuItem, nil]];
+		[viewMenu setItemArray:@[viewModeAsListMenuItem,[NSMenuItem separatorItem], viewTogglePathBarMenuItem, [NSMenuItem separatorItem], viewToggleToolbarShownMenuItem,viewCustomizeToolbarMenuItem,[NSMenuItem separatorItem],viewOptionsMenuItem]];
 		
 	} else if (TKSystemVersion >= TKSnowLeopard) {
-		[viewMenu setItemArray:[NSArray arrayWithObjects:viewModeAsListMenuItem,viewModeAsColumnsMenuItem,[NSMenuItem separatorItem], viewTogglePathBarMenuItem, [NSMenuItem separatorItem], viewToggleToolbarShownMenuItem,viewCustomizeToolbarMenuItem,[NSMenuItem separatorItem],viewOptionsMenuItem, nil]];
+		[viewMenu setItemArray:@[viewModeAsListMenuItem,viewModeAsColumnsMenuItem,[NSMenuItem separatorItem], viewTogglePathBarMenuItem, [NSMenuItem separatorItem], viewToggleToolbarShownMenuItem,viewCustomizeToolbarMenuItem,[NSMenuItem separatorItem],viewOptionsMenuItem]];
 		
 	}
 	
@@ -490,23 +490,23 @@ static NSArray *appClassNames = nil;
 		NSArray *toolbarItems = window.toolbar.items;
 		for (NSToolbarItem *toolbarItem in toolbarItems) {
 			if (toolbarItem.tag == currentView) {
-				[window.toolbar setSelectedItemIdentifier:toolbarItem.itemIdentifier]; break;
+				(window.toolbar).selectedItemIdentifier = toolbarItem.itemIdentifier; break;
 			}
 		}
 	} else {
-		currentView = [(NSToolbarItem *)sender tag];
+		currentView = ((NSToolbarItem *)sender).tag;
 	}
 	
-	TKViewController *viewController = [viewControllers objectAtIndex:currentView];
+	TKViewController *viewController = viewControllers[currentView];
 	
 	if ((NSNull *)viewController == [NSNull null]) {
-		NSString *className = [appClassNames objectAtIndex:currentView];
+		NSString *className = appClassNames[currentView];
 		
 		Class viewControllerClass = NSClassFromString(className);
 		
 		viewController = [[viewControllerClass alloc] init];
 		
-		[viewControllers replaceObjectAtIndex:currentView withObject:viewController];
+		viewControllers[currentView] = viewController;
 		
 		[viewController release];
 	}
@@ -522,7 +522,7 @@ static NSArray *appClassNames = nil;
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	
-	[viewMenu setItemArray:[NSArray arrayWithObjects:viewTogglePathBarMenuItem, [NSMenuItem separatorItem], viewToggleToolbarShownMenuItem, viewCustomizeToolbarMenuItem, [NSMenuItem separatorItem], viewOptionsMenuItem, nil]];
+	[viewMenu setItemArray:@[viewTogglePathBarMenuItem, [NSMenuItem separatorItem], viewToggleToolbarShownMenuItem, viewCustomizeToolbarMenuItem, [NSMenuItem separatorItem], viewOptionsMenuItem]];
 	
 }
 
@@ -538,7 +538,7 @@ static NSArray *appClassNames = nil;
 		if (inspectorController == nil) inspectorController = [[MDInspectorController alloc] init];
 		[inspectorController showWindow:self];
 	} else {
-		if (inspectorController) [[inspectorController window] performClose:self];
+		if (inspectorController) [inspectorController.window performClose:self];
 	}
 }
 
@@ -564,7 +564,7 @@ static NSArray *appClassNames = nil;
 		if (viewOptionsController == nil) viewOptionsController = [[MDViewOptionsController alloc] init];
 		[viewOptionsController showWindow:self];
 	} else {
-		if (viewOptionsController) [[viewOptionsController window] performClose:self];
+		if (viewOptionsController) [viewOptionsController.window performClose:self];
 	}
 }
 
@@ -589,7 +589,7 @@ static NSArray *appClassNames = nil;
 		if (quickLookController == nil) quickLookController = [[MDQuickLookController sharedQuickLookController] retain];
 		[quickLookController showWindow:self];
 	} else {
-		if (quickLookController) [[quickLookController window] performClose:self];
+		if (quickLookController) [quickLookController.window performClose:self];
 	}
 }
 
@@ -615,7 +615,7 @@ static NSArray *appClassNames = nil;
 		if (imageInspectorController == nil) imageInspectorController = [[TKImageInspectorController sharedController] retain];
 		[imageInspectorController showWindow:self];
 	} else {
-		if (imageInspectorController) [[imageInspectorController window] performClose:self];
+		if (imageInspectorController) [imageInspectorController.window performClose:self];
 	}
 }
 
@@ -632,7 +632,7 @@ static NSArray *appClassNames = nil;
 
 
 - (IBAction)showMainWindow:(id)sender {
-	if (![window isVisible]) [window makeKeyAndOrderFront:nil];
+	if (!window.visible) [window makeKeyAndOrderFront:nil];
 }
 
 
@@ -660,31 +660,31 @@ static NSArray *appClassNames = nil;
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
 //	NSLog(@"[%@ %@] %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), menuItem);
 	
-	SEL action = [menuItem action];
+	SEL action = menuItem.action;
 //	NSInteger tag = [menuItem tag];
 	
 	if (action == @selector(switchView:)) {
 	} else if (action == @selector(showPrefsWindow:)) {
 		return YES;
 	} else if (action == @selector(toggleShowViewOptions:)) {
-		[menuItem setTitle:(MDShouldShowViewOptions ? NSLocalizedString(@"Hide View Options", @"") : NSLocalizedString(@"Show View Options", @""))];
+		menuItem.title = (MDShouldShowViewOptions ? NSLocalizedString(@"Hide View Options", @"") : NSLocalizedString(@"Show View Options", @""));
 		return YES;
 	} else if (action == @selector(toggleShowInspector:)) {
-		[menuItem setTitle:(MDShouldShowInspector ? NSLocalizedString(@"Hide Inspector", @"") : NSLocalizedString(@"Show Inspector", @""))];
+		menuItem.title = (MDShouldShowInspector ? NSLocalizedString(@"Hide Inspector", @"") : NSLocalizedString(@"Show Inspector", @""));
 		
 		return YES;
 		
 	} else if (action == @selector(toggleShowImageInspector:)) {
-		[menuItem setTitle:(TKShouldShowImageInspector ? NSLocalizedString(@"Hide Image Inspector", @"") : NSLocalizedString(@"Show Image Inspector", @""))];
+		menuItem.title = (TKShouldShowImageInspector ? NSLocalizedString(@"Hide Image Inspector", @"") : NSLocalizedString(@"Show Image Inspector", @""));
 		
 		return YES;
 		
 	} else if (action == @selector(toggleShowQuickLook:)) {
-		[menuItem setTitle:(MDShouldShowQuickLook ? NSLocalizedString(@"Close Quick Look", @"") : NSLocalizedString(@"Quick Look", @""))];
+		menuItem.title = (MDShouldShowQuickLook ? NSLocalizedString(@"Close Quick Look", @"") : NSLocalizedString(@"Quick Look", @""));
 		
 		return YES;
 	} else if (action == @selector(showMainWindow:)) {
-		[menuItem setState:(NSInteger)([window isVisible] && [window isMainWindow])];
+		menuItem.state = (NSInteger)(window.visible && window.mainWindow);
 		
 		return YES;
 		

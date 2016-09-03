@@ -51,8 +51,8 @@ typedef NSUInteger HKArchiveFileType;
 + (HKArchiveFileType)fileTypeForData:(NSData *)aData;
 
 
-- (id)initWithContentsOfFile:(NSString *)aPath;
-- (id)initWithContentsOfFile:(NSString *)aPath showInvisibleItems:(BOOL)showInvisibleItems sortDescriptors:(NSArray *)sortDescriptors error:(NSError **)outError;
+- (instancetype)initWithContentsOfFile:(NSString *)aPath;
+- (instancetype)initWithContentsOfFile:(NSString *)aPath showInvisibleItems:(BOOL)showInvisibleItems sortDescriptors:(NSArray<NSSortDescriptor*> *)sortDescriptors error:(NSError **)outError;
 
 
 @property (retain, readonly) NSString *filePath;

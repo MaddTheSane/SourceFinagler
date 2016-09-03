@@ -24,7 +24,7 @@ NSString * const TKImageExportPreviewKey	= @"TKImageExportPreview";
 @synthesize imageExportPreview;
 
 
-- (id)initWithImageExportPreview:(TKImageExportPreview *)anImageExportPreview {
+- (instancetype)initWithImageExportPreview:(TKImageExportPreview *)anImageExportPreview {
 	if (anImageExportPreview == nil) return nil;
 	if ((self = [super init])) {
 		imageExportPreview = anImageExportPreview;
@@ -44,40 +44,40 @@ NSString * const TKImageExportPreviewKey	= @"TKImageExportPreview";
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	TKImageExportPreset *preset = [imageExportPreview preset];
+	TKImageExportPreset *preset = imageExportPreview.preset;
 	
-	NSString *fileType = [[imageExportPreview preset] fileType];
+	NSString *fileType = imageExportPreview.preset.fileType;
 	
-	if ([fileType isEqualToString:[TKDDSFileType uppercaseString]]) {
+	if ([fileType isEqualToString:TKDDSFileType.uppercaseString]) {
 		
-		NSData *previewData = [TKDDSImageRep DDSRepresentationOfImageRepsInArray:[[imageExportPreview image] representations] usingPreset:[imageExportPreview preset]];
+		NSData *previewData = [TKDDSImageRep DDSRepresentationOfImageRepsInArray:imageExportPreview.image.representations usingPreset:imageExportPreview.preset];
 		TKDDSImageRep *imageRep = [[TKDDSImageRep alloc] initWithData:previewData];
-		[imageExportPreview setImageRep:imageRep];
+		imageExportPreview.imageRep = imageRep;
 		[imageRep release];
 		
-		[imageExportPreview setImageFileSize:[previewData length]];
+		imageExportPreview.imageFileSize = previewData.length;
 		
-	} else if ([fileType isEqualToString:[TKVTFFileType uppercaseString]]) {
+	} else if ([fileType isEqualToString:TKVTFFileType.uppercaseString]) {
 		
-		NSData *previewData = [TKVTFImageRep VTFRepresentationOfImageRepsInArray:[[imageExportPreview image] representations] usingPreset:[imageExportPreview preset]];
+		NSData *previewData = [TKVTFImageRep VTFRepresentationOfImageRepsInArray:imageExportPreview.image.representations usingPreset:imageExportPreview.preset];
 		TKVTFImageRep *imageRep = [[TKVTFImageRep alloc] initWithData:previewData];
-		[imageExportPreview setImageRep:imageRep];
+		imageExportPreview.imageRep = imageRep;
 		[imageRep release];
-		[imageExportPreview setImageFileSize:[previewData length]];
+		imageExportPreview.imageFileSize = previewData.length;
 		
 	} else if ([preset isEqualToPreset:[TKImageExportPreset originalImagePreset]]) {
-		NSArray *originalImageReps = [[imageExportPreview image] representations];
-		if ([originalImageReps count]) {
-			TKImageRep *imageRep = [originalImageReps objectAtIndex:0];
+		NSArray *originalImageReps = imageExportPreview.image.representations;
+		if (originalImageReps.count) {
+			TKImageRep *imageRep = originalImageReps[0];
 			NSData *imageRepData = [imageRep data];
-			[imageExportPreview setImageRep:imageRep];
-			[imageExportPreview setImageFileSize:[imageRepData length]];
+			imageExportPreview.imageRep = imageRep;
+			imageExportPreview.imageFileSize = imageRepData.length;
 		}
 	}
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:TKImageExportPreviewOperationDidCompleteNotification
-														object:[imageExportPreview controller]
-													  userInfo:[NSDictionary dictionaryWithObjectsAndKeys:imageExportPreview,TKImageExportPreviewKey, nil]];
+														object:imageExportPreview.controller
+													  userInfo:@{TKImageExportPreviewKey: imageExportPreview}];
 	
 	[pool release];
 }
@@ -87,7 +87,7 @@ NSString * const TKImageExportPreviewKey	= @"TKImageExportPreview";
 
 - (BOOL)isEqual:(id)object {
 	if ([object isKindOfClass:[self class]]) {
-		return ([(TKImageExportPreviewOperation *)object imageExportPreview] == imageExportPreview);
+		return (((TKImageExportPreviewOperation *)object).imageExportPreview == imageExportPreview);
 	}
 	return NO;
 }

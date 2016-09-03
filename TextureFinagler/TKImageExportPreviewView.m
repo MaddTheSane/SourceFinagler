@@ -18,7 +18,7 @@
 @dynamic isHighlighted;
 
 
-- (id)initWithFrame:(NSRect)frame {
+- (instancetype)initWithFrame:(NSRect)frame {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -86,7 +86,7 @@
 - (void)drawRect:(NSRect)dirtyRect {
 	[super drawRect:dirtyRect];
 	if (isHighlighted) {
-		if (!NSEqualRects(dirtyRect, [self frame])) return;
+		if (!NSEqualRects(dirtyRect, self.frame)) return;
 		
 		[[NSColor keyboardFocusIndicatorColor] set];
 		[NSBezierPath setDefaultLineWidth:6.0];

@@ -48,7 +48,7 @@ static NSMutableDictionary	*placeholderImageBrowserItemsAndSizes = nil;
 	
 	TKImageRep *largestImageRep = [TKImageRep largestRepresentationInArray:imageReps];
 	
-	NSSize largestSize = [largestImageRep size];
+	NSSize largestSize = largestImageRep.size;
 	
 	TKImageBrowserItem *rightFaceItem = [[self class] faceBrowserItemWithImageRep:[TKImageRep imageRepForFace:TKFaceRight
 																						   ofImageRepsInArray:imageReps]];
@@ -74,9 +74,9 @@ static NSMutableDictionary	*placeholderImageBrowserItemsAndSizes = nil;
 		return nil;
 	}
 	
-	return [NSArray arrayWithObjects:placeholderItem, backFaceItem, placeholderItem, placeholderItem,
+	return @[placeholderItem, backFaceItem, placeholderItem, placeholderItem,
 									leftFaceItem, upFaceItem, rightFaceItem, downFaceItem,
-									placeholderItem, frontFaceItem, placeholderItem, placeholderItem, nil];
+									placeholderItem, frontFaceItem, placeholderItem, placeholderItem];
 	
 	
 //	TKImageRep *faceRight = [TKImageRep imageRepForFace:TKFaceRight ofImageRepsInArray:imageReps];
@@ -108,11 +108,11 @@ static NSMutableDictionary	*placeholderImageBrowserItemsAndSizes = nil;
 #endif
 	TKImageBrowserItem *placeholderBrowserItem = nil;
 	@synchronized(placeholderImageBrowserItemsAndSizes) {
-		placeholderBrowserItem = [[placeholderImageBrowserItemsAndSizes objectForKey:NSStringFromSize(aSize)] retain];
+		placeholderBrowserItem = [placeholderImageBrowserItemsAndSizes[NSStringFromSize(aSize)] retain];
 		if (placeholderBrowserItem == nil) {
 			TKImageRep *emptyImageRep = [TKImageRep emptyImageRepWithSize:aSize];
 			placeholderBrowserItem = [[[self class] alloc] initWithImageRep:emptyImageRep type:TKPlaceholderBrowserItemType];
-			[placeholderImageBrowserItemsAndSizes setObject:placeholderBrowserItem forKey:NSStringFromSize(aSize)];
+			placeholderImageBrowserItemsAndSizes[NSStringFromSize(aSize)] = placeholderBrowserItem;
 		}
 	}
 	return [placeholderBrowserItem autorelease];
@@ -143,7 +143,7 @@ static NSMutableDictionary	*placeholderImageBrowserItemsAndSizes = nil;
 
 
 
-- (id)initWithImageRep:(TKImageRep *)anImageRep type:(TKBrowserItemType)aType {
+- (instancetype)initWithImageRep:(TKImageRep *)anImageRep type:(TKBrowserItemType)aType {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -182,7 +182,7 @@ static NSMutableDictionary	*placeholderImageBrowserItemsAndSizes = nil;
 			return nil;
 //			break;
 		case TKFrameBrowserItemType :
-			return [NSString stringWithFormat:@"%lu", (unsigned long)[imageRep frameIndex] + 1];
+			return [NSString stringWithFormat:@"%lu", (unsigned long)(imageRep.frameIndex + 1)];
 //			break;
 		default:
 			return nil;

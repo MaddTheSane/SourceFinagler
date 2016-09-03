@@ -25,7 +25,7 @@
 @synthesize scene;
 
 
-- (id)init {
+- (instancetype)init {
 #if TK_DEBUG
     NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -38,7 +38,7 @@
 }
 
 
-- (id)initWithType:(NSString *)typeName error:(NSError **)outError {
+- (instancetype)initWithType:(NSString *)typeName error:(NSError **)outError {
 #if TK_DEBUG
     NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -152,7 +152,7 @@
 		
 	} else if (outlineView == sceneGraphOutlineView) {
 		if (item == nil) return scene.rootNode.childNodes.count;
-		return [(SCNNode *)item childNodes].count;
+		return ((SCNNode *)item).childNodes.count;
 		
 	}
 	return 0;
@@ -166,8 +166,8 @@
 	if (outlineView == entitiesOutlineView) {
 		
 	} else if (outlineView == sceneGraphOutlineView) {
-		if (item == nil) return [scene.rootNode.childNodes objectAtIndex:index];
-		return [[(SCNNode *)item childNodes] objectAtIndex:index];
+		if (item == nil) return (scene.rootNode.childNodes)[index];
+		return ((SCNNode *)item).childNodes[index];
 
 	}
 	return nil;
@@ -184,7 +184,7 @@
 		
 	} else if (outlineView == sceneGraphOutlineView) {
 		if (item == nil) return scene.rootNode.childNodes.count;
-		return [(SCNNode *)item childNodes].count;
+		return ((SCNNode *)item).childNodes.count;
 	}
 	return NO;
 }

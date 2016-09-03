@@ -14,8 +14,8 @@
 
 }
 
-+ (id)separatorView;
-+ (id)separatorViewPositionedAboveCopyOperationView:(MDCopyOperationView *)copyOperationView;
++ (instancetype)separatorView;
++ (instancetype)separatorViewPositionedAboveCopyOperationView:(MDCopyOperationView *)copyOperationView;
 
 + (CGFloat)separatorViewHeight;
 

@@ -25,7 +25,7 @@ static NSDate *MDNilDate = nil;
 }
 
 
-- (id)initWithStyle:(MDDateFormatterStyle)aStyle isRelative:(BOOL)value {
+- (instancetype)initWithStyle:(MDDateFormatterStyle)aStyle isRelative:(BOOL)value {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -66,7 +66,7 @@ static NSDate *MDNilDate = nil;
 
 
 
-- (id)initWithCoder:(NSCoder *)coder {
+- (instancetype)initWithCoder:(NSCoder *)coder {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -114,8 +114,8 @@ static NSDate *MDNilDate = nil;
 	
 	[super encodeWithCoder:coder];
 	
-	[coder encodeObject:[NSNumber numberWithLong:style] forKey:@"MDStyle"];
-	[coder encodeObject:[NSNumber numberWithBool:relative] forKey:@"MDRelative"];
+	[coder encodeObject:@(style) forKey:@"MDStyle"];
+	[coder encodeObject:@(relative) forKey:@"MDRelative"];
 	
 }
 

@@ -57,8 +57,7 @@
 
 - (IBAction)toggleShown:(id)sender;
 
-- (BOOL)isShown;
-- (void)setShown:(BOOL)value;
+@property (getter=isShown) BOOL shown;
 
 
 @property (nonatomic, assign) IBOutlet NSButton *titleButton;

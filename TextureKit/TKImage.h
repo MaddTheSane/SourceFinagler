@@ -71,7 +71,7 @@ TEXTUREKIT_EXTERN NSData * TKSFTextureImageMagicData;
 
 }
 
-- (id)initWithData:(NSData *)aData firstRepresentationOnly:(BOOL)firstRepOnly;
+- (instancetype)initWithData:(NSData *)aData firstRepresentationOnly:(BOOL)firstRepOnly;
 
 - (void)removeRepresentations:(NSArray *)imageReps;
 
@@ -95,17 +95,17 @@ TEXTUREKIT_EXTERN NSData * TKSFTextureImageMagicData;
 @property (nonatomic, assign) TKImageType imageType;
 
 
-- (NSIndexSet *)allSliceIndexes;
-- (NSIndexSet *)allFaceIndexes;
-- (NSIndexSet *)allFrameIndexes;
-- (NSIndexSet *)allMipmapIndexes;
+@property (readonly, copy) NSIndexSet *allSliceIndexes;
+@property (readonly, copy) NSIndexSet *allFaceIndexes;
+@property (readonly, copy) NSIndexSet *allFrameIndexes;
+@property (readonly, copy) NSIndexSet *allMipmapIndexes;
 
-- (NSIndexSet *)mipmapIndexes;
+@property (readonly, copy) NSIndexSet *mipmapIndexes;
 
-- (NSIndexSet *)firstSliceIndexSet;
-- (NSIndexSet *)firstFaceIndexSet;
-- (NSIndexSet *)firstFrameIndexSet;
-- (NSIndexSet *)firstMipmapIndexSet;
+@property (readonly, copy) NSIndexSet *firstSliceIndexSet;
+@property (readonly, copy) NSIndexSet *firstFaceIndexSet;
+@property (readonly, copy) NSIndexSet *firstFrameIndexSet;
+@property (readonly, copy) NSIndexSet *firstMipmapIndexSet;
 
 
 /* for depth texture images */

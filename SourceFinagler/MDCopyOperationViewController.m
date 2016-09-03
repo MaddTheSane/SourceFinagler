@@ -17,17 +17,17 @@
 
 @synthesize tag;
 
-+ (id)viewControllerWithViewColorType:(MDCopyOperationViewBackgroundColorType)aColorType tag:(NSInteger)aTag {
++ (instancetype)viewControllerWithViewColorType:(MDCopyOperationViewBackgroundColorType)aColorType tag:(NSInteger)aTag {
 	return [[[[self class] alloc] initWithViewColorType:aColorType tag:aTag] autorelease];
 }
 
 
-- (id)init {
+- (instancetype)init {
 	return [self initWithViewColorType:MDWhiteBackgroundColorType tag:-1];
 }
 
 
-- (id)initWithViewColorType:(MDCopyOperationViewBackgroundColorType)aColorType tag:(NSInteger)aTag {
+- (instancetype)initWithViewColorType:(MDCopyOperationViewBackgroundColorType)aColorType tag:(NSInteger)aTag {
 	if ((self = [super initWithNibName:@"MDCopyOperationView" bundle:nil])) {
 		colorType = aColorType;
 		tag = aTag;
@@ -69,8 +69,8 @@ static inline NSString *NSStringFromAutoresizingMask(NSUInteger mask) {
 	[progressIndicator setUsesThreadedAnimation:YES];
 	[progressIndicator startAnimation:nil];
 	
-	[(MDCopyOperationView *)[self view] setColorType:colorType];
-	[(MDCopyOperationView *)[self view] setTag:tag];
+	((MDCopyOperationView *)self.view).colorType = colorType;
+	((MDCopyOperationView *)self.view).tag = tag;
 	
 //	NSLog(@"[%@ %@] autoresizingMask == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), NSStringFromAutoresizingMask([[self view] autoresizingMask]));
 	
@@ -80,21 +80,21 @@ static inline NSString *NSStringFromAutoresizingMask(NSUInteger mask) {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	[[self representedObject] setRolledOver:YES];
+	[self.representedObject setRolledOver:YES];
 }
 
 - (void)mouseDidExitRolloverButton:(MDRolloverButton *)button {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	[[self representedObject] setRolledOver:NO];
+	[self.representedObject setRolledOver:NO];
 }
 
 - (IBAction)stop:(id)sender {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	[[self representedObject] setCancelled:YES];
+	[self.representedObject setCancelled:YES];
 }
 
 @end

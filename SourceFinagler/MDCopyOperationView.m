@@ -22,7 +22,7 @@
 @dynamic colorType;
 
 
-- (id)initWithFrame:(NSRect)frame {
+- (instancetype)initWithFrame:(NSRect)frame {
     if ((self = [super initWithFrame:frame])) {
 		whiteColor = [[NSColor colorWithCalibratedRed:1.0 green:1.0 blue:1.0 alpha:1.0] retain];
 		alternateColor = [[NSColor colorWithCalibratedRed:246.0/255.0 green:247.0/255.0 blue:249.0/255.0 alpha:1.0] retain];
@@ -78,7 +78,7 @@
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	[self setColorType:[self colorType] == MDWhiteBackgroundColorType ? MDAlternateBackgroundColorType : MDWhiteBackgroundColorType];
+	self.colorType = self.colorType == MDWhiteBackgroundColorType ? MDAlternateBackgroundColorType : MDWhiteBackgroundColorType;
 }
 
 
@@ -100,7 +100,7 @@
 
 
 - (NSString *)description {
-	NSMutableString *description = [NSMutableString stringWithFormat:@"%@", [super description]];
+	NSMutableString *description = [NSMutableString stringWithFormat:@"%@", super.description];
 	[description appendFormat:@" - (%ld)", (long)tag];
 	if (separatorView) [description appendFormat:@"; ^__separator"];
 //	[description appendFormat:@", separatorView == %@", separatorView];

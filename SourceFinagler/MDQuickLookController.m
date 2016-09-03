@@ -51,7 +51,7 @@ static MDQuickLookController *sharedQuickLookController = nil;
 	return self;
 }
 
-- (id)init {
+- (instancetype)init {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -107,11 +107,11 @@ static MDQuickLookController *sharedQuickLookController = nil;
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	NSDictionary *firstDict = [NSDictionary dictionaryWithObjectsAndKeys:[self window],NSViewAnimationTargetKey, 
-							   [NSValue valueWithRect:startFrame],NSViewAnimationStartFrameKey,
-							   [NSValue valueWithRect:endFrame],NSViewAnimationEndFrameKey, 
-							   NSViewAnimationFadeInEffect, NSViewAnimationEffectKey, nil];
-	NSViewAnimation *windowAnimation = [[[NSViewAnimation alloc] initWithViewAnimations:[NSArray arrayWithObject:firstDict]] autorelease];
+	NSDictionary *firstDict = @{NSViewAnimationTargetKey: self.window, 
+							   NSViewAnimationStartFrameKey: [NSValue valueWithRect:startFrame],
+							   NSViewAnimationEndFrameKey: [NSValue valueWithRect:endFrame], 
+							   NSViewAnimationEffectKey: NSViewAnimationFadeInEffect};
+	NSViewAnimation *windowAnimation = [[[NSViewAnimation alloc] initWithViewAnimations:@[firstDict]] autorelease];
 	[windowAnimation startAnimation];
 	
 }
@@ -122,8 +122,8 @@ static MDQuickLookController *sharedQuickLookController = nil;
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	MDShouldShowQuickLook = YES;
-	[[self window] orderFront:nil];
-	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:MDShouldShowQuickLook] forKey:MDShouldShowQuickLookKey];
+	[self.window orderFront:nil];
+	[[NSUserDefaults standardUserDefaults] setObject:@(MDShouldShowQuickLook) forKey:MDShouldShowQuickLookKey];
 	[[NSNotificationCenter defaultCenter] postNotificationName:MDShouldShowQuickLookDidChangeNotification object:self userInfo:nil];
 }
 
@@ -132,9 +132,9 @@ static MDQuickLookController *sharedQuickLookController = nil;
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	if ([notification object] == [self window]) {
+	if (notification.object == self.window) {
 		MDShouldShowQuickLook = NO;
-		[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:MDShouldShowQuickLook] forKey:MDShouldShowQuickLookKey];
+		[[NSUserDefaults standardUserDefaults] setObject:@(MDShouldShowQuickLook) forKey:MDShouldShowQuickLookKey];
 		[[NSNotificationCenter defaultCenter] postNotificationName:MDShouldShowQuickLookDidChangeNotification object:self userInfo:nil];
 	}
 }
@@ -161,8 +161,8 @@ static MDQuickLookController *sharedQuickLookController = nil;
 	// the userInfo dictionary == nil, then we should be sure to release our document, 
 	// as well as the selected items, so that that document can be properly deallocated. 
 	
-	NSArray *newSelectedItems = [[notification userInfo] objectForKey:MDSelectedItemsKey];
-	MDHLDocument *newDocument = [notification object];
+	NSArray *newSelectedItems = notification.userInfo[MDSelectedItemsKey];
+	MDHLDocument *newDocument = notification.object;
 	
 	if (document == newDocument && newSelectedItems == nil) {
 		// let go!
@@ -176,18 +176,18 @@ static MDQuickLookController *sharedQuickLookController = nil;
 		[previewViewController setRepresentedObject:nil];
 		
 	} else {
-		[self setItems:newSelectedItems];
-		[self setDocument:newDocument];
+		self.items = newSelectedItems;
+		self.document = newDocument;
 	}
 	
 	if (newDocument && newSelectedItems) {
 		
-		if ([newSelectedItems count] == 0) {
+		if (newSelectedItems.count == 0) {
 			[self loadItemAtIndex:-1];
-		} else if ([newSelectedItems count] == 1) {
+		} else if (newSelectedItems.count == 1) {
 			currentItemIndex = 0;
 			[self loadItemAtIndex:currentItemIndex];
-		} else if ([newSelectedItems count] > 1) {
+		} else if (newSelectedItems.count > 1) {
 			currentItemIndex = 0;
 			[self loadItemAtIndex:currentItemIndex];
 		}
@@ -205,7 +205,7 @@ static MDQuickLookController *sharedQuickLookController = nil;
 #endif
 	
 	if (currentItemIndex == 0) {
-		currentItemIndex = [items count] - 1;
+		currentItemIndex = items.count - 1;
 	} else {
 		currentItemIndex--;
 	}
@@ -219,7 +219,7 @@ static MDQuickLookController *sharedQuickLookController = nil;
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	
-	if (currentItemIndex + 1 >= [items count]) {
+	if (currentItemIndex + 1 >= items.count) {
 		currentItemIndex = 0;
 	} else {
 		currentItemIndex++;
@@ -250,16 +250,16 @@ static MDQuickLookController *sharedQuickLookController = nil;
 #endif
 	if (anIndex == -1) {
 		if (document && items) {
-			if ([items count] == 0) {
-				[[self window] setTitle:[document displayName]];
+			if (items.count == 0) {
+				self.window.title = document.displayName;
 				
-				[previewViewController setRepresentedObject:document];
+				previewViewController.representedObject = document;
 				[controlsView setHidden:YES];
 			}
 		} else {
 			
 //			[[self window] setRepresentedFilename:@""];
-			[[self window] setTitle:@""];
+			self.window.title = @"";
 			
 			[previewViewController setRepresentedObject:nil];
 			[controlsView setHidden:YES];
@@ -268,19 +268,19 @@ static MDQuickLookController *sharedQuickLookController = nil;
 	} else if (anIndex >= 0) {
 		if (document && items) {
 			
-			if ([items count] == 0) {
+			if (items.count == 0) {
 				
 				
-			} else if ([items count] == 1) {
-				HKItem *item = [items objectAtIndex:anIndex];
-				[[self window] setTitle:[item name]];
-				[previewViewController setRepresentedObject:item];
+			} else if (items.count == 1) {
+				HKItem *item = items[anIndex];
+				self.window.title = item.name;
+				previewViewController.representedObject = item;
 				[controlsView setHidden:YES];
 				
-			} else if ([items count] > 1) {
-				HKItem *item = [items objectAtIndex:anIndex];
-				[[self window] setTitle:[item name]];
-				[previewViewController setRepresentedObject:item];
+			} else if (items.count > 1) {
+				HKItem *item = items[anIndex];
+				self.window.title = item.name;
+				previewViewController.representedObject = item;
 				[controlsView setHidden:NO];
 
 			}

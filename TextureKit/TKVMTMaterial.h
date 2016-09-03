@@ -17,18 +17,18 @@
 	TKVMTNode		*rootNode;
 }
 
-+ (id)materialWithContentsOfFile:(NSString *)aPath error:(NSError **)outError;
-+ (id)materialWithContentsOfURL:(NSURL *)URL error:(NSError **)outError;
-+ (id)materialWithData:(NSData *)aData error:(NSError **)outError;
++ (instancetype)materialWithContentsOfFile:(NSString *)aPath error:(NSError **)outError;
++ (instancetype)materialWithContentsOfURL:(NSURL *)URL error:(NSError **)outError;
++ (instancetype)materialWithData:(NSData *)aData error:(NSError **)outError;
 
-- (id)initWithContentsOfFile:(NSString *)aPath error:(NSError **)outError;
-- (id)initWithContentsOfURL:(NSURL *)URL error:(NSError **)outError;
-- (id)initWithData:(NSData *)aData error:(NSError **)outError;
+- (instancetype)initWithContentsOfFile:(NSString *)aPath error:(NSError **)outError;
+- (instancetype)initWithContentsOfURL:(NSURL *)URL error:(NSError **)outError;
+- (instancetype)initWithData:(NSData *)aData error:(NSError **)outError;
 
 
 - (NSDictionary *)dictionaryRepresentation;
 
-- (NSString *)stringRepresentation;
+@property (readonly, copy) NSString *stringRepresentation;
 
 
 @property (nonatomic, retain) TKVMTNode *rootNode;

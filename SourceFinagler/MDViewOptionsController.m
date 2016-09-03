@@ -30,7 +30,7 @@ NSString * const MDShouldShowViewOptionsDidChangeNotification	= @"MDShouldShowVi
 
 @implementation MDViewOptionsController
 
-- (id)init {
+- (instancetype)init {
 	if ((self = [super initWithWindowNibName:@"MDViewOptions"])) {
 		
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willSwitchView:) name:MDWillSwitchViewNotification object:nil];
@@ -56,9 +56,9 @@ NSString * const MDShouldShowViewOptionsDidChangeNotification	= @"MDShouldShowVi
 - (void)awakeFromNib {
 	documentViewMode = [[[NSUserDefaults standardUserDefaults] objectForKey:MDDocumentViewModeKey] integerValue];
 	
-	[[[self window] standardWindowButton:NSWindowZoomButton] setHidden:YES];
-	[[[self window] standardWindowButton:NSWindowMiniaturizeButton] setHidden:YES];
-	[(NSPanel *)[self window] setBecomesKeyOnlyIfNeeded:YES];
+	[[self.window standardWindowButton:NSWindowZoomButton] setHidden:YES];
+	[[self.window standardWindowButton:NSWindowMiniaturizeButton] setHidden:YES];
+	[(NSPanel *)self.window setBecomesKeyOnlyIfNeeded:YES];
 	
 	[self switchToView:nil];
 	
@@ -68,12 +68,12 @@ NSString * const MDShouldShowViewOptionsDidChangeNotification	= @"MDShouldShowVi
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	MDHLDocument *newDocument = [[notification userInfo] objectForKey:MDSelectedItemsDocumentKey];
+	MDHLDocument *newDocument = notification.userInfo[MDSelectedItemsDocumentKey];
 	if (newDocument == nil) {
 		/* a document is being closed, so set stuff to an intermediary "--" */
-		[[self window] setTitle:NSLocalizedString(@"View Options", @"")];
+		[self.window setTitle:NSLocalizedString(@"View Options", @"")];
 		[noViewOptionsField setStringValue:NSLocalizedString(@"No document", @"")];
-		[contentBox setContentView:noViewOptionsView];
+		contentBox.contentView = noViewOptionsView;
 	}
 }
 
@@ -83,7 +83,7 @@ NSString * const MDShouldShowViewOptionsDidChangeNotification	= @"MDShouldShowVi
 	NSLog(@"[%@ %@] userInfo == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), [notification userInfo]);
 #endif
 
-	NSDictionary *userInfo = [notification userInfo];
+	NSDictionary *userInfo = notification.userInfo;
 	[self switchToView:userInfo];
 }
 
@@ -94,25 +94,25 @@ NSString * const MDShouldShowViewOptionsDidChangeNotification	= @"MDShouldShowVi
 #endif
 	
 	if (userInfo) {
-		NSString *viewIdentifier = [userInfo objectForKey:MDViewNameKey];
+		NSString *viewIdentifier = userInfo[MDViewNameKey];
 		if ([viewIdentifier isEqualToString:MDViewKey]) {
 			
-			NSString *documentName = [userInfo objectForKey:MDDocumentNameKey];
+			NSString *documentName = userInfo[MDDocumentNameKey];
 			if (documentName) {
-				[[self window] setTitle:documentName];
+				self.window.title = documentName;
 			}
 			
-			documentViewMode = [[userInfo objectForKey:MDDocumentViewModeKey] integerValue];
+			documentViewMode = [userInfo[MDDocumentViewModeKey] integerValue];
 			
 			if (documentViewMode == 0) {
 	
 			} else if (documentViewMode == MDListViewMode) {
 			
-				[contentBox setContentView:listViewOptionsView];
+				contentBox.contentView = listViewOptionsView;
 			
 			} else if (documentViewMode == MDColumnViewMode) {
 				
-				[contentBox setContentView:browserViewOptionsView];
+				contentBox.contentView = browserViewOptionsView;
 				
 			}
 		}
@@ -120,9 +120,9 @@ NSString * const MDShouldShowViewOptionsDidChangeNotification	= @"MDShouldShowVi
 	} else {
 		NSInteger viewMode = [[[NSUserDefaults standardUserDefaults] objectForKey:MDDocumentViewModeKey] integerValue];
 		if (viewMode == MDListViewMode) {
-			[contentBox setContentView:listViewOptionsView];
+			contentBox.contentView = listViewOptionsView;
 		} else if (viewMode == MDColumnViewMode) {
-			[contentBox setContentView:browserViewOptionsView];
+			contentBox.contentView = browserViewOptionsView;
 	}
 }
 }
@@ -133,12 +133,12 @@ NSString * const MDShouldShowViewOptionsDidChangeNotification	= @"MDShouldShowVi
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 
-	documentViewMode = [[[notification userInfo] objectForKey:MDDocumentViewModeKey] integerValue];
+	documentViewMode = [notification.userInfo[MDDocumentViewModeKey] integerValue];
 	
 	if (documentViewMode == 1) {
-		[contentBox setContentView:listViewOptionsView];
+		contentBox.contentView = listViewOptionsView;
 	} else if (documentViewMode == 2) {
-		[contentBox setContentView:browserViewOptionsView];
+		contentBox.contentView = browserViewOptionsView;
 	}
 }
 
@@ -146,20 +146,20 @@ NSString * const MDShouldShowViewOptionsDidChangeNotification	= @"MDShouldShowVi
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	[[self window] orderFront:nil];
-	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:MDShouldShowViewOptions] forKey:MDShouldShowViewOptionsKey];
+	[self.window orderFront:nil];
+	[[NSUserDefaults standardUserDefaults] setObject:@(MDShouldShowViewOptions) forKey:MDShouldShowViewOptionsKey];
 	[[NSNotificationCenter defaultCenter] postNotificationName:MDShouldShowViewOptionsDidChangeNotification object:self userInfo:nil];
 }
 
 
 - (void)windowWillClose:(NSNotification *)notification {
 	
-	if ([notification object] == [self window]) {
+	if (notification.object == self.window) {
 #if MD_DEBUG
 		NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 		MDShouldShowViewOptions = NO;
-		[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:MDShouldShowViewOptions] forKey:MDShouldShowViewOptionsKey];
+		[[NSUserDefaults standardUserDefaults] setObject:@(MDShouldShowViewOptions) forKey:MDShouldShowViewOptionsKey];
 		[[NSNotificationCenter defaultCenter] postNotificationName:MDShouldShowViewOptionsDidChangeNotification object:self userInfo:nil];
 	}
 }
@@ -170,7 +170,7 @@ NSString * const MDShouldShowViewOptionsDidChangeNotification	= @"MDShouldShowVi
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:[sender tag]] forKey:MDListViewIconSizeKey];
+	[[NSUserDefaults standardUserDefaults] setObject:@([sender tag]) forKey:MDListViewIconSizeKey];
 }
 
 

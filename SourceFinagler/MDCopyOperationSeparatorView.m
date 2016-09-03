@@ -25,25 +25,25 @@ static NSColor *separatorColor = nil;
 
 
 
-+ (id)separatorView {
++ (instancetype)separatorView {
 	return [[self class] separatorViewPositionedAboveCopyOperationView:nil];
 }
 
 
-+ (id)separatorViewPositionedAboveCopyOperationView:(MDCopyOperationView *)copyOperationView {
++ (instancetype)separatorViewPositionedAboveCopyOperationView:(MDCopyOperationView *)copyOperationView {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	NSRect frame = NSMakeRect(0.0, 0.0, (copyOperationView ? [[copyOperationView class] copyOperationViewSize].width : [MDCopyOperationView copyOperationViewSize].width), 1.0);
-	if (copyOperationView) frame.origin.y = [copyOperationView frame].origin.y + NSHeight([copyOperationView frame]);
+	if (copyOperationView) frame.origin.y = copyOperationView.frame.origin.y + NSHeight(copyOperationView.frame);
 	
 	MDCopyOperationSeparatorView *separatorView = [[[[self class] alloc] initWithFrame:frame] autorelease];
-	[copyOperationView setSeparatorView:separatorView];
+	copyOperationView.separatorView = separatorView;
 	return separatorView;
 }
 
 
-- (id)initWithFrame:(NSRect)frame {
+- (instancetype)initWithFrame:(NSRect)frame {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif

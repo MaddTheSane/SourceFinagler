@@ -167,7 +167,8 @@ static VSSteamManager *sharedManager = nil;
 #if VS_DEBUG
 	NSLog(@"[%@ %@] userInfo == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), [notification userInfo]);
 #endif
-	NSString *appPath = [[notification userInfo] objectForKey:@"NSApplicationPath"];
+	NSRunningApplication *runningApp = [[notification userInfo] objectForKey: NSWorkspaceApplicationKey];
+	NSString *appPath = [[(runningApp.bundleURL ?: runningApp.executableURL) path] stringByResolvingSymlinksInPath];
 	
 	if ([gamePathsAndGames objectForKey:VSMakeGamePathKey(appPath)] != nil ||
 		[executableNames containsObject:[VSMakeGamePathKey(appPath) lastPathComponent]]) {
@@ -200,7 +201,8 @@ static VSSteamManager *sharedManager = nil;
 #if VS_DEBUG
 	NSLog(@"[%@ %@] userInfo == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), [notification userInfo]);
 #endif
-	NSString *appPath = [[[notification userInfo] objectForKey:@"NSApplicationPath"] stringByResolvingSymlinksInPath];
+	NSRunningApplication *runningApp = [[notification userInfo] objectForKey: NSWorkspaceApplicationKey];
+	NSString *appPath = [[(runningApp.bundleURL ?: runningApp.executableURL) path] stringByResolvingSymlinksInPath];
 
 	if ([gamePathsAndGames objectForKey:VSMakeGamePathKey(appPath)] != nil ||
 		[executableNames containsObject:[VSMakeGamePathKey(appPath) lastPathComponent]]) {
@@ -214,7 +216,8 @@ static VSSteamManager *sharedManager = nil;
 #if VS_DEBUG
 //	NSLog(@"[%@ %@] userInfo == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), [notification userInfo]);
 #endif
-	NSString *appPath = [[notification userInfo] objectForKey:@"NSApplicationPath"];
+	NSRunningApplication *runningApp = [[notification userInfo] objectForKey: NSWorkspaceApplicationKey];
+	NSString *appPath = [[(runningApp.bundleURL ?: runningApp.executableURL) path] stringByResolvingSymlinksInPath];
 	
 	if ([gamePathsAndGames objectForKey:VSMakeGamePathKey(appPath)] != nil ||
 		[executableNames containsObject:[VSMakeGamePathKey(appPath) lastPathComponent]]) {
@@ -401,14 +404,14 @@ static NSUInteger locateSteamAppsCount = 0;
 		
 		NSArray *installedGamePaths = [gamePathsAndGames allKeys];
 		
-		NSArray *launchedApps = [[NSWorkspace sharedWorkspace] launchedApplications];
+		NSArray *launchedApps = [[NSWorkspace sharedWorkspace] runningApplications];
 		
-		for (NSDictionary *launchedApp in launchedApps) {
-			NSString *gamePath = [[launchedApp objectForKey:@"NSApplicationPath"] stringByResolvingSymlinksInPath];
+		for (NSRunningApplication *launchedApp in launchedApps) {
+			NSString *gamePath = [[(launchedApp.bundleURL ?: launchedApp.executableURL) path] stringByResolvingSymlinksInPath];
 			
 			if ([installedGamePaths containsObject:VSMakeGamePathKey(gamePath)]) {
 				VSGame *game = [gamePathsAndGames objectForKey:VSMakeGamePathKey(gamePath)];
-				[game setProcessIdentifier:[[launchedApp objectForKey:@"NSApplicationProcessIdentifier"] intValue]];
+				[game setProcessIdentifier:launchedApp.processIdentifier];
 				[foundRunningGames addObject:[gamePathsAndGames objectForKey:VSMakeGamePathKey(gamePath)]];
 			}
 		}

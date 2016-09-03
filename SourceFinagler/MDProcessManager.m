@@ -20,7 +20,7 @@ NSDictionary *MDInfoForProcessWithBundleIdentifier(NSString *aBundleIdentifier) 
 	while (GetNextProcess(&psn) == noErr) {
 		NSDictionary *processInfo = [(NSDictionary *)ProcessInformationCopyDictionary(&psn, kProcessDictionaryIncludeAllInformationMask) autorelease];
 //		NSLog(@"processInfo == %@", processInfo);
-		if ([[processInfo objectForKey:(NSString *)kCFBundleIdentifierKey] isEqualToString:aBundleIdentifier]) {
+		if ([processInfo[(NSString *)kCFBundleIdentifierKey] isEqualToString:aBundleIdentifier]) {
 			return processInfo;
 		}
 	}

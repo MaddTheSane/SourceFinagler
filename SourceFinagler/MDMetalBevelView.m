@@ -40,7 +40,7 @@ static SInt32 MDMetalBevelViewSystemVersion = 0;
 }
 
 
-- (id)initWithFrame:(NSRect)frame {
+- (instancetype)initWithFrame:(NSRect)frame {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -60,7 +60,7 @@ static SInt32 MDMetalBevelViewSystemVersion = 0;
 	[[NSColor colorWithCalibratedRed:1.0 green:1.0 blue:1.0 alpha:1.0] set];
 	[NSBezierPath fillRect:rect];
 	
-	BOOL isMain = [[self window] isMainWindow];
+	BOOL isMain = self.window.mainWindow;
 	
 	if (MDMetalBevelViewSystemVersion == MDLeopard) {
 		

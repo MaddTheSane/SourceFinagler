@@ -20,8 +20,11 @@
 
 @implementation HKNode
 
-@synthesize container, parent, isVisible, isLeaf, sortDescriptors;
+@synthesize container, parent, sortDescriptors;
 @dynamic showInvisibleItems;
+
+@synthesize visible = isVisible;
+@synthesize leaf = isLeaf;
 
 - (id)initWithParent:(HKNode *)aParent childNodes:(NSArray *)theChildren sortDescriptors:(NSArray *)aSortDescriptors container:(id)aContainer {
 	if ((self = [super init])) {
@@ -67,9 +70,9 @@
 #if HK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	if ([key isEqualToString:@"isLeaf"]) {
+	if ([key isEqualToString:@"leaf"]) {
 		isLeaf = NO;
-	} else if ([key isEqualToString:@"isVisible"]) {
+	} else if ([key isEqualToString:@"visible"]) {
 		isVisible = NO;
 	} else if ([key isEqualToString:@"showInvisibleItems"]) {
 		showInvisibleItems = NO;

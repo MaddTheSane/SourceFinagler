@@ -39,7 +39,7 @@
 //	NSParameterAssert(anImageRep != nil);
 	NSMutableArray *imageChannels = [NSMutableArray array];
 	
-	BOOL irHasAlpha = [anImageRep hasAlpha];
+	BOOL irHasAlpha = anImageRep.alpha;
 	
 	TKImageChannel *redChannel = [[self class] imageChannelWithImageRep:anImageRep channelMask:TKImageChannelRedMask];
 	if (redChannel) [imageChannels addObject:redChannel];
@@ -56,12 +56,12 @@
 }
 
 
-+ (id)imageChannelWithImageRep:(TKImageRep *)anImageRep channelMask:(TKImageChannelMask)aChannelMask {
++ (instancetype)imageChannelWithImageRep:(TKImageRep *)anImageRep channelMask:(TKImageChannelMask)aChannelMask {
 	return [[[[self class] alloc] initWithImageRep:anImageRep channelMask:aChannelMask] autorelease];
 }
 
 
-- (id)initWithImageRep:(TKImageRep *)anImageRep channelMask:(TKImageChannelMask)aChannelMask {
+- (instancetype)initWithImageRep:(TKImageRep *)anImageRep channelMask:(TKImageChannelMask)aChannelMask {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -85,7 +85,7 @@
 				break;
 		}
 		enabled = YES;
-		[self setFilter:[CIFilter filterForChannelMask:channelMask]];
+		self.filter = [CIFilter filterForChannelMask:channelMask];
 		
 		self.image = [self imageWithImageRep:anImageRep];
 	}
@@ -107,7 +107,7 @@
 
 
 - (NSImage *)imageWithImageRep:(TKImageRep *)anImageRep {
-	CIImage *coreImage = [[CIImage alloc] initWithCGImage:[anImageRep CGImage]];
+	CIImage *coreImage = [[CIImage alloc] initWithCGImage:anImageRep.CGImage];
 	[filter setValue:coreImage forKey:@"inputImage"];
 	[coreImage release];
 	
@@ -142,53 +142,48 @@
 	switch (aChannelMask) {
 		case TKImageChannelRedMask : {
 			
-			[imageFilter setValuesForKeysWithDictionary:[NSDictionary dictionaryWithObjectsAndKeys:
-														 [CIVector vectorWithString:@"[1.0 0.0 0.0 0.0]"],@"inputRVector",
-														 [CIVector vectorWithString:@"[1.0 0.0 0.0 0.0]"],@"inputGVector",
-														 [CIVector vectorWithString:@"[1.0 0.0 0.0 0.0]"],@"inputBVector",
-														 [CIVector vectorWithString:@"[0.0 0.0 0.0 1.0]"],@"inputAVector", nil]];
+			[imageFilter setValuesForKeysWithDictionary:@{@"inputRVector": [CIVector vectorWithString:@"[1.0 0.0 0.0 0.0]"],
+														 @"inputGVector": [CIVector vectorWithString:@"[1.0 0.0 0.0 0.0]"],
+														 @"inputBVector": [CIVector vectorWithString:@"[1.0 0.0 0.0 0.0]"],
+														 @"inputAVector": [CIVector vectorWithString:@"[0.0 0.0 0.0 1.0]"]}];
 						
 			break;
 		}
 			
 		case TKImageChannelGreenMask : {
 			
-			[imageFilter setValuesForKeysWithDictionary:[NSDictionary dictionaryWithObjectsAndKeys:
-														 [CIVector vectorWithString:@"[0.0 1.0 0.0 0.0]"],@"inputRVector",
-														 [CIVector vectorWithString:@"[0.0 1.0 0.0 0.0]"],@"inputGVector",
-														 [CIVector vectorWithString:@"[0.0 1.0 0.0 0.0]"],@"inputBVector",
-														 [CIVector vectorWithString:@"[0.0 0.0 0.0 1.0]"],@"inputAVector", nil]];
+			[imageFilter setValuesForKeysWithDictionary:@{@"inputRVector": [CIVector vectorWithString:@"[0.0 1.0 0.0 0.0]"],
+														 @"inputGVector": [CIVector vectorWithString:@"[0.0 1.0 0.0 0.0]"],
+														 @"inputBVector": [CIVector vectorWithString:@"[0.0 1.0 0.0 0.0]"],
+														 @"inputAVector": [CIVector vectorWithString:@"[0.0 0.0 0.0 1.0]"]}];
 			break;
 		}
 			
 		case TKImageChannelBlueMask : {
 			
-			[imageFilter setValuesForKeysWithDictionary:[NSDictionary dictionaryWithObjectsAndKeys:
-														 [CIVector vectorWithString:@"[0.0 0.0 1.0 0.0]"],@"inputRVector",
-														 [CIVector vectorWithString:@"[0.0 0.0 1.0 0.0]"],@"inputGVector",
-														 [CIVector vectorWithString:@"[0.0 0.0 1.0 0.0]"],@"inputBVector",
-														 [CIVector vectorWithString:@"[0.0 0.0 0.0 1.0]"],@"inputAVector", nil]];
+			[imageFilter setValuesForKeysWithDictionary:@{@"inputRVector": [CIVector vectorWithString:@"[0.0 0.0 1.0 0.0]"],
+														 @"inputGVector": [CIVector vectorWithString:@"[0.0 0.0 1.0 0.0]"],
+														 @"inputBVector": [CIVector vectorWithString:@"[0.0 0.0 1.0 0.0]"],
+														 @"inputAVector": [CIVector vectorWithString:@"[0.0 0.0 0.0 1.0]"]}];
 			break;
 		}
 			
 		case TKImageChannelAlphaMask : {
 			
-			[imageFilter setValuesForKeysWithDictionary:[NSDictionary dictionaryWithObjectsAndKeys:
-														 [CIVector vectorWithString:@"[0.0 0.0 0.0 1.0]"],@"inputRVector",
-														 [CIVector vectorWithString:@"[0.0 0.0 0.0 1.0]"],@"inputGVector",
-														 [CIVector vectorWithString:@"[0.0 0.0 0.0 1.0]"],@"inputBVector",
-														 [CIVector vectorWithString:@"[0.0 0.0 0.0 1.0]"],@"inputAVector", nil]];
+			[imageFilter setValuesForKeysWithDictionary:@{@"inputRVector": [CIVector vectorWithString:@"[0.0 0.0 0.0 1.0]"],
+														 @"inputGVector": [CIVector vectorWithString:@"[0.0 0.0 0.0 1.0]"],
+														 @"inputBVector": [CIVector vectorWithString:@"[0.0 0.0 0.0 1.0]"],
+														 @"inputAVector": [CIVector vectorWithString:@"[0.0 0.0 0.0 1.0]"]}];
 			
 			break;
 		}
 			
 		case TKImageChannelRGBAMask : {
 			
-			[imageFilter setValuesForKeysWithDictionary:[NSDictionary dictionaryWithObjectsAndKeys:
-														 [CIVector vectorWithString:@"[1.0 0.0 0.0 0.0]"],@"inputRVector",
-														 [CIVector vectorWithString:@"[0.0 1.0 0.0 0.0]"],@"inputGVector",
-														 [CIVector vectorWithString:@"[0.0 0.0 1.0 0.0]"],@"inputBVector",
-														 [CIVector vectorWithString:@"[0.0 0.0 0.0 1.0]"],@"inputAVector", nil]];
+			[imageFilter setValuesForKeysWithDictionary:@{@"inputRVector": [CIVector vectorWithString:@"[1.0 0.0 0.0 0.0]"],
+														 @"inputGVector": [CIVector vectorWithString:@"[0.0 1.0 0.0 0.0]"],
+														 @"inputBVector": [CIVector vectorWithString:@"[0.0 0.0 1.0 0.0]"],
+														 @"inputAVector": [CIVector vectorWithString:@"[0.0 0.0 0.0 1.0]"]}];
 			
 			break;
 		}

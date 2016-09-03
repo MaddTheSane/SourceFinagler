@@ -22,12 +22,12 @@
 
 @implementation MDSelfExpandingTextField
 
-- (id)initWithFrame:(NSRect)frame {
+- (instancetype)initWithFrame:(NSRect)frame {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
     if ((self = [super initWithFrame:frame])) {
-		NSUInteger lineBreakMode = [[self cell] lineBreakMode];
+		NSUInteger lineBreakMode = self.cell.lineBreakMode;
 		
 		NSLog(@"lineBreakMode == %lu", (unsigned long)lineBreakMode);
 		
@@ -36,12 +36,12 @@
 }
 
 
-- (id)initWithCoder:(NSCoder *)coder {
+- (instancetype)initWithCoder:(NSCoder *)coder {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	if ((self = [super initWithCoder:coder])) {
-		NSUInteger lineBreakMode = [[self cell] lineBreakMode];
+		NSUInteger lineBreakMode = self.cell.lineBreakMode;
 		
 		NSLog(@"lineBreakMode == %lu", (unsigned long)lineBreakMode);
 		
@@ -69,11 +69,11 @@
 
 
 - (void)windowDidResize:(NSNotification *)notification {
-	if ([notification object] == [self window]) {
+	if (notification.object == self.window) {
 #if MD_DEBUG
 		NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-		[self setStringValue:[self stringValue]];
+		self.stringValue = self.stringValue;
 	}
 }
 
@@ -90,7 +90,7 @@
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	[self setStringValue:[self stringValue]];
+	self.stringValue = self.stringValue;
 }
 
 
@@ -106,42 +106,42 @@ static NSTextContainer *textContainer = nil;
 	
 	if (textStorage == nil) {
 		textStorage = [[NSTextStorage alloc] initWithString:aValue];
-		textContainer = [[[NSTextContainer alloc] initWithContainerSize:NSMakeSize([self frame].size.width, FLT_MAX)] autorelease];
+		textContainer = [[[NSTextContainer alloc] initWithContainerSize:NSMakeSize(self.frame.size.width, FLT_MAX)] autorelease];
 		layoutManager = [[[NSLayoutManager alloc] init] autorelease];
 		[layoutManager addTextContainer:textContainer];
 		[textStorage addLayoutManager:layoutManager];
-		[textContainer setLineFragmentPadding:0.0];
-		[textStorage addAttribute:NSFontAttributeName value:[[self cell] font] range:NSMakeRange(0, [textStorage length])];
+		textContainer.lineFragmentPadding = 0.0;
+		[textStorage addAttribute:NSFontAttributeName value:self.cell.font range:NSMakeRange(0, textStorage.length)];
 		[layoutManager setUsesFontLeading:NO];
-		NSInteger typesetterBehavior = [layoutManager typesetterBehavior];
+		NSInteger typesetterBehavior = layoutManager.typesetterBehavior;
 		NSLog(@"[%@ %@] typesetterBehavior == %ld", NSStringFromClass([self class]), NSStringFromSelector(_cmd), (long)typesetterBehavior);
 	
 	}
 	
-	[textStorage replaceCharactersInRange:NSMakeRange(0, [textStorage length]) withString:aValue];
-	[textContainer setContainerSize:NSMakeSize(NSWidth([self frame]), FLT_MAX)];
+	[textStorage replaceCharactersInRange:NSMakeRange(0, textStorage.length) withString:aValue];
+	textContainer.containerSize = NSMakeSize(NSWidth(self.frame), FLT_MAX);
 	
 	(void)[layoutManager glyphRangeForTextContainer:textContainer];
 	
 	NSRect usedRect = [layoutManager usedRectForTextContainer:textContainer];
 	
-	NSRect frameBefore = [self frame];
+	NSRect frameBefore = self.frame;
 	
 	CGFloat newHeight = 14.0 * ceil(usedRect.size.height/14.0);
 	
-	CGFloat difference = newHeight - [self frame].size.height;
+	CGFloat difference = newHeight - self.frame.size.height;
 	
 	if (inspectorView && [inspectorView isShown]) {
 		[inspectorView changeWindowHeightBy:difference];
 	}
 	
-	NSRect newFrame = [self frame];
+	NSRect newFrame = self.frame;
 	newFrame.size.height = newHeight;
 	newFrame.origin = frameBefore.origin;
 	
-	[self setFrame:newFrame];
+	self.frame = newFrame;
 	
-	[super setStringValue:aValue];
+	super.stringValue = aValue;
 }
 	
 	

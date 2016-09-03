@@ -13,12 +13,12 @@
 
 
 - (NSString *)helpedStateString {
-	return ([self isHelped] ? @"Helped" : @"Not helped");
+	return (self.helped ? @"Helped" : @"Not helped");
 }
 
 
 - (NSColor *)helpedStateColor {
-	if ([self isHelped]) {
+	if (self.helped) {
 		return [NSColor controlTextColor];
 	}
 	return [NSColor colorWithCalibratedRed:183.0/255.0 green:130.0/255.0 blue:0.0/255.0 alpha:1.0];
@@ -26,14 +26,14 @@
 
 
 - (NSImage *)runningStateImage {
-	if ([self isRunning]) return [NSImage imageNamed:@"isRunning"];
+	if (self.running) return [NSImage imageNamed:NSImageNameStatusAvailable];
 	return nil;
 }
 
 
 + (NSSet *)keyPathsForValuesAffectingRunningStateImage {
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-	return [NSSet setWithObjects:@"isRunning", nil];
+	return [NSSet setWithObjects:@"running", nil];
 }
 
 

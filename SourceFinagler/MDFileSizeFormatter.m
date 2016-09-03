@@ -11,7 +11,7 @@
 #import <CoreServices/CoreServices.h>
 
 
-enum {
+NS_ENUM(SInt32) {
 	MDUndeterminedVersion	= -1,
 	MDCheetah				= 0x1000,
 	MDPuma					= 0x1010,
@@ -49,7 +49,7 @@ NSString * const MDFileSizeFormatterUnitsTypeKey	= @"MDFileSizeFormatterUnitsTyp
 }
 
 
-- (id)init {
+- (instancetype)init {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -57,7 +57,7 @@ NSString * const MDFileSizeFormatterUnitsTypeKey	= @"MDFileSizeFormatterUnitsTyp
 }
 
 
-- (id)initWithUnitsType:(MDFileSizeFormatterUnitsType)aUnitsType style:(MDFileSizeFormatterStyle)aStyle {
+- (instancetype)initWithUnitsType:(MDFileSizeFormatterUnitsType)aUnitsType style:(MDFileSizeFormatterStyle)aStyle {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -70,7 +70,7 @@ NSString * const MDFileSizeFormatterUnitsTypeKey	= @"MDFileSizeFormatterUnitsTyp
 }
 
 
-- (id)initWithCoder:(NSCoder *)coder {
+- (instancetype)initWithCoder:(NSCoder *)coder {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -99,8 +99,8 @@ NSString * const MDFileSizeFormatterUnitsTypeKey	= @"MDFileSizeFormatterUnitsTyp
 #endif
 	[super encodeWithCoder:coder];
 	
-	[coder encodeObject:[NSNumber numberWithUnsignedLongLong:(unsigned long long)unitsType] forKey:MDFileSizeFormatterUnitsTypeKey];
-	[coder encodeObject:[NSNumber numberWithUnsignedLongLong:(unsigned long long)style] forKey:MDFileSizeFormatterStyleKey];
+	[coder encodeObject:@((unsigned long long)unitsType) forKey:MDFileSizeFormatterUnitsTypeKey];
+	[coder encodeObject:@((unsigned long long)style) forKey:MDFileSizeFormatterStyleKey];
 }
 
 
@@ -156,7 +156,7 @@ NSString * const MDFileSizeFormatterUnitsTypeKey	= @"MDFileSizeFormatterUnitsTyp
 	style = aStyle;
 	if (style == MDFileSizeFormatterFullStyle) {
 		if (bytesFormatter == nil) bytesFormatter = [[NSNumberFormatter alloc] init];
-		[bytesFormatter setFormat:@"#,##0"];
+		bytesFormatter.format = @"#,##0";
 	} else {
 		[bytesFormatter release]; bytesFormatter = nil;
 	}
@@ -190,7 +190,7 @@ NSString * const MDFileSizeFormatterUnitsTypeKey	= @"MDFileSizeFormatterUnitsTyp
 		
 		if (size) {
 				if (size < MDNumberOfBytesInKB) {
-					[numberFormatter setFormat:@"#,##0"];
+					numberFormatter.format = @"#,##0";
 					
 					if (style == MDFileSizeFormatterFullStyle) {
 						
@@ -205,8 +205,8 @@ NSString * const MDFileSizeFormatterUnitsTypeKey	= @"MDFileSizeFormatterUnitsTyp
 					
 				} else if (size < MDNumberOfBytesInKB * MDNumberOfBytesInKB) {
 					
-					[numberFormatter setFormat:@"#,##0"];
-					sizeNumber = [NSNumber numberWithUnsignedLongLong:((size + (MDNumberOfBytesInKB/2))/MDNumberOfBytesInKB)];
+					numberFormatter.format = @"#,##0";
+					sizeNumber = @((size + (MDNumberOfBytesInKB/2))/MDNumberOfBytesInKB);
 					
 					if (style == MDFileSizeFormatterFullStyle) {
 						
@@ -218,8 +218,8 @@ NSString * const MDFileSizeFormatterUnitsTypeKey	= @"MDFileSizeFormatterUnitsTyp
 					
 				} else if (size < MDNumberOfBytesInKB * MDNumberOfBytesInKB * MDNumberOfBytesInKB) {
 					
-					[numberFormatter setFormat:@"#,###.#"];
-					sizeNumber = [NSNumber numberWithDouble:(double)((double)size/(MDFloatNumberOfBytesInKB * MDFloatNumberOfBytesInKB))];
+					numberFormatter.format = @"#,###.#";
+					sizeNumber = @((double)((double)size/(MDFloatNumberOfBytesInKB * MDFloatNumberOfBytesInKB)));
 					
 					if (style == MDFileSizeFormatterFullStyle) {
 						
@@ -232,8 +232,8 @@ NSString * const MDFileSizeFormatterUnitsTypeKey	= @"MDFileSizeFormatterUnitsTyp
 					
 				} else if (size < (UInt64)MDNumberOfBytesInKB * MDNumberOfBytesInKB * MDNumberOfBytesInKB * MDNumberOfBytesInKB) {
 					
-					[numberFormatter setFormat:@"#,###.##"];
-					sizeNumber = [NSNumber numberWithDouble:(double)((double)size/(MDFloatNumberOfBytesInKB * MDFloatNumberOfBytesInKB * MDFloatNumberOfBytesInKB))];
+					numberFormatter.format = @"#,###.##";
+					sizeNumber = @((double)((double)size/(MDFloatNumberOfBytesInKB * MDFloatNumberOfBytesInKB * MDFloatNumberOfBytesInKB)));
 					
 					if (style == MDFileSizeFormatterFullStyle) {
 						
@@ -246,8 +246,8 @@ NSString * const MDFileSizeFormatterUnitsTypeKey	= @"MDFileSizeFormatterUnitsTyp
 					
 				} else if (size < (UInt64)MDNumberOfBytesInKB * MDNumberOfBytesInKB * MDNumberOfBytesInKB * MDNumberOfBytesInKB * MDNumberOfBytesInKB) {
 					
-					[numberFormatter setFormat:@"#,###.##"];
-					sizeNumber = [NSNumber numberWithDouble:(double)(size/(MDFloatNumberOfBytesInKB * MDFloatNumberOfBytesInKB * MDFloatNumberOfBytesInKB * MDFloatNumberOfBytesInKB))];
+					numberFormatter.format = @"#,###.##";
+					sizeNumber = @((double)(size/(MDFloatNumberOfBytesInKB * MDFloatNumberOfBytesInKB * MDFloatNumberOfBytesInKB * MDFloatNumberOfBytesInKB)));
 					
 					if (style == MDFileSizeFormatterFullStyle) {
 						
@@ -260,8 +260,8 @@ NSString * const MDFileSizeFormatterUnitsTypeKey	= @"MDFileSizeFormatterUnitsTyp
 					
 				} else if (size < (UInt64)MDNumberOfBytesInKB*MDNumberOfBytesInKB*MDNumberOfBytesInKB*MDNumberOfBytesInKB*MDNumberOfBytesInKB * MDNumberOfBytesInKB) {
 					
-					[numberFormatter setFormat:@"#,###.##"];
-					sizeNumber = [NSNumber numberWithDouble:(double)(size/(MDFloatNumberOfBytesInKB*MDFloatNumberOfBytesInKB*MDFloatNumberOfBytesInKB*MDFloatNumberOfBytesInKB*MDFloatNumberOfBytesInKB))];
+					numberFormatter.format = @"#,###.##";
+					sizeNumber = @((double)(size/(MDFloatNumberOfBytesInKB*MDFloatNumberOfBytesInKB*MDFloatNumberOfBytesInKB*MDFloatNumberOfBytesInKB*MDFloatNumberOfBytesInKB)));
 					
 					if (style == MDFileSizeFormatterFullStyle) {
 						
@@ -273,8 +273,8 @@ NSString * const MDFileSizeFormatterUnitsTypeKey	= @"MDFileSizeFormatterUnitsTyp
 					
 				} else if (size < (UInt64)MDNumberOfBytesInKB*MDNumberOfBytesInKB*MDNumberOfBytesInKB*MDNumberOfBytesInKB*MDNumberOfBytesInKB*MDNumberOfBytesInKB*MDNumberOfBytesInKB) {
 					
-					[numberFormatter setFormat:@"#,###.##"];
-					sizeNumber = [NSNumber numberWithDouble:(double)(size/(MDFloatNumberOfBytesInKB*MDFloatNumberOfBytesInKB*MDFloatNumberOfBytesInKB*MDFloatNumberOfBytesInKB*MDFloatNumberOfBytesInKB*MDFloatNumberOfBytesInKB))];
+					numberFormatter.format = @"#,###.##";
+					sizeNumber = @((double)(size/(MDFloatNumberOfBytesInKB*MDFloatNumberOfBytesInKB*MDFloatNumberOfBytesInKB*MDFloatNumberOfBytesInKB*MDFloatNumberOfBytesInKB*MDFloatNumberOfBytesInKB)));
 					
 					if (style == MDFileSizeFormatterFullStyle) {
 						

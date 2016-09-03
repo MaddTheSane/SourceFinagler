@@ -35,11 +35,11 @@ TEXTUREKIT_EXTERN NSString * const TKImageExportMipmapGenerationKey;		// NSNumbe
 + (TKImageExportPreset *)originalImagePreset;
 
 
-+ (id)imageExportPresetWithDictionary:(NSDictionary *)aDictionary;
-- (id)initWithDictionary:(NSDictionary *)aDictionary;
++ (instancetype)imageExportPresetWithDictionary:(NSDictionary *)aDictionary;
+- (instancetype)initWithDictionary:(NSDictionary *)aDictionary;
 
-+ (id)imageExportPresetWithName:(NSString *)aName fileType:(NSString *)aFileType compressionFormat:(NSString *)aCompressionFormat compressionQuality:(NSString *)aQuality mipmapGeneration:(TKMipmapGenerationType)aMipmapGeneration;
-- (id)initWithName:(NSString *)aName fileType:(NSString *)aFileType compressionFormat:(NSString *)aCompressionFormat compressionQuality:(NSString *)aQuality mipmapGeneration:(TKMipmapGenerationType)aMipmapGeneration;
++ (instancetype)imageExportPresetWithName:(NSString *)aName fileType:(NSString *)aFileType compressionFormat:(NSString *)aCompressionFormat compressionQuality:(NSString *)aQuality mipmapGeneration:(TKMipmapGenerationType)aMipmapGeneration;
+- (instancetype)initWithName:(NSString *)aName fileType:(NSString *)aFileType compressionFormat:(NSString *)aCompressionFormat compressionQuality:(NSString *)aQuality mipmapGeneration:(TKMipmapGenerationType)aMipmapGeneration;
 
 
 @property (retain) NSString	*name;

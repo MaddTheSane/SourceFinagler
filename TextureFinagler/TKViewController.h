@@ -26,9 +26,9 @@
 
 - (void)cleanup;
 
-- (NSString *)viewControllerViewSizeAutosaveString;
+@property (readonly, copy) NSString *viewControllerViewSizeAutosaveString;
 
-- (NSString *)viewSizeAutosaveName;
+@property (readonly, copy) NSString *viewSizeAutosaveName;
 
 - (void)viewDidLoad;
 

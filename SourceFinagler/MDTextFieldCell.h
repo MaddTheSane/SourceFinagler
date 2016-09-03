@@ -31,11 +31,9 @@
 
 - (NSArray *)hitRectsForFrame:(NSRect)cellFrame isFlipped:(BOOL)isFlipped;
 
-- (void)setLeftEdgePadding:(CGFloat)aPadding;
-- (CGFloat)leftEdgePadding;
+@property  CGFloat leftEdgePadding;
 
-- (BOOL)centerImageVertically;
-- (void)setCenterImageVertically:(BOOL)value;
+@property  BOOL centerImageVertically;
 
 
 @property (nonatomic, retain) NSMutableDictionary *highlightedActiveEnabledAttributes;

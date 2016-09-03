@@ -16,10 +16,10 @@
 
 
 - (void)drawInteriorWithFrame:(NSRect)cellFrame inView:(NSView *)controlView {
-	if ([self state] == NSOnState) {
+	if (self.state == NSOnState) {
 		[super drawInteriorWithFrame:cellFrame inView:controlView];
 		
-	} else if ([self state] == NSOffState) {
+	} else if (self.state == NSOffState) {
 		[[NSColor whiteColor] set];
 		[NSBezierPath fillRect:cellFrame];
 	}

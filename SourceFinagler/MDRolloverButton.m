@@ -19,7 +19,7 @@
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	NSTrackingArea *trackingArea = [[[NSTrackingArea alloc] initWithRect:[self visibleRect]
+	NSTrackingArea *trackingArea = [[[NSTrackingArea alloc] initWithRect:self.visibleRect
 																 options:NSTrackingMouseEnteredAndExited | NSTrackingInVisibleRect | NSTrackingActiveAlways
 																   owner:self
 																userInfo:nil] autorelease];
@@ -32,7 +32,7 @@
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	[self setImage:[NSImage imageNamed:@"cancelRoll"]];
+	self.image = [NSImage imageNamed:@"cancelRoll"];
 	[self setNeedsDisplay:YES];
 	
 	if (delegate && [delegate respondsToSelector:@selector(mouseDidEnterRolloverButton:)]) {
@@ -47,7 +47,7 @@
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	[self setImage:[NSImage imageNamed:@"cancel"]];
+	self.image = [NSImage imageNamed:@"cancel"];
 	[self setNeedsDisplay:YES];
 	
 	if (delegate && [delegate respondsToSelector:@selector(mouseDidExitRolloverButton:)]) {

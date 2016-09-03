@@ -22,12 +22,12 @@
 
 @synthesize image;
 
-- (id)init {
+- (instancetype)init {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	if ((self = [super init])) {
-		[self setLineBreakMode:NSLineBreakByTruncatingMiddle];
+		self.lineBreakMode = NSLineBreakByTruncatingMiddle;
 		[self setItemIsInvisible:NO];
 	}
     return self;
@@ -40,7 +40,7 @@
 #endif
 	MDBrowserCell *cell = (MDBrowserCell *)[super copyWithZone:zone];
 	cell->image = nil;
-	[cell setImage:image];
+	cell.image = image;
 	return cell;
 }
 
@@ -55,7 +55,7 @@
 
 - (void)setItemIsInvisible:(BOOL)value {
 	itemIsInvisible = value;
-	[self setTextColor:(itemIsInvisible ? [NSColor disabledControlTextColor] : [NSColor controlTextColor] )];
+	self.textColor = (itemIsInvisible ? [NSColor disabledControlTextColor] : [NSColor controlTextColor] );
 //	[self setTextColor:(itemIsInvisible ? [[NSColor controlTextColor] colorWithAlphaComponent:0.5] : [NSColor controlTextColor] )];
 }
 
@@ -71,7 +71,7 @@
 //	NSLog(@"[%@ %@] image == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), image);
 #endif
 	
-	NSSize imageSize = [[self image] size];
+	NSSize imageSize = self.image.size;
 	bounds.size.width = imageSize.width;
 	bounds.size.height = imageSize.height;
 	bounds.origin.y += trunc((bounds.size.height - imageSize.height) / 2.0);
@@ -83,7 +83,7 @@
 #if MD_DEBUG
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	NSSize imageSize = [[self image] size];
+	NSSize imageSize = self.image.size;
 	bounds.origin.x += (MD_INSET_HORIZ + imageSize.width + MD_INTER_SPACE);
 	bounds.size.width -= (MD_INSET_HORIZ + imageSize.width + MD_INTER_SPACE);
 	return [super titleRectForBounds:bounds];
@@ -95,7 +95,7 @@
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	NSSize cellSize = [super cellSizeForBounds:aRect];
-	NSSize imageSize = [[self image] size];
+	NSSize imageSize = self.image.size;
 	cellSize.width += (MD_INSET_HORIZ + imageSize.width + MD_INTER_SPACE);
 	cellSize.height = (MD_BOTTOM_PADDING + imageSize.height);
 	return cellSize;
@@ -108,10 +108,10 @@
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	NSRect imageRect = [self imageRectForBounds:cellFrame];
-	NSSize imageSize = [[self image] size];
-	if ([self image]) {
+	NSSize imageSize = self.image.size;
+	if (self.image) {
 		// Flip images that don't agree with our flipped state
-		BOOL isFlipped = [controlView isFlipped] != [[self image] isFlipped];
+		BOOL isFlipped = controlView.flipped != [self.image isFlipped];
 		if (isFlipped) {
 			[[NSGraphicsContext currentContext] saveGraphicsState];
 			NSAffineTransform *transform = [[NSAffineTransform alloc] init];
@@ -122,7 +122,7 @@
 			[transform release];
 		}
 //		NSLog(@"[%@ %@] drawing image", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-		[[self image] drawInRect:imageRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:(itemIsInvisible ? 0.5 : 1.0)];
+		[self.image drawInRect:imageRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:(itemIsInvisible ? 0.5 : 1.0)];
 		if (isFlipped) [[NSGraphicsContext currentContext] restoreGraphicsState];
 	}
 	CGFloat inset = (MD_INSET_HORIZ + imageSize.width + MD_INTER_SPACE);

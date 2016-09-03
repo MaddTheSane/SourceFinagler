@@ -93,11 +93,14 @@ enum {
 }
 
 + (NSArray *)imageRepsWithData:(NSData *)aData;
-+ (id)imageRepWithData:(NSData *)aData;
-- (id)initWithData:(NSData *)aData;
++ (instancetype)imageRepWithData:(NSData *)aData;
+- (instancetype)initWithData:(NSData *)aData;
 
 + (TKVTFFormat)defaultFormat;
 + (void)setDefaultFormat:(TKVTFFormat)aFormat;
+#if __has_feature(objc_class_property)
+@property (class) TKVTFFormat defaultFormat;
+#endif
 
 
 + (NSData *)VTFRepresentationOfImageRepsInArray:(NSArray *)tkImageReps options:(NSDictionary *)options;

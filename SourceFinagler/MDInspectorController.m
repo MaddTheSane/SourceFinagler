@@ -25,7 +25,7 @@
 @implementation MDInspectorController
 
 
-- (id)init {
+- (instancetype)init {
 	if ((self = [super initWithWindowNibName:@"MDInspector"])) {
 		
 	} else {
@@ -46,7 +46,7 @@
 
 
 - (void)awakeFromNib {
-	[(NSPanel *)[self window] setBecomesKeyOnlyIfNeeded:YES];
+	[(NSPanel *)self.window setBecomesKeyOnlyIfNeeded:YES];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedItemsDidChange:) name:MDSelectedItemsDidChangeNotification object:nil];
 }
 
@@ -56,95 +56,95 @@
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	
-	NSArray *newSelectedItems = [[notification userInfo] objectForKey:MDSelectedItemsKey];
-	MDHLDocument *newDocument = [[notification userInfo] objectForKey:MDSelectedItemsDocumentKey];
+	NSArray *newSelectedItems = notification.userInfo[MDSelectedItemsKey];
+	MDHLDocument *newDocument = notification.userInfo[MDSelectedItemsDocumentKey];
 	
 	if (newDocument && newSelectedItems) {
 		
-		if ([newSelectedItems count] == 0) {
-			[[self window] setRepresentedFilename:[[newDocument fileURL] path]];
-			[[self window] setTitle:[[newDocument displayName] stringByAppendingString:NSLocalizedString(@" Info", @"")]];
+		if (newSelectedItems.count == 0) {
+			self.window.representedFilename = newDocument.fileURL.path;
+			self.window.title = [newDocument.displayName stringByAppendingString:NSLocalizedString(@" Info", @"")];
 			
-			[previewViewController setRepresentedObject:newDocument];
+			previewViewController.representedObject = newDocument;
 			
-			[nameField setStringValue:[newDocument displayName]];
-			[whereField setStringValue:[[newDocument fileURL] path]];
+			nameField.stringValue = newDocument.displayName;
+			whereField.stringValue = newDocument.fileURL.path;
 			
-			NSImage *fileIcon = [[NSWorkspace sharedWorkspace] iconForFile:[[newDocument fileURL] path]];
-			[iconImageView setImage:fileIcon];
+			NSImage *fileIcon = [[NSWorkspace sharedWorkspace] iconForFile:newDocument.fileURL.path];
+			iconImageView.image = fileIcon;
 			
-			[headerSizeField setObjectValue:[newDocument fileSize]];
-			[dateModifiedField setObjectValue:[newDocument fileModificationDate]];
-			
-			
-			[kindField setStringValue:[newDocument kind]];
-			[sizeField setObjectValue:[newDocument fileSize]];
+			headerSizeField.objectValue = [newDocument fileSize];
+			dateModifiedField.objectValue = newDocument.fileModificationDate;
 			
 			
-		} else if ([newSelectedItems count] == 1) {
+			kindField.stringValue = newDocument.kind;
+			sizeField.objectValue = [newDocument fileSize];
 			
-			HKItem *item = [newSelectedItems objectAtIndex:0];
 			
-			[[self window] setRepresentedFilename:@""];
-			[[self window] setTitle:[[item name] stringByAppendingString:NSLocalizedString(@" Info", @"")]];
+		} else if (newSelectedItems.count == 1) {
 			
-			[previewViewController setRepresentedObject:item];
+			HKItem *item = newSelectedItems[0];
 			
-			[kindField setStringValue:[item kind]];
+			self.window.representedFilename = @"";
+			self.window.title = [item.name stringByAppendingString:NSLocalizedString(@" Info", @"")];
+			
+			previewViewController.representedObject = item;
+			
+			kindField.stringValue = item.kind;
 			
 			NSImage *image = [HKItem copiedImageForItem:item];
 
-			[image setSize:NSMakeSize(32.0, 32.0)];
-			[iconImageView setImage:image];
+			image.size = NSMakeSize(32.0, 32.0);
+			iconImageView.image = image;
 			
-			[nameField setStringValue:[item name]];
+			nameField.stringValue = item.name;
 //			NSString *path = [[[newDocument fileURL] path] stringByAppendingPathComponent:[[item path] stringByDeletingLastPathComponent]]
-			[whereField setStringValue:[[[newDocument fileURL] path] stringByAppendingPathComponent:[[item path] stringByDeletingLastPathComponent]]];
+			whereField.stringValue = [newDocument.fileURL.path stringByAppendingPathComponent:item.path.stringByDeletingLastPathComponent];
 			
-			[headerSizeField setObjectValue:[item size]];
-			[dateModifiedField setObjectValue:[newDocument fileModificationDate]];
-			[sizeField setObjectValue:[item size]];
+			headerSizeField.objectValue = item.size;
+			dateModifiedField.objectValue = newDocument.fileModificationDate;
+			sizeField.objectValue = item.size;
 			
-		} else if ([newSelectedItems count] > 1) {
+		} else if (newSelectedItems.count > 1) {
 			
-			[[self window] setRepresentedFilename:@""];
-			[[self window] setTitle:NSLocalizedString(@"Multiple Item Info", @"")];
+			self.window.representedFilename = @"";
+			[self.window setTitle:NSLocalizedString(@"Multiple Item Info", @"")];
 			
 			[previewViewController setRepresentedObject:nil];
 			
-			[whereField setStringValue:[[newDocument fileURL] path]];
+			whereField.stringValue = newDocument.fileURL.path;
 						
-			[nameField setStringValue:[NSString stringWithFormat:NSLocalizedString(@"%lu items", @""), (unsigned long)[newSelectedItems count]]];
+			nameField.stringValue = [NSString stringWithFormat:NSLocalizedString(@"%lu items", @""), (unsigned long)newSelectedItems.count];
 			
 			unsigned long long totalSize = 0;
 			
 			for (HKItem *item in newSelectedItems) {
-				if ([item isLeaf]) {
-					totalSize += [[item size] unsignedLongLongValue];
+				if (item.leaf) {
+					totalSize += item.size.unsignedLongLongValue;
 				}
 			}
 			
-			[sizeField setObjectValue:[NSNumber numberWithUnsignedLongLong:totalSize]];
-			[headerSizeField setObjectValue:[NSNumber numberWithUnsignedLongLong:totalSize]];
+			sizeField.objectValue = @(totalSize);
+			headerSizeField.objectValue = @(totalSize);
 			
-			[kindField setStringValue:[NSString stringWithFormat:NSLocalizedString(@"%lu documents", @""), (unsigned long)[newSelectedItems count]]];
+			kindField.stringValue = [NSString stringWithFormat:NSLocalizedString(@"%lu documents", @""), (unsigned long)newSelectedItems.count];
 			
-			[iconImageView setImage:[NSImage imageNamed:@"multipleItems"]];
+			iconImageView.image = [NSImage imageNamed:@"multipleItems"];
 			
-			[dateModifiedField setObjectValue:[newDocument fileModificationDate]];
+			dateModifiedField.objectValue = newDocument.fileModificationDate;
 			
 		}
 		
 	} else {
 		/* a document is being closed, so set stuff to an intermediary "--" */
 		
-		[[self window] setRepresentedFilename:@""];
+		self.window.representedFilename = @"";
 		
-		[[self window] setTitle:NSLocalizedString(@"Info", @"")];
+		[self.window setTitle:NSLocalizedString(@"Info", @"")];
 		
 		[previewViewController setRepresentedObject:nil];
 		
-		[iconImageView setImage:[NSImage imageNamed:@"genericDocument32"]];
+		iconImageView.image = [NSImage imageNamed:@"genericDocument32"];
 		
 		[nameField setStringValue:NSLocalizedString(@"--", @"")];
 		[headerSizeField setStringValue:NSLocalizedString(@"--", @"")];
@@ -165,8 +165,8 @@
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	MDShouldShowInspector = YES;
-	[[self window] orderFront:nil];
-	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:MDShouldShowInspector] forKey:MDShouldShowInspectorKey];
+	[self.window orderFront:nil];
+	[[NSUserDefaults standardUserDefaults] setObject:@(MDShouldShowInspector) forKey:MDShouldShowInspectorKey];
 	[[NSNotificationCenter defaultCenter] postNotificationName:MDShouldShowInspectorDidChangeNotification object:self userInfo:nil];
 }
 
@@ -176,9 +176,9 @@
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	
-	if ([notification object] == [self window]) {
+	if (notification.object == self.window) {
 		MDShouldShowInspector = NO;
-		[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:MDShouldShowInspector] forKey:MDShouldShowInspectorKey];
+		[[NSUserDefaults standardUserDefaults] setObject:@(MDShouldShowInspector) forKey:MDShouldShowInspectorKey];
 		[[NSNotificationCenter defaultCenter] postNotificationName:MDShouldShowInspectorDidChangeNotification object:self userInfo:nil];
 	}
 }

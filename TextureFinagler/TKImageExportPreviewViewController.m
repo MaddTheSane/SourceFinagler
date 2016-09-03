@@ -24,18 +24,18 @@
 @synthesize imageView;
 
 
-+ (id)previewViewControllerWithExportController:(TKImageExportController *)controller preset:(TKImageExportPreset *)preset tag:(NSInteger)tag {
++ (instancetype)previewViewControllerWithExportController:(TKImageExportController *)controller preset:(TKImageExportPreset *)preset tag:(NSInteger)tag {
 	return [[[[self class] alloc] initWithExportController:controller preset:preset tag:tag] autorelease];
 }
 
-- (id)initWithExportController:(TKImageExportController *)controller preset:(TKImageExportPreset *)preset tag:(NSInteger)tag {
+- (instancetype)initWithExportController:(TKImageExportController *)controller preset:(TKImageExportPreset *)preset tag:(NSInteger)tag {
 	if (controller == nil ||preset == nil) return nil;
 	
 	if ((self = [super initWithNibName:@"TKImageExportPreviewView" bundle:nil])) {
-		TKImageExportPreview *preview = [[[TKImageExportPreview alloc] initWithController:controller image:[[controller document] image] preset:preset tag:tag] autorelease];
-		[self setRepresentedObject:preview];
-		[(TKImageExportPreviewView *)[self view] setDelegate:controller];
-		[imageView setDelegate:controller];
+		TKImageExportPreview *preview = [[[TKImageExportPreview alloc] initWithController:controller image:controller.document.image preset:preset tag:tag] autorelease];
+		self.representedObject = preview;
+		((TKImageExportPreviewView *)self.view).delegate = controller;
+		imageView.delegate = controller;
 		
 	} else {
 		[NSBundle runFailedNibLoadAlert:@"TKImageExportPreviewView"];
@@ -66,17 +66,17 @@
 #if TK_DEBUG
 	NSLog(@"[%@ %@] representedObject == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), representedObject);
 #endif
-	[super setRepresentedObject:representedObject];
+	super.representedObject = representedObject;
 	
-	if ([(TKImageExportPreview *)representedObject imageRep] == nil) {
+	if (((TKImageExportPreview *)representedObject).imageRep == nil) {
 		[progressIndicator startAnimation:self];
 	}
 }
 
 
 - (NSString *)description {
-	NSMutableString *description = [NSMutableString stringWithFormat:@"%@, ", [super description]];
-	[description appendFormat:@"representedObject == %@", [self representedObject]];
+	NSMutableString *description = [NSMutableString stringWithFormat:@"%@, ", super.description];
+	[description appendFormat:@"representedObject == %@", self.representedObject];
 	return description;
 }
 

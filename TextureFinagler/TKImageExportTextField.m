@@ -16,7 +16,7 @@
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	[[self window] makeFirstResponder:[self superview]];
+	[self.window makeFirstResponder:self.superview];
 	[super mouseDown:event];
 }
 

@@ -25,21 +25,21 @@ static NSDictionary *inactiveAttributes = nil;
 	@synchronized(self) {
 		if (activeAttributes == nil && inactiveAttributes == nil) {
 			NSShadow *shadow = [[[NSShadow alloc] init] autorelease];
-			[shadow setShadowOffset:NSMakeSize(0.0, -1.0)];
-			[shadow setShadowColor:[NSColor colorWithCalibratedRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+			shadow.shadowOffset = NSMakeSize(0.0, -1.0);
+			shadow.shadowColor = [NSColor colorWithCalibratedRed:1.0 green:1.0 blue:1.0 alpha:1.0];
 			
-			activeAttributes = [[NSDictionary dictionaryWithObjectsAndKeys:[NSFont boldSystemFontOfSize:[NSFont smallSystemFontSize]],NSFontAttributeName,
-								 [NSColor colorWithCalibratedRed:112.0/255.0 green:126.0/255.0 blue:140.0/255 alpha:1.0],NSForegroundColorAttributeName,
-								 shadow,NSShadowAttributeName, nil] retain];
+			activeAttributes = [@{NSFontAttributeName: [NSFont boldSystemFontOfSize:[NSFont smallSystemFontSize]],
+								 NSForegroundColorAttributeName: [NSColor colorWithCalibratedRed:112.0/255.0 green:126.0/255.0 blue:140.0/255 alpha:1.0],
+								 NSShadowAttributeName: shadow} retain];
 			
-			inactiveAttributes = [[NSDictionary dictionaryWithObjectsAndKeys:[NSFont boldSystemFontOfSize:[NSFont smallSystemFontSize]],NSFontAttributeName,
-								 [NSColor colorWithCalibratedRed:134.0/255.0 green:139.0/255.0 blue:146.0/255 alpha:1.0],NSForegroundColorAttributeName,
-								 shadow,NSShadowAttributeName, nil] retain];
+			inactiveAttributes = [@{NSFontAttributeName: [NSFont boldSystemFontOfSize:[NSFont smallSystemFontSize]],
+								 NSForegroundColorAttributeName: [NSColor colorWithCalibratedRed:134.0/255.0 green:139.0/255.0 blue:146.0/255 alpha:1.0],
+								 NSShadowAttributeName: shadow} retain];
 		}
 	}
 }
 	
-- (id)initTextCell:(NSString *)aString {
+- (instancetype)initTextCell:(NSString *)aString {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -56,7 +56,7 @@ static NSDictionary *inactiveAttributes = nil;
 }
 
 
-- (id)initWithCoder:(NSCoder *)coder {
+- (instancetype)initWithCoder:(NSCoder *)coder {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -72,8 +72,8 @@ static NSDictionary *inactiveAttributes = nil;
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	richText = [[NSMutableAttributedString alloc] initWithString:[self stringValue] attributes:([[[self controlView] window] isMainWindow] ? activeAttributes : inactiveAttributes)];
-	[self setAttributedStringValue:richText];
+	richText = [[NSMutableAttributedString alloc] initWithString:self.stringValue attributes:(self.controlView.window.mainWindow ? activeAttributes : inactiveAttributes)];
+	self.attributedStringValue = richText;
 }
 
 
@@ -82,10 +82,10 @@ static NSDictionary *inactiveAttributes = nil;
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	
-	([[controlView window] isMainWindow] ? [richText setAttributes:activeAttributes range:NSMakeRange(0, [richText length])] :
-	 [richText setAttributes:inactiveAttributes range:NSMakeRange(0, [richText length])]);
+	(controlView.window.mainWindow ? [richText setAttributes:activeAttributes range:NSMakeRange(0, richText.length)] :
+	 [richText setAttributes:inactiveAttributes range:NSMakeRange(0, richText.length)]);
 	
-	[self setAttributedStringValue:richText];
+	self.attributedStringValue = richText;
 	
 	[super drawWithFrame:cellFrame inView:controlView];
 	

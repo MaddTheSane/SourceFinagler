@@ -10,11 +10,3 @@
 #import <TextureKit/TKBase.h>
 
 
-NSNumber * TKYES = nil;
-NSNumber * TKNO = nil;
-
-
-__attribute__((constructor)) static void TKInitBase() {
-	TKYES = [[NSNumber numberWithBool:YES] retain];
-	TKNO = [[NSNumber numberWithBool:NO] retain];
-}

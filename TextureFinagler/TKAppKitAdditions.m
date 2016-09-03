@@ -31,8 +31,8 @@ NSString *NSStringFromDefaultsKeyPath(NSString *defaultsKey) {
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	NSAlert *alert = [[[NSAlert alloc] init] autorelease];
-	[alert setMessageText:messageText];
-	[alert setInformativeText:informativeText];
+	alert.messageText = messageText;
+	alert.informativeText = informativeText;
 	if (firstButtonTitle) {
 		[alert addButtonWithTitle:firstButtonTitle];
 	}
@@ -107,10 +107,10 @@ NSString *NSStringFromDefaultsKeyPath(NSString *defaultsKey) {
 	
 	NSString *cssRepresentation = @"";
 	
-	NSString *familyName = [self familyName];
+	NSString *familyName = self.familyName;
 	
 	if (familyName) {
-		NSFontSymbolicTraits symbolicTraits = [[self fontDescriptor] symbolicTraits];
+		NSFontSymbolicTraits symbolicTraits = self.fontDescriptor.symbolicTraits;
 		
 //		NSLog(@"[NSFont cssRepresentation] symbolicTraits == %u", symbolicTraits);
 		BOOL isSansSerif = (symbolicTraits & NSFontSansSerifClass);
@@ -158,16 +158,16 @@ NSString *NSStringFromDefaultsKeyPath(NSString *defaultsKey) {
 #endif
 	
 	[self removeAllItems];
-	NSUInteger newCount = [newArray count];
+	NSUInteger newCount = newArray.count;
 	NSUInteger i;
 	
 	for (i = 0; i < newCount; i++) {
-		[self insertItem:[newArray objectAtIndex:i] atIndex:i];
+		[self insertItem:newArray[i] atIndex:i];
 		
 		if ([[self itemAtIndex:i] respondsToSelector:@selector(isHidden)] &&
 			[[self itemAtIndex:i] respondsToSelector:@selector(setHidden:)]) {
 			
-			if ([[self itemAtIndex:i] isHidden]) {
+			if ([self itemAtIndex:i].hidden) {
 				NSLog(@"[%@ %@] itemAtIndex %lu is hidden!", NSStringFromClass([self class]), NSStringFromSelector(_cmd), (unsigned long)i);
 				[[self itemAtIndex:i] setHidden:NO];
 			}
@@ -206,12 +206,12 @@ NSString *NSStringFromDefaultsKeyPath(NSString *defaultsKey) {
 #endif
 	
 	NSOpenPanel *openPanel = [NSOpenPanel openPanel];
-	if (title) [openPanel setTitle:title];
-	if (message) [openPanel setMessage:message];
-	if (actionButtonTitle) [openPanel setPrompt:actionButtonTitle];
-	[openPanel setAllowsMultipleSelection:allowsMultipleSelection];
-	[openPanel setCanChooseDirectories:canChooseDirectories];
-	if (delegate) [openPanel setDelegate:delegate];
+	if (title) openPanel.title = title;
+	if (message) openPanel.message = message;
+	if (actionButtonTitle) openPanel.prompt = actionButtonTitle;
+	openPanel.allowsMultipleSelection = allowsMultipleSelection;
+	openPanel.canChooseDirectories = canChooseDirectories;
+	if (delegate) openPanel.delegate = delegate;
 	return openPanel;
 }
 
@@ -227,9 +227,9 @@ NSString *NSStringFromDefaultsKeyPath(NSString *defaultsKey) {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	BOOL isPulldown = [self pullsDown];
+	BOOL isPulldown = self.pullsDown;
 	
-	NSMenu *theMenu = [self menu];
+	NSMenu *theMenu = self.menu;
 	
 	[theMenu setItemArray:value];
 	
@@ -242,17 +242,17 @@ NSString *NSStringFromDefaultsKeyPath(NSString *defaultsKey) {
 
 
 @implementation NSToolbarItem (TKAdditions)
-+ (id)toolbarItemWithItemIdentifier:(NSString *)anIdentifier tag:(NSInteger)aTag image:(NSImage *)anImage label:(NSString *)aLabel paletteLabel:(NSString *)aPaletteLabel target:(id)anObject action:(SEL)anAction {
++ (instancetype)toolbarItemWithItemIdentifier:(NSString *)anIdentifier tag:(NSInteger)aTag image:(NSImage *)anImage label:(NSString *)aLabel paletteLabel:(NSString *)aPaletteLabel target:(id)anObject action:(SEL)anAction {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	NSToolbarItem *toolbarItem = [[[[self class] alloc] initWithItemIdentifier:anIdentifier] autorelease];
-	[toolbarItem setTag:aTag];
-	[toolbarItem setImage:anImage];
-	[toolbarItem setLabel:aLabel];
-	[toolbarItem setPaletteLabel:aPaletteLabel];
-	[toolbarItem setTarget:anObject];
-	[toolbarItem setAction:anAction];
+	toolbarItem.tag = aTag;
+	toolbarItem.image = anImage;
+	toolbarItem.label = aLabel;
+	toolbarItem.paletteLabel = aPaletteLabel;
+	toolbarItem.target = anObject;
+	toolbarItem.action = anAction;
 	return toolbarItem;
 }
 @end
@@ -327,15 +327,15 @@ NSString *NSStringFromDefaultsKeyPath(NSString *defaultsKey) {
 	NSRect boundsRect;
 	NSArray *boundsArray = [aString componentsSeparatedByString:@" "];
 	
-	if ([boundsArray count] != 4) {
+	if (boundsArray.count != 4) {
 		NSLog(@"[%@ %@] count of bounds array != 4, aborting...", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 	} else {
 		boundsRect.origin.x = 0.0;
 		boundsRect.origin.y = 0.0;
-		boundsRect.size.width = [[boundsArray objectAtIndex:2] floatValue];
-		boundsRect.size.height = [[boundsArray objectAtIndex:3] floatValue];
+		boundsRect.size.width = [boundsArray[2] floatValue];
+		boundsRect.size.height = [boundsArray[3] floatValue];
 		
-		[self setFrame:boundsRect];
+		self.frame = boundsRect;
 	}
 	
 }
@@ -345,7 +345,7 @@ NSString *NSStringFromDefaultsKeyPath(NSString *defaultsKey) {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	NSRect frameRect = [self frame];
+	NSRect frameRect = self.frame;
 	
 	NSString *dimensionString = [NSString stringWithFormat:@"%ld %ld %ld %ld", (long)frameRect.origin.x, (long)frameRect.origin.y, (long)frameRect.size.width, (long)frameRect.size.height];
 	
@@ -369,13 +369,13 @@ static NSView *blankView() {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	NSToolbar *toolbar = [self toolbar];
+	NSToolbar *toolbar = self.toolbar;
 	CGFloat toolbarHeight = 0.0;
 	NSRect windowFrame;
 	
-	if (toolbar && [toolbar isVisible]) {
-		windowFrame = [[self class] contentRectForFrameRect:[self frame] styleMask:[self styleMask]];
-		toolbarHeight = NSHeight(windowFrame) - NSHeight([[self contentView] frame]);
+	if (toolbar && toolbar.visible) {
+		windowFrame = [[self class] contentRectForFrameRect:self.frame styleMask:self.styleMask];
+		toolbarHeight = NSHeight(windowFrame) - NSHeight(self.contentView.frame);
 	}
 	return toolbarHeight;
 }
@@ -390,14 +390,14 @@ static NSView *blankView() {
 	CGFloat newHeight = newSize.height + [self toolbarHeight];
 	CGFloat newWidth = newSize.width;
 	
-	aFrame = [[self class] contentRectForFrameRect:[self frame] styleMask:[self styleMask]];
+	aFrame = [[self class] contentRectForFrameRect:self.frame styleMask:self.styleMask];
 	
 	aFrame.origin.y += aFrame.size.height;
 	aFrame.origin.y -= newHeight;
 	aFrame.size.height = newHeight;
 	aFrame.size.width = newWidth;
 	
-	aFrame = [[self class] frameRectForContentRect:aFrame styleMask:[self styleMask]];
+	aFrame = [[self class] frameRectForContentRect:aFrame styleMask:self.styleMask];
 	
 	[self setFrame:aFrame display:YES animate:YES];
 }
@@ -407,11 +407,11 @@ static NSView *blankView() {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	if ([self contentView] != aView) {
-		[self setContentView:blankView()];
+	if (self.contentView != aView) {
+		self.contentView = blankView();
 		[self setTitle:NSLocalizedString(aString, @"")];
-		[self resizeToSize:[aView frame].size];
-		[self setContentView:aView];
+		[self resizeToSize:aView.frame.size];
+		self.contentView = aView;
 		//[self setShowsResizeIndicator:NO];
 	}
 }
@@ -420,10 +420,10 @@ static NSView *blankView() {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	if ([self contentView] != aView) {
-		[self setContentView:blankView()];
-		[self resizeToSize:[aView frame].size];
-		[self setContentView:aView];
+	if (self.contentView != aView) {
+		self.contentView = blankView();
+		[self resizeToSize:aView.frame.size];
+		self.contentView = aView;
 		//[self setShowsResizeIndicator:NO];
 	}
 }
@@ -461,21 +461,21 @@ static NSView *blankView() {
 	NSMutableDictionary *groupedFilePaths = [NSMutableDictionary dictionary];
 	
 	for (NSString *filePath in filePaths) {
-		NSString *parentDirectory = [filePath stringByDeletingLastPathComponent];
+		NSString *parentDirectory = filePath.stringByDeletingLastPathComponent;
 		
-		if ([groupedFilePaths objectForKey:parentDirectory] == nil) {
+		if (groupedFilePaths[parentDirectory] == nil) {
 			NSMutableArray *files = [NSMutableArray arrayWithObject:filePath];
-			[groupedFilePaths setObject:files forKey:parentDirectory];
+			groupedFilePaths[parentDirectory] = files;
 			
 		} else {
-			[[groupedFilePaths objectForKey:parentDirectory] addObject:filePath];
+			[groupedFilePaths[parentDirectory] addObject:filePath];
 		}
 	}
 	
-	NSArray *folderPaths = [groupedFilePaths allKeys];
+	NSArray *folderPaths = groupedFilePaths.allKeys;
 	
 	for (NSString *folderPath in folderPaths) {
-		NSArray *files = [groupedFilePaths objectForKey:folderPath];
+		NSArray *files = groupedFilePaths[folderPath];
 		
 		NSString *applescriptListString = NSStringForAppleScriptListFromPaths(files);
 		

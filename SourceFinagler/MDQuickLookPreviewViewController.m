@@ -58,39 +58,39 @@
 	}
 	if (representedObject) {
 		if ([representedObject isKindOfClass:[MDHLDocument class]]) {
-			[box setContentView:imageViewView];
+			box.contentView = imageViewView;
 
 		} else if ([representedObject isKindOfClass:[HKItem class]]) {
 			if ([representedObject respondsToSelector:@selector(fileType)]) {
 				HKFileType fileType = HKFileTypeNone;
-				fileType = [(HKFile *)representedObject fileType];
+				fileType = ((HKFile *)representedObject).fileType;
 				switch (fileType) {
 					case HKFileTypeHTML :
-						[[webView mainFrame] loadHTMLString:[(HKFile *)representedObject stringValue] baseURL:nil];
-						[box setContentView:webViewView];
+						[webView.mainFrame loadHTMLString:[(HKFile *)representedObject stringValue] baseURL:nil];
+						box.contentView = webViewView;
 						break;
 						
 					case HKFileTypeText :
-						[textView setString:[(HKFile *)representedObject stringValue]];
-						[box setContentView:textViewView];
+						textView.string = [(HKFile *)representedObject stringValue];
+						box.contentView = textViewView;
 						break;
 						
 					case HKFileTypeImage :
-						[box setContentView:imageViewView];
+						box.contentView = imageViewView;
 						break;
 						
 					case HKFileTypeSound :
-						[box setContentView:soundViewView];
-						[self setSound:[(HKFile *)representedObject sound]];
-						[sound setDelegate:self];
+						box.contentView = soundViewView;
+						self.sound = [(HKFile *)representedObject sound];
+						sound.delegate = self;
 						break;
 						
 					case HKFileTypeMovie :
-						[box setContentView:movieViewView];
+						box.contentView = movieViewView;
 						break;
 						
 					case HKFileTypeOther :
-						[box setContentView:imageViewView];
+						box.contentView = imageViewView;
 						break;
 						
 					default:
@@ -99,9 +99,9 @@
 			}
 		}
 	} else {
-		[box setContentView:imageViewView];
+		box.contentView = imageViewView;
 	}
-	[super setRepresentedObject:representedObject];
+	super.representedObject = representedObject;
 	
 }
 

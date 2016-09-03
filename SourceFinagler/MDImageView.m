@@ -13,7 +13,7 @@
 
 @synthesize image;
 
-- (id)initWithFrame:(NSRect)frame {
+- (instancetype)initWithFrame:(NSRect)frame {
     if ((self = [super initWithFrame:frame])) {
 
     }
@@ -27,7 +27,7 @@
 
 
 - (void)awakeFromNib {
-	[self setImage:[NSImage imageNamed:@"sound"]];
+	self.image = [NSImage imageNamed:@"sound"];
 }
 
 - (BOOL)isOpaque {
@@ -38,7 +38,7 @@
 	if (image == nil) {
 		return [super drawRect:frame];
 	}
-	[image setSize:NSMakeSize(frame.size.width, frame.size.height)];
+	image.size = NSMakeSize(frame.size.width, frame.size.height);
     [image drawAtPoint:NSMakePoint(0.0, 0.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
 }
 

@@ -22,7 +22,7 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray *inRects, BOOL isFlipped) {
 	NSValue *rect;
 	
 	while ((rect = [enumerator nextObject])) {
-		if (NSMouseInRect(inPoint, [rect rectValue], isFlipped)) {
+		if (NSMouseInRect(inPoint, rect.rectValue, isFlipped)) {
 			return YES;
 		}
 	}
@@ -89,7 +89,7 @@ SInt32 TKGetSystemVersion() {
 	OSStatus status = FSRefMakePath(anFSRef, thePath, PATH_MAX);
 	
 	if (status == noErr) {
-		return [NSString stringWithUTF8String:(const char *)thePath];
+		return [[NSFileManager defaultManager] stringWithFileSystemRepresentation:(const char *)thePath length:strnlen((const char *)thePath, PATH_MAX)];
 	} else {
 		return nil;
 	}
@@ -103,7 +103,7 @@ SInt32 TKGetSystemVersion() {
 #endif
 	if (anError) *anError = nil;
 	OSStatus status = noErr;
-	status = FSPathMakeRef((const UInt8 *)[self UTF8String], anFSRef, NULL);
+	status = FSPathMakeRef((const UInt8 *)self.fileSystemRepresentation, anFSRef, NULL);
 	if (status != noErr) {
 		if (anError) *anError = [NSError errorWithDomain:NSOSStatusErrorDomain code:status userInfo:nil];
 	}
@@ -139,21 +139,21 @@ SInt32 TKGetSystemVersion() {
 	BOOL isDir;
 	
 	if ([fileManager fileExistsAtPath:self isDirectory:&isDir]) {
-		NSString *basePath = [self stringByDeletingLastPathComponent];
-		NSString *filename = [self lastPathComponent];
-		NSString *filenameExtension = [filename pathExtension];
-		NSString *basename = [filename stringByDeletingPathExtension];
+		NSString *basePath = self.stringByDeletingLastPathComponent;
+		NSString *filename = self.lastPathComponent;
+		NSString *filenameExtension = filename.pathExtension;
+		NSString *basename = filename.stringByDeletingPathExtension;
 		
 		NSArray *components = [basename componentsSeparatedByString:@"-"];
 		
-		if ([components count] > 1) {
+		if (components.count > 1) {
 			// baseName contains at least one "-", determine if it's already a "duplicate". If it is, repeat the process of adding 1 to the value until the resulting filename would be unique. If it isn't, fall through to where we just tack on our own at the end of the filename
-			NSString *basenameSuffix = [components lastObject];
-			NSInteger suffixNumber = [basenameSuffix integerValue];
+			NSString *basenameSuffix = components.lastObject;
+			NSInteger suffixNumber = basenameSuffix.integerValue;
 			if (suffixNumber > 0) {
-				NSUInteger basenameSuffixLength = [basenameSuffix length];
+				NSUInteger basenameSuffixLength = basenameSuffix.length;
 			
-				NSString *basenameSubstring = [basename substringWithRange:NSMakeRange(0, [basename length] - (basenameSuffixLength + 1))];
+				NSString *basenameSubstring = [basename substringWithRange:NSMakeRange(0, basename.length - (basenameSuffixLength + 1))];
 				while (1) {
 					suffixNumber += 1;
 					
@@ -198,31 +198,31 @@ SInt32 TKGetSystemVersion() {
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	NSString *newFullPath = nil;
-	NSString *filename = [self lastPathComponent];
+	NSString *filename = self.lastPathComponent;
 	NSString *originalFilename = [[filename copy] autorelease];
 	
-	if ([filename length] > 30) {
+	if (filename.length > 30) {
 		NSRange nilRange = NSMakeRange(NSNotFound, 0);
 		NSRange pRange = [filename rangeOfString:@"("];
 		
 		if (NSEqualRanges(nilRange, pRange)) {
 			NSArray *components = [filename componentsSeparatedByString:@" "];
 			
-			if ([components count] == 1) {
+			if (components.count == 1) {
 				NSString *prefix = [filename substringToIndex:29];
-				NSString *lastCharacter = [filename substringFromIndex:[filename length] - 1];
+				NSString *lastCharacter = [filename substringFromIndex:filename.length - 1];
 				
 				filename = [NSString stringWithFormat:@"%@%C%@", prefix, (unsigned short)0x2026, lastCharacter];				
 				
-			} else if ([components count] > 1) {
-				NSUInteger lastComponentLength = [[components lastObject] length];
+			} else if (components.count > 1) {
+				NSUInteger lastComponentLength = [components.lastObject length];
 				
-				NSString *suffix = [filename substringFromIndex:[filename length] - lastComponentLength - 1];
+				NSString *suffix = [filename substringFromIndex:filename.length - lastComponentLength - 1];
 				suffix = [[NSString stringWithFormat:@"%C", (unsigned short)0x2026] stringByAppendingString:suffix];
 				
-				NSString *prefix = [filename substringToIndex:[filename length] - lastComponentLength - 2];
+				NSString *prefix = [filename substringToIndex:filename.length - lastComponentLength - 2];
 				
-				NSUInteger allowedPrefixLength = (31 - [suffix length]);
+				NSUInteger allowedPrefixLength = (31 - suffix.length);
 				
 				prefix = [prefix substringToIndex:allowedPrefixLength];
 				filename = [prefix stringByAppendingString:suffix];
@@ -236,7 +236,7 @@ SInt32 TKGetSystemVersion() {
 			
 			suffix = [[NSString stringWithFormat:@"%C", (unsigned short)0x2026] stringByAppendingString:suffix];
 			
-			NSUInteger allowedPrefixLength = (31 - [suffix length]);
+			NSUInteger allowedPrefixLength = (31 - suffix.length);
 			
 			prefix = [prefix substringToIndex:allowedPrefixLength];
 			
@@ -245,7 +245,7 @@ SInt32 TKGetSystemVersion() {
 		}
 		
 		if (![originalFilename isEqualToString:filename]) {
-			newFullPath = [[self stringByDeletingLastPathComponent] stringByAppendingPathComponent:filename];
+			newFullPath = [self.stringByDeletingLastPathComponent stringByAppendingPathComponent:filename];
 			
 		} else {
 			newFullPath = self;
@@ -265,11 +265,11 @@ SInt32 TKGetSystemVersion() {
 	
 	NSArray *boundsArray = [self componentsSeparatedByString:@" "];
 	
-	if ([boundsArray count] != 4) {
+	if (boundsArray.count != 4) {
 //		NSLog(@"count of bounds array != 4, returning NSZeroSize...");
 	} else {
-		size.width = [[boundsArray objectAtIndex:2] floatValue];
-		size.height = [[boundsArray objectAtIndex:3] floatValue];
+		size.width = [boundsArray[2] doubleValue];
+		size.height = [boundsArray[3] doubleValue];
 	}
 
 	return size;
@@ -312,7 +312,7 @@ SInt32 TKGetSystemVersion() {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	return [self compare:string options:NSLiteralSearch | NSCaseInsensitiveSearch | NSNumericSearch range:NSMakeRange(0, [string length]) locale:[NSLocale currentLocale]];
+	return [self compare:string options:NSLiteralSearch | NSCaseInsensitiveSearch | NSNumericSearch range:NSMakeRange(0, string.length) locale:[NSLocale currentLocale]];
 }
 
 
@@ -328,7 +328,7 @@ SInt32 TKGetSystemVersion() {
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	NSMutableString *newString = [NSMutableString stringWithString:self];
-    [newString replaceOccurrencesOfString:value withString:newValue options:NSLiteralSearch range:NSMakeRange(0, [newString length])];
+    [newString replaceOccurrencesOfString:value withString:newValue options:NSLiteralSearch range:NSMakeRange(0, newString.length)];
     return newString;
 }
 
@@ -356,7 +356,7 @@ SInt32 TKGetSystemVersion() {
 	NSFileManager *fileManager = [[NSFileManager alloc] init];
 	
 	NSArray *pathComponents = [fileManager componentsToDisplayForPath:self];
-	if (pathComponents && [pathComponents count]) {
+	if (pathComponents && pathComponents.count) {
 		if (displayPath == nil) {
 			displayPath = @"/";
 		}
@@ -377,7 +377,7 @@ SInt32 TKGetSystemVersion() {
 #endif
 	NSData *bookmarkData = nil;
 	if (outError) *outError = nil;
-	NSString *path = [[self stringByResolvingSymlinksInPath] stringByStandardizingPath];
+	NSString *path = self.stringByResolvingSymlinksInPath.stringByStandardizingPath;
 	
 	NSFileManager *fileManager = [[NSFileManager alloc] init];
 	
@@ -409,7 +409,7 @@ SInt32 TKGetSystemVersion() {
 }
 
 
-+ (id)stringByResolvingBookmarkData:(NSData *)bookmarkData options:(TKBookmarkResolutionOptions)options bookmarkDataIsStale:(BOOL *)isStale error:(NSError **)outError {
++ (instancetype)stringByResolvingBookmarkData:(NSData *)bookmarkData options:(TKBookmarkResolutionOptions)options bookmarkDataIsStale:(BOOL *)isStale error:(NSError **)outError {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -420,7 +420,7 @@ SInt32 TKGetSystemVersion() {
 		FSRef resolvedRef;
 		Boolean wasChanged = false;
 		OSErr err = noErr;
-		err = PtrToHand([bookmarkData bytes], (Handle *)&alias, [bookmarkData length]);
+		err = PtrToHand(bookmarkData.bytes, (Handle *)&alias, bookmarkData.length);
 		if (err == noErr) {
 			err = FSResolveAliasWithMountFlags(NULL, alias, &resolvedRef, &wasChanged, (options & TKBookmarkResolutionWithoutUI ? kResolveAliasFileNoUI : 0));
 			if (err == noErr) {
@@ -461,7 +461,7 @@ SInt32 TKGetSystemVersion() {
 @implementation NSDictionary (TKSortDescriptorAdditions)
 
 - (NSArray *)sortDescriptorsForKey:(NSString *)key {
-	return [NSKeyedUnarchiver unarchiveObjectWithData:[self objectForKey:key]];
+	return [NSKeyedUnarchiver unarchiveObjectWithData:self[key]];
 }
 
 @end
@@ -470,7 +470,7 @@ SInt32 TKGetSystemVersion() {
 
 - (void)setSortDescriptors:(NSArray *)sortDescriptors forKey:(NSString *)key {
 	NSData *data = [NSKeyedArchiver archivedDataWithRootObject:sortDescriptors];
-	if (data) [self setObject:data forKey:key];
+	if (data) self[key] = data;
 }
 
 @end
@@ -488,7 +488,7 @@ SInt32 TKGetSystemVersion() {
 
 @implementation NSIndexSet (TKAdditions)
 
-+ (id)indexSetWithIndexSet:(NSIndexSet *)indexes {
++ (instancetype)indexSetWithIndexSet:(NSIndexSet *)indexes {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -502,7 +502,7 @@ SInt32 TKGetSystemVersion() {
 #endif
 	NSMutableIndexSet *intersectingIndexes = [NSMutableIndexSet indexSet];
 	
-	NSUInteger theIndex = [self firstIndex];
+	NSUInteger theIndex = self.firstIndex;
 	
 	while (theIndex != NSNotFound) {
 		if ([indexes containsIndex:theIndex]) [intersectingIndexes addIndex:theIndex];
@@ -537,8 +537,8 @@ SInt32 TKGetSystemVersion() {
 
 
 - (NSString *)stringRepresentation {
-	const char *bytes = [self bytes];
-	NSUInteger stringLength = [self length];
+	const char *bytes = self.bytes;
+	NSUInteger stringLength = self.length;
 	NSUInteger currentIndex;
 	
 	NSMutableString *stringRepresentation = [NSMutableString string];
@@ -557,8 +557,8 @@ SInt32 TKGetSystemVersion() {
 	
 	NSInteger i, len;
 	const unsigned char *b;
-	len = [self length];
-	b = [self bytes];
+	len = self.length;
+	b = self.bytes;
 	
 	if (len == 0) {
 		return @"<empty>";
@@ -686,10 +686,10 @@ NSString *NSStringForAppleScriptListFromPaths(NSArray *paths) {
 	NSString *listString = @"{";
 	NSString *filePath;
 	NSInteger currentIndex;
-	NSInteger totalCount = [paths count];
+	NSInteger totalCount = paths.count;
 	
 	for (currentIndex = 0; currentIndex < totalCount; currentIndex++) {
-		filePath = [paths objectAtIndex:currentIndex];
+		filePath = paths[currentIndex];
 		listString = [listString stringByAppendingString:[NSString stringWithFormat:@"\"%@\" as POSIX file", filePath]];
 		
 		if (currentIndex < (totalCount - 1)) {
@@ -725,7 +725,7 @@ NSString *NSStringForAppleScriptListFromPaths(NSArray *paths) {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	[self insertObjects:array atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(anIndex, [array count])]];
+	[self insertObjects:array atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(anIndex, array.count)]];
 }
 
 
@@ -745,7 +745,7 @@ NSString *NSStringForAppleScriptListFromPaths(NSArray *paths) {
     id    result;
 	
     [aLock lock];
-    result = [[[self objectForKey:aKey] retain] autorelease];
+    result = [[self[aKey] retain] autorelease];
     [aLock unlock];
 	
     return result;
@@ -762,7 +762,7 @@ NSString *NSStringForAppleScriptListFromPaths(NSArray *paths) {
 - (void)threadSafeSetObject:(id)anObject forKey:(id)aKey usingLock:(NSLock *)aLock {
     [aLock lock];
     [[anObject retain] autorelease];
-    [self setObject:anObject  forKey:aKey];
+    self[aKey] = anObject;
     [aLock unlock];
 }
 
@@ -798,10 +798,10 @@ NSString *NSStringForAppleScriptListFromPaths(NSArray *paths) {
     NSMutableDictionary *newDictionary = [[NSMutableDictionary alloc] init];
 	id key = nil;
 	
-	NSArray *allKeys = [self allKeys];
+	NSArray *allKeys = self.allKeys;
 	
 	for (key in allKeys) {
-		id copiedObject = [[self objectForKey:key] deepMutableCopy];
+		id copiedObject = [self[key] deepMutableCopy];
 		
 		id keyCopy = nil;
 		
@@ -811,7 +811,7 @@ NSString *NSStringForAppleScriptListFromPaths(NSArray *paths) {
 			keyCopy = [key retain];
 		}
 		
-		[newDictionary setObject:copiedObject forKey:keyCopy];
+		newDictionary[keyCopy] = copiedObject;
 		[copiedObject release];
 		[keyCopy release];
 	}	
@@ -849,7 +849,7 @@ NSString *NSStringForAppleScriptListFromPaths(NSArray *paths) {
 #endif
     NSMutableSet *newSet = [[NSMutableSet alloc] init];
 	
-	NSArray *allObjects = [self allObjects];
+	NSArray *allObjects = self.allObjects;
 	
 	for (id object in allObjects) {
 		id copiedObject = [object deepMutableCopy];

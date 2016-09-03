@@ -28,7 +28,7 @@
 
 
 
-- (id)initWithFrame:(NSRect)frame {
+- (instancetype)initWithFrame:(NSRect)frame {
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 	if ((self = [super initWithFrame:frame])) {
 		[self finishSetup];
@@ -37,7 +37,7 @@
 }
 
 
-- (id)initWithCoder:(NSCoder *)coder {
+- (instancetype)initWithCoder:(NSCoder *)coder {
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 	if ((self = [super initWithCoder:coder])) {
 		[self finishSetup];
@@ -66,7 +66,7 @@
 
 
 - (BOOL)acceptsFirstResponder {
-	BOOL accepts = [super acceptsFirstResponder];
+	BOOL accepts = super.acceptsFirstResponder;
 	NSLog(@"[%@ %@] super's acceptsFirstResponder == %d", NSStringFromClass([self class]), NSStringFromSelector(_cmd), accepts);
 	
 	return NO;

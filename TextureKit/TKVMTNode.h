@@ -43,8 +43,8 @@ typedef NSUInteger TKVMTNodeKind;
 
 }
 
-+ (id)nodeWithName:(NSString *)aName kind:(TKVMTNodeKind)aKind objectValue:(id)anObjectValue;
-- (id)initWithName:(NSString *)aName kind:(TKVMTNodeKind)aKind objectValue:(id)anObjectValue;
++ (instancetype)nodeWithName:(NSString *)aName kind:(TKVMTNodeKind)aKind objectValue:(id)anObjectValue;
+- (instancetype)initWithName:(NSString *)aName kind:(TKVMTNodeKind)aKind objectValue:(id)anObjectValue;
 
 + (id)groupNodeWithName:(NSString *)aName;
 + (id)commentNodeWithStringValue:(NSString *)stringValue;
@@ -68,9 +68,9 @@ typedef NSUInteger TKVMTNodeKind;
 @property (readonly, nonatomic, assign, getter=isLeaf) BOOL leaf;
 
 
-- (NSArray *)children;
+@property (readonly, copy) NSArray<TKVMTNode*> *children;
 
-- (NSUInteger)countOfChildren;
+@property (readonly) NSUInteger countOfChildren;
 
 - (TKVMTNode *)childAtIndex:(NSUInteger)anIndex;
 
@@ -83,13 +83,13 @@ typedef NSUInteger TKVMTNodeKind;
 - (void)removeAllChildren;
 
 
-- (NSString *)stringRepresentation;
+@property (readonly, copy) NSString *stringRepresentation;
 
-- (NSString *)stringValue;
+@property (readonly, copy) NSString *stringValue;
 
-- (NSInteger)integerValue;
+@property (readonly) NSInteger integerValue;
 
-- (CGFloat)floatValue;
+@property (readonly) CGFloat floatValue;
 
 
 @end

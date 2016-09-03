@@ -27,7 +27,7 @@ NSString * const MDListViewFontSizeKey								= @"MDListViewFontSize";
 @implementation MDOutlineView
 
 
-- (id)init {
+- (instancetype)init {
 	if ((self = [super init])) {
 
 	}
@@ -74,9 +74,9 @@ NSString * const MDListViewFontSizeKey								= @"MDListViewFontSize";
 	iconSize = [[userDefaults objectForKey:MDListViewIconSizeKey] integerValue];
 	[self calculateRowHeight];
 	
-	[[nameColumn dataCell] setFont:[NSFont systemFontOfSize:(CGFloat)fontSize]];
-	[[sizeColumn dataCell] setFont:[NSFont systemFontOfSize:(CGFloat)fontSize]];
-	[[kindColumn dataCell] setFont:[NSFont systemFontOfSize:(CGFloat)fontSize]];
+	[nameColumn.dataCell setFont:[NSFont systemFontOfSize:(CGFloat)fontSize]];
+	[sizeColumn.dataCell setFont:[NSFont systemFontOfSize:(CGFloat)fontSize]];
+	[kindColumn.dataCell setFont:[NSFont systemFontOfSize:(CGFloat)fontSize]];
 	
 	[kindColumn retain];
 	[sizeColumn retain];
@@ -87,7 +87,7 @@ NSString * const MDListViewFontSizeKey								= @"MDListViewFontSize";
 	shouldShowSizeColumn = [[userDefaults objectForKey:MDShouldShowSizeColumnKey] boolValue];
 	if (!shouldShowSizeColumn) [self removeTableColumn:sizeColumn];
 	
-	[self registerForDraggedTypes:[NSArray arrayWithObjects:MDDraggedItemsPboardType, NSFilenamesPboardType, nil]];
+	[self registerForDraggedTypes:@[MDDraggedItemsPboardType, NSFilenamesPboardType]];
 	[self setVerticalMotionCanBeginDrag:NO];
 	
 }
@@ -102,9 +102,9 @@ NSString * const MDListViewFontSizeKey								= @"MDListViewFontSize";
 		fontSize = [[[NSUserDefaults standardUserDefaults] objectForKey:MDListViewFontSizeKey] integerValue];
 		[self calculateRowHeight];
 		
-		[(MDTextFieldCell *)[nameColumn dataCell] setFont:[NSFont systemFontOfSize:(CGFloat)fontSize]];
-		[(MDTextFieldCell *)[sizeColumn dataCell] setFont:[NSFont systemFontOfSize:(CGFloat)fontSize]];
-		[(MDTextFieldCell *)[kindColumn dataCell] setFont:[NSFont systemFontOfSize:(CGFloat)fontSize]];
+		((MDTextFieldCell *)nameColumn.dataCell).font = [NSFont systemFontOfSize:(CGFloat)fontSize];
+		((MDTextFieldCell *)sizeColumn.dataCell).font = [NSFont systemFontOfSize:(CGFloat)fontSize];
+		((MDTextFieldCell *)kindColumn.dataCell).font = [NSFont systemFontOfSize:(CGFloat)fontSize];
 		
 		[self reloadData];
 		
@@ -146,7 +146,7 @@ NSString * const MDListViewFontSizeKey								= @"MDListViewFontSize";
 	} else if (iconSize == 32) {
 		rowHeight = 34;
 	}	
-	[self setRowHeight:(CGFloat)rowHeight];
+	self.rowHeight = (CGFloat)rowHeight;
 }
 
 
@@ -159,7 +159,7 @@ NSString * const MDListViewFontSizeKey								= @"MDListViewFontSize";
 	NSLog(@" \"%@\" [%@ %@]", [[[[self window] windowController] document] displayName], NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	NSMutableArray *items = [NSMutableArray array];
-	NSUInteger index = [rowIndexes firstIndex];
+	NSUInteger index = rowIndexes.firstIndex;
 	while (index != NSNotFound) {
 		id item = [self itemAtRow:index];
 		if (item) [items addObject:item];
@@ -189,9 +189,9 @@ NSString * const MDListViewFontSizeKey								= @"MDListViewFontSize";
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
 //	NSLog(@" \"%@\" [%@ %@]", [[[[self window] windowController] document] displayName], NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 	
-	SEL action = [menuItem action];
+	SEL action = menuItem.action;
 	if (action == @selector(revealInFinder:)) {
-		return ([self numberOfSelectedRows] > 0 && [self numberOfSelectedRows] < 20);
+		return (self.numberOfSelectedRows > 0 && self.numberOfSelectedRows < 20);
 		
 	} else if (action == @selector(toggleShowInspector:)) {
 		return NO;
@@ -214,7 +214,7 @@ NSString * const MDListViewFontSizeKey								= @"MDListViewFontSize";
 #if MD_DEBUG
 	NSLog(@" \"%@\" [%@ %@]", [[[[self window] windowController] document] displayName], NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	NSString *characters = [theEvent characters];
+	NSString *characters = theEvent.characters;
 	if ([characters isEqualToString:@" "]) {
 		if ([[self dataSource] respondsToSelector:@selector(toggleShowQuickLook:)]) {
 			[(MDHLDocument *)[self dataSource] toggleShowQuickLook:self];
@@ -228,11 +228,11 @@ NSString * const MDListViewFontSizeKey								= @"MDListViewFontSize";
 #if MD_DEBUG
 		NSLog(@" \"%@\" [%@ %@]", [[[[self window] windowController] document] displayName], NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	NSPoint clickPoint = [self convertPoint:[event locationInWindow] fromView:nil];
+	NSPoint clickPoint = [self convertPoint:event.locationInWindow fromView:nil];
 	
 	NSInteger rowIndex		= [self rowAtPoint:clickPoint];
 	
-	NSIndexSet *selectedRowIndexes = [self selectedRowIndexes];
+	NSIndexSet *selectedRowIndexes = self.selectedRowIndexes;
 	if (rowIndex >= 0) {
 		if ([selectedRowIndexes containsIndex:rowIndex]) {
 			return [super rightMouseDown:event];
@@ -241,7 +241,7 @@ NSString * const MDListViewFontSizeKey								= @"MDListViewFontSize";
 			return [super rightMouseDown:event];
 		}
 	} else {
-		if ([selectedRowIndexes count]) {
+		if (selectedRowIndexes.count) {
 			[self deselectAll:self];
 			return [super rightMouseDown:event];
 		}
@@ -258,7 +258,7 @@ NSString * const MDListViewFontSizeKey								= @"MDListViewFontSize";
 		NSLog(@" \"%@\" [%@ %@]", [[[[self window] windowController] document] displayName], NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	
-	NSUInteger modifierFlags = [event modifierFlags];
+	NSUInteger modifierFlags = event.modifierFlags;
 	
 	if (modifierFlags & NSAlternateKeyMask || modifierFlags & NSCommandKeyMask) {
 		
@@ -266,9 +266,9 @@ NSString * const MDListViewFontSizeKey								= @"MDListViewFontSize";
 		
 	} else if (modifierFlags & NSControlKeyMask) {
 		
-		NSInteger rowIndex = [self rowAtPoint:[self convertPoint:[event locationInWindow] fromView:nil]];
+		NSInteger rowIndex = [self rowAtPoint:[self convertPoint:event.locationInWindow fromView:nil]];
 		
-		NSIndexSet *selectedRowIndexes = [self selectedRowIndexes];
+		NSIndexSet *selectedRowIndexes = self.selectedRowIndexes;
 		
 		if (rowIndex >= 0) {
 			if ([selectedRowIndexes containsIndex:rowIndex]) {
@@ -278,7 +278,7 @@ NSString * const MDListViewFontSizeKey								= @"MDListViewFontSize";
 				return [super mouseDown:event];
 			}
 		} else {
-			if ([selectedRowIndexes count]) {
+			if (selectedRowIndexes.count) {
 				[self deselectAll:self];
 				return [super mouseDown:event];
 			}

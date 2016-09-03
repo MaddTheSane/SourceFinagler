@@ -22,7 +22,7 @@
 @synthesize resizable;
 
 
-- (id)init {
+- (instancetype)init {
 	if ((self = [super initWithNibName:NSStringFromClass([self class]) bundle:nil])) {
 		resizable = YES;
 	}
@@ -50,12 +50,12 @@
 		}
 	}
 	
-	[self.view.window setShowsResizeIndicator:resizable];
+	(self.view.window).showsResizeIndicator = resizable;
 	
-	[self.view.window setMinSize:minWinSize];
-	[self.view.window setMaxSize:maxWinSize];
+	(self.view.window).minSize = minWinSize;
+	(self.view.window).maxSize = maxWinSize;
 	
-	[[self.view.window standardWindowButton:NSWindowZoomButton] setEnabled:resizable];
+	[self.view.window standardWindowButton:NSWindowZoomButton].enabled = resizable;
 	
 }
 	

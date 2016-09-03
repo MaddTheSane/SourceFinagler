@@ -120,7 +120,7 @@ extern NSString * const MDHLDocumentURLKey;
 @property (assign) BOOL shouldShowInvisibleItems;
 
 
-- (HKArchiveFile *)file;
+@property (readonly, strong) HKArchiveFile *file;
 
 
 @property (retain) NSImage *image;
@@ -152,8 +152,8 @@ extern NSString * const MDHLDocumentURLKey;
 - (IBAction)toggleShowQuickLook:(id)sender;
 - (IBAction)toggleShowPathBar:(id)sender;
 
-- (NSDate *)fileCreationDate;
-- (NSNumber *)fileSize;
+@property (readonly, copy) NSDate *fileCreationDate;
+@property (readonly, copy) NSNumber *fileSize;
 
 
 @end

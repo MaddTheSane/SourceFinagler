@@ -24,11 +24,11 @@
 	resizable = NO;
 	
 	if ([[[NSUserDefaults standardUserDefaults] objectForKey:TKLaunchTimeActionKey] unsignedIntegerValue] & TKLaunchTimeActionOpenMainWindow) {
-		[openMainWindowCheckbox setState:NSOnState];
+		openMainWindowCheckbox.state = NSOnState;
 	}
 	
 	if ([[[NSUserDefaults standardUserDefaults] objectForKey:TKLaunchTimeActionKey] unsignedIntegerValue] & TKLaunchTimeActionOpenNewDocument) {
-		[openDocumentCheckbox setState:NSOnState];
+		openDocumentCheckbox.state = NSOnState;
 	}
 }
 
@@ -37,15 +37,15 @@
 	
 	TKLaunchTimeActionType newLaunchTimeAction = TKLaunchTimeActionNone;
 	
-	if ([openMainWindowCheckbox state] == NSOnState) {
+	if (openMainWindowCheckbox.state == NSOnState) {
 		newLaunchTimeAction |= TKLaunchTimeActionOpenMainWindow;
 	}
 	
-	if ([openDocumentCheckbox state] == NSOnState) {
+	if (openDocumentCheckbox.state == NSOnState) {
 		newLaunchTimeAction |= TKLaunchTimeActionOpenNewDocument;
 	}
 	
-	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithUnsignedInteger:newLaunchTimeAction] forKey:TKLaunchTimeActionKey];
+	[[NSUserDefaults standardUserDefaults] setObject:@(newLaunchTimeAction) forKey:TKLaunchTimeActionKey];
 }
 
 

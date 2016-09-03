@@ -25,7 +25,7 @@
 	NSInteger					tag;		// 0 thru 3
 }
 
-- (id)initWithController:(TKImageExportController *)aController image:(TKImage *)anImage preset:(TKImageExportPreset *)aPreset tag:(NSInteger)aTag;
+- (instancetype)initWithController:(TKImageExportController *)aController image:(TKImage *)anImage preset:(TKImageExportPreset *)aPreset tag:(NSInteger)aTag;
 
 @property (assign) TKImageExportController *controller;
 

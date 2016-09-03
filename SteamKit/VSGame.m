@@ -17,7 +17,9 @@
 
 @implementation VSGame
 
-@synthesize gameID, executablePath, icon, iconPath, displayName, infoDictionary, creatorCode, addonsFolderPath, processIdentifier, isHelped, isRunning;
+@synthesize gameID, executablePath, icon, iconPath, displayName, infoDictionary, creatorCode, addonsFolderPath, processIdentifier;
+@synthesize helped = isHelped;
+@synthesize running = isRunning;
 
 @dynamic executableURL;
 

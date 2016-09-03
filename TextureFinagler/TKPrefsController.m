@@ -26,16 +26,16 @@ static NSArray *prefsClassNames = nil;
 + (void)initialize {
 	@synchronized(self) {
 		if (prefsClassNames == nil) {
-			prefsClassNames = [[[NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"TKPrefs" ofType:@"plist"]] objectForKey:@"TKPrefsClassNames"] retain];
+			prefsClassNames = [[NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"TKPrefs" ofType:@"plist"]][@"TKPrefsClassNames"] retain];
 		}
 		NSMutableDictionary *defaults = [NSMutableDictionary dictionary];
-		[defaults setObject:[NSNumber numberWithUnsignedInteger:TKPrefsGeneralView]	forKey:TKPrefsCurrentViewKey];
+		defaults[TKPrefsCurrentViewKey] = @(TKPrefsGeneralView);
 		[[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
 	}
 }
 
 
-- (id)init {
+- (instancetype)init {
 	if ((self = [super initWithWindowNibName:@"TKPrefs"])) {
 		currentView = [[[NSUserDefaults standardUserDefaults] objectForKey:TKPrefsCurrentViewKey] unsignedIntegerValue];
 		viewControllers = [[NSMutableArray alloc] init];
@@ -43,7 +43,7 @@ static NSArray *prefsClassNames = nil;
 		for (NSUInteger i = 0; i < count; i++) {
 			[viewControllers addObject:[NSNull null]];
 		}
-		[self window];
+		self.window;
 		
 	} else {
 		[NSBundle runFailedNibLoadAlert:@"TKPrefs"];
@@ -74,23 +74,23 @@ static NSArray *prefsClassNames = nil;
 		NSArray *toolbarItems = self.window.toolbar.items;
 		for (NSToolbarItem *toolbarItem in toolbarItems) {
 			if (toolbarItem.tag == currentView) {
-				[self.window.toolbar setSelectedItemIdentifier:toolbarItem.itemIdentifier]; break;
+				(self.window.toolbar).selectedItemIdentifier = toolbarItem.itemIdentifier; break;
 			}
 		}
 	} else {
-		currentView = [(NSToolbarItem *)sender tag];
+		currentView = ((NSToolbarItem *)sender).tag;
 	}
 	
-	TKViewController *viewController = [viewControllers objectAtIndex:currentView];
+	TKViewController *viewController = viewControllers[currentView];
 
 	if ((NSNull *)viewController == [NSNull null]) {
-		NSString *className = [prefsClassNames objectAtIndex:currentView];
+		NSString *className = prefsClassNames[currentView];
 		
 		Class viewControllerClass = NSClassFromString(className);
 		
 		viewController = [[viewControllerClass alloc] init];
 		
-		[viewControllers replaceObjectAtIndex:currentView withObject:viewController];
+		viewControllers[currentView] = viewController;
 		
 		[viewController release];
 		
@@ -103,7 +103,7 @@ static NSArray *prefsClassNames = nil;
 
 
 - (IBAction)showWindow:(id)sender {
-	if ([[self window] isVisible] == NO) [[self window] center];
+	if (self.window.visible == NO) [self.window center];
 	[super showWindow:sender];
 }
 

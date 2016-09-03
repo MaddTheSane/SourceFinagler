@@ -25,17 +25,17 @@
 	BOOL				showInvisibleItems;
 	
 }
-- (id)initWithParent:(HKNode *)aParent childNodes:(NSArray *)theChildren sortDescriptors:(NSArray *)aSortDescriptors container:(id)aContainer;
+- (instancetype)initWithParent:(HKNode *)aParent childNodes:(NSArray<HKNode*> *)theChildren sortDescriptors:(NSArray<NSSortDescriptor*> *)aSortDescriptors container:(id)aContainer;
 
 @property (nonatomic, assign) id container;
 @property (nonatomic, assign) HKNode *parent;
-@property (nonatomic, assign, setter=setVisible:) BOOL isVisible;
+@property (nonatomic, assign, getter=isVisible) BOOL visible;
 @property (nonatomic, assign) BOOL showInvisibleItems;
-@property (nonatomic, assign, setter=setLeaf:) BOOL isLeaf;
+@property (nonatomic, assign, getter=isLeaf) BOOL leaf;
 
-@property (nonatomic, retain) NSArray *sortDescriptors;
+@property (nonatomic, copy) NSArray<NSSortDescriptor*> *sortDescriptors;
 
-@property (nonatomic, assign, readonly) BOOL isRootNode;
+@property (nonatomic, assign, readonly, getter=isRootNode) BOOL rootNode;
 
 
 - (void)insertChildNode:(HKNode *)child atIndex:(NSUInteger)index;
@@ -46,21 +46,21 @@
 - (NSUInteger)indexOfChildNode:(HKNode *)child;
 - (NSUInteger)indexOfChildNodeIdenticalTo:(HKNode *)child;
 
-- (NSUInteger)countOfChildNodes;
-- (NSArray *)childNodes;
+@property (readonly) NSUInteger countOfChildNodes;
+@property (readonly, copy) NSArray<HKNode *> *childNodes;
 - (HKNode *)childNodeAtIndex:(NSUInteger)index;
 
-- (NSUInteger)countOfVisibleChildNodes;
-- (NSArray *)visibleChildNodes;
+@property (readonly) NSUInteger countOfVisibleChildNodes;
+@property (readonly, copy) NSArray<HKNode *> *visibleChildNodes;
 - (HKNode *)visibleChildNodeAtIndex:(NSUInteger)index;
 
 
-- (BOOL)isContainedInNodes:(NSArray *)nodes;
-- (BOOL)isDescendantOfNodes:(NSArray *)nodes;
+- (BOOL)isContainedInNodes:(NSArray<HKNode*> *)nodes;
+- (BOOL)isDescendantOfNodes:(NSArray<HKNode*> *)nodes;
 
 - (BOOL)isDescendantOfNode:(HKNode *)node;
 
-- (void)setSortDescriptors:(NSArray *)aSortDescriptors recursively:(BOOL)recursively;
+- (void)setSortDescriptors:(NSArray<NSSortDescriptor*> *)aSortDescriptors recursively:(BOOL)recursively;
 
 - (void)recursiveSortChildren;
 

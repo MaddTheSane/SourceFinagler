@@ -15,7 +15,7 @@
 + (NSString *)stringWithFSRef:(const FSRef *)anFSRef;
 - (BOOL)getFSRef:(FSRef *)anFSRef error:(NSError **)anError;
 
-- (NSString *)stringByAssuringUniqueFilename;
+@property (readonly, copy) NSString *stringByAssuringUniqueFilename;
 
 
 - (NSComparisonResult)caseInsensitiveNumericalCompare:(NSString *)string;
@@ -23,15 +23,15 @@
 
 
 - (NSString *)stringByReplacing:(NSString *)value with:(NSString *)newValue;
-- (NSString *)slashToColon;
-- (NSString *)colonToSlash;
+@property (readonly, copy) NSString *slashToColon;
+@property (readonly, copy) NSString *colonToSlash;
 
 
 @end
 
 
 
-@interface NSMutableArray (HKAdditions)
-- (void)insertObjectsFromArray:(NSArray *)array atIndex:(NSUInteger)anIndex;
+@interface NSMutableArray<ObjectType> (HKAdditions)
+- (void)insertObjectsFromArray:(NSArray<ObjectType> *)array atIndex:(NSUInteger)anIndex;
 @end
 

@@ -29,11 +29,11 @@ extern NSString *NSStringFromDefaultsKeyPath(NSString *defaultsKey);
 @end
 
 @interface NSColor (TKAdditions)
-- (NSString *)hexValue;
+@property (readonly, copy) NSString *hexValue;
 @end
 
 @interface NSFont (TKAdditions)
-- (NSString *)cssRepresentation;
+@property (readonly, copy) NSString *cssRepresentation;
 @end
 
 @interface NSMenu (TKAdditions)
@@ -58,7 +58,7 @@ extern NSString *NSStringFromDefaultsKeyPath(NSString *defaultsKey);
 @end
 
 @interface NSToolbarItem (TKAdditions)
-+ (id)toolbarItemWithItemIdentifier:(NSString *)anIdentifier tag:(NSInteger)aTag image:(NSImage *)anImage label:(NSString *)aLabel paletteLabel:(NSString *)aPaletteLabel target:(id)anObject action:(SEL)anAction;
++ (instancetype)toolbarItemWithItemIdentifier:(NSString *)anIdentifier tag:(NSInteger)aTag image:(NSImage *)anImage label:(NSString *)aLabel paletteLabel:(NSString *)aPaletteLabel target:(id)anObject action:(SEL)anAction;
 @end
 
 @interface NSUserDefaults (TKAdditions)
@@ -70,11 +70,11 @@ extern NSString *NSStringFromDefaultsKeyPath(NSString *defaultsKey);
 
 @interface NSView (TKAdditions) 
 - (void)setFrameFromString:(NSString *)aString;
-- (NSString *)stringWithSavedFrame;
+@property (readonly, copy) NSString *stringWithSavedFrame;
 @end
 
 @interface NSWindow (TKAdditions)
-- (CGFloat)toolbarHeight;
+@property (readonly) CGFloat toolbarHeight;
 - (void)resizeToSize:(NSSize)newSize;
 - (void)switchView:(NSView *)aView newTitle:(NSString *)aString;
 - (void)switchView:(NSView *)aView;

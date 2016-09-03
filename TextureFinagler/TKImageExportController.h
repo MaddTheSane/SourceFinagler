@@ -84,7 +84,7 @@
 	
 }
 
-- (id)initWithImageDocument:(TKImageDocument *)aDocument;
+- (instancetype)initWithImageDocument:(TKImageDocument *)aDocument;
 
 - (void)cleanup;
 

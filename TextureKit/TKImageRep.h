@@ -7,11 +7,12 @@
 //
 
 #import <AppKit/NSBitmapImageRep.h>
+#import <CoreImage/CIVector.h>
 #import <Foundation/NSDictionary.h>
 #import <TextureKit/TextureKitDefines.h>
 
 
-enum {
+typedef NS_ENUM(NSUInteger, TKFace) {
 	TKFaceRight				= 0,	// +x
 	TKFaceLeft				= 1,	// -x
 	TKFaceBack				= 2,	// +y
@@ -21,17 +22,16 @@ enum {
 	TKFaceSphereMap			= 6,	// fall back
 	TKFaceNone				= NSNotFound
 };
-typedef NSUInteger TKFace;
 
 
-enum {
+NS_ENUM(NSInteger) {
 	TKSliceIndexNone	= NSNotFound,
 	TKFrameIndexNone	= NSNotFound,
 	TKMipmapIndexNone	= NSNotFound
 };
 
 
-enum {
+typedef NS_ENUM(NSUInteger, TKDXTCompressionQuality) {
 	TKDXTCompressionLowQuality		= 0,
 	TKDXTCompressionMediumQuality	= 1,
 	TKDXTCompressionHighQuality		= 2,
@@ -39,13 +39,12 @@ enum {
 	TKDXTCompressionDefaultQuality	= TKDXTCompressionHighQuality,
 	TKDXTCompressionNotApplicable	= 1000
 };
-typedef NSUInteger TKDXTCompressionQuality;
 
 TEXTUREKIT_EXTERN NSString *NSStringFromDXTCompressionQuality(TKDXTCompressionQuality aQuality);
 TEXTUREKIT_EXTERN TKDXTCompressionQuality TKDXTCompressionQualityFromString(NSString *aQuality);
 
 
-enum {
+typedef NS_ENUM(NSUInteger, TKPixelFormat) {
 	TKPixelFormatXRGB1555,
 	TKPixelFormatL,
 	TKPixelFormatLA,
@@ -83,7 +82,6 @@ enum {
 	
 	TKPixelFormatUnknown			= NSNotFound
 };
-typedef NSUInteger TKPixelFormat;
 
 
 
@@ -156,34 +154,30 @@ typedef NSUInteger TKPixelFormat;
 //};
 
 
-enum {
+typedef NS_ENUM(NSUInteger, TKMipmapGenerationType) {
 	TKMipmapGenerationNoMipmaps				= 0,
 	TKMipmapGenerationUsingBoxFilter		= 1,
 	TKMipmapGenerationUsingTriangleFilter	= 2,
 	TKMipmapGenerationUsingKaiserFilter		= 3
 };
-typedef NSUInteger TKMipmapGenerationType;
 
-enum {
+typedef NS_ENUM(NSUInteger, TKWrapMode) {
 	TKWrapModeClamp					= 0,
 	TKWrapModeRepeat				= 1,
 	TKWrapModeMirror				= 2
 };
-typedef NSUInteger TKWrapMode;
 
-enum {
+typedef NS_ENUM(NSUInteger, TKRoundMode) {
 	TKRoundModeNone					= 0,
 	TKRoundModeNextPowerOfTwo		= 1,
 	TKRoundModeNearestPowerOfTwo	= 2,
 	TKRoundModePreviousPowerOfTwo	= 3
 };
-typedef NSUInteger TKRoundMode;
 
-enum {
+typedef NS_ENUM(NSUInteger, TKNormalMapLibrary) {
 	TKNormalMapLibraryUseNVIDIATextureTools		= 0,
 	TKNormalMapLibraryUseAccelerateFramework	= 1
 };
-typedef NSUInteger TKNormalMapLibrary;
 
 
 
@@ -209,20 +203,23 @@ TEXTUREKIT_EXTERN NSString * const TKImageRoundModeKey;
 
 + (NSArray *)imageRepsWithData:(NSData *)aData;
 
-+ (id)imageRepWithData:(NSData *)aData;
-- (id)initWithData:(NSData *)aData;
++ (instancetype)imageRepWithData:(NSData *)aData;
+- (instancetype)initWithData:(NSData *)aData;
 
-- (id)initWithCGImage:(CGImageRef)cgImage sliceIndex:(NSUInteger)aSlice face:(TKFace)aFace frameIndex:(NSUInteger)aFrame mipmapIndex:(NSUInteger)aMipmap;
+- (instancetype)initWithCGImage:(CGImageRef)cgImage sliceIndex:(NSUInteger)aSlice face:(TKFace)aFace frameIndex:(NSUInteger)aFrame mipmapIndex:(NSUInteger)aMipmap;
 
 
 /* create TKImageRep(s) from NSBitmapImageRep(s) */
-+ (id)imageRepWithImageRep:(NSBitmapImageRep *)aBitmapImageRep;
++ (instancetype)imageRepWithImageRep:(NSBitmapImageRep *)aBitmapImageRep;
 + (NSArray *)imageRepsWithImageReps:(NSArray *)bitmapImageReps;
 
 
 
 + (TKDXTCompressionQuality)defaultDXTCompressionQuality;
 + (void)setDefaultDXTCompressionQuality:(TKDXTCompressionQuality)aQuality;
+#if __has_feature(objc_class_property)
+@property (class) TKDXTCompressionQuality defaultDXTCompressionQuality;
+#endif
 
 @property (readonly, nonatomic, assign) NSUInteger sliceIndex;
 @property (readonly, nonatomic, assign) TKFace face;
@@ -239,7 +236,7 @@ TEXTUREKIT_EXTERN NSString * const TKImageRoundModeKey;
 - (void)setSliceIndex:(NSUInteger)aSliceIndex face:(TKFace)aFace frameIndex:(NSUInteger)aFrameIndex mipmapIndex:(NSUInteger)aMipmapIndex;
 
 
-- (NSData *)data;
+@property (readonly, copy) NSData *data;
 
 - (NSData *)representationUsingPixelFormat:(TKPixelFormat)aPixelFormat;
 

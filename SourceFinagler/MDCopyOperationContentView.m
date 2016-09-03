@@ -16,7 +16,7 @@
 
 @implementation MDCopyOperationContentView
 
-- (id)initWithFrame:(NSRect)frame {
+- (instancetype)initWithFrame:(NSRect)frame {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -66,16 +66,16 @@ static inline NSArray *MDReversedArray(NSArray *array) {
 		NSLog(@"[%@ %@] height   (BEFORE) == %.3f", NSStringFromClass([self class]), NSStringFromSelector(_cmd), NSHeight([self frame]));
 #endif
 		
-		NSUInteger viewCount = [viewsAndTags count];
+		NSUInteger viewCount = viewsAndTags.count;
 		
 		if (viewCount) {
 			
-			NSWindow *window = [self window];
+			NSWindow *window = self.window;
 			
 			if (window) {
 				// only resize if we have more than one operation
 				
-				NSSize newWindowSize = [window frame].size;
+				NSSize newWindowSize = window.frame.size;
 				
 				newWindowSize.height -= 22.0; // title bar height
 				newWindowSize.height += ([[copyOperationView class] copyOperationViewSize].height + [MDCopyOperationSeparatorView separatorViewHeight]);
@@ -83,29 +83,29 @@ static inline NSArray *MDReversedArray(NSArray *array) {
 				[window resizeToSize:newWindowSize];
 			}
 			
-			NSNumber *highestTag = [[[viewsAndTags allKeys] sortedArrayUsingSelector:@selector(compare:)] lastObject];
-			MDCopyOperationView *highestView = [viewsAndTags objectForKey:highestTag];
+			NSNumber *highestTag = [viewsAndTags.allKeys sortedArrayUsingSelector:@selector(compare:)].lastObject;
+			MDCopyOperationView *highestView = viewsAndTags[highestTag];
 			
 			MDCopyOperationSeparatorView *separatorView = [MDCopyOperationSeparatorView separatorViewPositionedAboveCopyOperationView:highestView];
 			[self addSubview:separatorView];
 		}
 		
-		NSArray *allViews = [viewsAndTags allValues];
+		NSArray *allViews = viewsAndTags.allValues;
 		
 		CGFloat totalHeight = 0;
 		
 		for (MDCopyOperationView *view in allViews) {
-			totalHeight += NSHeight([view frame]);
-			totalHeight += NSHeight([[view separatorView] frame]);
+			totalHeight += NSHeight(view.frame);
+			totalHeight += NSHeight(view.separatorView.frame);
 		}
 		
-		NSRect viewFrame = [copyOperationView frame];
+		NSRect viewFrame = copyOperationView.frame;
 		viewFrame.origin.y += totalHeight;
-		[copyOperationView setFrame:viewFrame];
+		copyOperationView.frame = viewFrame;
 		
 		[self addSubview:copyOperationView];
 		
-		[viewsAndTags setObject:copyOperationView forKey:[NSNumber numberWithInteger:[copyOperationView tag]]];
+		viewsAndTags[@(copyOperationView.tag)] = copyOperationView;
 		
 		[self setNeedsDisplay:YES];
 		
@@ -133,15 +133,15 @@ static inline NSArray *MDReversedArray(NSArray *array) {
 		
 		[[copyOperationView retain] autorelease];
 		
-		NSUInteger viewCount = [viewsAndTags count];
+		NSUInteger viewCount = viewsAndTags.count;
 		
-		MDCopyOperationView *foundView = [viewsAndTags objectForKey:[NSNumber numberWithInteger:[copyOperationView tag]]];
+		MDCopyOperationView *foundView = viewsAndTags[@(copyOperationView.tag)];
 		
 		if (foundView == nil) return;
 		
 		if (viewCount == 1 && foundView) {
 			[foundView removeFromSuperview];
-			[viewsAndTags removeObjectForKey:[NSNumber numberWithInteger:[copyOperationView tag]]];
+			[viewsAndTags removeObjectForKey:@(copyOperationView.tag)];
 			
 #if MD_DEBUG
 			NSLog(@"[%@ %@] subviews (AFTER) == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), MDReversedArray([self subviews]));
@@ -150,17 +150,17 @@ static inline NSArray *MDReversedArray(NSArray *array) {
 			return;
 		}
 		
-		[[copyOperationView separatorView] removeFromSuperview];
+		[copyOperationView.separatorView removeFromSuperview];
 		[copyOperationView removeFromSuperview];
 		
-		NSInteger removingTag = [copyOperationView tag];
+		NSInteger removingTag = copyOperationView.tag;
 		
-		NSArray *allViews = [viewsAndTags allValues];
+		NSArray *allViews = viewsAndTags.allValues;
 		
 		for (MDCopyOperationView *view in allViews) {
-			NSInteger viewTag = [view tag];
+			NSInteger viewTag = view.tag;
 			
-			NSUInteger autoresizingMask = [view autoresizingMask];
+			NSUInteger autoresizingMask = view.autoresizingMask;
 			
 			if (removingTag < viewTag) {
 				
@@ -176,28 +176,28 @@ static inline NSArray *MDReversedArray(NSArray *array) {
 				
 			}
 			
-			[view setAutoresizingMask:autoresizingMask];
-			[[view separatorView] setAutoresizingMask:autoresizingMask];
+			view.autoresizingMask = autoresizingMask;
+			view.separatorView.autoresizingMask = autoresizingMask;
 			
 		}
 		
-		NSWindow *window = [self window];
+		NSWindow *window = self.window;
 
 		if (window) {
 			// only resize if we have more than one operation
 			
-			NSSize newWindowSize = [window frame].size;
+			NSSize newWindowSize = window.frame.size;
 			
 			newWindowSize.height -= 22.0; // title bar height
-			newWindowSize.height -= (NSHeight([copyOperationView frame]) + NSHeight([[copyOperationView separatorView] frame]));
+			newWindowSize.height -= (NSHeight(copyOperationView.frame) + NSHeight(copyOperationView.separatorView.frame));
 			
 			[window resizeToSize:newWindowSize];
 		}
 		
 		for (MDCopyOperationView *view in allViews) {
-			NSInteger viewTag = [view tag];
+			NSInteger viewTag = view.tag;
 			
-			NSUInteger autoresizingMask = [view autoresizingMask];
+			NSUInteger autoresizingMask = view.autoresizingMask;
 			
 			if (removingTag < viewTag) {
 				autoresizingMask &= ~NSViewMinYMargin;
@@ -209,11 +209,11 @@ static inline NSArray *MDReversedArray(NSArray *array) {
 				
 			}
 			
-			[view setAutoresizingMask:autoresizingMask];
-			[[view separatorView] setAutoresizingMask:autoresizingMask];
+			view.autoresizingMask = autoresizingMask;
+			view.separatorView.autoresizingMask = autoresizingMask;
 		}
 		
-		[viewsAndTags removeObjectForKey:[NSNumber numberWithInteger:[copyOperationView tag]]];
+		[viewsAndTags removeObjectForKey:@(copyOperationView.tag)];
 		
 		[self setNeedsDisplay:YES];
 		

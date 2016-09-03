@@ -20,7 +20,7 @@
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	NSRect bounds = [self bounds];
+	NSRect bounds = self.bounds;
 	NSUInteger numberOfColumns = [self numberOfColumns];
 	NSUInteger numberOfRows = [self numberOfRows];
 	
@@ -55,7 +55,7 @@
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	NSRect bounds = [self bounds];
+	NSRect bounds = self.bounds;
 	NSUInteger numberOfColumns = [self numberOfColumns];
 	NSUInteger numberOfRows = [self numberOfRows];
 	

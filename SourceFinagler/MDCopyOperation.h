@@ -54,14 +54,14 @@ typedef NSUInteger MDCopyOperationStage;
 	BOOL							isCancelled;
 }
 
-+ (id)operationWithSource:(MDHLDocument *)aSource destination:(id)aDestination itemsAndPaths:(NSDictionary *)anItemsAndPaths tag:(NSInteger)aTag;
++ (instancetype)operationWithSource:(MDHLDocument *)aSource destination:(id)aDestination itemsAndPaths:(NSDictionary *)anItemsAndPaths tag:(NSInteger)aTag;
 
-- (id)initWithSource:(MDHLDocument *)aSource destination:(id)aDestination itemsAndPaths:(NSDictionary *)anItemsAndPaths tag:(NSInteger)aTag;
+- (instancetype)initWithSource:(MDHLDocument *)aSource destination:(id)aDestination itemsAndPaths:(NSDictionary *)anItemsAndPaths tag:(NSInteger)aTag;
 
 @property (assign) BOOL indeterminate;
-@property (assign, setter=setRolledOver:) BOOL isRolledOver;
+@property (assign, getter=isRolledOver) BOOL rolledOver;
 
-@property (assign, setter=setCancelled:)	BOOL isCancelled;
+@property (assign, getter=isCancelled)	BOOL cancelled;
 
 @property (assign) double zeroBytes;
 @property (assign) double currentBytes;

@@ -133,7 +133,6 @@
 		C13519A213947CB10074B5EA /* Readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = C13519A013947CA40074B5EA /* Readme.txt */; };
 		C136761A13E12AC100B71DA7 /* Acknowledgments.rtf in Resources */ = {isa = PBXBuildFile; fileRef = C136761913E12AC100B71DA7 /* Acknowledgments.rtf */; };
 		C13C060A146766BC00A64EA3 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1537AC21294F80E0056DDE1 /* Accelerate.framework */; };
-		C13FE24E1394303C00C0D27C /* isRunning.png in Resources */ = {isa = PBXBuildFile; fileRef = C1908B5D13935F1000656A78 /* isRunning.png */; };
 		C140E72513889B7A00027DD6 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C11B279211BDFBB8004D4CC0 /* ApplicationServices.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		C140E72613889BD600027DD6 /* VSSteamManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C1034A9111C5619C0054740E /* VSSteamManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C140E72713889BD700027DD6 /* VSSteamManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1034A9211C5619C0054740E /* VSSteamManager.m */; };
@@ -272,7 +271,6 @@
 		C18EDFF4147D52CC00EBE2DC /* TKVMTNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C10E5041147C8F0A00864795 /* TKVMTNode.m */; };
 		C190888813932B2800656A78 /* VSGameAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C190888713932B2800656A78 /* VSGameAdditions.m */; };
 		C1908B5813935CD000656A78 /* MDImageTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C1908B5713935CD000656A78 /* MDImageTextCell.m */; };
-		C1908B5E13935F1000656A78 /* isRunning.png in Resources */ = {isa = PBXBuildFile; fileRef = C1908B5D13935F1000656A78 /* isRunning.png */; };
 		C1941359144BFA1E00C56D91 /* TKBlueBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1941358144BFA1E00C56D91 /* TKBlueBackgroundView.m */; };
 		C195C8AA1442B26800B983E1 /* checkerboard.png in Resources */ = {isa = PBXBuildFile; fileRef = C195C8A91442B26800B983E1 /* checkerboard.png */; };
 		C1968A0414F560BB00ACFD02 /* SourceImage.qlgenerator in Copy QuickLook generator */ = {isa = PBXBuildFile; fileRef = C1C2C661127CBEF7003B24F6 /* SourceImage.qlgenerator */; };
@@ -728,7 +726,6 @@
 		C1FEAB92125F66BC00CA78FF /* VSSourceAddonFinaglerMain.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FEAB91125F66BC00CA78FF /* VSSourceAddonFinaglerMain.m */; };
 		C1FEABB1125F68B700CA78FF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C1C12548123A0EC6004674B4 /* Localizable.strings */; };
 		C1FEABFE125F69BA00CA78FF /* copy.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C1C12469123A0840004674B4 /* copy.m4a */; };
-		C1FF59EB145E317C005F36D5 /* caution.png in Resources */ = {isa = PBXBuildFile; fileRef = C1FF59D5145E2FCB005F36D5 /* caution.png */; };
 		C1FF5A39145E6571005F36D5 /* TKBase.h in Headers */ = {isa = PBXBuildFile; fileRef = C1FF5A37145E6571005F36D5 /* TKBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C1FF5A3A145E6571005F36D5 /* TKBase.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FF5A38145E6571005F36D5 /* TKBase.m */; };
 /* End PBXBuildFile section */
@@ -1358,7 +1355,6 @@
 		C190888713932B2800656A78 /* VSGameAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSGameAdditions.m; sourceTree = "<group>"; };
 		C1908B5613935CD000656A78 /* MDImageTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDImageTextCell.h; sourceTree = "<group>"; };
 		C1908B5713935CD000656A78 /* MDImageTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDImageTextCell.m; sourceTree = "<group>"; };
-		C1908B5D13935F1000656A78 /* isRunning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = isRunning.png; path = Resources/isRunning.png; sourceTree = "<group>"; };
 		C194114F144BA49200C56D91 /* BodyPart.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BodyPart.cpp; sourceTree = "<group>"; };
 		C1941150144BA49200C56D91 /* BodyPart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BodyPart.h; sourceTree = "<group>"; };
 		C1941151144BA49200C56D91 /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
@@ -1580,7 +1576,7 @@
 		C1C12528123A0CA3004674B4 /* MDStash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDStash.h; path = SourceFinagler/MDStash.h; sourceTree = SOURCE_ROOT; };
 		C1C12529123A0CA3004674B4 /* MDStash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDStash.m; path = SourceFinagler/MDStash.m; sourceTree = SOURCE_ROOT; };
 		C1C1252B123A0CAE004674B4 /* Source Finagler.sdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "Source Finagler.sdef"; path = "../Source Finagler.sdef"; sourceTree = "<group>"; };
-		C1C12549123A0EC6004674B4 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; lineEnding = 0; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C1C12549123A0EC6004674B4 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; lineEnding = 0; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C1C12634123A54F0004674B4 /* HL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1C126A9123A7FC3004674B4 /* MDGCFDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MDGCFDocument.h; sourceTree = "<group>"; };
 		C1C126AA123A7FC3004674B4 /* MDGCFDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MDGCFDocument.m; sourceTree = "<group>"; };
@@ -1909,7 +1905,6 @@
 		C1FEAB44125F64A900CA78FF /* VSSourceAddonController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSSourceAddonController.m; sourceTree = "<group>"; };
 		C1FEAB91125F66BC00CA78FF /* VSSourceAddonFinaglerMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSSourceAddonFinaglerMain.m; sourceTree = "<group>"; };
 		C1FF5068129332F1002DE317 /* splitterHandle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splitterHandle.png; sourceTree = "<group>"; };
-		C1FF59D5145E2FCB005F36D5 /* caution.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = caution.png; path = Resources/caution.png; sourceTree = "<group>"; };
 		C1FF5A37145E6571005F36D5 /* TKBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKBase.h; sourceTree = "<group>"; };
 		C1FF5A38145E6571005F36D5 /* TKBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKBase.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -2115,8 +2110,6 @@
 			children = (
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
 				C1C12548123A0EC6004674B4 /* Localizable.strings */,
-				55B973DB1D7B5576005D5808 /* Texture Finagler */,
-				C1C1243F1239F3DD004674B4 /* GCF Finagler */,
 				C11CE9BF119B7FE3000E26D2 /* Extras */,
 				C10355FB11C5AA930054740E /* MDSteamAppsRelocator */,
 				C10355FC11C5AAAF0054740E /* MDOtherAppsHelper */,
@@ -2247,6 +2240,8 @@
 		55B973DA1D7B50FC005D5808 /* Source Finagler */ = {
 			isa = PBXGroup;
 			children = (
+				55B973DB1D7B5576005D5808 /* Texture Finagler */,
+				C1C1243F1239F3DD004674B4 /* GCF Finagler */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -2317,7 +2312,6 @@
 				C1A117DD11D695EA008BBABD /* MDTableView.m */,
 				C1908B5613935CD000656A78 /* MDImageTextCell.h */,
 				C1908B5713935CD000656A78 /* MDImageTextCell.m */,
-				C1908B5D13935F1000656A78 /* isRunning.png */,
 				C1594EA11384F247009CE606 /* usbOverdriveNote.png */,
 				C140EA3A1388CE9400027DD6 /* noteIcon.icns */,
 			);
@@ -2330,7 +2324,6 @@
 				C116F85812D5301400551787 /* TKImageDocumentAccessoryViewController.h */,
 				C116F85912D5301400551787 /* TKImageDocumentAccessoryViewController.m */,
 				C145B3AF12C05BCF005D7E21 /* TKImageDocumentAccessoryView.xib */,
-				C1FF59D5145E2FCB005F36D5 /* caution.png */,
 			);
 			name = "Accessory View";
 			sourceTree = "<group>";
@@ -4683,7 +4676,6 @@
 			files = (
 				C140E72813889BD800027DD6 /* com.valvesoftware.games.plist in Resources */,
 				C140E72B13889BDD00027DD6 /* hl2_osx.app in Resources */,
-				C13FE24E1394303C00C0D27C /* isRunning.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4848,7 +4840,6 @@
 				C1279D3612DCB0EB0065F5D7 /* defaultPresets.plist in Resources */,
 				C1594EA21384F247009CE606 /* usbOverdriveNote.png in Resources */,
 				C140EA3B1388CE9400027DD6 /* noteIcon.icns in Resources */,
-				C1908B5E13935F1000656A78 /* isRunning.png in Resources */,
 				C1224DAA13B09351009AA0F4 /* SourceFinaglerAgent.app in Resources */,
 				C1A2DD9E13D3B4C4001ABB83 /* allDefaultPresets.plist in Resources */,
 				C136761A13E12AC100B71DA7 /* Acknowledgments.rtf in Resources */,
@@ -4879,7 +4870,6 @@
 				C1BA5F08144CC698006DA964 /* eye.pdf in Resources */,
 				C19B1FC114514BC2005F7902 /* TKGrayscaleFilter.cikernel in Resources */,
 				C19EB1021455768A0021185E /* TKImageInspector.xib in Resources */,
-				C1FF59EB145E317C005F36D5 /* caution.png in Resources */,
 				C180E5001472A53B0001C07F /* MMT.icns in Resources */,
 				C180E5011472A53B0001C07F /* PRT.icns in Resources */,
 				C1D5B023147BE71F00B0599B /* MDHLDocumentLion.xib in Resources */,
@@ -5735,12 +5725,14 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = (
 					i386,
 					x86_64,
 				);
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -5758,12 +5750,14 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = (
 					i386,
 					x86_64,
 				);
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Developer ID Application: Mark Douma";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -5812,6 +5806,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
 				DYLIB_CURRENT_VERSION = 1.0;
 				EXPORTED_SYMBOLS_FILE = SteamKit/SteamKit.exp;
@@ -5833,6 +5828,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
 				DYLIB_CURRENT_VERSION = 1.0;
 				EXPORTED_SYMBOLS_FILE = SteamKit/SteamKit.exp;
@@ -5877,6 +5873,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
 				DYLIB_CURRENT_VERSION = 1.0;
 				FRAMEWORK_VERSION = A;
@@ -5894,6 +5891,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
 				DYLIB_CURRENT_VERSION = 1.0;
 				EXPORTED_SYMBOLS_FILE = HLKit/HLKit.exp;
@@ -5911,6 +5909,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
 				DYLIB_CURRENT_VERSION = 1.0;
 				EXPORTED_SYMBOLS_FILE = TextureKit/TextureKit.exp;
@@ -5929,6 +5928,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
 				DYLIB_CURRENT_VERSION = 1.0;
 				EXPORTED_SYMBOLS_FILE = TextureKit/TextureKit.exp;
@@ -5992,6 +5992,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
 				DYLIB_CURRENT_VERSION = 1.0;
 				FRAMEWORK_VERSION = A;
@@ -6009,6 +6010,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
 				DYLIB_CURRENT_VERSION = 1.0;
 				FRAMEWORK_VERSION = A;
@@ -6025,6 +6027,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
 				DYLIB_CURRENT_VERSION = 1.0;
 				FRAMEWORK_VERSION = A;
@@ -6044,6 +6047,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
 				DYLIB_CURRENT_VERSION = 1.0;
 				FRAMEWORK_VERSION = A;
@@ -6063,6 +6067,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
 				DYLIB_CURRENT_VERSION = 1.0;
 				FRAMEWORK_VERSION = A;
@@ -6080,6 +6085,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
 				DYLIB_CURRENT_VERSION = 1.0;
 				FRAMEWORK_VERSION = A;
@@ -6094,6 +6100,7 @@
 		C1C2C5A6127CBCA0003B24F6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(BUILD_DIR)\"/**",
@@ -6121,6 +6128,7 @@
 		C1C2C5A7127CBCA0003B24F6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(BUILD_DIR)\"/**",
@@ -6242,6 +6250,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
 				DYLIB_CURRENT_VERSION = 1.0;
 				FRAMEWORK_VERSION = A;
@@ -6257,6 +6266,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
 				DYLIB_CURRENT_VERSION = 1.0;
 				FRAMEWORK_VERSION = A;
@@ -6272,6 +6282,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
 				DYLIB_CURRENT_VERSION = 1.0;
 				FRAMEWORK_VERSION = A;
@@ -6287,6 +6298,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
 				DYLIB_CURRENT_VERSION = 1.0;
 				FRAMEWORK_VERSION = A;
@@ -6302,6 +6314,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
 				DYLIB_CURRENT_VERSION = 1.0;
 				FRAMEWORK_VERSION = A;
@@ -6317,6 +6330,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
 				DYLIB_CURRENT_VERSION = 1.0;
 				FRAMEWORK_VERSION = A;
@@ -6332,6 +6346,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
 				DYLIB_CURRENT_VERSION = 1.0;
 				FRAMEWORK_VERSION = A;
@@ -6353,6 +6368,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
 				DYLIB_CURRENT_VERSION = 1.0;
 				FRAMEWORK_VERSION = A;

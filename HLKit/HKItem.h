@@ -10,11 +10,11 @@
 #import <HLKit/HLKitDefines.h>
 
 
-enum {
+NS_ENUM(NSInteger) {
 	HKErrorNotExtractable = 1
 };
 
-enum {
+typedef NS_ENUM(NSUInteger, HKFileType) {
 	HKFileTypeNone				= 0,
 	HKFileTypeHTML				= 1,
 	HKFileTypeText				= 2,
@@ -24,7 +24,6 @@ enum {
 	HKFileTypeOther				= 6,
 	HKFileTypeNotExtractable	= 7
 };
-typedef NSUInteger HKFileType;
 
 
 HLKIT_EXTERN NSString * const HKErrorDomain;
@@ -82,8 +81,8 @@ HLKIT_EXTERN NSString * const HKSystemErrorMessageKey;
 
 - (NSString *)pathRelativeToItem:(HKItem *)anItem;
 
-- (NSArray *)descendants;
-- (NSArray *)visibleDescendants;
+@property (readonly, copy) NSArray<HKItem*> *descendants;
+@property (readonly, copy) NSArray<HKItem*> *visibleDescendants;
 
 //- (id)parentFromArray:(NSArray *)array;
 //- (NSIndexPath *)indexPathInArray:(NSArray *)array;

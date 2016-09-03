@@ -30,7 +30,7 @@ extern NSString * const MDListViewFontSizeKey;
 	
 }
 
-- (NSInteger)iconSize;
+@property (readonly) NSInteger iconSize;
 
 - (NSArray *)itemsAtRowIndexes:(NSIndexSet *)rowIndexes;
 - (NSIndexSet *)rowIndexesForItems:(NSArray *)items;

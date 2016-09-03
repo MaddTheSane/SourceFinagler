@@ -29,7 +29,7 @@
 
 
 
-- (NSData *)data;
+@property (readonly, copy) NSData *data;
 
 @end
 

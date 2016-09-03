@@ -46,7 +46,7 @@ static SInt32 MDSystemVersion = MDUndeterminedVersion;
 }
 
 
-- (id)initWithFrame:(NSRect)frame {
+- (instancetype)initWithFrame:(NSRect)frame {
 	if ((self = [super initWithFrame:frame])) {
 		formatter = [[MDFileSizeFormatter alloc] init];
 	}
@@ -89,7 +89,7 @@ static SInt32 MDSystemVersion = MDUndeterminedVersion;
 
 - (void)drawRect:(NSRect)rect {
 	
-	BOOL isMainWindow = [[self window] isMainWindow];
+	BOOL isMainWindow = self.window.mainWindow;
 	
 	
 	if (MDSystemVersion == MDLeopard) {
@@ -151,32 +151,32 @@ static SInt32 MDSystemVersion = MDUndeterminedVersion;
 	
 	NSString *stringValue = nil;
 	
-	if ([selectedIndexes count] == 0) {
-		if ([totalCount unsignedIntegerValue] == 0 || [totalCount unsignedIntegerValue] >= 2) {
+	if (selectedIndexes.count == 0) {
+		if (totalCount.unsignedIntegerValue == 0 || totalCount.unsignedIntegerValue >= 2) {
 			
 			stringValue = [NSString stringWithFormat:NSLocalizedString(@"%@ items, %@ available", @""), totalCount, [formatter stringForObjectValue:freeSpace]];
 			
-		} else if ([totalCount unsignedIntegerValue] == 1) {
+		} else if (totalCount.unsignedIntegerValue == 1) {
 			
 			stringValue = [NSString stringWithFormat:NSLocalizedString(@"%@ item, %@ available", @""), totalCount, [formatter stringForObjectValue:freeSpace]];
 		}
-	} else if ([selectedIndexes count] == 1) {
+	} else if (selectedIndexes.count == 1) {
 		
-		stringValue = [NSString stringWithFormat:NSLocalizedString(@"%lu(single) of %@ selected, %@ available", @"String for when only 1 item is selected"), (unsigned long)[selectedIndexes count], totalCount, [formatter stringForObjectValue:freeSpace]];
+		stringValue = [NSString stringWithFormat:NSLocalizedString(@"%lu(single) of %@ selected, %@ available", @"String for when only 1 item is selected"), (unsigned long)selectedIndexes.count, totalCount, [formatter stringForObjectValue:freeSpace]];
 		
-	} else if ([selectedIndexes count] >= 2) {
+	} else if (selectedIndexes.count >= 2) {
 		
-		stringValue = [NSString stringWithFormat:NSLocalizedString(@"%lu(multiple) of %@ selected, %@ available", @"String for when more than one item is selected"), (unsigned long)[selectedIndexes count], totalCount, [formatter stringForObjectValue:freeSpace]];
+		stringValue = [NSString stringWithFormat:NSLocalizedString(@"%lu(multiple) of %@ selected, %@ available", @"String for when more than one item is selected"), (unsigned long)selectedIndexes.count, totalCount, [formatter stringForObjectValue:freeSpace]];
 	}
 
 	
 	NSMutableParagraphStyle *style = [[[NSParagraphStyle defaultParagraphStyle] mutableCopy] autorelease];
-	[style setLineBreakMode:NSLineBreakByTruncatingMiddle];
+	style.lineBreakMode = NSLineBreakByTruncatingMiddle;
 	
 	NSShadow *shadow = [[[NSShadow alloc] init] autorelease];
-	[shadow setShadowOffset:NSMakeSize(0.0, -1.0)];
+	shadow.shadowOffset = NSMakeSize(0.0, -1.0);
 	
-	[shadow setShadowColor:[NSColor colorWithCalibratedRed:1.0 green:1.0 blue:1.0 alpha:0.41]];
+	shadow.shadowColor = [NSColor colorWithCalibratedRed:1.0 green:1.0 blue:1.0 alpha:0.41];
 	
 	NSColor *textColor = nil;
 	
@@ -197,7 +197,7 @@ static SInt32 MDSystemVersion = MDUndeterminedVersion;
 	}
 	
 	
-	NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]],NSFontAttributeName, style,NSParagraphStyleAttributeName, shadow,NSShadowAttributeName, textColor,NSForegroundColorAttributeName, nil];
+	NSDictionary *attributes = @{NSFontAttributeName: [NSFont systemFontOfSize:[NSFont smallSystemFontSize]], NSParagraphStyleAttributeName: style, NSShadowAttributeName: shadow, NSForegroundColorAttributeName: textColor};
 	
 	NSAttributedString *richText = [[[NSAttributedString alloc] initWithString:stringValue attributes:attributes] autorelease];
 	

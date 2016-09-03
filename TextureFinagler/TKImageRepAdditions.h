@@ -12,17 +12,17 @@
 
 @interface TKImageRep (IKImageBrowserItem)
 
-- (NSString *)imageUID;					/* required */
-- (NSString *)imageRepresentationType;	/* required */
-- (id)imageRepresentation;				/* required */
+@property (readonly, copy) NSString *imageUID;					/* required */
+@property (readonly, copy) NSString *imageRepresentationType;	/* required */
+@property (readonly, strong) id imageRepresentation;				/* required */
 
-- (NSString *)imageTitle;
+@property (readonly, copy) NSString *imageTitle;
 
 //- (NSUInteger)imageVersion;
 //- (NSString *)imageSubtitle;
 //- (BOOL)isSelectable;
 
-- (NSDictionary *)imageProperties;
+@property (readonly, copy) NSDictionary *imageProperties;
 
 @end
 

@@ -10,12 +10,11 @@
 
 @class TKImageRep;
 
-enum {
+typedef NS_ENUM(NSUInteger, TKBrowserItemType) {
 	TKFaceBrowserItemType = 0,
 	TKFrameBrowserItemType,
 	TKPlaceholderBrowserItemType
 };
-typedef NSUInteger TKBrowserItemType;
 
 
 @interface TKImageBrowserItem : NSObject {
@@ -23,27 +22,23 @@ typedef NSUInteger TKBrowserItemType;
 	TKBrowserItemType	type;
 }
 
-+ (NSArray *)faceBrowserItemsWithImageRepsInArray:(NSArray *)imageReps;
-+ (id)faceBrowserItemWithImageRep:(TKImageRep *)anImageRep;
++ (NSArray<TKImageBrowserItem*> *)faceBrowserItemsWithImageRepsInArray:(NSArray<TKImageRep*> *)imageReps;
++ (instancetype)faceBrowserItemWithImageRep:(TKImageRep *)anImageRep;
 
-+ (NSArray *)frameBrowserItemsWithImageRepsInArray:(NSArray *)imageReps;
-+ (id)frameBrowserItemWithImageRep:(TKImageRep *)anImageRep;
++ (NSArray<TKImageBrowserItem*> *)frameBrowserItemsWithImageRepsInArray:(NSArray<TKImageRep*> *)imageReps;
++ (instancetype)frameBrowserItemWithImageRep:(TKImageRep *)anImageRep;
 
-- (id)initWithImageRep:(TKImageRep *)anImageRep type:(TKBrowserItemType)aType;
+- (instancetype)initWithImageRep:(TKImageRep *)anImageRep type:(TKBrowserItemType)aType;
 
 @property (nonatomic, retain) TKImageRep *imageRep;
 @property (nonatomic, assign) TKBrowserItemType type;
 
 
-- (NSString *)imageUID;
-
-- (NSString *)imageRepresentationType;
-
-- (id)imageRepresentation;
-
-- (NSString *)imageTitle;
-
-- (BOOL)isSelectable;
+@property (readonly, copy) NSString *imageUID;
+@property (readonly, copy) NSString *imageRepresentationType;
+@property (readonly, retain) id imageRepresentation;
+@property (readonly, copy) NSString *imageTitle;
+@property (readonly, getter=isSelectable) BOOL selectable;
 
 
 

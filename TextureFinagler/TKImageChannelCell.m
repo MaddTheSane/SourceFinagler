@@ -24,12 +24,12 @@
 
 @synthesize image;
 
-- (id)init {
+- (instancetype)init {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	if ((self = [super init])) {
-		[self setLineBreakMode:NSLineBreakByTruncatingMiddle];
+		self.lineBreakMode = NSLineBreakByTruncatingMiddle;
 	}
     return self;
 }
@@ -41,7 +41,7 @@
 #endif
 	TKImageChannelCell *cell = (TKImageChannelCell *)[super copyWithZone:zone];
 	cell->image = nil;
-	[cell setImage:image];
+	cell.image = image;
 	return cell;
 }
 
@@ -61,7 +61,7 @@
 //	NSLog(@"[%@ %@] image == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), image);
 #endif
 	
-	NSSize imageSize = [[self image] size];
+	NSSize imageSize = self.image.size;
 	bounds.size.width = imageSize.width;
 	bounds.size.height = imageSize.height;
 	bounds.origin.y += trunc((bounds.size.height - imageSize.height) / 2.0);
@@ -73,7 +73,7 @@
 #if TK_DEBUG
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	NSSize imageSize = [[self image] size];
+	NSSize imageSize = self.image.size;
 	bounds.origin.x += (TK_INSET_HORIZ + imageSize.width + TK_INTER_SPACE);
 	bounds.size.width -= (TK_INSET_HORIZ + imageSize.width + TK_INTER_SPACE);
 	return [super titleRectForBounds:bounds];
@@ -85,7 +85,7 @@
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	NSSize cellSize = [super cellSizeForBounds:aRect];
-	NSSize imageSize = [[self image] size];
+	NSSize imageSize = self.image.size;
 	cellSize.width += (TK_INSET_HORIZ + imageSize.width + TK_INTER_SPACE);
 	cellSize.height = (TK_BOTTOM_PADDING + imageSize.height);
 	return cellSize;
@@ -94,7 +94,7 @@
 
 - (NSRect)adjustFrameToVerticallyCenterText:(NSRect)frame {
 	// super would normally draw text at the top of the cell
-	NSInteger offset = floor((NSHeight(frame) - ([[self font] ascender] - [[self font] descender])) / 2);
+	NSInteger offset = floor((NSHeight(frame) - (self.font.ascender - self.font.descender)) / 2);
 	return NSInsetRect(frame, 0.0, offset);
 }
 
@@ -104,8 +104,8 @@
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	NSRect imageRect = [self imageRectForBounds:cellFrame];
-	NSSize imageSize = [[self image] size];
-	if ([self image]) {
+	NSSize imageSize = self.image.size;
+	if (self.image) {
 		[NSBezierPath setDefaultLineWidth:1.0];
 		NSRect strokeRect = NSInsetRect(imageRect, 0.25, 0.25);
 		
@@ -121,7 +121,7 @@
 //		[NSBezierPath strokeRect:imageRect];
 		
 		// Flip images that don't agree with our flipped state
-		BOOL isFlipped = [controlView isFlipped] != [[self image] isFlipped];
+		BOOL isFlipped = controlView.flipped != [self.image isFlipped];
 		if (isFlipped) {
 			[[NSGraphicsContext currentContext] saveGraphicsState];
 			NSAffineTransform *transform = [[NSAffineTransform alloc] init];
@@ -132,7 +132,7 @@
 			[transform release];
 		}
 //		NSLog(@"[%@ %@] drawing image", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-		[[self image] drawInRect:imageRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+		[self.image drawInRect:imageRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
 		if (isFlipped) [[NSGraphicsContext currentContext] restoreGraphicsState];
 	}
 	CGFloat inset = (TK_INSET_HORIZ + imageSize.width + TK_INTER_SPACE);

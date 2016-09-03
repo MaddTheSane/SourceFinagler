@@ -24,7 +24,7 @@ static CIKernel *TKGrayscaleFilterKernel = nil;
 
 
 
-- (id)init {
+- (instancetype)init {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -34,14 +34,14 @@ static CIKernel *TKGrayscaleFilterKernel = nil;
 			NSArray *kernels = [CIKernel kernelsWithString:[NSString stringWithContentsOfFile:[bundle pathForResource:@"TKGrayscaleFilter" ofType:@"cikernel"]
 																					 encoding:NSUTF8StringEncoding
 																						error:NULL]];
-			if ([kernels count]) {
-				TKGrayscaleFilterKernel = [[kernels objectAtIndex:0] retain];
+			if (kernels.count) {
+				TKGrayscaleFilterKernel = [kernels[0] retain];
 			}
 		}
-		self.redScale = [NSNumber numberWithDouble:1.0/3.0];
-		self.greenScale = [NSNumber numberWithDouble:1.0/3.0];
-		self.blueScale = [NSNumber numberWithDouble:1.0/3.0];
-		self.alphaScale = [NSNumber numberWithDouble:1.0/3.0];
+		self.redScale = @(1.0/3.0);
+		self.greenScale = @(1.0/3.0);
+		self.blueScale = @(1.0/3.0);
+		self.alphaScale = @(1.0/3.0);
 		
 		self.name = @"grayscaleFilter";
 	}
@@ -67,45 +67,33 @@ static CIKernel *TKGrayscaleFilterKernel = nil;
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	
-	return [NSDictionary dictionaryWithObjectsAndKeys:
+	return @{@"redScale": @{kCIAttributeMin: @0.0,
+			 kCIAttributeSliderMin: @0.0,
+			 kCIAttributeSliderMax: @1.0,
+			 kCIAttributeDefault: @0.333,
+			 kCIAttributeIdentity: @1.0,
+			 kCIAttributeType: kCIAttributeTypeScalar},
 			
-			[NSDictionary dictionaryWithObjectsAndKeys:
-			 [NSNumber numberWithDouble:  0.0], kCIAttributeMin,
-			 [NSNumber numberWithDouble:  0.0], kCIAttributeSliderMin,
-			 [NSNumber numberWithDouble:  1.0], kCIAttributeSliderMax,
-			 [NSNumber numberWithDouble:0.333], kCIAttributeDefault,
-			 [NSNumber numberWithDouble:1.0], kCIAttributeIdentity,
-			 kCIAttributeTypeScalar,           kCIAttributeType,
-			 nil],                               @"redScale",
+			@"greenScale": @{kCIAttributeMin: @0.0,
+			 kCIAttributeSliderMin: @0.0,
+			 kCIAttributeSliderMax: @1.0,
+			 kCIAttributeDefault: @0.333,
+			 kCIAttributeIdentity: @1.0,
+			 kCIAttributeType: kCIAttributeTypeScalar},
 			
-			[NSDictionary dictionaryWithObjectsAndKeys:
-			 [NSNumber numberWithDouble:  0.0], kCIAttributeMin,
-			 [NSNumber numberWithDouble:  0.0], kCIAttributeSliderMin,
-			 [NSNumber numberWithDouble:  1.0], kCIAttributeSliderMax,
-			 [NSNumber numberWithDouble:0.333], kCIAttributeDefault,
-			 [NSNumber numberWithDouble:1.0], kCIAttributeIdentity,
-			 kCIAttributeTypeScalar,           kCIAttributeType,
-			 nil],                               @"greenScale",
+			@"blueScale": @{kCIAttributeMin: @0.0,
+			 kCIAttributeSliderMin: @0.0,
+			 kCIAttributeSliderMax: @1.0,
+			 kCIAttributeDefault: @0.333,
+			 kCIAttributeIdentity: @1.0,
+			 kCIAttributeType: kCIAttributeTypeScalar},
 			
-			[NSDictionary dictionaryWithObjectsAndKeys:
-			 [NSNumber numberWithDouble:  0.0], kCIAttributeMin,
-			 [NSNumber numberWithDouble:  0.0], kCIAttributeSliderMin,
-			 [NSNumber numberWithDouble:  1.0], kCIAttributeSliderMax,
-			 [NSNumber numberWithDouble:0.333], kCIAttributeDefault,
-			 [NSNumber numberWithDouble:1.0], kCIAttributeIdentity,
-			 kCIAttributeTypeScalar,           kCIAttributeType,
-			 nil],                               @"blueScale",
-			
-			[NSDictionary dictionaryWithObjectsAndKeys:
-			 [NSNumber numberWithDouble:  0.0], kCIAttributeMin,
-			 [NSNumber numberWithDouble:  0.0], kCIAttributeSliderMin,
-			 [NSNumber numberWithDouble:  1.0], kCIAttributeSliderMax,
-			 [NSNumber numberWithDouble:0.333], kCIAttributeDefault,
-			 [NSNumber numberWithDouble:1.0], kCIAttributeIdentity,
-			 kCIAttributeTypeScalar,           kCIAttributeType,
-			 nil],                               @"alphaScale",
-			
-			nil];
+			@"alphaScale": @{kCIAttributeMin: @0.0,
+			 kCIAttributeSliderMin: @0.0,
+			 kCIAttributeSliderMax: @1.0,
+			 kCIAttributeDefault: @0.333,
+			 kCIAttributeIdentity: @1.0,
+			 kCIAttributeType: kCIAttributeTypeScalar}};
 	
 }
 

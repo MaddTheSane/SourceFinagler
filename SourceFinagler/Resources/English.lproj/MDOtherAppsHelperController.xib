@@ -17,7 +17,7 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="696" userLabel="view">
             <rect key="frame" x="0.0" y="0.0" width="634" height="437"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -84,7 +84,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" autosaveName="tableView2.0" headerView="1043" id="1042" customClass="MDTableView">
-                                <rect key="frame" x="0.0" y="0.0" width="632" height="155"/>
+                                <rect key="frame" x="0.0" y="0.0" width="632" height="19"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -126,7 +126,7 @@
                                     </tableColumn>
                                     <tableColumn identifier="helpedStateString" editable="NO" width="140" minWidth="40" maxWidth="1000" id="1045">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="   Status">
-                                            <font key="font" metaFont="systemMedium" size="11"/>
+                                            <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
                                         </tableHeaderCell>

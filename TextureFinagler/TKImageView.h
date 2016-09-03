@@ -12,7 +12,7 @@
 
 @class TKImageView, TKImageRep;
 
-enum {
+NS_ENUM(NSInteger) {
 	TKImageViewZoomOutTag			= -1,
 	TKImageViewZoomActualSizeTag	= 0,
 	TKImageViewZoomInTag			= 1
@@ -59,7 +59,7 @@ enum {
 
 - (void)startAnimating;
 - (void)stopAnimating;
-- (BOOL)isAnimating;
+@property (readonly, getter=isAnimating) BOOL animating;
 
 
 @property (assign) IBOutlet id <TKImageViewDelegate> delegate;

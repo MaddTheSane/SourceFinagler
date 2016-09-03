@@ -60,24 +60,18 @@ extern NSString * const MDInspectorViewDidHideNotification;
 //- (IBAction)show:(id)sender;
 //- (IBAction)hide:(id)sender;
 
-- (BOOL)isShown;
-- (void)setShown:(BOOL)value;
+@property (getter=isShown) BOOL shown;
 
 
-- (NSButton *)titleButton;
-- (void)setTitleButton:(NSButton *)value;
+@property (strong) NSButton *titleButton;
 
-- (NSButton *)disclosureButton;
-- (void)setDisclosureButton:(NSButton *)value;
+@property (strong) NSButton *disclosureButton;
 
-- (NSString *)autosaveName;
-- (void)setAutosaveName:(NSString *)value;
+@property (copy) NSString *autosaveName;
 
-- (BOOL)isInitiallyShown;
-- (void)setInitiallyShown:(BOOL)value;
+@property (getter=isInitiallyShown) BOOL initiallyShown;
 
-- (id <MDInspectorViewDelegate>)delegate;
-- (void)setDelegate:(id <MDInspectorViewDelegate>)aDelegate;
+@property (assign) id<MDInspectorViewDelegate> delegate;
 
 
 //@property (assign) IBOutlet NSButton	*titleButton;

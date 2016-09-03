@@ -11,10 +11,10 @@
 
 @interface VSGame (VSAdditions)
 
-- (NSString *)helpedStateString;
-- (NSColor *)helpedStateColor;
+@property (readonly, copy) NSString *helpedStateString;
+@property (readonly, copy) NSColor *helpedStateColor;
 
-- (NSImage *)runningStateImage;
+@property (readonly, copy) NSImage *runningStateImage;
 
 
 @end

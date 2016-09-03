@@ -26,15 +26,17 @@ NSString * const MDCopyOperationStageKey				= @"MDCopyOperationStage";
 
 @implementation MDCopyOperation
 
-@synthesize indeterminate, messageText, icon, source, destination, tag, itemsAndPaths, zeroBytes, currentBytes, totalBytes, isRolledOver, isCancelled;
+@synthesize indeterminate, messageText, icon, source, destination, tag, itemsAndPaths, zeroBytes, currentBytes, totalBytes;
 @dynamic informativeText;
+@synthesize rolledOver = isRolledOver;
+@synthesize cancelled = isCancelled;
 
-+ (id)operationWithSource:(MDHLDocument *)aSource destination:(id)aDestination itemsAndPaths:(NSDictionary *)anItemsAndPaths tag:(NSInteger)aTag {
++ (instancetype)operationWithSource:(MDHLDocument *)aSource destination:(id)aDestination itemsAndPaths:(NSDictionary *)anItemsAndPaths tag:(NSInteger)aTag {
 	return [[[[self class] alloc] initWithSource:aSource destination:aDestination itemsAndPaths:anItemsAndPaths tag:aTag] autorelease];
 }
 
 
-- (id)initWithSource:(MDHLDocument *)aSource destination:(id)aDestination itemsAndPaths:(NSDictionary *)anItemsAndPaths tag:(NSInteger)aTag {
+- (instancetype)initWithSource:(MDHLDocument *)aSource destination:(id)aDestination itemsAndPaths:(NSDictionary *)anItemsAndPaths tag:(NSInteger)aTag {
 	if ((self = [super init])) {
 		
 		icon = [[NSImage imageNamed:NSImageNameMultipleDocuments] retain];

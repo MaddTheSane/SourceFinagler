@@ -99,7 +99,7 @@ CGColorRef TKCreatePatternColorWithImage(CGImageRef imageRef);
 @dynamic showsImageBackground;
 
 
-- (id)initWithFrame:(NSRect)frameRect {
+- (instancetype)initWithFrame:(NSRect)frameRect {
 	if ((self = [super initWithFrame:frameRect])) {
 		
 	}
@@ -126,14 +126,14 @@ CGColorRef TKCreatePatternColorWithImage(CGImageRef imageRef);
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	
-	[self setCurrentToolMode:IKToolModeMove];
+	self.currentToolMode = IKToolModeMove;
 	
 //	[self setImageKitLayer:[self layer]];
 }
 
 
 - (void)setImageKitLayerIfNeeded {
-	if (imageKitLayer == nil) self.imageKitLayer = [self layer];
+	if (imageKitLayer == nil) self.imageKitLayer = self.layer;
 }
 
 - (CALayer *)imageKitLayer {
@@ -169,14 +169,14 @@ CGColorRef TKCreatePatternColorWithImage(CGImageRef imageRef);
 		CGImageRelease(image);
 		image = CGImageRetain([self image]);
 		
-		[self setImage:[previewImageRep CGImage] imageProperties:nil];
+		[self setImage:previewImageRep.CGImage imageProperties:nil];
 		
 	} else {
 		
 		[self setImage:image imageProperties:nil];
 	}
 	
-	[self setPreviewing:(previewImageRep != nil)];
+	self.previewing = (previewImageRep != nil);
 	
 }
 
@@ -205,7 +205,7 @@ CGColorRef TKCreatePatternColorWithImage(CGImageRef imageRef);
 				checkerboardImageRep = [[TKImageRep imageRepWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"checkerboard" ofType:@"png"]] retain];
 			}
 		}
-		CGImageRef checkerboardImageRef = CGImageRetain([checkerboardImageRep CGImage]);
+		CGImageRef checkerboardImageRef = CGImageRetain(checkerboardImageRep.CGImage);
 		CGColorRef patternColorRef = TKCreatePatternColorWithImage(checkerboardImageRef);
 		imageKitLayer.backgroundColor = patternColorRef;
 		CGColorRelease(patternColorRef);
@@ -219,7 +219,7 @@ CGColorRef TKCreatePatternColorWithImage(CGImageRef imageRef);
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	[self setShowsImageBackground:!showsImageBackground];
+	self.showsImageBackground = !showsImageBackground;
 }
 
 
@@ -237,14 +237,14 @@ CGColorRef TKCreatePatternColorWithImage(CGImageRef imageRef);
 //		NSLog(@"[%@ %@] animationImageReps == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), animationImageReps);
 #endif
 		
-	if ([animationImageReps count]) {
+	if (animationImageReps.count) {
 		
 		[self setImageKitLayerIfNeeded];
 		
 		
 		NSMutableArray *imageRefs = [NSMutableArray array];
 		for (TKImageRep *imageRep in animationImageReps) {
-			[imageRefs addObject:(id)[imageRep CGImage]];
+			[imageRefs addObject:(id)imageRep.CGImage];
 		}
 		
 		CAKeyframeAnimation *anim = [CAKeyframeAnimation animationWithKeyPath:@"contents"];
@@ -254,17 +254,17 @@ CGColorRef TKCreatePatternColorWithImage(CGImageRef imageRef);
 		anim.values = imageRefs;
 		
 #if TK_DEBUG
-		NSLog(@"[%@ %@] zoomFactor == %.3f", NSStringFromClass([self class]), NSStringFromSelector(_cmd), [self zoomFactor]);
+		NSLog(@"[%@ %@] zoomFactor == %.3f", NSStringFromClass([self class]), NSStringFromSelector(_cmd), self.zoomFactor);
 #endif
 		
 		TKImageRep *largestRep = [TKImageRep largestRepresentationInArray:animationImageReps];
 		
 		if (animationImageLayer == nil) animationImageLayer = [[CALayer layer] retain];
 		
-		animationImageLayer.frame = NSRectToCGRect(NSMakeRect(0.0, 0.0, [largestRep size].width, [largestRep size].height));
-		animationImageLayer.position = NSPointToCGPoint(NSMakePoint([self bounds].size.width/2.0, [self bounds].size.height/2.0));
+		animationImageLayer.frame = NSRectToCGRect(NSMakeRect(0.0, 0.0, largestRep.size.width, largestRep.size.height));
+		animationImageLayer.position = NSPointToCGPoint(NSMakePoint(self.bounds.size.width/2.0, self.bounds.size.height/2.0));
 		
-		[animationImageLayer setValue:[NSNumber numberWithDouble:[self zoomFactor]] forKeyPath:@"transform.scale"];
+		[animationImageLayer setValue:@(self.zoomFactor) forKeyPath:@"transform.scale"];
 		
 		self.layer = animationImageLayer;
 		
@@ -352,8 +352,8 @@ CGColorRef TKCreatePatternColorWithImage(CGImageRef imageRef);
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	if ([sender isKindOfClass:[NSSegmentedControl class]]) {
-		NSSegmentedCell *cell = [(NSSegmentedControl *)sender cell];
-		NSInteger tag = [cell tagForSegment:[cell selectedSegment]];
+		NSSegmentedCell *cell = ((NSSegmentedControl *)sender).cell;
+		NSInteger tag = [cell tagForSegment:cell.selectedSegment];
 		
 		if (tag == TKImageViewZoomOutTag) {
 			[self zoomOut:sender];
@@ -392,15 +392,15 @@ CGColorRef TKCreatePatternColorWithImage(CGImageRef imageRef);
 
 - (void)scrollWheel:(NSEvent *)event {
 	
-	CGFloat deltaY = [event deltaY];
+	CGFloat deltaY = event.deltaY;
 	
-	CGFloat currentZoomFactor = [self zoomFactor];
+	CGFloat currentZoomFactor = self.zoomFactor;
 	
 #if TK_DEBUG
 	NSLog(@"[%@ %@] currentZoomFactor == %.5f, deltaY == %.5f", NSStringFromClass([self class]), NSStringFromSelector(_cmd), currentZoomFactor, deltaY);
 #endif
 	
-	[self setZoomFactor:TKNextZoomFactorForZoomFactorAndOperation(currentZoomFactor, (deltaY > 0 ? TKImageViewZoomInTag : TKImageViewZoomOutTag))];
+	self.zoomFactor = TKNextZoomFactorForZoomFactorAndOperation(currentZoomFactor, (deltaY > 0 ? TKImageViewZoomInTag : TKImageViewZoomOutTag));
 }
 
 
@@ -452,10 +452,10 @@ CGColorRef TKCreatePatternColorWithImage(CGImageRef imageRef);
 
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
-	SEL action = [menuItem action];
+	SEL action = menuItem.action;
 	
 	if (action == @selector(toggleShowImageBackground:)) {
-		[menuItem setState:showsImageBackground];
+		menuItem.state = showsImageBackground;
 	}
 	return YES;
 }

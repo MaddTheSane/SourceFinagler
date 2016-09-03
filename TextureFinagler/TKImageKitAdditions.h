@@ -10,9 +10,7 @@
 
 @interface IKImageBrowserView (TKImageKitAdditions)
 
-- (CGFloat)idealViewWidth;
-
-- (CGFloat)idealViewHeight;
-
+@property (readonly) CGFloat idealViewWidth;
+@property (readonly) CGFloat idealViewHeight;
 
 @end

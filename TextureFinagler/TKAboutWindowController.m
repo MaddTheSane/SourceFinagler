@@ -16,7 +16,7 @@
 
 @implementation TKAboutWindowController
 
-- (id)init {
+- (instancetype)init {
 	if ((self = [super initWithWindowNibName:@"TKAboutWindow"])) {
 		
 	} else {
@@ -27,22 +27,22 @@
 
 
 - (void)awakeFromNib {
-	[nameField setStringValue:[[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString *)kCFBundleNameKey]];
-	[versionField setStringValue:[NSString stringWithFormat:@"%@ %@ (%@)",
+	nameField.stringValue = [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString *)kCFBundleNameKey];
+	versionField.stringValue = [NSString stringWithFormat:@"%@ %@ (%@)",
 								  [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleExecutable"],
 								  [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"],
-								  [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"]]];
+								  [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"]];
 	
-	[copyrightField setStringValue:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"NSHumanReadableCopyright"]];
+	copyrightField.stringValue = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"NSHumanReadableCopyright"];
 }
 
 
 
 - (IBAction)showWindow:(id)sender {
-	if (![[self window] isVisible]) {
-		[[self window] center];
+	if (!self.window.visible) {
+		[self.window center];
 	}
-	[[self window] makeKeyAndOrderFront:nil];
+	[self.window makeKeyAndOrderFront:nil];
 }
 
 

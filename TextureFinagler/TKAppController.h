@@ -19,11 +19,10 @@
 @class MDOtherAppsHelperController;
 
 
-enum {
+typedef NS_ENUM(NSUInteger, TKAppView) {
 	TKSteamAppsRelocatorView			= 0,
 	TKOtherAppsHelperView				= 1
 };
-typedef NSUInteger TKAppView;
 
 
 extern NSString * const MDCurrentViewKey;
@@ -35,12 +34,11 @@ extern NSString * const TKLastSourceAddonFinaglerVersionKey;
 extern NSString * const TKSpotlightImporterBundleIdentifierKey;
 
 
-enum {
+typedef NS_ENUM(NSUInteger, TKLaunchTimeActionType) {
 	TKLaunchTimeActionNone				= 0,
 	TKLaunchTimeActionOpenMainWindow	= 1,
 	TKLaunchTimeActionOpenNewDocument	= 2
 };
-typedef NSUInteger TKLaunchTimeActionType;
 
 extern NSString * const TKLaunchTimeActionKey;
 
@@ -145,7 +143,7 @@ extern SInt32		TKSystemVersion;
 
 - (IBAction)resetAllWarningDialogs:(id)sender;
 
-- (NSUndoManager *)globalUndoManager;
+@property (readonly, strong) NSUndoManager *globalUndoManager;
 
 @end
 

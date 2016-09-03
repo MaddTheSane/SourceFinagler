@@ -19,7 +19,7 @@
 
 @end
 
-enum {
+NS_ENUM(NSInteger) {
 	MDBrowserSortByName					= 0,
 	MDBrowserSortBySize					= 1,
 	MDBrowserSortByKind					= 2,
@@ -44,7 +44,7 @@ enum {
 @property (nonatomic, readonly, assign) BOOL shouldShowPreview;
 
 
-- (NSInteger)fontAndIconSize;
+@property (readonly) NSInteger fontAndIconSize;
 
 - (NSArray *)itemsAtRowIndexes:(NSIndexSet *)rowIndexes inColumn:(NSInteger)columnIndex;
 

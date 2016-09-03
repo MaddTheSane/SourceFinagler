@@ -73,31 +73,31 @@
     NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	NSMutableParagraphStyle *style = [[[NSParagraphStyle defaultParagraphStyle] mutableCopy] autorelease];
-	[style setLineBreakMode:NSLineBreakByTruncatingMiddle];
+	style.lineBreakMode = NSLineBreakByTruncatingMiddle;
 	style.alignment = self.alignment;
 	
 	
-	highlightedActiveEnabledAttributes = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[self font],NSFontAttributeName,
+	highlightedActiveEnabledAttributes = [[NSMutableDictionary alloc] initWithObjectsAndKeys:self.font,NSFontAttributeName,
 										  style,NSParagraphStyleAttributeName,
 										  [NSColor alternateSelectedControlTextColor],NSForegroundColorAttributeName, nil];
 	
-	highlightedActiveDisabledAttributes = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[self font],NSFontAttributeName,
+	highlightedActiveDisabledAttributes = [[NSMutableDictionary alloc] initWithObjectsAndKeys:self.font,NSFontAttributeName,
 										   style,NSParagraphStyleAttributeName,
 										   [NSColor colorWithCalibratedRed:208.0/255.0 green:208.0/255.0 blue:208.0/255.0 alpha:1.0],NSForegroundColorAttributeName, nil];
 	
-	highlightedInactiveEnabledAttributes = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[self font],NSFontAttributeName,
+	highlightedInactiveEnabledAttributes = [[NSMutableDictionary alloc] initWithObjectsAndKeys:self.font,NSFontAttributeName,
 											style,NSParagraphStyleAttributeName,
 											[NSColor controlTextColor],NSForegroundColorAttributeName, nil];
 	
-	highlightedInactiveDisabledAttributes = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[self font],NSFontAttributeName,
+	highlightedInactiveDisabledAttributes = [[NSMutableDictionary alloc] initWithObjectsAndKeys:self.font,NSFontAttributeName,
 											 style,NSParagraphStyleAttributeName,
 											 [[NSColor controlTextColor] colorWithAlphaComponent:0.5],NSForegroundColorAttributeName, nil];
 	
-	enabledAttributes = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[self font],NSFontAttributeName,
+	enabledAttributes = [[NSMutableDictionary alloc] initWithObjectsAndKeys:self.font,NSFontAttributeName,
 						 style,NSParagraphStyleAttributeName,
-						 [self textColor],NSForegroundColorAttributeName, nil];
+						 self.textColor,NSForegroundColorAttributeName, nil];
 	
-	disabledAttributes = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[self font],NSFontAttributeName,
+	disabledAttributes = [[NSMutableDictionary alloc] initWithObjectsAndKeys:self.font,NSFontAttributeName,
 						  style,NSParagraphStyleAttributeName,
 						  [[NSColor controlTextColor] colorWithAlphaComponent:0.5],NSForegroundColorAttributeName, nil];
 	
@@ -107,7 +107,7 @@
 
 
 
-- (id)initTextCell:(NSString *)value {
+- (instancetype)initTextCell:(NSString *)value {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -119,7 +119,7 @@
 }
 
 
-- (id)initImageCell:(NSImage *)value {
+- (instancetype)initImageCell:(NSImage *)value {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -132,7 +132,7 @@
 }
 
 
-- (id)init {
+- (instancetype)init {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -143,7 +143,7 @@
 }
 
 
-- (id)initWithCoder:(NSCoder *)coder {
+- (instancetype)initWithCoder:(NSCoder *)coder {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -159,8 +159,8 @@
 
 - (void)encodeWithCoder:(NSCoder *)coder {
 	[super encodeWithCoder:coder];
-	[coder encodeObject:[NSNumber numberWithDouble:(double) MD_LEFT_EDGE_PADDING] forKey:@"MDLeftEdgePadding"];
-	[coder encodeObject:[NSNumber numberWithBool:centerImageVertically] forKey:@"MDCenterImageVertically"];
+	[coder encodeObject:@((double) MD_LEFT_EDGE_PADDING) forKey:@"MDLeftEdgePadding"];
+	[coder encodeObject:@(centerImageVertically) forKey:@"MDCenterImageVertically"];
 }
 
 
@@ -271,7 +271,7 @@
 	CGFloat textWidthFudge = 0.0;
 	
 	if (image == nil) {
-		if ([self alignment] == NSLeftTextAlignment) {
+		if (self.alignment == NSLeftTextAlignment) {
 			textMarginFudge = 15.0;
 			textWidthFudge = -30.0;
 		} else {
@@ -279,7 +279,7 @@
 			textWidthFudge = -30.0;
 		}
 	} else {
-		if ([self alignment] == NSLeftTextAlignment) {
+		if (self.alignment == NSLeftTextAlignment) {
 //			textMarginFudge = 15.0;
 			textWidthFudge = -15.0;
 		} else {
@@ -311,13 +311,13 @@
 #if MD_DEBUG
     NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	[highlightedActiveEnabledAttributes setObject:fontObj forKey:NSFontAttributeName];
-	[highlightedActiveDisabledAttributes setObject:fontObj forKey:NSFontAttributeName];
-	[highlightedInactiveEnabledAttributes setObject:fontObj forKey:NSFontAttributeName];
-	[highlightedInactiveDisabledAttributes setObject:fontObj forKey:NSFontAttributeName];
-	[enabledAttributes setObject:fontObj forKey:NSFontAttributeName];
-	[disabledAttributes setObject:fontObj forKey:NSFontAttributeName];
-	[super setFont:fontObj];
+	highlightedActiveEnabledAttributes[NSFontAttributeName] = fontObj;
+	highlightedActiveDisabledAttributes[NSFontAttributeName] = fontObj;
+	highlightedInactiveEnabledAttributes[NSFontAttributeName] = fontObj;
+	highlightedInactiveDisabledAttributes[NSFontAttributeName] = fontObj;
+	enabledAttributes[NSFontAttributeName] = fontObj;
+	disabledAttributes[NSFontAttributeName] = fontObj;
+	super.font = fontObj;
 }
 
 
@@ -331,31 +331,31 @@
 	NSPoint	imagePoint = NSZeroPoint;
 	
 	if (image) {
-		imageSize = [image size];
-		imagePoint = [self calculatedImagePointForFrame:cellFrame imageSize:imageSize isFlipped:[controlView isFlipped]];
+		imageSize = image.size;
+		imagePoint = [self calculatedImagePointForFrame:cellFrame imageSize:imageSize isFlipped:controlView.flipped];
 	}
 	
 	NSDictionary *attributes = nil;
 	
-	BOOL isEnabled = [self isEnabled];
+	BOOL isEnabled = self.enabled;
 	
-	if ([self isHighlighted]) {
+	if (self.highlighted) {
 		
 		NSImage *tempImage = [image retain];
-		id tempObject = [[self objectValue] retain];
+		id tempObject = [self.objectValue retain];
 		
 		[self setImage:nil];
-		[self setStringValue:@""];
+		self.stringValue = @"";
 		
 		[super drawWithFrame:cellFrame inView:controlView];
 		
-		[self setImage:tempImage];
-		[self setObjectValue:tempObject];
+		self.image = tempImage;
+		self.objectValue = tempObject;
 		
 		[tempImage release];
 		[tempObject release];
 		
-		if ([[controlView window] isKeyWindow]) {
+		if (controlView.window.keyWindow) {
 			attributes = (isEnabled ? highlightedActiveEnabledAttributes : highlightedActiveDisabledAttributes);
 			
 		} else {
@@ -367,7 +367,7 @@
 	}
 	
 	if (image) {
-		BOOL isFlipped = [controlView isFlipped] != image.isFlipped;
+		BOOL isFlipped = controlView.flipped != image.isFlipped;
 		if (isFlipped) {
 			NSLog(@"isFlipped");
 			[[NSGraphicsContext currentContext] saveGraphicsState];
@@ -384,9 +384,9 @@
 //		[image compositeToPoint:imagePoint operation:NSCompositeSourceOver fraction:(isEnabled ? 1.0 : 0.5)];
 	}
 	
-	NSAttributedString *richText = [[[NSAttributedString alloc] initWithString:[self stringValue] attributes:attributes] autorelease];
+	NSAttributedString *richText = [[[NSAttributedString alloc] initWithString:self.stringValue attributes:attributes] autorelease];
 	
-	NSRect richTextRect = [self calculatedRichTextRectForFrame:cellFrame richText:richText fontSize:[[self font] pointSize] imageSize:imageSize isFlipped:[controlView isFlipped]];
+	NSRect richTextRect = [self calculatedRichTextRectForFrame:cellFrame richText:richText fontSize:self.font.pointSize imageSize:imageSize isFlipped:controlView.flipped];
 	
 	[richText drawInRect:richTextRect];
 	
@@ -413,12 +413,12 @@
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	
-	NSSize cellSize = [super cellSize];
+	NSSize cellSize = super.cellSize;
 	
 	if (image == nil) {
 		cellSize.width += 30.0;
 	} else {
-		NSSize imageSize = [image size];
+		NSSize imageSize = image.size;
 		cellSize.width += (31.0 + imageSize.width + MD_INTER_SPACE);
 	}
 	return cellSize;
@@ -442,7 +442,7 @@
 	NSPoint imagePoint = NSZeroPoint;
 	
 	if (image) {
-		imageSize = [image size];
+		imageSize = image.size;
 		imagePoint = [self calculatedImagePointForFrame:cellFrame imageSize:imageSize isFlipped:[dragImage isFlipped]];
 		
 		[dragImage lockFocus];
@@ -450,11 +450,11 @@
 		[dragImage unlockFocus];
 	}
 	
-	NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[self font],NSFontAttributeName, [[NSColor controlTextColor] colorWithAlphaComponent:0.37],NSForegroundColorAttributeName, nil];
+	NSDictionary *attributes = @{NSFontAttributeName: self.font, NSForegroundColorAttributeName: [[NSColor controlTextColor] colorWithAlphaComponent:0.37]};
 	
-	NSAttributedString *richText = [[[NSAttributedString alloc] initWithString:[self stringValue] attributes:attributes] autorelease];
+	NSAttributedString *richText = [[[NSAttributedString alloc] initWithString:self.stringValue attributes:attributes] autorelease];
 	
-	NSRect richTextRect = [self calculatedRichTextRectForFrame:cellFrame richText:richText fontSize:[[self font] pointSize] imageSize:imageSize isFlipped:[dragImage isFlipped]];
+	NSRect richTextRect = [self calculatedRichTextRectForFrame:cellFrame richText:richText fontSize:self.font.pointSize imageSize:imageSize isFlipped:[dragImage isFlipped]];
 	
 	[dragImage lockFocus];
 	[richText drawInRect:richTextRect];
@@ -475,7 +475,7 @@
 	NSRect	imageFrame = NSZeroRect;
 	
 	if (image) {
-		imageSize = [image size];
+		imageSize = image.size;
 		imagePoint = [self calculatedImagePointForFrame:cellFrame imageSize:imageSize isFlipped:isFlipped];
 		
 		imageFrame = NSMakeRect(imagePoint.x, imagePoint.y, imageSize.width, imageSize.height);
@@ -484,14 +484,14 @@
 	}
 	
 	NSMutableParagraphStyle *style = [[[NSParagraphStyle defaultParagraphStyle] mutableCopy] autorelease];
-	[style setLineBreakMode:NSLineBreakByTruncatingMiddle];
-	[style setAlignment:[self alignment]];
+	style.lineBreakMode = NSLineBreakByTruncatingMiddle;
+	style.alignment = self.alignment;
 	
-	NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[self font],NSFontAttributeName, style,NSParagraphStyleAttributeName, nil];
+	NSDictionary *attributes = @{NSFontAttributeName: self.font, NSParagraphStyleAttributeName: style};
 	
-	NSAttributedString *richText = [[[NSAttributedString alloc] initWithString:[self stringValue] attributes:attributes] autorelease];
+	NSAttributedString *richText = [[[NSAttributedString alloc] initWithString:self.stringValue attributes:attributes] autorelease];
 	
-	NSRect richTextRect = [self calculatedRichTextRectForFrame:cellFrame richText:richText fontSize:[[self font] pointSize] imageSize:imageSize isFlipped:isFlipped];
+	NSRect richTextRect = [self calculatedRichTextRectForFrame:cellFrame richText:richText fontSize:self.font.pointSize imageSize:imageSize isFlipped:isFlipped];
 	
 	[hitRects addObject:[NSValue valueWithRect:richTextRect]];
 	

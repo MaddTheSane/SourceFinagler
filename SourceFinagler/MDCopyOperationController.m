@@ -78,7 +78,7 @@ static MDCopyOperationController *sharedController = nil;
 	return self;
 }
 
-- (id)init {
+- (instancetype)init {
 	if ((self = [super initWithWindowNibName:@"MDCopyOperationWindow"])) {
 		operations = [[NSMutableArray alloc] init];
 		viewControllersAndTags = [[NSMutableDictionary alloc] init];
@@ -93,7 +93,7 @@ static MDCopyOperationController *sharedController = nil;
 
 - (void)awakeFromNib {
 	if ([[NSUserDefaults standardUserDefaults] objectForKey:@"NSWindow Frame copyOperationWindow"] == nil) {
-		[[self window] center];
+		[self.window center];
 	}
 }
 
@@ -105,34 +105,34 @@ static MDCopyOperationController *sharedController = nil;
 
 	if (operation == nil) return;
 	
-	[self setTag:[operation tag]];
+	self.tag = operation.tag;
 	
 #if MD_DEBUG
 	NSLog(@"[%@ %@] tag == %ld", NSStringFromClass([self class]), NSStringFromSelector(_cmd), (long)[operation tag]);
 #endif
 	
 	@synchronized(operations) {
-		if ([operations count] == 0) {
-			[self setColorType:MDWhiteBackgroundColorType];
+		if (operations.count == 0) {
+			self.colorType = MDWhiteBackgroundColorType;
 		} else {
-			[self setColorType:(colorType == MDAlternateBackgroundColorType ? MDWhiteBackgroundColorType : MDAlternateBackgroundColorType)];
+			self.colorType = (colorType == MDAlternateBackgroundColorType ? MDWhiteBackgroundColorType : MDAlternateBackgroundColorType);
 		}
 		[operations addObject:operation];
 	}
 	
-	MDCopyOperationViewController *viewController = [MDCopyOperationViewController viewControllerWithViewColorType:[self colorType] tag:[self tag]];
+	MDCopyOperationViewController *viewController = [MDCopyOperationViewController viewControllerWithViewColorType:self.colorType tag:self.tag];
 	
-	[viewController setRepresentedObject:operation];
+	viewController.representedObject = operation;
 	
 	@synchronized(viewControllersAndTags) {
-		[viewControllersAndTags setObject:viewController forKey:[NSNumber numberWithInteger:[self tag]]];
+		viewControllersAndTags[@(self.tag)] = viewController;
 	}
 	
 	@synchronized(contentView) {
-		[contentView addCopyOperationView:(MDCopyOperationView *)[viewController view]];
+		[contentView addCopyOperationView:(MDCopyOperationView *)viewController.view];
 	}
 	
-	if (![[self window] isVisible]) {
+	if (!self.window.visible) {
 		[self showWindow:self];
 	}
 }
@@ -147,31 +147,31 @@ static MDCopyOperationController *sharedController = nil;
 	MDCopyOperationViewController *viewController = nil;
 	
 	@synchronized(viewControllersAndTags) {
-		viewController = [[[viewControllersAndTags objectForKey:[NSNumber numberWithInteger:[operation tag]]] retain] autorelease];
+		viewController = [[viewControllersAndTags[@(operation.tag)] retain] autorelease];
 	}
 	
 	if (viewController == nil) return;
 	
 	@synchronized(viewControllersAndTags) {
-		[viewControllersAndTags removeObjectForKey:[NSNumber numberWithInteger:[operation tag]]];
+		[viewControllersAndTags removeObjectForKey:@(operation.tag)];
 	}
 	NSUInteger opsCount = 0;
 	
 	@synchronized(operations) {
 		[operations removeObject:operation];
-		opsCount = [operations count];
+		opsCount = operations.count;
 	}
 	
 	[viewController setRepresentedObject:nil];
 	
 	if (opsCount == 0) {
-		if ([[self window] isVisible]) {
-			[[self window] orderOut:self];
+		if (self.window.visible) {
+			[self.window orderOut:self];
 		}
 	}
 	
 	@synchronized(contentView) {
-		[contentView removeCopyOperationView:(MDCopyOperationView *)[viewController view]];
+		[contentView removeCopyOperationView:(MDCopyOperationView *)viewController.view];
 	}
 }
 
@@ -179,7 +179,7 @@ static MDCopyOperationController *sharedController = nil;
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	[[self window] makeKeyAndOrderFront:sender];
+	[self.window makeKeyAndOrderFront:sender];
 }
 
 

@@ -20,7 +20,7 @@
 @implementation TKMaterialPropertyViewController
 
 
-- (id)init {
+- (instancetype)init {
 	if ((self = [super initWithNibName:NSStringFromClass([self class]) bundle:nil])) {
 		
 		
@@ -33,7 +33,7 @@
 #if TK_DEBUG
     NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	[super setRepresentedObject:representedObject];
+	super.representedObject = representedObject;
 	
 	SCNMaterialProperty *materialProperty = (SCNMaterialProperty *)representedObject;
 	

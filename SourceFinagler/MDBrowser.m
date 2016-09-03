@@ -40,10 +40,9 @@ static const NSUInteger MDBrowserSortOptionMappingTableCount = sizeof(MDBrowserS
 static inline NSArray *MDSortDescriptorsFromSortOption(NSInteger sortOption) {
 	for (NSUInteger i = 0; i < MDBrowserSortOptionMappingTableCount; i++) {
 		if (MDBrowserSortOptionMappingTable[i].sortOption == sortOption) {
-			return [NSArray arrayWithObjects:
-					[[[NSSortDescriptor alloc] initWithKey:MDBrowserSortOptionMappingTable[i].key
+			return @[[[[NSSortDescriptor alloc] initWithKey:MDBrowserSortOptionMappingTable[i].key
 												 ascending:YES
-												  selector:NSSelectorFromString(MDBrowserSortOptionMappingTable[i].selectorName)] autorelease], nil];
+												  selector:NSSelectorFromString(MDBrowserSortOptionMappingTable[i].selectorName)] autorelease]];
 		}
 	}
 	return nil;
@@ -60,7 +59,7 @@ static inline NSArray *MDSortDescriptorsFromSortOption(NSInteger sortOption) {
 @synthesize sortDescriptors, shouldShowIcons, shouldShowPreview;
 
 
-- (id)initWithFrame:(NSRect)frameRect {
+- (instancetype)initWithFrame:(NSRect)frameRect {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -69,13 +68,13 @@ static inline NSArray *MDSortDescriptorsFromSortOption(NSInteger sortOption) {
 		shouldShowIcons = [[[NSUserDefaults standardUserDefaults] objectForKey:MDBrowserShouldShowIconsKey] boolValue];
 		shouldShowPreview = [[[NSUserDefaults standardUserDefaults] objectForKey:MDBrowserShouldShowPreviewKey] boolValue];
 		NSInteger sortByOption = [[[NSUserDefaults standardUserDefaults] objectForKey:MDBrowserSortByKey] intValue];
-		[self setSortDescriptors:MDSortDescriptorsFromSortOption(sortByOption)];
+		self.sortDescriptors = MDSortDescriptorsFromSortOption(sortByOption);
 	}
 	return self;
 }
 
 
-- (id)initWithCoder:(NSCoder *)coder {
+- (instancetype)initWithCoder:(NSCoder *)coder {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -85,7 +84,7 @@ static inline NSArray *MDSortDescriptorsFromSortOption(NSInteger sortOption) {
 		shouldShowIcons = [[[NSUserDefaults standardUserDefaults] objectForKey:MDBrowserShouldShowIconsKey] boolValue];
 		shouldShowPreview = [[[NSUserDefaults standardUserDefaults] objectForKey:MDBrowserShouldShowPreviewKey] boolValue];
 		NSInteger sortByOption = [[[NSUserDefaults standardUserDefaults] objectForKey:MDBrowserSortByKey] intValue];
-		[self setSortDescriptors:MDSortDescriptorsFromSortOption(sortByOption)];
+		self.sortDescriptors = MDSortDescriptorsFromSortOption(sortByOption);
 	}
 	return self;
 }
@@ -150,12 +149,12 @@ static inline NSArray *MDSortDescriptorsFromSortOption(NSInteger sortOption) {
 	} else if ([keyPath isEqualToString:NSStringFromDefaultsKeyPath(MDBrowserShouldShowPreviewKey)]) {
 		shouldShowPreview = [[[NSUserDefaults standardUserDefaults] objectForKey:MDBrowserShouldShowPreviewKey] boolValue];
 
-		NSInteger selectedColumn = [self selectedColumn];
+		NSInteger selectedColumn = self.selectedColumn;
 		
 		if (selectedColumn != -1) {
 			NSIndexSet *selectedRowIndexes = [[[self selectedRowIndexesInColumn:selectedColumn] retain] autorelease];
 			[self reloadData];
-			if ([selectedRowIndexes count] == 1) {
+			if (selectedRowIndexes.count == 1) {
 				[self selectRowIndexes:[NSIndexSet indexSet] inColumn:selectedColumn];
 				[self selectRowIndexes:selectedRowIndexes inColumn:selectedColumn];
 			}
@@ -163,9 +162,9 @@ static inline NSArray *MDSortDescriptorsFromSortOption(NSInteger sortOption) {
 		
 	} else if ([keyPath isEqualToString:NSStringFromDefaultsKeyPath(MDBrowserSortByKey)]) {
 		NSInteger sortByOption = [[[NSUserDefaults standardUserDefaults] objectForKey:MDBrowserSortByKey] integerValue];
-		[self setSortDescriptors:MDSortDescriptorsFromSortOption(sortByOption)];
-		if ([[self delegate] respondsToSelector:@selector(browser:sortDescriptorsDidChange:)]) {
-			[(id)[self delegate] browser:self sortDescriptorsDidChange:nil];
+		self.sortDescriptors = MDSortDescriptorsFromSortOption(sortByOption);
+		if ([self.delegate respondsToSelector:@selector(browser:sortDescriptorsDidChange:)]) {
+			[(id)self.delegate browser:self sortDescriptorsDidChange:nil];
 		}
 	} else {
 		if ([super respondsToSelector:@selector(observeValueForKeyPath:ofObject:change:context:)]) {
@@ -182,7 +181,7 @@ static inline NSArray *MDSortDescriptorsFromSortOption(NSInteger sortOption) {
 	NSLog(@" \"%@\" [%@ %@]", [[[[self window] windowController] document] displayName], NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	CGFloat newHeight = (CGFloat)((CGFloat)fontAndIconSize + 5.0);
-	[self setRowHeight:newHeight];
+	self.rowHeight = newHeight;
 }
 
 
@@ -192,7 +191,7 @@ static inline NSArray *MDSortDescriptorsFromSortOption(NSInteger sortOption) {
 #endif
 	NSMutableArray *items = [NSMutableArray array];
 	
-	NSUInteger index = [rowIndexes firstIndex];
+	NSUInteger index = rowIndexes.firstIndex;
 	
 	while (index != NSNotFound) {
 		id item = [self itemAtRow:index inColumn:columnIndex];
@@ -207,11 +206,11 @@ static inline NSArray *MDSortDescriptorsFromSortOption(NSInteger sortOption) {
 #if MD_DEBUG
 	NSLog(@" \"%@\" [%@ %@]", [[[[self window] windowController] document] displayName], NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	if (![self isLoaded]) {
+	if (!self.loaded) {
 		[self loadColumnZero];
 		return;
 	}
-	NSInteger lastVisibleColumn = [self lastVisibleColumn];
+	NSInteger lastVisibleColumn = self.lastVisibleColumn;
 	
 	for (NSUInteger i = 0; i <= lastVisibleColumn; i++) {
 		[self reloadColumn:i];
@@ -229,7 +228,7 @@ static inline NSArray *MDSortDescriptorsFromSortOption(NSInteger sortOption) {
 	NSLog(@" \"%@\" [%@ %@]", [[[[self window] windowController] document] displayName], NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	
-	if ([[self selectedRowIndexesInColumn:0] count]) {
+	if ([self selectedRowIndexesInColumn:0].count) {
 		[self selectRowIndexes:[NSIndexSet indexSet] inColumn:0];
 	}
 }
@@ -277,11 +276,11 @@ enum {
 #if MD_DEBUG
 	NSLog(@" \"%@\" [%@ %@]", [[[[self window] windowController] document] displayName], NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	NSString *characters = [event characters];
-	unsigned short keyCode = [event keyCode];
+	NSString *characters = event.characters;
+	unsigned short keyCode = event.keyCode;
 	
 	if ([characters isEqualToString:@" "]) {
-		[(MDHLDocument *)[self delegate] toggleShowQuickLook:self];
+		[(MDHLDocument *)self.delegate toggleShowQuickLook:self];
 		
 	} else if (keyCode == MDEscapeKey) {
 		
@@ -297,8 +296,8 @@ enum {
 #if MD_DEBUG
 	NSLog(@" \"%@\" [%@ %@]", [[[[self window] windowController] document] displayName], NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	NSInteger clickedColumn = [self clickedColumn];
-	NSInteger clickedRow = [self clickedRow];
+	NSInteger clickedColumn = self.clickedColumn;
+	NSInteger clickedRow = self.clickedRow;
 	
 	NSLog(@"[%@ %@] clickedColumn == %ld, clickedRow == %ld", NSStringFromClass([self class]), NSStringFromSelector(_cmd), (long)clickedColumn, (long)clickedRow);
 	
@@ -310,13 +309,13 @@ enum {
 #if MD_DEBUG
 	NSLog(@" \"%@\" [%@ %@]", [[[[self window] windowController] document] displayName], NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	NSUInteger modifierFlags = [event modifierFlags];
+	NSUInteger modifierFlags = event.modifierFlags;
 	
 	if (modifierFlags & NSAlternateKeyMask || modifierFlags & NSCommandKeyMask) {
 		return [super mouseDown:event];
 	} else if (modifierFlags & NSControlKeyMask) {
-		NSInteger clickedColumn = [self clickedColumn];
-		NSInteger clickedRow = [self clickedRow];
+		NSInteger clickedColumn = self.clickedColumn;
+		NSInteger clickedRow = self.clickedRow;
 		
 		NSLog(@"[%@ %@] clickedColumn == %ld, clickedRow == %ld", NSStringFromClass([self class]), NSStringFromSelector(_cmd), (long)clickedColumn, (long)clickedRow);
 		

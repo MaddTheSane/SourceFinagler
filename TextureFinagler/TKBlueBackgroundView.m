@@ -35,7 +35,7 @@
 //@dynamic gradient;
 
 
-- (id)initWithFrame:(NSRect)frame {
+- (instancetype)initWithFrame:(NSRect)frame {
     if ((self = [super initWithFrame:frame])) {
 		[self finishSetup];
 //		backgroundColor = [[NSColor colorWithCalibratedRed:MD_RED green:MD_GREEN blue:MD_BLUE alpha:1.0] retain];
@@ -44,7 +44,7 @@
 }
 
 
-- (id)initWithCoder:(NSCoder *)coder {
+- (instancetype)initWithCoder:(NSCoder *)coder {
 	if ((self = [super initWithCoder:coder])) {
 		[self finishSetup];
 //		backgroundColor = [[NSColor colorWithCalibratedRed:MD_RED green:MD_GREEN blue:MD_BLUE alpha:1.0] retain];
@@ -86,7 +86,7 @@
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
-	[gradient drawInRect:[self bounds] angle:90.0];
+	[gradient drawInRect:self.bounds angle:90.0];
 }
 
 

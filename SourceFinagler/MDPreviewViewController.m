@@ -23,7 +23,7 @@
 @synthesize sound, isPlayingSound, isQuickLookPanel;
 
 
-- (id)init {
+- (instancetype)init {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -36,7 +36,7 @@
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	isQuickLookPanel = NO;
-	[textView setFont:[NSFont userFixedPitchFontOfSize:[NSFont smallSystemFontSize]]];
+	textView.font = [NSFont userFixedPitchFontOfSize:[NSFont smallSystemFontSize]];
 }
 
 
@@ -59,28 +59,28 @@
 	if (!isQuickLookPanel) {
 		if (representedObject) {
 			if ([representedObject isKindOfClass:[MDHLDocument class]]) {
-				[box setContentView:imageViewView];
+				box.contentView = imageViewView;
 				
 			} else if ([representedObject isKindOfClass:[HKItem class]]) {
 				if ([representedObject respondsToSelector:@selector(fileType)]) {
 					HKFileType fileType = HKFileTypeNone;
-					fileType = [(HKFile *)representedObject fileType];
+					fileType = ((HKFile *)representedObject).fileType;
 					switch (fileType) {
 						case HKFileTypeHTML :
 						case HKFileTypeText :
 						case HKFileTypeOther :
 						case HKFileTypeImage :
-							[box setContentView:imageViewView];
+							box.contentView = imageViewView;
 							break;
 							
 						case HKFileTypeSound :
-							[box setContentView:soundViewView];
-							[self setSound:[(HKFile *)representedObject sound]];
-							[sound setDelegate:self];
+							box.contentView = soundViewView;
+							self.sound = [(HKFile *)representedObject sound];
+							sound.delegate = self;
 							break;
 							
 						case HKFileTypeMovie :
-							[box setContentView:movieViewView];
+							box.contentView = movieViewView;
 							break;
 							
 						default:
@@ -89,17 +89,17 @@
 				}
 			}
 		} else {
-			[box setContentView:imageViewView];
+			box.contentView = imageViewView;
 		}
 	}
-	[super setRepresentedObject:representedObject];
+	super.representedObject = representedObject;
 }
 
 
 
 - (void)sound:(NSSound *)aSound didFinishPlaying:(BOOL)didFinishPlaying {
 	if (didFinishPlaying) {
-		[soundButton setImage:[NSImage imageNamed:@"play"]];
+		soundButton.image = [NSImage imageNamed:@"play"];
 	}
 }
 
@@ -109,11 +109,11 @@
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	if ([sound isPlaying]) {
-		[soundButton setImage:[NSImage imageNamed:@"play"]];
+	if (sound.playing) {
+		soundButton.image = [NSImage imageNamed:@"play"];
 		[sound stop];
 	} else {
-		[soundButton setImage:[NSImage imageNamed:@"pause"]];
+		soundButton.image = [NSImage imageNamed:@"pause"];
 		[sound play];
 	}
 }

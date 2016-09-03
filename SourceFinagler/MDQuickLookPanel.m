@@ -18,7 +18,7 @@
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	NSString *characters = [theEvent characters];
+	NSString *characters = theEvent.characters;
 	if ([characters isEqualToString:@" "]) {
 		[self performClose:self];
 	} else {

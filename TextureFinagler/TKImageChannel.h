@@ -11,14 +11,20 @@
 
 @class TKImageRep;
 
-enum {
-	TKImageChannelRedMask		= 1 << 0,
-	TKImageChannelGreenMask		= 1 << 1,
-	TKImageChannelBlueMask		= 1 << 2,
-	TKImageChannelAlphaMask		= 1 << 3,
-	TKImageChannelRGBAMask		= TKImageChannelRedMask | TKImageChannelGreenMask | TKImageChannelBlueMask | TKImageChannelAlphaMask
+typedef NS_OPTIONS(NSUInteger, TKImageChannelMask) {
+	TKImageChannelMaskRed		= 1 << 0,
+	TKImageChannelMaskGreen		= 1 << 1,
+	TKImageChannelMaskBlue		= 1 << 2,
+	TKImageChannelMaskAlpha		= 1 << 3,
+	TKImageChannelMaskRGBA		= TKImageChannelMaskRed | TKImageChannelMaskGreen | TKImageChannelMaskBlue | TKImageChannelMaskAlpha,
+
+	
+	TKImageChannelRedMask		NS_SWIFT_UNAVAILABLE("Use .Red instead") = TKImageChannelMaskRed,
+	TKImageChannelGreenMask		NS_SWIFT_UNAVAILABLE("Use .Green instead") = TKImageChannelMaskGreen,
+	TKImageChannelBlueMask		NS_SWIFT_UNAVAILABLE("Use .Blue instead") = TKImageChannelMaskBlue,
+	TKImageChannelAlphaMask		NS_SWIFT_UNAVAILABLE("Use .Alpha instead") = TKImageChannelMaskAlpha,
+	TKImageChannelRGBAMask		NS_SWIFT_UNAVAILABLE("Use .RGBA instead") = TKImageChannelMaskRGBA
 };
-typedef NSUInteger TKImageChannelMask;
 
 
 
@@ -30,18 +36,18 @@ typedef NSUInteger TKImageChannelMask;
 	BOOL					enabled;
 }
 
-+ (NSArray *)imageChannelsWithImageRep:(TKImageRep *)anImageRep;
++ (NSArray<TKImageChannel*> *)imageChannelsWithImageRep:(TKImageRep *)anImageRep;
 
 
-+ (id)imageChannelWithImageRep:(TKImageRep *)anImageRep channelMask:(TKImageChannelMask)aChannelMask;
++ (instancetype)imageChannelWithImageRep:(TKImageRep *)anImageRep channelMask:(TKImageChannelMask)aChannelMask;
 
-- (id)initWithImageRep:(TKImageRep *)anImageRep channelMask:(TKImageChannelMask)aChannelMask;
+- (instancetype)initWithImageRep:(TKImageRep *)anImageRep channelMask:(TKImageChannelMask)aChannelMask;
 
 
-@property (retain) NSString *name;
-@property (retain) NSImage *image;
+@property (copy) NSString *name;
+@property (copy) NSImage *image;
 @property (assign) TKImageChannelMask channelMask;
-@property (assign) BOOL enabled;
+@property (assign, getter=isEnabled) BOOL enabled;
 @property (retain) CIFilter *filter;
 
 

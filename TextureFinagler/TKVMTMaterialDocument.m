@@ -37,7 +37,7 @@ static NSMutableDictionary *materialAttributes = nil;
 
 
 
-- (id)init {
+- (instancetype)init {
     if ((self = [super init])) {
         // Add your subclass-specific initialization here.
         // If an error occurs here, return nil.

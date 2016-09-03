@@ -52,14 +52,14 @@ static inline NSString *NSStringFromInspectorViewAutosaveName(NSString *anAutosa
 }
 
 
-- (id)initWithFrame:(NSRect)frame {
+- (instancetype)initWithFrame:(NSRect)frame {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	if ((self = [super initWithFrame:frame])) {
 //		isShown = YES;
 		
-		originalHeight = [self frame].size.height;
+		originalHeight = self.frame.size.height;
 		hiddenHeight = 0.0;
 		
 		autosaveName = @"";
@@ -78,14 +78,14 @@ static inline NSString *NSStringFromInspectorViewAutosaveName(NSString *anAutosa
 
 
 
-- (id)initWithCoder:(NSCoder *)coder {
+- (instancetype)initWithCoder:(NSCoder *)coder {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
     if ((self = [super initWithCoder:coder])) {
 //		isShown = YES;
 		
-		originalHeight = [self frame].size.height;
+		originalHeight = self.frame.size.height;
 		hiddenHeight = 0.0;
 		
 		NSString *encodedName = [coder decodeObjectForKey:MDInspectorViewAutosaveNameKey];
@@ -96,7 +96,7 @@ static inline NSString *NSStringFromInspectorViewAutosaveName(NSString *anAutosa
 		
 		autosaveName = encodedName;
 		
-		[self setInitiallyShown:[[coder decodeObjectForKey:MDInspectorViewIsIntiallyExpandedKey] boolValue]];
+		self.isInitiallyShown = [[coder decodeObjectForKey:MDInspectorViewIsIntiallyExpandedKey] boolValue];
 		
 //		hiddenHeight = 1.0;
 	}
@@ -110,7 +110,7 @@ static inline NSString *NSStringFromInspectorViewAutosaveName(NSString *anAutosa
 #endif
     [super encodeWithCoder:coder];
 	[coder encodeObject:autosaveName forKey:MDInspectorViewAutosaveNameKey];
-	[coder encodeObject:[NSNumber numberWithBool:isInitiallyShown] forKey:MDInspectorViewIsIntiallyExpandedKey];
+	[coder encodeObject:@(isInitiallyShown) forKey:MDInspectorViewIsIntiallyExpandedKey];
 	
 }
 
@@ -125,7 +125,7 @@ static inline NSString *NSStringFromInspectorViewAutosaveName(NSString *anAutosa
 		NSNumber *isShownNumber = [[NSUserDefaults standardUserDefaults] objectForKey:NSStringFromInspectorViewAutosaveName(autosaveName)];
 		if (isShownNumber == nil) {
 			// if no value is present in user defaults, then set the default value of YES (or whatever the present value is by this point)
-			[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:isShown] forKey:NSStringFromInspectorViewAutosaveName(autosaveName)];
+			[[NSUserDefaults standardUserDefaults] setObject:@(isShown) forKey:NSStringFromInspectorViewAutosaveName(autosaveName)];
 		}
 		isShown = [[[NSUserDefaults standardUserDefaults] objectForKey:NSStringFromInspectorViewAutosaveName(autosaveName)] boolValue];
 		
@@ -137,18 +137,18 @@ static inline NSString *NSStringFromInspectorViewAutosaveName(NSString *anAutosa
 	}
 	
 	if (!isShown) {
-		if ([self window] == nil) {
+		if (self.window == nil) {
 			havePendingWindowHeightChange = YES;
 		} else {
 //			[self hideAndNotify:NO];
 			[self hideAndNotify:YES];
 		}
 	} else {
-		if (disclosureButton) [disclosureButton setState:NSOnState];
+		if (disclosureButton) disclosureButton.state = NSOnState;
 
 	}
 	
-    if ([self autoresizingMask] & NSViewHeightSizable) {
+    if (self.autoresizingMask & NSViewHeightSizable) {
 //		NSLog(@"\"%@\" [%@ %@] WARNING: You probably don't want this view to be resizeable vertically; you should turn that off in the inspector in IB.", autosaveName, NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 	}
 	
@@ -179,7 +179,7 @@ static inline NSString *NSStringFromInspectorViewAutosaveName(NSString *anAutosa
 	}
 	
 	if (autosaveName && ![autosaveName isEqualToString:@""]) {
-		[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:isShown] forKey:NSStringFromInspectorViewAutosaveName(autosaveName)];
+		[[NSUserDefaults standardUserDefaults] setObject:@(isShown) forKey:NSStringFromInspectorViewAutosaveName(autosaveName)];
 	}
 }
 
@@ -189,7 +189,7 @@ static inline NSString *NSStringFromInspectorViewAutosaveName(NSString *anAutosa
 //	NSLog(@"\"%@\" [%@ %@]", autosaveName, NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	
-	if (disclosureButton) [disclosureButton setState:NSOffState];
+	if (disclosureButton) disclosureButton.state = NSOffState;
 	
 	NSRect frame = self.frame;
 	
@@ -212,7 +212,7 @@ static inline NSString *NSStringFromInspectorViewAutosaveName(NSString *anAutosa
 	
 	[viewController.view removeFromSuperview];
 	
-	[self setFrame:NSMakeRect(frame.origin.x, frame.origin.y + NSHeight(frame) - 1.0, NSWidth(frame), 1.0)];
+	self.frame = NSMakeRect(frame.origin.x, frame.origin.y + NSHeight(frame) - 1.0, NSWidth(frame), 1.0);
 	
 	[self.superview setNeedsDisplay:YES];
 	
@@ -227,7 +227,7 @@ static inline NSString *NSStringFromInspectorViewAutosaveName(NSString *anAutosa
 //	NSLog(@"\"%@\" [%@ %@]", autosaveName, NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	
-	if (disclosureButton) [disclosureButton setState:NSOnState];
+	if (disclosureButton) disclosureButton.state = NSOnState;
 	
 	if (viewController == nil) {
 		self.viewController = [[TKMaterialPropertyViewController alloc] init];
@@ -254,7 +254,7 @@ static inline NSString *NSStringFromInspectorViewAutosaveName(NSString *anAutosa
 		}
 	}
 	
-	[self setFrame:NSMakeRect(frame.origin.x, frame.origin.y - newViewSize.height, newViewSize.width, newViewSize.height)];
+	self.frame = NSMakeRect(frame.origin.x, frame.origin.y - newViewSize.height, newViewSize.width, newViewSize.height);
 	
 	[self setNeedsDisplay:YES];
 	
@@ -289,27 +289,27 @@ static inline NSString *NSStringFromInspectorViewAutosaveName(NSString *anAutosa
     // * For each view that we touched earlier, restore the old autoresize mask.
 	
 	
-	NSRect			ourFrame = [self frame];
-	NSWindow		*window = [self window];
+	NSRect			ourFrame = self.frame;
+	NSWindow		*window = self.window;
 	
 //	if (window == nil && delegate && [delegate respondsToSelector:@selector(window)]) {
 //		window = [delegate window];
 //	}
 	
-	NSView			*contentView = [window contentView];
+	NSView			*contentView = window.contentView;
 	
     // Adjust the autoresize masks of the window's subviews, remembering the original masks.
 	
-	NSArray			*windowSubviews = [contentView subviews];
-	NSUInteger		windowSubviewCount = [windowSubviews count];
+	NSArray			*windowSubviews = contentView.subviews;
+	NSUInteger		windowSubviewCount = windowSubviews.count;
 	NSMutableArray	*windowSubviewMasks = [NSMutableArray array];
 	
 	for (NSUInteger	i = 0; i < windowSubviewCount; i++) {
 		
-		NSView *windowSubview = [windowSubviews objectAtIndex:i];
-		NSUInteger mask = [windowSubview autoresizingMask];
+		NSView *windowSubview = windowSubviews[i];
+		NSUInteger mask = windowSubview.autoresizingMask;
 		
-		[windowSubviewMasks addObject:[NSNumber numberWithUnsignedLong:mask]];
+		[windowSubviewMasks addObject:@(mask)];
 		
 		if (windowSubview == self) {
             // This is us.  Make us stick to the top and bottom of the window, and resize vertically.
@@ -317,7 +317,7 @@ static inline NSString *NSStringFromInspectorViewAutosaveName(NSString *anAutosa
 			mask &= ~NSViewMaxYMargin;
 			mask &= ~NSViewMinYMargin;
 			
-		} else if (NSMaxY([windowSubview frame])- 2.0 <= NSMaxY(ourFrame)) {
+		} else if (NSMaxY(windowSubview.frame)- 2.0 <= NSMaxY(ourFrame)) {
 //		} else if (NSMaxY([windowSubview frame]) <= NSMaxY(ourFrame)) {
             // This subview is below us. Make it stick to the bottom of the window.
             // It should not change height.
@@ -335,39 +335,39 @@ static inline NSString *NSStringFromInspectorViewAutosaveName(NSString *anAutosa
 			mask |= NSViewMinYMargin;
 		}
 		
-		[windowSubview setAutoresizingMask:mask];
+		windowSubview.autoresizingMask = mask;
 	}
 	
 	
     // Adjust the autoresize masks of our subviews, remembering the original masks.
     // (Note that if showSubviewsWhileResizing is NO, [self subviews] will be empty.)
 	
-	NSArray			*ourSubviews = [self subviews];
-	NSUInteger		ourSubviewCount = [ourSubviews count];
+	NSArray			*ourSubviews = self.subviews;
+	NSUInteger		ourSubviewCount = ourSubviews.count;
 	NSMutableArray	*ourSubviewMasks = [NSMutableArray array];
 	
 	for (NSUInteger i = 0; i < ourSubviewCount; i++) {
 		NSView *ourSubview;
 		NSUInteger mask;
 		
-		ourSubview = [ourSubviews objectAtIndex:i];
-		mask = [ourSubview autoresizingMask];
-		[ourSubviewMasks addObject:[NSNumber numberWithUnsignedLong:mask]];
+		ourSubview = ourSubviews[i];
+		mask = ourSubview.autoresizingMask;
+		[ourSubviewMasks addObject:@(mask)];
 		
         // Don't change height, and stick to the top of the view.
 		mask &= ~NSViewHeightSizable;
 		mask &= ~NSViewMaxYMargin;
 		mask |= NSViewMinYMargin;
 		
-		[ourSubview setAutoresizingMask:mask];
+		ourSubview.autoresizingMask = mask;
 	}
 	
     // Compute the window's new frame, and resize it.
-	NSRect newWindowFrame = [window frame];
+	NSRect newWindowFrame = window.frame;
 	newWindowFrame.origin.y -= value;
 	newWindowFrame.size.height += value;
 	
-	if ([window isVisible] && havePendingWindowHeightChange == NO) {
+	if (window.visible && havePendingWindowHeightChange == NO) {
 		[window setFrame:newWindowFrame display:YES animate:YES];
 	} else {
 		[window setFrame:newWindowFrame display:NO];
@@ -375,30 +375,30 @@ static inline NSString *NSStringFromInspectorViewAutosaveName(NSString *anAutosa
 	
     // Adjust the window's min and max sizes to make sense.
 	
-	NSSize newWindowMinOrMaxSize = [window minSize];
+	NSSize newWindowMinOrMaxSize = window.minSize;
 	newWindowMinOrMaxSize.height += value;
-	[window setMinSize:newWindowMinOrMaxSize];
+	window.minSize = newWindowMinOrMaxSize;
 	
-	newWindowMinOrMaxSize = [window maxSize];
+	newWindowMinOrMaxSize = window.maxSize;
     // If there is no max size set (height of 0), don't change it.
 	
 	if (newWindowMinOrMaxSize.height) {
 		newWindowMinOrMaxSize.height += value;
-		[window setMaxSize:newWindowMinOrMaxSize];
+		window.maxSize = newWindowMinOrMaxSize;
 	}
 	
 	
     // Restore the saved autoresize masks.
-	NSUInteger count = [windowSubviewMasks count];
+	NSUInteger count = windowSubviewMasks.count;
 	
 	for (NSUInteger index = 0; index < count; index++) {
-		[(NSView *)[windowSubviews objectAtIndex:index] setAutoresizingMask:[[windowSubviewMasks objectAtIndex:index] unsignedLongValue]];
+		((NSView *)windowSubviews[index]).autoresizingMask = [windowSubviewMasks[index] unsignedLongValue];
 	}
 	
-	count = [ourSubviewMasks count];
+	count = ourSubviewMasks.count;
 	
 	for (NSUInteger i = 0; i < count; i++) {
-		[(NSView *)[ourSubviews objectAtIndex:i] setAutoresizingMask:[[ourSubviewMasks objectAtIndex:i] unsignedLongValue]];
+		((NSView *)ourSubviews[i]).autoresizingMask = [ourSubviewMasks[i] unsignedLongValue];
 	}
 	
 }

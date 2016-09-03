@@ -18,9 +18,9 @@
 #if MD_DEBUG
 		NSLog(@" \"%@\" [%@ %@]", [[[[self window] windowController] document] displayName], NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	NSInteger rowIndex = [self rowAtPoint:[self convertPoint:[event locationInWindow] fromView:nil]];
+	NSInteger rowIndex = [self rowAtPoint:[self convertPoint:event.locationInWindow fromView:nil]];
 	
-	NSIndexSet *selectedRowIndexes = [self selectedRowIndexes];
+	NSIndexSet *selectedRowIndexes = self.selectedRowIndexes;
 	if (rowIndex >= 0) {
 		if ([selectedRowIndexes containsIndex:rowIndex]) {
 			return [super rightMouseDown:event];
@@ -29,7 +29,7 @@
 			return [super rightMouseDown:event];
 		}
 	} else {
-		if ([selectedRowIndexes count]) {
+		if (selectedRowIndexes.count) {
 			[self deselectAll:self];
 			return [super rightMouseDown:event];
 		}
@@ -42,12 +42,12 @@
 #if MD_DEBUG
 		NSLog(@" \"%@\" [%@ %@]", [[[[self window] windowController] document] displayName], NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	NSUInteger modifierFlags = [event modifierFlags];
+	NSUInteger modifierFlags = event.modifierFlags;
 	if (modifierFlags & NSAlternateKeyMask || modifierFlags & NSCommandKeyMask) {
 		return [super mouseDown:event];
 	} else if (modifierFlags & NSControlKeyMask) {
-		NSInteger rowIndex = [self rowAtPoint:[self convertPoint:[event locationInWindow] fromView:nil]];
-		NSIndexSet *selectedRowIndexes = [self selectedRowIndexes];
+		NSInteger rowIndex = [self rowAtPoint:[self convertPoint:event.locationInWindow fromView:nil]];
+		NSIndexSet *selectedRowIndexes = self.selectedRowIndexes;
 		if (rowIndex >= 0) {
 			if ([selectedRowIndexes containsIndex:rowIndex]) {
 				return [super mouseDown:event];
@@ -56,7 +56,7 @@
 				return [super mouseDown:event];
 			}
 		} else {
-			if ([selectedRowIndexes count]) {
+			if (selectedRowIndexes.count) {
 				[self deselectAll:self];
 				return [super mouseDown:event];
 			}
@@ -67,7 +67,7 @@
 
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
-	SEL action = [menuItem action];
+	SEL action = menuItem.action;
 	if (action == @selector(revealInFinder:)) {
 		return [[self delegate] respondsToSelector:@selector(revealInFinder:)] ||
 				[[self dataSource] respondsToSelector:@selector(revealInFinder:)];

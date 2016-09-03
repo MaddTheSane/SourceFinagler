@@ -19,7 +19,7 @@
 @synthesize image, tag, controller, imageFileSize, imageRep, preset;
 
 
-- (id)initWithController:(TKImageExportController *)aController image:(TKImage *)anImage preset:(TKImageExportPreset *)aPreset tag:(NSInteger)aTag {
+- (instancetype)initWithController:(TKImageExportController *)aController image:(TKImage *)anImage preset:(TKImageExportPreset *)aPreset tag:(NSInteger)aTag {
 	if (anImage == nil || aPreset == nil) return nil;
 	if ((self = [super init])) {
 		controller = aController;
@@ -59,8 +59,8 @@
 
 - (BOOL)isEqual:(id)object {
 	if ([object isKindOfClass:[self class]]) {
-		if ([(TKImageExportPreview *)object controller] == controller &&
-			[(TKImageExportPreview *)object tag] == tag) {
+		if (((TKImageExportPreview *)object).controller == controller &&
+			((TKImageExportPreview *)object).tag == tag) {
 			return YES;
 		}
 	}
@@ -69,7 +69,7 @@
 
 
 - (NSString *)description {
-	NSMutableString *description = [NSMutableString stringWithString:[super description]];
+	NSMutableString *description = [NSMutableString stringWithString:super.description];
 	[description appendFormat:@", "];
 	[description appendFormat:@"preset == %@, ", preset];
 //	[description appendFormat:@"imageRep == %@, ", imageRep];

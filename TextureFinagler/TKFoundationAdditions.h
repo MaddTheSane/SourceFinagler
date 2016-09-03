@@ -96,7 +96,7 @@ typedef NSUInteger TKBookmarkResolutionOptions;
 //@end
 
 @interface NSString (TKAdditions)
-+ (id)stringByResolvingBookmarkData:(NSData *)bookmarkData options:(TKBookmarkResolutionOptions)options bookmarkDataIsStale:(BOOL *)isStale error:(NSError **)outError;
++ (instancetype)stringByResolvingBookmarkData:(NSData *)bookmarkData options:(TKBookmarkResolutionOptions)options bookmarkDataIsStale:(BOOL *)isStale error:(NSError **)outError;
 - (NSData *)bookmarkDataWithOptions:(TKBookmarkCreationOptions)options error:(NSError **)outError;
 
 #if (TARGET_CPU_PPC || TARGET_CPU_X86) && MAC_OS_X_VERSION_MIN_REQUIRED <= MAC_OS_X_VERSION_10_4
@@ -105,10 +105,10 @@ typedef NSUInteger TKBookmarkResolutionOptions;
 
 + (NSString *)stringWithFSRef:(const FSRef *)anFSRef;
 - (BOOL)getFSRef:(FSRef *)anFSRef error:(NSError **)anError;
-- (BOOL)boolValue;
-- (NSString *)stringByAssuringUniqueFilename;
-- (NSString *)stringByAbbreviatingFilenameTo31Characters;
-- (NSSize)sizeForStringWithSavedFrame;
+@property (readonly) BOOL boolValue;
+@property (readonly, copy) NSString *stringByAssuringUniqueFilename;
+@property (readonly, copy) NSString *stringByAbbreviatingFilenameTo31Characters;
+@property (readonly) NSSize sizeForStringWithSavedFrame;
 + (NSString *)stringWithPascalString:(ConstStr255Param)aPStr;
 //- (BOOL)getFSSpec:(FSSpec *)anFSSpec;
 - (BOOL)pascalString:(StringPtr)aBuffer length:(SInt16)aLength;
@@ -119,10 +119,10 @@ typedef NSUInteger TKBookmarkResolutionOptions;
 - (BOOL)containsString:(NSString *)aString;
 
 - (NSString *)stringByReplacing:(NSString *)value with:(NSString *)newValue;
-- (NSString *)slashToColon;
-- (NSString *)colonToSlash;
+@property (readonly, copy) NSString *slashToColon;
+@property (readonly, copy) NSString *colonToSlash;
 
-- (NSString *)displayPath;
+@property (readonly, copy) NSString *displayPath;
 
 @end
 
@@ -151,7 +151,7 @@ typedef NSUInteger TKBookmarkResolutionOptions;
 
 
 @interface NSIndexSet (TKAdditions)
-+ (id)indexSetWithIndexSet:(NSIndexSet *)indexes;
++ (instancetype)indexSetWithIndexSet:(NSIndexSet *)indexes;
 
 - (NSIndexSet *)indexesIntersectingIndexes:(NSIndexSet *)indexes;
 
@@ -165,8 +165,8 @@ typedef NSUInteger TKBookmarkResolutionOptions;
 
 @interface NSData (TKDescriptionAdditions)
 
-- (NSString *)stringRepresentation;
-- (NSString *)enhancedDescription;
+@property (readonly, copy) NSString *stringRepresentation;
+@property (readonly, copy) NSString *enhancedDescription;
 
 @end
 
@@ -174,8 +174,8 @@ typedef NSUInteger TKBookmarkResolutionOptions;
 #if !defined(TEXTUREKIT_EXTERN)
 
 @interface NSData (TKAdditions)
-- (NSString *)sha1HexHash;
-- (NSData *)sha1Hash;
+@property (readonly, copy) NSString *sha1HexHash;
+@property (readonly, copy) NSData *sha1Hash;
 
 
 @end
@@ -213,7 +213,7 @@ typedef NSUInteger TKBookmarkResolutionOptions;
 
 
 @interface NSObject (TKDeepMutableCopy)
-- (id)deepMutableCopy NS_RETURNS_RETAINED;
+@property (readonly, strong) id deepMutableCopy NS_RETURNS_RETAINED;
 @end
 
 

@@ -40,18 +40,18 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 
 + (void)initialize {
 	NSMutableDictionary *defaults = [NSMutableDictionary dictionary];
-	NSArray *sortDescriptors = [NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"displayName" ascending:YES selector:@selector(caseInsensitiveNumericalCompare:)], nil];
+	NSArray *sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"displayName" ascending:YES selector:@selector(caseInsensitiveNumericalCompare:)]];
     [defaults setSortDescriptors:sortDescriptors forKey:MDOtherAppsHelperSortDescriptorsKey];
 	[[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
 }
 
 
 
-- (id)init {
+- (instancetype)init {
 	if ((self = [super init])) {
 		games = [[NSMutableArray alloc] init];
 		steamManager = [[VSSteamManager defaultManager] retain];
-		[steamManager setDelegate:self];
+		steamManager.delegate = self;
 
 		if ([steamManager sourceFinaglerLaunchAgentStatus] == VSSourceFinaglerLaunchAgentUpdateNeeded) {
 			[steamManager updateSourceFinaglerLaunchAgentWithError:NULL];
@@ -88,13 +88,13 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 	minWinSize = [TKViewController windowSizeForViewWithSize:self.view.frame.size];
 	maxWinSize = NSMakeSize(FLT_MAX, FLT_MAX);
 	
-	[tableView setTarget:self];
-	[tableView setDoubleAction:@selector(launchGame:)];
+	tableView.target = self;
+	tableView.doubleAction = @selector(launchGame:);
 	[tableView setDraggingSourceOperationMask:NSDragOperationEvery forLocal:NO];
 	[tableView setDraggingSourceOperationMask:NSDragOperationEvery forLocal:YES];
 	[tableView setVerticalMotionCanBeginDrag:NO];
 	
-	[tableView setSortDescriptors:[[NSUserDefaults standardUserDefaults] sortDescriptorsForKey:MDOtherAppsHelperSortDescriptorsKey]];
+	tableView.sortDescriptors = [[NSUserDefaults standardUserDefaults] sortDescriptorsForKey:MDOtherAppsHelperSortDescriptorsKey];
 	
 	NSDictionary *usbInfo = MDInfoForProcessWithBundleIdentifier(MDUSBOverdriveHelperBundleIdentifierKey);
 	
@@ -103,14 +103,14 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 	mouseSoftware |= (MDInfoForProcessWithBundleIdentifier(MDSteerMouseBundleIdentifierKey) == nil ? 0 : MDSteerMouse);
 	mouseSoftware |= (MDInfoForProcessWithBundleIdentifier(MDLogitechBundleIdentifierKey) == nil ? 0 : MDLogitech);
 	
-	[usbOverdriveView setHidden:!(mouseSoftware & MDUSBOverdrive)];
+	usbOverdriveView.hidden = !(mouseSoftware & MDUSBOverdrive);
 	
 	if (mouseSoftware & MDUSBOverdrive) {
 //		NSLog(@"[%@ %@] usbInfo == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), usbInfo);
-		NSString *bundlePath = [usbInfo objectForKey:@"BundlePath"];
+		NSString *bundlePath = usbInfo[@"BundlePath"];
 		if (bundlePath) {
 			NSImage *usbIcon = [[NSWorkspace sharedWorkspace] iconForFile:bundlePath];
-			[usbOverdriveIconButton setImage:usbIcon];
+			usbOverdriveIconButton.image = usbIcon;
 		}
 	}
 	
@@ -123,12 +123,12 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 
 
 - (void)setSortDescriptors:(NSArray *)aSortDescriptors {
-	[tableView setSortDescriptors:aSortDescriptors];
+	tableView.sortDescriptors = aSortDescriptors;
 }
 
 
 - (NSArray *)sortDescriptors {
-	return [tableView sortDescriptors];
+	return tableView.sortDescriptors;
 }
 
 
@@ -171,7 +171,7 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 
 - (IBAction)toggleEnableAgent:(id)sender {
 #if VS_DEBUG
-	NSLog(@"[%@ %@] sender's state == %ld; enableSourceFinaglerAgent == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), (long)[(NSButton *)sender state], (enableSourceFinaglerAgent ? @"YES" : @"NO"));
+	NSLog(@"[%@ %@] sender's state == %ld; enableSourceFinaglerAgent == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), (long)((NSButton *)sender).state, (enableSourceFinaglerAgent ? @"YES" : @"NO"));
 #endif
 	
 	NSError *outError = nil;
@@ -189,19 +189,19 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 }
 
 - (NSUInteger)countOfGames {
-    return [games count];
+    return games.count;
 }
 
 - (id)objectInGamesAtIndex:(NSUInteger)theIndex {
-    return [games objectAtIndex:theIndex];
+    return games[theIndex];
 }
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {
-	NSUInteger count = [[gamesController selectedObjects] count];
+	NSUInteger count = gamesController.selectedObjects.count;
 	if (count > 1) {
-		[helpButton setTitle:@"Help Other Apps Recognize Games"];
+		helpButton.title = @"Help Other Apps Recognize Games";
 	} else {
-		[helpButton setTitle:@"Help Other Apps Recognize Game"];
+		helpButton.title = @"Help Other Apps Recognize Game";
 	}
 }
 
@@ -209,7 +209,7 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 #if VS_DEBUG
 //	NSLog(@"[%@ %@] rowIndexes == %@ ", NSStringFromClass([self class]), NSStringFromSelector(_cmd), rowIndexes);
 #endif
-	NSIndexSet *selectionIndexes = [gamesController selectionIndexes];
+	NSIndexSet *selectionIndexes = gamesController.selectionIndexes;
 //	NSLog(@"[%@ %@] selectionIndexes == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), selectionIndexes);
 	
 	if (![selectionIndexes isEqualToIndexSet:rowIndexes]) {
@@ -217,22 +217,22 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 	}
 	
 	
-	NSArray *selectedGames = [gamesController selectedObjects];
-	if ([selectedGames count] == 0) {
-		NSInteger clickedRow = [aTableView clickedRow];
+	NSArray *selectedGames = gamesController.selectedObjects;
+	if (selectedGames.count == 0) {
+		NSInteger clickedRow = aTableView.clickedRow;
 //		NSLog(@"[%@ %@] clickedRow == %ld", NSStringFromClass([self class]), NSStringFromSelector(_cmd), clickedRow);
 		if (clickedRow >= 0) {
 			[gamesController setSelectionIndexes:[NSIndexSet indexSetWithIndex:clickedRow]];
 		}
 	}
 	
-	selectedGames = [gamesController selectedObjects];
+	selectedGames = gamesController.selectedObjects;
 	
-	if (selectedGames && [selectedGames count] == 1) {
-		[pboard declareTypes:[NSArray arrayWithObject:NSFilenamesPboardType] owner:self];
-		NSString *filePath = [(VSGame *)[selectedGames objectAtIndex:0] executablePath];
+	if (selectedGames && selectedGames.count == 1) {
+		[pboard declareTypes:@[NSFilenamesPboardType] owner:self];
+		NSString *filePath = ((VSGame *)selectedGames[0]).executablePath;
 		if (filePath) {
-			[pboard setPropertyList:[NSArray arrayWithObject:filePath] forType:NSFilenamesPboardType];
+			[pboard setPropertyList:@[filePath] forType:NSFilenamesPboardType];
 			return YES;
 		}
 	}
@@ -241,10 +241,10 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 
 
 - (void)tableView:(NSTableView *)aTableView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-	if ([[tableColumn identifier] isEqualToString:@"displayName"]) {
-		VSGame *game = [[gamesController arrangedObjects] objectAtIndex:row];
-		NSImage *gameIcon = [game icon];
-		[gameIcon setSize:NSMakeSize(16.0, 16.0)];
+	if ([tableColumn.identifier isEqualToString:@"displayName"]) {
+		VSGame *game = gamesController.arrangedObjects[row];
+		NSImage *gameIcon = game.icon;
+		gameIcon.size = NSMakeSize(16.0, 16.0);
 		[cell setImage:gameIcon];
 	}
 }
@@ -279,11 +279,11 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 #if VS_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	NSArray *selectedGames = [gamesController selectedObjects];
+	NSArray *selectedGames = gamesController.selectedObjects;
 	NSError *error = nil;
 	
-	if (selectedGames && [selectedGames count] == 1) {
-		if (![steamManager launchGame:[selectedGames objectAtIndex:0] options:VSGameLaunchDefault error:&error]) {
+	if (selectedGames && selectedGames.count == 1) {
+		if (![steamManager launchGame:selectedGames[0] options:VSGameLaunchDefault error:&error]) {
 			NSLog(@"[%@ %@] failed to launch game, error == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), error);
 		}
 	}
@@ -298,10 +298,10 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 	mouseSoftware |= (MDInfoForProcessWithBundleIdentifier(MDSteerMouseBundleIdentifierKey) == nil ? 0 : MDSteerMouse);
 	mouseSoftware |= (MDInfoForProcessWithBundleIdentifier(MDLogitechBundleIdentifierKey) == nil ? 0 : MDLogitech);
 	
-	NSArray *selectedGames = [gamesController selectedObjects];
-	if ([selectedGames count] == 0) return;
-	VSGame *game = [selectedGames objectAtIndex:0];
-	BOOL isHelped = [game isHelped];
+	NSArray *selectedGames = gamesController.selectedObjects;
+	if (selectedGames.count == 0) return;
+	VSGame *game = selectedGames[0];
+	BOOL isHelped = game.helped;
 	
 	NSError *error = nil;
 	
@@ -325,7 +325,7 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 #if VS_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	NSArray *selectedGames = [gamesController selectedObjects];
+	NSArray *selectedGames = gamesController.selectedObjects;
 	NSError *error = nil;
 	
 	for (VSGame *game in selectedGames) {
@@ -342,7 +342,7 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	
-	NSArray *selectedGames = [gamesController selectedObjects];
+	NSArray *selectedGames = gamesController.selectedObjects;
 	
 	NSError *error = nil;
 	
@@ -363,7 +363,7 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 	[steamManager locateSteamApps];
 	
 	NSArray *theGames = steamManager.games;
-	NSArray *selectedObjects = [[gamesController selectedObjects] retain];
+	NSArray *selectedObjects = [gamesController.selectedObjects retain];
 	if (theGames) {
 		[[self mutableArrayValueForKey:@"games"] setArray:theGames];
 	}
@@ -377,17 +377,17 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	
-	NSArray *selectedGames = [gamesController selectedObjects];
+	NSArray *selectedGames = gamesController.selectedObjects;
 	NSMutableArray *filePaths = [NSMutableArray array];
 	
 	for (VSGame *game in selectedGames) {
-		NSString *path = [game executablePath];
+		NSString *path = game.executablePath;
 		if (path) {
 			[filePaths addObject:path];
 		}
 	}
 	
-	if ([filePaths count]) {
+	if (filePaths.count) {
 		if (![[NSWorkspace sharedWorkspace] revealInFinder:filePaths]) {
 			NSLog(@"[%@ %@] [[NSWorkspace sharedWorkspace] revealInFinder:filePaths] returned NO! ", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 	
@@ -397,9 +397,9 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 }
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
-	SEL action = [menuItem action];
-	NSArray *selectedGames = [gamesController selectedObjects];
-	NSUInteger count = [selectedGames count];
+	SEL action = menuItem.action;
+	NSArray *selectedGames = gamesController.selectedObjects;
+	NSUInteger count = selectedGames.count;
 	
 	if (action == @selector(revealInFinder:)) {
 		
@@ -407,13 +407,13 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 		
 	} else if (action == @selector(toggleHelpApps:)) {
 		if (count) {
-			VSGame *game = [selectedGames objectAtIndex:0];
-			BOOL isHelped = [game isHelped];
+			VSGame *game = selectedGames[0];
+			BOOL isHelped = game.helped;
 			if (count == 1) {
-				[menuItem setTitle:(isHelped ? NSLocalizedString(@"Unhelp Game", @"") : NSLocalizedString(@"Help Game", @""))];
+				menuItem.title = (isHelped ? NSLocalizedString(@"Unhelp Game", @"") : NSLocalizedString(@"Help Game", @""));
 				
 			} else {
-				[menuItem setTitle:(isHelped ? NSLocalizedString(@"Unhelp Games", @"") : NSLocalizedString(@"Help Games", @""))];
+				menuItem.title = (isHelped ? NSLocalizedString(@"Unhelp Games", @"") : NSLocalizedString(@"Help Games", @""));
 				
 			}
 		} else {
