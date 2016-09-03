@@ -81,7 +81,7 @@ ThreadPool::ThreadPool()
 
     nvCompilerWriteBarrier(); // @@ Use a memory fence?
 
-    for (uint i = 0; i < workerCount; i++) {
+    for (size_t i = 0; i < workerCount; i++) {
         workers[i].start(workerFunc, (void *)i);
     }
 

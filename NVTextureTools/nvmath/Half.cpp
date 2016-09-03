@@ -494,7 +494,7 @@ nv::half_to_float( uint16 h )
 
 static __m128 half_to_float4_SSE2(__m128i h)
 {
-#define SSE_CONST4(name, val) static const __declspec(align(16)) uint name[4] = { (val), (val), (val), (val) }
+#define SSE_CONST4(name, val) static const __attribute__ ((aligned (16)))/*__declspec(align(16))*/  uint name[4] = { (val), (val), (val), (val) }
 #define CONST(name) *(const __m128i *)&name
 
     SSE_CONST4(mask_nosign,         0x7fff);

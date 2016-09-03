@@ -7,8 +7,8 @@
 //
 
 #import "TKFoundationAdditions.h"
-#import <sys/syslimits.h>
-#import <openssl/sha.h>
+#include <sys/syslimits.h>
+#include <CommonCrypto/CommonDigest.h>
 
 #define TK_DEBUG 0
 
