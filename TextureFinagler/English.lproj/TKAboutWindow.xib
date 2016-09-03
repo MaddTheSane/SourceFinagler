@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
@@ -14,51 +14,50 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="96" userLabel="window" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="185" y="366" width="300" height="220"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
+            <rect key="contentRect" x="185" y="366" width="300" height="204"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
             <view key="contentView" id="97">
-                <rect key="frame" x="0.0" y="0.0" width="300" height="220"/>
+                <rect key="frame" x="0.0" y="0.0" width="300" height="204"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField verticalHuggingPriority="750" id="101">
-                        <rect key="frame" x="17" y="118" width="266" height="18"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                        <textFieldCell key="cell" lineBreakMode="truncatingMiddle" selectable="YES" sendsActionOnEndEditing="YES" alignment="center" title="Source Finagler" id="102">
+                    <textField verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="101">
+                        <rect key="frame" x="18" y="104" width="264" height="18"/>
+                        <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" alignment="center" title="Source Finagler" id="102">
                             <font key="font" metaFont="systemBold" size="14"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <imageView id="100">
-                        <rect key="frame" x="118" y="146" width="64" height="64"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                    <imageView translatesAutoresizingMaskIntoConstraints="NO" id="100">
+                        <rect key="frame" x="118" y="130" width="64" height="64"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="64" id="m7O-Hp-yp0"/>
+                            <constraint firstAttribute="height" constant="64" id="mUw-Ep-qUs"/>
+                        </constraints>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="103"/>
                     </imageView>
-                    <textField verticalHuggingPriority="750" id="99">
-                        <rect key="frame" x="17" y="94" width="266" height="14"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                        <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingMiddle" selectable="YES" sendsActionOnEndEditing="YES" alignment="center" title="Source Finagler 2.0.2 (202)" placeholderString="Source Finagler 2.0.2 (202)" id="104">
+                    <textField verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="99">
+                        <rect key="frame" x="18" y="82" width="264" height="14"/>
+                        <textFieldCell key="cell" controlSize="small" selectable="YES" sendsActionOnEndEditing="YES" alignment="center" title="Source Finagler 2.0.2 (202)" placeholderString="Source Finagler 2.0.2 (202)" id="104">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField verticalHuggingPriority="750" id="98">
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="98">
                         <rect key="frame" x="35" y="20" width="229" height="28"/>
-                        <autoresizingMask key="autoresizingMask"/>
                         <textFieldCell key="cell" controlSize="small" selectable="YES" sendsActionOnEndEditing="YES" alignment="center" title="Copyright © 2004-2011 Mark Douma. All rights reserved." id="105">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button verticalHuggingPriority="750" id="106">
-                        <rect key="frame" x="69" y="56" width="162" height="28"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="106">
+                        <rect key="frame" x="81" y="50" width="138" height="28"/>
                         <buttonCell key="cell" type="push" title="Acknowledgements…" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="107">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="smallSystem"/>
@@ -68,6 +67,23 @@
                         </connections>
                     </button>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="98" secondAttribute="bottom" constant="20" symbolic="YES" id="0CZ-2N-5lA"/>
+                    <constraint firstItem="101" firstAttribute="leading" secondItem="97" secondAttribute="leading" constant="20" symbolic="YES" id="5Ur-Rz-oGx"/>
+                    <constraint firstItem="98" firstAttribute="leading" secondItem="97" secondAttribute="leading" constant="37" id="Ad5-ff-rMp"/>
+                    <constraint firstItem="98" firstAttribute="centerX" secondItem="97" secondAttribute="centerX" id="Kou-XP-KYc"/>
+                    <constraint firstItem="101" firstAttribute="centerX" secondItem="97" secondAttribute="centerX" id="Mmv-Ng-iEJ"/>
+                    <constraint firstItem="100" firstAttribute="top" secondItem="97" secondAttribute="top" constant="10" id="Ojz-L9-YXh"/>
+                    <constraint firstItem="101" firstAttribute="trailing" secondItem="99" secondAttribute="trailing" id="VFD-xM-Yvp"/>
+                    <constraint firstItem="106" firstAttribute="centerX" secondItem="97" secondAttribute="centerX" id="Xls-XE-2oe"/>
+                    <constraint firstItem="101" firstAttribute="leading" secondItem="99" secondAttribute="leading" id="bm2-ht-m9z"/>
+                    <constraint firstItem="101" firstAttribute="top" secondItem="100" secondAttribute="bottom" constant="8" symbolic="YES" id="dcz-CC-RU3"/>
+                    <constraint firstItem="99" firstAttribute="centerX" secondItem="97" secondAttribute="centerX" id="h2E-px-POt"/>
+                    <constraint firstItem="99" firstAttribute="top" secondItem="101" secondAttribute="bottom" constant="8" symbolic="YES" id="lN6-8e-J7M"/>
+                    <constraint firstItem="98" firstAttribute="top" secondItem="106" secondAttribute="bottom" constant="8" symbolic="YES" id="q52-2j-YAD"/>
+                    <constraint firstItem="100" firstAttribute="centerX" secondItem="97" secondAttribute="centerX" id="vhp-Wg-LLu"/>
+                    <constraint firstItem="106" firstAttribute="top" secondItem="99" secondAttribute="bottom" constant="8" symbolic="YES" id="vuX-rc-QjB"/>
+                </constraints>
             </view>
         </window>
     </objects>

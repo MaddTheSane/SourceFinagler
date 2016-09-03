@@ -11,13 +11,13 @@
 
 
 
-enum {
+NS_ENUM(OSType) {
 	HKBrokenCreatorCode = 'MACS',
 	HKBrokenFileType	= 'brok'
 };
 
 @interface HKFileHandle ()
-@property (retain) NSString *path;
+@property (readwrite, copy) NSString *path;
 @end
 
 @implementation HKFileHandle

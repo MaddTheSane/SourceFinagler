@@ -24,6 +24,9 @@ NSString * const MDResourceFileErrorDomain			= @"com.markdouma.FontFinagler.Reso
 #define badNameLength (0xffffU)
 
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+
 OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolean *sane) {
     FSIORefNum		refNum;			/* file refnum */
     ByteCount		count;			/* number of bytes to read */
@@ -702,9 +705,4 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 
 @end
 
-
-
-
-
-
-
+#pragma clang diagnostic pop

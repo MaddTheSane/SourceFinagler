@@ -10,7 +10,7 @@
 #import <TextureKit/TextureKitDefines.h>
 
 
-enum {
+typedef NS_ENUM(NSUInteger, TKVMTNodeKind) {
 	TKVMTInvalidKind	= 0,
 	TKVMTGroupKind,
 	TKVMTCommentKind,
@@ -19,14 +19,13 @@ enum {
 	TKVMTFloatKind,
 //	TKVMTRootKind
 };
-typedef NSUInteger TKVMTNodeKind;
 
 
 
 @interface TKVMTNode : NSObject <NSCopying> {
-	TKVMTNode			*rootNode;		// non-retained
+	__unsafe_unretained TKVMTNode			*rootNode;		// non-retained
 	
-	TKVMTNode			*parent;		// non-retained
+	__unsafe_unretained TKVMTNode			*parent;		// non-retained
 	
 	NSMutableArray		*children;
 	
@@ -46,11 +45,11 @@ typedef NSUInteger TKVMTNodeKind;
 + (instancetype)nodeWithName:(NSString *)aName kind:(TKVMTNodeKind)aKind objectValue:(id)anObjectValue;
 - (instancetype)initWithName:(NSString *)aName kind:(TKVMTNodeKind)aKind objectValue:(id)anObjectValue;
 
-+ (id)groupNodeWithName:(NSString *)aName;
-+ (id)commentNodeWithStringValue:(NSString *)stringValue;
-+ (id)stringNodeWithName:(NSString *)aName stringValue:(NSString *)stringValue;
-+ (id)integerNodeWithName:(NSString *)aName integerValue:(NSInteger)anInteger;
-+ (id)floatNodeWithName:(NSString *)aName floatValue:(CGFloat)aFloat;
++ (instancetype)groupNodeWithName:(NSString *)aName;
++ (instancetype)commentNodeWithStringValue:(NSString *)stringValue;
++ (instancetype)stringNodeWithName:(NSString *)aName stringValue:(NSString *)stringValue;
++ (instancetype)integerNodeWithName:(NSString *)aName integerValue:(NSInteger)anInteger;
++ (instancetype)floatNodeWithName:(NSString *)aName floatValue:(CGFloat)aFloat;
 
 
 

@@ -12,7 +12,7 @@
 //  
 //	note: "Bluescreen" Alpha uses any pixel with a pixel of R0, G0, B255 as transparent.
 
-enum {
+typedef NS_ENUM(NSUInteger, TKVTFFormat) {
 	TKVTFFormatRGB				= 0,	// 24 bpp
 	TKVTFFormatDXT1				= 1,	//  4 bpp
 	TKVTFFormatDXT1a			= 2,	//  4 bpp - DXT1 with 1-bit Alpha
@@ -69,7 +69,6 @@ enum {
 	
 	TKVTFNoFormat				= 1000
 };
-typedef NSUInteger TKVTFFormat;
 
 
 
@@ -82,7 +81,7 @@ TEXTUREKIT_EXTERN NSString * const TKVTFFileType;		// filename extension
 TEXTUREKIT_EXTERN NSString * const TKVTFPboardType;
 
 
-enum {
+NS_ENUM(OSType) {
 	TKVTFMagic				= 0x56544600, // 'VTF\0'
 	TKHTMLErrorMagic		= '<!DO'
 };
@@ -103,9 +102,9 @@ enum {
 #endif
 
 
-+ (NSData *)VTFRepresentationOfImageRepsInArray:(NSArray *)tkImageReps options:(NSDictionary *)options;
++ (NSData *)VTFRepresentationOfImageRepsInArray:(NSArray<NSImageRep*> *)tkImageReps options:(NSDictionary *)options;
 
-+ (NSData *)VTFRepresentationOfImageRepsInArray:(NSArray *)tkImageReps usingFormat:(TKVTFFormat)aFormat quality:(TKDXTCompressionQuality)aQuality options:(NSDictionary *)options;
++ (NSData *)VTFRepresentationOfImageRepsInArray:(NSArray<NSImageRep*> *)tkImageReps usingFormat:(TKVTFFormat)aFormat quality:(TKDXTCompressionQuality)aQuality options:(NSDictionary *)options;
 
 
 @end

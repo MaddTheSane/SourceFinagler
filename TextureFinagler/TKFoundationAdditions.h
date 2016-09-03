@@ -29,7 +29,7 @@
 #endif
 
 
-enum {
+NS_ENUM(SInt32) {
 	TKUndeterminedVersion	= -1,
 	TKCheetah				= 0x1000,
 	TKPuma					= 0x1010,
@@ -69,10 +69,9 @@ TKFOUNDATION_EXTERN SInt32 TKGetSystemVersion();
 //		Available in Mac OS X v10.6 and later.
 //		Declared in NSURL.h.
 
-enum {
+typedef NS_OPTIONS(NSUInteger, TKBookmarkCreationOptions) {
 	TKBookmarkCreationDefaultOptions			= 1
 };
-typedef NSUInteger TKBookmarkCreationOptions;
 
 
 //	Constants
@@ -84,11 +83,10 @@ typedef NSUInteger TKBookmarkCreationOptions;
 //		Option for specifying that no volume should be mounted during resolution of the bookmark data.
 //		Available in Mac OS X v10.6 and later.
 //		Declared in NSURL.h.
-enum {
+typedef NS_OPTIONS(NSUInteger, TKBookmarkResolutionOptions) {
 	TKBookmarkResolutionDefaultOptions		= 1,
 	TKBookmarkResolutionWithoutUI = ( 1UL << 8 )
 };
-typedef NSUInteger TKBookmarkResolutionOptions;
 
 
 //@interface NSURL (TKAdditions)

@@ -113,11 +113,11 @@ static inline NSString *NSStringFromTKVMTNodeKind(TKVMTNodeKind kind) {
 }
 
 + (id)integerNodeWithName:(NSString *)aName integerValue:(NSInteger)anInteger {
-	return [[[[self class] alloc] initWithName:aName kind:TKVMTIntegerKind objectValue:[NSNumber numberWithInteger:anInteger]] autorelease];
+	return [[[[self class] alloc] initWithName:aName kind:TKVMTIntegerKind objectValue:@(anInteger)] autorelease];
 }
 
 + (id)floatNodeWithName:(NSString *)aName floatValue:(CGFloat)aFloat {
-	return [[[[self class] alloc] initWithName:aName kind:TKVMTFloatKind objectValue:[NSNumber numberWithDouble:aFloat]] autorelease];
+	return [[[[self class] alloc] initWithName:aName kind:TKVMTFloatKind objectValue:@(aFloat)] autorelease];
 }
 
 + (id)commentNodeWithStringValue:(NSString *)stringValue {

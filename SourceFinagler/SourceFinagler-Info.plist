@@ -221,14 +221,14 @@
 			<string>DAED</string>
 			<key>CFBundleTypeName</key>
 			<string>Digital Asset Exchange (DAE) Document with Attachments</string>
-			<key>LSTypeIsPackage</key>
-			<true/>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>com.markdouma.daed</string>
 			</array>
+			<key>LSTypeIsPackage</key>
+			<true/>
 			<key>NSDocumentClass</key>
 			<string>TKModelDocument</string>
 		</dict>
@@ -736,7 +736,7 @@
 	<key>CFBundleIconFile</key>
 	<string>sourceFinagler</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.markdouma.SourceFinagler</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>

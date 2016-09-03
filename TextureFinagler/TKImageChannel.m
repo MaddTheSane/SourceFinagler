@@ -16,7 +16,7 @@
 
 
 
-@interface TKImageChannel (TKPrivate)
+@interface TKImageChannel ()
 
 - (NSImage *)imageWithImageRep:(TKImageRep *)anImageRep;
 
@@ -124,8 +124,6 @@
 	return [anImage autorelease];
 }
 
-
-
 @end
 
 
@@ -194,5 +192,3 @@
 }
 
 @end
-
-

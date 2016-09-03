@@ -22,8 +22,6 @@ static CIKernel *TKSingleChannelFilterKernel = nil;
 @synthesize blueScale;
 @synthesize alphaScale;
 
-
-
 - (id)init {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -109,7 +107,6 @@ static CIKernel *TKSingleChannelFilterKernel = nil;
 	
 }
 
-
 // called when setting up for fragment program and also calls fragment program
 - (CIImage *)outputImage {
 #if TK_DEBUG
@@ -127,9 +124,4 @@ static CIKernel *TKSingleChannelFilterKernel = nil;
 			nil];
 }
 
-
-
 @end
-
-
-

@@ -31,7 +31,7 @@
 	IBOutlet NSButton								*titleButton;
 	IBOutlet NSButton								*disclosureButton;
 	
-	IBOutlet id <MDInspectorViewDelegate>			delegate;
+	__unsafe_unretained id <MDInspectorViewDelegate>			delegate;
 	
 	TKMaterialPropertyViewController				*viewController;
 	
@@ -70,7 +70,7 @@
 
 @property (nonatomic, assign, setter=setInitiallyShown:) BOOL isInitiallyShown;
 
-@property (nonatomic, assign) id <MDInspectorViewDelegate> delegate;
+@property (nonatomic, assign) IBOutlet id <MDInspectorViewDelegate> delegate;
 
 
 - (void)changeWindowHeightBy:(CGFloat)value;

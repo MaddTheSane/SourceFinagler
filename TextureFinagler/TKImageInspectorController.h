@@ -69,14 +69,17 @@
 @interface TKImageInspectorController : NSWindowController <NSTableViewDataSource, NSTableViewDelegate, NSWindowDelegate> {
 	IBOutlet NSTableView								*tableView;
 	
-	IBOutlet id <TKImageInspectorDataSource>			dataSource;		// non-retained
+	__unsafe_unretained id <TKImageInspectorDataSource>	dataSource;		// non-retained
 	
 	BOOL												appIsTerminating;
 }
 
 + (TKImageInspectorController *)sharedController;
+#if __has_feature(objc_class_property)
+@property (class, readonly, retain) TKImageInspectorController *sharedController;
+#endif
 
-@property (assign) id <TKImageInspectorDataSource> dataSource;
+@property (assign) IBOutlet id <TKImageInspectorDataSource> dataSource;
 
 
 - (void)reloadData;

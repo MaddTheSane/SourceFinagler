@@ -12,23 +12,22 @@
 
 @class MDResource;
 
-enum {
+typedef NS_ENUM(UInt8, MDFork) {
 	MDAnyFork		= 0,
 	MDResourceFork	= 1,
 	MDDataFork		= 2
 };
-typedef UInt8 MDFork;
 
 
-enum {
+typedef NS_OPTIONS(char, MDPermission) {
 	MDCurrentAllowablePermission		= 0x00,
 	MDReadPermission					= 0x01,
+	MDWritePermission					= 0x02,
 	MDReadWritePermission				= 0x03
 };
-typedef char MDPermission;
 
 
-enum {
+NS_ENUM(NSInteger) {
 	MDResourceFileCorruptResourceFileError				= 4998,
 };
 
@@ -47,23 +46,23 @@ extern NSString * const MDResourceFileErrorDomain;
 }
 
 // read-only; which fork is determined automatically
-- (id)initWithContentsOfFile:(NSString *)aPath error:(NSError **)outError;
-- (id)initWithContentsOfURL:(NSURL *)aURL error:(NSError **)outError;
+- (instancetype)initWithContentsOfFile:(NSString *)aPath error:(NSError **)outError;
+- (instancetype)initWithContentsOfURL:(NSURL *)aURL error:(NSError **)outError;
 
 
 // read/write; the 'updating' comes from NSFileHandle
-- (id)initForUpdatingWithContentsOfFile:(NSString *)aPath fork:(MDFork)aFork error:(NSError **)outError;
-- (id)initForUpdatingWithContentsOfURL:(NSURL *)aURL fork:(MDFork)aFork error:(NSError **)outError;
+- (instancetype)initForUpdatingWithContentsOfFile:(NSString *)aPath fork:(MDFork)aFork error:(NSError **)outError;
+- (instancetype)initForUpdatingWithContentsOfURL:(NSURL *)aURL fork:(MDFork)aFork error:(NSError **)outError;
 
 
-- (id)initWithContentsOfFile:(NSString *)aPath permission:(MDPermission)aPermission fork:(MDFork)aFork error:(NSError **)outError;
-- (id)initWithContentsOfURL:(NSURL *)aURL permission:(MDPermission)aPermission fork:(MDFork)aFork error:(NSError **)outError;
+- (instancetype)initWithContentsOfFile:(NSString *)aPath permission:(MDPermission)aPermission fork:(MDFork)aFork error:(NSError **)outError;
+- (instancetype)initWithContentsOfURL:(NSURL *)aURL permission:(MDPermission)aPermission fork:(MDFork)aFork error:(NSError **)outError;
 
 
 - (ResFileRefNum)fileReference;
 - (NSString *)filePath;
-- (MDFork)fork;
-- (MDPermission)permission;
+@property (readonly) MDFork fork;
+@property (readonly) MDPermission permission;
 
 
 - (MDResource *)plistResource;

@@ -23,20 +23,19 @@
 
 
 
-enum {
-	TKTokenEOF			= 0,	// No more tokens to read.
-	TKTokenNewline,				// Token is a newline (\n).
-	TKTokenWhitespace,			// Token is any whitespace other than a newline.
-	TKTokenForwardSlash,		// Token is a forward slash (/).
-	TKTokenQuote,				// Token is a quote (").
-	TKTokenOpenBrace,			// Token is an open brace ({).
-	TKTokenCloseBrace,			// Token is a close brace (}).
-	TKTokenChar,				// Token is a char (any char).  Use GetChar().
-	TKTokenString,				// Token is a string.  Use GetString().
+typedef NS_ENUM(NSUInteger, TKTokenType) {
+	TKTokenEOF			= 0,	///< No more tokens to read.
+	TKTokenNewline,				///< Token is a newline (\n).
+	TKTokenWhitespace,			///< Token is any whitespace other than a newline.
+	TKTokenForwardSlash,		///< Token is a forward slash (/).
+	TKTokenQuote,				///< Token is a quote (").
+	TKTokenOpenBrace,			///< Token is an open brace ({).
+	TKTokenCloseBrace,			///< Token is a close brace (}).
+	TKTokenChar,				///< Token is a char (any char).  Use GetChar().
+	TKTokenString,				///< Token is a string.  Use GetString().
 	TKTokenQuotedString,		
-	TKTokenSpecial				// Token is a specified special char.
+	TKTokenSpecial				///< Token is a specified special char.
 };
-typedef NSUInteger TKTokenType;
 
 
 @interface TKToken : NSObject <NSCopying> {
@@ -46,15 +45,15 @@ typedef NSUInteger TKTokenType;
 	
 }
 
-- (id)initWithType:(TKTokenType)aType stringValue:(NSString *)aString char:(unichar)aChar;
+- (instancetype)initWithType:(TKTokenType)aType stringValue:(NSString *)aString char:(unichar)aChar;
 
-+ (id)tokenWithType:(TKTokenType)aType;
++ (instancetype)tokenWithType:(TKTokenType)aType;
 
-+ (id)tokenWithType:(TKTokenType)aType char:(unichar)aChar;
++ (instancetype)tokenWithType:(TKTokenType)aType char:(unichar)aChar;
 
-+ (id)charTokenWithChar:(unichar)aCharValue;
++ (instancetype)charTokenWithChar:(unichar)aCharValue;
 
-+ (id)stringTokenWithStringValue:(NSString *)aString isQuoted:(BOOL)isQuoted;
++ (instancetype)stringTokenWithStringValue:(NSString *)aString isQuoted:(BOOL)isQuoted;
 
 
 @property (nonatomic, retain) NSString *stringValue;
@@ -144,8 +143,8 @@ typedef NSUInteger TKTokenType;
 	
 }
 
-+ (id)byteTokenizerWithData:(NSData *)aData;
-- (id)initWithData:(NSData *)aData;
++ (instancetype)byteTokenizerWithData:(NSData *)aData;
+- (instancetype)initWithData:(NSData *)aData;
 
 
 @property (nonatomic, retain) TKToken *currentToken;
@@ -267,6 +266,9 @@ typedef NSUInteger TKTokenType;
 	return currentToken;
 }
 
+- (TKToken *)peek {
+	return nextToken;
+}
 
 @end
 

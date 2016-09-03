@@ -343,7 +343,7 @@ static NSInteger copyTag = 0;
 	outlineView.doubleAction = @selector(toggleShowQuickLook:);
 	browser.doubleAction = @selector(toggleShowQuickLook:);
 	
-	self.undoManager = [NSApp.delegate globalUndoManager];
+	self.undoManager = [(TKAppController*)NSApp.delegate globalUndoManager];
 		
 	outlineViewMenuShowQuickLookMenuItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Quick Look", @"") action:@selector(toggleShowQuickLook:) keyEquivalent:@""];
 	
@@ -413,11 +413,11 @@ static NSInteger copyTag = 0;
 	
 	if (file) {
 		
-		statusImageViewTag1 = [statusImageView1 addToolTipRect:statusImageView1.visibleRect owner:self userData:nil];
+		statusImageViewTag1 = [statusImageView1 addToolTipRect:[statusImageView1 visibleRect] owner:self userData:nil];
 		
-		statusImageView2.image = [NSImage imageNamed:@"readOnlyIndicator"];
+		[statusImageView2 setImage:[NSImage imageNamed:@"readOnlyIndicator"]];
 		
-		statusImageViewTag2 = [statusImageView2 addToolTipRect:statusImageView2.visibleRect owner:self userData:nil];
+		statusImageViewTag2 = [statusImageView2 addToolTipRect:[statusImageView2 visibleRect] owner:self userData:nil];
 		
 	}
 	
@@ -656,7 +656,7 @@ static NSInteger copyTag = 0;
 }
 
 - (NSUndoManager *)windowWillReturnUndoManager:(NSWindow *)aWindow {
-	return [NSApp.delegate globalUndoManager];
+	return [(TKAppController*)NSApp.delegate globalUndoManager];
 }
 
 
@@ -2099,7 +2099,7 @@ static NSInteger copyTag = 0;
 //	NSMakeSize(CGFloat w, CGFloat h)
 //	NSWindow
 
-	return [NSApp.delegate toggleShowQuickLook:sender];
+	return [[NSApp delegate] toggleShowQuickLook:sender];
 }
 
 
@@ -2110,7 +2110,7 @@ static NSInteger copyTag = 0;
 #endif
 	
 	MDShouldShowPathBar = !MDShouldShowPathBar;
-	[[NSUserDefaults standardUserDefaults] setObject:@(MDShouldShowPathBar) forKey:MDShouldShowPathBarKey];
+	[[NSUserDefaults standardUserDefaults] setBool:MDShouldShowPathBar forKey:MDShouldShowPathBarKey];
 	[[NSNotificationCenter defaultCenter] postNotificationName:MDShouldShowPathBarDidChangeNotification object:self userInfo:nil];
 }
 

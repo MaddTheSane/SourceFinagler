@@ -211,7 +211,7 @@ TEXTUREKIT_EXTERN NSString * const TKImageRoundModeKey;
 
 /* create TKImageRep(s) from NSBitmapImageRep(s) */
 + (instancetype)imageRepWithImageRep:(NSBitmapImageRep *)aBitmapImageRep;
-+ (NSArray *)imageRepsWithImageReps:(NSArray *)bitmapImageReps;
++ (NSArray<TKImageRep*> *)imageRepsWithImageReps:(NSArray<NSBitmapImageRep*> *)bitmapImageReps;
 
 
 
@@ -275,7 +275,7 @@ TEXTUREKIT_EXTERN NSString * const TKImageRoundModeKey;
 
 @interface TKImageRep (TKLargestRepresentationAdditions)
 
-+ (TKImageRep *)largestRepresentationInArray:(NSArray *)tkImageReps;
++ (TKImageRep *)largestRepresentationInArray:(NSArray<TKImageRep*> *)tkImageReps;
 
 @end
 

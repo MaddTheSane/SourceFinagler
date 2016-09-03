@@ -14,6 +14,7 @@
 #import "MDHLDocument.h"
 
 #import "TKAppKitAdditions.h"
+#import "MDPreviewViewController.h"
 
 #import <HLKit/HLKit.h>
 

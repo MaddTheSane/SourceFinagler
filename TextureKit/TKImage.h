@@ -12,15 +12,14 @@
 
 @class NSIndexSet;
 
-enum {
-	TKVTFImageType			= 0, // loaded image is a VTF
-	TKDDSImageType			= 1, // loaded image is a DDS
-	TKSFTIImageType			= 2, // Source Finagler Texture Image type (NSCoding)
-	TKRegularImageType		= 3, // loaded image is a native type (anything ImageIO.framework supports)
-	TKEmptyImageType		= 4, // when an TKImage is created with initWithSize: ??
+typedef NS_ENUM(NSUInteger, TKImageType) {
+	TKVTFImageType			= 0, ///< loaded image is a VTF
+	TKDDSImageType			= 1, ///< loaded image is a DDS
+	TKSFTIImageType			= 2, ///< Source Finagler Texture Image type (NSCoding)
+	TKRegularImageType		= 3, ///< loaded image is a native type (anything ImageIO.framework supports)
+	TKEmptyImageType		= 4, ///< when an TKImage is created with \c initWithSize: ??
 	TKUnknownImageType		= NSNotFound
 };
-typedef NSUInteger TKImageType;
 
 // In VTF images:
 // 
@@ -89,8 +88,8 @@ TEXTUREKIT_EXTERN NSData * TKSFTextureImageMagicData;
 
 
 @property (nonatomic, assign, setter=setAlpha:) BOOL hasAlpha;
-@property (nonatomic, retain) NSString *version;
-@property (nonatomic, retain) NSString *compression;
+@property (nonatomic, copy) NSString *version;
+@property (nonatomic, copy) NSString *compression;
 
 @property (nonatomic, assign) TKImageType imageType;
 
@@ -120,8 +119,8 @@ TEXTUREKIT_EXTERN NSData * TKSFTextureImageMagicData;
 - (void)setRepresentation:(TKImageRep *)representation forMipmapIndex:(NSUInteger)mipmapIndex;
 - (void)removeRepresentationForMipmapIndex:(NSUInteger)mipmapIndex;
 
-- (NSArray *)representationsForMipmapIndexes:(NSIndexSet *)mipmapIndexes;
-- (void)setRepresentations:(NSArray *)representations forMipmapIndexes:(NSIndexSet *)mipmapIndexes;
+- (NSArray<TKImageRep*> *)representationsForMipmapIndexes:(NSIndexSet *)mipmapIndexes;
+- (void)setRepresentations:(NSArray<TKImageRep*> *)representations forMipmapIndexes:(NSIndexSet *)mipmapIndexes;
 - (void)removeRepresentationsForMipmapIndexes:(NSIndexSet *)mipmapIndexes;
 
 
@@ -131,8 +130,8 @@ TEXTUREKIT_EXTERN NSData * TKSFTextureImageMagicData;
 - (void)setRepresentation:(TKImageRep *)representation forFrameIndex:(NSUInteger)frameIndex mipmapIndex:(NSUInteger)mipmapIndex;
 - (void)removeRepresentationForFrameIndex:(NSUInteger)frameIndex mipmapIndex:(NSUInteger)mipmapIndex;
 
-- (NSArray *)representationsForFrameIndexes:(NSIndexSet *)frameIndexes mipmapIndexes:(NSIndexSet *)mipmapIndexes;								/* USED	*/
-- (void)setRepresentations:(NSArray *)representations forFrameIndexes:(NSIndexSet *)frameIndexes mipmapIndexes:(NSIndexSet *)mipmapIndexes;
+- (NSArray<TKImageRep*> *)representationsForFrameIndexes:(NSIndexSet *)frameIndexes mipmapIndexes:(NSIndexSet *)mipmapIndexes;								/* USED	*/
+- (void)setRepresentations:(NSArray<TKImageRep*> *)representations forFrameIndexes:(NSIndexSet *)frameIndexes mipmapIndexes:(NSIndexSet *)mipmapIndexes;
 - (void)removeRepresentationsForFrameIndexes:(NSIndexSet *)frameIndexes mipmapIndexes:(NSIndexSet *)mipmapIndexes;
 
 
@@ -143,8 +142,8 @@ TEXTUREKIT_EXTERN NSData * TKSFTextureImageMagicData;
 - (void)setRepresentation:(TKImageRep *)representation forFace:(TKFace)aFace mipmapIndex:(NSUInteger)mipmapIndex;
 - (void)removeRepresentationForFace:(TKFace)aFace mipmapIndex:(NSUInteger)mipmapIndex;
 
-- (NSArray *)representationsForFaceIndexes:(NSIndexSet *)faceIndexes mipmapIndexes:(NSIndexSet *)mipmapIndexes;
-- (void)setRepresentations:(NSArray *)representations forFaceIndexes:(NSIndexSet *)faceIndexes mipmapIndexes:(NSIndexSet *)mipmapIndexes;
+- (NSArray<TKImageRep*> *)representationsForFaceIndexes:(NSIndexSet *)faceIndexes mipmapIndexes:(NSIndexSet *)mipmapIndexes;
+- (void)setRepresentations:(NSArray<TKImageRep*> *)representations forFaceIndexes:(NSIndexSet *)faceIndexes mipmapIndexes:(NSIndexSet *)mipmapIndexes;
 - (void)removeRepresentationsForFaceIndexes:(NSIndexSet *)faceIndexes mipmapIndexes:(NSIndexSet *)mipmapIndexes;
 
 
@@ -154,8 +153,8 @@ TEXTUREKIT_EXTERN NSData * TKSFTextureImageMagicData;
 - (void)setRepresentation:(TKImageRep *)representation forFace:(TKFace)aFace frameIndex:(NSUInteger)frameIndex mipmapIndex:(NSUInteger)mipmapIndex;
 - (void)removeRepresentationForFace:(TKFace)aFace frameIndex:(NSUInteger)frameIndex mipmapIndex:(NSUInteger)mipmapIndex;
 
-- (NSArray *)representationsForFaceIndexes:(NSIndexSet *)faceIndexes frameIndexes:(NSIndexSet *)frameIndexes mipmapIndexes:(NSIndexSet *)mipmapIndexes;
-- (void)setRepresentations:(NSArray *)representations forFaceIndexes:(NSIndexSet *)faceIndexes frameIndexes:(NSIndexSet *)frameIndexes mipmapIndexes:(NSIndexSet *)mipmapIndexes;
+- (NSArray<TKImageRep*> *)representationsForFaceIndexes:(NSIndexSet *)faceIndexes frameIndexes:(NSIndexSet *)frameIndexes mipmapIndexes:(NSIndexSet *)mipmapIndexes;
+- (void)setRepresentations:(NSArray<TKImageRep*> *)representations forFaceIndexes:(NSIndexSet *)faceIndexes frameIndexes:(NSIndexSet *)frameIndexes mipmapIndexes:(NSIndexSet *)mipmapIndexes;
 - (void)removeRepresentationsForFaceIndexes:(NSIndexSet *)faceIndexes frameIndexes:(NSIndexSet *)frameIndexes mipmapIndexes:(NSIndexSet *)mipmapIndexes;
 
 

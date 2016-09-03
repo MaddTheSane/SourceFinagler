@@ -52,42 +52,42 @@
 
 
 typedef struct {
-	NSString		*description;
+	const char		*description;
 	GLenum			dataType;
 } TKOpenGLDataTypeMapping;
 
 static const TKOpenGLDataTypeMapping TKOpenGLDataTypeMappingTable[] = {
-	{@"GL_BOOL",				GL_BOOL},
-	{@"GL_BYTE",				GL_BYTE},
-	{@"GL_UNSIGNED_BYTE",		GL_UNSIGNED_BYTE},
-	{@"GL_SHORT",				GL_SHORT},
-	{@"GL_UNSIGNED_SHORT",		GL_UNSIGNED_SHORT},
-	{@"GL_INT",					GL_INT},
-	{@"GL_UNSIGNED_INT",		GL_UNSIGNED_INT},
-	{@"GL_FLOAT",				GL_FLOAT},
-	{@"GL_DOUBLE",				GL_DOUBLE},
-	{@"GL_FLOAT_VEC2",			GL_FLOAT_VEC2},
-	{@"GL_FLOAT_VEC3",			GL_FLOAT_VEC3},
-	{@"GL_FLOAT_VEC4",			GL_FLOAT_VEC4},
-	{@"GL_FLOAT_MAT2",			GL_FLOAT_MAT2},
-	{@"GL_FLOAT_MAT3",			GL_FLOAT_MAT3},
-	{@"GL_FLOAT_MAT4",			GL_FLOAT_MAT4},
-	{@"GL_INT_VEC2",			GL_INT_VEC2},
-	{@"GL_INT_VEC3",			GL_INT_VEC3},
-	{@"GL_INT_VEC4",			GL_INT_VEC4},
-	{@"GL_SAMPLER_1D",			GL_SAMPLER_1D},
-	{@"GL_SAMPLER_2D",			GL_SAMPLER_2D},
-	{@"GL_SAMPLER_3D",			GL_SAMPLER_3D},
-	{@"GL_SAMPLER_CUBE",		GL_SAMPLER_CUBE},
-	{@"GL_POINTS",				GL_POINTS},
-	{@"GL_LINES",				GL_LINES},
-	{@"GL_LINE_LOOP",			GL_LINE_LOOP},
-	{@"GL_LINE_STRIP",			GL_LINE_STRIP},
-	{@"GL_TRIANGLES",			GL_TRIANGLES},
-	{@"GL_TRIANGLE_STRIP",		GL_TRIANGLE_STRIP},
-	{@"GL_TRIANGLE_FAN",		GL_TRIANGLE_FAN},
+	{"GL_BOOL",				GL_BOOL},
+	{"GL_BYTE",				GL_BYTE},
+	{"GL_UNSIGNED_BYTE",		GL_UNSIGNED_BYTE},
+	{"GL_SHORT",				GL_SHORT},
+	{"GL_UNSIGNED_SHORT",		GL_UNSIGNED_SHORT},
+	{"GL_INT",					GL_INT},
+	{"GL_UNSIGNED_INT",		GL_UNSIGNED_INT},
+	{"GL_FLOAT",				GL_FLOAT},
+	{"GL_DOUBLE",				GL_DOUBLE},
+	{"GL_FLOAT_VEC2",			GL_FLOAT_VEC2},
+	{"GL_FLOAT_VEC3",			GL_FLOAT_VEC3},
+	{"GL_FLOAT_VEC4",			GL_FLOAT_VEC4},
+	{"GL_FLOAT_MAT2",			GL_FLOAT_MAT2},
+	{"GL_FLOAT_MAT3",			GL_FLOAT_MAT3},
+	{"GL_FLOAT_MAT4",			GL_FLOAT_MAT4},
+	{"GL_INT_VEC2",			GL_INT_VEC2},
+	{"GL_INT_VEC3",			GL_INT_VEC3},
+	{"GL_INT_VEC4",			GL_INT_VEC4},
+	{"GL_SAMPLER_1D",			GL_SAMPLER_1D},
+	{"GL_SAMPLER_2D",			GL_SAMPLER_2D},
+	{"GL_SAMPLER_3D",			GL_SAMPLER_3D},
+	{"GL_SAMPLER_CUBE",		GL_SAMPLER_CUBE},
+	{"GL_POINTS",				GL_POINTS},
+	{"GL_LINES",				GL_LINES},
+	{"GL_LINE_LOOP",			GL_LINE_LOOP},
+	{"GL_LINE_STRIP",			GL_LINE_STRIP},
+	{"GL_TRIANGLES",			GL_TRIANGLES},
+	{"GL_TRIANGLE_STRIP",		GL_TRIANGLE_STRIP},
+	{"GL_TRIANGLE_FAN",		GL_TRIANGLE_FAN},
 #if !(TK_ENABLE_OPENGL3)
-	{@"GL_QUADS",					GL_QUADS},
+	{"GL_QUADS",					GL_QUADS},
 #endif
 };
 static const NSUInteger TKOpenGLDataMappingTableCount = sizeof(TKOpenGLDataTypeMappingTable)/sizeof(TKOpenGLDataTypeMappingTable[0]);
@@ -95,7 +95,7 @@ static const NSUInteger TKOpenGLDataMappingTableCount = sizeof(TKOpenGLDataTypeM
 TEXTUREKIT_INLINE NSString *NSStringFromOpenGLDataType(GLenum dataType) {
 	for (NSUInteger i = 0; i < TKOpenGLDataMappingTableCount; i++) {
 		if (TKOpenGLDataTypeMappingTable[i].dataType == dataType) {
-			return TKOpenGLDataTypeMappingTable[i].description;
+			return @(TKOpenGLDataTypeMappingTable[i].description);
 		}
 	}
 	return [NSString stringWithFormat:@"<unknown dataType> %u (0x%x)", dataType, dataType];

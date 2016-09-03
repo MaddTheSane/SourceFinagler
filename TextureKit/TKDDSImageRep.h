@@ -9,8 +9,7 @@
 #import <TextureKit/TKImageRep.h>
 
 
-enum {
-	
+typedef NS_ENUM(NSUInteger, TKDDSFormat) {
 	//	DirectX 9 formats
 	TKDDSFormatDXT1		= 0,
 	TKDDSFormatDXT1a,		// DXT1 with binary alpha
@@ -60,10 +59,10 @@ enum {
 	TKDDSFormatABGR32323232F,
 	
 	
-};
+//};
 
 
-enum {
+//enum {
 //	TKDDSFormatRGB		= 0,
 	TKDDSFormatRGBA		= TKDDSFormatRGB,
 	
@@ -92,7 +91,6 @@ enum {
 	TKDDSFormatDefault	= TKDDSFormatDXT1,
 	TKDDSNoFormat		= 1000
 };
-typedef NSUInteger TKDDSFormat;
 
 
 TEXTUREKIT_EXTERN NSString *NSStringFromDDSFormat(TKDDSFormat aFormat);
@@ -102,7 +100,7 @@ TEXTUREKIT_EXTERN NSString * const TKDDSType;			// UTI Type
 TEXTUREKIT_EXTERN NSString * const TKDDSFileType;		// filename extension
 TEXTUREKIT_EXTERN NSString * const TKDDSPboardType;
 
-enum {
+NS_ENUM(OSType) {
 	TKDDSMagic		= 'DDS '
 };
 
@@ -125,9 +123,9 @@ enum {
 
 
 
-+ (NSData *)DDSRepresentationOfImageRepsInArray:(NSArray *)tkImageReps options:(NSDictionary *)options;
++ (NSData *)DDSRepresentationOfImageRepsInArray:(NSArray<NSImageRep *> *)tkImageReps options:(NSDictionary *)options;
 
-+ (NSData *)DDSRepresentationOfImageRepsInArray:(NSArray *)tkImageReps usingFormat:(TKDDSFormat)aFormat quality:(TKDXTCompressionQuality)aQuality options:(NSDictionary *)options;
++ (NSData *)DDSRepresentationOfImageRepsInArray:(NSArray<NSImageRep *> *)tkImageReps usingFormat:(TKDDSFormat)aFormat quality:(TKDXTCompressionQuality)aQuality options:(NSDictionary *)options;
 
 
 @end

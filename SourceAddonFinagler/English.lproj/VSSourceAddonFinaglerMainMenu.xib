@@ -8,7 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication"/>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application">
+        <customObject id="-3" userLabel="Application" customClass="NSObject">
             <connections>
                 <outlet property="delegate" destination="821" id="822"/>
             </connections>
@@ -189,6 +189,18 @@
                         </items>
                     </menu>
                 </menuItem>
+                <menuItem title="Help" id="bHa-Ll-1NL">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Help" systemMenu="help" id="1p4-sV-38l">
+                        <items>
+                            <menuItem title="Source Addon Finagler Help" keyEquivalent="?" id="UDM-IC-mvl">
+                                <connections>
+                                    <action selector="showHelp:" target="-1" id="Xkw-v4-aHK"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
             </items>
         </menu>
         <customObject id="821" userLabel="VSSourceAddonController" customClass="VSSourceAddonController">
@@ -321,7 +333,7 @@ DQ
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="weB-91-jhW">
                         <rect key="frame" x="1" y="23" width="498" height="92"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" autosaveName="successTableView" headerView="1009" id="947">
                                 <rect key="frame" x="0.0" y="0.0" width="498" height="92"/>
@@ -401,7 +413,7 @@ DQ
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="bq1-7C-x60">
                         <rect key="frame" x="1" y="23" width="498" height="92"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" autosaveName="problemTableView" headerView="991" id="967">
                                 <rect key="frame" x="0.0" y="0.0" width="498" height="92"/>
@@ -497,7 +509,7 @@ DQ
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <popUpButtonCell key="cell" type="push" title="moving to Addons folder" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="1" imageScaling="proportionallyDown" inset="2" selectedItem="833" id="831">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
+                            <font key="font" metaFont="menu"/>
                             <menu key="menu" title="OtherViews" id="832">
                                 <items>
                                     <menuItem title="moving to Addons folder" state="on" tag="1" id="833"/>
