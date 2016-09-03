@@ -12,7 +12,7 @@
 
 @class TKImageView, CALayer;
 
-enum {
+NS_ENUM(NSInteger) {
 	TKImageViewZoomOutTag			= -1,
 	TKImageViewZoomActualSizeTag	= 0,
 	TKImageViewZoomInTag			= 1

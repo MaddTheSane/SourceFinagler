@@ -27,6 +27,8 @@
 
 
 @implementation MDTextFieldCell
+@synthesize leftEdgePadding;
+@synthesize centerImageVertically;
 
 - (id)copyWithZone:(NSZone *)zone {
 #if MD_DEBUG
@@ -110,23 +112,6 @@
 }
 
 
-- (void)setLeftEdgePadding:(CGFloat)aPadding {
-	leftEdgePadding = aPadding;
-}
-
-
-- (CGFloat)leftEdgePadding {
-	return leftEdgePadding;
-}
-
-
-- (BOOL)centerImageVertically {
-    return centerImageVertically;
-}
-
-- (void)setCenterImageVertically:(BOOL)value {
-	centerImageVertically = value;
-}
 
 
 - (NSPoint)calculatedImagePointForFrame:(NSRect)cellFrame imageSize:(NSSize)imageSize isFlipped:(BOOL)isFlipped {

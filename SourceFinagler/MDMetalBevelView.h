@@ -15,8 +15,7 @@
 //	BOOL debug;
 	BOOL drawsBackground;
 }
-- (BOOL)drawsBackground;
-- (void)setDrawsBackground:(BOOL)value;
+@property (nonatomic) BOOL drawsBackground;
 
 
 @end

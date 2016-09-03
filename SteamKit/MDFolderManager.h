@@ -20,18 +20,16 @@
 #endif
 
 
-enum {
-	MDUserDomain	=	kUserDomain,			/*	~/										*/
-	MDLocalDomain	=	kLocalDomain,			/* /Library/								*/
-	MDNetworkDomain	=	kNetworkDomain,			/* /Network/								*/	
-	MDSystemDomain	=	kSystemDomain,			/* /System/									*/
-	MDClassicDomain	=	kClassicDomain,			/* /System Folder/ (no longer applicable)	*/
-	MDAllDomains	=	kOnAppropriateDisk		/* varies									*/
+typedef NS_ENUM(FSVolumeRefNum, MDSearchPathDomain) {
+	MDUserDomain	=	kUserDomain,			/**<	~/										*/
+	MDLocalDomain	=	kLocalDomain,			/**< /Library/								*/
+	MDNetworkDomain	=	kNetworkDomain,			/**< /Network/								*/
+	MDSystemDomain	=	kSystemDomain,			/**< /System/									*/
+	MDClassicDomain	=	kClassicDomain,			/**< /System Folder/ (no longer applicable)	*/
+	MDAllDomains	=	kOnAppropriateDisk		/**< varies									*/
 };
 
-typedef FSVolumeRefNum MDSearchPathDomain;
-
-enum {
+typedef NS_ENUM(OSType, MDSearchPathDirectory) {
 	MDApplicationsDirectory				=	kApplicationsFolderType,
 	MDApplicationSupportDirectory		=	kApplicationSupportFolderType,
 	MDCachesDirectory					=	kCachedDataFolderType,
@@ -55,9 +53,6 @@ enum {
 	MDUsersDirectory					=	kUsersFolderType,
 	MDDarwinUserCachesDirectory			=	'MDdc'
 };
-
-
-typedef OSType MDSearchPathDirectory;
 
 
 @interface MDFolderManager : NSObject {

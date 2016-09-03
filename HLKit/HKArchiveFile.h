@@ -12,7 +12,7 @@
 
 @class HKItem, HKFolder;
 
-enum {
+typedef NS_ENUM(NSUInteger, HKArchiveFileType) {
 	HKArchiveFileNoType			= 0,
 	HKArchiveFileBSPType		= 1,
 	HKArchiveFileGCFType		= 2,
@@ -25,7 +25,6 @@ enum {
 	HKArchiveFileVPKType		= 9,
 	HKArchiveFileSGAType		= 10
 };
-typedef NSUInteger HKArchiveFileType;
 
 
 @interface HKArchiveFile : NSObject {

@@ -22,7 +22,7 @@
 
 
 
- typedef NS_ENUM(NSInteger, MDDateFormatterStyle) {    // date and time format styles
+typedef NS_ENUM(NSInteger, MDDateFormatterStyle) {    // date and time format styles
     MDDateFormatterNoStyle		=	kCFDateFormatterNoStyle,
     MDDateFormatterShortStyle	=	kCFDateFormatterShortStyle,
     MDDateFormatterMediumStyle	=	kCFDateFormatterMediumStyle,

@@ -106,10 +106,7 @@ static SInt32 MDMetalBevelViewSystemVersion = 0;
 
 
 
-
-- (BOOL)drawsBackground {
-    return drawsBackground;
-}
+@synthesize drawsBackground;
 
 - (void)setDrawsBackground:(BOOL)value {
 	drawsBackground = value;

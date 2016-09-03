@@ -19,7 +19,7 @@
 
 @end
 
-enum {
+NS_ENUM(NSInteger) {
 	MDBrowserSortByName					= 0,
 	MDBrowserSortBySize					= 1,
 	MDBrowserSortByKind					= 2,
@@ -38,7 +38,7 @@ enum {
 	
 }
 
-@property (nonatomic, copy) NSArray *sortDescriptors;
+@property (nonatomic, copy) NSArray<NSSortDescriptor*> *sortDescriptors;
 
 @property (nonatomic, readonly, assign) BOOL shouldShowIcons;
 @property (nonatomic, readonly, assign) BOOL shouldShowPreview;

@@ -22,7 +22,7 @@
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
-	<string>${EXECUTABLE_NAME}</string>
+	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleGetInfoString</key>
 	<string>Source Addon Finagler 2.0.3, © 2010-2013 Mark Douma. All rights reserved.</string>
 	<key>CFBundleIconFile</key>
@@ -40,7 +40,7 @@
 	<key>CFBundleVersion</key>
 	<string>203</string>
 	<key>LSMinimumSystemVersion</key>
-	<string>${MACOSX_DEPLOYMENT_TARGET}</string>
+	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
 	<key>LSUIElement</key>
 	<false/>
 	<key>NSHumanReadableCopyright</key>
@@ -50,7 +50,7 @@
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 	<key>NSSupportsSuddenTermination</key>
-	<string>NO</string>
+	<false/>
 	<key>UTExportedTypeDeclarations</key>
 	<array>
 		<dict>

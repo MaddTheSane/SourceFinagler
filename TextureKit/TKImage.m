@@ -1576,7 +1576,7 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 	}
 	
 	NSMutableDictionary *mProperties = [[properties deepMutableCopy] autorelease];
-	TKImageRep *targetImageRep = [TKImageRep largestRepresentationInArray:[self representations]];
+	TKImageRep *targetImageRep = [TKImageRep largestRepresentationInArray:(id)[self representations]];
 	
 #if TK_DEBUG
 	NSLog(@"[%@ %@] targetImageRep == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), targetImageRep);

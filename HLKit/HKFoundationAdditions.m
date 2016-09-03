@@ -8,7 +8,7 @@
 
 #import <HLKit/HKFoundationAdditions.h>
 #import <sys/syslimits.h>
-#import <openssl/sha.h>
+#import <CommonCrypto/CommonDigest.h>
 
 #define HK_DEBUG 0
 

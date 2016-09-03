@@ -17,7 +17,7 @@
 @end
 
 
-enum {
+NS_ENUM(SInt32) {
 	TKUndeterminedVersion	= 0,
 	TKCheetah				= 0x1000,
 	TKPuma					= 0x1010,

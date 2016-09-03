@@ -9,7 +9,3 @@
 #import <TextureKit/TextureKitDefines.h>
 
 
-TEXTUREKIT_EXTERN NSNumber * TKYES;
-TEXTUREKIT_EXTERN NSNumber * TKNO;
-
-

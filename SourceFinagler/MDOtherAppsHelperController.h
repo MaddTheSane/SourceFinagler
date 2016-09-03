@@ -14,13 +14,12 @@
 @class MDTableView;
 
 
-enum {
+typedef NS_OPTIONS(NSUInteger, MDMouseSoftware) {
 	MDNoMouseSoftware	= 0,
 	MDUSBOverdrive		= 1 << 1,
 	MDSteerMouse		= 1 << 2,
 	MDLogitech			= 1 << 3
 };
-typedef NSUInteger MDMouseSoftware;
 
 
 @interface MDOtherAppsHelperController : MDController <NSTableViewDelegate, VSSteamManagerDelegate> {

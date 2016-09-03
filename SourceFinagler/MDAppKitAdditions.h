@@ -39,7 +39,6 @@ extern NSString *NSStringFromDefaultsKeyPath(NSString *defaultsKey);
 @interface NSMenu (MDAdditions)
 - (BOOL)containsItem:(NSMenuItem *)aMenuItem;
 - (void)setItemArray:(NSArray *)anArray;
-- (void)removeAllItems;
 @end
 
 @interface NSOpenPanel (MDAdditions)

@@ -20,8 +20,9 @@
 
 @implementation MDPreviewViewController
 
-@synthesize sound, isPlayingSound, isQuickLookPanel;
-
+@synthesize sound;
+@synthesize playingSound = isPlayingSound;
+@synthesize quickLookPanel = isQuickLookPanel;
 
 - (id)init {
 #if MD_DEBUG

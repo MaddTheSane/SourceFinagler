@@ -11,7 +11,7 @@
 
 
 
-enum {
+NS_ENUM(OSType) {
 	HKBrokenCreatorCode = 'MACS',
 	HKBrokenFileType	= 'brok'
 };

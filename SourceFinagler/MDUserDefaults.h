@@ -9,18 +9,14 @@
 
 #import <Foundation/Foundation.h>
 
-enum {
+typedef NS_OPTIONS(NSUInteger, MDUserDefaultsDomain) {
 	MDUserDefaultsUserDomain = 1,
 	MDUserDefaultsLocalDomain = 2,
 	MDUserDefaultsLocalAndUserDomain = 3
 };
 
-typedef NSUInteger MDUserDefaultsDomain;
 
-
-@interface MDUserDefaults : NSUserDefaults {
-	
-}
+@interface MDUserDefaults : NSUserDefaults
 + (MDUserDefaults *)standardUserDefaults;
 
 - (void)setObject:(id)anObject forKey:(NSString *)aKey forAppIdentifier:(NSString *)anIdentifier inDomain:(MDUserDefaultsDomain)aDomain;

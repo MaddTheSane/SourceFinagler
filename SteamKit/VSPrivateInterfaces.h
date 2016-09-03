@@ -12,41 +12,41 @@
 
 @interface VSGame ()
 
-+ (id)gameWithPath:(NSString *)aPath infoPlist:(NSDictionary *)anInfoPlist;
-- (id)initWithPath:(NSString *)aPath infoPlist:(NSDictionary *)anInfoPlist;
++ (instancetype)gameWithPath:(NSString *)aPath infoPlist:(NSDictionary *)anInfoPlist;
+- (instancetype)initWithPath:(NSString *)aPath infoPlist:(NSDictionary *)anInfoPlist;
 
 
 - (void)synchronizeHelped;
 
-@property (retain) NSString *executablePath;
+@property (readwrite, copy) NSString *executablePath;
 
 /* Indicates the URL to the games's executable. */
-@property (retain) NSURL *executableURL;
+@property (readwrite, retain) NSURL *executableURL;
 
-@property (retain) NSString *displayName;
+@property (readwrite, copy) NSString *displayName;
 
-@property (retain) NSString *iconPath;
+@property (readwrite, copy) NSString *iconPath;
 
 /* Returns the icon of the application. */
-@property (retain) NSImage *icon;
+@property (readwrite, copy) NSImage *icon;
 
 
-@property (retain) NSDictionary *infoDictionary;
+@property (readwrite, retain) NSDictionary *infoDictionary;
 
-@property (retain) NSString	*addonsFolderPath;
+@property (readwrite, copy) NSString	*addonsFolderPath;
 
 /* Indicates the process identifier (pid) of the application.  Do not rely on this for comparing processes.  Use isEqual: instead.  Not all applications have a pid.  Applications without a pid return -1 from this method. */
-@property (assign) pid_t processIdentifier;
+@property (readwrite, assign) pid_t processIdentifier;
 
 
-@property (assign) VSGameID	gameID;
+@property (readwrite, assign) VSGameID	gameID;
 
-@property (assign) OSType creatorCode;
+@property (readwrite, assign) OSType creatorCode;
 
 
-@property (assign, setter=setHelped:) BOOL isHelped;
+@property (readwrite, assign, getter=isHelped) BOOL helped;
 
-@property (assign, setter=setRunning:) BOOL isRunning;
+@property (readwrite, assign, getter=isRunning) BOOL running;
 
 
 @end

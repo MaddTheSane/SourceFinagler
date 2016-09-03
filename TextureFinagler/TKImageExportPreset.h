@@ -33,17 +33,17 @@ TEXTUREKIT_EXTERN NSString * const TKImageExportMipmapsKey;					// NSNumber with
 
 
 
-+ (id)imageExportPresetWithDictionary:(NSDictionary *)aDictionary;
-- (id)initWithDictionary:(NSDictionary *)aDictionary;
++ (instancetype)imageExportPresetWithDictionary:(NSDictionary *)aDictionary;
+- (instancetype)initWithDictionary:(NSDictionary *)aDictionary;
 
-+ (id)imageExportPresetWithName:(NSString *)aName fileType:(NSString *)aFileType format:(NSString *)aFormat compressionQuality:(NSString *)aQuality mipmaps:(BOOL)aMipmaps;
-- (id)initWithName:(NSString *)aName fileType:(NSString *)aFileType format:(NSString *)aFormat compressionQuality:(NSString *)aQuality mipmaps:(BOOL)aMipmaps;
++ (instancetype)imageExportPresetWithName:(NSString *)aName fileType:(NSString *)aFileType format:(NSString *)aFormat compressionQuality:(NSString *)aQuality mipmaps:(BOOL)aMipmaps;
+- (instancetype)initWithName:(NSString *)aName fileType:(NSString *)aFileType format:(NSString *)aFormat compressionQuality:(NSString *)aQuality mipmaps:(BOOL)aMipmaps;
 
 
-@property (retain) NSString	*name;
-@property (retain) NSString *fileType;
-@property (retain) NSString *format;
-@property (retain) NSString *compressionQuality;
+@property (copy) NSString	*name;
+@property (copy) NSString *fileType;
+@property (copy) NSString *format;
+@property (copy) NSString *compressionQuality;
 @property (assign) BOOL mipmaps;
 
 - (NSDictionary *)dictionaryRepresentation;

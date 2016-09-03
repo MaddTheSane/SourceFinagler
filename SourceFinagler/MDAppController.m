@@ -137,7 +137,7 @@ BOOL needSourceAddonFinaglerRegister = NO;
 	
 	finderColumnViewFontAndIconSize = [[[userDefaults objectForKey:@"StandardViewOptions" forAppIdentifier:MDFinderBundleIdentifierKey inDomain:MDUserDefaultsUserDomain] objectForKey:@"ColumnViewOptions"] objectForKey:@"FontSize"];
 	
-	[defaultValues setObject:[NSNumber numberWithInteger:MDListViewMode] forKey:MDDocumentViewModeKey];
+	[defaultValues setObject:@(MDListViewMode) forKey:MDDocumentViewModeKey];
 	
 	if (finderListViewFontSize) {
 		[defaultValues setObject:finderListViewFontSize forKey:MDListViewFontSizeKey];

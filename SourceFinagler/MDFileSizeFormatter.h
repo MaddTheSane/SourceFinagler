@@ -9,21 +9,17 @@
 
 #import <Foundation/Foundation.h>
 
-enum {
+typedef NS_ENUM(NSUInteger, MDFileSizeFormatterUnitsType) {
 	MDFileSizeFormatterAutomaticUnitsType		= 1,
 	MDFileSizeFormatter1000BytesInKBUnitsType	= 2,
 	MDFileSizeFormatter1024BytesInKBUnitsType	= 3
 };
 
-typedef NSUInteger MDFileSizeFormatterUnitsType;
-
-enum {
-	MDFileSizeFormatterLogicalStyle		= 0,	// 19,088 bytes
-	MDFileSizeFormatterPhysicalStyle	= 1,	// 20 KB
-	MDFileSizeFormatterFullStyle		= 2		// 20 KB on disk (19,088 bytes)
+typedef NS_ENUM(NSUInteger, MDFileSizeFormatterStyle) {
+	MDFileSizeFormatterLogicalStyle		= 0,	///< 19,088 bytes
+	MDFileSizeFormatterPhysicalStyle	= 1,	///< 20 KB
+	MDFileSizeFormatterFullStyle		= 2		///< 20 KB on disk (19,088 bytes)
 };
-
-typedef NSUInteger MDFileSizeFormatterStyle;
 
 
 @interface MDFileSizeFormatter : NSFormatter <NSCopying, NSCoding> {
@@ -32,13 +28,10 @@ typedef NSUInteger MDFileSizeFormatterStyle;
 	NSNumberFormatter				*numberFormatter;
 	NSNumberFormatter				*bytesFormatter;
 }
-- (id)initWithUnitsType:(MDFileSizeFormatterUnitsType)aUnitsType style:(MDFileSizeFormatterStyle)aStyle;
+- (instancetype)initWithUnitsType:(MDFileSizeFormatterUnitsType)aUnitsType style:(MDFileSizeFormatterStyle)aStyle;
 
-- (MDFileSizeFormatterUnitsType)unitsType;
-- (void)setUnitsType:(MDFileSizeFormatterUnitsType)aUnitsType;
-
-- (MDFileSizeFormatterStyle)style;
-- (void)setStyle:(MDFileSizeFormatterStyle)aStyle;
+@property MDFileSizeFormatterUnitsType unitsType;
+@property MDFileSizeFormatterStyle style;
 
 @end
 

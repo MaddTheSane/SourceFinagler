@@ -14,6 +14,14 @@
 #define MD_DEBUG 0
 
 @implementation MDResource
+@synthesize resourceType;
+@synthesize resourceID;
+@synthesize resourceName;
+@synthesize resourceData;
+@synthesize resourceSize;
+@synthesize resourceIndex;
+@synthesize resourceAttributes;
+@synthesize resChanged;
 
 + (id)resourceWithType:(ResType)aType index:(ResourceIndex)anIndex error:(NSError **)outError {
 	return [[[[self class] alloc] initWithType:aType index:anIndex error:outError] autorelease];
@@ -77,60 +85,43 @@
 	[super dealloc];
 }
 
-- (ResType)resourceType {
-    return resourceType;
-}
 
 - (void)setResourceType:(ResType)value {
 	resourceType = value;
 	[self setResChanged:YES];
 }
 
-- (ResID)resourceID {
-    return resourceID;
-}
 
 - (void)setResourceID:(ResID)value {
 	resourceID = value;
 	resChanged = YES;
 }
 
-- (NSString *)resourceName {
-	return resourceName;
-}
 
 - (void)setResourceName:(NSString *)value {
 	[value retain];
 	[resourceName release];
-	resourceName = value;
+	resourceName = [value copy];
+	[value release];
 	resChanged = YES;
 }
 
-- (NSData *)resourceData {
-	return resourceData;
-}
 
 - (void)setResourceData:(NSData *)value {
 	[value retain];
 	[resourceData release];
-	resourceData = value;
+	resourceData = [value copy];
 	resourceSize = (SInt32)[resourceData length];
+	[value release];
 	resChanged = YES;
 }
 
-
-- (SInt32)resourceSize {
-    return resourceSize;
-}
 
 - (void)setResourceSize:(SInt32)value {
 	resourceSize = value;
 	[self setResChanged:YES];
 }
 
-- (ResourceIndex)resourceIndex {
-    return resourceIndex;
-}
 
 - (void)setResourceIndex:(ResourceIndex)value {
 	resourceIndex = value;
@@ -138,23 +129,11 @@
 }
 
 
-- (ResAttributes)resourceAttributes {
-    return resourceAttributes;
-}
-
-- (void)setResourceAttributes:(ResAttributes)value {
+- (void)setResourceAttributes:(MDResourceAttributes)value {
 	resourceAttributes = value;
 	[self setResChanged:YES];
 }
 
-
-- (BOOL)resChanged {
-    return resChanged;
-}
-
-- (void)setResChanged:(BOOL)value {
-	resChanged = value;
-}
 
 - (BOOL)getResourceInfo:(NSError **)outError {
 #if MD_DEBUG

@@ -9,7 +9,7 @@
 
 #import <Foundation/Foundation.h>
 
-enum {
+NS_ENUM(NSInteger) {
 	MDFileLabelNone				= 0,
 	MDFileLabelGray				= 1,
 	MDFileLabelGreen			= 2,

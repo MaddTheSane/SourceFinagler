@@ -20,15 +20,15 @@
 }
 
 
-+ (id)fileHandleForWritingAtPath:(NSString *)aPath;
-- (id)initForWritingAtPath:(NSString *)aPath;
++ (instancetype)fileHandleForWritingAtPath:(NSString *)aPath;
+- (instancetype)initForWritingAtPath:(NSString *)aPath;
 
 - (void)writeData:(NSData *)aData;
 
 - (void)synchronizeFile;
 - (void)closeFile;
 
-- (unsigned long long)offsetInFile;
+@property (readonly) unsigned long long offsetInFile;
 - (unsigned long long)seekToEndOfFile;
 - (void)seekToFileOffset:(unsigned long long)anOffset;
 

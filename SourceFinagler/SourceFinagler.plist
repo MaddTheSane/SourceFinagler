@@ -700,7 +700,7 @@
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 	<key>NSSupportsSuddenTermination</key>
-	<string>NO</string>
+	<false/>
 	<key>SUFeedURL</key>
 	<string>http://www.markdouma.com/sourcefinagler/version.xml</string>
 	<key>SUPublicDSAKeyFile</key>

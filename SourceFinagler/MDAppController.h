@@ -13,7 +13,7 @@
 @class MDSteamAppsRelocatorController, MDOtherAppsHelperController;
 @class SUUpdater;
 
-enum {
+NS_ENUM(NSUInteger) {
 	MDSteamAppsRelocatorView			= 1,
 	MDOtherAppsHelperView				= 2
 };
@@ -33,12 +33,11 @@ extern NSString * const MDOtherAppsHelperIdentifierKey;
 extern NSString * const MDConfigCopyIdentifierKey;
 
 
-enum {
+typedef NS_ENUM(NSUInteger, MDLaunchTimeActionType) {
 	MDLaunchTimeActionNone				= 0,
 	MDLaunchTimeActionOpenMainWindow	= 1,
 	MDLaunchTimeActionOpenNewDocument	= 2
 };
-typedef NSUInteger MDLaunchTimeActionType;
 
 extern NSString * const MDLaunchTimeActionKey;
 

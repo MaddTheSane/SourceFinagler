@@ -63,8 +63,8 @@ static NSMutableDictionary *displayNameAndUTITypes = nil;
 	[defaultValues setObject:[NSNumber numberWithDouble:0.8] forKey:TKImageDocumentJPEGQualityKey];
 	[defaultValues setObject:[NSNumber numberWithDouble:0.8] forKey:TKImageDocumentJPEG2000QualityKey];
 	[defaultValues setObject:[NSNumber numberWithUnsignedInteger:NSTIFFCompressionNone] forKey:TKImageDocumentTIFFCompressionKey];
-	[defaultValues setObject:TKYES forKey:TKImageDocumentSaveAlphaKey];
-	[defaultValues setObject:TKYES forKey:TKImageDocumentGenerateMipmapsKey];
+	[defaultValues setObject:@YES forKey:TKImageDocumentSaveAlphaKey];
+	[defaultValues setObject:@YES forKey:TKImageDocumentGenerateMipmapsKey];
 	[[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
 }
 
@@ -303,13 +303,13 @@ static NSMutableDictionary *displayNameAndUTITypes = nil;
 #endif
 	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 	[userDefaults setObject:imageUTType forKey:TKImageDocumentLastSavedFormatTypeKey];
-	[userDefaults setObject:[NSNumber numberWithUnsignedInteger:vtfFormat] forKey:TKImageDocumentVTFFormatKey];
-	[userDefaults setObject:[NSNumber numberWithUnsignedInteger:ddsFormat] forKey:TKImageDocumentDDSFormatKey];
-	[userDefaults setObject:[NSNumber numberWithDouble:jpegQuality] forKey:TKImageDocumentJPEGQualityKey];
-	[userDefaults setObject:[NSNumber numberWithDouble:jpeg2000Quality] forKey:TKImageDocumentJPEG2000QualityKey];
-	[userDefaults setObject:[NSNumber numberWithUnsignedInteger:tiffCompression] forKey:TKImageDocumentTIFFCompressionKey];
-	[userDefaults setObject:(saveAlpha ? TKYES : TKNO) forKey:TKImageDocumentSaveAlphaKey];
-	[userDefaults setObject:(generateMipmaps ? TKYES : TKNO) forKey:TKImageDocumentGenerateMipmapsKey];
+	[userDefaults setObject:@(vtfFormat) forKey:TKImageDocumentVTFFormatKey];
+	[userDefaults setObject:@(ddsFormat) forKey:TKImageDocumentDDSFormatKey];
+	[userDefaults setObject:@(jpegQuality) forKey:TKImageDocumentJPEGQualityKey];
+	[userDefaults setObject:@(jpeg2000Quality) forKey:TKImageDocumentJPEG2000QualityKey];
+	[userDefaults setObject:@(tiffCompression) forKey:TKImageDocumentTIFFCompressionKey];
+	[userDefaults setObject:@(saveAlpha) forKey:TKImageDocumentSaveAlphaKey];
+	[userDefaults setObject:@(generateMipmaps) forKey:TKImageDocumentGenerateMipmapsKey];
 }
 
 
@@ -327,12 +327,12 @@ static NSMutableDictionary *displayNameAndUTITypes = nil;
 	} else if ([imageUTType isEqual:(NSString *)kUTTypeJPEG]) {
 		
 		[imgProperties setObject:[NSNumber numberWithDouble:jpegQuality] forKey:(id)kCGImageDestinationLossyCompressionQuality];
-		if (imageHasAlpha && saveAlpha) [imgProperties setObject:TKYES forKey:(id)kCGImagePropertyHasAlpha];
+		if (imageHasAlpha && saveAlpha) [imgProperties setObject:@YES forKey:(id)kCGImagePropertyHasAlpha];
 		
 	} else if ([imageUTType isEqual:(NSString *)kUTTypeJPEG2000]) {
 		
 		[imgProperties setObject:[NSNumber numberWithDouble:jpeg2000Quality] forKey:(id)kCGImageDestinationLossyCompressionQuality];
-		if (imageHasAlpha && saveAlpha) [imgProperties setObject:TKYES forKey:(id)kCGImagePropertyHasAlpha];
+		if (imageHasAlpha && saveAlpha) [imgProperties setObject:@YES forKey:(id)kCGImagePropertyHasAlpha];
 		
 	} else if ([imageUTType isEqual:(NSString *)kUTTypeTIFF]) {
 		
@@ -350,7 +350,7 @@ static NSMutableDictionary *displayNameAndUTITypes = nil;
 			   [imageUTType isEqual:(NSString *)kUTTypePDF] ||
 			   [imageUTType isEqual:(NSString *)kUTTypePNG]) {
 		
-		if (imageHasAlpha && saveAlpha) [imgProperties setObject:TKYES forKey:(id)kCGImagePropertyHasAlpha];
+		if (imageHasAlpha && saveAlpha) [imgProperties setObject:@YES forKey:(id)kCGImagePropertyHasAlpha];
 		
 	}
 	

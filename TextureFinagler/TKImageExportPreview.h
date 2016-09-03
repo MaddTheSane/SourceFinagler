@@ -28,8 +28,8 @@
 @property (retain) TKImageRep *imageRep;
 @property (nonatomic, retain) TKImageExportPreset *preset;
 
-@property (retain) NSString *imageType;
-@property (retain) NSString *imageFormat;
+@property (copy) NSString *imageType;
+@property (copy) NSString *imageFormat;
 @property (assign) NSUInteger imageFileSize;
 
 @property (assign) NSInteger tag;

@@ -36,8 +36,8 @@
 }
 
 @property (retain) NSSound *sound;
-@property (assign, setter=setPlayingSound:) BOOL isPlayingSound;
-@property (assign, setter=setQuickLookPanel:) BOOL isQuickLookPanel;
+@property (assign, getter=isPlayingSound) BOOL playingSound;
+@property (assign, getter=isQuickLookPanel) BOOL quickLookPanel;
 
 - (IBAction)togglePlaySound:(id)sender;
 

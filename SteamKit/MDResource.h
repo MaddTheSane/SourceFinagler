@@ -9,6 +9,16 @@
 #import <Foundation/Foundation.h>
 #import <CoreServices/CoreServices.h>
 
+/* Resource Attribute Masks*/
+typedef NS_OPTIONS(ResAttributes, MDResourceAttributes) {
+	MDResourceAttributeSystemHeap                 = 64,   /**<System or application heap?*/
+	MDResourceAttributePurgeable                  = 32,   /**<Purgeable resource?*/
+	MDResourceAttributeLocked                     = 16,   /**<Load it in locked?*/
+	MDResourceAttributeProtected                  = 8,    /**<Protected?*/
+	MDResourceAttributePreload                    = 4,    /**<Load in on OpenResFile?*/
+	MDResourceAttributeChanged                    = 2     /**<Resource changed?*/
+};
+
 
 @interface MDResource : NSObject {
 	NSString			*resourceName;
@@ -17,38 +27,30 @@
 	ResType				resourceType;
 	ResourceIndex		resourceIndex;
 	ResID				resourceID;
-	ResAttributes		resourceAttributes;
+	MDResourceAttributes resourceAttributes;
 	BOOL				resChanged;
 	
 }
 
-+ (id)resourceWithType:(ResType)aType index:(ResourceIndex)anIndex error:(NSError **)outError;
++ (MDResource*)resourceWithType:(ResType)aType index:(ResourceIndex)anIndex error:(NSError **)outError;
 
-- (id)initWithType:(ResType)aType index:(ResourceIndex)anIndex error:(NSError **)outError;
+- (instancetype)initWithType:(ResType)aType index:(ResourceIndex)anIndex error:(NSError **)outError;
 
-- (id)initWithType:(ResType)aType resourceData:(NSData *)aData resourceID:(ResID)anID resourceName:(NSString *)aName resourceIndex:(ResourceIndex)anIndex resourceAttributes:(ResAttributes)anAttributes resChanged:(BOOL)aResChanged copy:(BOOL)shouldCopy error:(NSError **)outError;
+- (instancetype)initWithType:(ResType)aType resourceData:(NSData *)aData resourceID:(ResID)anID resourceName:(NSString *)aName resourceIndex:(ResourceIndex)anIndex resourceAttributes:(ResAttributes)anAttributes resChanged:(BOOL)aResChanged copy:(BOOL)shouldCopy error:(NSError **)outError;
 
 
 - (BOOL)getResourceInfo:(NSError **)outError;
 - (BOOL)parseResourceData:(NSError **)outError;
 
 
-- (ResType)resourceType;
-- (void)setResourceType:(ResType)value;
-- (ResID)resourceID;
-- (void)setResourceID:(ResID)value;
-- (NSString *)resourceName;
-- (void)setResourceName:(NSString *)value;
-- (NSData *)resourceData;
-- (void)setResourceData:(NSData *)value;
-- (SInt32)resourceSize;
-- (void)setResourceSize:(SInt32)value;
-- (ResourceIndex)resourceIndex;
-- (void)setResourceIndex:(ResourceIndex)value;
-- (ResAttributes)resourceAttributes;
-- (void)setResourceAttributes:(ResAttributes)value;
-- (BOOL)resChanged;
-- (void)setResChanged:(BOOL)value;
+@property (nonatomic) ResType resourceType;
+@property (nonatomic) ResID resourceID;
+@property (nonatomic, copy) NSString *resourceName;
+@property (nonatomic, copy) NSData *resourceData;
+@property (nonatomic) SInt32 resourceSize;
+@property (nonatomic) ResourceIndex resourceIndex;
+@property (nonatomic) MDResourceAttributes resourceAttributes;
+@property BOOL resChanged;
 @end
 
 

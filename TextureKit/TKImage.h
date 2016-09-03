@@ -12,15 +12,14 @@
 
 @class NSIndexSet;
 
-enum {
-	TKVTFImageType			= 0, // loaded image is a VTF
-	TKDDSImageType			= 1, // loaded image is a DDS
-	TKSFTIImageType			= 2, // Source Finagler Texture Image type (NSCoding)
-	TKRegularImageType		= 3, // loaded image is a native type (anything ImageIO.framework supports)
-	TKEmptyImageType		= 4, // when an TKImage is created with initWithSize: ??
+typedef NS_ENUM(NSUInteger, TKImageType) {
+	TKVTFImageType			= 0, ///< loaded image is a VTF
+	TKDDSImageType			= 1, ///< loaded image is a DDS
+	TKSFTIImageType			= 2, ///< Source Finagler Texture Image type (NSCoding)
+	TKRegularImageType		= 3, ///< loaded image is a native type (anything ImageIO.framework supports)
+	TKEmptyImageType		= 4, ///< when an TKImage is created with \c initWithSize: ??
 	TKUnknownImageType		= NSNotFound
 };
-typedef NSUInteger TKImageType;
 
 // In VTF images:
 // 
@@ -71,7 +70,7 @@ TEXTUREKIT_EXTERN NSData * TKSFTextureImageMagicData;
 
 }
 
-- (id)initWithData:(NSData *)aData firstRepresentationOnly:(BOOL)firstRepOnly;
+- (instancetype)initWithData:(NSData *)aData firstRepresentationOnly:(BOOL)firstRepOnly;
 
 - (void)removeRepresentations:(NSArray *)imageReps;
 

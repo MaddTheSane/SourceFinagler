@@ -29,7 +29,7 @@
 #endif
 
 
-enum {
+NS_ENUM(SInt32) {
 	MDUndeterminedVersion	= -1,
 	MDCheetah				= 0x1000,
 	MDPuma					= 0x1010,
@@ -69,26 +69,10 @@ MDFOUNDATION_EXTERN SInt32 MDGetSystemVersion();
 //		Available in Mac OS X v10.6 and later.
 //		Declared in NSURL.h.
 
-enum {
+NS_ENUM(NSUInteger) {
 	MDBookmarkCreationDefaultOptions			= 1
 };
-typedef NSUInteger MDBookmarkCreationOptions;
 
-
-//	Constants
-//	NSURLBookmarkResolutionWithoutUI
-//		Option for specifying that no UI feedback accompany resolution of the bookmark data.
-//		Available in Mac OS X v10.6 and later.
-//		Declared in NSURL.h.
-//	NSURLBookmarkResolutionWithoutMounting
-//		Option for specifying that no volume should be mounted during resolution of the bookmark data.
-//		Available in Mac OS X v10.6 and later.
-//		Declared in NSURL.h.
-enum {
-	MDBookmarkResolutionDefaultOptions		= 1,
-	MDBookmarkResolutionWithoutUI = ( 1UL << 8 )
-};
-typedef NSUInteger MDBookmarkResolutionOptions;
 
 
 //@interface NSURL (MDAdditions)
@@ -96,8 +80,8 @@ typedef NSUInteger MDBookmarkResolutionOptions;
 //@end
 
 @interface NSString (MDAdditions)
-+ (id)stringByResolvingBookmarkData:(NSData *)bookmarkData options:(MDBookmarkResolutionOptions)options bookmarkDataIsStale:(BOOL *)isStale error:(NSError **)outError;
-- (NSData *)bookmarkDataWithOptions:(MDBookmarkCreationOptions)options error:(NSError **)outError;
++ (id)stringByResolvingBookmarkData:(NSData *)bookmarkData options:(NSURLBookmarkResolutionOptions)options bookmarkDataIsStale:(BOOL *)isStale error:(NSError **)outError;
+- (NSData *)bookmarkDataWithOptions:(NSURLBookmarkCreationOptions)options error:(NSError **)outError;
 
 #if (TARGET_CPU_PPC || TARGET_CPU_X86) && MAC_OS_X_VERSION_MIN_REQUIRED <= MAC_OS_X_VERSION_10_4
 + (NSString *)stringWithFSSpec:(const FSSpec *)anFSSpec;

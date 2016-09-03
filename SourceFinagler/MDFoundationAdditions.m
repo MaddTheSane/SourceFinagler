@@ -8,7 +8,7 @@
 
 #import "MDFoundationAdditions.h"
 #import <sys/syslimits.h>
-#import <openssl/sha.h>
+#import <CommonCrypto/CommonDigest.h>
 
 #define MD_DEBUG 0
 
@@ -371,7 +371,7 @@ SInt32 MDGetSystemVersion() {
 }
 
 
-- (NSData *)bookmarkDataWithOptions:(MDBookmarkCreationOptions)options error:(NSError **)outError {
+- (NSData *)bookmarkDataWithOptions:(NSURLBookmarkCreationOptions)options error:(NSError **)outError {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -409,7 +409,7 @@ SInt32 MDGetSystemVersion() {
 }
 
 
-+ (id)stringByResolvingBookmarkData:(NSData *)bookmarkData options:(MDBookmarkResolutionOptions)options bookmarkDataIsStale:(BOOL *)isStale error:(NSError **)outError {
++ (id)stringByResolvingBookmarkData:(NSData *)bookmarkData options:(NSURLBookmarkResolutionOptions)options bookmarkDataIsStale:(BOOL *)isStale error:(NSError **)outError {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -422,7 +422,7 @@ SInt32 MDGetSystemVersion() {
 		OSErr err = noErr;
 		err = PtrToHand([bookmarkData bytes], (Handle *)&alias, [bookmarkData length]);
 		if (err == noErr) {
-			err = FSResolveAliasWithMountFlags(NULL, alias, &resolvedRef, &wasChanged, (options & MDBookmarkResolutionWithoutUI ? kResolveAliasFileNoUI : 0));
+			err = FSResolveAliasWithMountFlags(NULL, alias, &resolvedRef, &wasChanged, (options & NSURLBookmarkResolutionWithoutUI ? kResolveAliasFileNoUI : 0));
 			if (err == noErr) {
 				resolvedPath = [NSString stringWithFSRef:&resolvedRef];
 				if (isStale) *isStale = wasChanged;

@@ -26,14 +26,14 @@
 
 
 - (NSImage *)runningStateImage {
-	if ([self isRunning]) return [NSImage imageNamed:@"isRunning"];
+	if ([self isRunning]) return [NSImage imageNamed:NSImageNameStatusAvailable];
 	return nil;
 }
 
 
 + (NSSet *)keyPathsForValuesAffectingRunningStateImage {
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-	return [NSSet setWithObjects:@"isRunning", nil];
+	return [NSSet setWithObjects:@"running", nil];
 }
 
 

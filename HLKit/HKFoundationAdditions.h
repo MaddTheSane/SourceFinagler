@@ -31,7 +31,7 @@
 
 
 
-@interface NSMutableArray (HKAdditions)
-- (void)insertObjectsFromArray:(NSArray *)array atIndex:(NSUInteger)anIndex;
+@interface NSMutableArray<ObjectType> (HKAdditions)
+- (void)insertObjectsFromArray:(NSArray<ObjectType> *)array atIndex:(NSUInteger)anIndex;
 @end
 

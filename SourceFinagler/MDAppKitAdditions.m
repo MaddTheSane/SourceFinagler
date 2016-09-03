@@ -176,20 +176,6 @@ NSString *NSStringFromDefaultsKeyPath(NSString *defaultsKey) {
 }
 
 
-- (void)removeAllItems {
-#if MD_DEBUG
-	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-#endif
-	NSArray *currentArray = [self itemArray];
-	NSUInteger currentCount = [currentArray count];
-	NSUInteger i;
-	
-	for (i = 0; i < currentCount; i++) {
-		[self removeItemAtIndex:0];
-	}
-}
-
-
 @end
 
 

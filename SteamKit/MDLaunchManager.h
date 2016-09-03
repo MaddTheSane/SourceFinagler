@@ -10,11 +10,9 @@
 #include <launch.h>
 
 // at this time, MDLaunchManager only supports user domain
-enum {
+typedef NS_ENUM(NSUInteger, MDLaunchDomain) {
 	MDLaunchUserDomain		= 0
 };
-
-typedef NSUInteger MDLaunchDomain;
 
 #define NSStringFromLaunchJobKey(cString) @cString
 
@@ -24,6 +22,9 @@ typedef NSUInteger MDLaunchDomain;
 	NSDate		*agentLaunchDate;
 }
 + (MDLaunchManager *)defaultManager; // singleton
+#if __has_feature(objc_class_property)
+@property (readonly, retain) MDLaunchManager *defaultManager;
+#endif
 
 @property (retain) NSDate *agentLaunchDate;
 

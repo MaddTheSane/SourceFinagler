@@ -689,10 +689,10 @@ static TKDXTCompressionQuality defaultDXTCompressionQuality = TKDXTCompressionDe
 
 
 - (NSArray *)imageRepsByApplyingNormalMapFilterWithHeightEvaluationWeights:(CIVector *)heightEvaluationWeights
-															 filterWeights:(CIVector *)aFilterWeights
-																  wrapMode:(TKWrapMode)aWrapMode
-														  normalizeMipmaps:(BOOL)normalizeMipmaps
-														  normalMapLibrary:(TKNormalMapLibrary)normalMapLibrary {
+						 filterWeights:(CIVector *)aFilterWeights
+							  wrapMode:(TKWrapMode)aWrapMode
+					  normalizeMipmaps:(BOOL)normalizeMipmaps
+					  normalMapLibrary:(TKNormalMapLibrary)normalMapLibrary {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif

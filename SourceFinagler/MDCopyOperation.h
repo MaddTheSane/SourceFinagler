@@ -19,13 +19,12 @@ extern NSString * const MDCopyOperationTagKey;
 
 extern NSString * const MDCopyOperationStageKey;
 
-enum {
+typedef NS_ENUM(NSUInteger, MDCopyOperationStage) {
 	MDCopyOperationPreparingStage		= 1,
 	MDCopyOperationCopyingStage			= 2,
 	MDCopyOperationFinishingStage		= 3,
 	MDCopyOperationCancelledStage		= 4
 };
-typedef NSUInteger MDCopyOperationStage;
 
 
 

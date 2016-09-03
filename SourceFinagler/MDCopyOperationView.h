@@ -9,11 +9,10 @@
 
 #import <Cocoa/Cocoa.h>
 
-enum {
+typedef NS_ENUM(NSUInteger, MDCopyOperationViewBackgroundColorType) {
 	MDWhiteBackgroundColorType			= 0,
 	MDAlternateBackgroundColorType		= 1
 };
-typedef NSUInteger MDCopyOperationViewBackgroundColorType;
 
 @class MDCopyOperationSeparatorView;
 
