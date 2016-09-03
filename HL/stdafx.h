@@ -74,11 +74,19 @@ typedef hlSingle		hlFloat;
 #define HL_DEFAULT_VIEW_SIZE 131072
 #define HL_DEFAULT_COPY_BUFFER_SIZE 131072
 
+#ifdef __APPLE__
+#include <CoreFoundation/CFBase.h>
+#elif !defined(__COREFOUNDATION_CFBASE__)
+#define CF_ENUM(type, name) type name; enum
+#define CF_OPTIONS(type, name) type name; enum
+#endif
+
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-enum {
+typedef CF_ENUM(hlUInt, HLOption) {
 	HL_VERSION = 0,
 	HL_ERROR,
 	HL_ERROR_SYSTEM,
@@ -110,9 +118,8 @@ enum {
 	HL_PROC_TELL_EX,
 	HL_PROC_SIZE_EX
 };
-typedef hlUInt HLOption;
 
-enum {
+typedef CF_OPTIONS(hlUInt, HLFileMode) {
 	HL_MODE_INVALID = 0x00,
 	HL_MODE_READ = 0x01,
 	HL_MODE_WRITE = 0x02,
@@ -121,37 +128,32 @@ enum {
 	HL_MODE_NO_FILEMAPPING = 0x10,
 	HL_MODE_QUICK_FILEMAPPING = 0x20
 };
-typedef hlUInt HLFileMode;
 
-enum {
+typedef CF_ENUM(hlUInt, HLSeekMode) {
 	HL_SEEK_BEGINNING = 0,
 	HL_SEEK_CURRENT,
 	HL_SEEK_END
 };
-typedef hlUInt HLSeekMode;
 
-enum {
+typedef CF_ENUM(hlUInt, HLDirectoryItemType) {
 	HL_ITEM_NONE = 0,
 	HL_ITEM_FOLDER,
 	HL_ITEM_FILE
 };
-typedef hlUInt HLDirectoryItemType;
 
 
-enum {
+typedef CF_ENUM(hlUInt, HLSortOrder) {
 	HL_ORDER_ASCENDING = 0,
 	HL_ORDER_DESCENDING
 };
-typedef hlUInt HLSortOrder;
 
 
-enum {
+typedef CF_ENUM(hlUInt, HLSortField) {
 	HL_FIELD_NAME = 0,
 	HL_FIELD_SIZE
 };
-typedef hlUInt HLSortField;
 
-enum {
+typedef CF_OPTIONS(hlUInt, HLFindType) {
 	HL_FIND_FILES = 0x01,
 	HL_FIND_FOLDERS = 0x02,
 	HL_FIND_NO_RECURSE = 0x04,
@@ -161,10 +163,9 @@ enum {
 	HL_FIND_MODE_WILDCARD = 0x00,
 	HL_FIND_ALL = HL_FIND_FILES | HL_FIND_FOLDERS
 };
-typedef hlUInt HLFindType;
 
 
-enum {
+typedef CF_ENUM(hlUInt, HLStreamType) {
 	HL_STREAM_NONE = 0,
 	HL_STREAM_FILE,
 	HL_STREAM_GCF,
@@ -173,19 +174,17 @@ enum {
 	HL_STREAM_PROC,
 	HL_STREAM_NULL
 };
-typedef hlUInt HLStreamType;
 
 
-enum {
+typedef CF_ENUM(hlUInt, HLMappingType) {
 	HL_MAPPING_NONE = 0,
 	HL_MAPPING_FILE,
 	HL_MAPPING_MEMORY,
 	HL_MAPPING_STREAM
 };
-typedef hlUInt HLMappingType;
 
 
-enum {
+typedef CF_ENUM(hlUInt, HLPackageType) {
 	HL_PACKAGE_NONE = 0,
 	HL_PACKAGE_BSP,
 	HL_PACKAGE_GCF,
@@ -198,9 +197,8 @@ enum {
 	HL_PACKAGE_VPK,
 	HL_PACKAGE_SGA
 };
-typedef hlUInt HLPackageType;
 
-enum {
+typedef CF_ENUM(hlUInt, HLAttributeType) {
 	HL_ATTRIBUTE_INVALID = 0,
 	HL_ATTRIBUTE_BOOLEAN,
 	HL_ATTRIBUTE_INTEGER,
@@ -208,10 +206,9 @@ enum {
 	HL_ATTRIBUTE_FLOAT,
 	HL_ATTRIBUTE_STRING
 };
-typedef hlUInt HLAttributeType;
 
 
-enum {
+typedef CF_ENUM(hlUInt, HLPackageAttribute) {
 	HL_BSP_PACKAGE_VERSION = 0,
 	HL_BSP_PACKAGE_COUNT,
 	HL_BSP_ITEM_WIDTH = 0,
@@ -314,9 +311,8 @@ enum {
 	HL_ZIP_ITEM_COMMENT,
 	HL_ZIP_ITEM_COUNT
 };
-typedef hlUInt HLPackageAttribute;
 
-enum {
+typedef CF_ENUM(hlUInt, HLValidation) {
 	HL_VALIDATES_OK = 0,
 	HL_VALIDATES_ASSUMED_OK,
 	HL_VALIDATES_INCOMPLETE,
@@ -324,7 +320,6 @@ enum {
 	HL_VALIDATES_CANCELED,
 	HL_VALIDATES_ERROR
 };
-typedef hlUInt HLValidation;
 
 typedef struct
 {
