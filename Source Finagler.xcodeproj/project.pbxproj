@@ -976,7 +976,7 @@
 		C11B275411BDE826004D4CC0 /* MDAppKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDAppKitAdditions.h; sourceTree = "<group>"; };
 		C11B275511BDE826004D4CC0 /* MDAppKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDAppKitAdditions.m; sourceTree = "<group>"; };
 		C11B279211BDFBB8004D4CC0 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
-		C11C5AC4126844E400B7E51E /* TKImageDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TKImageDocument.h; path = TextureFinagler/TKImageDocument.h; sourceTree = SOURCE_ROOT; };
+		C11C5AC4126844E400B7E51E /* TKImageDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKImageDocument.h; sourceTree = "<group>"; };
 		C11CA5E513A4E84D006CC348 /* MDCopyOperationSeparatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCopyOperationSeparatorView.h; sourceTree = "<group>"; };
 		C11CA5E613A4E84D006CC348 /* MDCopyOperationSeparatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCopyOperationSeparatorView.m; sourceTree = "<group>"; };
 		C11CA69613A4F9FB006CC348 /* MDCopyOperationContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCopyOperationContentView.h; sourceTree = "<group>"; };
@@ -1129,7 +1129,7 @@
 		C16478F5124E988C0062B943 /* GenerateThumbnailForURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenerateThumbnailForURL.m; sourceTree = "<group>"; };
 		C16478F6124E988C0062B943 /* GeneratePreviewForURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratePreviewForURL.m; sourceTree = "<group>"; };
 		C16478F7124E988C0062B943 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
-		C169D9D0128A0A4A00653B05 /* TKImageDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TKImageDocument.m; path = TextureFinagler/TKImageDocument.m; sourceTree = SOURCE_ROOT; };
+		C169D9D0128A0A4A00653B05 /* TKImageDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKImageDocument.m; sourceTree = "<group>"; };
 		C169E27B1243825A0009C66E /* VDF.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = VDF.icns; sourceTree = "<group>"; };
 		C16A68F11600B6170038A8B1 /* HLKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLKit.h; sourceTree = "<group>"; };
 		C16A68F21600B6170038A8B1 /* HLKitDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLKitDefines.h; sourceTree = "<group>"; };
@@ -1552,9 +1552,9 @@
 		C1FEA92A125E723B00CA78FF /* TiledImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiledImage.h; sourceTree = "<group>"; };
 		C1FEA930125E72E300CA78FF /* NVTextureTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NVTextureTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1FEA931125E72E300CA78FF /* NVTextureTools-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "NVTextureTools-Info.plist"; path = "../NVTextureTools-Info.plist"; sourceTree = "<group>"; };
-		C1FEA946125E739700CA78FF /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = CMakeLists.txt; path = NVTextureTools/poshlib/CMakeLists.txt; sourceTree = SOURCE_ROOT; };
-		C1FEA947125E739700CA78FF /* posh.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = posh.c; path = NVTextureTools/poshlib/posh.c; sourceTree = SOURCE_ROOT; };
-		C1FEA948125E739700CA78FF /* posh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = posh.h; path = NVTextureTools/poshlib/posh.h; sourceTree = SOURCE_ROOT; };
+		C1FEA946125E739700CA78FF /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
+		C1FEA947125E739700CA78FF /* posh.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = posh.c; sourceTree = "<group>"; };
+		C1FEA948125E739700CA78FF /* posh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = posh.h; sourceTree = "<group>"; };
 		C1FEA94B125E73B700CA78FF /* nvconfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nvconfig.h; sourceTree = "<group>"; };
 		C1FEA959125E75C000CA78FF /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
 		C1FEA95A125E75C000CA78FF /* CompressionOptions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompressionOptions.cpp; sourceTree = "<group>"; };
@@ -2354,7 +2354,7 @@
 			);
 			name = "TextureKit Framework";
 			path = TextureKit;
-			sourceTree = SOURCE_ROOT;
+			sourceTree = "<group>";
 		};
 		C181AD6E125578C3006810AB /* Source.mdimporter */ = {
 			isa = PBXGroup;
@@ -3075,6 +3075,7 @@
 			isa = PBXGroup;
 			children = (
 				C1FEA8CA125E5D7E00CA78FF /* NVCore.h */,
+				C1FEA8BB125E5D7E00CA78FF /* Array.h */,
 				C1CCA6D21288D12F005349E9 /* CoreDefines.h */,
 				C1FEA8BE125E5D7E00CA78FF /* Debug.h */,
 				C1FEA8BD125E5D7E00CA78FF /* Debug.cpp */,
@@ -3086,13 +3087,12 @@
 				C1FEA8C6125E5D7E00CA78FF /* Library.cpp */,
 				C1FEA8C9125E5D7E00CA78FF /* Memory.h */,
 				C1FEA8C8125E5D7E00CA78FF /* Memory.cpp */,
-				C1FEA8BB125E5D7E00CA78FF /* Array.h */,
 				C1FEA8CB125E5D7E00CA78FF /* Ptr.h */,
 				C1FEA8CC125E5D7E00CA78FF /* RefCounted.h */,
+				C1FEA8CD125E5D7E00CA78FF /* StdStream.h */,
+				C1FEA8CE125E5D7E00CA78FF /* Stream.h */,
 				C1FEA8D0125E5D7E00CA78FF /* StrLib.h */,
 				C1FEA8CF125E5D7E00CA78FF /* StrLib.cpp */,
-				C1FEA8CE125E5D7E00CA78FF /* Stream.h */,
-				C1FEA8CD125E5D7E00CA78FF /* StdStream.h */,
 				C1FEA8D2125E5D7E00CA78FF /* TextReader.h */,
 				C1FEA8D1125E5D7E00CA78FF /* TextReader.cpp */,
 				C1FEA8D4125E5D7E00CA78FF /* TextWriter.h */,
@@ -3111,33 +3111,33 @@
 			isa = PBXGroup;
 			children = (
 				C1FEA923125E723B00CA78FF /* NVImage.h */,
-				C1CCA80A1288DFD1005349E9 /* ImageDefines.h */,
-				C1CCA8091288DFD1005349E9 /* ImageBase.h */,
-				C1FEA91C125E723B00CA78FF /* FloatImage.h */,
-				C1FEA91B125E723B00CA78FF /* FloatImage.cpp */,
-				C1FEA91A125E723B00CA78FF /* Filter.h */,
-				C1FEA919125E723B00CA78FF /* Filter.cpp */,
-				C1FEA91E125E723B00CA78FF /* Image.h */,
-				C1FEA91D125E723B00CA78FF /* Image.cpp */,
-				C1FEA920125E723B00CA78FF /* ImageIO.h */,
-				C1FEA91F125E723B00CA78FF /* ImageIO.cpp */,
+				C1FEA910125E723B00CA78FF /* BlockDXT.cpp */,
+				C1FEA911125E723B00CA78FF /* BlockDXT.h */,
 				C1FEA914125E723B00CA78FF /* ColorBlock.h */,
 				C1FEA913125E723B00CA78FF /* ColorBlock.cpp */,
-				C1FEA911125E723B00CA78FF /* BlockDXT.h */,
-				C1FEA910125E723B00CA78FF /* BlockDXT.cpp */,
-				C1FEA918125E723B00CA78FF /* DirectDrawSurface.h */,
-				C1FEA917125E723B00CA78FF /* DirectDrawSurface.cpp */,
-				C1FEA922125E723B00CA78FF /* NormalMap.h */,
-				C1FEA921125E723B00CA78FF /* NormalMap.cpp */,
-				C1FEA925125E723B00CA78FF /* PsdFile.h */,
-				C1FEA928125E723B00CA78FF /* TgaFile.h */,
 				C1FEA916125E723B00CA78FF /* ColorSpace.h */,
 				C1FEA915125E723B00CA78FF /* ColorSpace.cpp */,
-				C1FEA924125E723B00CA78FF /* PixelFormat.h */,
+				C1FEA918125E723B00CA78FF /* DirectDrawSurface.h */,
+				C1FEA917125E723B00CA78FF /* DirectDrawSurface.cpp */,
 				C1305B7812F08E6E00D68170 /* ErrorMetric.h */,
 				C1305B7712F08E6E00D68170 /* ErrorMetric.cpp */,
-				C1FEA94F125E748D00CA78FF /* Resources */,
+				C1FEA91A125E723B00CA78FF /* Filter.h */,
+				C1FEA919125E723B00CA78FF /* Filter.cpp */,
+				C1FEA91C125E723B00CA78FF /* FloatImage.h */,
+				C1FEA91B125E723B00CA78FF /* FloatImage.cpp */,
+				C1FEA91E125E723B00CA78FF /* Image.h */,
+				C1FEA91D125E723B00CA78FF /* Image.cpp */,
+				C1CCA8091288DFD1005349E9 /* ImageBase.h */,
+				C1CCA80A1288DFD1005349E9 /* ImageDefines.h */,
+				C1FEA920125E723B00CA78FF /* ImageIO.h */,
+				C1FEA91F125E723B00CA78FF /* ImageIO.cpp */,
+				C1FEA922125E723B00CA78FF /* NormalMap.h */,
+				C1FEA921125E723B00CA78FF /* NormalMap.cpp */,
+				C1FEA924125E723B00CA78FF /* PixelFormat.h */,
+				C1FEA925125E723B00CA78FF /* PsdFile.h */,
+				C1FEA928125E723B00CA78FF /* TgaFile.h */,
 				C1FEA912125E723B00CA78FF /* CMakeLists.txt */,
+				C1FEA94F125E748D00CA78FF /* Resources */,
 				C1FEA950125E749300CA78FF /* unused */,
 			);
 			name = NVImage;
@@ -3148,22 +3148,22 @@
 			isa = PBXGroup;
 			children = (
 				C1FEA8F4125E718D00CA78FF /* NVMath.h */,
-				C1CCA7F11288D78C005349E9 /* MathDefines.h */,
+				C1FEA8EC125E718D00CA78FF /* Box.h */,
+				C1FEA8EE125E718D00CA78FF /* Color.h */,
+				C1FEA8F0125E718D00CA78FF /* Fitting.h */,
+				C1FEA8EF125E718D00CA78FF /* Fitting.cpp */,
+				C1FEA8F2125E718D00CA78FF /* Half.h */,
+				C1FEA8F1125E718D00CA78FF /* Half.cpp */,
 				C1CCA7F81288D9C9005349E9 /* MathBase.h */,
-				C1FEA8F7125E718D00CA78FF /* Vector.h */,
-				C1305B6312F08DD700D68170 /* SimdVector_SSE.h */,
-				C1305B6412F08DD700D68170 /* SimdVector_VE.h */,
-				C1305B6512F08DD700D68170 /* SimdVector.h */,
+				C1CCA7F11288D78C005349E9 /* MathDefines.h */,
 				C1FEA8F3125E718D00CA78FF /* Matrix.h */,
 				C1FEA8F6125E718D00CA78FF /* Plane.h */,
 				C1FEA8F5125E718D00CA78FF /* Plane.cpp */,
-				C1FEA8EE125E718D00CA78FF /* Color.h */,
-				C1FEA8F2125E718D00CA78FF /* Half.h */,
-				C1FEA8F1125E718D00CA78FF /* Half.cpp */,
-				C1FEA8F0125E718D00CA78FF /* Fitting.h */,
-				C1FEA8EF125E718D00CA78FF /* Fitting.cpp */,
+				C1305B6312F08DD700D68170 /* SimdVector_SSE.h */,
+				C1305B6412F08DD700D68170 /* SimdVector_VE.h */,
+				C1305B6512F08DD700D68170 /* SimdVector.h */,
+				C1FEA8F7125E718D00CA78FF /* Vector.h */,
 				C1FEA8ED125E718D00CA78FF /* CMakeLists.txt */,
-				C1FEA8EC125E718D00CA78FF /* Box.h */,
 				C1FEA94D125E743A00CA78FF /* Resources */,
 				C1FEA94E125E743F00CA78FF /* unused */,
 			);
@@ -3174,53 +3174,52 @@
 		C1FEA7B4125E5C1300CA78FF /* NVTextureTools */ = {
 			isa = PBXGroup;
 			children = (
-				C12CE5AF1288F36B001FF211 /* TextureToolDefines.h */,
-				C12CE5E91288F4F2001FF211 /* TextureToolsBase.h */,
-				C12CE5B21288F4BD001FF211 /* TextureTools.h */,
-				C12CE5B11288F4BD001FF211 /* TextureTools.cpp */,
 				C1FEA96E125E75C000CA78FF /* NVTextureTools.h */,
 				C1FEA96D125E75C000CA78FF /* NVTextureTools.cpp */,
-				C1FEA9AF125E774800CA78FF /* Resources */,
-				C1FEA96A125E75C000CA78FF /* Context.h */,
-				C1FEA969125E75C000CA78FF /* Context.cpp */,
 				C1FEA970125E75C000CA78FF /* nvtt_wrapper.h */,
 				C1FEA96F125E75C000CA78FF /* nvtt_wrapper.cpp */,
+				C1305BDF12F08FBD00D68170 /* ClusterFit.h */,
+				C1305BDE12F08FBD00D68170 /* ClusterFit.cpp */,
+				C1FEA95B125E75C000CA78FF /* CompressionOptions.h */,
+				C1FEA95A125E75C000CA78FF /* CompressionOptions.cpp */,
 				C1FEA95C125E75C000CA78FF /* Compressor.h */,
-				C1FEA964125E75C000CA78FF /* CompressorDXT.h */,
-				C1FEA963125E75C000CA78FF /* CompressorDXT.cpp */,
 				C1FEA95E125E75C000CA78FF /* CompressorDX9.h */,
 				C1FEA95D125E75C000CA78FF /* CompressorDX9.cpp */,
 				C1FEA960125E75C000CA78FF /* CompressorDX10.h */,
 				C1FEA95F125E75C000CA78FF /* CompressorDX10.cpp */,
 				C1FEA962125E75C000CA78FF /* CompressorDX11.h */,
 				C1FEA961125E75C000CA78FF /* CompressorDX11.cpp */,
+				C1FEA964125E75C000CA78FF /* CompressorDXT.h */,
+				C1FEA963125E75C000CA78FF /* CompressorDXT.cpp */,
 				C1FEA966125E75C000CA78FF /* CompressorRGB.h */,
 				C1FEA965125E75C000CA78FF /* CompressorRGB.cpp */,
 				C1FEA968125E75C000CA78FF /* CompressorRGBE.h */,
 				C1FEA967125E75C000CA78FF /* CompressorRGBE.cpp */,
-				C1FEA976125E75C000CA78FF /* QuickCompressDXT.h */,
-				C1FEA975125E75C000CA78FF /* QuickCompressDXT.cpp */,
-				C1FEA972125E75C000CA78FF /* OptimalCompressDXT.h */,
-				C1FEA971125E75C000CA78FF /* OptimalCompressDXT.cpp */,
-				C1FEA95B125E75C000CA78FF /* CompressionOptions.h */,
-				C1FEA95A125E75C000CA78FF /* CompressionOptions.cpp */,
+				C1FEA96A125E75C000CA78FF /* Context.h */,
+				C1FEA969125E75C000CA78FF /* Context.cpp */,
 				C1FEA96C125E75C000CA78FF /* InputOptions.h */,
 				C1FEA96B125E75C000CA78FF /* InputOptions.cpp */,
+				C1FEA972125E75C000CA78FF /* OptimalCompressDXT.h */,
+				C1FEA971125E75C000CA78FF /* OptimalCompressDXT.cpp */,
 				C1FEA974125E75C000CA78FF /* OutputOptions.h */,
 				C1FEA973125E75C000CA78FF /* OutputOptions.cpp */,
+				C1FEA976125E75C000CA78FF /* QuickCompressDXT.h */,
+				C1FEA975125E75C000CA78FF /* QuickCompressDXT.cpp */,
 				C1FEA978125E75C000CA78FF /* SingleColorLookup.h */,
 				C1FEA977125E75C000CA78FF /* SingleColorLookup.cpp */,
-				C1FEA97A125E75C000CA78FF /* TexImage.h */,
-				C1FEA979125E75C000CA78FF /* TexImage.cpp */,
 				C1305BCE12F08F8100D68170 /* TaskDispatcher.h */,
 				C1305BCD12F08F8100D68170 /* TaskDispatcher.cpp */,
-				C1305BDF12F08FBD00D68170 /* ClusterFit.h */,
-				C1305BDE12F08FBD00D68170 /* ClusterFit.cpp */,
-				C1FEA959125E75C000CA78FF /* CMakeLists.txt */,
+				C1FEA97A125E75C000CA78FF /* TexImage.h */,
+				C1FEA979125E75C000CA78FF /* TexImage.cpp */,
+				C12CE5AF1288F36B001FF211 /* TextureToolDefines.h */,
+				C12CE5B11288F4BD001FF211 /* TextureTools.cpp */,
+				C12CE5B21288F4BD001FF211 /* TextureTools.h */,
+				C12CE5E91288F4F2001FF211 /* TextureToolsBase.h */,
 				C1FEA952125E755D00CA78FF /* CUDA */,
 				C1FEA953125E756500CA78FF /* Squish */,
+				C1FEA959125E75C000CA78FF /* CMakeLists.txt */,
+				C1FEA9AF125E774800CA78FF /* Resources */,
 				C1FEA955125E757B00CA78FF /* bc6h */,
-				C1097B0D125FA1B000D60D27 /* CUDA.framework */,
 			);
 			name = NVTextureTools;
 			path = nvtt;
@@ -3303,6 +3302,7 @@
 				C1FEA982125E763700CA78FF /* CudaMath.h */,
 				C1FEA984125E763700CA78FF /* CudaUtils.h */,
 				C1FEA983125E763700CA78FF /* CudaUtils.cpp */,
+				C1097B0D125FA1B000D60D27 /* CUDA.framework */,
 			);
 			name = CUDA;
 			path = cuda;
@@ -4762,8 +4762,8 @@
 				C101A6D7125281C700BD8091 /* English */,
 			);
 			name = TKImageDocument.xib;
-			path = TextureFinagler/Resources;
-			sourceTree = SOURCE_ROOT;
+			path = Resources;
+			sourceTree = "<group>";
 		};
 		C13E77DD11C805D900B10F3C /* MDSteamAppsRelocatorView.xib */ = {
 			isa = PBXVariantGroup;
@@ -4941,6 +4941,7 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
@@ -4959,6 +4960,7 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Developer ID Application: Mark Douma";
 				COPY_PHASE_STRIP = NO;
@@ -4975,7 +4977,6 @@
 		C1224BEE13B06B9A009AA0F4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -4990,7 +4991,6 @@
 		C1224BEF13B06B9A009AA0F4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SourceFinagler/SourceFinagler_Prefix.pch;
@@ -5006,7 +5006,6 @@
 		C140E63F13889A9400027DD6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
@@ -5030,7 +5029,6 @@
 		C140E64013889A9400027DD6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
@@ -5073,7 +5071,6 @@
 		C1580F12139634DA00D5D4D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
@@ -5093,7 +5090,6 @@
 		C1580F13139634DA00D5D4D8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
@@ -5114,7 +5110,6 @@
 		C17319B41298D11500C29732 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
@@ -5133,7 +5128,6 @@
 		C17319B51298D11500C29732 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
@@ -5154,7 +5148,6 @@
 		C1B95277124E73B300E83451 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
@@ -5173,7 +5166,6 @@
 		C1B95278124E73B300E83451 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
@@ -5194,7 +5186,6 @@
 		C1C12636123A54F1004674B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
@@ -5214,7 +5205,6 @@
 		C1C12637123A54F1004674B4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
@@ -5236,7 +5226,6 @@
 		C1C2C5A6127CBCA0003B24F6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(BUILD_DIR)\"/**",
@@ -5260,7 +5249,6 @@
 		C1C2C5A7127CBCA0003B24F6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(BUILD_DIR)\"/**",
@@ -5284,7 +5272,6 @@
 		C1C2C63B127CBED1003B24F6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
 				INFOPLIST_FILE = "SourceSpotlightImporter/Source-Info.plist";
@@ -5298,7 +5285,6 @@
 		C1C2C63C127CBED1003B24F6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Source-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../../../Frameworks/";
@@ -5312,7 +5298,6 @@
 		C1C2C65F127CBEF7003B24F6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SourceFinagler/SourceFinagler_Prefix.pch;
@@ -5327,7 +5312,6 @@
 		C1C2C660127CBEF7003B24F6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SourceFinagler/SourceFinagler_Prefix.pch;
@@ -5343,7 +5327,6 @@
 		C1D4494D12602E5100A027EF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				INSTALL_PATH = /usr/local/bin;
@@ -5354,7 +5337,6 @@
 		C1D4494E12602E5100A027EF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				INSTALL_PATH = /usr/local/bin;
 				PRODUCT_NAME = decompress;
@@ -5364,7 +5346,6 @@
 		C1FEA7EC125E5C9600CA78FF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
@@ -5381,7 +5362,6 @@
 		C1FEA7ED125E5C9600CA78FF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
@@ -5399,7 +5379,6 @@
 		C1FEA8E0125E5DC300CA78FF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
@@ -5416,7 +5395,6 @@
 		C1FEA8E1125E5DC300CA78FF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
@@ -5434,7 +5412,6 @@
 		C1FEA8FF125E71A200CA78FF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
@@ -5452,7 +5429,6 @@
 		C1FEA900125E71A200CA78FF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
@@ -5471,7 +5447,6 @@
 		C1FEA932125E72E400CA78FF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
@@ -5492,7 +5467,6 @@
 		C1FEA933125E72E400CA78FF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
@@ -5514,7 +5488,6 @@
 		C1FEAB34125F633100CA78FF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5538,7 +5511,6 @@
 		C1FEAB35125F633100CA78FF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
