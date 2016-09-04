@@ -23,7 +23,7 @@
 
 - (instancetype)initWithContentsOfFile:(NSString *)aPath error:(NSError **)outError;
 - (instancetype)initWithContentsOfURL:(NSURL *)URL error:(NSError **)outError;
-- (instancetype)initWithData:(NSData *)aData error:(NSError **)outError;
+- (instancetype)initWithData:(NSData *)aData error:(NSError **)outError NS_DESIGNATED_INITIALIZER;
 
 
 - (NSDictionary *)dictionaryRepresentation;

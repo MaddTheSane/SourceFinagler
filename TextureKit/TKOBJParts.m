@@ -188,14 +188,4 @@ NSString * const TKOBJVertexNormalKey		= @"vn";
 @implementation TKOBJFace
 
 
-
-
 @end
-
-
-
-
-
-
-
-

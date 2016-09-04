@@ -24,6 +24,30 @@
 /* Begin PBXBuildFile section */
 		55EF66A21D7B7DE800FFF7B2 /* TextureFinaglerImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55EF66A11D7B7DE800FFF7B2 /* TextureFinaglerImages.xcassets */; };
 		55EF66A41D7B81B600FFF7B2 /* genericDocument16@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 55EF66A31D7B81B600FFF7B2 /* genericDocument16@2x.png */; };
+		55F82CB51D7BA58600D6DAC9 /* TKOBJModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C1958030149117DC0024C716 /* TKOBJModel.m */; };
+		55F82CB61D7BA58600D6DAC9 /* TKOBJParts.m in Sources */ = {isa = PBXBuildFile; fileRef = C11116FE149151360040E4B5 /* TKOBJParts.m */; };
+		55F82CB71D7BA5A900D6DAC9 /* TKOBJParts.h in Headers */ = {isa = PBXBuildFile; fileRef = C11116FD149151360040E4B5 /* TKOBJParts.h */; };
+		55F82CB81D7BA5DB00D6DAC9 /* TKModel.h in Headers */ = {isa = PBXBuildFile; fileRef = C17845C5148300E700082335 /* TKModel.h */; };
+		55F82CB91D7BA5F900D6DAC9 /* TKOpenGLBase.h in Headers */ = {isa = PBXBuildFile; fileRef = C1675B6C160644C8006E8B66 /* TKOpenGLBase.h */; };
+		55F82CBA1D7BA61400D6DAC9 /* TKOBJModel.h in Headers */ = {isa = PBXBuildFile; fileRef = C195802F149117DC0024C716 /* TKOBJModel.h */; };
+		55F82CBC1D7BA77100D6DAC9 /* TKOpenGLDrawable.h in Headers */ = {isa = PBXBuildFile; fileRef = 55F82CBB1D7BA77100D6DAC9 /* TKOpenGLDrawable.h */; };
+		55F82CBE1D7BA7E500D6DAC9 /* TKMath.h in Headers */ = {isa = PBXBuildFile; fileRef = 55F82CBD1D7BA7E300D6DAC9 /* TKMath.h */; };
+		55F82CBF1D7BA7FF00D6DAC9 /* TKOpenGLObject.h in Headers */ = {isa = PBXBuildFile; fileRef = C1675B6A16064477006E8B66 /* TKOpenGLObject.h */; };
+		55F82CC01D7BA89E00D6DAC9 /* TKTexture.h in Headers */ = {isa = PBXBuildFile; fileRef = C16C63DB12D75E5200D6F254 /* TKTexture.h */; };
+		55F82CC11D7BA8A200D6DAC9 /* TKTexture.m in Sources */ = {isa = PBXBuildFile; fileRef = C16C63DC12D75E5200D6F254 /* TKTexture.m */; };
+		55F82CC21D7BA8B300D6DAC9 /* TKDDSTexture.h in Headers */ = {isa = PBXBuildFile; fileRef = C15A9BDD1473FFDB00AEA11A /* TKDDSTexture.h */; };
+		55F82CC31D7BA8B900D6DAC9 /* TKDDSTexture.mm in Sources */ = {isa = PBXBuildFile; fileRef = C15A9BDE1473FFDB00AEA11A /* TKDDSTexture.mm */; };
+		55F82CC41D7BA8CF00D6DAC9 /* TKVTFTexture.mm in Sources */ = {isa = PBXBuildFile; fileRef = C15A9BE01474009100AEA11A /* TKVTFTexture.mm */; };
+		55F82CC51D7BA8D200D6DAC9 /* TKVTFTexture.h in Headers */ = {isa = PBXBuildFile; fileRef = C15A9BDF1474009100AEA11A /* TKVTFTexture.h */; };
+		55F82CC81D7BAA9D00D6DAC9 /* TKShader.h in Headers */ = {isa = PBXBuildFile; fileRef = 55F82CC61D7BAA9D00D6DAC9 /* TKShader.h */; };
+		55F82CC91D7BAA9D00D6DAC9 /* TKShader.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F82CC71D7BAA9D00D6DAC9 /* TKShader.m */; };
+		55F82CCA1D7BAACF00D6DAC9 /* TKOpenGLObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C1675B6B16064477006E8B66 /* TKOpenGLObject.m */; };
+		55F82CCB1D7BAAF900D6DAC9 /* TKModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C17845C6148300E800082335 /* TKModel.m */; };
+		55F82CCE1D7BAB5800D6DAC9 /* TKShaderProgram.h in Headers */ = {isa = PBXBuildFile; fileRef = 55F82CCC1D7BAB5800D6DAC9 /* TKShaderProgram.h */; };
+		55F82CCF1D7BAB5800D6DAC9 /* TKShaderProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F82CCD1D7BAB5800D6DAC9 /* TKShaderProgram.m */; };
+		55F82CD51D7BACD900D6DAC9 /* TKValueAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 55F82CD31D7BACD900D6DAC9 /* TKValueAdditions.h */; };
+		55F82CD61D7BACD900D6DAC9 /* TKValueAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F82CD41D7BACD900D6DAC9 /* TKValueAdditions.m */; };
+		55F82CD71D7BAFAD00D6DAC9 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1864047159C2F0C009D15FB /* GLKit.framework */; };
 		C108DB17163E363F00DADFCD /* TKImageRepAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C108DB16163E363E00DADFCD /* TKImageRepAdditions.m */; };
 		C108DB18163E370800DADFCD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1082A9D13D4492F0071FA31 /* QuartzCore.framework */; };
 		C1097A83125F9BA300D60D27 /* Box.h in Headers */ = {isa = PBXBuildFile; fileRef = C1FEA8EC125E718D00CA78FF /* Box.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -87,9 +111,9 @@
 		C1224C4513B06CA6009AA0F4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1CA27D913A2E1F900235C98 /* Cocoa.framework */; };
 		C1224C5B13B06CE7009AA0F4 /* SourceFinaglerAgentMain.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C9AE21139A70E600C32D8A /* SourceFinaglerAgentMain.m */; };
 		C1224C6813B06E7D009AA0F4 /* sourceFinagler.icns in Resources */ = {isa = PBXBuildFile; fileRef = C153017E11C8866E0041BEC8 /* sourceFinagler.icns */; };
-		C1224C9213B06EA7009AA0F4 /* SteamKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C140E63D13889A9400027DD6 /* SteamKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		C1224CB213B06EAD009AA0F4 /* HLKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1580F10139634DA00D5D4D8 /* HLKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		C1224CD513B06EB1009AA0F4 /* HL.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1C12634123A54F0004674B4 /* HL.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		C1224C9213B06EA7009AA0F4 /* SteamKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C140E63D13889A9400027DD6 /* SteamKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C1224CB213B06EAD009AA0F4 /* HLKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1580F10139634DA00D5D4D8 /* HLKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C1224CD513B06EB1009AA0F4 /* HL.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1C12634123A54F0004674B4 /* HL.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C1224DAA13B09351009AA0F4 /* SourceFinaglerAgent.app in Resources */ = {isa = PBXBuildFile; fileRef = C1224BEC13B06B9A009AA0F4 /* SourceFinaglerAgent.app */; };
 		C1275F62129182C40041ACD7 /* VSSourceAddon.m in Sources */ = {isa = PBXBuildFile; fileRef = C1275F61129182C40041ACD7 /* VSSourceAddon.m */; };
 		C1279D3612DCB0EB0065F5D7 /* defaultPresets.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1279D3512DCB0EA0065F5D7 /* defaultPresets.plist */; };
@@ -145,10 +169,10 @@
 		C140E80B1388A7B800027DD6 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C140E80A1388A7B800027DD6 /* ScriptingBridge.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		C140E9091388B74700027DD6 /* SteamKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C140E63D13889A9400027DD6 /* SteamKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		C140E9261388B77300027DD6 /* SteamKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C140E63D13889A9400027DD6 /* SteamKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		C140E9381388B78300027DD6 /* SteamKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C140E63D13889A9400027DD6 /* SteamKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		C140E9381388B78300027DD6 /* SteamKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C140E63D13889A9400027DD6 /* SteamKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C140EA3B1388CE9400027DD6 /* noteIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = C140EA3A1388CE9400027DD6 /* noteIcon.icns */; };
 		C145AF1712BD8F22005D7E21 /* TextureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17319B21298D11400C29732 /* TextureKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		C145AF5F12BD8F6A005D7E21 /* TextureKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C17319B21298D11400C29732 /* TextureKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		C145AF5F12BD8F6A005D7E21 /* TextureKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C17319B21298D11400C29732 /* TextureKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C146091B14F3377200B7286B /* TKAppKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C146091814F3373700B7286B /* TKAppKitAdditions.m */; };
 		C146091C14F3377300B7286B /* TKAppKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C146091814F3373700B7286B /* TKAppKitAdditions.m */; };
 		C146091D14F337BB00B7286B /* TKFoundationAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C146091A14F3373700B7286B /* TKFoundationAdditions.m */; };
@@ -161,7 +185,7 @@
 		C151173B1443064F0042F13E /* TKImageBrowserItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C151173A1443064F0042F13E /* TKImageBrowserItem.m */; };
 		C15590CA12B6E04200FD0684 /* SFTI.icns in Resources */ = {isa = PBXBuildFile; fileRef = C15590C912B6E04200FD0684 /* SFTI.icns */; };
 		C155C9C813A06907008151E7 /* HLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1580F10139634DA00D5D4D8 /* HLKit.framework */; };
-		C155C9DC13A06931008151E7 /* HLKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1580F10139634DA00D5D4D8 /* HLKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		C155C9DC13A06931008151E7 /* HLKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1580F10139634DA00D5D4D8 /* HLKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C1580E891396262F00D5D4D8 /* VSPrivateInterfaces.h in Headers */ = {isa = PBXBuildFile; fileRef = C1580E871396262F00D5D4D8 /* VSPrivateInterfaces.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		C15878BC1615C8E3002CF3E6 /* SGAFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C15878BA1615C8C6002CF3E6 /* SGAFile.cpp */; };
 		C15878BD1615C8E3002CF3E6 /* SGAFile.h in Headers */ = {isa = PBXBuildFile; fileRef = C15878BB1615C8C6002CF3E6 /* SGAFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -223,7 +247,7 @@
 		C180E459147293190001C07F /* Surface.h in Headers */ = {isa = PBXBuildFile; fileRef = C180E449147292A40001C07F /* Surface.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C180E45A1472931A0001C07F /* Surface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C180E448147292A40001C07F /* Surface.cpp */; };
 		C180E465147293590001C07F /* NVThread.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C180E37914728E1B0001C07F /* NVThread.framework */; };
-		C180E48A1472937C0001C07F /* NVThread.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C180E37914728E1B0001C07F /* NVThread.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		C180E48A1472937C0001C07F /* NVThread.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C180E37914728E1B0001C07F /* NVThread.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C180E5001472A53B0001C07F /* MMT.icns in Resources */ = {isa = PBXBuildFile; fileRef = C180E4FE1472A53B0001C07F /* MMT.icns */; };
 		C180E5011472A53B0001C07F /* PRT.icns in Resources */ = {isa = PBXBuildFile; fileRef = C180E4FF1472A53B0001C07F /* PRT.icns */; };
 		C184180B1455A9D4007D8EE6 /* TKImageChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = C184180A1455A9D4007D8EE6 /* TKImageChannel.m */; };
@@ -235,18 +259,18 @@
 		C186404C159C2F0D009D15FB /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1864049159C2F0D009D15FB /* VideoToolbox.framework */; };
 		C189820C161A377500335863 /* SGA.icns in Resources */ = {isa = PBXBuildFile; fileRef = C189820B161A377500335863 /* SGA.icns */; };
 		C189820F161A37F700335863 /* MDSGADocument.m in Sources */ = {isa = PBXBuildFile; fileRef = C189820E161A37F700335863 /* MDSGADocument.m */; };
-		C1898210161A466E00335863 /* NVThread.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C180E37914728E1B0001C07F /* NVThread.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		C1898210161A466E00335863 /* NVThread.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C180E37914728E1B0001C07F /* NVThread.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C18AF3DD162128B900A04CCA /* TKMaterialPropertyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C18AF3DB162128B900A04CCA /* TKMaterialPropertyViewController.m */; };
 		C18AF3E01621404F00A04CCA /* DAED.icns in Resources */ = {isa = PBXBuildFile; fileRef = C18AF3DF1621404F00A04CCA /* DAED.icns */; };
 		C18AF3E3162145CA00A04CCA /* MDPropertyInspectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = C18AF3E2162145CA00A04CCA /* MDPropertyInspectorView.m */; };
 		C18B551013D52AAD0018626D /* TextureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17319B21298D11400C29732 /* TextureKit.framework */; };
-		C18B552913D52AD90018626D /* TextureKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C17319B21298D11400C29732 /* TextureKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		C18B552913D52AD90018626D /* TextureKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C17319B21298D11400C29732 /* TextureKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C18B55E613D52B480018626D /* VTF.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1B95275124E73B200E83451 /* VTF.framework */; };
-		C18B567A13D52CB60018626D /* VTF.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1B95275124E73B200E83451 /* VTF.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		C18B567B13D52CB60018626D /* NVCore.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA7EA125E5C9600CA78FF /* NVCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		C18B567C13D52CB60018626D /* NVMath.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA8DE125E5DC300CA78FF /* NVMath.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		C18B567D13D52CB60018626D /* NVImage.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA8FD125E71A200CA78FF /* NVImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		C18B567E13D52CB60018626D /* NVTextureTools.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA930125E72E300CA78FF /* NVTextureTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		C18B567A13D52CB60018626D /* VTF.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1B95275124E73B200E83451 /* VTF.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C18B567B13D52CB60018626D /* NVCore.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA7EA125E5C9600CA78FF /* NVCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C18B567C13D52CB60018626D /* NVMath.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA8DE125E5DC300CA78FF /* NVMath.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C18B567D13D52CB60018626D /* NVImage.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA8FD125E71A200CA78FF /* NVImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C18B567E13D52CB60018626D /* NVTextureTools.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA930125E72E300CA78FF /* NVTextureTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C18EDFF4147D52CC00EBE2DC /* TKVMTNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C10E5041147C8F0A00864795 /* TKVMTNode.m */; };
 		C190888813932B2800656A78 /* VSGameAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C190888713932B2800656A78 /* VSGameAdditions.m */; };
 		C1908B5813935CD000656A78 /* MDImageTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C1908B5713935CD000656A78 /* MDImageTextCell.m */; };
@@ -519,8 +543,8 @@
 		C1C2C597127CBCA0003B24F6 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C11B279211BDFBB8004D4CC0 /* ApplicationServices.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		C1C2C598127CBCA0003B24F6 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C15520FE11D9939D00CCEDD3 /* Sparkle.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		C1C2C59B127CBCA0003B24F6 /* HL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C12634123A54F0004674B4 /* HL.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		C1C2C5A1127CBCA0003B24F6 /* HL.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1C12634123A54F0004674B4 /* HL.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		C1C2C5A2127CBCA0003B24F6 /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C15520FE11D9939D00CCEDD3 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		C1C2C5A1127CBCA0003B24F6 /* HL.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1C12634123A54F0004674B4 /* HL.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C1C2C5A2127CBCA0003B24F6 /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C15520FE11D9939D00CCEDD3 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C1C2C5EA127CBE12003B24F6 /* VTF.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1B95275124E73B200E83451 /* VTF.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		C1C2C62A127CBED1003B24F6 /* schema.xml in Resources */ = {isa = PBXBuildFile; fileRef = C181ADAE12557982006810AB /* schema.xml */; };
 		C1C2C62B127CBED1003B24F6 /* schema.strings in Resources */ = {isa = PBXBuildFile; fileRef = C181ADAF125579A0006810AB /* schema.strings */; };
@@ -533,11 +557,11 @@
 		C1C2C657127CBEF7003B24F6 /* MDCGImage.m in Sources */ = {isa = PBXBuildFile; fileRef = C15DD37E126A476300E44BDB /* MDCGImage.m */; };
 		C1C2C659127CBEF7003B24F6 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C11B279211BDFBB8004D4CC0 /* ApplicationServices.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		C1C2C681127CBF8C003B24F6 /* VTF.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1B95275124E73B200E83451 /* VTF.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		C1C2C6F5127CC539003B24F6 /* VTF.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1B95275124E73B200E83451 /* VTF.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		C1C2C763127CC5D3003B24F6 /* NVCore.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA7EA125E5C9600CA78FF /* NVCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		C1C2C767127CC5D8003B24F6 /* NVMath.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA8DE125E5DC300CA78FF /* NVMath.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		C1C2C76E127CC5DD003B24F6 /* NVImage.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA8FD125E71A200CA78FF /* NVImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		C1C2C777127CC5E5003B24F6 /* NVTextureTools.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA930125E72E300CA78FF /* NVTextureTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		C1C2C6F5127CC539003B24F6 /* VTF.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1B95275124E73B200E83451 /* VTF.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C1C2C763127CC5D3003B24F6 /* NVCore.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA7EA125E5C9600CA78FF /* NVCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C1C2C767127CC5D8003B24F6 /* NVMath.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA8DE125E5DC300CA78FF /* NVMath.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C1C2C76E127CC5DD003B24F6 /* NVImage.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA8FD125E71A200CA78FF /* NVImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C1C2C777127CC5E5003B24F6 /* NVTextureTools.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA930125E72E300CA78FF /* NVTextureTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C1CA269713A2E1B900235C98 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1CA269613A2E1B900235C98 /* QTKit.framework */; };
 		C1CA27DA13A2E1F900235C98 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1CA27D913A2E1F900235C98 /* Cocoa.framework */; };
 		C1CA27E813A2E20F00235C98 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1CA27D913A2E1F900235C98 /* Cocoa.framework */; };
@@ -1009,6 +1033,15 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = SourceFinagler/main.m; sourceTree = SOURCE_ROOT; };
 		55EF66A11D7B7DE800FFF7B2 /* TextureFinaglerImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = TextureFinaglerImages.xcassets; path = Resources/TextureFinaglerImages.xcassets; sourceTree = "<group>"; };
 		55EF66A31D7B81B600FFF7B2 /* genericDocument16@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "genericDocument16@2x.png"; sourceTree = "<group>"; };
+		55F82CBB1D7BA77100D6DAC9 /* TKOpenGLDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKOpenGLDrawable.h; sourceTree = "<group>"; };
+		55F82CBD1D7BA7E300D6DAC9 /* TKMath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKMath.h; sourceTree = "<group>"; };
+		55F82CC61D7BAA9D00D6DAC9 /* TKShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKShader.h; sourceTree = "<group>"; };
+		55F82CC71D7BAA9D00D6DAC9 /* TKShader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKShader.m; sourceTree = "<group>"; };
+		55F82CCC1D7BAB5800D6DAC9 /* TKShaderProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKShaderProgram.h; sourceTree = "<group>"; };
+		55F82CCD1D7BAB5800D6DAC9 /* TKShaderProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKShaderProgram.m; sourceTree = "<group>"; };
+		55F82CD11D7BAC4100D6DAC9 /* TKMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKMath.m; sourceTree = "<group>"; };
+		55F82CD31D7BACD900D6DAC9 /* TKValueAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKValueAdditions.h; sourceTree = "<group>"; };
+		55F82CD41D7BACD900D6DAC9 /* TKValueAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKValueAdditions.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* SourceFinagler-Info.plist */ = {isa = PBXFileReference; explicitFileType = text.plist.info; fileEncoding = 4; name = "SourceFinagler-Info.plist"; path = "../SourceFinagler-Info.plist"; sourceTree = "<group>"; };
 		C101A6D7125281C700BD8091 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/TKImageDocument.xib; sourceTree = "<group>"; };
 		C1034A9111C5619C0054740E /* VSSteamManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSSteamManager.h; sourceTree = "<group>"; };
@@ -1865,6 +1898,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55F82CD71D7BAFAD00D6DAC9 /* GLKit.framework in Frameworks */,
 				C1E6DACA12BC232F009D8AD6 /* ApplicationServices.framework in Frameworks */,
 				C1E6DB0312BC236C009D8AD6 /* VTF.framework in Frameworks */,
 				C1E6E14012BD50E1009D8AD6 /* NVCore.framework in Frameworks */,
@@ -2184,6 +2218,17 @@
 			name = "Texture Finagler";
 			path = TextureFinagler;
 			sourceTree = SOURCE_ROOT;
+		};
+		55F82CD01D7BAB6500D6DAC9 /* Shader */ = {
+			isa = PBXGroup;
+			children = (
+				55F82CC61D7BAA9D00D6DAC9 /* TKShader.h */,
+				55F82CC71D7BAA9D00D6DAC9 /* TKShader.m */,
+				55F82CCC1D7BAB5800D6DAC9 /* TKShaderProgram.h */,
+				55F82CCD1D7BAB5800D6DAC9 /* TKShaderProgram.m */,
+			);
+			name = Shader;
+			sourceTree = "<group>";
 		};
 		C1014E591488075200906049 /* TextureKitUI Framework */ = {
 			isa = PBXGroup;
@@ -2783,10 +2828,16 @@
 			isa = PBXGroup;
 			children = (
 				C1675B6C160644C8006E8B66 /* TKOpenGLBase.h */,
+				55F82CBB1D7BA77100D6DAC9 /* TKOpenGLDrawable.h */,
+				55F82CBD1D7BA7E300D6DAC9 /* TKMath.h */,
+				55F82CD11D7BAC4100D6DAC9 /* TKMath.m */,
 				C1675B6A16064477006E8B66 /* TKOpenGLObject.h */,
 				C1675B6B16064477006E8B66 /* TKOpenGLObject.m */,
 				C16C63DB12D75E5200D6F254 /* TKTexture.h */,
 				C16C63DC12D75E5200D6F254 /* TKTexture.m */,
+				55F82CD31D7BACD900D6DAC9 /* TKValueAdditions.h */,
+				55F82CD41D7BACD900D6DAC9 /* TKValueAdditions.m */,
+				55F82CD01D7BAB6500D6DAC9 /* Shader */,
 				C15A9BDC1473FF8A00AEA11A /* concrete-subclasses */,
 			);
 			name = TKTexture;
@@ -3899,15 +3950,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1E6DABF12BC22BA009D8AD6 /* TKImage.h in Headers */,
+				55F82CBC1D7BA77100D6DAC9 /* TKOpenGLDrawable.h in Headers */,
 				C1E6DAC112BC22BB009D8AD6 /* TKImageRep.h in Headers */,
 				C1E6DAC312BC22C2009D8AD6 /* TKVTFImageRep.h in Headers */,
+				55F82CC51D7BA8D200D6DAC9 /* TKVTFTexture.h in Headers */,
+				55F82CC21D7BA8B300D6DAC9 /* TKDDSTexture.h in Headers */,
 				C1E6DAC512BC22C7009D8AD6 /* TKDDSImageRep.h in Headers */,
 				C1E6DB0A12BC2408009D8AD6 /* TextureKit.h in Headers */,
+				55F82CD51D7BACD900D6DAC9 /* TKValueAdditions.h in Headers */,
+				55F82CB71D7BA5A900D6DAC9 /* TKOBJParts.h in Headers */,
+				55F82CBE1D7BA7E500D6DAC9 /* TKMath.h in Headers */,
+				55F82CC81D7BAA9D00D6DAC9 /* TKShader.h in Headers */,
 				C1E6DFEE12BD102D009D8AD6 /* TextureKitDefines.h in Headers */,
+				55F82CBF1D7BA7FF00D6DAC9 /* TKOpenGLObject.h in Headers */,
+				55F82CB81D7BA5DB00D6DAC9 /* TKModel.h in Headers */,
 				C169FDD9147AF93E00F9DCF8 /* TKVMTMaterial.h in Headers */,
 				C1FF5A39145E6571005F36D5 /* TKBase.h in Headers */,
 				C10E5042147C8F0A00864795 /* TKVMTNode.h in Headers */,
+				55F82CBA1D7BA61400D6DAC9 /* TKOBJModel.h in Headers */,
+				55F82CB91D7BA5F900D6DAC9 /* TKOpenGLBase.h in Headers */,
+				55F82CCE1D7BAB5800D6DAC9 /* TKShaderProgram.h in Headers */,
 				C1E183D2148325EE0054A444 /* TKPrivateInterfaces.h in Headers */,
+				55F82CC01D7BA89E00D6DAC9 /* TKTexture.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4817,10 +4881,20 @@
 			files = (
 				C1FF5A3A145E6571005F36D5 /* TKBase.m in Sources */,
 				C1E6DAC012BC22BB009D8AD6 /* TKImage.m in Sources */,
+				55F82CC11D7BA8A200D6DAC9 /* TKTexture.m in Sources */,
+				55F82CC41D7BA8CF00D6DAC9 /* TKVTFTexture.mm in Sources */,
+				55F82CCB1D7BAAF900D6DAC9 /* TKModel.m in Sources */,
+				55F82CC31D7BA8B900D6DAC9 /* TKDDSTexture.mm in Sources */,
 				C1E6DAC212BC22BC009D8AD6 /* TKImageRep.m in Sources */,
 				C1E6DAC412BC22C3009D8AD6 /* TKVTFImageRep.mm in Sources */,
+				55F82CB51D7BA58600D6DAC9 /* TKOBJModel.m in Sources */,
 				C12CFB5A12DFB3AE00A08A4B /* TKDDSImageRep.mm in Sources */,
 				C169FDDB147AF94300F9DCF8 /* TKVMTMaterial.m in Sources */,
+				55F82CD61D7BACD900D6DAC9 /* TKValueAdditions.m in Sources */,
+				55F82CCF1D7BAB5800D6DAC9 /* TKShaderProgram.m in Sources */,
+				55F82CB61D7BA58600D6DAC9 /* TKOBJParts.m in Sources */,
+				55F82CC91D7BAA9D00D6DAC9 /* TKShader.m in Sources */,
+				55F82CCA1D7BAACF00D6DAC9 /* TKOpenGLObject.m in Sources */,
 				C18EDFF4147D52CC00EBE2DC /* TKVMTNode.m in Sources */,
 				C1968A0814F5676300ACFD02 /* TKFoundationAdditions.m in Sources */,
 			);

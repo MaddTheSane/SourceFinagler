@@ -43,7 +43,7 @@ typedef NS_ENUM(NSUInteger, TKVMTNodeKind) {
 }
 
 + (instancetype)nodeWithName:(NSString *)aName kind:(TKVMTNodeKind)aKind objectValue:(id)anObjectValue;
-- (instancetype)initWithName:(NSString *)aName kind:(TKVMTNodeKind)aKind objectValue:(id)anObjectValue;
+- (instancetype)initWithName:(NSString *)aName kind:(TKVMTNodeKind)aKind objectValue:(id)anObjectValue NS_DESIGNATED_INITIALIZER;
 
 + (instancetype)groupNodeWithName:(NSString *)aName;
 + (instancetype)commentNodeWithStringValue:(NSString *)stringValue;

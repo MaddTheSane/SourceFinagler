@@ -253,7 +253,7 @@ static BOOL vtfInitialized = NO;
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	if ([aData length] < 4) return NO;
+	if (aData.length < 4) return NO;
 	OSType magic = 0;
 	[aData getBytes:&magic length:sizeof(magic)];
 	magic = NSSwapBigIntToHost(magic);
@@ -310,7 +310,7 @@ static BOOL vtfInitialized = NO;
 #endif
 	NSParameterAssert([tkImageReps count] != 0);
 	
-	NSNumber *nMipmapType = [options objectForKey:TKImageMipmapGenerationKey];
+	NSNumber *nMipmapType = options[TKImageMipmapGenerationKey];
 //	NSNumber *nWrapMode = [options objectForKey:TKImageWrapModeKey];
 //	NSNumber *nRoundMode = [options objectForKey:TKImageRoundModeKey];
 //	NSNumber *nImageFormat = [options objectForKey:TKImageVTFFormatKey];
@@ -329,12 +329,12 @@ static BOOL vtfInitialized = NO;
 	for (NSImageRep *imageRep in tkImageReps) {
 		if ([imageRep isKindOfClass:[TKImageRep class]]) {
 			TKImageRep *tkImageRep = (TKImageRep *)imageRep;
-			NSUInteger theSliceIndex = [tkImageRep sliceIndex];
-			NSUInteger theFace	= [tkImageRep face];
-			NSUInteger theFrameIndex = [tkImageRep frameIndex];
+			NSUInteger theSliceIndex = tkImageRep.sliceIndex;
+			NSUInteger theFace	= tkImageRep.face;
+			NSUInteger theFrameIndex = tkImageRep.frameIndex;
 			
-			if ([tkImageRep pixelsWide] > maxWidth) maxWidth = [tkImageRep pixelsWide];
-			if ([tkImageRep pixelsHigh] > maxHeight) maxHeight = [tkImageRep pixelsHigh];
+			if (tkImageRep.pixelsWide > maxWidth) maxWidth = tkImageRep.pixelsWide;
+			if (tkImageRep.pixelsHigh > maxHeight) maxHeight = tkImageRep.pixelsHigh;
 			
 			if (theSliceIndex != TKSliceIndexNone) {
 				if (theSliceIndex > highestSliceIndex) highestSliceIndex = theSliceIndex;
@@ -369,7 +369,7 @@ static BOOL vtfInitialized = NO;
 	
 	vlBool generateMipmaps = vlTrue;
 	
-	if (nMipmapType == nil || [nMipmapType unsignedIntegerValue] == TKMipmapGenerationNoMipmaps) {
+	if (nMipmapType == nil || nMipmapType.unsignedIntegerValue == TKMipmapGenerationNoMipmaps) {
 		generateMipmaps = NO;
 	}
 	
@@ -386,13 +386,13 @@ static BOOL vtfInitialized = NO;
 			
 			if ([imageRep isKindOfClass:[TKImageRep class]]) {
 				
-				vlUInt theFrameIndex = (vlUInt)([(TKImageRep *)imageRep frameIndex] == TKFrameIndexNone ? 0 : [(TKImageRep *)imageRep frameIndex]);
-				vlUInt theFace = (vlUInt)([(TKImageRep *)imageRep face] == TKFaceNone ? 0 : [(TKImageRep *)imageRep face]);
-				vlUInt theSliceIndex = (vlUInt)([(TKImageRep *)imageRep sliceIndex] == TKSliceIndexNone ? 0 : [(TKImageRep *)imageRep sliceIndex]);
-				vlUInt theMipmapIndex = (vlUInt)([(TKImageRep *)imageRep mipmapIndex] == TKMipmapIndexNone ? 0 : [(TKImageRep *)imageRep mipmapIndex]);
+				vlUInt theFrameIndex = (vlUInt)(((TKImageRep *)imageRep).frameIndex == TKFrameIndexNone ? 0 : ((TKImageRep *)imageRep).frameIndex);
+				vlUInt theFace = (vlUInt)(((TKImageRep *)imageRep).face == TKFaceNone ? 0 : ((TKImageRep *)imageRep).face);
+				vlUInt theSliceIndex = (vlUInt)(((TKImageRep *)imageRep).sliceIndex == TKSliceIndexNone ? 0 : ((TKImageRep *)imageRep).sliceIndex);
+				vlUInt theMipmapIndex = (vlUInt)(((TKImageRep *)imageRep).mipmapIndex == TKMipmapIndexNone ? 0 : ((TKImageRep *)imageRep).mipmapIndex);
 				
 				NSData *rgbaData = [(TKImageRep *)imageRep representationUsingPixelFormat:TKPixelFormatRGBA];
-				vlByte *rgbaBytes = (vlByte *)[rgbaData bytes];
+				vlByte *rgbaBytes = (vlByte *)rgbaData.bytes;
 				
 				vtfFile->SetData(theFrameIndex, theFace, theSliceIndex, theMipmapIndex, rgbaBytes);
 				
@@ -402,7 +402,7 @@ static BOOL vtfInitialized = NO;
 		}
 		
 		if (generateMipmaps) {
-			vlBool success = vtfFile->GenerateMipmaps(VTFMipmapFilterFromTKMipmapGenerationType([nMipmapType unsignedIntegerValue]), SHARPEN_FILTER_DEFAULT);
+			vlBool success = vtfFile->GenerateMipmaps(VTFMipmapFilterFromTKMipmapGenerationType(nMipmapType.unsignedIntegerValue), SHARPEN_FILTER_DEFAULT);
 			if (!success) {
 				NSLog(@"[%@ %@] vtfFile->GenerateMipmaps() failed!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 	
@@ -448,13 +448,13 @@ static BOOL vtfInitialized = NO;
 			
 			if ([imageRep isKindOfClass:[TKImageRep class]]) {
 				
-				vlUInt theFrameIndex = (vlUInt)([(TKImageRep *)imageRep frameIndex] == TKFrameIndexNone ? 0 : [(TKImageRep *)imageRep frameIndex]);
-				vlUInt theFace = (vlUInt)([(TKImageRep *)imageRep face] == TKFaceNone ? 0 : [(TKImageRep *)imageRep face]);
-				vlUInt theSliceIndex = (vlUInt)([(TKImageRep *)imageRep sliceIndex] == TKSliceIndexNone ? 0 : [(TKImageRep *)imageRep sliceIndex]);
-				vlUInt theMipmapIndex = (vlUInt)([(TKImageRep *)imageRep mipmapIndex] == TKMipmapIndexNone ? 0 : [(TKImageRep *)imageRep mipmapIndex]);
+				vlUInt theFrameIndex = (vlUInt)(((TKImageRep *)imageRep).frameIndex == TKFrameIndexNone ? 0 : ((TKImageRep *)imageRep).frameIndex);
+				vlUInt theFace = (vlUInt)(((TKImageRep *)imageRep).face == TKFaceNone ? 0 : ((TKImageRep *)imageRep).face);
+				vlUInt theSliceIndex = (vlUInt)(((TKImageRep *)imageRep).sliceIndex == TKSliceIndexNone ? 0 : ((TKImageRep *)imageRep).sliceIndex);
+				vlUInt theMipmapIndex = (vlUInt)(((TKImageRep *)imageRep).mipmapIndex == TKMipmapIndexNone ? 0 : ((TKImageRep *)imageRep).mipmapIndex);
 				
 				NSData *pixelData = [(TKImageRep *)imageRep representationUsingPixelFormat:aPixelFormat];
-				vlByte *pixelBytes = (vlByte *)[pixelData bytes];
+				vlByte *pixelBytes = (vlByte *)pixelData.bytes;
 				
 				vtfFile->SetData(theFrameIndex, theFace, theSliceIndex, theMipmapIndex, pixelBytes);
 				
@@ -462,7 +462,7 @@ static BOOL vtfInitialized = NO;
 		}
 		
 		if (generateMipmaps) {
-			vlBool success = vtfFile->GenerateMipmaps(VTFMipmapFilterFromTKMipmapGenerationType([nMipmapType unsignedIntegerValue]), SHARPEN_FILTER_DEFAULT);
+			vlBool success = vtfFile->GenerateMipmaps(VTFMipmapFilterFromTKMipmapGenerationType(nMipmapType.unsignedIntegerValue), SHARPEN_FILTER_DEFAULT);
 			if (!success) {
 				NSLog(@"[%@ %@] vtfFile->GenerateMipmaps() failed!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 			}
@@ -506,7 +506,7 @@ static BOOL vtfInitialized = NO;
 		return nil;
 	}
 	
-	if (file->Load([aData bytes], [aData length], vlFalse) == NO) {
+	if (file->Load(aData.bytes, aData.length, vlFalse) == NO) {
 		if (magic == TKVTFMagic) {
 			NSLog(@"[%@ %@] file->Load() failed! (DOES appear to be a valid VTF; magic == 0x%x, %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), (unsigned int)magic, NSFileTypeForHFSTypeCode(magic));
 		} else {
@@ -861,25 +861,25 @@ static BOOL vtfInitialized = NO;
 	return [[self class] imageRepsWithData:aData firstRepresentationOnly:NO];
 }
 
-+ (id)imageRepWithData:(NSData *)aData {
++ (instancetype)imageRepWithData:(NSData *)aData {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	NSArray *imageReps = [[self class] imageRepsWithData:aData firstRepresentationOnly:YES];
-	if ([imageReps count]) return [imageReps objectAtIndex:0];
+	if (imageReps.count) return imageReps[0];
 	return nil;
 }
 
-- (id)initWithData:(NSData *)aData {
+- (instancetype)initWithData:(NSData *)aData {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	NSArray *imageReps = [[self class] imageRepsWithData:aData firstRepresentationOnly:YES];
-	if ((imageReps == nil) || !([imageReps count] > 0)) {
+	if ((imageReps == nil) || !(imageReps.count > 0)) {
 		[self release];
 		return nil;
 	}
-	self = [[imageReps objectAtIndex:0] retain];
+	self = [imageReps[0] retain];
 	return self;
 }
 
@@ -896,7 +896,7 @@ static BOOL vtfInitialized = NO;
 }
 
 
-- (id)initWithCoder:(NSCoder *)coder {
+- (instancetype)initWithCoder:(NSCoder *)coder {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif

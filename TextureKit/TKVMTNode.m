@@ -103,7 +103,7 @@ static inline NSString *NSStringFromTKVMTNodeKind(TKVMTNodeKind kind) {
 //}
 
 
-+ (id)nodeWithName:(NSString *)aName kind:(TKVMTNodeKind)aKind objectValue:(id)anObjectValue {
++ (instancetype)nodeWithName:(NSString *)aName kind:(TKVMTNodeKind)aKind objectValue:(id)anObjectValue {
 	return [[[[self class] alloc] initWithName:aName kind:aKind objectValue:anObjectValue] autorelease];
 }
 
@@ -129,7 +129,7 @@ static inline NSString *NSStringFromTKVMTNodeKind(TKVMTNodeKind kind) {
 }
 
 
-- (id)initWithName:(NSString *)aName kind:(TKVMTNodeKind)aKind objectValue:(id)anObjectValue {
+- (instancetype)initWithName:(NSString *)aName kind:(TKVMTNodeKind)aKind objectValue:(id)anObjectValue {
 	if ((self = [super init])) {
 		self.name = aName;
 		self.objectValue = anObjectValue;
@@ -149,8 +149,8 @@ static inline NSString *NSStringFromTKVMTNodeKind(TKVMTNodeKind kind) {
 	copy->name = nil;
 	copy->objectValue = nil;
 	[copy setChildren:children];
-	[copy setName:name];
-	[copy setObjectValue:objectValue];
+	copy.name = name;
+	copy.objectValue = objectValue;
 	return copy;
 }
 
@@ -163,17 +163,17 @@ static inline NSString *NSStringFromTKVMTNodeKind(TKVMTNodeKind kind) {
 
 
 - (NSUInteger)countOfChildren {
-	return [children count];
+	return children.count;
 }
 
 - (TKVMTNode *)childAtIndex:(NSUInteger)anIndex {
-	return [children objectAtIndex:anIndex];
+	return children[anIndex];
 }
 
 
 - (void)insertChild:(TKVMTNode *)aChild atIndex:(NSUInteger)anIndex {
-	[aChild setParent:self];
-	[aChild setRootNode:rootNode];
+	aChild.parent = self;
+	aChild.rootNode = rootNode;
 	[children insertObject:aChild atIndex:anIndex];
 }
 
@@ -189,7 +189,7 @@ static inline NSString *NSStringFromTKVMTNodeKind(TKVMTNodeKind kind) {
 }
 
 - (void)addChild:(TKVMTNode *)aChild {
-	[self insertChild:aChild atIndex:[children count]];
+	[self insertChild:aChild atIndex:children.count];
 }
 
 
@@ -204,7 +204,7 @@ static inline NSString *NSStringFromTKVMTNodeKind(TKVMTNodeKind kind) {
 - (void)removeChild:(TKVMTNode *)aChild {
 	NSUInteger cIndex = [children indexOfObject:aChild];
 	if (cIndex != NSNotFound) {
-		[self tk__removeChildrenIdenticalTo:[NSArray arrayWithObject:[self childAtIndex:cIndex]]];
+		[self tk__removeChildrenIdenticalTo:@[[self childAtIndex:cIndex]]];
 	}
 }
 
@@ -232,7 +232,7 @@ static inline NSString *NSStringFromTKVMTNodeKind(TKVMTNodeKind kind) {
 
 
 - (NSString *)description {
-	NSMutableString *description = [NSMutableString stringWithFormat:@"%@\n", [super description]];
+	NSMutableString *description = [NSMutableString stringWithFormat:@"%@\n", super.description];
 	if (kind == TKVMTGroupKind) {
 		[description appendFormat:@"	%@\n", name];
 		[description appendFormat:@"			%@\n", children];

@@ -119,7 +119,7 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 - (void)toSpecial:(NSString *)aSpecialString {
 	if (type == TKTokenEOF) return;
 	
-	for (NSUInteger i = 0; i < [aSpecialString length]; i++) {
+	for (NSUInteger i = 0; i < aSpecialString.length; i++) {
 		if (charValue == [aSpecialString characterAtIndex:i]) {
 			type = TKTokenSpecial;
 			return;
@@ -197,7 +197,7 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	
-	if (currentDataIndex == [data length]) {
+	if (currentDataIndex == data.length) {
 		self.nextToken = [TKToken tokenWithType:TKTokenEOF];
 		return;
 	}
@@ -216,7 +216,7 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 	// TOKEN_SPECIAL.
 	
 	if (aString) {
-		for (NSUInteger i = 0; i < [aString length]; i++) {
+		for (NSUInteger i = 0; i < aString.length; i++) {
 			if (nextChar == [aString characterAtIndex:i]) {
 				self.nextToken = [TKToken tokenWithType:TKTokenSpecial char:[aString characterAtIndex:i]];
 				return;
@@ -530,7 +530,7 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 	TKTokenType tokenType = token.type;
 	
 	if (tokenType == TKTokenString || tokenType == TKTokenQuotedString) {
-		groupNode = [TKVMTNode groupNodeWithName:[token stringValue]];
+		groupNode = [TKVMTNode groupNodeWithName:token.stringValue];
 	} else {
 		[TKVMTMaterial raiseExceptionWithName:@"expected shader name" description:@"expected shader name"];
 	}
@@ -564,7 +564,7 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 				
 			}
 			
-			for (NSUInteger i = 0; i < [nextGroup countOfChildren]; i++) {
+			for (NSUInteger i = 0; i < nextGroup.countOfChildren; i++) {
 				[groupNode addChild:[nextGroup childAtIndex:i]];
 			}
 			
@@ -620,7 +620,7 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 					
 				} else {
 					
-					NSString *name = [token stringValue];
+					NSString *name = token.stringValue;
 					
 					NSMutableString *mString = [NSMutableString string];
 					
@@ -634,7 +634,7 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 							[mString appendString:@" "];
 						}
 						
-						[mString appendString:[token stringValue]]; 
+						[mString appendString:token.stringValue]; 
 					}
 					
 #if TK_DEBUG
@@ -711,32 +711,32 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 	@throw [NSException exceptionWithName:name reason:description userInfo:nil];
 }
 
-+ (id)materialWithContentsOfFile:(NSString *)aPath error:(NSError **)outError {
++ (instancetype)materialWithContentsOfFile:(NSString *)aPath error:(NSError **)outError {
 	return [[[[self class] alloc] initWithContentsOfFile:aPath error:outError] autorelease];
 }
 
 
-+ (id)materialWithContentsOfURL:(NSURL *)URL error:(NSError **)outError {
++ (instancetype)materialWithContentsOfURL:(NSURL *)URL error:(NSError **)outError {
 	return [[(TKVMTMaterial *)[[self class] alloc] initWithContentsOfURL:URL error:outError] autorelease];
 }
 
 
-+ (id)materialWithData:(NSData *)aData error:(NSError **)outError {
++ (instancetype)materialWithData:(NSData *)aData error:(NSError **)outError {
 	return [[[[self class] alloc] initWithData:aData error:outError] autorelease];
 }
 
 
-- (id)initWithContentsOfFile:(NSString *)aPath error:(NSError **)outError {
+- (instancetype)initWithContentsOfFile:(NSString *)aPath error:(NSError **)outError {
 	return [self initWithContentsOfURL:[NSURL fileURLWithPath:aPath] error:outError];
 }
 
 
-- (id)initWithContentsOfURL:(NSURL *)URL error:(NSError **)outError {
+- (instancetype)initWithContentsOfURL:(NSURL *)URL error:(NSError **)outError {
 	return [self initWithData:[NSData dataWithContentsOfURL:URL] error:outError];
 }
 
 
-- (id)initWithData:(NSData *)aData error:(NSError **)outError {
+- (instancetype)initWithData:(NSData *)aData error:(NSError **)outError {
 	NSParameterAssert(aData != nil);
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -802,7 +802,7 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 
 
 - (NSString *)description {
-	NSMutableString *description = [NSMutableString stringWithFormat:@"%@\n", [super description]];
+	NSMutableString *description = [NSMutableString stringWithFormat:@"%@\n", super.description];
 	[description appendFormat:@"	rootNode == %@", rootNode];
 	return description;
 }

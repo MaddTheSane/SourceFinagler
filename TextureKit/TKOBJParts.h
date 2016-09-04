@@ -20,8 +20,8 @@ TEXTUREKIT_EXTERN NSString * const TKOBJVertexNormalKey;		// vn
 	TKVector3		vertex;
 }
 
-+ (id)vertexWithString:(NSString *)string;
-- (id)initWithString:(NSString *)string;
++ (instancetype)vertexWithString:(NSString *)string;
+- (instancetype)initWithString:(NSString *)string;
 
 @property (readonly, nonatomic, assign) TKVector3 vertex;
 
@@ -35,8 +35,8 @@ TEXTUREKIT_EXTERN NSString * const TKOBJVertexNormalKey;		// vn
 	TKVector2		textureVertex;
 }
 
-+ (id)textureVertexWithString:(NSString *)string;
-- (id)initWithString:(NSString *)string;
++ (instancetype)textureVertexWithString:(NSString *)string;
+- (instancetype)initWithString:(NSString *)string;
 
 @property (readonly, nonatomic, assign) TKVector2 textureVertex;
 
@@ -50,8 +50,8 @@ TEXTUREKIT_EXTERN NSString * const TKOBJVertexNormalKey;		// vn
 	TKVector3		vertexNormal;
 }
 
-+ (id)vertexNormalWithString:(NSString *)string;
-- (id)initWithString:(NSString *)string;
++ (instancetype)vertexNormalWithString:(NSString *)string;
+- (instancetype)initWithString:(NSString *)string;
 
 @property (readonly, nonatomic, assign) TKVector3 vertexNormal;
 
@@ -66,8 +66,8 @@ TEXTUREKIT_EXTERN NSString * const TKOBJVertexNormalKey;		// vn
 	TKOBJVertexNormal			*vertexNormal;
 }
 
-+ (id)tripletWithVertex:(TKOBJVertex *)aVertex textureVertex:(TKOBJTextureVertex *)aTextureVertex vertexNormal:(TKOBJVertexNormal *)aVertexNormal;
-- (id)initWithVertex:(TKOBJVertex *)aVertex textureVertex:(TKOBJTextureVertex *)aTextureVertex vertexNormal:(TKOBJVertexNormal *)aVertexNormal;
++ (instancetype)tripletWithVertex:(TKOBJVertex *)aVertex textureVertex:(TKOBJTextureVertex *)aTextureVertex vertexNormal:(TKOBJVertexNormal *)aVertexNormal;
+- (instancetype)initWithVertex:(TKOBJVertex *)aVertex textureVertex:(TKOBJTextureVertex *)aTextureVertex vertexNormal:(TKOBJVertexNormal *)aVertexNormal;
 
 @property (nonatomic, retain) TKOBJVertex *vertex;
 @property (nonatomic, retain) TKOBJTextureVertex *textureVertex;

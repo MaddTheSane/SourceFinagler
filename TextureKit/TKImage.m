@@ -99,7 +99,7 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 @synthesize allIndexes = _private;
 
 
-- (id)initWithSize:(NSSize)aSize {
+- (instancetype)initWithSize:(NSSize)aSize {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -113,7 +113,7 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 		
 		imageType = TKEmptyImageType;
 		
-		[self setAllIndexes:[NSMutableDictionary dictionary]];
+		self.allIndexes = [NSMutableDictionary dictionary];
 		
 		[self setValue:[NSMutableIndexSet indexSet] forKeyPath:TKImageAllSliceIndexesKey];
 		[self setValue:[NSMutableIndexSet indexSet] forKeyPath:TKImageAllFaceIndexesKey];
@@ -130,8 +130,8 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	TKImage *copy = [[TKImage alloc] initWithSize:[self size]];
-	NSArray *representations = [[self representations] deepMutableCopy];
+	TKImage *copy = [[TKImage alloc] initWithSize:self.size];
+	NSArray *representations = self.representations.deepMutableCopy;
 	
 	[copy addRepresentations:representations];
 	[representations release];
@@ -139,16 +139,16 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 }
 
 
-- (id)initWithCoder:(NSCoder *)coder {
+- (instancetype)initWithCoder:(NSCoder *)coder {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	if ((self = [super initWithCoder:coder])) {
 		
-		sliceCount = [[coder decodeObjectForKey:TKImageSliceCountKey] unsignedIntegerValue];
-		faceCount = [[coder decodeObjectForKey:TKImageFaceCountKey] unsignedIntegerValue];
-		frameCount = [[coder decodeObjectForKey:TKImageFrameCountKey] unsignedIntegerValue];
-		mipmapCount = [[coder decodeObjectForKey:TKImageMipmapCountKey] unsignedIntegerValue];
+		sliceCount = [coder decodeIntegerForKey:TKImageSliceCountKey];
+		faceCount = [coder decodeIntegerForKey:TKImageFaceCountKey];
+		frameCount = [coder decodeIntegerForKey:TKImageFrameCountKey];
+		mipmapCount = [coder decodeIntegerForKey:TKImageMipmapCountKey];
 		
 		isDepthTexture = (sliceCount > 1);
 		isCubemap = (faceCount == 6);
@@ -156,16 +156,16 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 		isAnimated = (frameCount > 1);
 		hasMipmaps = (mipmapCount > 1);
 		
-		hasAlpha = [[coder decodeObjectForKey:TKImageHasAlphaKey] boolValue];
+		hasAlpha = [coder decodeBoolForKey:TKImageHasAlphaKey];
 		
-		[self setVersion:[coder decodeObjectForKey:TKImageVersionKey]];
-		[self setCompression:[coder decodeObjectForKey:TKImageCompressionKey]];
+		self.version = [coder decodeObjectForKey:TKImageVersionKey];
+		self.compression = [coder decodeObjectForKey:TKImageCompressionKey];
 		
-		[self setImageType:[[coder decodeObjectForKey:TKImageTypeKey] unsignedIntegerValue]];
+		self.imageType = [coder decodeIntegerForKey:TKImageTypeKey];
 		
 		reps = [[NSMutableDictionary alloc] init];
 		
-		[self setAllIndexes:[NSMutableDictionary dictionary]];
+		self.allIndexes = [NSMutableDictionary dictionary];
 		
 		[self setValue:[NSMutableIndexSet indexSet] forKeyPath:TKImageAllSliceIndexesKey];
 		[self setValue:[NSMutableIndexSet indexSet] forKeyPath:TKImageAllFaceIndexesKey];
@@ -185,30 +185,29 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 #endif
 	[super encodeWithCoder:coder];
 	
-	[coder encodeObject:[NSNumber numberWithUnsignedInteger:sliceCount] forKey:TKImageSliceCountKey];
-	[coder encodeObject:[NSNumber numberWithUnsignedInteger:faceCount] forKey:TKImageFaceCountKey];
-	[coder encodeObject:[NSNumber numberWithUnsignedInteger:frameCount] forKey:TKImageFrameCountKey];
-	[coder encodeObject:[NSNumber numberWithUnsignedInteger:mipmapCount] forKey:TKImageMipmapCountKey];
+	[coder encodeInteger:sliceCount forKey:TKImageSliceCountKey];
+	[coder encodeInteger:faceCount forKey:TKImageFaceCountKey];
+	[coder encodeInteger:frameCount forKey:TKImageFrameCountKey];
+	[coder encodeInteger:mipmapCount forKey:TKImageMipmapCountKey];
 	
-	[coder encodeObject:[NSNumber numberWithBool:hasAlpha] forKey:TKImageHasAlphaKey];
+	[coder encodeBool:hasAlpha forKey:TKImageHasAlphaKey];
 	[coder encodeObject:version forKey:TKImageVersionKey];
 	[coder encodeObject:compression forKey:TKImageCompressionKey];
 	
-	[coder encodeObject:[NSNumber numberWithUnsignedInteger:TKSFTIImageType] forKey:TKImageTypeKey];
+	[coder encodeInteger:TKSFTIImageType forKey:TKImageTypeKey];
 	
-	[coder encodeObject:[self representations] forKey:TKImageImageRepsKey];
-	
+	[coder encodeObject:self.representations forKey:TKImageImageRepsKey];
 }
 
 
-- (id)initWithContentsOfFile:(NSString *)fileName {
+- (instancetype)initWithContentsOfFile:(NSString *)fileName {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	return [self initWithContentsOfURL:[NSURL fileURLWithPath:fileName]];
 }
 
-- (id)initWithContentsOfURL:(NSURL *)url {
+- (instancetype)initWithContentsOfURL:(NSURL *)url {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -216,14 +215,14 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 }
 		
 
-- (id)initWithData:(NSData *)aData {
+- (instancetype)initWithData:(NSData *)aData {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	return [self initWithData:aData firstRepresentationOnly:NO];
 }
 
-- (id)initWithData:(NSData *)aData firstRepresentationOnly:(BOOL)firstRepOnly {
+- (instancetype)initWithData:(NSData *)aData firstRepresentationOnly:(BOOL)firstRepOnly {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -241,21 +240,21 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 #endif
 			TKImageRep *imageRep = [imageRepClass imageRepWithData:aData];
 			if (imageRep) {
-				if ((self = [self initWithSize:[imageRep size]])) {
+				if ((self = [self initWithSize:imageRep.size])) {
 					[self addRepresentation:imageRep];
 					
 					if ([imageRep isKindOfClass:[TKVTFImageRep class]]) {
-						[self setImageType:TKVTFImageType];
+						self.imageType = TKVTFImageType;
 					} else if ([imageRep isKindOfClass:[TKDDSImageRep class]]) {
-						[self setImageType:TKDDSImageType];
+						self.imageType = TKDDSImageType;
 					} else {
-						[self setImageType:TKRegularImageType];
+						self.imageType = TKRegularImageType;
 					}
 #if TK_DEBUG
-					NSLog(@"[%@ %@] size == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), NSStringFromSize([self size]));
+					NSLog(@"[%@ %@] size == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), NSStringFromSize(self.size));
 #endif
-					[self setSize:[imageRep size]];
-					[self setAlpha:[imageRep hasAlpha]];
+					self.size = imageRep.size;
+					self.hasAlpha = imageRep.alpha;
 				}
 			}
 			return self;
@@ -263,15 +262,15 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 		// else, drop through
 	} 
 	
-	NSUInteger dataLength = [aData length];
+	NSUInteger dataLength = aData.length;
 	
-	if (dataLength < [TKSFTextureImageMagicData length]) {
+	if (dataLength < TKSFTextureImageMagicData.length) {
 		NSLog(@"[%@ %@] [data length] < 8 bytes!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 		[self release];
 		return nil;
 	}
 	
-	NSData *magicData = [aData subdataWithRange:NSMakeRange(0, [TKSFTextureImageMagicData length])];
+	NSData *magicData = [aData subdataWithRange:NSMakeRange(0, TKSFTextureImageMagicData.length)];
 	
 	OSType magic = 0;
 	if (dataLength > sizeof(OSType)) {
@@ -283,18 +282,18 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 		// it's a TKVTFImageRep or TKDDSImageRep, let super handle it
 		
 		if ((self = [super initWithData:aData])) {
-			NSArray *theReps = [self representations];
-			if ([theReps count]) {
+			NSArray *theReps = self.representations;
+			if (theReps.count) {
 				
-				NSImageRep *testImageRep = [theReps objectAtIndex:0];
+				NSImageRep *testImageRep = theReps[0];
 				
 				if ([testImageRep isKindOfClass:[TKVTFImageRep class]]) {
-					[self setImageType:TKVTFImageType];
+					self.imageType = TKVTFImageType;
 				} else {
-					[self setImageType:TKDDSImageType];
+					self.imageType = TKDDSImageType;
 				}
 				
-				[self setAlpha:[testImageRep hasAlpha]];
+				self.hasAlpha = testImageRep.alpha;
 			}
 		}
 	} else if ([magicData isEqualToData:TKSFTextureImageMagicData]) {
@@ -315,28 +314,28 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 		// let super handle it to create TKImageReps
 		
 		if ((self = [super initWithData:aData])) {
-			NSArray *theReps = [self representations];
-			if ([theReps count]) {
+			NSArray *theReps = self.representations;
+			if (theReps.count) {
 				
-				NSImageRep *testImageRep = [theReps objectAtIndex:0];
+				NSImageRep *testImageRep = theReps[0];
 				
 				if ([testImageRep isKindOfClass:[TKVTFImageRep class]]) {
-					[self setImageType:TKVTFImageType];
+					self.imageType = TKVTFImageType;
 				} else if ([testImageRep isKindOfClass:[TKDDSImageRep class]]) {
-					[self setImageType:TKDDSImageType];
+					self.imageType = TKDDSImageType;
 				} else {
-					[self setImageType:TKRegularImageType];
+					self.imageType = TKRegularImageType;
 				}
 				
-				[self setAlpha:[testImageRep hasAlpha]];
+				self.hasAlpha = testImageRep.alpha;
 			}
 		}
 	}
 	
-	NSArray *theReps = [self representations];
-	if ([theReps count]) {
+	NSArray *theReps = self.representations;
+	if (theReps.count) {
 		NSImageRep *largestRep = [TKImageRep largestRepresentationInArray:theReps];
-		[self setSize:[largestRep size]];
+		self.size = largestRep.size;
 	}
 	return self;
 }
@@ -360,7 +359,7 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	[self addRepresentations:[NSArray arrayWithObject:imageRep]];
+	[self addRepresentations:@[imageRep]];
 }
 
 
@@ -380,52 +379,52 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 		}
 	}
 	
-	if ([tkRepsToAdd count]) {
+	if (tkRepsToAdd.count) {
 		NSMutableIndexSet *sliceIndexes = [NSMutableIndexSet indexSet];
 		NSMutableIndexSet *faceIndexes = [NSMutableIndexSet indexSet];
 		NSMutableIndexSet *frameIndexes = [NSMutableIndexSet indexSet];
 		NSMutableIndexSet *mipmapIndexes = [NSMutableIndexSet indexSet];
 		
 		for (TKImageRep *anImageRep in tkRepsToAdd) {
-			if ([anImageRep sliceIndex] != NSNotFound) [sliceIndexes addIndex:[anImageRep sliceIndex]];
-			if ([anImageRep face] != NSNotFound) [faceIndexes addIndex:[anImageRep face]];
-			if ([anImageRep frameIndex] != NSNotFound) [frameIndexes addIndex:[anImageRep frameIndex]];
-			if ([anImageRep mipmapIndex] != NSNotFound) [mipmapIndexes addIndex:[anImageRep mipmapIndex]];
+			if (anImageRep.sliceIndex != NSNotFound) [sliceIndexes addIndex:anImageRep.sliceIndex];
+			if (anImageRep.face != NSNotFound) [faceIndexes addIndex:anImageRep.face];
+			if (anImageRep.frameIndex != NSNotFound) [frameIndexes addIndex:anImageRep.frameIndex];
+			if (anImageRep.mipmapIndex != NSNotFound) [mipmapIndexes addIndex:anImageRep.mipmapIndex];
 		}
 		
 #if TK_DEBUG
 		NSLog(@"[%@ %@] sliceIndexes == %@, faceIndexes == %@, frameIndexes == %@, mipmapIndexes == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), sliceIndexes, faceIndexes, frameIndexes, mipmapIndexes);
 #endif
-		NSUInteger slicesCount = [sliceIndexes count];
-		NSUInteger facesCount = [faceIndexes count];
-		NSUInteger framesCount = [frameIndexes count];
+		NSUInteger slicesCount = sliceIndexes.count;
+		NSUInteger facesCount = faceIndexes.count;
+		NSUInteger framesCount = frameIndexes.count;
 		
 		for (TKImageRep *tkImageRep in tkRepsToAdd) {
 			
 			if (slicesCount > 1) {
 				// depth texture
 				
-				[self setRepresentation:tkImageRep forSliceIndex:[tkImageRep sliceIndex] face:[tkImageRep face] frameIndex:[tkImageRep frameIndex] mipmapIndex:[tkImageRep mipmapIndex]];
+				[self setRepresentation:tkImageRep forSliceIndex:tkImageRep.sliceIndex face:tkImageRep.face frameIndex:tkImageRep.frameIndex mipmapIndex:tkImageRep.mipmapIndex];
 				
 			} else if (facesCount > 1 && framesCount > 1) {
 				// ordinary texture
-				[self setRepresentation:tkImageRep forSliceIndex:TKSliceIndexNone face:[tkImageRep face] frameIndex:[tkImageRep frameIndex] mipmapIndex:[tkImageRep mipmapIndex]];
+				[self setRepresentation:tkImageRep forSliceIndex:TKSliceIndexNone face:tkImageRep.face frameIndex:tkImageRep.frameIndex mipmapIndex:tkImageRep.mipmapIndex];
 				
 			} else if (facesCount > 1) {
-				[self setRepresentation:tkImageRep forSliceIndex:TKSliceIndexNone face:[tkImageRep face] frameIndex:TKFrameIndexNone mipmapIndex:[tkImageRep mipmapIndex]];
+				[self setRepresentation:tkImageRep forSliceIndex:TKSliceIndexNone face:tkImageRep.face frameIndex:TKFrameIndexNone mipmapIndex:tkImageRep.mipmapIndex];
 				
 			} else if (framesCount > 1) {
-				[self setRepresentation:tkImageRep forSliceIndex:TKSliceIndexNone face:TKFaceNone frameIndex:[tkImageRep frameIndex] mipmapIndex:[tkImageRep mipmapIndex]];
+				[self setRepresentation:tkImageRep forSliceIndex:TKSliceIndexNone face:TKFaceNone frameIndex:tkImageRep.frameIndex mipmapIndex:tkImageRep.mipmapIndex];
 				
 			} else {
 				
-				[self setRepresentation:tkImageRep forSliceIndex:TKSliceIndexNone face:TKFaceNone frameIndex:TKFrameIndexNone mipmapIndex:[tkImageRep mipmapIndex]];
+				[self setRepresentation:tkImageRep forSliceIndex:TKSliceIndexNone face:TKFaceNone frameIndex:TKFrameIndexNone mipmapIndex:tkImageRep.mipmapIndex];
 				
 			}
 		}
 	}
 	
-	if ([repsToAdd count]) {
+	if (repsToAdd.count) {
 		[super addRepresentations:repsToAdd];
 	}
 	
@@ -451,10 +450,10 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 #endif
 	if ([imageRep isKindOfClass:[TKImageRep class]]) {
 		
-		[self removeRepresentationForSliceIndex:[(TKImageRep *)imageRep sliceIndex]
-										   face:[(TKImageRep *)imageRep face]
-									 frameIndex:[(TKImageRep *)imageRep frameIndex]
-									mipmapIndex:[(TKImageRep *)imageRep mipmapIndex]];
+		[self removeRepresentationForSliceIndex:((TKImageRep *)imageRep).sliceIndex
+										   face:((TKImageRep *)imageRep).face
+									 frameIndex:((TKImageRep *)imageRep).frameIndex
+									mipmapIndex:((TKImageRep *)imageRep).mipmapIndex];
 		
 	} else {
 		[super removeRepresentation:imageRep];
@@ -481,14 +480,14 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 
 
 - (NSIndexSet *)mipmapIndexes {
-	NSMutableIndexSet *mipmapIndexes = [[[NSMutableIndexSet alloc] initWithIndexSet:[self allMipmapIndexes]] autorelease];
-	[mipmapIndexes removeIndexes:[self firstMipmapIndexSet]];
+	NSMutableIndexSet *mipmapIndexes = [[[NSMutableIndexSet alloc] initWithIndexSet:self.allMipmapIndexes] autorelease];
+	[mipmapIndexes removeIndexes:self.firstMipmapIndexSet];
 	return [[mipmapIndexes copy] autorelease];
 }
 
 
 - (NSIndexSet *)firstSliceIndexSet {
-	NSUInteger firstIndex = [[self allSliceIndexes] firstIndex];
+	NSUInteger firstIndex = self.allSliceIndexes.firstIndex;
 	if (firstIndex == NSNotFound) {
 		return [NSIndexSet indexSet];
 	}
@@ -497,7 +496,7 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 
 
 - (NSIndexSet *)firstFaceIndexSet {
-	NSUInteger firstIndex = [[self allFaceIndexes] firstIndex];
+	NSUInteger firstIndex = self.allFaceIndexes.firstIndex;
 	if (firstIndex == NSNotFound) {
 		return [NSIndexSet indexSet];
 	}
@@ -506,7 +505,7 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 
 
 - (NSIndexSet *)firstFrameIndexSet {
-	NSUInteger firstIndex = [[self allFrameIndexes] firstIndex];
+	NSUInteger firstIndex = self.allFrameIndexes.firstIndex;
 	if (firstIndex == NSNotFound) {
 		return [NSIndexSet indexSet];
 	}
@@ -515,7 +514,7 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 }
 
 - (NSIndexSet *)firstMipmapIndexSet {
-	NSUInteger firstIndex = [[self allMipmapIndexes] firstIndex];
+	NSUInteger firstIndex = self.allMipmapIndexes.firstIndex;
 	if (firstIndex == NSNotFound) {
 		return [NSIndexSet indexSet];
 	}
@@ -588,7 +587,7 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 	
 	NSMutableArray *representations = [NSMutableArray array];
 	
-	NSUInteger mipmapIndex = [mipmapIndexes firstIndex];
+	NSUInteger mipmapIndex = mipmapIndexes.firstIndex;
 	
 	while (mipmapIndex != NSNotFound) {
 		
@@ -611,17 +610,17 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 	NSParameterAssert([mipmapIndexes count] > 0);
 	NSParameterAssert([representations count] == [mipmapIndexes count]);
 	
-	NSUInteger mipmapIndexesCount = [mipmapIndexes count];
+	NSUInteger mipmapIndexesCount = mipmapIndexes.count;
 	
-	NSUInteger mipmapIndex = [mipmapIndexes firstIndex];
+	NSUInteger mipmapIndex = mipmapIndexes.firstIndex;
 	
 	for (NSUInteger m = 0; m < mipmapIndexesCount; m++) {
 		
 		if (m == 0) {
-			mipmapIndex = [mipmapIndexes firstIndex];
+			mipmapIndex = mipmapIndexes.firstIndex;
 		}
 		
-		TKImageRep *imageRep = [representations objectAtIndex:m];
+		TKImageRep *imageRep = representations[m];
 		
 		[self setRepresentation:imageRep forMipmapIndex:mipmapIndex];
 		
@@ -636,7 +635,7 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	
-	NSUInteger mipmapIndex = [mipmapIndexes lastIndex];
+	NSUInteger mipmapIndex = mipmapIndexes.lastIndex;
 	
 	while (mipmapIndex != NSNotFound) {
 		
@@ -682,11 +681,11 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 
 	NSMutableArray *representations = [NSMutableArray array];
 	
-	NSUInteger frameIndex = [frameIndexes firstIndex];
+	NSUInteger frameIndex = frameIndexes.firstIndex;
 	
 	while (frameIndex != NSNotFound) {
 		
-		NSUInteger mipmapIndex = [mipmapIndexes firstIndex];
+		NSUInteger mipmapIndex = mipmapIndexes.firstIndex;
 		
 		while (mipmapIndex != NSNotFound) {
 			
@@ -714,11 +713,11 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 	NSParameterAssert([representations count] == [frameIndexes count] * [mipmapIndexes count]);
 
 	
-	NSUInteger frameIndexesCount = [frameIndexes count];
-	NSUInteger mipmapIndexesCount = [mipmapIndexes count];
+	NSUInteger frameIndexesCount = frameIndexes.count;
+	NSUInteger mipmapIndexesCount = mipmapIndexes.count;
 	
-	NSUInteger frameIndex = [frameIndexes firstIndex];
-	NSUInteger mipmapIndex = [mipmapIndexes firstIndex];
+	NSUInteger frameIndex = frameIndexes.firstIndex;
+	NSUInteger mipmapIndex = mipmapIndexes.firstIndex;
 	
 	
 	for (NSUInteger f = 0; f < frameIndexesCount; f++) {
@@ -726,10 +725,10 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 		for (NSUInteger m = 0; m < mipmapIndexesCount; m++) {
 			
 			if (m == 0) {
-				mipmapIndex = [mipmapIndexes firstIndex];
+				mipmapIndex = mipmapIndexes.firstIndex;
 			}
 			
-			TKImageRep *imageRep = [representations objectAtIndex:((f * mipmapIndexesCount) + m)];
+			TKImageRep *imageRep = representations[((f * mipmapIndexesCount) + m)];
 			
 			[self setRepresentation:imageRep forFrameIndex:frameIndex mipmapIndex:mipmapIndex];
 			
@@ -746,11 +745,11 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	
-	NSUInteger frameIndex = [frameIndexes lastIndex];
+	NSUInteger frameIndex = frameIndexes.lastIndex;
 	
 	while (frameIndex != NSNotFound) {
 		
-		NSUInteger mipmapIndex = [mipmapIndexes lastIndex];
+		NSUInteger mipmapIndex = mipmapIndexes.lastIndex;
 		
 		while (mipmapIndex != NSNotFound) {
 			
@@ -800,11 +799,11 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 	
 	NSMutableArray *representations = [NSMutableArray array];
 	
-	NSUInteger faceIndex = [faceIndexes firstIndex];
+	NSUInteger faceIndex = faceIndexes.firstIndex;
 	
 	while (faceIndex != NSNotFound) {
 		
-		NSUInteger mipmapIndex = [mipmapIndexes firstIndex];
+		NSUInteger mipmapIndex = mipmapIndexes.firstIndex;
 		
 		while (mipmapIndex != NSNotFound) {
 			TKImageRep *imageRep = [self representationForFace:faceIndex mipmapIndex:mipmapIndex];
@@ -829,21 +828,21 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 	NSParameterAssert([representations count] > 0);
 	NSParameterAssert([representations count] == [faceIndexes count] * [mipmapIndexes count]);
 	
-	NSUInteger faceIndexesCount = [faceIndexes count];
-	NSUInteger mipmapIndexesCount = [mipmapIndexes count];
+	NSUInteger faceIndexesCount = faceIndexes.count;
+	NSUInteger mipmapIndexesCount = mipmapIndexes.count;
 	
-	NSUInteger faceIndex = [faceIndexes firstIndex];
-	NSUInteger mipmapIndex = [mipmapIndexes firstIndex];
+	NSUInteger faceIndex = faceIndexes.firstIndex;
+	NSUInteger mipmapIndex = mipmapIndexes.firstIndex;
 	
 	for (NSUInteger f = 0; f < faceIndexesCount; f++) {
 		
 		for (NSUInteger m = 0; m < mipmapIndexesCount; m++) {
 			
 			if (m == 0) {
-				mipmapIndex = [mipmapIndexes firstIndex];
+				mipmapIndex = mipmapIndexes.firstIndex;
 			}
 			
-			TKImageRep *imageRep = [representations objectAtIndex:((f * mipmapIndexesCount) + m)];
+			TKImageRep *imageRep = representations[((f * mipmapIndexesCount) + m)];
 			
 			[self setRepresentation:imageRep forFace:faceIndex mipmapIndex:mipmapIndex];
 			
@@ -861,11 +860,11 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	
-	NSUInteger faceIndex = [faceIndexes lastIndex];
+	NSUInteger faceIndex = faceIndexes.lastIndex;
 	
 	while (faceIndex != NSNotFound) {
 		
-		NSUInteger mipmapIndex = [mipmapIndexes lastIndex];
+		NSUInteger mipmapIndex = mipmapIndexes.lastIndex;
 		
 		while (mipmapIndex != NSNotFound) {
 			
@@ -915,15 +914,15 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 	
 	NSMutableArray *representations = [NSMutableArray array];
 	
-	NSUInteger faceIndex = [faceIndexes firstIndex];
+	NSUInteger faceIndex = faceIndexes.firstIndex;
 	
 	while (faceIndex != NSNotFound) {
 		
-		NSUInteger frameIndex = [frameIndexes firstIndex];
+		NSUInteger frameIndex = frameIndexes.firstIndex;
 		
 		while (frameIndex != NSNotFound) {
 			
-			NSUInteger mipmapIndex = [mipmapIndexes firstIndex];
+			NSUInteger mipmapIndex = mipmapIndexes.firstIndex;
 			
 			while (mipmapIndex != NSNotFound) {
 				TKImageRep *imageRep = [self representationForFace:faceIndex frameIndex:frameIndex mipmapIndex:mipmapIndex];
@@ -954,13 +953,13 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 	NSParameterAssert([representations count] > 0);
 	NSParameterAssert([representations count] == [faceIndexes count] * [frameIndexes count] * [mipmapIndexes count]);
 	
-	NSUInteger faceIndexesCount = [faceIndexes count];
-	NSUInteger frameIndexesCount = [frameIndexes count];
-	NSUInteger mipmapIndexesCount = [mipmapIndexes count];
+	NSUInteger faceIndexesCount = faceIndexes.count;
+	NSUInteger frameIndexesCount = frameIndexes.count;
+	NSUInteger mipmapIndexesCount = mipmapIndexes.count;
 	
-	NSUInteger faceIndex = [faceIndexes firstIndex];
-	NSUInteger frameIndex = [frameIndexes firstIndex];
-	NSUInteger mipmapIndex = [mipmapIndexes firstIndex];
+	NSUInteger faceIndex = faceIndexes.firstIndex;
+	NSUInteger frameIndex = frameIndexes.firstIndex;
+	NSUInteger mipmapIndex = mipmapIndexes.firstIndex;
 	
 	for (NSUInteger face = 0; face < faceIndexesCount; face++) {
 		
@@ -969,10 +968,10 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 			for (NSUInteger m = 0; m < mipmapIndexesCount; m++) {
 				
 				if (m == 0) {
-					mipmapIndex = [mipmapIndexes firstIndex];
+					mipmapIndex = mipmapIndexes.firstIndex;
 				}
 				
-				TKImageRep *imageRep = [representations objectAtIndex:((face * frame * mipmapIndexesCount) + m)];
+				TKImageRep *imageRep = representations[((face * frame * mipmapIndexesCount) + m)];
 				
 				[self setRepresentation:imageRep forFace:faceIndex frameIndex:frameIndex mipmapIndex:mipmapIndex];
 				
@@ -1000,15 +999,15 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 	NSParameterAssert(mipmapIndexes != nil);
 	NSParameterAssert(!([faceIndexes count] == 0 && [frameIndexes count] == 0 && [mipmapIndexes count] == 0));
 	
-	NSUInteger faceIndex = [faceIndexes lastIndex];
+	NSUInteger faceIndex = faceIndexes.lastIndex;
 	
 	while (faceIndex != NSNotFound) {
 		
-		NSUInteger frameIndex = [frameIndexes lastIndex];
+		NSUInteger frameIndex = frameIndexes.lastIndex;
 		
 		while (frameIndex != NSNotFound) {
 			
-			NSUInteger mipmapIndex = [mipmapIndexes lastIndex];
+			NSUInteger mipmapIndex = mipmapIndexes.lastIndex;
 			
 			while (mipmapIndex != NSNotFound) {
 				
@@ -1036,20 +1035,20 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 #endif
 	if (aSliceIndex != TKSliceIndexNone) {
 		// it's a depth texture
-		NSMutableDictionary *sliceDict = [reps objectForKey:TKImageKey(aSliceIndex)];
-		if (sliceDict) return [sliceDict objectForKey:TKImageRepKey];
+		NSMutableDictionary *sliceDict = reps[TKImageKey(aSliceIndex)];
+		if (sliceDict) return sliceDict[TKImageRepKey];
 		
 	} else {
 		// it's a regular texture
 		
-		NSMutableDictionary *sliceDict = [reps objectForKey:TKImageNotApplicableKey];
+		NSMutableDictionary *sliceDict = reps[TKImageNotApplicableKey];
 		if (sliceDict) {
-			NSMutableDictionary *faceDict = [sliceDict objectForKey:TKImageKey(aFace)];
+			NSMutableDictionary *faceDict = sliceDict[TKImageKey(aFace)];
 			if (faceDict) {
-				NSMutableDictionary *frameDict = [faceDict objectForKey:TKImageKey(aFrameIndex)];
+				NSMutableDictionary *frameDict = faceDict[TKImageKey(aFrameIndex)];
 				if (frameDict) {
-					NSMutableDictionary *mipmapDict = [frameDict objectForKey:TKImageKey(aMipmapIndex)];
-					if (mipmapDict) return [mipmapDict objectForKey:TKImageRepKey];
+					NSMutableDictionary *mipmapDict = frameDict[TKImageKey(aMipmapIndex)];
+					if (mipmapDict) return mipmapDict[TKImageRepKey];
 				}
 			}
 		}
@@ -1068,10 +1067,10 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 	if (aSliceIndex != TKSliceIndexNone) {
 		// it's a depth texture
 		
-		NSMutableDictionary *sliceDict = [reps objectForKey:TKImageKey(aSliceIndex)];
+		NSMutableDictionary *sliceDict = reps[TKImageKey(aSliceIndex)];
 		if (sliceDict == nil) {
 			sliceDict = [NSMutableDictionary dictionary];
-			[reps setObject:sliceDict forKey:TKImageKey(aSliceIndex)];
+			reps[TKImageKey(aSliceIndex)] = sliceDict;
 		}
 		
 		[(NSMutableIndexSet *)[self valueForKeyPath:TKImageAllSliceIndexesKey] addIndex:aSliceIndex];
@@ -1087,40 +1086,40 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 		
 		[aRepresentation setSliceIndex:aSliceIndex face:TKFaceNone frameIndex:TKFrameIndexNone mipmapIndex:TKMipmapIndexNone];
 		
-		[sliceDict setObject:aRepresentation forKey:TKImageRepKey];
+		sliceDict[TKImageRepKey] = aRepresentation;
 		
 	} else {
 		// it's a regular texture
 		
 		[aRepresentation setSliceIndex:aSliceIndex face:aFace frameIndex:aFrameIndex mipmapIndex:aMipmapIndex];
 		
-		NSMutableDictionary *sliceDict = [reps objectForKey:TKImageNotApplicableKey];
+		NSMutableDictionary *sliceDict = reps[TKImageNotApplicableKey];
 		if (sliceDict == nil) {
 			sliceDict = [NSMutableDictionary dictionary];
-			[reps setObject:sliceDict forKey:TKImageNotApplicableKey];
+			reps[TKImageNotApplicableKey] = sliceDict;
 		}
-		NSMutableDictionary *faceDict = [sliceDict objectForKey:TKImageKey(aFace)];
+		NSMutableDictionary *faceDict = sliceDict[TKImageKey(aFace)];
 		if (faceDict == nil) {
 			faceDict = [NSMutableDictionary dictionary];
-			[sliceDict setObject:faceDict forKey:TKImageKey(aFace)];
+			sliceDict[TKImageKey(aFace)] = faceDict;
 		}
-		NSMutableDictionary *frameDict = [faceDict objectForKey:TKImageKey(aFrameIndex)];
+		NSMutableDictionary *frameDict = faceDict[TKImageKey(aFrameIndex)];
 		if (frameDict == nil) {
 			frameDict = [NSMutableDictionary dictionary];
-			[faceDict setObject:frameDict forKey:TKImageKey(aFrameIndex)];
+			faceDict[TKImageKey(aFrameIndex)] = frameDict;
 		}
-		NSMutableDictionary *mipmapDict = [frameDict objectForKey:TKImageKey(aMipmapIndex)];
+		NSMutableDictionary *mipmapDict = frameDict[TKImageKey(aMipmapIndex)];
 		if (mipmapDict == nil) {
 			mipmapDict = [NSMutableDictionary dictionary];
-			[frameDict setObject:mipmapDict forKey:TKImageKey(aMipmapIndex)];
+			frameDict[TKImageKey(aMipmapIndex)] = mipmapDict;
 		}
-		[mipmapDict setObject:aRepresentation forKey:TKImageRepKey];
+		mipmapDict[TKImageRepKey] = aRepresentation;
 		
 		
-		NSUInteger sliceCountBefore = [[self allSliceIndexes] count];
-		NSUInteger faceCountBefore = [[self allFaceIndexes] count];
-		NSUInteger frameCountBefore = [[self allFrameIndexes] count];
-		NSUInteger mipmapCountBefore = [[self allMipmapIndexes] count];
+		NSUInteger sliceCountBefore = self.allSliceIndexes.count;
+		NSUInteger faceCountBefore = self.allFaceIndexes.count;
+		NSUInteger frameCountBefore = self.allFrameIndexes.count;
+		NSUInteger mipmapCountBefore = self.allMipmapIndexes.count;
 		
 		
 		NSMutableIndexSet *sliceIndexes = (NSMutableIndexSet *)[self valueForKeyPath:TKImageAllSliceIndexesKey];
@@ -1131,10 +1130,10 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 		if (aMipmapIndex != TKMipmapIndexNone) [(NSMutableIndexSet *)[self valueForKeyPath:TKImageAllMipmapIndexesKey] addIndex:aMipmapIndex];
 		
 		
-		NSUInteger sliceCountAfter = [[self allSliceIndexes] count];
-		NSUInteger faceCountAfter = [[self allFaceIndexes] count];
-		NSUInteger frameCountAfter = [[self allFrameIndexes] count];
-		NSUInteger mipmapCountAfter = [[self allMipmapIndexes] count];
+		NSUInteger sliceCountAfter = self.allSliceIndexes.count;
+		NSUInteger faceCountAfter = self.allFaceIndexes.count;
+		NSUInteger frameCountAfter = self.allFrameIndexes.count;
+		NSUInteger mipmapCountAfter = self.allMipmapIndexes.count;
 		
 		
 		if (sliceCountAfter > sliceCountBefore) {
@@ -1193,7 +1192,7 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 	[super addRepresentation:aRepresentation];
 	
 	if (imageType == TKEmptyImageType) {
-		[self setImageType:TKSFTIImageType];
+		self.imageType = TKSFTIImageType;
 	}
 }
 
@@ -1204,9 +1203,9 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 #endif
 	if (aSliceIndex != TKSliceIndexNone) {
 		// it's a depth texture
-		NSMutableDictionary *sliceDict = [reps objectForKey:TKImageKey(aSliceIndex)];
+		NSMutableDictionary *sliceDict = reps[TKImageKey(aSliceIndex)];
 		if (sliceDict) {
-			TKImageRep *rep = [sliceDict objectForKey:TKImageRepKey];
+			TKImageRep *rep = sliceDict[TKImageRepKey];
 			if (rep) {
 				[super removeRepresentation:rep];
 			}
@@ -1215,28 +1214,28 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 	} else {
 		// it's a regular texture
 		
-		NSMutableDictionary *sliceDict = [reps objectForKey:TKImageNotApplicableKey];
+		NSMutableDictionary *sliceDict = reps[TKImageNotApplicableKey];
 		if (sliceDict == nil) return;
 		
-		NSMutableDictionary *faceDict = [sliceDict objectForKey:TKImageKey(aFace)];
+		NSMutableDictionary *faceDict = sliceDict[TKImageKey(aFace)];
 		if (faceDict == nil) return;
 		
-		NSMutableDictionary *frameDict = [faceDict objectForKey:TKImageKey(aFrameIndex)];
+		NSMutableDictionary *frameDict = faceDict[TKImageKey(aFrameIndex)];
 		if (frameDict == nil) return;
 		
-		NSMutableDictionary *mipmapDict = [frameDict objectForKey:TKImageKey(aMipmapIndex)];
+		NSMutableDictionary *mipmapDict = frameDict[TKImageKey(aMipmapIndex)];
 		if (mipmapDict == nil) return;
 		
-		TKImageRep *rep = [mipmapDict objectForKey:TKImageRepKey];
+		TKImageRep *rep = mipmapDict[TKImageRepKey];
 		if (rep == nil) return;
 		
 //		NSIndexPath
 		
 		
-		NSUInteger sliceCountBefore = [[self allSliceIndexes] count];
-		NSUInteger faceCountBefore = [[self allFaceIndexes] count];
-		NSUInteger frameCountBefore = [[self allFrameIndexes] count];
-		NSUInteger mipmapCountBefore = [[self allMipmapIndexes] count];
+		NSUInteger sliceCountBefore = self.allSliceIndexes.count;
+		NSUInteger faceCountBefore = self.allFaceIndexes.count;
+		NSUInteger frameCountBefore = self.allFrameIndexes.count;
+		NSUInteger mipmapCountBefore = self.allMipmapIndexes.count;
 		
 		NSMutableIndexSet *sliceIndexes = (NSMutableIndexSet *)[self valueForKeyPath:TKImageAllSliceIndexesKey];
 		[sliceIndexes removeAllIndexes];
@@ -1259,10 +1258,10 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 		if (aFrameIndex != TKFrameIndexNone) [(NSMutableIndexSet *)[self valueForKeyPath:TKImageAllFrameIndexesKey] removeIndex:aFrameIndex];
 		if (aMipmapIndex != TKMipmapIndexNone) [(NSMutableIndexSet *)[self valueForKeyPath:TKImageAllMipmapIndexesKey] removeIndex:aMipmapIndex];
 		
-		NSUInteger sliceCountAfter = [[self allSliceIndexes] count];
-		NSUInteger faceCountAfter = [[self allFaceIndexes] count];
-		NSUInteger frameCountAfter = [[self allFrameIndexes] count];
-		NSUInteger mipmapCountAfter = [[self allMipmapIndexes] count];
+		NSUInteger sliceCountAfter = self.allSliceIndexes.count;
+		NSUInteger faceCountAfter = self.allFaceIndexes.count;
+		NSUInteger frameCountAfter = self.allFrameIndexes.count;
+		NSUInteger mipmapCountAfter = self.allMipmapIndexes.count;
 		
 		if (sliceCountAfter < sliceCountBefore) {
 			[self willChangeValueForKey:@"sliceCount"];
@@ -1318,8 +1317,8 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 //		[mipmapDict removeObjectForKey:TKImageRepKey];
 	}
 	
-	if ([[self representations] count] == 0) {
-		[self setImageType:TKEmptyImageType];
+	if (self.representations.count == 0) {
+		self.imageType = TKEmptyImageType;
 	}
 }
 
@@ -1454,50 +1453,50 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 		
 	} else if ((isCubemap || isSpheremap) && isAnimated) {
 		
-		NSArray *sourceImageReps = [self representationsForFaceIndexes:[self allFaceIndexes] frameIndexes:[self allFrameIndexes] mipmapIndexes:[self firstMipmapIndexSet]];
+		NSArray *sourceImageReps = [self representationsForFaceIndexes:self.allFaceIndexes frameIndexes:self.allFrameIndexes mipmapIndexes:self.firstMipmapIndexSet];
 		
 		for (TKImageRep *imageRep in sourceImageReps) {
 			NSArray *mipmapImageReps = [imageRep mipmapImageRepsUsingFilter:filterType];
 			
 			if (mipmapImageReps) {
 				[self setRepresentations:mipmapImageReps
-						  forFaceIndexes:[NSIndexSet indexSetWithIndex:[imageRep face]]
-							frameIndexes:[NSIndexSet indexSetWithIndex:[imageRep frameIndex]]
-						   mipmapIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1, [mipmapImageReps count])]];
+						  forFaceIndexes:[NSIndexSet indexSetWithIndex:imageRep.face]
+							frameIndexes:[NSIndexSet indexSetWithIndex:imageRep.frameIndex]
+						   mipmapIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1, mipmapImageReps.count)]];
 			}
 		}
 		
 	} else if ((isCubemap || isSpheremap) && !isAnimated) {
 		
-		NSArray *sourceImageReps = [self representationsForFaceIndexes:[self allFaceIndexes] mipmapIndexes:[self firstMipmapIndexSet]];
+		NSArray *sourceImageReps = [self representationsForFaceIndexes:self.allFaceIndexes mipmapIndexes:self.firstMipmapIndexSet];
 		
 		for (TKImageRep *imageRep in sourceImageReps) {
 			NSArray *mipmapImageReps = [imageRep mipmapImageRepsUsingFilter:filterType];
 			
 			if (mipmapImageReps) {
 				[self setRepresentations:mipmapImageReps
-						  forFaceIndexes:[NSIndexSet indexSetWithIndex:[imageRep face]]
-						   mipmapIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1, [mipmapImageReps count])]];
+						  forFaceIndexes:[NSIndexSet indexSetWithIndex:imageRep.face]
+						   mipmapIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1, mipmapImageReps.count)]];
 			}
 		}
 		
 	} else if (isAnimated) {
-		NSArray *sourceImageReps = [self representationsForFrameIndexes:[self allFrameIndexes] mipmapIndexes:[self firstMipmapIndexSet]];
+		NSArray *sourceImageReps = [self representationsForFrameIndexes:self.allFrameIndexes mipmapIndexes:self.firstMipmapIndexSet];
 		
 		for (TKImageRep *imageRep in sourceImageReps) {
 			NSArray *mipmapImageReps = [imageRep mipmapImageRepsUsingFilter:filterType];
 			
 			if (mipmapImageReps) {
 				[self setRepresentations:mipmapImageReps
-						 forFrameIndexes:[NSIndexSet indexSetWithIndex:[imageRep frameIndex]]
-						   mipmapIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1, [mipmapImageReps count])]];
+						 forFrameIndexes:[NSIndexSet indexSetWithIndex:imageRep.frameIndex]
+						   mipmapIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1, mipmapImageReps.count)]];
 			}
 		}
 	} else {
 		TKImageRep *sourceImageRep = [self representationForMipmapIndex:0];
 		NSArray *mipmapImageReps = [sourceImageRep mipmapImageRepsUsingFilter:filterType];
 		if (mipmapImageReps) {
-			[self setRepresentations:mipmapImageReps forMipmapIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1, [mipmapImageReps count])]];
+			[self setRepresentations:mipmapImageReps forMipmapIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1, mipmapImageReps.count)]];
 		}
 	}
 	
@@ -1514,19 +1513,19 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 		
 	} else if ((isCubemap || isSpheremap) && isAnimated) {
 		
-		[self removeRepresentationsForFaceIndexes:[self allFaceIndexes] frameIndexes:[self allFrameIndexes] mipmapIndexes:[self mipmapIndexes]];
+		[self removeRepresentationsForFaceIndexes:self.allFaceIndexes frameIndexes:self.allFrameIndexes mipmapIndexes:self.mipmapIndexes];
 		
 	} else if ((isCubemap || isSpheremap) && !isAnimated) {
 		
-		[self removeRepresentationsForFaceIndexes:[self allFaceIndexes] mipmapIndexes:[self mipmapIndexes]];
+		[self removeRepresentationsForFaceIndexes:self.allFaceIndexes mipmapIndexes:self.mipmapIndexes];
 		
 	} else if (isAnimated) {
 		
-		[self removeRepresentationsForFrameIndexes:[self allFrameIndexes] mipmapIndexes:[self mipmapIndexes]];
+		[self removeRepresentationsForFrameIndexes:self.allFrameIndexes mipmapIndexes:self.mipmapIndexes];
 		
 	} else {
 		
-		[self removeRepresentationsForMipmapIndexes:[self mipmapIndexes]];
+		[self removeRepresentationsForMipmapIndexes:self.mipmapIndexes];
 	}
 }
 
@@ -1545,7 +1544,7 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	return [TKDDSImageRep DDSRepresentationOfImageRepsInArray:[self representations] usingFormat:aFormat quality:aQuality options:options];
+	return [TKDDSImageRep DDSRepresentationOfImageRepsInArray:self.representations usingFormat:aFormat quality:aQuality options:options];
 }
 
 
@@ -1562,7 +1561,7 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	return [TKVTFImageRep VTFRepresentationOfImageRepsInArray:[self representations] usingFormat:aFormat quality:aQuality options:options];
+	return [TKVTFImageRep VTFRepresentationOfImageRepsInArray:self.representations usingFormat:aFormat quality:aQuality options:options];
 }
 
 
@@ -1570,31 +1569,29 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 #if TK_DEBUG
 	NSLog(@"[%@ %@] utiType == %@, properties == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), utiType, properties);
 #endif
-	if ([[self representations] count] == 0) {
+	if (self.representations.count == 0) {
 		NSLog(@"[%@ %@] NOTICE: image has no representations; returning nil!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 		return nil;
 	}
 	
-	NSMutableDictionary *mProperties = [[properties deepMutableCopy] autorelease];
-	TKImageRep *targetImageRep = [TKImageRep largestRepresentationInArray:[self representations]];
+	NSMutableDictionary *mProperties = [properties.deepMutableCopy autorelease];
+	TKImageRep *targetImageRep = [TKImageRep largestRepresentationInArray:(id)self.representations];
 	
 #if TK_DEBUG
 	NSLog(@"[%@ %@] targetImageRep == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), targetImageRep);
 #endif
 	
-	[mProperties setObject:(id)kCGImagePropertyColorModelRGB forKey:(id)kCGImagePropertyColorModel];
-	NSMutableDictionary *TIFFDictionary = [mProperties objectForKey:(id)kCGImagePropertyTIFFDictionary];
+	mProperties[(id)kCGImagePropertyColorModel] = (id)kCGImagePropertyColorModelRGB;
+	NSMutableDictionary *TIFFDictionary = mProperties[(id)kCGImagePropertyTIFFDictionary];
 	if (TIFFDictionary == nil) {
 		TIFFDictionary = [NSMutableDictionary dictionary];
-		[mProperties setObject:TIFFDictionary forKey:(id)kCGImagePropertyTIFFDictionary];
+		mProperties[(id)kCGImagePropertyTIFFDictionary] = TIFFDictionary;
 	}
 	
-	[TIFFDictionary setObject:[NSString stringWithFormat:@"%@ %@ (%@)",
+	TIFFDictionary[(id)kCGImagePropertyTIFFSoftware] = [NSString stringWithFormat:@"%@ %@ (%@)",
 							   [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleExecutable"],
 							   [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"],
-							   [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"]]
-	 
-					   forKey:(id)kCGImagePropertyTIFFSoftware];
+							   [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"]];
 	
 	NSMutableData *imageData = [NSMutableData data];
 	
@@ -1604,7 +1601,7 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 		return nil;
 	}
 	
-	CGImageRef targetImageRef = [targetImageRep CGImage];
+	CGImageRef targetImageRef = targetImageRep.CGImage;
 	
 	CGImageDestinationAddImage(imageDest, targetImageRef, (CFDictionaryRef)mProperties);
 	CGImageDestinationFinalize(imageDest);
@@ -1642,7 +1639,7 @@ static inline NSString *NSStringFromImageType(TKImageType aType) {
 
 - (NSString *)description {
 //	NSMutableString *description = [NSMutableString stringWithString:[super description]];
-	NSMutableString *description = [NSMutableString stringWithFormat:@"<%@ %p> size == %@", NSStringFromClass([self class]), self, NSStringFromSize([self size])];
+	NSMutableString *description = [NSMutableString stringWithFormat:@"<%@ %p> size == %@", NSStringFromClass([self class]), self, NSStringFromSize(self.size)];
 	[description appendFormat:@"\n"];
 	[description appendFormat:@"imageType == %@\n", NSStringFromImageType(imageType)];
 	[description appendFormat:@"sliceCount == %lu\n", (unsigned long)sliceCount];

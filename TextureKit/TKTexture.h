@@ -29,16 +29,16 @@
 	
 }
 
-+ (id)textureWithContentsOfFile:(NSString *)aPath;
-+ (id)textureWithContentsOfURL:(NSURL *)URL;
-+ (id)textureWithData:(NSData *)aData;
++ (instancetype)textureWithContentsOfFile:(NSString *)aPath;
++ (instancetype)textureWithContentsOfURL:(NSURL *)URL;
++ (instancetype)textureWithData:(NSData *)aData;
 
 // convenience analogous to NSImage's +imageNamed:
-+ (id)textureNamed:(NSString *)name;
++ (instancetype)textureNamed:(NSString *)name;
 
-- (id)initWithContentsOfFile:(NSString *)aPath;
-- (id)initWithContentsOfURL:(NSURL *)URL;
-- (id)initWithData:(NSData *)aData;
+- (instancetype)initWithContentsOfFile:(NSString *)aPath;
+- (instancetype)initWithContentsOfURL:(NSURL *)URL;
+- (instancetype)initWithData:(NSData *)aData;
 
 
 - (void)bind;

@@ -48,26 +48,18 @@ TEXTUREKIT_EXTERN NSData * TKSFTextureImageMagicData;
 	NSString				*compression;
 	
 	NSUInteger				sliceCount;
-	
 	NSUInteger				faceCount;
-	
 	NSUInteger				frameCount;
-	
 	NSUInteger				mipmapCount;
 	
 	TKImageType				imageType;
 	
 	BOOL					isDepthTexture;
-	
 	BOOL					isCubemap;
 	BOOL					isSpheremap;
-	
 	BOOL					isAnimated;
-	
 	BOOL					hasMipmaps;
-	
 	BOOL					hasAlpha;
-
 }
 
 - (instancetype)initWithData:(NSData *)aData firstRepresentationOnly:(BOOL)firstRepOnly;
@@ -158,12 +150,9 @@ TEXTUREKIT_EXTERN NSData * TKSFTextureImageMagicData;
 - (void)removeRepresentationsForFaceIndexes:(NSIndexSet *)faceIndexes frameIndexes:(NSIndexSet *)frameIndexes mipmapIndexes:(NSIndexSet *)mipmapIndexes;
 
 
-
-
 - (void)generateMipmapsUsingFilter:(TKMipmapGenerationType)filterType;
 
 - (void)removeMipmaps;
-
 
 
 - (NSData *)DDSRepresentationWithOptions:(NSDictionary *)options;
@@ -177,6 +166,3 @@ TEXTUREKIT_EXTERN NSData * TKSFTextureImageMagicData;
 - (NSData *)dataForType:(NSString *)utiType properties:(NSDictionary *)properties;
 
 @end
-
-
-
