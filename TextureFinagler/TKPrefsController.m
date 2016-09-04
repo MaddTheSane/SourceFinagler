@@ -43,7 +43,7 @@ static NSArray *prefsClassNames = nil;
 		for (NSUInteger i = 0; i < count; i++) {
 			[viewControllers addObject:[NSNull null]];
 		}
-		self.window;
+		[self window];
 		
 	} else {
 		[NSBundle runFailedNibLoadAlert:@"TKPrefs"];

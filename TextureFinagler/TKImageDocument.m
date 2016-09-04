@@ -711,7 +711,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 			NSMutableArray *imageReps = [NSMutableArray array];
 			
 			for (NSString *filePath in filePaths) {
-				TKImageRep *anImageRep = [TKImageRep imageRepWithContentsOfFile:filePath];
+				TKImageRep *anImageRep = (TKImageRep*)[TKImageRep imageRepWithContentsOfFile:filePath];
 				if (anImageRep) [imageReps addObject:anImageRep];
 			}
 			
@@ -1827,7 +1827,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	
 	for (NSString *filePath in filePaths) {
 		if ([fileManager fileExistsAtPath:filePath isDirectory:&isDir] && !isDir) {
-			TKImageRep *tkImageRep = [TKImageRep imageRepWithContentsOfFile:filePath];
+			TKImageRep *tkImageRep = (TKImageRep*)[TKImageRep imageRepWithContentsOfFile:filePath];
 			if (tkImageRep) [theImageReps addObject:tkImageRep];
 		}
 	}

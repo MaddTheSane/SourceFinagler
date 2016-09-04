@@ -202,7 +202,7 @@ CGColorRef TKCreatePatternColorWithImage(CGImageRef imageRef);
 	if (showsImageBackground) {
 		@synchronized([self class]) {
 			if (checkerboardImageRep == nil) {
-				checkerboardImageRep = [[TKImageRep imageRepWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"checkerboard" ofType:@"png"]] retain];
+				checkerboardImageRep = [(TKImageRep*)[TKImageRep imageRepWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"checkerboard" ofType:@"png"]] retain];
 			}
 		}
 		CGImageRef checkerboardImageRef = CGImageRetain(checkerboardImageRep.CGImage);

@@ -65,7 +65,7 @@
 	BOOL							generateMipmaps;
 }
 
-- (instancetype)initWithImageDocument:(TKImageDocument *)aDocument NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithImageDocument:(TKImageDocument *)aDocument;
 
 - (void)cleanup;
 

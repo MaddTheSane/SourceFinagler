@@ -30,12 +30,12 @@ using namespace HLLib;
 	CDirectoryFolder *_privateData;
 }
 
-- (instancetype)initWithParent:(HKFolder *)aParent directoryFolder:(CDirectoryFolder *)aFolder showInvisibleItems:(BOOL)showInvisibles sortDescriptors:(NSArray *)aSortDescriptors container:(id)aContainer {
+- (instancetype)initWithParent:(HKFolder *)aParent directoryFolder:(const CDirectoryFolder *)aFolder showInvisibleItems:(BOOL)showInvisibles sortDescriptors:(NSArray *)aSortDescriptors container:(id)aContainer {
 #if HK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	if ((self = [super initWithParent:aParent childNodes:nil sortDescriptors:aSortDescriptors container:aContainer])) {
-		_privateData = aFolder;
+		_privateData = (CDirectoryFolder *)aFolder;
 		isLeaf = NO;
 		isExtractable = YES;
 		isVisible = YES;

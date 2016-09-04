@@ -134,7 +134,7 @@ static NSMutableArray *imagePresets = nil;
 		fileType = [[coder decodeObjectForKey:TKImageExportFileTypeKey] retain];
 		compressionFormat = [[coder decodeObjectForKey:TKImageExportFormatKey] retain];
 		compressionQuality = [[coder decodeObjectForKey:TKImageExportDXTCompressionQualityKey] retain];
-		mipmapGeneration = [[coder decodeObjectForKey:TKImageExportMipmapGenerationKey] unsignedIntegerValue];
+		mipmapGeneration = [coder decodeIntegerForKey:TKImageExportMipmapGenerationKey];
 	}
 	return self;
 }
@@ -147,7 +147,7 @@ static NSMutableArray *imagePresets = nil;
 	[coder encodeObject:fileType forKey:TKImageExportFileTypeKey];
 	[coder encodeObject:compressionFormat forKey:TKImageExportFormatKey];
 	[coder encodeObject:compressionQuality forKey:TKImageExportDXTCompressionQualityKey];
-	[coder encodeObject:@(mipmapGeneration) forKey:TKImageExportMipmapGenerationKey];
+	[coder encodeInteger:mipmapGeneration forKey:TKImageExportMipmapGenerationKey];
 }
 
 - (id)copyWithZone:(NSZone *)zone {
