@@ -94,6 +94,7 @@ CGColorRef TKCreatePatternColorWithImage(CGImageRef imageRef);
 
 @synthesize delegate;
 @synthesize previewing;
+@synthesize animating = isAnimating;
 
 @dynamic previewImageRep;
 @dynamic showsImageBackground;
@@ -202,7 +203,8 @@ CGColorRef TKCreatePatternColorWithImage(CGImageRef imageRef);
 	if (showsImageBackground) {
 		@synchronized([self class]) {
 			if (checkerboardImageRep == nil) {
-				checkerboardImageRep = [(TKImageRep*)[TKImageRep imageRepWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"checkerboard" ofType:@"png"]] retain];
+				NSImage *imgRep = [NSImage imageNamed:@"checkerboard"];
+				checkerboardImageRep = [[TKImageRep imageRepWithImageRep:(NSBitmapImageRep *)[[imgRep representations] firstObject]] retain];
 			}
 		}
 		CGImageRef checkerboardImageRef = CGImageRetain(checkerboardImageRep.CGImage);
@@ -309,12 +311,6 @@ CGColorRef TKCreatePatternColorWithImage(CGImageRef imageRef);
 	
 	[self unloadAnimationImageReps];
 }
-
-
-- (BOOL)isAnimating {
-	return isAnimating;
-}
-
 
 
 //- (IBAction)togglePlay:(id)sender {

@@ -47,11 +47,13 @@ typedef NS_ENUM(NSUInteger, HKArchiveFileType) {
 	
 }
 
+NS_ASSUME_NONNULL_BEGIN
+
 + (HKArchiveFileType)fileTypeForData:(NSData *)aData;
 
 
-- (instancetype)initWithContentsOfFile:(NSString *)aPath;
-- (instancetype)initWithContentsOfFile:(NSString *)aPath showInvisibleItems:(BOOL)showInvisibleItems sortDescriptors:(NSArray<NSSortDescriptor*> *)sortDescriptors error:(NSError **)outError;
+- (nullable instancetype)initWithContentsOfFile:(NSString *)aPath;
+- (nullable instancetype)initWithContentsOfFile:(NSString *)aPath showInvisibleItems:(BOOL)showInvisibleItems sortDescriptors:(nullable NSArray<NSSortDescriptor*> *)sortDescriptors error:(NSError *__nullable*__nullable)outError;
 
 
 @property (copy, readonly) NSString *filePath;
@@ -62,12 +64,14 @@ typedef NS_ENUM(NSUInteger, HKArchiveFileType) {
 @property (nonatomic, readonly, assign) BOOL haveGatheredAllItems;
 
 
-@property (copy) NSString *version;
+@property (copy, nullable) NSString *version;
 
 
 @property (readonly, strong) HKFolder *items;
-- (HKItem *)itemAtPath:(NSString *)aPath;
+- (nullable HKItem *)itemAtPath:(NSString *)aPath;
 
 @property (readonly, copy) NSArray<HKItem*> *allItems;
 
 @end
+
+NS_ASSUME_NONNULL_END

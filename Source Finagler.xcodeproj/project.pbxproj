@@ -23,6 +23,7 @@
 
 /* Begin PBXBuildFile section */
 		5565910F1D7A8E7500F8B6C2 /* genericDocument16@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5565910E1D7A8E7500F8B6C2 /* genericDocument16@2x.png */; };
+		55B9F2A41D7CB20600641709 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55B9F2681D7CB1EF00641709 /* InfoPlist.strings */; };
 		55EF66A21D7B7DE800FFF7B2 /* TextureFinaglerImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55EF66A11D7B7DE800FFF7B2 /* TextureFinaglerImages.xcassets */; };
 		55F82CB51D7BA58600D6DAC9 /* TKOBJModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C1958030149117DC0024C716 /* TKOBJModel.m */; };
 		55F82CB61D7BA58600D6DAC9 /* TKOBJParts.m in Sources */ = {isa = PBXBuildFile; fileRef = C11116FE149151360040E4B5 /* TKOBJParts.m */; };
@@ -1032,6 +1033,7 @@
 		256AC3F00F4B6AF500CF3369 /* SourceFinagler_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceFinagler_Prefix.pch; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5565910E1D7A8E7500F8B6C2 /* genericDocument16@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "genericDocument16@2x.png"; sourceTree = "<group>"; };
+		55B9F2691D7CB1EF00641709 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		55EF66A11D7B7DE800FFF7B2 /* TextureFinaglerImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = TextureFinaglerImages.xcassets; path = Resources/TextureFinaglerImages.xcassets; sourceTree = "<group>"; };
 		55F82CBB1D7BA77100D6DAC9 /* TKOpenGLDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKOpenGLDrawable.h; sourceTree = "<group>"; };
 		55F82CBD1D7BA7E300D6DAC9 /* TKMath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKMath.h; sourceTree = "<group>"; };
@@ -1256,8 +1258,8 @@
 		C17845C6148300E800082335 /* TKModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TKModel.m; sourceTree = "<group>"; };
 		C17A6EEA120A0BC40062CBC6 /* Collaboration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Collaboration.framework; path = System/Library/Frameworks/Collaboration.framework; sourceTree = SDKROOT; };
 		C17CC5AB1627FF740055D950 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
-		C17D34F212791CCA00962584 /* HLPackageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HLPackageManager.h; path = SourceFinagler/HLPackageManager.h; sourceTree = SOURCE_ROOT; };
-		C17D34F312791CCA00962584 /* HLPackageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HLPackageManager.m; path = SourceFinagler/HLPackageManager.m; sourceTree = SOURCE_ROOT; };
+		C17D34F212791CCA00962584 /* HLPackageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLPackageManager.h; sourceTree = "<group>"; };
+		C17D34F312791CCA00962584 /* HLPackageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLPackageManager.m; sourceTree = "<group>"; };
 		C17D74C31443C8EA0048697D /* TKTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKTextFieldCell.h; sourceTree = "<group>"; };
 		C17D74C41443C8EA0048697D /* TKTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKTextFieldCell.m; sourceTree = "<group>"; };
 		C17D74E91443D0DA0048697D /* TKTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKTextField.h; sourceTree = "<group>"; };
@@ -2227,6 +2229,14 @@
 			path = TextureFinagler;
 			sourceTree = SOURCE_ROOT;
 		};
+		55B9F2A61D7CB29A00641709 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				55B9F2681D7CB1EF00641709 /* InfoPlist.strings */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		55F82CD01D7BAB6500D6DAC9 /* Shader */ = {
 			isa = PBXGroup;
 			children = (
@@ -2836,6 +2846,7 @@
 				C135198813947C190074B5EA /* LGPL.txt */,
 				C1B95367124E73EC00E83451 /* VTF.h */,
 				C1B95276124E73B200E83451 /* Info.plist */,
+				55B9F2A61D7CB29A00641709 /* Resources */,
 				C1B95355124E73EC00E83451 /* stdafx.h */,
 				C1B953D8124E74AA00E83451 /* Classes */,
 			);
@@ -2942,6 +2953,8 @@
 		C1C1243F1239F3DD004674B4 /* GCF Finagler */ = {
 			isa = PBXGroup;
 			children = (
+				C17D34F212791CCA00962584 /* HLPackageManager.h */,
+				C17D34F312791CCA00962584 /* HLPackageManager.m */,
 				C1C1269E123A7D6B004674B4 /* Abstract superclass */,
 				C1C1269F123A7D76004674B4 /* Concrete subclasses */,
 				C1C124B3123A0A0C004674B4 /* MDHLDocumentSnowLeopard.xib */,
@@ -3194,8 +3207,6 @@
 				C1C126CF123A977D004674B4 /* Packages */,
 				C1C126CE123A9770004674B4 /* Mappings */,
 				C1C126D0123A9786004674B4 /* Streams */,
-				C17D34F212791CCA00962584 /* HLPackageManager.h */,
-				C17D34F312791CCA00962584 /* HLPackageManager.m */,
 			);
 			name = "HL framework";
 			path = HL;
@@ -4615,6 +4626,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1B95388124E73EC00E83451 /* Readme.txt in Resources */,
+				55B9F2A41D7CB20600641709 /* InfoPlist.strings in Resources */,
 				C135198B13947C730074B5EA /* LGPL.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5381,6 +5393,14 @@
 			);
 			name = MainMenu.xib;
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		55B9F2681D7CB1EF00641709 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				55B9F2691D7CB1EF00641709 /* English */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		C101A6D6125281C700BD8091 /* TKImageDocument.xib */ = {

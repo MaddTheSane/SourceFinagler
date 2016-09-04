@@ -31,7 +31,7 @@ NS_ENUM(NSInteger) {
 	MDResourceFileCorruptResourceFileError				= 4998,
 };
 
-extern NSString * const MDResourceFileErrorDomain;
+extern NSString *__nonnull const MDResourceFileErrorDomain;
 
 
 @interface MDResourceFile : NSObject {
@@ -45,34 +45,36 @@ extern NSString * const MDResourceFileErrorDomain;
 	
 }
 
-// read-only; which fork is determined automatically
-- (instancetype)initWithContentsOfFile:(NSString *)aPath error:(NSError **)outError;
-- (instancetype)initWithContentsOfURL:(NSURL *)aURL error:(NSError **)outError;
+NS_ASSUME_NONNULL_BEGIN
+
+//! read-only; which fork is determined automatically
+- (nullable instancetype)initWithContentsOfFile:(NSString *)aPath error:(NSError *__nullable*__nullable)outError;
+- (nullable instancetype)initWithContentsOfURL:(NSURL *)aURL error:(NSError *__nullable*__nullable)outError;
 
 
-// read/write; the 'updating' comes from NSFileHandle
-- (instancetype)initForUpdatingWithContentsOfFile:(NSString *)aPath fork:(MDFork)aFork error:(NSError **)outError;
-- (instancetype)initForUpdatingWithContentsOfURL:(NSURL *)aURL fork:(MDFork)aFork error:(NSError **)outError;
+//! read/write; the 'updating' comes from NSFileHandle
+- (nullable instancetype)initForUpdatingWithContentsOfFile:(NSString *)aPath fork:(MDFork)aFork error:(NSError *__nullable*__nullable)outError;
+- (nullable instancetype)initForUpdatingWithContentsOfURL:(NSURL *)aURL fork:(MDFork)aFork error:(NSError *__nullable*__nullable)outError;
 
 
-- (instancetype)initWithContentsOfFile:(NSString *)aPath permission:(MDPermission)aPermission fork:(MDFork)aFork error:(NSError **)outError;
-- (instancetype)initWithContentsOfURL:(NSURL *)aURL permission:(MDPermission)aPermission fork:(MDFork)aFork error:(NSError **)outError;
+- (nullable instancetype)initWithContentsOfFile:(NSString *)aPath permission:(MDPermission)aPermission fork:(MDFork)aFork error:(NSError *__nullable*__nullable)outError;
+- (nullable instancetype)initWithContentsOfURL:(NSURL *)aURL permission:(MDPermission)aPermission fork:(MDFork)aFork error:(NSError *__nullable*__nullable)outError;
 
 
-- (ResFileRefNum)fileReference;
-- (NSString *)filePath;
+@property (readonly) ResFileRefNum fileReference;
+@property (readonly, copy) NSString *filePath;
 @property (readonly) MDFork fork;
 @property (readonly) MDPermission permission;
 
 
-- (MDResource *)plistResource;
-- (MDResource *)customIconResource;
+@property (readonly, retain, nullable) MDResource *plistResource;
+@property (readonly, retain, nullable) MDResource *customIconResource;
 
-- (BOOL)addResource:(MDResource *)aResource error:(NSError **)outError;
-- (BOOL)removeResource:(MDResource *)aResource error:(NSError **)outError;
+- (BOOL)addResource:(MDResource *)aResource error:(NSError *__nullable*__nullable)outError;
+- (BOOL)removeResource:(MDResource *)aResource error:(NSError *__nullable*__nullable)outError;
 
 - (void)closeResourceFile;
 
 @end
 
-
+NS_ASSUME_NONNULL_END

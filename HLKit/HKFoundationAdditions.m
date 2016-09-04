@@ -161,7 +161,36 @@
 
 @end
 
+@implementation NSURL (HKAdditions)
++ (nullable NSURL*)URLWithFSRef:(const FSRef *)anFSRef
+{
+	return CFBridgingRelease(CFURLCreateFromFSRef(kCFAllocatorDefault, anFSRef));
+}
 
+- (BOOL)getFSRef:(FSRef *)anFSRef error:(NSError *__nullable*__nullable)anError
+{
+	//As this will only work on file urls, auto-fail if we aren't one.
+	if (![self isFileURL]) {
+		if (anError) {
+			*anError = [NSError
+						errorWithDomain:NSOSStatusErrorDomain code:paramErr
+						userInfo:@{NSLocalizedFailureReasonErrorKey: @"Can only convert from a file: URL scheme"
+								   }];
+		}
+		return NO;
+	}
+	
+	BOOL success = CFURLGetFSRef((CFURLRef)self, anFSRef);
+	if (success) {
+		return YES;
+	}
+	
+	//CFURLGetFSRef doesn't tell us HOW it failed, only that it did.
+	//So use the NSString method, just to double-check
+	return [[[self absoluteURL] path] getFSRef:anFSRef error:anError];
+}
+
+@end
 
 @implementation NSMutableArray (HKAdditions)
 

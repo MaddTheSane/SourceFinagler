@@ -182,8 +182,6 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
     return rCode;
 }
 
-
-
 @interface MDResourceFile (MDPrivate)
 
 - (BOOL)saveChanges:(NSError **)outError;
@@ -197,9 +195,15 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 
 
 @implementation MDResourceFile
+@synthesize fileReference;
+@synthesize filePath;
+@synthesize fork;
+@synthesize permission;
+@synthesize plistResource;
+@synthesize customIconResource;
 
 
-// read-only; which fork is determined automatically
+//! read-only; which fork is determined automatically
 - (id)initWithContentsOfFile:(NSString *)aPath error:(NSError **)outError {
 	return [self initWithContentsOfURL:[NSURL fileURLWithPath:aPath] error:outError];
 }
@@ -210,7 +214,7 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 }
 
 
-// read/write; the 'updating' comes from NSFileHandle
+//! read/write; the 'updating' comes from NSFileHandle
 - (id)initForUpdatingWithContentsOfFile:(NSString *)aPath fork:(MDFork)aFork error:(NSError **)outError {
 	return [self initForUpdatingWithContentsOfURL:[NSURL fileURLWithPath:aPath] fork:aFork error:outError];
 }
@@ -302,9 +306,7 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 	}
 	
 	if ((self = [super init])) {
-		
 		FSRef			parentRef;
-		
 		UniChar			fileNameUnicode[255];
 		UniCharCount	fileNameLength;
 		NSString		*fileName;
@@ -420,32 +422,6 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 }
 
 
-- (ResFileRefNum)fileReference {
-    return fileReference;
-}
-
-- (NSString *)filePath {
-    return filePath;
-}
-
-- (MDFork)fork {
-    return fork;
-}
-
-- (MDPermission)permission {
-    return permission;
-}
-
-- (MDResource *)plistResource {
-    return plistResource;
-}
-
-
-- (MDResource *)customIconResource {
-    return customIconResource;
-}
-
-
 - (BOOL)addResource:(MDResource *)aResource error:(NSError **)outError {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -478,7 +454,6 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 	}
 	return [self saveChanges:outError];
 }
-
 
 
 - (void)closeResourceFile {
@@ -599,7 +574,6 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 	
 	return (err == noErr);
 }
-
 
 
 - (BOOL)addData:(NSData *)aData resourceType:(ResType)aType resourceID:(ResID)anID resourceName:(NSString *)aName error:(NSError **)localOutError {

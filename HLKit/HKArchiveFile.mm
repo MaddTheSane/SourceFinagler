@@ -43,9 +43,6 @@ static HKArchiveFileTest HKArchiveFileTestTable[] = {
 
 
 @implementation HKArchiveFile
-
-
-
 @synthesize filePath;
 @synthesize fileType;
 @synthesize haveGatheredAllItems;
@@ -114,15 +111,12 @@ static HKArchiveFileTest HKArchiveFileTestTable[] = {
 	[super dealloc];
 }
 
-
-
 - (HKFolder *)items {
 #if HK_DEBUG
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	return items;
 }
-
 
 - (HKItem *)itemAtPath:(NSString *)path {
 #if HK_DEBUG
@@ -131,49 +125,39 @@ static HKArchiveFileTest HKArchiveFileTestTable[] = {
 	return [[self items] descendantAtPath:path];
 }
 
-
-
 - (NSArray *)allItems {
 #if HK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	
 	if (!haveGatheredAllItems) {
-		
 		NSDate *startDate = [[NSDate date] retain];
+		NSMutableArray *gatheredItems;
 		
-		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-		
-		NSMutableArray *gatheredItems = [[NSMutableArray alloc] init];
-		
-		[gatheredItems addObject:items];
-		
-		NSArray *childNodes = items.childNodes;
-		
-		for (HKItem *item in childNodes) {
+		@autoreleasepool {
+			gatheredItems = [[NSMutableArray alloc] initWithCapacity:items.childNodes.count];
+			[gatheredItems addObject:items];
 			
-			[gatheredItems addObject:item];
-			
-			if (!item.leaf) {
-				[gatheredItems addObjectsFromArray:item.descendants];
+			NSArray *childNodes = items.childNodes;
+			for (HKItem *item in childNodes) {
+				[gatheredItems addObject:item];
+				
+				if (!item.leaf) {
+					[gatheredItems addObjectsFromArray:item.descendants];
+				}
 			}
+			allItems = [gatheredItems copy];
 		}
-		allItems = gatheredItems;
-		
-//		allItems = [gatheredItems copy];
-		
-		[pool release];
 		
 		haveGatheredAllItems = YES;
 		
 		NSLog(@"[%@ %@] ****** TIME to gather allItems == %.7f sec, gatheredItems count == %lu, allItems count == %lu", NSStringFromClass([self class]), NSStringFromSelector(_cmd), fabs(startDate.timeIntervalSinceNow), (unsigned long)gatheredItems.count, (unsigned long)allItems.count);
 		
+		[gatheredItems release];
 		[startDate release];
 		startDate = nil;
 	}
 	return allItems;
 }
-	
 
 @end
-

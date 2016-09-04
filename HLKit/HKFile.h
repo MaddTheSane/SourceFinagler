@@ -8,22 +8,24 @@
 
 #import <HLKit/HKItem.h>
 
+NS_ASSUME_NONNULL_BEGIN
 
-@interface HKFile : HKItem 
+@interface HKFile : HKItem
 
 // convenience
-- (BOOL)writeToFile:(NSString *)aPath assureUniqueFilename:(BOOL)assureUniqueFilename resultingPath:(NSString **)resultingPath error:(NSError **)outError;
+- (BOOL)writeToFile:(NSString *)aPath assureUniqueFilename:(BOOL)assureUniqueFilename resultingPath:(NSString *__nullable*__nullable)resultingPath error:(NSError *__nullable*__nullable)outError;
 
 
-- (BOOL)beginWritingToFile:(NSString *)aPath assureUniqueFilename:(BOOL)assureUniqueFilename resultingPath:(NSString **)resultingPath error:(NSError **)outError;
-- (BOOL)continueWritingPartialBytesOfLength:(NSUInteger *)partialBytesLength error:(NSError **)outError;
-- (BOOL)finishWritingWithError:(NSError **)outError;
+- (BOOL)beginWritingToFile:(NSString *)aPath assureUniqueFilename:(BOOL)assureUniqueFilename resultingPath:(NSString *__nullable*__nullable)resultingPath error:(NSError *__nullable*__nullable)outError;
+- (BOOL)continueWritingPartialBytesOfLength:(nullable NSUInteger *)partialBytesLength error:(NSError *__nullable*__nullable)outError;
+- (BOOL)finishWritingWithError:(NSError *__nullable*__nullable)outError;
 
-- (BOOL)cancelWritingAndRemovePartialFileWithError:(NSError **)outError;
+- (BOOL)cancelWritingAndRemovePartialFileWithError:(NSError *__nullable*__nullable)outError;
 
 
 
-@property (readonly, copy) NSData *data;
+@property (readonly, copy, nullable) NSData *data;
 
 @end
 
+NS_ASSUME_NONNULL_END

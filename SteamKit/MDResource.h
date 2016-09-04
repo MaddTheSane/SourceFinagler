@@ -52,5 +52,3 @@ typedef NS_OPTIONS(ResAttributes, MDResourceAttributes) {
 @property (nonatomic) MDResourceAttributes resourceAttributes;
 @property BOOL resChanged;
 @end
-
-

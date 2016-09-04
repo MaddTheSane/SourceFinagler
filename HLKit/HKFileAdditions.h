@@ -7,8 +7,9 @@
 //
 
 #import <HLKit/HKFile.h>
-
-@class NSImage, NSSound, QTMovie;
+#import <AppKit/NSImage.h>
+#import <AppKit/NSSound.h>
+#import <QTKit/QTMovie.h>
 
 @interface HKFile (HKAdditions)
 

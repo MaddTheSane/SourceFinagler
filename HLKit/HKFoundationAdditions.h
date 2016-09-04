@@ -10,10 +10,12 @@
 #import <CoreServices/CoreServices.h>
 #import <HLKit/HLKitDefines.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface NSString (HKAdditions)
 
-+ (NSString *)stringWithFSRef:(const FSRef *)anFSRef;
-- (BOOL)getFSRef:(FSRef *)anFSRef error:(NSError **)anError;
++ (nullable NSString *)stringWithFSRef:(const FSRef *)anFSRef;
+- (BOOL)getFSRef:(FSRef *)anFSRef error:(NSError *__nullable*__nullable)anError;
 
 @property (readonly, copy) NSString *stringByAssuringUniqueFilename;
 
@@ -29,9 +31,13 @@
 
 @end
 
-
+@interface NSURL (HKAdditions)
++ (nullable NSURL*)URLWithFSRef:(const FSRef *)anFSRef;
+- (BOOL)getFSRef:(FSRef *)anFSRef error:(NSError *__nullable*__nullable)anError;
+@end
 
 @interface NSMutableArray<ObjectType> (HKAdditions)
 - (void)insertObjectsFromArray:(NSArray<ObjectType> *)array atIndex:(NSUInteger)anIndex;
 @end
 
+NS_ASSUME_NONNULL_END
