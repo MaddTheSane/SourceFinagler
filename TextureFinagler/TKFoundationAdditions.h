@@ -128,20 +128,20 @@ typedef NS_OPTIONS(NSUInteger, TKBookmarkResolutionOptions) {
 
 @interface NSUserDefaults (TKSortDescriptorAdditions)
 
-- (void)setSortDescriptors:(NSArray *)sortDescriptors forKey:(NSString *)key;
-- (NSArray *)sortDescriptorsForKey:(NSString *)key;
+- (void)setSortDescriptors:(NSArray<NSSortDescriptor*> *)sortDescriptors forKey:(NSString *)key;
+- (NSArray<NSSortDescriptor*> *)sortDescriptorsForKey:(NSString *)key;
 
 @end
 
 @interface NSDictionary (TKSortDescriptorAdditions)
 
-- (NSArray *)sortDescriptorsForKey:(NSString *)key;
+- (NSArray<NSSortDescriptor*> *)sortDescriptorsForKey:(NSString *)key;
 
 @end
 
 @interface NSMutableDictionary (TKSortDescriptorAdditions)
 
-- (void)setSortDescriptors:(NSArray *)sortDescriptors forKey:(NSString *)key;
+- (void)setSortDescriptors:(NSArray<NSSortDescriptor*> *)sortDescriptors forKey:(NSString *)key;
 
 @end
 
@@ -188,13 +188,13 @@ typedef NS_OPTIONS(NSUInteger, TKBookmarkResolutionOptions) {
 ////    NSMutableDictionary CATEGORY FOR THREAD-SAFETY
 ////////////////////////////////////////////////////////////////
 
-@interface NSMutableDictionary (TKThreadSafety)
+@interface NSMutableDictionary<KeyType, ObjectType> (TKThreadSafety)
 
-- (id)threadSafeObjectForKey:(id)aKey usingLock:(NSLock *)aLock;
+- (ObjectType)threadSafeObjectForKey:(KeyType)aKey usingLock:(NSLock *)aLock;
 
-- (void)threadSafeRemoveObjectForKey:(id)aKey usingLock:(NSLock *)aLock;
+- (void)threadSafeRemoveObjectForKey:(KeyType)aKey usingLock:(NSLock *)aLock;
 
-- (void)threadSafeSetObject:(id)anObject forKey:(id)aKey usingLock:(NSLock *)aLock;
+- (void)threadSafeSetObject:(ObjectType)anObject forKey:(KeyType)aKey usingLock:(NSLock *)aLock;
 
 @end
 
@@ -211,7 +211,7 @@ typedef NS_OPTIONS(NSUInteger, TKBookmarkResolutionOptions) {
 
 
 @interface NSObject (TKDeepMutableCopy)
-@property (readonly, strong) id deepMutableCopy NS_RETURNS_RETAINED;
+- (id)deepMutableCopy NS_RETURNS_RETAINED;
 @end
 
 

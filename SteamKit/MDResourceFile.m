@@ -234,7 +234,7 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 	
 	BOOL isDir;
 	
-	filePath = [aURL.path retain];
+	filePath = aURL.path;
 	
 	BOOL itemExists = ([[NSFileManager defaultManager] fileExistsAtPath:aURL.path isDirectory:&isDir] && !isDir);
 	
@@ -280,13 +280,11 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 	
 	if (err != noErr) {
 		NSLog(@"[%@ %@] %@ returned %hi", NSStringFromClass([self class]), NSStringFromSelector(_cmd), (aFork == MDResourceFork ? @"FSGetResourceForkName()" : @"FSGetDataForkName()"), err);
-		[self release];
 		return nil;
 	}
 	
 	if (itemExists && ((fork == MDResourceFork && resourceForkSize) || (fork == MDDataFork && dataForkSize))) {
 		if (![filePath getFSRef:&fileRef error:outError]) {
-			[self release];
 			return nil;
 		}
 		
@@ -300,7 +298,6 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 			
 			NSLog(@"[%@ %@] ERROR: file appears to be a corrupt %@ and will not be opened...", NSStringFromClass([self class]), NSStringFromSelector(_cmd), (aFork == MDResourceFork ? @"resource file" : @"datafork-based resource file"));
 			if (outError) *outError = [NSError errorWithDomain:MDResourceFileErrorDomain code:MDResourceFileCorruptResourceFileError userInfo:nil];
-			[self release];
 			return nil;
 		}
 	}
@@ -329,7 +326,6 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 			
 			if (![aURL.path.stringByDeletingLastPathComponent getFSRef:&parentRef error:outError]) {
 				NSLog(@"[%@ %@] (%@) getFSRef: for parentRef failed", NSStringFromClass([self class]), NSStringFromSelector(_cmd), aURL.path);
-				[self release];
 				return nil;
 			}
 			
@@ -338,7 +334,6 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 			
 			if (fileNameLength > NAME_MAX) {
 				NSLog(@"[%@ %@] fileNameLength > NAME_MAX!; aborting...", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-				[self release];
 				return nil;
 			}
 			
@@ -374,7 +369,6 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 						
 						if (!(fileReference > 0 && err == noErr)) {
 							NSLog(@"[%@ %@] tried opening resource file with Read-Only access, but an error (%hi) still occurred while trying to open the resource file!", NSStringFromClass([self class]), NSStringFromSelector(_cmd), err);
-							[self release];
 							return nil;
 						}
 						
@@ -388,7 +382,6 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 			
 			if ( !(fileReference > 0 && err == noErr)) {
 				NSLog(@"[%@ %@] an error (%hi) occurred while trying to open the resource fork!", NSStringFromClass([self class]), NSStringFromSelector(_cmd), err);
-				[self release];
 				return nil;
 			}
 		}
@@ -402,9 +395,9 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 			
 			if (ResError() == noErr) {
 				if (resType == 'plst') {
-					plistResource = [[MDResource resourceWithType:'plst' index:1 error:outError] retain];
+					plistResource = [MDResource resourceWithType:'plst' index:1 error:outError];
 				} else if (resType == 'icns') {
-					customIconResource = [[MDResource resourceWithType:'icns' index:1 error:outError] retain];
+					customIconResource = [MDResource resourceWithType:'icns' index:1 error:outError];
 				}
 			}
 		}
@@ -415,10 +408,6 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 
 - (void)dealloc {
 	if (fileReference > 0) CloseResFile(fileReference);
-	[filePath release];
-	[plistResource release];
-	[customIconResource release];
-	[super dealloc];
 }
 
 

@@ -92,7 +92,7 @@ static MDLaunchManager *sharedManager = nil;
 	NSDictionary *job = nil;
 	
 	if (label && domain == MDLaunchUserDomain) {
-		job = [(NSDictionary *)SMJobCopyDictionary((domain == MDLaunchUserDomain ? kSMDomainUserLaunchd : kSMDomainSystemLaunchd), (CFStringRef)label) autorelease];
+		job = CFBridgingRelease(SMJobCopyDictionary((domain == MDLaunchUserDomain ? kSMDomainUserLaunchd : kSMDomainSystemLaunchd), (CFStringRef)label));
 	}
 	return job;
 }
@@ -108,9 +108,9 @@ static MDLaunchManager *sharedManager = nil;
 		for (NSString *label in labels) {
 			NSDictionary *job = [self jobWithLabel:label inDomain:domain];
 			if (job) [jobs addObject:job];
+		}
 	}
-}
-	return [[jobs copy] autorelease];
+	return jobs.count > 0 ? [[jobs copy] autorelease] : nil;
 }
 
 

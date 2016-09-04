@@ -135,7 +135,7 @@ SInt32 TKGetSystemVersion() {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
+	NSFileManager *fileManager = [[NSFileManager alloc] init];
 	BOOL isDir;
 	
 	if ([fileManager fileExistsAtPath:self isDirectory:&isDir]) {
@@ -199,7 +199,7 @@ SInt32 TKGetSystemVersion() {
 #endif
 	NSString *newFullPath = nil;
 	NSString *filename = self.lastPathComponent;
-	NSString *originalFilename = [[filename copy] autorelease];
+	NSString *originalFilename = [filename copy];
 	
 	if (filename.length > 30) {
 		NSRange nilRange = NSMakeRange(NSNotFound, 0);
@@ -280,7 +280,7 @@ SInt32 TKGetSystemVersion() {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	return [(NSString *)CFStringCreateWithPascalString(kCFAllocatorDefault, aPStr, kCFStringEncodingMacRoman) autorelease];
+	return CFBridgingRelease(CFStringCreateWithPascalString(kCFAllocatorDefault, aPStr, kCFStringEncodingMacRoman));
 }
 
 
@@ -365,8 +365,6 @@ SInt32 TKGetSystemVersion() {
 		}
 	}
 	
-	[fileManager release];
-	
 	return displayPath;
 }
 
@@ -390,7 +388,7 @@ SInt32 TKGetSystemVersion() {
 				err = FSNewAlias(NULL, &itemRef, &alias);
 				if (err == noErr) {
 					HLock((Handle)alias);
-					bookmarkData = [[[NSData dataWithBytes:*alias length:GetHandleSize((Handle)alias)] retain] autorelease];
+					bookmarkData = [[NSData alloc] initWithBytes:*alias length:GetHandleSize((Handle)alias)];
 					HUnlock((Handle)alias);
 					if (alias) DisposeHandle((Handle)alias);
 					
@@ -404,7 +402,6 @@ SInt32 TKGetSystemVersion() {
 		NSLog(@"[%@ %@] no file exists at %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), path);
 		if (outError) *outError = [NSError errorWithDomain:NSOSStatusErrorDomain code:fnfErr userInfo:nil];
 	}
-	[fileManager release];
 	return bookmarkData;
 }
 
@@ -492,7 +489,7 @@ SInt32 TKGetSystemVersion() {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	return [[[[self class] alloc] initWithIndexSet:indexes] autorelease];
+	return [[[self class] alloc] initWithIndexSet:indexes];
 }
 
 
@@ -510,7 +507,7 @@ SInt32 TKGetSystemVersion() {
 		theIndex = [self indexGreaterThanIndex:theIndex];
 	}
 	
-	return [[intersectingIndexes copy] autorelease];
+	return [intersectingIndexes copy];
 }
 
 
@@ -528,13 +525,11 @@ SInt32 TKGetSystemVersion() {
 	[self addIndexes:indexes];
 }
 
-
 @end
 
 
 
 @implementation NSData (TKDescriptionAdditions)
-
 
 - (NSString *)stringRepresentation {
 	const char *bytes = self.bytes;
@@ -546,7 +541,7 @@ SInt32 TKGetSystemVersion() {
 	for (currentIndex = 0; currentIndex < stringLength; currentIndex++) {
 		[stringRepresentation appendFormat:@"%02x", (unsigned char)bytes[currentIndex]];
 	}
-	return [[stringRepresentation copy] autorelease];
+	return [stringRepresentation copy];
 }
 
 // prints raw hex + ascii
@@ -606,7 +601,6 @@ SInt32 TKGetSystemVersion() {
 #if 0
 
 @implementation NSData (TKAdditions)
-
 
 
 - (NSString *)sha1HexHash {
@@ -676,31 +670,28 @@ SInt32 TKGetSystemVersion() {
 #endif
 
 
-
 NSString *NSStringForAppleScriptListFromPaths(NSArray *paths) {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	NSAutoreleasePool *localPool = [[NSAutoreleasePool alloc] init];
-	
-	NSString *listString = @"{";
-	NSString *filePath;
-	NSInteger currentIndex;
-	NSInteger totalCount = paths.count;
-	
-	for (currentIndex = 0; currentIndex < totalCount; currentIndex++) {
-		filePath = paths[currentIndex];
-		listString = [listString stringByAppendingString:[NSString stringWithFormat:@"\"%@\" as POSIX file", filePath]];
+	@autoreleasepool {
+		NSMutableString *listString = [[NSMutableString alloc] initWithString:@"{"];
+		NSString *filePath;
+		NSInteger currentIndex;
+		NSInteger totalCount = paths.count;
 		
-		if (currentIndex < (totalCount - 1)) {
-			listString = [listString stringByAppendingString:@", "];
+		for (currentIndex = 0; currentIndex < totalCount; currentIndex++) {
+			filePath = paths[currentIndex];
+			[listString appendFormat:@"\"%@\" as POSIX file", filePath];
+			
+			if (currentIndex < (totalCount - 1)) {
+				[listString appendString:@", "];
+			}
 		}
+		[listString appendString:@"}"];
+		
+		return [listString copy];
 	}
-	listString = [[listString stringByAppendingString:@"}"] retain];
-	
-	[localPool release];
-	
-	return [listString autorelease];
 }
 
 
@@ -745,7 +736,7 @@ NSString *NSStringForAppleScriptListFromPaths(NSArray *paths) {
     id    result;
 	
     [aLock lock];
-    result = [[self[aKey] retain] autorelease];
+    result = self[aKey];
     [aLock unlock];
 	
     return result;
@@ -761,9 +752,10 @@ NSString *NSStringForAppleScriptListFromPaths(NSArray *paths) {
 
 - (void)threadSafeSetObject:(id)anObject forKey:(id)aKey usingLock:(NSLock *)aLock {
     [aLock lock];
-    [[anObject retain] autorelease];
-    self[aKey] = anObject;
+	id anObject2 = anObject;
+    self[aKey] = anObject2;
     [aLock unlock];
+	anObject2 = nil;
 }
 
 
@@ -783,7 +775,7 @@ NSString *NSStringForAppleScriptListFromPaths(NSArray *paths) {
 	} else if ([self respondsToSelector:@selector(copyWithZone:)]) {
         return [self copy];
 	} else {
-        return [self retain];
+        return self;
 	}
 }
 
@@ -808,13 +800,11 @@ NSString *NSStringForAppleScriptListFromPaths(NSArray *paths) {
 		if ([key conformsToProtocol:@protocol(NSCopying)]) {
 			keyCopy = [key copy];
 		} else {
-			keyCopy = [key retain];
+			keyCopy = key;
 		}
 		
 		newDictionary[keyCopy] = copiedObject;
-		[copiedObject release];
-		[keyCopy release];
-	}	
+	}
     return newDictionary;
 }
 
@@ -832,7 +822,6 @@ NSString *NSStringForAppleScriptListFromPaths(NSArray *paths) {
 	for (id object in self) {
 		id copiedObject = [object deepMutableCopy];
 		[newArray addObject:copiedObject];
-		[copiedObject release];
 	}
     return newArray;
 }
@@ -854,7 +843,6 @@ NSString *NSStringForAppleScriptListFromPaths(NSArray *paths) {
 	for (id object in allObjects) {
 		id copiedObject = [object deepMutableCopy];
 		[newSet addObject:copiedObject];
-		[copiedObject release];
 	}
     return newSet;
 }

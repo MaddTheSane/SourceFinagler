@@ -20,18 +20,16 @@
 #endif
 
 
-enum {
-	MDUserDomain	=	kUserDomain,			/*	~/										*/
-	MDLocalDomain	=	kLocalDomain,			/* /Library/								*/
-	MDNetworkDomain	=	kNetworkDomain,			/* /Network/								*/	
-	MDSystemDomain	=	kSystemDomain,			/* /System/									*/
-	MDClassicDomain	=	kClassicDomain,			/* /System Folder/ (no longer applicable)	*/
-	MDAllDomains	=	kOnAppropriateDisk		/* varies									*/
+typedef NS_ENUM(FSVolumeRefNum, MDSearchPathDomain) {
+	MDUserDomain	=	kUserDomain,			/**<	~/										*/
+	MDLocalDomain	=	kLocalDomain,			/**< /Library/								*/
+	MDNetworkDomain	=	kNetworkDomain,			/**< /Network/								*/
+	MDSystemDomain	=	kSystemDomain,			/**< /System/									*/
+	MDClassicDomain	=	kClassicDomain,			/**< /System Folder/ (no longer applicable)	*/
+	MDAllDomains	=	kOnAppropriateDisk		/**< varies									*/
 };
 
-typedef FSVolumeRefNum MDSearchPathDomain;
-
-enum {
+typedef NS_ENUM(OSType, MDSearchPathDirectory) {
 	MDApplicationsDirectory				=	kApplicationsFolderType,
 	MDApplicationSupportDirectory		=	kApplicationSupportFolderType,
 	MDCachesDirectory					=	kCachedDataFolderType,
@@ -57,13 +55,13 @@ enum {
 };
 
 
-typedef OSType MDSearchPathDirectory;
-
-
 @interface MDFolderManager : NSObject {
 	NSMutableArray	*tempDirectories;
 }
 + (MDFolderManager *)defaultManager;
+#if __has_feature(objc_class_property)
+@property (class, readonly, retain) MDFolderManager *defaultManager;
+#endif
 + (NSString *)tempDirectoryWithIdentifier:(NSString *)aName;
 + (NSString *)tempDirectoryWithIdentifier:(NSString *)aName assureUniqueFilename:(BOOL)flag;
 + (BOOL)cleanupTempDirectoryAtPath:(NSString *)aPath error:(NSError **)outError;

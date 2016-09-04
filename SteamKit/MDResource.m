@@ -24,7 +24,7 @@
 @synthesize resChanged;
 
 + (id)resourceWithType:(ResType)aType index:(ResourceIndex)anIndex error:(NSError **)outError {
-	return [[[[self class] alloc] initWithType:aType index:anIndex error:outError] autorelease];
+	return [[[self class] alloc] initWithType:aType index:anIndex error:outError];
 }
 
 
@@ -35,12 +35,10 @@
 		resourceIndex		= anIndex;
 		if (![self getResourceInfo:outError]) {
 			NSLog(@"[%@ %@] *** ERROR: [self getResourceInfo:] failed!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-			[self release];
 			return nil;
 		}
 		if (![self parseResourceData:outError]) {
 			NSLog(@"[%@ %@] *** ERROR: [self parseResourceData:] failed!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-			[self release];
 			return nil;
 		}
 	}
@@ -61,8 +59,8 @@
 			resourceName	= [aName copy];
 			resourceData	= [aData copy];
 		} else {
-			resourceName	= [aName retain];
-			resourceData	= [aData retain];
+			resourceName	= aName;
+			resourceData	= aData;
 		}
 
 		resourceSize		= resourceData.length;
@@ -71,19 +69,12 @@
 		
 		if (![self parseResourceData:outError]) {
 			NSLog(@"[%@ %@] *** ERROR: [self parseResourceData:] failed!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-			[self release];
 			return nil;
 		}
 	}
 	return self;
 }
 
-
-- (void)dealloc {
-	[resourceName release];
-	[resourceData release];
-	[super dealloc];
-}
 
 - (void)setResourceType:(ResType)value {
 	resourceType = value;
@@ -96,19 +87,13 @@
 }
 
 - (void)setResourceName:(NSString *)value {
-	[value retain];
-	[resourceName release];
 	resourceName = [value copy];
-	[value release];
 	resChanged = YES;
 }
 
 - (void)setResourceData:(NSData *)value {
-	[value retain];
-	[resourceData release];
 	resourceData = [value copy];
 	resourceSize = (SInt32)resourceData.length;
-	[value release];
 	resChanged = YES;
 }
 
@@ -158,7 +143,7 @@
 	}
 	
 	resourceID = resID;
-	resourceName = [[NSString stringWithPascalString:resName] retain];
+	resourceName = [NSString stringWithPascalString:resName];
 	
 	resourceSize = GetResourceSizeOnDisk(resHandle);
 	err = ResError();
@@ -170,7 +155,7 @@
 	}
 	
 	HLock(resHandle);
-	resourceData = [[NSData dataWithBytes:*resHandle length:GetHandleSize(resHandle)] retain];
+	resourceData = [[NSData alloc] initWithBytes:*resHandle length:GetHandleSize(resHandle)];
 	HUnlock(resHandle);
 	
 	resourceAttributes = GetResAttrs(resHandle);
@@ -202,6 +187,4 @@
 	return YES;
 }
 
-
 @end
-

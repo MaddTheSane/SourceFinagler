@@ -27,12 +27,15 @@ enum {
 
 }
 + (MDFileManager *)defaultManager;
+#if __has_feature(objc_class_property)
+@property (class, readonly, retain) MDFileManager *defaultManager;
+#endif
 
-// returns all HFS+ info as well as resource fork sizes
+/// returns all HFS+ info as well as resource fork sizes
 - (NSDictionary *)attributesOfItemAtPath:(NSString *)path error:(NSError **)outError;
 - (BOOL)setAttributes:(NSDictionary *)attributes ofItemAtPath:(NSString *)path error:(NSError **)error;
 
-// returns resource fork sizes only
+/// returns resource fork sizes only
 - (NSDictionary *)fileAttributesAtPath:(NSString *)path traverseLink:(BOOL)yorn;
 
 - (BOOL)isDeletableFileAtPath:(NSString *)path;
