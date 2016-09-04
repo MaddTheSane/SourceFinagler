@@ -159,7 +159,7 @@ static inline NSString *NSStringFromInspectorViewAutosaveName(NSString *anAutosa
 #if MD_DEBUG
 //	NSLog(@"\"%@\" [%@ %@] self.frame == %@", autosaveName, NSStringFromClass([self class]), NSStringFromSelector(_cmd), NSStringFromRect(self.frame));
 #endif
-	[self setShown:!isShown];
+	self.shown = !isShown;
 	
 }
 

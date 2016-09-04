@@ -65,15 +65,15 @@ static void HKInitializeIcons() {
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	NSImage *image = nil;
-	if ([item isLeaf]) {
-		NSString *fileNameExtension = [item nameExtension];
+	if (item.leaf) {
+		NSString *fileNameExtension = item.nameExtension;
 		if ([fileNameExtension isEqualToString:@""]) {
 			image = fileImage;
 		} else {
-			image = [icons objectForKey:fileNameExtension];
+			image = icons[fileNameExtension];
 			if (image == nil) {
 				image = [[NSWorkspace sharedWorkspace] iconForFileType:fileNameExtension];
-				if (image) [icons setObject:image forKey:fileNameExtension];
+				if (image) icons[fileNameExtension] = image;
 			}
 		}
 	} else {
@@ -102,7 +102,7 @@ static void HKInitializeIcons() {
 
 @dynamic path;
 
-- (id)init {
+- (instancetype)init {
 #if HK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -110,7 +110,7 @@ static void HKInitializeIcons() {
 }
 
 
-- (id)initWithParent:(HKNode *)aParent childNodes:(NSArray *)theChildren sortDescriptors:(NSArray *)aSortDescriptors container:(id)aContainer {
+- (instancetype)initWithParent:(HKNode *)aParent childNodes:(NSArray *)theChildren sortDescriptors:(NSArray *)aSortDescriptors container:(id)aContainer {
 	if ((self = [super initWithParent:aParent childNodes:theChildren sortDescriptors:aSortDescriptors container:aContainer])) {
 		fileType = HKFileTypeNone;
 	}
@@ -139,14 +139,14 @@ static void HKInitializeIcons() {
 
 - (NSString *)path {
 	if (path) return path;
-	if (parent && ![parent isRootNode]) {
-		NSString *parentsPath = [(HKItem *)parent path];
-		[self setPath:[parentsPath stringByAppendingPathComponent:name]];
+	if (parent && !parent.rootNode) {
+		NSString *parentsPath = ((HKItem *)parent).path;
+		self.path = [parentsPath stringByAppendingPathComponent:name];
 		return path;
 	}
 	
 	if (container) {
-		[self setPath:[@"/" stringByAppendingPathComponent:name]];
+		self.path = [@"/" stringByAppendingPathComponent:name];
 		return path;
 	}
 	return nil;
@@ -170,13 +170,13 @@ static void HKInitializeIcons() {
 	
 	HKItem *theItem = self;
 	
-	while ((theItem = (HKItem *)[theItem parent])) {
+	while ((theItem = (HKItem *)theItem.parent)) {
 		if (theItem == referenceItem) {
 			// **
 			if (relativePath == nil) relativePath = name;
 			break;
 		}
-		NSString *itemName = [theItem name];
+		NSString *itemName = theItem.name;
 		//**
 		if (relativePath == nil) relativePath = name;
 		

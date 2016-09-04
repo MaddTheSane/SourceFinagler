@@ -15,7 +15,7 @@
 #define MD_DEBUG 0
 
 
-enum {
+NS_ENUM(SInt32) {
 	MDUndeterminedVersion	= -1,
 	MDCheetah				= 0x1000,
 	MDPuma					= 0x1010,

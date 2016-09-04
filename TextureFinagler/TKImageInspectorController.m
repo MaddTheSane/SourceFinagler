@@ -264,12 +264,4 @@ static TKImageInspectorController *sharedController = nil;
 	appIsTerminating = YES;
 }
 
-
 @end
-
-
-
-
-
-
-

@@ -69,7 +69,7 @@ NSString * const TKImageExportPreviewKey	= @"TKImageExportPreview";
 		NSArray *originalImageReps = imageExportPreview.image.representations;
 		if (originalImageReps.count) {
 			TKImageRep *imageRep = originalImageReps[0];
-			NSData *imageRepData = [imageRep data];
+			NSData *imageRepData = imageRep.data;
 			imageExportPreview.imageRep = imageRep;
 			imageExportPreview.imageFileSize = imageRepData.length;
 		}

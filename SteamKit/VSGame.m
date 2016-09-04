@@ -23,43 +23,43 @@
 
 @dynamic executableURL;
 
-+ (id)gameWithPath:(NSString *)aPath infoPlist:(NSDictionary *)anInfoPlist {
++ (instancetype)gameWithPath:(NSString *)aPath infoPlist:(NSDictionary *)anInfoPlist {
 	return [[[[self class] alloc] initWithPath:aPath infoPlist:anInfoPlist] autorelease];
 }
 
 
-- (id)initWithPath:(NSString *)aPath infoPlist:(NSDictionary *)anInfoPlist {
+- (instancetype)initWithPath:(NSString *)aPath infoPlist:(NSDictionary *)anInfoPlist {
 	if (aPath && anInfoPlist && (self = [super init])) {
 		isHelped = NO;
 		executablePath = [aPath retain];
-		creatorCode = [[anInfoPlist objectForKey:VSGameCreatorCodeKey] unsignedIntValue];
-		infoDictionary = [[anInfoPlist objectForKey:VSGameInfoPlistKey] retain];
-		gameID = [[anInfoPlist objectForKey:VSGameIDKey] unsignedIntegerValue];
-		displayName = [[infoDictionary objectForKey:(NSString *)kCFBundleNameKey] retain];
+		creatorCode = [anInfoPlist[VSGameCreatorCodeKey] unsignedIntValue];
+		infoDictionary = [anInfoPlist[VSGameInfoPlistKey] retain];
+		gameID = [anInfoPlist[VSGameIDKey] unsignedIntegerValue];
+		displayName = [infoDictionary[(NSString *)kCFBundleNameKey] retain];
 		
-		NSString *shortFolderName = [anInfoPlist objectForKey:VSGameShortNameKey];
+		NSString *shortFolderName = anInfoPlist[VSGameShortNameKey];
 		
 		if (shortFolderName) {
-			[self setIconPath:[[[[executablePath stringByDeletingLastPathComponent]
+			self.iconPath = [[[executablePath.stringByDeletingLastPathComponent
 								 stringByAppendingPathComponent:shortFolderName]
 								stringByAppendingPathComponent:VSResourceNameKey]
-							   stringByAppendingPathComponent:VSGameIconNameKey]];
+							   stringByAppendingPathComponent:VSGameIconNameKey];
 		}
 		NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
 		BOOL isDir;
 		
 		if ([fileManager fileExistsAtPath:iconPath isDirectory:&isDir] && !isDir) {
 			NSImage *iconImage = [[[NSImage alloc] initByReferencingFile:iconPath] autorelease];
-			[self setIcon:iconImage];
+			self.icon = iconImage;
 		} else {
 			NSLog(@"[%@ %@] file doesn't exist at iconPath == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), iconPath);
 		}
-		if ([[anInfoPlist objectForKey:VSGameSupportsAddonsKey] boolValue]) {
-			NSString *addonsFolder = [[[executablePath stringByDeletingLastPathComponent]
+		if ([anInfoPlist[VSGameSupportsAddonsKey] boolValue]) {
+			NSString *addonsFolder = [[executablePath.stringByDeletingLastPathComponent
 									   stringByAppendingPathComponent:shortFolderName]
 									  stringByAppendingPathComponent:VSSourceAddonFolderNameKey];
 			if ([fileManager fileExistsAtPath:addonsFolder isDirectory:&isDir] && isDir) {
-				[self setAddonsFolderPath:addonsFolder];
+				self.addonsFolderPath = addonsFolder;
 			}
 		}
 		[self synchronizeHelped];
@@ -73,16 +73,16 @@
 	NSLog(@"[%@ %@] why is this being called?", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	VSGame *copy = (VSGame *)[[[self class] allocWithZone:zone] init];
-	[copy setGameID:gameID];
-	[copy setCreatorCode:creatorCode];
-	[copy setExecutablePath:executablePath];
-	[copy setIcon:icon];
-	[copy setIconPath:iconPath];
-	[copy setDisplayName:displayName];
-	[copy setHelped:isHelped];
-	[copy setInfoDictionary:infoDictionary];
-	[copy setAddonsFolderPath:addonsFolderPath];
-	[copy setRunning:isRunning];
+	copy.gameID = gameID;
+	copy.creatorCode = creatorCode;
+	copy.executablePath = executablePath;
+	copy.icon = icon;
+	copy.iconPath = iconPath;
+	copy.displayName = displayName;
+	copy.helped = isHelped;
+	copy.infoDictionary = infoDictionary;
+	copy.addonsFolderPath = addonsFolderPath;
+	copy.running = isRunning;
 	return copy;
 }
 
@@ -119,7 +119,7 @@
 		[fileManager release];
 		return;
 	}
-	[self setHelped:([attributes fileHFSCreatorCode] != 0)];
+	self.helped = ([attributes fileHFSCreatorCode] != 0);
 	
 	[fileManager release];
 }
@@ -134,7 +134,7 @@
 
 
 - (NSString *)description {
-	NSMutableString *description = [NSMutableString stringWithFormat:@"%@ -", [super description]];
+	NSMutableString *description = [NSMutableString stringWithFormat:@"%@ -", super.description];
 	
 	[description appendFormat:@" %@", displayName];
 //	[description appendFormat:@"gameID == %lu\n", gameID];
@@ -156,7 +156,7 @@
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	if ([game isKindOfClass:[self class]]) {
-		return (gameID == [game gameID] && ([executablePath isEqualToString:[game executablePath]] || [[executablePath lowercaseString] isEqualToString:[[game executablePath] lowercaseString]]));
+		return (gameID == game.gameID && ([executablePath isEqualToString:game.executablePath] || [executablePath.lowercaseString isEqualToString:game.executablePath.lowercaseString]));
 	}
 	return NO;
 }

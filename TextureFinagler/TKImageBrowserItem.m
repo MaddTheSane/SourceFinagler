@@ -119,7 +119,6 @@ static NSMutableDictionary	*placeholderImageBrowserItemsAndSizes = nil;
 }
 
 
-
 + (NSArray *)frameBrowserItemsWithImageRepsInArray:(NSArray *)imageReps {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -141,8 +140,6 @@ static NSMutableDictionary	*placeholderImageBrowserItemsAndSizes = nil;
 }
 
 
-
-
 - (instancetype)initWithImageRep:(TKImageRep *)anImageRep type:(TKBrowserItemType)aType {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -154,23 +151,21 @@ static NSMutableDictionary	*placeholderImageBrowserItemsAndSizes = nil;
 	return self;
 }
 
-
 - (void)dealloc {
 	[imageRep release];
 	[super dealloc];
 }
 
-
 - (NSString *)imageUID {
-	return [imageRep imageUID];
+	return imageRep.imageUID;
 }
 
 - (NSString *)imageRepresentationType {
-	return [imageRep imageRepresentationType];
+	return imageRep.imageRepresentationType;
 }
 
 - (id)imageRepresentation {
-	return [imageRep imageRepresentation];
+	return imageRep.imageRepresentation;
 }
 
 - (NSString *)imageTitle {
@@ -229,6 +224,3 @@ static NSMutableDictionary	*placeholderImageBrowserItemsAndSizes = nil;
 }
 
 @end
-
-
-

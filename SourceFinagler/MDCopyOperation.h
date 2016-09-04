@@ -19,13 +19,12 @@ extern NSString * const MDCopyOperationTagKey;
 
 extern NSString * const MDCopyOperationStageKey;
 
-enum {
+typedef NS_ENUM(NSUInteger, MDCopyOperationStage) {
 	MDCopyOperationPreparingStage		= 1,
 	MDCopyOperationCopyingStage			= 2,
 	MDCopyOperationFinishingStage		= 3,
 	MDCopyOperationCancelledStage		= 4
 };
-typedef NSUInteger MDCopyOperationStage;
 
 
 
@@ -56,7 +55,7 @@ typedef NSUInteger MDCopyOperationStage;
 
 + (instancetype)operationWithSource:(MDHLDocument *)aSource destination:(id)aDestination itemsAndPaths:(NSDictionary *)anItemsAndPaths tag:(NSInteger)aTag;
 
-- (instancetype)initWithSource:(MDHLDocument *)aSource destination:(id)aDestination itemsAndPaths:(NSDictionary *)anItemsAndPaths tag:(NSInteger)aTag;
+- (instancetype)initWithSource:(MDHLDocument *)aSource destination:(id)aDestination itemsAndPaths:(NSDictionary *)anItemsAndPaths tag:(NSInteger)aTag NS_DESIGNATED_INITIALIZER;
 
 @property (assign) BOOL indeterminate;
 @property (assign, getter=isRolledOver) BOOL rolledOver;

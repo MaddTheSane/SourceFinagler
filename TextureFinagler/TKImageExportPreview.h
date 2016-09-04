@@ -12,7 +12,7 @@
 
 @interface TKImageExportPreview : NSObject {
 	
-	TKImageExportController		*controller;	// non-retained
+	__unsafe_unretained TKImageExportController		*controller;	// non-retained
 	
 	TKImage						*image;
 	
@@ -25,7 +25,7 @@
 	NSInteger					tag;		// 0 thru 3
 }
 
-- (instancetype)initWithController:(TKImageExportController *)aController image:(TKImage *)anImage preset:(TKImageExportPreset *)aPreset tag:(NSInteger)aTag;
+- (instancetype)initWithController:(TKImageExportController *)aController image:(TKImage *)anImage preset:(TKImageExportPreset *)aPreset tag:(NSInteger)aTag NS_DESIGNATED_INITIALIZER;
 
 @property (assign) TKImageExportController *controller;
 

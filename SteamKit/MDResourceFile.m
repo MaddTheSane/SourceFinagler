@@ -230,9 +230,9 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 	
 	BOOL isDir;
 	
-	filePath = [[aURL path] retain];
+	filePath = [aURL.path retain];
 	
-	BOOL itemExists = ([[NSFileManager defaultManager] fileExistsAtPath:[aURL path] isDirectory:&isDir] && !isDir);
+	BOOL itemExists = ([[NSFileManager defaultManager] fileExistsAtPath:aURL.path isDirectory:&isDir] && !isDir);
 	
 	
 	OSErr			err = noErr;
@@ -292,7 +292,7 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 		
 		if (sane == NO) {
 			
-			NSLog(@"[%@ %@] the resource file at '%@' wasn't sane; MDCheckResourceFileSanity() returned err == %hi", NSStringFromClass([self class]), NSStringFromSelector(_cmd), [aURL path], err);
+			NSLog(@"[%@ %@] the resource file at '%@' wasn't sane; MDCheckResourceFileSanity() returned err == %hi", NSStringFromClass([self class]), NSStringFromSelector(_cmd), aURL.path, err);
 			
 			NSLog(@"[%@ %@] ERROR: file appears to be a corrupt %@ and will not be opened...", NSStringFromClass([self class]), NSStringFromSelector(_cmd), (aFork == MDResourceFork ? @"resource file" : @"datafork-based resource file"));
 			if (outError) *outError = [NSError errorWithDomain:MDResourceFileErrorDomain code:MDResourceFileCorruptResourceFileError userInfo:nil];
@@ -325,14 +325,14 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 		if (permission == MDReadWritePermission ||
 			permission == MDCurrentAllowablePermission) {
 			
-			if (![[[aURL path] stringByDeletingLastPathComponent] getFSRef:&parentRef error:outError]) {
-				NSLog(@"[%@ %@] (%@) getFSRef: for parentRef failed", NSStringFromClass([self class]), NSStringFromSelector(_cmd), [aURL path]);
+			if (![aURL.path.stringByDeletingLastPathComponent getFSRef:&parentRef error:outError]) {
+				NSLog(@"[%@ %@] (%@) getFSRef: for parentRef failed", NSStringFromClass([self class]), NSStringFromSelector(_cmd), aURL.path);
 				[self release];
 				return nil;
 			}
 			
-			fileName = [[aURL path] lastPathComponent];
-			fileNameLength = [fileName length];
+			fileName = aURL.path.lastPathComponent;
+			fileNameLength = fileName.length;
 			
 			if (fileNameLength > NAME_MAX) {
 				NSLog(@"[%@ %@] fileNameLength > NAME_MAX!; aborting...", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -342,7 +342,7 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 			
 			// if a POSIX path name coming in has a slash / in the actual file name, it'll have been converted to a colon : by POSIX. This command needs a colon-delimited path, so it needs to be converted from colons back to slashes
 			
-			fileName = [fileName colonToSlash];
+			fileName = fileName.colonToSlash;
 			
 			[fileName getCharacters:fileNameUnicode range:NSMakeRange(0, fileNameLength)];
 			
@@ -361,7 +361,7 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 				err = FSOpenResourceFile(&fileRef, forkName.length, forkName.unicode, permission, &fileReference);
 				
 				if (!(fileReference > 0 && err == noErr)) {
-					NSLog(@"[%@ %@] (%@) an error (%hi) occurred while trying to open the resource file", NSStringFromClass([self class]), NSStringFromSelector(_cmd), [aURL path], err);
+					NSLog(@"[%@ %@] (%@) an error (%hi) occurred while trying to open the resource file", NSStringFromClass([self class]), NSStringFromSelector(_cmd), aURL.path, err);
 					
 					if (err == permErr) {
 						NSLog(@"[%@ %@] unable to open resource file with Read-Write access, will retry with Read-Only access...", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -454,10 +454,10 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 	if (aResource == nil) return NO;
 	if (outError) *outError = nil;
 	
-	if (![self addData:[aResource resourceData]
-		  resourceType:[aResource resourceType]
-			resourceID:[aResource resourceID]
-		  resourceName:[aResource resourceName]
+	if (![self addData:aResource.resourceData
+		  resourceType:aResource.resourceType
+			resourceID:aResource.resourceID
+		  resourceName:aResource.resourceName
 				error:outError]) {
 		return NO;
 	}
@@ -473,7 +473,7 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 	if (aResource == nil) return NO;
 	if (outError) *outError = nil;
 	
-	if (![self removeDataForResourceType:[aResource resourceType] resourceID:[aResource resourceID] error:outError]) {
+	if (![self removeDataForResourceType:aResource.resourceType resourceID:aResource.resourceID error:outError]) {
 		return NO;
 	}
 	return [self saveChanges:outError];
@@ -614,7 +614,7 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 	Handle resHandle = NULL;
 	OSErr err = noErr;
 	
-	err = PtrToHand([aData bytes], &resHandle, [aData length]);
+	err = PtrToHand(aData.bytes, &resHandle, aData.length);
 	if ( !(err == noErr && resHandle)) {
 		NSLog(@"[%@ %@] ERROR: PtrToHand() returned %hi", NSStringFromClass([self class]), NSStringFromSelector(_cmd), err);
 		if (localOutError) *localOutError = [NSError errorWithDomain:NSOSStatusErrorDomain code:err userInfo:nil];

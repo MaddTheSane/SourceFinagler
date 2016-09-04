@@ -41,7 +41,7 @@ NSString * const MDSteamBundleIdentifierKey = @"com.valvesoftware.steam";
 	if ((self = [super init])) {
 		steamManager = [[VSSteamManager defaultManager] retain];
 		
-		NSString *currentPath = [steamManager steamAppsPath];
+		NSString *currentPath = steamManager.steamAppsPath;
 		
 		if (currentPath) {
 			self.currentURL = [NSURL fileURLWithPath:currentPath];
@@ -110,7 +110,7 @@ NSString * const MDSteamBundleIdentifierKey = @"com.valvesoftware.steam";
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	if (steamDidLaunch) {
-		NSString *currentPath = [steamManager steamAppsPath];
+		NSString *currentPath = steamManager.steamAppsPath;
 		if (currentPath) {
 			self.currentURL = [NSURL fileURLWithPath:currentPath];
 			steamDidLaunch = NO;

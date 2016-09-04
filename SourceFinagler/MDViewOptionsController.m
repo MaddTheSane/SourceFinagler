@@ -165,7 +165,6 @@ NSString * const MDShouldShowViewOptionsDidChangeNotification	= @"MDShouldShowVi
 }
 
 
-
 - (IBAction)changeListViewIconSize:(id)sender {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -173,6 +172,4 @@ NSString * const MDShouldShowViewOptionsDidChangeNotification	= @"MDShouldShowVi
 	[[NSUserDefaults standardUserDefaults] setObject:@([sender tag]) forKey:MDListViewIconSizeKey];
 }
 
-
 @end
-

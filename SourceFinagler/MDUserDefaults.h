@@ -9,14 +9,11 @@
 
 #import <Foundation/Foundation.h>
 
-enum {
+typedef NS_ENUM(NSUInteger, MDUserDefaultsDomain) {
 	MDUserDefaultsUserDomain = 1,
 	MDUserDefaultsLocalDomain = 2,
 	MDUserDefaultsLocalAndUserDomain = 3
 };
-
-typedef NSUInteger MDUserDefaultsDomain;
-
 
 @interface MDUserDefaults : NSUserDefaults {
 	

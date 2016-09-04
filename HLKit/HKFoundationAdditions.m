@@ -25,7 +25,7 @@
 	OSStatus status = FSRefMakePath(anFSRef, thePath, PATH_MAX);
 	
 	if (status == noErr) {
-		return [NSString stringWithUTF8String:(const char *)thePath];
+		return [[NSFileManager defaultManager] stringWithFileSystemRepresentation:(const char *)thePath length:strnlen((const char *)thePath, PATH_MAX)];
 	} else {
 		return nil;
 	}
@@ -39,7 +39,7 @@
 #endif
 	if (anError) *anError = nil;
 	OSStatus status = noErr;
-	status = FSPathMakeRef((const UInt8 *)[self UTF8String], anFSRef, NULL);
+	status = FSPathMakeRef((const UInt8 *)self.UTF8String, anFSRef, NULL);
 	if (status != noErr) {
 		if (anError) *anError = [NSError errorWithDomain:NSOSStatusErrorDomain code:status userInfo:nil];
 	}
@@ -58,21 +58,21 @@
 	BOOL isDir;
 	
 	if ([fileManager fileExistsAtPath:self isDirectory:&isDir]) {
-		NSString *basePath = [self stringByDeletingLastPathComponent];
-		NSString *filename = [self lastPathComponent];
-		NSString *filenameExtension = [filename pathExtension];
-		NSString *basename = [filename stringByDeletingPathExtension];
+		NSString *basePath = self.stringByDeletingLastPathComponent;
+		NSString *filename = self.lastPathComponent;
+		NSString *filenameExtension = filename.pathExtension;
+		NSString *basename = filename.stringByDeletingPathExtension;
 		
 		NSArray *components = [basename componentsSeparatedByString:@"-"];
 		
-		if ([components count] > 1) {
+		if (components.count > 1) {
 			// baseName contains at least one "-", determine if it's already a "duplicate". If it is, repeat the process of adding 1 to the value until the resulting filename would be unique. If it isn't, fall through to where we just tack on our own at the end of the filename
-			NSString *basenameSuffix = [components lastObject];
-			NSInteger suffixNumber = [basenameSuffix integerValue];
+			NSString *basenameSuffix = components.lastObject;
+			NSInteger suffixNumber = basenameSuffix.integerValue;
 			if (suffixNumber > 0) {
-				NSUInteger basenameSuffixLength = [basenameSuffix length];
+				NSUInteger basenameSuffixLength = basenameSuffix.length;
 			
-				NSString *basenameSubstring = [basename substringWithRange:NSMakeRange(0, [basename length] - (basenameSuffixLength + 1))];
+				NSString *basenameSubstring = [basename substringWithRange:NSMakeRange(0, basename.length - (basenameSuffixLength + 1))];
 				while (1) {
 					suffixNumber += 1;
 					
@@ -123,7 +123,7 @@
 #if HK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	return [self compare:string options:NSLiteralSearch | NSCaseInsensitiveSearch | NSNumericSearch range:NSMakeRange(0, [string length]) locale:[NSLocale currentLocale]];
+	return [self compare:string options:NSLiteralSearch | NSCaseInsensitiveSearch | NSNumericSearch range:NSMakeRange(0, string.length) locale:[NSLocale currentLocale]];
 }
 
 
@@ -139,7 +139,7 @@
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	NSMutableString *newString = [NSMutableString stringWithString:self];
-    [newString replaceOccurrencesOfString:value withString:newValue options:NSLiteralSearch range:NSMakeRange(0, [newString length])];
+    [newString replaceOccurrencesOfString:value withString:newValue options:NSLiteralSearch range:NSMakeRange(0, newString.length)];
     return newString;
 }
 
@@ -169,7 +169,7 @@
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	[self insertObjects:array atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(anIndex, [array count])]];
+	[self insertObjects:array atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(anIndex, array.count)]];
 }
 
 

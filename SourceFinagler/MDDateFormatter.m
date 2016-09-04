@@ -44,8 +44,8 @@ static NSDate *MDNilDate = nil;
 		CFRelease(currentLocale);
 		
 		
-		[self setStyle:aStyle];
-		[self setRelative:value];
+		self.style = aStyle;
+		self.relative = value;
 		
 		today = @"Today";
 		yesterday = @"Yesterday";
@@ -63,7 +63,6 @@ static NSDate *MDNilDate = nil;
 	}
 	return self;
 }
-
 
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
@@ -85,8 +84,8 @@ static NSDate *MDNilDate = nil;
 		CFRelease(currentLocale);
 		
 		
-		[self setStyle:[[coder decodeObjectForKey:@"MDStyle"] longValue]];
-		[self setRelative:[[coder decodeObjectForKey:@"MDRelative"] boolValue]];
+		self.style = [[coder decodeObjectForKey:@"MDStyle"] integerValue];
+		self.relative = [[coder decodeObjectForKey:@"MDRelative"] boolValue];
 		
 
 		today = @"Today";
@@ -125,7 +124,7 @@ static NSDate *MDNilDate = nil;
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	MDDateFormatter *copy = [[[self class] allocWithZone:zone] initWithStyle:[self style] isRelative:[self isRelative]];
+	MDDateFormatter *copy = [[[self class] allocWithZone:zone] initWithStyle:self.style isRelative:self.relative];
 	
 	return copy;
 }
@@ -288,8 +287,4 @@ static NSDate *MDNilDate = nil;
 	return nil;
 }
 
-
-
 @end
-
-

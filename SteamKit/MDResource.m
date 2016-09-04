@@ -65,7 +65,7 @@
 			resourceData	= [aData retain];
 		}
 
-		resourceSize		= [resourceData length];
+		resourceSize		= resourceData.length;
 		resourceAttributes	= anAttributes;
 		resChanged			= aResChanged;
 		
@@ -107,7 +107,7 @@
 	[value retain];
 	[resourceData release];
 	resourceData = [value copy];
-	resourceSize = (SInt32)[resourceData length];
+	resourceSize = (SInt32)resourceData.length;
 	[value release];
 	resChanged = YES;
 }

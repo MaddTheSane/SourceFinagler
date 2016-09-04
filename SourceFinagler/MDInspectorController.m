@@ -74,12 +74,12 @@
 			NSImage *fileIcon = [[NSWorkspace sharedWorkspace] iconForFile:newDocument.fileURL.path];
 			iconImageView.image = fileIcon;
 			
-			headerSizeField.objectValue = [newDocument fileSize];
+			headerSizeField.objectValue = newDocument.fileSize;
 			dateModifiedField.objectValue = newDocument.fileModificationDate;
 			
 			
 			kindField.stringValue = newDocument.kind;
-			sizeField.objectValue = [newDocument fileSize];
+			sizeField.objectValue = newDocument.fileSize;
 			
 			
 		} else if (newSelectedItems.count == 1) {
@@ -184,8 +184,4 @@
 	}
 }
 
-
-
 @end
-
-

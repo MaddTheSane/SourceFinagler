@@ -24,14 +24,14 @@ NS_ENUM(OSType) {
 
 @synthesize path;
 
-+ (id)fileHandleForWritingAtPath:(NSString *)aPath {
++ (instancetype)fileHandleForWritingAtPath:(NSString *)aPath {
 	return [[[[self class] alloc] initForWritingAtPath:aPath] autorelease];
 }
 
 
-- (id)initForWritingAtPath:(NSString *)aPath {
+- (instancetype)initForWritingAtPath:(NSString *)aPath {
 	if ((self = [super init])) {
-		[self setPath:aPath];
+		self.path = aPath;
 		FSRef parentRef;
 		HFSUniStr255	forkName;
 		
@@ -49,7 +49,7 @@ NS_ENUM(OSType) {
 		BOOL isDir;
 		
 		if (!([fileManager fileExistsAtPath:aPath isDirectory:&isDir] && !isDir)) {
-			if (![[aPath stringByDeletingLastPathComponent] getFSRef:&parentRef error:&anError]) {
+			if (![aPath.stringByDeletingLastPathComponent getFSRef:&parentRef error:&anError]) {
 				NSLog(@"[%@ %@] failed to get parentRef", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 				[fileManager release];
 				[self release];
@@ -58,8 +58,8 @@ NS_ENUM(OSType) {
 			
 			// if a POSIX path name coming in has a slash / in the actual file name, it'll have been converted to a colon : by POSIX. This command needs a colon-delimited path, so it needs to be converted from colons back to slashes
 			
-			NSString *correctedFileName = [[aPath lastPathComponent] colonToSlash];
-			UniCharCount correctedFileNameLength = [correctedFileName length];
+			NSString *correctedFileName = aPath.lastPathComponent.colonToSlash;
+			UniCharCount correctedFileNameLength = correctedFileName.length;
 			UniChar correctedFileNameUnicode[NAME_MAX];
 			
 			[correctedFileName getCharacters:correctedFileNameUnicode range:NSMakeRange(0, correctedFileNameLength)];
@@ -133,12 +133,12 @@ NS_ENUM(OSType) {
 
 
 - (void)writeData:(NSData *)aData {
-	unsigned long long dataLength = [aData length];
+	unsigned long long dataLength = aData.length;
 	
 	OSStatus status = noErr;
 	ByteCount actualCount = 0;
 	
-	status = FSWriteFork(forkRef, fsAtMark + noCacheMask, 0, dataLength, [aData bytes], &actualCount);
+	status = FSWriteFork(forkRef, fsAtMark + noCacheMask, 0, dataLength, aData.bytes, &actualCount);
 	
 	if (status != noErr) NSLog(@"[%@ %@] FSWriteFork() returned %d", NSStringFromClass([self class]), NSStringFromSelector(_cmd), (int)status);
 	
@@ -199,7 +199,7 @@ NS_ENUM(OSType) {
 		OSStatus status = noErr;
 		status = FSSetForkPosition(forkRef, fsFromLEOF, 0);
 		if (status != noErr) NSLog(@"[%@ %@] FSSetForkPosition(forkRef) returned %d", NSStringFromClass([self class]), NSStringFromSelector(_cmd), (int)status);
-		return [self offsetInFile];
+		return self.offsetInFile;
 	}
 	return 0;
 }
@@ -222,13 +222,4 @@ NS_ENUM(OSType) {
 	}
 }
 
-
-
 @end
-
-
-
-
-
-
-

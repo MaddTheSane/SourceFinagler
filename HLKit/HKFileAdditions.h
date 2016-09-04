@@ -12,14 +12,14 @@
 
 @interface HKFile (HKAdditions)
 
-- (NSString *)stringValue;
+@property (readonly, copy) NSString *stringValue;
 - (NSString *)stringValueByExtractingToTempFile:(BOOL)shouldExtractToTempFile;
 
-- (NSImage *)image;
+@property (readonly, copy) NSImage *image;
 
-- (NSSound *)sound;
+@property (readonly, copy) NSSound *sound;
 
-- (QTMovie *)movie;
+@property (readonly, copy) QTMovie *movie;
 
 @end
 

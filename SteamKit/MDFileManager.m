@@ -159,23 +159,17 @@ static MDFileManager *sharedManager = nil;
 		isInvisible		= (fInfo->finderFlags & kIsInvisible);
 		isInvisible = (isInvisible >> 14L);
 		
-		NSNumber *labelColorNum		= [[NSNumber alloc] initWithUnsignedLong:labelColor];
-		NSNumber *hasCustomIconNum	= [[NSNumber alloc] initWithBool:(BOOL)hasCustomIcon];
-		NSNumber *nameLockedNum		= [[NSNumber alloc] initWithBool:(BOOL)nameLocked];
-		NSNumber *isPackageNum		= [[NSNumber alloc] initWithBool:(BOOL)isPackage];
-		NSNumber *isInvisibleNum	= [[NSNumber alloc] initWithBool:(BOOL)isInvisible];
+		NSNumber *labelColorNum		= @(labelColor);
+		NSNumber *hasCustomIconNum	= [NSNumber numberWithBool:(BOOL)!!hasCustomIcon];
+		NSNumber *nameLockedNum		= [NSNumber numberWithBool:(BOOL)!!nameLocked];
+		NSNumber *isPackageNum		= [NSNumber numberWithBool:(BOOL)!!isPackage];
+		NSNumber *isInvisibleNum	= [NSNumber numberWithBool:(BOOL)!!isInvisible];
 		
-		[mAttributes setObject:labelColorNum	forKey:MDFileLabelNumber];
-		[mAttributes setObject:hasCustomIconNum forKey:MDFileHasCustomIcon];
-		[mAttributes setObject:nameLockedNum	forKey:MDFileNameLocked];
-		[mAttributes setObject:isPackageNum		forKey:MDFileIsPackage];
-		[mAttributes setObject:isInvisibleNum	forKey:MDFileIsInvisible];
-		
-		[labelColorNum release];
-		[hasCustomIconNum release];
-		[nameLockedNum release];
-		[isPackageNum release];
-		[isInvisibleNum release];
+		mAttributes[MDFileLabelNumber] = labelColorNum;
+		mAttributes[MDFileHasCustomIcon] = hasCustomIconNum;
+		mAttributes[MDFileNameLocked] = nameLockedNum;
+		mAttributes[MDFileIsPackage] = isPackageNum;
+		mAttributes[MDFileIsInvisible] = isInvisibleNum;
 		
 	} else {
 		FileInfo	*fInfo = (FileInfo *)&catalogInfo.finderInfo;
@@ -198,31 +192,24 @@ static MDFileManager *sharedManager = nil;
 		isAlias			= (fInfo->finderFlags & kIsAlias);
 		isAlias = (isAlias >> 15L);
 		
-		NSNumber *labelColorNum		= [[NSNumber alloc] initWithUnsignedLong:labelColor];
-		NSNumber *hasCustomIconNum	= [[NSNumber alloc] initWithBool:(BOOL)hasCustomIcon];
-		NSNumber *isStationeryNum	= [[NSNumber alloc] initWithBool:(BOOL)isStationery];
-		NSNumber *nameLockedNum		= [[NSNumber alloc] initWithBool:(BOOL)nameLocked];
-		NSNumber *isInvisibleNum	= [[NSNumber alloc] initWithBool:(BOOL)isInvisible];
-		NSNumber *isAliasNum		= [[NSNumber alloc] initWithBool:(BOOL)isAlias];
+		NSNumber *labelColorNum		= @(labelColor);
+		NSNumber *hasCustomIconNum	= [NSNumber numberWithBool:(BOOL)!!hasCustomIcon];
+		NSNumber *isStationeryNum	= [NSNumber numberWithBool:(BOOL)!!isStationery];
+		NSNumber *nameLockedNum		= [NSNumber numberWithBool:(BOOL)!!nameLocked];
+		NSNumber *isInvisibleNum	= [NSNumber numberWithBool:(BOOL)!!isInvisible];
+		NSNumber *isAliasNum		= [NSNumber numberWithBool:(BOOL)!!isAlias];
 		
-		[mAttributes setObject:labelColorNum	forKey:MDFileLabelNumber];
-		[mAttributes setObject:hasCustomIconNum forKey:MDFileHasCustomIcon];
-		[mAttributes setObject:isStationeryNum	forKey:MDFileIsStationery];
-		[mAttributes setObject:nameLockedNum	forKey:MDFileNameLocked];
-		[mAttributes setObject:isInvisibleNum	forKey:MDFileIsInvisible];
-		[mAttributes setObject:isAliasNum		forKey:MDFileIsAliasFile];
-		
-		[labelColorNum release];
-		[hasCustomIconNum release];
-		[isStationeryNum release];
-		[nameLockedNum release];
-		[isInvisibleNum release];
-		[isAliasNum release];
+		mAttributes[MDFileLabelNumber] = labelColorNum;
+		mAttributes[MDFileHasCustomIcon] = hasCustomIconNum;
+		mAttributes[MDFileIsStationery] = isStationeryNum;
+		mAttributes[MDFileNameLocked] = nameLockedNum;
+		mAttributes[MDFileIsInvisible] = isInvisibleNum;
+		mAttributes[MDFileIsAliasFile] = isAliasNum;
 		
 		err = FSGetTotalForkSizes(&itemRef, &totalFileSize, NULL, NULL);
 		if (err == noErr) {
 			NSNumber *totalFileSizeNum = [[NSNumber alloc] initWithUnsignedLongLong:totalFileSize];
-			[mAttributes setObject:totalFileSizeNum forKey:NSFileSize];
+			mAttributes[NSFileSize] = totalFileSizeNum;
 			[totalFileSizeNum release];
 		} else {
 			NSLog(@"[%@ %@] FSGetTotalForkSizes() returned %hi", NSStringFromClass([self class]), NSStringFromSelector(_cmd), err);
@@ -243,7 +230,7 @@ static MDFileManager *sharedManager = nil;
 	if (error) *error = nil;
 	if (attributes == nil || path == nil) return NO;
 	
-	NSArray *keys = [attributes allKeys];
+	NSArray *keys = attributes.allKeys;
 	id matchingKey = [keys firstObjectCommonWithArray:fileAttributeKeys];
 	
 	if (matchingKey) {
@@ -263,10 +250,10 @@ static MDFileManager *sharedManager = nil;
 			return NO;
 		}
 		
-		id labelColorNum = [attributes objectForKey:MDFileLabelNumber];
+		id labelColorNum = attributes[MDFileLabelNumber];
 		if (labelColorNum && [labelColorNum isKindOfClass:[NSNumber class]]) {
 			
-			NSUInteger labelColor = [(NSNumber *)labelColorNum unsignedIntegerValue];
+			NSUInteger labelColor = ((NSNumber *)labelColorNum).unsignedIntegerValue;
 			
 			if (labelColor <= MDFileLabelOrange) {
 				labelColor = (labelColor << 1L);
@@ -285,9 +272,9 @@ static MDFileManager *sharedManager = nil;
 			}
 		}
 		
-		id setCustomIconNum = [attributes objectForKey:MDFileHasCustomIcon];
+		id setCustomIconNum = attributes[MDFileHasCustomIcon];
 		if (setCustomIconNum && [setCustomIconNum isKindOfClass:[NSNumber class]]) {
-			BOOL setCustomIcon = [(NSNumber *)setCustomIconNum boolValue];
+			BOOL setCustomIcon = ((NSNumber *)setCustomIconNum).boolValue;
 			if (catalogInfo.nodeFlags & kFSNodeIsDirectoryMask) {
 				if (setCustomIcon) {
 					((FolderInfo *)&catalogInfo.finderInfo)->finderFlags |= kHasCustomIcon;
@@ -303,9 +290,9 @@ static MDFileManager *sharedManager = nil;
 			}
 		}
 		
-		id setIsStationeryNum = [attributes objectForKey:MDFileIsStationery];
+		id setIsStationeryNum = attributes[MDFileIsStationery];
 		if (setIsStationeryNum && [setIsStationeryNum isKindOfClass:[NSNumber class]]) {
-			BOOL setIsStationery = [(NSNumber *)setIsStationeryNum boolValue];
+			BOOL setIsStationery = ((NSNumber *)setIsStationeryNum).boolValue;
 			if (catalogInfo.nodeFlags & kFSNodeIsDirectoryMask) {
 				
 			} else {
@@ -317,9 +304,9 @@ static MDFileManager *sharedManager = nil;
 			}
 		}
 		
-		id setNameLockedNum = [attributes objectForKey:MDFileNameLocked];
+		id setNameLockedNum = attributes[MDFileNameLocked];
 		if (setNameLockedNum && [setNameLockedNum isKindOfClass:[NSNumber class]]) {
-			BOOL setNameLocked = [(NSNumber *)setNameLockedNum boolValue];
+			BOOL setNameLocked = ((NSNumber *)setNameLockedNum).boolValue;
 			if (catalogInfo.nodeFlags & kFSNodeIsDirectoryMask) {
 				if (setNameLocked) {
 					((FolderInfo *)&catalogInfo.finderInfo)->finderFlags |= kNameLocked;
@@ -335,9 +322,9 @@ static MDFileManager *sharedManager = nil;
 			}
 		}
 		
-		id setIsPackageNum = [attributes objectForKey:MDFileIsPackage];
+		id setIsPackageNum = attributes[MDFileIsPackage];
 		if (setIsPackageNum && [setIsPackageNum isKindOfClass:[NSNumber class]]) {
-			BOOL setIsPackage = [(NSNumber *)setIsPackageNum boolValue];
+			BOOL setIsPackage = ((NSNumber *)setIsPackageNum).boolValue;
 			if (catalogInfo.nodeFlags & kFSNodeIsDirectoryMask) {
 				if (setIsPackage) {
 					((FolderInfo *)&catalogInfo.finderInfo)->finderFlags |= kHasBundle;
@@ -349,9 +336,9 @@ static MDFileManager *sharedManager = nil;
 			}
 		}
 		
-		id setIsInvisibleNum = [attributes objectForKey:MDFileIsInvisible];
+		id setIsInvisibleNum = attributes[MDFileIsInvisible];
 		if (setIsInvisibleNum && [setIsInvisibleNum isKindOfClass:[NSNumber class]]) {
-			BOOL setIsInvisible = [(NSNumber *)setIsInvisibleNum boolValue];
+			BOOL setIsInvisible = ((NSNumber *)setIsInvisibleNum).boolValue;
 			if (catalogInfo.nodeFlags & kFSNodeIsDirectoryMask) {
 				if (setIsInvisible) {
 					((FolderInfo *)&catalogInfo.finderInfo)->finderFlags |= kIsInvisible;
@@ -367,9 +354,9 @@ static MDFileManager *sharedManager = nil;
 			}
 		}
 		
-		id setIsAliasNum = [attributes objectForKey:MDFileIsAliasFile];
+		id setIsAliasNum = attributes[MDFileIsAliasFile];
 		if (setIsAliasNum && [setIsAliasNum isKindOfClass:[NSNumber class]]) {
-			BOOL setIsAlias = [(NSNumber *)setIsAliasNum boolValue];
+			BOOL setIsAlias = ((NSNumber *)setIsAliasNum).boolValue;
 			if (catalogInfo.nodeFlags & kFSNodeIsDirectoryMask) {
 				
 			} else {
@@ -394,7 +381,7 @@ static MDFileManager *sharedManager = nil;
 	
 	[normalAttributes removeObjectsForKeys:fileAttributeKeys];
 	
-	if ([normalAttributes count]) {
+	if (normalAttributes.count) {
 #if MAC_OS_X_VERSION_10_5 <= MAC_OS_X_VERSION_MAX_ALLOWED
 		if (![fileManager setAttributes:normalAttributes ofItemAtPath:path error:error]) {
 			[normalAttributes release];
@@ -431,7 +418,7 @@ static MDFileManager *sharedManager = nil;
 		
 		err = FSGetTotalForkSizes(&fileRef, &totalFileSize, NULL, NULL);
 		if (err == noErr) {
-			[mAttributes setObject:[NSNumber numberWithUnsignedLongLong:totalFileSize] forKey:NSFileSize];
+			mAttributes[NSFileSize] = @(totalFileSize);
 		}
 	}
 	NSDictionary *rAttributes = [mAttributes copy];
@@ -537,9 +524,9 @@ FSIterateForks:
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	NSUInteger labelColor = MDFileLabelUnsupported;
-	NSNumber *labelColorNum = [self objectForKey:MDFileLabelNumber];
+	NSNumber *labelColorNum = self[MDFileLabelNumber];
 	if (labelColorNum) {
-		labelColor = [labelColorNum unsignedIntegerValue];
+		labelColor = labelColorNum.unsignedIntegerValue;
 	}
 	return labelColor;
 }
@@ -550,9 +537,9 @@ FSIterateForks:
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	BOOL setCustomIcon = NO;
-	NSNumber *setCustomIconNum = [self objectForKey:MDFileHasCustomIcon];
+	NSNumber *setCustomIconNum = self[MDFileHasCustomIcon];
 	if (setCustomIconNum) {
-		setCustomIcon = [setCustomIconNum boolValue];
+		setCustomIcon = setCustomIconNum.boolValue;
 	}
 	return setCustomIcon;
 }
@@ -564,9 +551,9 @@ FSIterateForks:
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	BOOL isStationery = NO;
-	NSNumber *isStationeryNum = [self objectForKey:MDFileIsStationery];
+	NSNumber *isStationeryNum = self[MDFileIsStationery];
 	if (isStationeryNum) {
-		isStationery = [isStationeryNum boolValue];
+		isStationery = isStationeryNum.boolValue;
 	}
 	return isStationery;
 }
@@ -578,9 +565,9 @@ FSIterateForks:
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	BOOL nameLocked = NO;
-	NSNumber *nameLockedNum = [self objectForKey:MDFileNameLocked];
+	NSNumber *nameLockedNum = self[MDFileNameLocked];
 	if (nameLockedNum) {
-		nameLocked = [nameLockedNum boolValue];
+		nameLocked = nameLockedNum.boolValue;
 	}
 	return nameLocked;
 }
@@ -592,9 +579,9 @@ FSIterateForks:
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	BOOL isPackage = NO;
-	NSNumber *isPackageNum = [self objectForKey:MDFileIsPackage];
+	NSNumber *isPackageNum = self[MDFileIsPackage];
 	if (isPackageNum) {
-		isPackage = [isPackageNum boolValue];
+		isPackage = isPackageNum.boolValue;
 	}
 	return isPackage;
 }
@@ -606,9 +593,9 @@ FSIterateForks:
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	BOOL isInvisible = NO;
-	NSNumber *isInvisibleNum = [self objectForKey:MDFileIsInvisible];
+	NSNumber *isInvisibleNum = self[MDFileIsInvisible];
 	if (isInvisibleNum) {
-		isInvisible = [isInvisibleNum boolValue];
+		isInvisible = isInvisibleNum.boolValue;
 	}
 	return isInvisible;
 }
@@ -620,9 +607,9 @@ FSIterateForks:
 #endif
 	
 	BOOL fileIsAlias = NO;
-	NSNumber *fileIsAliasNum = [self objectForKey:MDFileIsAliasFile];
+	NSNumber *fileIsAliasNum = self[MDFileIsAliasFile];
 	if (fileIsAliasNum) {
-		fileIsAlias = [fileIsAliasNum boolValue];
+		fileIsAlias = fileIsAliasNum.boolValue;
 	}
 	return fileIsAlias;
 }

@@ -25,7 +25,7 @@
 	BOOL				showInvisibleItems;
 	
 }
-- (instancetype)initWithParent:(HKNode *)aParent childNodes:(NSArray<HKNode*> *)theChildren sortDescriptors:(NSArray<NSSortDescriptor*> *)aSortDescriptors container:(id)aContainer;
+- (instancetype)initWithParent:(HKNode *)aParent childNodes:(NSArray<HKNode*> *)theChildren sortDescriptors:(NSArray<NSSortDescriptor*> *)aSortDescriptors container:(id)aContainer NS_DESIGNATED_INITIALIZER;
 
 @property (nonatomic, assign) id container;
 @property (nonatomic, assign) HKNode *parent;

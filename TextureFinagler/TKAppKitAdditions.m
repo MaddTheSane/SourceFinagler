@@ -387,7 +387,7 @@ static NSView *blankView() {
 #endif
 	NSRect aFrame;
 	
-	CGFloat newHeight = newSize.height + [self toolbarHeight];
+	CGFloat newHeight = newSize.height + self.toolbarHeight;
 	CGFloat newWidth = newSize.width;
 	
 	aFrame = [[self class] contentRectForFrameRect:self.frame styleMask:self.styleMask];

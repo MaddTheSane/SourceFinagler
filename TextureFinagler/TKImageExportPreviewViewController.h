@@ -13,14 +13,14 @@
 
 
 @interface TKImageExportPreviewViewController : NSViewController {
-	IBOutlet TKImageView			*imageView;
+	TKImageView			*imageView;
 	IBOutlet NSProgressIndicator	*progressIndicator;
 	
 	// representedObject is a TKImageExportPreview
 }
 
 + (instancetype)previewViewControllerWithExportController:(TKImageExportController *)controller preset:(TKImageExportPreset *)preset tag:(NSInteger)tag;
-- (instancetype)initWithExportController:(TKImageExportController *)controller preset:(TKImageExportPreset *)preset tag:(NSInteger)tag;
+- (instancetype)initWithExportController:(TKImageExportController *)controller preset:(TKImageExportPreset *)preset tag:(NSInteger)tag NS_DESIGNATED_INITIALIZER;
 
 
 @property (assign) IBOutlet TKImageView *imageView;

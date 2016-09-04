@@ -18,7 +18,7 @@
 - (BOOL)unloadJobWithLabel:(NSString *)label inDomain:(MDLaunchDomain)domain error:(NSError **)outError;
 @end
 
-enum {
+NS_ENUM(SInt32) {
 	MDUndeterminedVersion	= -1,
 	MDCheetah				= 0x1000,
 	MDPuma					= 0x1010,
@@ -106,7 +106,7 @@ static MDLaunchManager *sharedManager = nil;
 			NSArray *jobs = [(NSArray *)SMCopyAllJobDictionaries((domain == MDLaunchUserDomain ? kSMDomainUserLaunchd : kSMDomainSystemLaunchd)) autorelease];
 			if (jobs) {
 				for (NSDictionary *aJob in jobs) {
-					if ([[aJob objectForKey:NSStringFromLaunchJobKey(LAUNCH_JOBKEY_PID)] intValue] == pid) {
+					if ([aJob[NSStringFromLaunchJobKey(LAUNCH_JOBKEY_PID)] intValue] == pid) {
 						job = aJob;
 						break;
 					}
@@ -117,15 +117,15 @@ static MDLaunchManager *sharedManager = nil;
 			NSData *standardErrorData = nil;
 			
 			NSTask *task = [[[NSTask alloc] init] autorelease];
-			[task setLaunchPath:@"/bin/launchctl"];
-			[task setArguments:[NSArray arrayWithObject:@"list"]];
-			[task setStandardOutput:[NSPipe pipe]];
-			[task setStandardError:[NSPipe pipe]];
+			task.launchPath = @"/bin/launchctl";
+			task.arguments = @[@"list"];
+			task.standardOutput = [NSPipe pipe];
+			task.standardError = [NSPipe pipe];
 			[task launch];
 			[task waitUntilExit];
 			
-			standardOutputData = [[[task standardOutput] fileHandleForReading] availableData];
-			if (standardOutputData && [standardOutputData length]) {
+			standardOutputData = [task.standardOutput fileHandleForReading].availableData;
+			if (standardOutputData && standardOutputData.length) {
 				NSString *standardOutputString = [[[NSString alloc] initWithData:standardOutputData encoding:NSUTF8StringEncoding] autorelease];
 //				NSLog(@"[%@ %@] standardOutputString == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), standardOutputString);
 				
@@ -133,7 +133,7 @@ static MDLaunchManager *sharedManager = nil;
 				
 				NSString *targetLine = nil;
 				NSArray *lines = [standardOutputString componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
-				if (lines && [lines count]) {
+				if (lines && lines.count) {
 					for (NSString *line in lines) {
 						if ([line hasPrefix:pidString]) {
 							targetLine = line;
@@ -145,8 +145,8 @@ static MDLaunchManager *sharedManager = nil;
 						NSLog(@"[%@ %@] targetLine == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), targetLine);
 #endif
 						NSArray *items = [targetLine componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-						if (items && [items count] == 3) {
-							NSString *label = [items lastObject];
+						if (items && items.count == 3) {
+							NSString *label = items.lastObject;
 							if (label) {
 								job = [self jobWithLabel:label inDomain:domain];
 							}
@@ -155,15 +155,15 @@ static MDLaunchManager *sharedManager = nil;
 				}
 			}
 			
-			standardErrorData = [[[task standardError] fileHandleForReading] availableData];
-			if (standardErrorData && [standardErrorData length]) {
+			standardErrorData = [task.standardError fileHandleForReading].availableData;
+			if (standardErrorData && standardErrorData.length) {
 				NSString *standardErrorString = [[[NSString alloc] initWithData:standardErrorData encoding:NSUTF8StringEncoding] autorelease];
 				NSLog(@"[%@ %@] standardErrorString ==  %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), standardErrorString);
 			}
 			
-			if (![task isRunning]) {
-				if ([task terminationStatus] != 0) {
-					NSLog(@"[%@ %@] \"/bin/launchctl list\" returned %d", NSStringFromClass([self class]), NSStringFromSelector(_cmd), [task terminationStatus]);
+			if (!task.running) {
+				if (task.terminationStatus != 0) {
+					NSLog(@"[%@ %@] \"/bin/launchctl list\" returned %d", NSStringFromClass([self class]), NSStringFromSelector(_cmd), task.terminationStatus);
 				}
 			}
 		}
@@ -185,31 +185,31 @@ static MDLaunchManager *sharedManager = nil;
 				NSData *standardErrorData = nil;
 				
 				NSTask *task = [[[NSTask alloc] init] autorelease];
-				[task setLaunchPath:@"/bin/launchctl"];
-				[task setArguments:[NSArray arrayWithObjects:@"list", label, nil]];
-				[task setStandardOutput:[NSPipe pipe]];
-				[task setStandardError:[NSPipe pipe]];
+				task.launchPath = @"/bin/launchctl";
+				task.arguments = @[@"list", label];
+				task.standardOutput = [NSPipe pipe];
+				task.standardError = [NSPipe pipe];
 				[task launch];
 				[task waitUntilExit];
 				
-				standardOutputData = [[[task standardOutput] fileHandleForReading] availableData];
-				if (standardOutputData && [standardOutputData length]) {
+				standardOutputData = [task.standardOutput fileHandleForReading].availableData;
+				if (standardOutputData && standardOutputData.length) {
 					NSString *standardOutputString = [[[NSString alloc] initWithData:standardOutputData encoding:NSUTF8StringEncoding] autorelease];
 					NSLog(@"[%@ %@] standardOutputString == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), standardOutputString);
 					
 					if (!NSEqualRanges([standardOutputString rangeOfString:label], NSMakeRange(NSNotFound, 0))) {
-						job = [NSDictionary dictionaryWithObjectsAndKeys:label, NSStringFromLaunchJobKey(LAUNCH_JOBKEY_LABEL), nil];
+						job = @{NSStringFromLaunchJobKey(LAUNCH_JOBKEY_LABEL): label};
 					}
 				}
-				standardErrorData = [[[task standardError] fileHandleForReading] availableData];
-				if (standardErrorData && [standardErrorData length]) {
+				standardErrorData = [task.standardError fileHandleForReading].availableData;
+				if (standardErrorData && standardErrorData.length) {
 					NSString *standardErrorString = [[[NSString alloc] initWithData:standardErrorData encoding:NSUTF8StringEncoding] autorelease];
 					NSLog(@"[%@ %@] standardErrorString ==  %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), standardErrorString);
 				}
 				
-				if (![task isRunning]) {
-					if ([task terminationStatus] != 0) {
-						NSLog(@"[%@ %@] \"/bin/launchctl list %@\" returned %d", NSStringFromClass([self class]), NSStringFromSelector(_cmd), label, [task terminationStatus]);
+				if (!task.running) {
+					if (task.terminationStatus != 0) {
+						NSLog(@"[%@ %@] \"/bin/launchctl list %@\" returned %d", NSStringFromClass([self class]), NSStringFromSelector(_cmd), label, task.terminationStatus);
 					}
 				}
 			}
@@ -224,7 +224,7 @@ static MDLaunchManager *sharedManager = nil;
 #endif
 	NSMutableArray *jobs = [NSMutableArray array];
 	
-	if (labels && [labels count] && domain == MDLaunchUserDomain) {
+	if (labels && labels.count && domain == MDLaunchUserDomain) {
 		for (NSString *label in labels) {
 			NSDictionary *job = [self jobWithLabel:label inDomain:domain];
 			if (job) [jobs addObject:job];
@@ -248,7 +248,7 @@ static MDLaunchManager *sharedManager = nil;
 		NSString *launchAgentDirectoryPath = [folderManager pathForDirectoryWithName:@"LaunchAgents" inDirectory:MDLibraryDirectory inDomain:MDUserDomain error:outError];
 		if (launchAgentDirectoryPath == nil) return NO;
 		
-		NSString *label = [launchAgentPlist objectForKey:NSStringFromLaunchJobKey(LAUNCH_JOBKEY_LABEL)];
+		NSString *label = launchAgentPlist[NSStringFromLaunchJobKey(LAUNCH_JOBKEY_LABEL)];
 		NSString *jobPath = [launchAgentDirectoryPath stringByAppendingPathComponent:[label stringByAppendingPathExtension:@"plist"]];
 		
 		if (![launchAgentPlist writeToFile:jobPath atomically:NO]) return NO;
@@ -296,7 +296,7 @@ static MDLaunchManager *sharedManager = nil;
 		NSLog(@"[%@ %@] newJob == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), newJob);
 #endif
 		
-		NSString *oldJobLabel = [oldJob objectForKey:NSStringFromLaunchJobKey(LAUNCH_JOBKEY_LABEL)];
+		NSString *oldJobLabel = oldJob[NSStringFromLaunchJobKey(LAUNCH_JOBKEY_LABEL)];
 		if (oldJobLabel == nil) {
 			NSLog(@"[%@ %@] failed to get oldJobLabel", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 			return NO;
@@ -349,28 +349,28 @@ static MDLaunchManager *sharedManager = nil;
 				NSData *standardErrorData = nil;
 				
 				NSTask *task = [[[NSTask alloc] init] autorelease];
-				[task setLaunchPath:@"/bin/launchctl"];
-				[task setArguments:[NSArray arrayWithObjects:@"load", @"-w", path, nil]];
-				[task setStandardOutput:[NSPipe pipe]];
-				[task setStandardError:[NSPipe pipe]];
+				task.launchPath = @"/bin/launchctl";
+				task.arguments = @[@"load", @"-w", path];
+				task.standardOutput = [NSPipe pipe];
+				task.standardError = [NSPipe pipe];
 				[task launch];
 				[task waitUntilExit];
 				
-				standardOutputData = [[[task standardOutput] fileHandleForReading] availableData];
-				if (standardOutputData && [standardOutputData length]) {
+				standardOutputData = [task.standardOutput fileHandleForReading].availableData;
+				if (standardOutputData && standardOutputData.length) {
 					NSString *standardOutputString = [[[NSString alloc] initWithData:standardOutputData encoding:NSUTF8StringEncoding] autorelease];
 					NSLog(@"[%@ %@] standardOutputString == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), standardOutputString);
 				}
-				standardErrorData = [[[task standardError] fileHandleForReading] availableData];
-				if (standardErrorData && [standardErrorData length]) {
+				standardErrorData = [task.standardError fileHandleForReading].availableData;
+				if (standardErrorData && standardErrorData.length) {
 					NSString *standardErrorString = [[[NSString alloc] initWithData:standardErrorData encoding:NSUTF8StringEncoding] autorelease];
 					NSLog(@"[%@ %@] standardErrorString == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), standardErrorString);
 				}
 				
-				if (![task isRunning]) {
-					if ([task terminationStatus] != 0) {
-						NSLog(@"[%@ %@] \"/bin/launchctl load -w %@\" returned %d", NSStringFromClass([self class]), NSStringFromSelector(_cmd), path, [task terminationStatus]);
-						if (outError) *outError = [NSError errorWithDomain:NSPOSIXErrorDomain code:[task terminationStatus] userInfo:nil];
+				if (!task.running) {
+					if (task.terminationStatus != 0) {
+						NSLog(@"[%@ %@] \"/bin/launchctl load -w %@\" returned %d", NSStringFromClass([self class]), NSStringFromSelector(_cmd), path, task.terminationStatus);
+						if (outError) *outError = [NSError errorWithDomain:NSPOSIXErrorDomain code:task.terminationStatus userInfo:nil];
 						success = NO;
 					}
 				}
@@ -394,7 +394,7 @@ static MDLaunchManager *sharedManager = nil;
 			
 			if (useServiceManagement) {
 				if (agentIsUnloadingSelf && agentLaunchDate) {
-					NSTimeInterval totalElapsedTime = fabs([agentLaunchDate timeIntervalSinceNow]);
+					NSTimeInterval totalElapsedTime = fabs(agentLaunchDate.timeIntervalSinceNow);
 					[agentLaunchDate release];
 					agentLaunchDate = nil;
 					
@@ -406,7 +406,7 @@ static MDLaunchManager *sharedManager = nil;
 					success = (BOOL)SMJobRemove(kSMDomainUserLaunchd, (CFStringRef)label, NULL, NO, (CFErrorRef *)outError);
 			} else {
 				if (agentIsUnloadingSelf && agentLaunchDate) {
-					NSTimeInterval totalElapsedTime = fabs([agentLaunchDate timeIntervalSinceNow]);
+					NSTimeInterval totalElapsedTime = fabs(agentLaunchDate.timeIntervalSinceNow);
 					[agentLaunchDate release];
 					agentLaunchDate = nil;
 					
@@ -419,28 +419,28 @@ static MDLaunchManager *sharedManager = nil;
 				NSData *standardErrorData = nil;
 				
 				NSTask *task = [[[NSTask alloc] init] autorelease];
-				[task setLaunchPath:@"/bin/launchctl"];
-					[task setArguments:[NSArray arrayWithObjects:@"remove", label, nil]];
-				[task setStandardOutput:[NSPipe pipe]];
-				[task setStandardError:[NSPipe pipe]];
+				task.launchPath = @"/bin/launchctl";
+					task.arguments = @[@"remove", label];
+				task.standardOutput = [NSPipe pipe];
+				task.standardError = [NSPipe pipe];
 				[task launch];
 				[task waitUntilExit];
 				
-				standardOutputData = [[[task standardOutput] fileHandleForReading] availableData];
-				if (standardOutputData && [standardOutputData length]) {
+				standardOutputData = [task.standardOutput fileHandleForReading].availableData;
+				if (standardOutputData && standardOutputData.length) {
 					NSString *standardOutputString = [[[NSString alloc] initWithData:standardOutputData encoding:NSUTF8StringEncoding] autorelease];
 					NSLog(@"[%@ %@] standardOutputString == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), standardOutputString);
 				}
-				standardErrorData = [[[task standardError] fileHandleForReading] availableData];
-				if (standardErrorData && [standardErrorData length]) {
+				standardErrorData = [task.standardError fileHandleForReading].availableData;
+				if (standardErrorData && standardErrorData.length) {
 					NSString *standardErrorString = [[[NSString alloc] initWithData:standardErrorData encoding:NSUTF8StringEncoding] autorelease];
 					NSLog(@"[%@ %@] standardErrorString == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), standardErrorString);
 				}
 				
-				if (![task isRunning]) {
-					if ([task terminationStatus] != 0) {
-						NSLog(@"[%@ %@] \"/bin/launchctl remove %@\" returned %d", NSStringFromClass([self class]), NSStringFromSelector(_cmd), label, [task terminationStatus]);
-						if (outError) *outError = [NSError errorWithDomain:NSPOSIXErrorDomain code:[task terminationStatus] userInfo:nil];
+				if (!task.running) {
+					if (task.terminationStatus != 0) {
+						NSLog(@"[%@ %@] \"/bin/launchctl remove %@\" returned %d", NSStringFromClass([self class]), NSStringFromSelector(_cmd), label, task.terminationStatus);
+						if (outError) *outError = [NSError errorWithDomain:NSPOSIXErrorDomain code:task.terminationStatus userInfo:nil];
 						success = NO;
 					}
 				}

@@ -35,7 +35,7 @@ using namespace HLLib::Streams;
 @implementation HKFile
 
 
-- (id)initWithParent:(HKFolder *)aParent directoryFile:(CDirectoryFile *)aFile container:(id)aContainer {
+- (instancetype)initWithParent:(HKFolder *)aParent directoryFile:(CDirectoryFile *)aFile container:(id)aContainer {
 #if HK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -106,7 +106,7 @@ using namespace HLLib::Streams;
 #endif
 	if (name == nil) {
 		const hlChar *cName = static_cast<const CDirectoryFile *>(_privateData)->GetName();
-		if (cName) name = [[NSString stringWithCString:cName encoding:NSUTF8StringEncoding] retain];
+		if (cName) name = [@(cName) retain];
 	}
 	return name;
 }
@@ -115,7 +115,7 @@ using namespace HLLib::Streams;
 #if HK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	if (nameExtension == nil) nameExtension = [[[self name] pathExtension] retain];
+	if (nameExtension == nil) nameExtension = [self.name.pathExtension retain];
 	return nameExtension;
 }
 
@@ -124,7 +124,7 @@ using namespace HLLib::Streams;
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	if (type == nil) {
-		type = (NSString *)UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, (CFStringRef)[self nameExtension], NULL);
+		type = (NSString *)UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, (CFStringRef)self.nameExtension, NULL);
 	}
 	return type;
 }
@@ -134,9 +134,11 @@ using namespace HLLib::Streams;
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	if (kind == nil) {
-		kind = [[[NSWorkspace sharedWorkspace] localizedDescriptionForType:[self type]] retain];
+		kind = [[[NSWorkspace sharedWorkspace] localizedDescriptionForType:self.type] retain];
 		if (kind == nil) {
-			LSCopyKindStringForTypeInfo(kLSUnknownType, kLSUnknownCreator, (CFStringRef)[self nameExtension], (CFStringRef *)&kind);
+			CFStringRef tmpKind;
+			LSCopyKindStringForTypeInfo(kLSUnknownType, kLSUnknownCreator, (CFStringRef)self.nameExtension, (CFStringRef *)&tmpKind);
+			kind = (NSString*)tmpKind;
 		}
 	}
 	return kind;
@@ -149,7 +151,7 @@ using namespace HLLib::Streams;
 	if (size == nil) {
 		hlUInt fileSize = 0;
 		static_cast<const CDirectoryFile *>(_privateData)->GetPackage()->GetFileSize(static_cast<const CDirectoryFile *>(_privateData), fileSize);
-		size = [[NSNumber numberWithUnsignedLongLong:(unsigned long long)fileSize] retain];
+		size = [@((unsigned long long)fileSize) retain];
 	}
 	return size;
 }
@@ -163,7 +165,7 @@ using namespace HLLib::Streams;
 		fileType = HKFileTypeOther;
 		NSWorkspace *workspace = [NSWorkspace sharedWorkspace];
 		
-		NSString *aType = [self type];
+		NSString *aType = self.type;
 		
 		if (isExtractable) {
 			if ([workspace type:aType conformsToType:(NSString *)kUTTypeHTML]) {
@@ -198,13 +200,13 @@ using namespace HLLib::Streams;
 		return NO;
 	}
 	NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
-	NSString *parentDirectory = [aPath stringByDeletingLastPathComponent];
+	NSString *parentDirectory = aPath.stringByDeletingLastPathComponent;
 	
 	if (![fileManager createDirectoryAtPath:parentDirectory withIntermediateDirectories:YES attributes:nil error:outError]) {
 		NSLog(@"[%@ %@] failed to create directory at path == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), parentDirectory);
 		return NO;
 	}
-	if (assureUniqueFilename) aPath = [aPath stringByAssuringUniqueFilename];
+	if (assureUniqueFilename) aPath = aPath.stringByAssuringUniqueFilename;
 	
 	if (resultingPath) *resultingPath = aPath;
 	
@@ -298,7 +300,7 @@ using namespace HLLib::Streams;
 	static_cast<const CDirectoryFile *>(_privateData)->GetPackage()->ReleaseStream(static_cast<IStream *>(_iS));
 	_iS = 0;
 	
-	NSString *filePath = [[[(HKFileHandle *)_fH path] retain] autorelease];
+	NSString *filePath = [[((HKFileHandle *)_fH).path retain] autorelease];
 	
 	[(HKFileHandle *)_fH closeFile];
 	[(HKFileHandle *)_fH release];
@@ -328,13 +330,13 @@ using namespace HLLib::Streams;
 	BOOL success = YES;
 	
 	NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
-	NSString *parentDirectory = [aPath stringByDeletingLastPathComponent];
+	NSString *parentDirectory = aPath.stringByDeletingLastPathComponent;
 	
 	if (![fileManager createDirectoryAtPath:parentDirectory withIntermediateDirectories:YES attributes:nil error:anError]) {
 		NSLog(@"[%@ %@] failed to create directory at path == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), parentDirectory);
 		return NO;
 	}
-	if (assureUniqueFilename) aPath = [aPath stringByAssuringUniqueFilename];
+	if (assureUniqueFilename) aPath = aPath.stringByAssuringUniqueFilename;
 	
 	HKFileHandle *fileHandle = [HKFileHandle fileHandleForWritingAtPath:aPath];
 	if (fileHandle == nil) {

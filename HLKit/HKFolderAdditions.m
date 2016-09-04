@@ -15,7 +15,7 @@
 
 - (NSImage *)image {
 	NSImage *image = [HKItem copiedImageForItem:self];
-	[image setSize:NSMakeSize(128.0, 128.0)];
+	image.size = NSMakeSize(128.0, 128.0);
 	return image;
 }
 

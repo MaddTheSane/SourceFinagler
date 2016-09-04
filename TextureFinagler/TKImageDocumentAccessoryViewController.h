@@ -15,11 +15,11 @@
 
 @interface TKImageDocumentAccessoryViewController : NSViewController {
 	
-	TKImageDocument					*document;		// non-retained
+	__unsafe_unretained TKImageDocument					*document;		// non-retained
 	
-	NSSavePanel						*savePanel;		// non-retained
+	__unsafe_unretained NSSavePanel						*savePanel;		// non-retained
 	
-	TKImage							*image;			// non-retained
+	__unsafe_unretained TKImage							*image;			// non-retained
 	
 	IBOutlet NSObjectController		*mediator;
 	
@@ -65,7 +65,7 @@
 	BOOL							generateMipmaps;
 }
 
-- (instancetype)initWithImageDocument:(TKImageDocument *)aDocument;
+- (instancetype)initWithImageDocument:(TKImageDocument *)aDocument NS_DESIGNATED_INITIALIZER;
 
 - (void)cleanup;
 
@@ -97,10 +97,6 @@
 - (IBAction)changeFormat:(id)sender;
 - (IBAction)changeCompression:(id)sender;
 
-
 @end
 
 //TEXTUREKIT_EXTERN NSString * const TKImageDocumentLastSavedFormatTypeKey;
-
-
-

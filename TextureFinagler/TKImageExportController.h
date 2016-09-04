@@ -84,7 +84,7 @@
 	
 }
 
-- (instancetype)initWithImageDocument:(TKImageDocument *)aDocument;
+- (instancetype)initWithImageDocument:(TKImageDocument *)aDocument NS_DESIGNATED_INITIALIZER;
 
 - (void)cleanup;
 
@@ -116,7 +116,4 @@
 
 - (IBAction)changeTool:(id)sender;
 
-
 @end
-
-

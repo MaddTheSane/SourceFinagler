@@ -131,7 +131,7 @@ static NSTextContainer *textContainer = nil;
 	
 	CGFloat difference = newHeight - self.frame.size.height;
 	
-	if (inspectorView && [inspectorView isShown]) {
+	if (inspectorView && inspectorView.shown) {
 		[inspectorView changeWindowHeightBy:difference];
 	}
 	

@@ -20,7 +20,7 @@ using namespace HLLib;
 @implementation HKXZPFile
 
 
-- (id)initWithContentsOfFile:(NSString *)aPath mode:(HLFileMode)permission showInvisibleItems:(BOOL)showInvisibleItems sortDescriptors:(NSArray *)sortDescriptors error:(NSError **)outError {
+- (instancetype)initWithContentsOfFile:(NSString *)aPath mode:(HLFileMode)permission showInvisibleItems:(BOOL)showInvisibleItems sortDescriptors:(NSArray *)sortDescriptors error:(NSError **)outError {
 #if HK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -30,7 +30,7 @@ using namespace HLLib;
 		_privateData = new CXZPFile();
 		
 		if (_privateData) {
-			if (static_cast<CXZPFile *>(_privateData)->Open((const hlChar *)[filePath fileSystemRepresentation], permission)) {
+			if (static_cast<CXZPFile *>(_privateData)->Open((const hlChar *)filePath.fileSystemRepresentation, permission)) {
 				const CDirectoryFolder *rootFolder = static_cast<CXZPFile *>(_privateData)->GetRoot();
 				if (rootFolder) {
 					items = [[HKFolder alloc] initWithParent:nil directoryFolder:rootFolder showInvisibleItems:showInvisibleItems sortDescriptors:sortDescriptors container:self];

@@ -571,7 +571,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	
-	NSIndexSet *faceSelectionIndexes = [self selectedFaceIndexes];
+	NSIndexSet *faceSelectionIndexes = self.selectedFaceIndexes;
 	NSIndexSet *frameSelectionIndexes = [frameBrowserView selectionIndexes];
 	NSIndexSet *mipmapSelectionIndexes = [mipmapBrowserView selectionIndexes];
 	
@@ -607,7 +607,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 //	NSMutableIndexSet *revisedMipmapSelectionIndexes = [[[NSMutableIndexSet alloc] initWithIndexSet:mipmapSelectionIndexes] autorelease];
 	
 	if (faceSelectionIndexes.count) {
-		NSIndexSet *allFaceIndexes = [image allFaceIndexes];
+		NSIndexSet *allFaceIndexes = image.allFaceIndexes;
 		
 		if (![allFaceIndexes containsIndexes:faceSelectionIndexes]) {
 			// previous selection is no longer valid, adjust accordingly
@@ -627,7 +627,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	
 	
 	if (frameSelectionIndexes.count) {
-		NSIndexSet *allFrameIndexes = [image allFrameIndexes];
+		NSIndexSet *allFrameIndexes = image.allFrameIndexes;
 		
 		if (![allFrameIndexes containsIndexes:frameSelectionIndexes]) {
 			// previous selection is no longer valid, adjust accordingly
@@ -647,7 +647,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	
 	if (mipmapSelectionIndexes.count) {
 		
-		NSIndexSet *allMipmapIndexes = [image allMipmapIndexes];
+		NSIndexSet *allMipmapIndexes = image.allMipmapIndexes;
 		
 		if (![allMipmapIndexes containsIndexes:mipmapSelectionIndexes]) {
 			// previous selection is no longer valid, adjust accordingly
@@ -664,7 +664,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 		}
 	}
 	
-	if (revisedFaceSelectionIndexes) [self setSelectedFaceIndexes:revisedFaceSelectionIndexes];
+	if (revisedFaceSelectionIndexes) self.selectedFaceIndexes = revisedFaceSelectionIndexes;
 	
 	if (revisedFrameSelectionIndexes) [frameBrowserView setSelectionIndexes:revisedFrameSelectionIndexes byExtendingSelection:NO];
 	
@@ -674,7 +674,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	
 #if TK_DEBUG
 	
-	faceSelectionIndexes = [self selectedFaceIndexes];
+	faceSelectionIndexes = self.selectedFaceIndexes;
 	frameSelectionIndexes = [frameBrowserView selectionIndexes];
 	mipmapSelectionIndexes = [mipmapBrowserView selectionIndexes];
 	
@@ -879,7 +879,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	
 	if (grayscaleFilter == nil) grayscaleFilter = [[TKGrayscaleFilter alloc] init];
 
-	TKImageRep *selectedImageRep = [self selectedImageRep];
+	TKImageRep *selectedImageRep = self.selectedImageRep;
 	if (selectedImageRep == nil) return;
 	
 	if (imageView.imageKitLayer.filters == nil) 
@@ -1289,8 +1289,8 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 #endif
 		
 		if (image.faceCount) {
-			[visibleFaceBrowserItems setArray:[TKImageBrowserItem faceBrowserItemsWithImageRepsInArray:[image representationsForFaceIndexes:[image allFaceIndexes]
-																															  mipmapIndexes:[image firstMipmapIndexSet]]]];
+			[visibleFaceBrowserItems setArray:[TKImageBrowserItem faceBrowserItemsWithImageRepsInArray:[image representationsForFaceIndexes:image.allFaceIndexes
+																															  mipmapIndexes:image.firstMipmapIndexSet]]];
 		} else {
 			[visibleFaceBrowserItems setArray:@[]];
 		}
@@ -1303,9 +1303,9 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 #endif
 		
 		if (image.faceCount && image.frameCount) {
-			[visibleFrameBrowserItems setArray:[TKImageBrowserItem frameBrowserItemsWithImageRepsInArray:[image representationsForFaceIndexes:[self selectedFaceIndexes]
-																																 frameIndexes:[image allFrameIndexes]
-																																mipmapIndexes:[image firstMipmapIndexSet]]]];
+			[visibleFrameBrowserItems setArray:[TKImageBrowserItem frameBrowserItemsWithImageRepsInArray:[image representationsForFaceIndexes:self.selectedFaceIndexes
+																																 frameIndexes:image.allFrameIndexes
+																																mipmapIndexes:image.firstMipmapIndexSet]]];
 			
 		} else if (image.faceCount) {
 			
@@ -1313,8 +1313,8 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 			
 		} else if (image.frameCount) {
 			
-			[visibleFrameBrowserItems setArray:[TKImageBrowserItem frameBrowserItemsWithImageRepsInArray:[image representationsForFrameIndexes:[image allFrameIndexes]
-																																 mipmapIndexes:[image firstMipmapIndexSet]]]];
+			[visibleFrameBrowserItems setArray:[TKImageBrowserItem frameBrowserItemsWithImageRepsInArray:[image representationsForFrameIndexes:image.allFrameIndexes
+																																 mipmapIndexes:image.firstMipmapIndexSet]]];
 		} else {
 			[visibleFrameBrowserItems setArray:@[]];
 
@@ -1329,22 +1329,22 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 		
 		if (image.faceCount && image.frameCount) {
 			
-			[visibleMipmapReps setArray:[image representationsForFaceIndexes:[self selectedFaceIndexes]
+			[visibleMipmapReps setArray:[image representationsForFaceIndexes:self.selectedFaceIndexes
 																frameIndexes:[frameBrowserView selectionIndexes]
-															   mipmapIndexes:[image allMipmapIndexes]]];
+															   mipmapIndexes:image.allMipmapIndexes]];
 			
 		} else if (image.faceCount) {
 			
-			[visibleMipmapReps setArray:[image representationsForFaceIndexes:[self selectedFaceIndexes]
-															   mipmapIndexes:[image allMipmapIndexes]]];
+			[visibleMipmapReps setArray:[image representationsForFaceIndexes:self.selectedFaceIndexes
+															   mipmapIndexes:image.allMipmapIndexes]];
 			
 		} else if (image.frameCount) {
 			
 			[visibleMipmapReps setArray:[image representationsForFrameIndexes:[frameBrowserView selectionIndexes]
-																mipmapIndexes:[image allMipmapIndexes]]];
+																mipmapIndexes:image.allMipmapIndexes]];
 			
 		} else {
-			[visibleMipmapReps setArray:[image representationsForMipmapIndexes:[image allMipmapIndexes]]];
+			[visibleMipmapReps setArray:[image representationsForMipmapIndexes:image.allMipmapIndexes]];
 		}
 		
 		return visibleMipmapReps.count;
@@ -1388,7 +1388,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	NSArray *images = nil;
 	
 	if (aBrowser == frameBrowserView) {
-		images = [image representationsForFrameIndexes:itemIndexes mipmapIndexes:[image allMipmapIndexes]];
+		images = [image representationsForFrameIndexes:itemIndexes mipmapIndexes:image.allMipmapIndexes];
 		
 	} else if (aBrowser == mipmapBrowserView) {
 		images = [visibleMipmapReps objectsAtIndexes:itemIndexes];
@@ -1434,12 +1434,12 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 		NSArray *allFrameBrowserImageReps = nil;
 		
 		if (image.faceCount && image.frameCount) {
-			allFrameBrowserImageReps = [image representationsForFaceIndexes:[self selectedFaceIndexes]
+			allFrameBrowserImageReps = [image representationsForFaceIndexes:self.selectedFaceIndexes
 															   frameIndexes:indexes
-															  mipmapIndexes:[image allMipmapIndexes]];
+															  mipmapIndexes:image.allMipmapIndexes];
 		} else if (image.frameCount) {
 			allFrameBrowserImageReps = [image representationsForFrameIndexes:indexes
-															   mipmapIndexes:[image allMipmapIndexes]];
+															   mipmapIndexes:image.allMipmapIndexes];
 		}
 		
 		
@@ -1450,16 +1450,16 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 		
 		if (image.faceCount && image.frameCount) {
 			if (![self removeRepresentations:allFrameBrowserImageReps
-							   atFaceIndexes:[self selectedFaceIndexes]
+							   atFaceIndexes:self.selectedFaceIndexes
 								frameIndexes:indexes
-							   mipmapIndexes:[image allMipmapIndexes]]) {
+							   mipmapIndexes:image.allMipmapIndexes]) {
 				
 				NSLog(@"[%@ %@] failed to remove reps!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 				
 			}
 			
 		} else if (image.frameCount) {
-			if (![self removeRepresentations:allFrameBrowserImageReps atFrameIndexes:indexes mipmapIndexes:[image allMipmapIndexes]]) {
+			if (![self removeRepresentations:allFrameBrowserImageReps atFrameIndexes:indexes mipmapIndexes:image.allMipmapIndexes]) {
 				NSLog(@"[%@ %@] failed to remove reps!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 				
 			}
@@ -1474,7 +1474,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 		
 		if (image.faceCount && image.frameCount) {
 			if (![self removeRepresentations:[visibleMipmapReps objectsAtIndexes:indexes]
-							   atFaceIndexes:[self selectedFaceIndexes]
+							   atFaceIndexes:self.selectedFaceIndexes
 								frameIndexes:[frameBrowserView selectionIndexes]
 							   mipmapIndexes:indexes]) {
 				
@@ -1483,7 +1483,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 			
 		} else if (image.faceCount) {
 			if (![self removeRepresentations:[visibleMipmapReps objectsAtIndexes:indexes]
-							   atFaceIndexes:[self selectedFaceIndexes]
+							   atFaceIndexes:self.selectedFaceIndexes
 							   mipmapIndexes:indexes]) {
 				
 				NSLog(@"[%@ %@] failed to remove reps!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -1530,17 +1530,17 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	} else if (aBrowser == frameBrowserView) {
 		
 		if (image.faceCount && image.frameCount) {
-			NSArray *allFrameBrowserImageReps = [image representationsForFaceIndexes:[self selectedFaceIndexes] frameIndexes:indexes mipmapIndexes:[image allMipmapIndexes]];
+			NSArray *allFrameBrowserImageReps = [image representationsForFaceIndexes:self.selectedFaceIndexes frameIndexes:indexes mipmapIndexes:image.allMipmapIndexes];
 			
-			return [self moveRepresentations:allFrameBrowserImageReps fromFaceIndexes:[self selectedFaceIndexes] frameIndexes:indexes mipmapIndexes:[image allMipmapIndexes]
-																		toFaceIndexes:[self selectedFaceIndexes] frameIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(destinationIndex, indexes.count)] mipmapIndexes:[image allMipmapIndexes]];
+			return [self moveRepresentations:allFrameBrowserImageReps fromFaceIndexes:self.selectedFaceIndexes frameIndexes:indexes mipmapIndexes:image.allMipmapIndexes
+																		toFaceIndexes:self.selectedFaceIndexes frameIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(destinationIndex, indexes.count)] mipmapIndexes:image.allMipmapIndexes];
 			
 			
 		} else if (image.frameCount) {
-			NSArray *allFrameBrowserImageReps = [image representationsForFrameIndexes:indexes mipmapIndexes:[image allMipmapIndexes]];
+			NSArray *allFrameBrowserImageReps = [image representationsForFrameIndexes:indexes mipmapIndexes:image.allMipmapIndexes];
 			
-			return [self moveRepresentations:allFrameBrowserImageReps fromFrameIndexes:indexes mipmapIndexes:[image allMipmapIndexes]
-																		toFrameIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(destinationIndex, indexes.count)] mipmapIndexes:[image allMipmapIndexes]];
+			return [self moveRepresentations:allFrameBrowserImageReps fromFrameIndexes:indexes mipmapIndexes:image.allMipmapIndexes
+																		toFrameIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(destinationIndex, indexes.count)] mipmapIndexes:image.allMipmapIndexes];
 			
 		}
 		
@@ -1605,9 +1605,9 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	if (aBrowser == faceBrowserView) {
 		
 		if (image.faceCount && image.frameCount) {
-			[visibleFrameBrowserItems setArray:[TKImageBrowserItem frameBrowserItemsWithImageRepsInArray:[image representationsForFaceIndexes:[self selectedFaceIndexes]
-																																 frameIndexes:[image allFrameIndexes]
-																																mipmapIndexes:[image firstMipmapIndexSet]]]];
+			[visibleFrameBrowserItems setArray:[TKImageBrowserItem frameBrowserItemsWithImageRepsInArray:[image representationsForFaceIndexes:self.selectedFaceIndexes
+																																 frameIndexes:image.allFrameIndexes
+																																mipmapIndexes:image.firstMipmapIndexSet]]];
 			
 		} else if (image.faceCount) {
 			
@@ -1615,8 +1615,8 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 			
 		} else if (image.frameCount) {
 			
-			[visibleFrameBrowserItems setArray:[TKImageBrowserItem frameBrowserItemsWithImageRepsInArray:[image representationsForFrameIndexes:[image allFrameIndexes]
-																																 mipmapIndexes:[image firstMipmapIndexSet]]]];
+			[visibleFrameBrowserItems setArray:[TKImageBrowserItem frameBrowserItemsWithImageRepsInArray:[image representationsForFrameIndexes:image.allFrameIndexes
+																																 mipmapIndexes:image.firstMipmapIndexSet]]];
 			
 		} else {
 			[visibleFrameBrowserItems setArray:@[]];
@@ -1634,22 +1634,22 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 		
 		if (image.faceCount && image.frameCount) {
 			
-			[visibleMipmapReps setArray:[image representationsForFaceIndexes:[self selectedFaceIndexes]
+			[visibleMipmapReps setArray:[image representationsForFaceIndexes:self.selectedFaceIndexes
 																frameIndexes:[frameBrowserView selectionIndexes]
-															   mipmapIndexes:[image allMipmapIndexes]]];
+															   mipmapIndexes:image.allMipmapIndexes]];
 			
 		} else if (image.faceCount) {
 			
-			[visibleMipmapReps setArray:[image representationsForFaceIndexes:[self selectedFaceIndexes]
-															   mipmapIndexes:[image allMipmapIndexes]]];
+			[visibleMipmapReps setArray:[image representationsForFaceIndexes:self.selectedFaceIndexes
+															   mipmapIndexes:image.allMipmapIndexes]];
 			
 		} else if (image.frameCount) {
 			
 			[visibleMipmapReps setArray:[image representationsForFrameIndexes:[frameBrowserView selectionIndexes]
-																mipmapIndexes:[image allMipmapIndexes]]];
+																mipmapIndexes:image.allMipmapIndexes]];
 			
 		} else {
-			[visibleMipmapReps setArray:[image representationsForMipmapIndexes:[image allMipmapIndexes]]];
+			[visibleMipmapReps setArray:[image representationsForMipmapIndexes:image.allMipmapIndexes]];
 		}
 		
 		[mipmapBrowserView reloadData];
@@ -1777,13 +1777,13 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	dragDict[TKDraggedFilenamesKey] = copiedFilenames;
 	
 	if (image.faceCount && image.frameCount) {
-		dragDict[TKFaceIndexesKey] = [self selectedFaceIndexes];
+		dragDict[TKFaceIndexesKey] = self.selectedFaceIndexes;
 		dragDict[TKFrameIndexesKey] = [NSIndexSet indexSetWithIndex:indexAtLocationOfDroppedItem];
 		
 		
 	} else if (image.faceCount) {
 		
-		dragDict[TKFaceIndexesKey] = [self selectedFaceIndexes];
+		dragDict[TKFaceIndexesKey] = self.selectedFaceIndexes;
 		dragDict[TKFrameIndexesKey] = [NSIndexSet indexSetWithIndex:indexAtLocationOfDroppedItem];
 
 	} else if (image.frameCount) {
@@ -1874,12 +1874,12 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	if (sliceIndexes) {
 		
 	} else if (faceIndexes && frameIndexes) {
-		if (![self insertRepresentations:theImageReps atFaceIndexes:(faceIndexes ? faceIndexes : [self selectedFaceIndexes]) frameIndexes:frameIndexes mipmapIndexes:[NSIndexSet indexSetWithIndex:0]]) {
+		if (![self insertRepresentations:theImageReps atFaceIndexes:(faceIndexes ? faceIndexes : self.selectedFaceIndexes) frameIndexes:frameIndexes mipmapIndexes:[NSIndexSet indexSetWithIndex:0]]) {
 			
 		}
 		
 	} else if (faceIndexes) {
-		if (![self insertRepresentations:theImageReps atFaceIndexes:(faceIndexes ? faceIndexes : [self selectedFaceIndexes]) mipmapIndexes:[NSIndexSet indexSetWithIndex:0]]) {
+		if (![self insertRepresentations:theImageReps atFaceIndexes:(faceIndexes ? faceIndexes : self.selectedFaceIndexes) mipmapIndexes:[NSIndexSet indexSetWithIndex:0]]) {
 			
 		}
 		
@@ -1920,7 +1920,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	imageInspectorController.dataSource = self;
 	
 	if (imageChannels == nil) {
-		TKImageRep *selectedImageRep = [self selectedImageRep];
+		TKImageRep *selectedImageRep = self.selectedImageRep;
 		if (selectedImageRep == nil) {
 			NSArray *reps = image.representations;
 			if (reps.count) {
@@ -2106,7 +2106,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 		imageView.animationImageReps = nil;
 	} else {
 		
-		imageView.animationImageReps = [image representationsForFrameIndexes:[image allFrameIndexes] mipmapIndexes:[image firstMipmapIndexSet]];
+		imageView.animationImageReps = [image representationsForFrameIndexes:image.allFrameIndexes mipmapIndexes:image.firstMipmapIndexSet];
 	}
 	
 	
@@ -2153,7 +2153,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	
-	NSArray *selectedImageReps = [self selectedImageReps];
+	NSArray *selectedImageReps = self.selectedImageReps;
 	[self writeImageReps:selectedImageReps toPasteboard:[NSPasteboard generalPasteboard] forTypes:@[TKImageDocumentPboardType, NSTIFFPboardType]];
 }
 

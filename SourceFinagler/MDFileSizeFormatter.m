@@ -44,7 +44,7 @@ NSString * const MDFileSizeFormatterUnitsTypeKey	= @"MDFileSizeFormatterUnitsTyp
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	MDFileSizeFormatter *copy = [[[self class] allocWithZone:zone] initWithUnitsType:[self unitsType] style:[self style]];
+	MDFileSizeFormatter *copy = [[[self class] allocWithZone:zone] initWithUnitsType:self.unitsType style:self.style];
 	return copy;
 }
 
@@ -63,8 +63,8 @@ NSString * const MDFileSizeFormatterUnitsTypeKey	= @"MDFileSizeFormatterUnitsTyp
 #endif
 	if ((self = [super init])) {
 		numberFormatter = [[NSNumberFormatter alloc] init];
-		[self setUnitsType:aUnitsType];
-		[self setStyle:aStyle];
+		self.unitsType = aUnitsType;
+		self.style = aStyle;
 	}
 	return self;
 }
@@ -81,12 +81,12 @@ NSString * const MDFileSizeFormatterUnitsTypeKey	= @"MDFileSizeFormatterUnitsTyp
 		
 		if (unitsTypeNum == nil) {
 			// old version archive
-			[self setUnitsType:(MDFileSizeFormatterUnitsType) [[coder decodeObjectForKey:MDFileSizeFormatterStyleKey] unsignedLongLongValue]];
-			[self setStyle:MDFileSizeFormatterPhysicalStyle];
+			self.unitsType = (MDFileSizeFormatterUnitsType) [[coder decodeObjectForKey:MDFileSizeFormatterStyleKey] unsignedLongLongValue];
+			self.style = MDFileSizeFormatterPhysicalStyle;
 		} else {
 			// current version archive
-			[self setUnitsType:(MDFileSizeFormatterUnitsType) [[coder decodeObjectForKey:MDFileSizeFormatterUnitsTypeKey] unsignedLongLongValue]];
-			[self setStyle:(MDFileSizeFormatterStyle) [[coder decodeObjectForKey:MDFileSizeFormatterStyleKey] unsignedLongLongValue]];
+			self.unitsType = (MDFileSizeFormatterUnitsType) [[coder decodeObjectForKey:MDFileSizeFormatterUnitsTypeKey] unsignedLongLongValue];
+			self.style = (MDFileSizeFormatterStyle) [[coder decodeObjectForKey:MDFileSizeFormatterStyleKey] unsignedLongLongValue];
 		}
 	}
 	return self;
@@ -291,8 +291,4 @@ NSString * const MDFileSizeFormatterUnitsTypeKey	= @"MDFileSizeFormatterUnitsTyp
 	return nil;
 }
 
-
 @end
-
-
-

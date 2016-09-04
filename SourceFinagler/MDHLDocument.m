@@ -39,6 +39,7 @@
 #import "MDCopyOperationController.h"
 
 #import "MDFileSizeFormatter.h"
+#import "MDStatusImageView.h"
 
 
 
@@ -343,7 +344,7 @@ static NSInteger copyTag = 0;
 	outlineView.doubleAction = @selector(toggleShowQuickLook:);
 	browser.doubleAction = @selector(toggleShowQuickLook:);
 	
-	self.undoManager = [(TKAppController*)NSApp.delegate globalUndoManager];
+	self.undoManager = ((TKAppController*)NSApp.delegate).globalUndoManager;
 		
 	outlineViewMenuShowQuickLookMenuItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Quick Look", @"") action:@selector(toggleShowQuickLook:) keyEquivalent:@""];
 	
@@ -388,7 +389,7 @@ static NSInteger copyTag = 0;
 	pathControl.URL = self.fileURL;
 	pathControl.target = self;
 	pathControl.doubleAction = @selector(revealInFinder:);
-	[pathControlInspectorView setShown:MDShouldShowPathBar];
+	pathControlInspectorView.shown = MDShouldShowPathBar;
 		
 	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 	
@@ -413,11 +414,11 @@ static NSInteger copyTag = 0;
 	
 	if (file) {
 		
-		statusImageViewTag1 = [statusImageView1 addToolTipRect:[statusImageView1 visibleRect] owner:self userData:nil];
+		statusImageViewTag1 = [statusImageView1 addToolTipRect:statusImageView1.visibleRect owner:self userData:nil];
 		
-		[statusImageView2 setImage:[NSImage imageNamed:@"readOnlyIndicator"]];
+		statusImageView2.image = [NSImage imageNamed:@"readOnlyIndicator"];
 		
-		statusImageViewTag2 = [statusImageView2 addToolTipRect:[statusImageView2 visibleRect] owner:self userData:nil];
+		statusImageViewTag2 = [statusImageView2 addToolTipRect:statusImageView2.visibleRect owner:self userData:nil];
 		
 	}
 	
@@ -539,7 +540,7 @@ static NSInteger copyTag = 0;
 		
 		[[NSNotificationCenter defaultCenter] postNotificationName:MDSelectedItemsDidChangeNotification
 															object:self
-														  userInfo:@{MDSelectedItemsKey: [self selectedItems], MDSelectedItemsDocumentKey: self}];
+														  userInfo:@{MDSelectedItemsKey: self.selectedItems, MDSelectedItemsDocumentKey: self}];
 	}
 }
 
@@ -553,7 +554,7 @@ static NSInteger copyTag = 0;
 		
 		[[NSNotificationCenter defaultCenter] postNotificationName:MDSelectedItemsDidChangeNotification
 															object:self
-														  userInfo:@{MDSelectedItemsKey: [self selectedItems], MDSelectedItemsDocumentKey: self}];
+														  userInfo:@{MDSelectedItemsKey: self.selectedItems, MDSelectedItemsDocumentKey: self}];
 	}
 }
 
@@ -563,7 +564,7 @@ static NSInteger copyTag = 0;
 //	NSLog(@" \"%@\" [%@ %@]", [self displayName], NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	
-	[pathControlInspectorView setShown:MDShouldShowPathBar];
+	pathControlInspectorView.shown = MDShouldShowPathBar;
 }
 
 
@@ -639,12 +640,12 @@ static NSInteger copyTag = 0;
 			HKItem *parent = [browser parentForItemsInColumn:targetColumn];
 			
 			if (parent) {
-				totalCount = @((NSUInteger) (shouldShowInvisibleItems ? [parent countOfChildNodes] : [parent countOfVisibleChildNodes]));
+				totalCount = @((shouldShowInvisibleItems ? parent.countOfChildNodes : parent.countOfVisibleChildNodes));
 			} else {
-				totalCount = @((NSUInteger) (shouldShowInvisibleItems ? [[file items] countOfChildNodes] : [[file items] countOfVisibleChildNodes]));
+				totalCount = @((shouldShowInvisibleItems ? [file items].countOfChildNodes : [file items].countOfVisibleChildNodes));
 			}
 		} else {
-			totalCount = @((NSUInteger) (shouldShowInvisibleItems ? [[file items] countOfChildNodes] : [[file items] countOfVisibleChildNodes]));
+			totalCount = @((shouldShowInvisibleItems ? [file items].countOfChildNodes : [file items].countOfVisibleChildNodes));
 //			NSLog(@"[%@ %@] must implement", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 	
 		}
@@ -656,7 +657,7 @@ static NSInteger copyTag = 0;
 }
 
 - (NSUndoManager *)windowWillReturnUndoManager:(NSWindow *)aWindow {
-	return [(TKAppController*)NSApp.delegate globalUndoManager];
+	return ((TKAppController*)NSApp.delegate).globalUndoManager;
 }
 
 
@@ -917,7 +918,7 @@ static NSInteger copyTag = 0;
 			
 			[[NSNotificationCenter defaultCenter] postNotificationName:MDSelectedItemsDidChangeNotification
 																object:self
-															  userInfo:@{MDSelectedItemsKey: [self selectedItems], MDSelectedItemsDocumentKey: self}];
+															  userInfo:@{MDSelectedItemsKey: self.selectedItems, MDSelectedItemsDocumentKey: self}];
 		}
 	}
 }
@@ -948,7 +949,7 @@ static NSInteger copyTag = 0;
 //	NSLog(@" \"%@\" [%@ %@] item == %@", [self displayName], NSStringFromClass([self class]), NSStringFromSelector(_cmd), item);
 #endif
 	HKItem *node = (item == nil ? [file items] : item);
-	if (node) return (shouldShowInvisibleItems ? [node countOfChildNodes] : [node countOfVisibleChildNodes]);
+	if (node) return (shouldShowInvisibleItems ? node.countOfChildNodes : node.countOfVisibleChildNodes);
 	return 0;
 }
 
@@ -990,7 +991,7 @@ static NSInteger copyTag = 0;
 		
 		BOOL shouldShowIcons = browser.shouldShowIcons;
 		
-		NSInteger fontAndIconSize = [browser fontAndIconSize];
+		NSInteger fontAndIconSize = browser.fontAndIconSize;
 		if (shouldShowIcons) {
 			NSImage *cellImage = [HKItem iconForItem:item];
 			cellImage.size = NSMakeSize((CGFloat)(fontAndIconSize + 4.0), (CGFloat)(fontAndIconSize + 4.0));
@@ -1054,18 +1055,18 @@ static NSInteger copyTag = 0;
 			outlineViewItemCount = 0;
 			node = [file items];
 			if (node) {
-				outlineViewItemCount += (shouldShowInvisibleItems ? [node countOfChildNodes] : [node countOfVisibleChildNodes]);
+				outlineViewItemCount += (shouldShowInvisibleItems ? node.countOfChildNodes : node.countOfVisibleChildNodes);
 			}
 		}
 		
 	} else {
 		node = item;
 		if (outlineViewIsReloadingData) {
-			outlineViewItemCount += (shouldShowInvisibleItems ? [node countOfChildNodes] : [node countOfVisibleChildNodes]);
+			outlineViewItemCount += (shouldShowInvisibleItems ? node.countOfChildNodes : node.countOfVisibleChildNodes);
 		}
 	}
 	if (node) {
-		return (shouldShowInvisibleItems ? [node countOfChildNodes] : [node countOfVisibleChildNodes]);
+		return (shouldShowInvisibleItems ? node.countOfChildNodes : node.countOfVisibleChildNodes);
 	}
 	return 0;
 	
@@ -1138,7 +1139,7 @@ static NSInteger copyTag = 0;
 		
 		NSImage *cellImage = [HKItem iconForItem:item];
 		
-		NSInteger iconSize = [(MDOutlineView *)outlineView iconSize];
+		NSInteger iconSize = ((MDOutlineView *)outlineView).iconSize;
 		NSSize imageSize = cellImage.size;
 		if (imageSize.width != iconSize) {
 			cellImage.size = NSMakeSize(iconSize, iconSize);
@@ -1233,7 +1234,7 @@ static NSInteger copyTag = 0;
 		if (outlineView.window.mainWindow) {
 			[[NSNotificationCenter defaultCenter] postNotificationName:MDSelectedItemsDidChangeNotification
 																object:self
-															  userInfo:@{MDSelectedItemsKey: [self selectedItems], MDSelectedItemsDocumentKey: self}];
+															  userInfo:@{MDSelectedItemsKey: self.selectedItems, MDSelectedItemsDocumentKey: self}];
 			
 		}
 	}
@@ -1246,7 +1247,7 @@ static NSInteger copyTag = 0;
 #endif
 	NSDictionary *userInfo = notification.userInfo;
 	HKItem *item = userInfo[@"NSObject"];
-	outlineViewItemCount += (shouldShowInvisibleItems ? [item countOfChildNodes] : [item countOfVisibleChildNodes]);
+	outlineViewItemCount += (shouldShowInvisibleItems ? item.countOfChildNodes : item.countOfVisibleChildNodes);
 	[self updateCount];
 }
 
@@ -1257,7 +1258,7 @@ static NSInteger copyTag = 0;
 #endif
 	NSDictionary *userInfo = notification.userInfo;
 	HKItem *item = userInfo[@"NSObject"];
-	outlineViewItemCount -= (shouldShowInvisibleItems ? [item countOfChildNodes] : [item countOfVisibleChildNodes]);
+	outlineViewItemCount -= (shouldShowInvisibleItems ? item.countOfChildNodes : item.countOfVisibleChildNodes);
 	[self updateCount];
 }
 
@@ -1787,7 +1788,7 @@ static NSInteger copyTag = 0;
 		
 		[[NSNotificationCenter defaultCenter] postNotificationName:MDSelectedItemsDidChangeNotification
 															object:self
-														  userInfo:@{MDSelectedItemsKey: [self selectedItems], MDSelectedItemsDocumentKey: self}];
+														  userInfo:@{MDSelectedItemsKey: self.selectedItems, MDSelectedItemsDocumentKey: self}];
 		
 	}
 }
@@ -2099,7 +2100,7 @@ static NSInteger copyTag = 0;
 //	NSMakeSize(CGFloat w, CGFloat h)
 //	NSWindow
 
-	return [[NSApp delegate] toggleShowQuickLook:sender];
+	[(TKAppController*)NSApp.delegate toggleShowQuickLook:sender];
 }
 
 
@@ -2341,7 +2342,4 @@ static NSInteger copyTag = 0;
 	return [NSString stringWithFormat:@"%@ '%@'", super.description, self.displayName];
 }
 
-
-
 @end
-

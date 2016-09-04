@@ -38,10 +38,8 @@ typedef NS_OPTIONS(NSUInteger, TKImageChannelMask) {
 
 + (NSArray<TKImageChannel*> *)imageChannelsWithImageRep:(TKImageRep *)anImageRep;
 
-
 + (instancetype)imageChannelWithImageRep:(TKImageRep *)anImageRep channelMask:(TKImageChannelMask)aChannelMask;
-
-- (instancetype)initWithImageRep:(TKImageRep *)anImageRep channelMask:(TKImageChannelMask)aChannelMask;
+- (instancetype)initWithImageRep:(TKImageRep *)anImageRep channelMask:(TKImageChannelMask)aChannelMask NS_DESIGNATED_INITIALIZER;
 
 
 @property (copy) NSString *name;
@@ -53,7 +51,6 @@ typedef NS_OPTIONS(NSUInteger, TKImageChannelMask) {
 
 - (void)updateWithImageRep:(TKImageRep *)anImageRep;
 
-
 @end
 
 
@@ -63,5 +60,3 @@ typedef NS_OPTIONS(NSUInteger, TKImageChannelMask) {
 + (CIFilter *)filterForChannelMask:(TKImageChannelMask)aChannelMask;
 
 @end
-
-

@@ -26,7 +26,7 @@
 @synthesize visible = isVisible;
 @synthesize leaf = isLeaf;
 
-- (id)initWithParent:(HKNode *)aParent childNodes:(NSArray *)theChildren sortDescriptors:(NSArray *)aSortDescriptors container:(id)aContainer {
+- (instancetype)initWithParent:(HKNode *)aParent childNodes:(NSArray *)theChildren sortDescriptors:(NSArray *)aSortDescriptors container:(id)aContainer {
 	if ((self = [super init])) {
 		parent = aParent;
 		container = aContainer;
@@ -40,7 +40,7 @@
 			visibleChildNodes = [[NSMutableArray alloc] init];
 			
 			for (HKNode *child in childNodes) {
-				if ([child isVisible]) [visibleChildNodes addObject:child];
+				if (child.visible) [visibleChildNodes addObject:child];
 			}
 			[childNodes makeObjectsPerformSelector:@selector(setParent:) withObject:self];
 			
@@ -93,12 +93,12 @@
 - (void)insertChildNode:(HKNode *)child atIndex:(NSUInteger)index {
 	[self initializeChildrenIfNeeded];
 	
-	[child setParent:self];
+	child.parent = self;
 	
     [childNodes insertObject:child atIndex:index];
 	[childNodes sortUsingDescriptors:sortDescriptors];
 	
-	if ([child isVisible]) {
+	if (child.visible) {
 		[visibleChildNodes addObject:child];
 		[visibleChildNodes sortUsingDescriptors:sortDescriptors];
 	}
@@ -117,7 +117,7 @@
     [childNodes insertObjectsFromArray:newChildren atIndex:theIndex];
 	
 	for (HKNode *child in childNodes) {
-		if ([child isVisible]) [visibleChildNodes addObject:child];
+		if (child.visible) [visibleChildNodes addObject:child];
 	}
 	
 	[childNodes sortUsingDescriptors:sortDescriptors];
@@ -142,7 +142,7 @@
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     NSUInteger index = [self indexOfChildNode:child];
     if (index != NSNotFound) {
-        [self _removeChildrenIdenticalTo:[NSArray arrayWithObject:[self childNodeAtIndex:index]]];
+        [self _removeChildrenIdenticalTo:@[[self childNodeAtIndex:index]]];
     }
 }
 
@@ -159,7 +159,7 @@
 }
 
 - (NSUInteger)countOfChildNodes {
-    return [childNodes count];
+    return childNodes.count;
 }
 
 - (NSArray *)childNodes {
@@ -167,12 +167,12 @@
 }
 
 - (HKNode *)childNodeAtIndex:(NSUInteger)index {
-    return [childNodes objectAtIndex:index];
+    return childNodes[index];
 }
 
 
 - (NSUInteger)countOfVisibleChildNodes {
-	return [visibleChildNodes count];
+	return visibleChildNodes.count;
 }
 
 - (NSArray *)visibleChildNodes {
@@ -181,7 +181,7 @@
 
 
 - (HKNode *)visibleChildNodeAtIndex:(NSUInteger)index {
-	return [visibleChildNodes objectAtIndex:index];
+	return visibleChildNodes[index];
 }
 
 
@@ -201,8 +201,8 @@
 			return YES;             // we found ourselves
 		}
 		// check all the sub-nodes
-		if (![node isLeaf]) {
-			if ([self isContainedInNodes:[node childNodes]]) {
+		if (!node.leaf) {
+			if ([self isContainedInNodes:node.childNodes]) {
 				return YES;
 			}
 		}
@@ -221,8 +221,8 @@
 	
 	for (HKNode *node in nodes) {
 		// check all the sub-nodes
-		if (![node isLeaf]) {
-			if ([self isContainedInNodes:[node childNodes]]) {
+		if (!node.leaf) {
+			if ([self isContainedInNodes:node.childNodes]) {
 				return YES;
 			}
 		}
@@ -240,7 +240,7 @@
 	if (node == self) {
 		return YES;
 	}
-	if (![node isLeaf]) {
+	if (!node.leaf) {
 		if ([parent isDescendantOfNodeOrIsEqualToNode:node]) {
 			return YES;
 		}
@@ -252,7 +252,7 @@
 #if HK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	if (![node isLeaf]) {
+	if (!node.leaf) {
 		if ([parent isDescendantOfNodeOrIsEqualToNode:node]) {
 			return YES;
 		}
@@ -268,7 +268,7 @@
 	showInvisibleItems = value;
 	if (!isLeaf && childNodes) {
 		for (HKNode *child in childNodes) {
-			if (![child isLeaf]) [child setShowInvisibleItems:showInvisibleItems];
+			if (!child.leaf) child.showInvisibleItems = showInvisibleItems;
 		}
 	}
 }

@@ -20,7 +20,7 @@
 }
 
 + (instancetype)viewControllerWithViewColorType:(MDCopyOperationViewBackgroundColorType)aColorType tag:(NSInteger)aTag;
-- (instancetype)initWithViewColorType:(MDCopyOperationViewBackgroundColorType)aColorType tag:(NSInteger)aTag;
+- (instancetype)initWithViewColorType:(MDCopyOperationViewBackgroundColorType)aColorType tag:(NSInteger)aTag NS_DESIGNATED_INITIALIZER;
 
 @property (readonly, assign) NSInteger tag;
 

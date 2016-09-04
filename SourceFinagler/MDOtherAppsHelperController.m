@@ -53,11 +53,11 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 		steamManager = [[VSSteamManager defaultManager] retain];
 		steamManager.delegate = self;
 
-		if ([steamManager sourceFinaglerLaunchAgentStatus] == VSSourceFinaglerLaunchAgentUpdateNeeded) {
+		if (steamManager.sourceFinaglerLaunchAgentStatus == VSSourceFinaglerLaunchAgentUpdateNeeded) {
 			[steamManager updateSourceFinaglerLaunchAgentWithError:NULL];
 		}
 		
-		enableSourceFinaglerAgent = ([steamManager sourceFinaglerLaunchAgentStatus] == VSSourceFinaglerLaunchAgentInstalled);
+		enableSourceFinaglerAgent = (steamManager.sourceFinaglerLaunchAgentStatus == VSSourceFinaglerLaunchAgentInstalled);
 	}
 	return self;
 }

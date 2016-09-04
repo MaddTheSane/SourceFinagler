@@ -29,7 +29,7 @@
 - (NSString *)stringValueByExtractingToTempFile:(BOOL)shouldExtractToTempFile {
 	if (fileType != HKFileTypeHTML && fileType != HKFileTypeText) return nil;
 	
-	NSData *textData = [self data];
+	NSData *textData = self.data;
 	if (textData == nil) {
 		NSLog(@"[%@ %@] failed to extract data!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 		return nil;
@@ -38,7 +38,7 @@
 	NSString *stringValue = nil;
 	
 	if (shouldExtractToTempFile) {
-		NSString *tempPath = [[NSTemporaryDirectory() stringByAppendingPathComponent:@"com.markdouma.SourceAddonFinagler"] stringByAssuringUniqueFilename];
+		NSString *tempPath = [NSTemporaryDirectory() stringByAppendingPathComponent:@"com.markdouma.SourceAddonFinagler"].stringByAssuringUniqueFilename;
 		NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
 		if (![fileManager createDirectoryAtPath:tempPath withIntermediateDirectories:YES attributes:nil error:NULL]) {
 			NSLog(@"[%@ %@] failed to create tempDirectory to extract file in!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -83,7 +83,7 @@
 
 - (NSSound *)sound {
 	if (fileType != HKFileTypeSound) return nil;
-	NSData *soundData = [self data];
+	NSData *soundData = self.data;
 	if (soundData) return [[[NSSound alloc] initWithData:soundData] autorelease];
 	return nil;
 }
@@ -95,30 +95,30 @@
 #endif
 	NSImage *theImage = nil;
 	if (fileType == HKFileTypeImage) {
-		NSData *data = [self data];
+		NSData *data = self.data;
 		if (data) {
 			if ([type isEqualToString:TKVTFType]) {
 				theImage = [[[TKImage alloc] initWithData:data firstRepresentationOnly:YES] autorelease];
 				if (theImage) {
-					[self setVersion:[(TKImage *)theImage version]];
-					[self setCompression:[(TKImage *)theImage compression]];
-					[self setHasMipmaps:([(TKImage *)theImage hasMipmaps] ? NSLocalizedString(@"Yes", @"") : NSLocalizedString(@"No", @""))];
-					[self setAlpha:([(TKImage *)theImage hasAlpha] ? NSLocalizedString(@"Yes", @"") : NSLocalizedString(@"No", @""))];
+					self.version = ((TKImage *)theImage).version;
+					self.compression = ((TKImage *)theImage).compression;
+					self.hasMipmaps = (((TKImage *)theImage).hasMipmaps ? NSLocalizedString(@"Yes", @"") : NSLocalizedString(@"No", @""));
+					self.hasAlpha = (((TKImage *)theImage).hasAlpha ? NSLocalizedString(@"Yes", @"") : NSLocalizedString(@"No", @""));
 				}
 			} else {
 				theImage = [[[NSImage alloc] initWithData:data] autorelease];
 			}
 		}
 		if (theImage) {
-			NSSize imageSize = [theImage size];
-			[self setDimensions:[NSString stringWithFormat:NSLocalizedString(@"%lu x %lu", @""), (NSUInteger)imageSize.width, (NSUInteger)imageSize.height]];
+			NSSize imageSize = theImage.size;
+			self.dimensions = [NSString stringWithFormat:NSLocalizedString(@"%lu x %lu", @""), (NSUInteger)imageSize.width, (NSUInteger)imageSize.height];
 		}
 	} else if (fileType == HKFileTypeOther ||
 			   fileType == HKFileTypeText ||
 			   fileType == HKFileTypeHTML ||
 			   fileType == HKFileTypeNotExtractable) {
 		theImage = [HKItem copiedImageForItem:self];
-		[theImage setSize:NSMakeSize(128.0, 128.0)];
+		theImage.size = NSMakeSize(128.0, 128.0);
 	}
 	return theImage;
 }
@@ -127,7 +127,7 @@
 - (QTMovie *)movie {
 	QTMovie *movie = nil;
 	if (fileType == HKFileTypeMovie) {
-		NSData *data = [self data];
+		NSData *data = self.data;
 		if (data) {
 			NSError *error = nil;
 			movie = [QTMovie movieWithData:data error:&error];

@@ -57,12 +57,12 @@ static HKArchiveFileTest HKArchiveFileTestTable[] = {
 #if HK_DEBUG
 	NSLog(@"[%@ %@] aData == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), aData);
 #endif
-	NSUInteger dataLength = [aData length];
+	NSUInteger dataLength = aData.length;
 	if (dataLength == 0) {
 		return HKArchiveFileNoType;
 	}
 	for (HKArchiveFileTest *packageTest = HKArchiveFileTestTable; packageTest->fileType != HKArchiveFileNoType; packageTest++) {
-		if (packageTest->testDataLength <= dataLength && memcmp([aData bytes], packageTest->testData, packageTest->testDataLength) == 0) {
+		if (packageTest->testDataLength <= dataLength && memcmp(aData.bytes, packageTest->testData, packageTest->testDataLength) == 0) {
 			return packageTest->fileType;
 		}
 	}
@@ -70,12 +70,12 @@ static HKArchiveFileTest HKArchiveFileTestTable[] = {
 }
 
 
-- (id)initWithContentsOfFile:(NSString *)aPath {
+- (instancetype)initWithContentsOfFile:(NSString *)aPath {
 //	return [self initWithContentsOfFile:aPath mode:HL_MODE_READ | HL_MODE_VOLATILE | HL_MODE_QUICK_FILEMAPPING showInvisibleItems:YES sortDescriptors:nil error:NULL];
 	return [self initWithContentsOfFile:aPath mode:HL_MODE_READ | HL_MODE_VOLATILE showInvisibleItems:YES sortDescriptors:nil error:NULL];
 }
 
-- (id)initWithContentsOfFile:(NSString *)aPath showInvisibleItems:(BOOL)showInvisibleItems sortDescriptors:(NSArray *)sortDescriptors  error:(NSError **)outError {
+- (instancetype)initWithContentsOfFile:(NSString *)aPath showInvisibleItems:(BOOL)showInvisibleItems sortDescriptors:(NSArray *)sortDescriptors  error:(NSError **)outError {
 #if HK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -84,7 +84,7 @@ static HKArchiveFileTest HKArchiveFileTestTable[] = {
 }
 
 
-- (id)initWithContentsOfFile:(NSString *)aPath mode:(HLFileMode)permission showInvisibleItems:(BOOL)showInvisibleItems sortDescriptors:(NSArray *)sortDescriptors error:(NSError **)outError {
+- (instancetype)initWithContentsOfFile:(NSString *)aPath mode:(HLFileMode)permission showInvisibleItems:(BOOL)showInvisibleItems sortDescriptors:(NSArray *)sortDescriptors error:(NSError **)outError {
 #if HK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -148,14 +148,14 @@ static HKArchiveFileTest HKArchiveFileTestTable[] = {
 		
 		[gatheredItems addObject:items];
 		
-		NSArray *childNodes = [items childNodes];
+		NSArray *childNodes = items.childNodes;
 		
 		for (HKItem *item in childNodes) {
 			
 			[gatheredItems addObject:item];
 			
-			if (![item isLeaf]) {
-				[gatheredItems addObjectsFromArray:[item descendants]];
+			if (!item.leaf) {
+				[gatheredItems addObjectsFromArray:item.descendants];
 			}
 		}
 		allItems = gatheredItems;
@@ -166,7 +166,7 @@ static HKArchiveFileTest HKArchiveFileTestTable[] = {
 		
 		haveGatheredAllItems = YES;
 		
-		NSLog(@"[%@ %@] ****** TIME to gather allItems == %.7f sec, gatheredItems count == %lu, allItems count == %lu", NSStringFromClass([self class]), NSStringFromSelector(_cmd), fabs([startDate timeIntervalSinceNow]), (unsigned long)[gatheredItems count], (unsigned long)[allItems count]);
+		NSLog(@"[%@ %@] ****** TIME to gather allItems == %.7f sec, gatheredItems count == %lu, allItems count == %lu", NSStringFromClass([self class]), NSStringFromSelector(_cmd), fabs(startDate.timeIntervalSinceNow), (unsigned long)gatheredItems.count, (unsigned long)allItems.count);
 		
 		[startDate release];
 		startDate = nil;

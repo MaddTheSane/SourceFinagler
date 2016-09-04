@@ -94,7 +94,7 @@ static inline NSString *NSStringFromInspectorViewAutosaveName(NSString *anAutosa
 		autosaveName = [encodedName retain];
 		
 //		[self setAutosaveName:encodedName];
-		[self setInitiallyShown:[[coder decodeObjectForKey:MDInspectorViewIsIntiallyExpandedKey] boolValue]];
+		self.initiallyShown = [[coder decodeObjectForKey:MDInspectorViewIsIntiallyExpandedKey] boolValue];
 		
 //		hiddenHeight = 1.0;
 	}
@@ -278,7 +278,7 @@ static inline NSString *NSStringFromInspectorViewAutosaveName(NSString *anAutosa
 #if MD_DEBUG
 	NSLog(@"\"%@\" [%@ %@]", autosaveName, NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	[self setShown:!isShown];
+	self.shown = !isShown;
 	
 }
 
@@ -636,8 +636,4 @@ static inline NSString *NSStringFromInspectorViewAutosaveName(NSString *anAutosa
 //	return [self setAutosaveName:anIdentifier];
 //}
 
-
-
 @end
-
-

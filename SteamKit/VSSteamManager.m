@@ -74,7 +74,7 @@ static NSString * const VSSourceAddonSteamAppIDKey					= @"addonSteamAppID";
 static inline NSDictionary *VSMakeLaunchAgentPlist(NSString *jobLabel, NSArray *programArguments, NSString *aWatchPath);
 
 static inline NSString *VSMakeGamePathKey(NSString *gamePath) {
-	return [gamePath lowercaseString];
+	return gamePath.lowercaseString;
 }
 
 
@@ -119,7 +119,7 @@ static VSSteamManager *sharedManager = nil;
 }
 
 
-- (id)init {
+- (instancetype)init {
 #if VS_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -130,8 +130,8 @@ static VSSteamManager *sharedManager = nil;
 		NSString *gamesPlist = [[NSBundle bundleForClass:[self class]] pathForResource:@"com.valvesoftware.games" ofType:@"plist"];
 		if (gamesPlist) {
 			NSDictionary *gamesDic = [NSDictionary dictionaryWithContentsOfFile:gamesPlist];
-			gameBundleIdentifiersAndGames = [[gamesDic objectForKey:VSGameBundleIdentifiersAndGamesKey] retain];
-			executableNames = [[gamesDic objectForKey:VSExecutableNamesKey] retain];
+			gameBundleIdentifiersAndGames = [gamesDic[VSGameBundleIdentifiersAndGamesKey] retain];
+			executableNames = [gamesDic[VSExecutableNamesKey] retain];
 			
 		}
 		
@@ -139,9 +139,9 @@ static VSSteamManager *sharedManager = nil;
 		
 		sourceFinaglerLaunchAgentStatus = VSSourceFinaglerLaunchAgentStatusUnknown;
 		
-		[[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self selector:@selector(applicationWillLaunch:) name:NSWorkspaceWillLaunchApplicationNotification object:nil];
-		[[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self selector:@selector(applicationDidLaunch:) name:NSWorkspaceDidLaunchApplicationNotification object:nil];
-		[[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self selector:@selector(applicationDidTerminate:) name:NSWorkspaceDidTerminateApplicationNotification object:nil];
+		[[NSWorkspace sharedWorkspace].notificationCenter addObserver:self selector:@selector(applicationWillLaunch:) name:NSWorkspaceWillLaunchApplicationNotification object:nil];
+		[[NSWorkspace sharedWorkspace].notificationCenter addObserver:self selector:@selector(applicationDidLaunch:) name:NSWorkspaceDidLaunchApplicationNotification object:nil];
+		[[NSWorkspace sharedWorkspace].notificationCenter addObserver:self selector:@selector(applicationDidTerminate:) name:NSWorkspaceDidTerminateApplicationNotification object:nil];
 	}
 	return self;
 }
@@ -167,11 +167,11 @@ static VSSteamManager *sharedManager = nil;
 #if VS_DEBUG
 	NSLog(@"[%@ %@] userInfo == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), [notification userInfo]);
 #endif
-	NSRunningApplication *runningApp = [[notification userInfo] objectForKey: NSWorkspaceApplicationKey];
-	NSString *appPath = [[(runningApp.bundleURL ?: runningApp.executableURL) path] stringByResolvingSymlinksInPath];
+	NSRunningApplication *runningApp = notification.userInfo[NSWorkspaceApplicationKey];
+	NSString *appPath = (runningApp.bundleURL ?: runningApp.executableURL).path.stringByResolvingSymlinksInPath;
 	
-	if ([gamePathsAndGames objectForKey:VSMakeGamePathKey(appPath)] != nil ||
-		[executableNames containsObject:[VSMakeGamePathKey(appPath) lastPathComponent]]) {
+	if (gamePathsAndGames[VSMakeGamePathKey(appPath)] != nil ||
+		[executableNames containsObject:VSMakeGamePathKey(appPath).lastPathComponent]) {
 		
 		[self locateSteamApps];
 	}
@@ -179,7 +179,7 @@ static VSSteamManager *sharedManager = nil;
 	@synchronized(self) {
 		if (monitoringGames == NO) return;
 		
-		VSGame *game = [gamePathsAndGames objectForKey:VSMakeGamePathKey(appPath)];
+		VSGame *game = gamePathsAndGames[VSMakeGamePathKey(appPath)];
 		if (game == nil) return;
 		
 		VSGameLaunchOptions options = [self persistentOptionsForGame:game];
@@ -187,7 +187,7 @@ static VSSteamManager *sharedManager = nil;
 		if (options == VSGameLaunchNoOptions) options = defaultPersistentOptions;
 		
 		
-		if (options & VSGameLaunchHelpingGame && ![game isHelped]) {
+		if (options & VSGameLaunchHelpingGame && !game.helped) {
 			NSError *outError = nil;
 			if (![self helpGame:game forUSBOverdrive:YES updateLaunchAgent:NO error:&outError]) {
 				NSLog(@"[%@ %@] failed to help game!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -201,11 +201,11 @@ static VSSteamManager *sharedManager = nil;
 #if VS_DEBUG
 	NSLog(@"[%@ %@] userInfo == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), [notification userInfo]);
 #endif
-	NSRunningApplication *runningApp = [[notification userInfo] objectForKey: NSWorkspaceApplicationKey];
-	NSString *appPath = [[(runningApp.bundleURL ?: runningApp.executableURL) path] stringByResolvingSymlinksInPath];
+	NSRunningApplication *runningApp = notification.userInfo[NSWorkspaceApplicationKey];
+	NSString *appPath = (runningApp.bundleURL ?: runningApp.executableURL).path.stringByResolvingSymlinksInPath;
 
-	if ([gamePathsAndGames objectForKey:VSMakeGamePathKey(appPath)] != nil ||
-		[executableNames containsObject:[VSMakeGamePathKey(appPath) lastPathComponent]]) {
+	if (gamePathsAndGames[VSMakeGamePathKey(appPath)] != nil ||
+		[executableNames containsObject:VSMakeGamePathKey(appPath).lastPathComponent]) {
 		
 		[self locateSteamApps];
 	}
@@ -216,11 +216,11 @@ static VSSteamManager *sharedManager = nil;
 #if VS_DEBUG
 //	NSLog(@"[%@ %@] userInfo == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), [notification userInfo]);
 #endif
-	NSRunningApplication *runningApp = [[notification userInfo] objectForKey: NSWorkspaceApplicationKey];
-	NSString *appPath = [[(runningApp.bundleURL ?: runningApp.executableURL) path] stringByResolvingSymlinksInPath];
+	NSRunningApplication *runningApp = notification.userInfo[NSWorkspaceApplicationKey];
+	NSString *appPath = (runningApp.bundleURL ?: runningApp.executableURL).path.stringByResolvingSymlinksInPath;
 	
-	if ([gamePathsAndGames objectForKey:VSMakeGamePathKey(appPath)] != nil ||
-		[executableNames containsObject:[VSMakeGamePathKey(appPath) lastPathComponent]]) {
+	if (gamePathsAndGames[VSMakeGamePathKey(appPath)] != nil ||
+		[executableNames containsObject:VSMakeGamePathKey(appPath).lastPathComponent]) {
 		
 		[self locateSteamApps];
 	}
@@ -297,7 +297,7 @@ static NSUInteger locateSteamAppsCount = 0;
 			// exists and is symlink
 			steamAppsRelocationType = VSSteamAppsSymlinkRelocation;
 			
-			steamAppsPath = [defaultSteamAppsPath stringByResolvingSymlinksInPath];
+			steamAppsPath = defaultSteamAppsPath.stringByResolvingSymlinksInPath;
 			
 			if ([steamAppsPath isEqualToString:defaultSteamAppsPath]) {
 				// broken symlink
@@ -373,16 +373,16 @@ static NSUInteger locateSteamAppsCount = 0;
 					
 						NSString *fullGamePath = [gameFolderFullPath stringByAppendingPathComponent:rootItemName];
 						
-						VSGame *game = [gamePathsAndGames objectForKey:VSMakeGamePathKey(fullGamePath)];
+						VSGame *game = gamePathsAndGames[VSMakeGamePathKey(fullGamePath)];
 						
 						if (game) {
 							[game synchronizeHelped];
 							continue;
 						}
-						NSArray *appInfos = [gameBundleIdentifiersAndGames allValues];
+						NSArray *appInfos = gameBundleIdentifiersAndGames.allValues;
 						
 						for (NSDictionary *appInfo in appInfos) {
-							if ([[appInfo objectForKey:VSGameNameKey] isEqualToString:gameFolderName]) {
+							if ([appInfo[VSGameNameKey] isEqualToString:gameFolderName]) {
 								VSGame *game = [VSGame gameWithPath:fullGamePath infoPlist:appInfo];
 								if (game) [uniqueNewGames addObject:game];
 							}
@@ -396,29 +396,29 @@ static NSUInteger locateSteamAppsCount = 0;
 		
 		
 		for (VSGame *newGame in uniqueNewGames) {
-			[gamePathsAndGames setObject:newGame forKey:VSMakeGamePathKey([newGame executablePath])];
+			gamePathsAndGames[VSMakeGamePathKey(newGame.executablePath)] = newGame;
 		}
 		
 		
 		NSMutableArray *foundRunningGames = [NSMutableArray array];
 		
-		NSArray *installedGamePaths = [gamePathsAndGames allKeys];
+		NSArray *installedGamePaths = gamePathsAndGames.allKeys;
 		
-		NSArray *launchedApps = [[NSWorkspace sharedWorkspace] runningApplications];
+		NSArray *launchedApps = [NSWorkspace sharedWorkspace].runningApplications;
 		
 		for (NSRunningApplication *launchedApp in launchedApps) {
-			NSString *gamePath = [[(launchedApp.bundleURL ?: launchedApp.executableURL) path] stringByResolvingSymlinksInPath];
+			NSString *gamePath = (launchedApp.bundleURL ?: launchedApp.executableURL).path.stringByResolvingSymlinksInPath;
 			
 			if ([installedGamePaths containsObject:VSMakeGamePathKey(gamePath)]) {
-				VSGame *game = [gamePathsAndGames objectForKey:VSMakeGamePathKey(gamePath)];
-				[game setProcessIdentifier:launchedApp.processIdentifier];
-				[foundRunningGames addObject:[gamePathsAndGames objectForKey:VSMakeGamePathKey(gamePath)]];
+				VSGame *game = gamePathsAndGames[VSMakeGamePathKey(gamePath)];
+				game.processIdentifier = launchedApp.processIdentifier;
+				[foundRunningGames addObject:gamePathsAndGames[VSMakeGamePathKey(gamePath)]];
 			}
 		}
 		
-		NSMutableArray *previousRunningGames = [[[runningGamePathsAndGames allValues] mutableCopy] autorelease];
+		NSMutableArray *previousRunningGames = [[runningGamePathsAndGames.allValues mutableCopy] autorelease];
 		
-		NSArray *allGames = [gamePathsAndGames allValues];
+		NSArray *allGames = gamePathsAndGames.allValues;
 		
 		for (VSGame *game in allGames) {
 			BOOL presentInBefore = [previousRunningGames containsObject:game];
@@ -428,7 +428,7 @@ static NSUInteger locateSteamAppsCount = 0;
 				// terminated
 				
 				[game setRunning:NO];
-				[game setProcessIdentifier:-1];
+				game.processIdentifier = -1;
 				[runningGamePathsAndGames removeObjectsForKeys:[runningGamePathsAndGames allKeysForObject:game]];
 				if (delegate && [delegate respondsToSelector:@selector(gameDidTerminate:)]) {
 					[delegate gameDidTerminate:game];
@@ -439,7 +439,7 @@ static NSUInteger locateSteamAppsCount = 0;
 				
 				[game setRunning:YES];
 				
-				[runningGamePathsAndGames setObject:game forKey:VSMakeGamePathKey([game executablePath])];
+				runningGamePathsAndGames[VSMakeGamePathKey(game.executablePath)] = game;
 				if (delegate && [delegate respondsToSelector:@selector(gameDidLaunch:)]) {
 					[delegate gameDidLaunch:game];
 				}
@@ -454,8 +454,8 @@ static NSUInteger locateSteamAppsCount = 0;
 			sourceFinaglerLaunchAgentStatus = VSSourceFinaglerLaunchAgentInstalled;
 			sourceFinaglerLaunchAgentPath = [sourceFinaglerAgentPath retain];
 			
-			NSString *sourcePath = [[NSBundle bundleForClass:[self class]] pathForResource:[VSSourceFinaglerAgentNameKey stringByDeletingPathExtension]	ofType:@"app"];
-			if (sourcePath == nil) sourcePath = [[NSBundle mainBundle] pathForResource:[VSSourceFinaglerAgentNameKey stringByDeletingPathExtension]	ofType:@"app"];
+			NSString *sourcePath = [[NSBundle bundleForClass:[self class]] pathForResource:VSSourceFinaglerAgentNameKey.stringByDeletingPathExtension	ofType:@"app"];
+			if (sourcePath == nil) sourcePath = [[NSBundle mainBundle] pathForResource:VSSourceFinaglerAgentNameKey.stringByDeletingPathExtension	ofType:@"app"];
 			if (sourcePath == nil) {
 				if ([[[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString *)kCFBundleIdentifierKey] isEqualToString:VSSourceFinaglerBundleIdentifierKey]) {
 					NSLog(@"[%@ %@] couldn't locate %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), VSSourceFinaglerAgentNameKey);
@@ -468,8 +468,8 @@ static NSUInteger locateSteamAppsCount = 0;
 					NSBundle *installedBundle = [NSBundle bundleWithPath:sourceFinaglerLaunchAgentPath];
 					if (installedBundle) {
 						NSString *installedVersionString = [installedBundle objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey];
-						NSInteger sourceVersion = [sourceVersionString integerValue];
-						NSInteger installedVersion = [installedVersionString integerValue];
+						NSInteger sourceVersion = sourceVersionString.integerValue;
+						NSInteger installedVersion = installedVersionString.integerValue;
 						
 						if (sourceVersion > installedVersion) {
 							sourceFinaglerLaunchAgentStatus = VSSourceFinaglerLaunchAgentUpdateNeeded;
@@ -482,7 +482,7 @@ static NSUInteger locateSteamAppsCount = 0;
 		}
 		
 		
-		timeToLocateSteamApps = fabs([startTime timeIntervalSinceNow]);
+		timeToLocateSteamApps = fabs(startTime.timeIntervalSinceNow);
 #if VS_DEBUG
 		NSLog(@"[%@ %@] timeToLocateSteamApps == %.7f sec (%.4f ms)", NSStringFromClass([self class]), NSStringFromSelector(_cmd), timeToLocateSteamApps, timeToLocateSteamApps * 1000.0);
 #endif
@@ -519,7 +519,7 @@ static NSUInteger locateSteamAppsCount = 0;
 	
 	itemExists = [fileManager fileExistsAtPath:proposedPath];
 	isSteamAppsFolder = [fileManager fileExistsAtPath:proposedPath isDirectory:&isDir] && isDir &&
-						[[proposedPath lastPathComponent] isEqualToString:VSSteamAppsDirectoryNameKey];
+						[proposedPath.lastPathComponent isEqualToString:VSSteamAppsDirectoryNameKey];
 	
 	if (steamAppsPath) {
 		isOriginalFolder = [proposedPath isEqualToString:steamAppsPath];
@@ -571,13 +571,13 @@ static NSUInteger locateSteamAppsCount = 0;
 	
 	if ([[attributes fileType] isEqualToString:NSFileTypeSymbolicLink]) {
 		// item is a broken symbolic link
-		if (![fileManager moveItemAtPath:defaultSteamAppsPath toPath:[[defaultSteamAppsPath stringByAppendingString:@" (Original)"] stringByAssuringUniqueFilename] error:&localError]) {
+		if (![fileManager moveItemAtPath:defaultSteamAppsPath toPath:[defaultSteamAppsPath stringByAppendingString:@" (Original)"].stringByAssuringUniqueFilename error:&localError]) {
 			NSLog(@"[%@ %@] error == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), localError);
 			if (outError) *outError = localError;
 		}
 	} else {
 		if ([fileManager fileExistsAtPath:defaultSteamAppsPath]) {
-			if (![fileManager moveItemAtPath:defaultSteamAppsPath toPath:[[defaultSteamAppsPath stringByAppendingString:@" (Original)"] stringByAssuringUniqueFilename] error:&localError]) {
+			if (![fileManager moveItemAtPath:defaultSteamAppsPath toPath:[defaultSteamAppsPath stringByAppendingString:@" (Original)"].stringByAssuringUniqueFilename error:&localError]) {
 				NSLog(@"[%@ %@] error == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), localError);
 				if (outError) *outError = localError;
 			}
@@ -634,7 +634,7 @@ static NSUInteger locateSteamAppsCount = 0;
 	VSGameLaunchOptions launchOptions = VSGameLaunchNoOptions;
 	
 	@synchronized(self) {
-		NSString *bundleIdentifier = [[game infoDictionary] objectForKey:(NSString *)kCFBundleIdentifierKey];
+		NSString *bundleIdentifier = game.infoDictionary[(NSString *)kCFBundleIdentifierKey];
 		if (bundleIdentifier == nil) return VSGameLaunchNoOptions;
 		
 		launchOptions = [[[NSUserDefaults standardUserDefaults] objectForKey:bundleIdentifier] unsignedIntegerValue];
@@ -675,13 +675,13 @@ static inline NSString *VSMakeLabelFromBundleIdentifier(NSString *bundleIdentifi
 	
 	@synchronized(self) {
 		
-		NSString *bundleIdentifier = [[game infoDictionary] objectForKey:(NSString *)kCFBundleIdentifierKey];
+		NSString *bundleIdentifier = game.infoDictionary[(NSString *)kCFBundleIdentifierKey];
 		if (bundleIdentifier == nil) {
 			NSLog(@"[%@ %@] *** NOTICE: game.infoDictionary.kCFBundleIdentifierKey == nil!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 			return NO;
 		}
 		
-		[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithUnsignedInteger:options] forKey:bundleIdentifier];
+		[[NSUserDefaults standardUserDefaults] setInteger:options forKey:bundleIdentifier];
 		
 		if (options & VSGameLaunchHelpingGame || options == VSGameLaunchNoOptions) {
 			NSString *jobLabel = VSMakeLabelFromBundleIdentifier(bundleIdentifier);
@@ -704,14 +704,14 @@ static inline NSString *VSMakeLabelFromBundleIdentifier(NSString *bundleIdentifi
 					return NO;
 				}
 				
-				NSString *launchAgentExecutablePath = [sourceFinaglerAgentBundle executablePath];
+				NSString *launchAgentExecutablePath = sourceFinaglerAgentBundle.executablePath;
 				if (launchAgentExecutablePath == nil) {
 					NSLog(@"[%@ %@] *** ERROR: [sourceFinaglerAgentBundle executablePath] returned nil!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 					return NO;
 				}
 				
 				
-				NSDictionary *launchPlist = VSMakeLaunchAgentPlist(jobLabel, [NSArray arrayWithObjects:launchAgentExecutablePath, [game executablePath], nil], [game executablePath]);
+				NSDictionary *launchPlist = VSMakeLaunchAgentPlist(jobLabel, @[launchAgentExecutablePath, game.executablePath], game.executablePath);
 				if (launchPlist == nil) {
 					NSLog(@"[%@ %@] *** ERROR: VSMakeLaunchAgentPlist() returned nil!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 					return NO;
@@ -754,8 +754,8 @@ static inline NSString *VSMakeLabelFromBundleIdentifier(NSString *bundleIdentifi
 		// To minimize the amount of hard-coding of paths that we do, we (obviously) define the names of items above as constants,
 		// and use NSBundle to handle obtaining the paths at runtime.
 		
-		NSString *sourcePath = [[NSBundle bundleForClass:[self class]] pathForResource:[VSSourceFinaglerAgentNameKey stringByDeletingPathExtension]	ofType:@"app"];
-		if (sourcePath == nil) sourcePath = [[NSBundle mainBundle] pathForResource:[VSSourceFinaglerAgentNameKey stringByDeletingPathExtension]	ofType:@"app"];
+		NSString *sourcePath = [[NSBundle bundleForClass:[self class]] pathForResource:VSSourceFinaglerAgentNameKey.stringByDeletingPathExtension	ofType:@"app"];
+		if (sourcePath == nil) sourcePath = [[NSBundle mainBundle] pathForResource:VSSourceFinaglerAgentNameKey.stringByDeletingPathExtension	ofType:@"app"];
 		if (sourcePath == nil) {
 			NSLog(@"[%@ %@] couldn't locate %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), VSSourceFinaglerAgentNameKey);
 			return NO;
@@ -782,15 +782,15 @@ static inline NSString *VSMakeLabelFromBundleIdentifier(NSString *bundleIdentifi
 			return NO;
 		}
 		
-		NSArray *allGames = [gamePathsAndGames allValues];
+		NSArray *allGames = gamePathsAndGames.allValues;
 		
 		NSBundle *sourceFinaglerAgentBundle = [NSBundle bundleWithPath:sourceFinaglerAgentPath];
-		NSString *launchAgentExecutablePath = [sourceFinaglerAgentBundle executablePath];
+		NSString *launchAgentExecutablePath = sourceFinaglerAgentBundle.executablePath;
 		
 		for (VSGame *game in allGames) {
-			if (![game isHelped]) continue;
+			if (!game.helped) continue;
 			
-			NSString *bundleIdentifier = [[game infoDictionary] objectForKey:(NSString *)kCFBundleIdentifierKey];
+			NSString *bundleIdentifier = game.infoDictionary[(NSString *)kCFBundleIdentifierKey];
 			if (bundleIdentifier == nil) continue;
 			
 			NSString *jobLabel = VSMakeLabelFromBundleIdentifier(bundleIdentifier);
@@ -805,7 +805,7 @@ static inline NSString *VSMakeLabelFromBundleIdentifier(NSString *bundleIdentifi
 			}
 			
 			if (launchAgentExecutablePath) {
-				NSDictionary *launchPlist = VSMakeLaunchAgentPlist(jobLabel, [NSArray arrayWithObjects:launchAgentExecutablePath, [game executablePath], nil], [game executablePath]);
+				NSDictionary *launchPlist = VSMakeLaunchAgentPlist(jobLabel, @[launchAgentExecutablePath, game.executablePath], game.executablePath);
 				if (launchPlist == nil) return NO;
 				if (![launchManager submitJobWithDictionary:launchPlist inDomain:MDLaunchUserDomain error:outError]) {
 					NSLog(@"[%@ %@] failed to submit job!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -822,11 +822,11 @@ static inline NSString *VSMakeLabelFromBundleIdentifier(NSString *bundleIdentifi
 
 static inline NSDictionary *VSMakeLaunchAgentPlist(NSString *jobLabel, NSArray *programArguments, NSString *aWatchPath) {
 	if (jobLabel == nil || programArguments == nil || aWatchPath == nil) return nil;
-	return [NSDictionary dictionaryWithObjectsAndKeys:jobLabel,NSStringFromLaunchJobKey(LAUNCH_JOBKEY_LABEL),
-			programArguments, NSStringFromLaunchJobKey(LAUNCH_JOBKEY_PROGRAMARGUMENTS),
-			[NSNumber numberWithBool:NO], NSStringFromLaunchJobKey(LAUNCH_JOBKEY_RUNATLOAD), 
-			[NSNumber numberWithInteger:VS_SOURCE_FINAGLER_AGENT_THROTTLE_INTERVAL], NSStringFromLaunchJobKey(LAUNCH_JOBKEY_THROTTLEINTERVAL),
-			[NSArray arrayWithObject:aWatchPath], NSStringFromLaunchJobKey(LAUNCH_JOBKEY_WATCHPATHS), nil];
+	return @{NSStringFromLaunchJobKey(LAUNCH_JOBKEY_LABEL): jobLabel,
+			NSStringFromLaunchJobKey(LAUNCH_JOBKEY_PROGRAMARGUMENTS): programArguments,
+			NSStringFromLaunchJobKey(LAUNCH_JOBKEY_RUNATLOAD): @NO, 
+			NSStringFromLaunchJobKey(LAUNCH_JOBKEY_THROTTLEINTERVAL): @VS_SOURCE_FINAGLER_AGENT_THROTTLE_INTERVAL,
+			NSStringFromLaunchJobKey(LAUNCH_JOBKEY_WATCHPATHS): @[aWatchPath]};
 }
 
 
@@ -861,7 +861,7 @@ static inline NSDictionary *VSMakeLaunchAgentPlist(NSString *jobLabel, NSArray *
 		
 		MDLaunchManager *launchManager = [MDLaunchManager defaultManager];
 		
-		NSArray *gameBundleIdentifiers = [gameBundleIdentifiersAndGames allKeys];
+		NSArray *gameBundleIdentifiers = gameBundleIdentifiersAndGames.allKeys;
 		
 		for (NSString *bundleIdentifier in gameBundleIdentifiers) {
 			NSString *jobLabel = VSMakeLabelFromBundleIdentifier(bundleIdentifier);
@@ -880,7 +880,7 @@ static inline NSDictionary *VSMakeLaunchAgentPlist(NSString *jobLabel, NSArray *
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	if (!locatedSteamApps) [self locateSteamApps];
-	return [gamePathsAndGames objectForKey:VSMakeGamePathKey(aPath)];
+	return gamePathsAndGames[VSMakeGamePathKey(aPath)];
 }
 
 - (NSArray *)games {
@@ -888,7 +888,7 @@ static inline NSDictionary *VSMakeLaunchAgentPlist(NSString *jobLabel, NSArray *
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	if (!locatedSteamApps) [self locateSteamApps];
-	return [[[gamePathsAndGames allValues] copy] autorelease];
+	return [[gamePathsAndGames.allValues copy] autorelease];
 }
 
 
@@ -897,7 +897,7 @@ static inline NSDictionary *VSMakeLaunchAgentPlist(NSString *jobLabel, NSArray *
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	if (!locatedSteamApps) [self locateSteamApps];
-	return [[[runningGamePathsAndGames allValues] copy] autorelease];
+	return [[runningGamePathsAndGames.allValues copy] autorelease];
 }
 
 
@@ -909,19 +909,19 @@ static inline NSDictionary *VSMakeLaunchAgentPlist(NSString *jobLabel, NSArray *
 	BOOL success = YES;
 	if (outError) *outError = nil;
 	
-	NSString *path = [game executablePath];
+	NSString *path = game.executablePath;
 	
 	MDFileManager *mdFileManager = [[[MDFileManager alloc] init] autorelease];
 	
 	NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
 	
-	OSType creatorCode = [game creatorCode];
+	OSType creatorCode = game.creatorCode;
 	
-	NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithUnsignedInt:creatorCode],NSFileHFSCreatorCode,
-								[NSNumber numberWithUnsignedInt:'APPL'],NSFileHFSTypeCode,
-								[NSNumber numberWithBool:YES],MDFileHasCustomIcon, nil];
+	NSDictionary *attributes = @{NSFileHFSCreatorCode: @(creatorCode),
+								NSFileHFSTypeCode: @('APPL'),
+								MDFileHasCustomIcon: @YES};
 	
-	NSDictionary *infoPlist = [game infoDictionary];
+	NSDictionary *infoPlist = game.infoDictionary;
 	NSString *errorDescription = nil;
 	
 	NSData *propertyListData = [NSPropertyListSerialization dataFromPropertyList:infoPlist format:NSPropertyListXMLFormat_v1_0 errorDescription:&errorDescription];
@@ -947,7 +947,7 @@ static inline NSDictionary *VSMakeLaunchAgentPlist(NSString *jobLabel, NSArray *
 				
 				MDResourceFile *destFile = [[[MDResourceFile alloc] initForUpdatingWithContentsOfFile:path fork:MDResourceFork error:outError] autorelease];
 				
-				NSData *iconData = [NSData dataWithContentsOfFile:[game iconPath]];
+				NSData *iconData = [NSData dataWithContentsOfFile:game.iconPath];
 				
 //				if (destFile && iconData) {
 				if (destFile) {
@@ -984,7 +984,7 @@ static inline NSDictionary *VSMakeLaunchAgentPlist(NSString *jobLabel, NSArray *
 	
 	if (helpForUSBOverdrive) {
 		
-		NSString *executableName = [path lastPathComponent];
+		NSString *executableName = path.lastPathComponent;
 		
 		NSString *executableBundleName = nil;
 		
@@ -1000,7 +1000,7 @@ static inline NSDictionary *VSMakeLaunchAgentPlist(NSString *jobLabel, NSArray *
 		}
 		if (executableBundleName) executableBundleName = [executableBundleName stringByAppendingPathExtension:@"app"];
 		
-		NSString *destUSBPath = [[path stringByDeletingLastPathComponent] stringByAppendingPathComponent:executableBundleName];
+		NSString *destUSBPath = [path.stringByDeletingLastPathComponent stringByAppendingPathComponent:executableBundleName];
 		
 		BOOL isDir;
 		
@@ -1040,7 +1040,7 @@ static inline NSDictionary *VSMakeLaunchAgentPlist(NSString *jobLabel, NSArray *
 		}
 		}
 		
-		NSString *iconPath = [game iconPath];
+		NSString *iconPath = game.iconPath;
 		if ([fileManager fileExistsAtPath:iconPath isDirectory:&isDir] && !isDir) {
 			NSString *destIconPath = [[[destUSBPath stringByAppendingPathComponent:@"Contents"] stringByAppendingPathComponent:@"Resources"] stringByAppendingPathComponent:VSGameIconNameKey];
 			if ([fileManager fileExistsAtPath:destIconPath isDirectory:&isDir] && !isDir) {
@@ -1055,7 +1055,7 @@ static inline NSDictionary *VSMakeLaunchAgentPlist(NSString *jobLabel, NSArray *
 			}
 		}
 		
-		NSString *creatorCodeString = [infoPlist objectForKey:@"CFBundleSignature"];
+		NSString *creatorCodeString = infoPlist[@"CFBundleSignature"];
 		NSString *PkgInfoString = [@"APPL" stringByAppendingString:creatorCodeString];
 		if (![PkgInfoString writeToFile:[[destUSBPath stringByAppendingPathComponent:@"Contents"] stringByAppendingPathComponent:@"PkgInfo"] atomically:YES	encoding:NSUTF8StringEncoding error:outError]) {
 			NSLog(@"[%@ %@] failed to write PkgInfo file!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -1063,10 +1063,10 @@ static inline NSDictionary *VSMakeLaunchAgentPlist(NSString *jobLabel, NSArray *
 		}
 		
 		NSMutableDictionary *mInfoPlist = [[infoPlist mutableCopy] autorelease];
-		[mInfoPlist setObject:@"game" forKey:@"CFBundleIconFile"];
+		mInfoPlist[@"CFBundleIconFile"] = @"game";
 		
-		[mInfoPlist setObject:@"NSApplication" forKey:@"NSPrincipalClass"];
-		[mInfoPlist setObject:@"MainMenu" forKey:@"NSMainNibFile"];
+		mInfoPlist[@"NSPrincipalClass"] = @"NSApplication";
+		mInfoPlist[@"NSMainNibFile"] = @"MainMenu";
 		
 		
 		if (![mInfoPlist writeToFile:[[destUSBPath stringByAppendingPathComponent:@"Contents"] stringByAppendingPathComponent:@"Info.plist"] atomically:YES]) {
@@ -1074,7 +1074,7 @@ static inline NSDictionary *VSMakeLaunchAgentPlist(NSString *jobLabel, NSArray *
 			return NO;
 		}
 		
-		if (![fileManager setAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSDate date],NSFileModificationDate, nil] ofItemAtPath:destUSBPath error:outError]) {
+		if (![fileManager setAttributes:@{NSFileModificationDate: [NSDate date]} ofItemAtPath:destUSBPath error:outError]) {
 			NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 			return NO;
 		}
@@ -1104,15 +1104,15 @@ static inline NSDictionary *VSMakeLaunchAgentPlist(NSString *jobLabel, NSArray *
 	BOOL success = YES;
 	if (outError) *outError = nil;
 	
-	NSString *path = [game executablePath];
+	NSString *path = game.executablePath;
 	
 	MDFileManager *mdFileManager = [[[MDFileManager alloc] init] autorelease];
 	
 	NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
 	
-	NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithUnsignedInt:0],NSFileHFSCreatorCode,
-								[NSNumber numberWithUnsignedInt:0],NSFileHFSTypeCode,
-								[NSNumber numberWithBool:NO],MDFileHasCustomIcon, nil];
+	NSDictionary *attributes = @{NSFileHFSCreatorCode: @0,
+								NSFileHFSTypeCode: @0,
+								MDFileHasCustomIcon: @NO};
 	
 	MDResourceFile *resFile = [[[MDResourceFile alloc] initForUpdatingWithContentsOfFile:path fork:MDResourceFork error:outError] autorelease];
 	if (resFile == nil) return NO;
@@ -1135,7 +1135,7 @@ static inline NSDictionary *VSMakeLaunchAgentPlist(NSString *jobLabel, NSArray *
 		success = NO;
 	}
 	
-	NSString *executableName = [path lastPathComponent];
+	NSString *executableName = path.lastPathComponent;
 	
 	NSString *executableBundleName = nil;
 	
@@ -1151,7 +1151,7 @@ static inline NSDictionary *VSMakeLaunchAgentPlist(NSString *jobLabel, NSArray *
 	}
 	if (executableBundleName) executableBundleName = [executableBundleName stringByAppendingPathExtension:@"app"];
 	
-	NSString *bundledAppPath = [[path stringByDeletingLastPathComponent] stringByAppendingPathComponent:executableBundleName];
+	NSString *bundledAppPath = [path.stringByDeletingLastPathComponent stringByAppendingPathComponent:executableBundleName];
 	
 	@synchronized(self) {
 		if (sourceFinaglerLaunchAgentStatus == VSSourceFinaglerLaunchAgentInstalled) {
@@ -1174,11 +1174,11 @@ static inline NSDictionary *VSMakeLaunchAgentPlist(NSString *jobLabel, NSArray *
 	if (game == nil) return NO;
 	if (outError) *outError = nil;
 	
-	if (options & VSGameLaunchHelpingGame && ![game isHelped]) {
+	if (options & VSGameLaunchHelpingGame && !game.helped) {
 		if (![self helpGame:game forUSBOverdrive:YES updateLaunchAgent:NO error:outError]) return NO;
 	}
 	
-	NSURL *URL = [NSURL URLWithString:[VSSteamLaunchGameURL stringByAppendingFormat:@"%lu", (unsigned long)[game gameID]]];
+	NSURL *URL = [NSURL URLWithString:[VSSteamLaunchGameURL stringByAppendingFormat:@"%lu", (unsigned long)game.gameID]];
 	if (URL) {
 		if (![[NSWorkspace sharedWorkspace] openURL:URL]) {
 			NSLog(@"[%@ %@] openURL: failed for %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), URL);
@@ -1201,7 +1201,7 @@ static inline NSDictionary *VSMakeLaunchAgentPlist(NSString *jobLabel, NSArray *
 		return NO;
 	}
 	
-	if (![[[sourceFilePath pathExtension] lowercaseString] isEqualToString:@"vpk"]) {
+	if (![sourceFilePath.pathExtension.lowercaseString isEqualToString:@"vpk"]) {
 		if (resultingPath) *resultingPath = nil;
 		if (resultingGame) *resultingGame = nil;
 		if (outError) *outError = [NSError errorWithDomain:VSSourceAddonErrorDomain code:VSSourceAddonNotAValidAddonFileError userInfo:nil];
@@ -1231,7 +1231,7 @@ static inline NSDictionary *VSMakeLaunchAgentPlist(NSString *jobLabel, NSArray *
 #endif
 	
 	
-	if (addonInfoItem == nil || ![addonInfoItem isKindOfClass:[HKFile class]] || [addonInfoItem fileType] != HKFileTypeText) {
+	if (addonInfoItem == nil || ![addonInfoItem isKindOfClass:[HKFile class]] || addonInfoItem.fileType != HKFileTypeText) {
 		NSLog(@"[%@ %@] item at path (%@) does not appear to contain a valid addoninfo.txt file!", NSStringFromClass([self class]), NSStringFromSelector(_cmd), sourceFilePath);
 		if (outError) *outError = [NSError errorWithDomain:VSSourceAddonErrorDomain code:VSSourceAddonNoAddonInfoFoundError userInfo:nil];
 		return NO;
@@ -1271,7 +1271,7 @@ static inline NSDictionary *VSMakeLaunchAgentPlist(NSString *jobLabel, NSArray *
 	}
 	
 	
-	NSUInteger count = [revisedWords count];
+	NSUInteger count = revisedWords.count;
 	NSUInteger keyIndex = [revisedWords indexOfObject:VSSourceAddonSteamAppIDKey];
 	
 #if VS_DEBUG
@@ -1285,17 +1285,17 @@ static inline NSDictionary *VSMakeLaunchAgentPlist(NSString *jobLabel, NSArray *
 		return NO;
 	}
 	
-	NSString *addonSteamAppIDString = [revisedWords objectAtIndex:keyIndex + 1];
-	NSInteger addonSteamAppID = [addonSteamAppIDString integerValue];
+	NSString *addonSteamAppIDString = revisedWords[keyIndex + 1];
+	NSInteger addonSteamAppID = addonSteamAppIDString.integerValue;
 #if VS_DEBUG
 	NSLog(@"addonSteamAppIDString == %@, addonSteamAppID == %ld", addonSteamAppIDString, (long)addonSteamAppID);
 #endif
 	VSGame *game = nil;
 	
-	NSArray *allGames = [gamePathsAndGames allValues];
+	NSArray *allGames = gamePathsAndGames.allValues;
 	
 	for (VSGame *potentialGame in allGames) {
-		if ([potentialGame gameID] == addonSteamAppID) {
+		if (potentialGame.gameID == addonSteamAppID) {
 			game = potentialGame;
 			break;
 		}
@@ -1307,17 +1307,17 @@ static inline NSDictionary *VSMakeLaunchAgentPlist(NSString *jobLabel, NSArray *
 		
 		if (outError) *outError = [NSError errorWithDomain:VSSourceAddonErrorDomain
 													  code:VSSourceAddonGameNotFoundError
-												  userInfo:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:addonSteamAppID],VSSourceAddonGameIDKey, nil]];
+												  userInfo:@{VSSourceAddonGameIDKey: @(addonSteamAppID)}];
 		return NO;
 	}
-	NSString *addonsFolderPath = [game addonsFolderPath];
+	NSString *addonsFolderPath = game.addonsFolderPath;
 	if (addonsFolderPath == nil) {
 		NSLog(@"[%@ %@] addonsFolderPath is nil for %@ for (%@)!", NSStringFromClass([self class]), NSStringFromSelector(_cmd), game, sourceFilePath);
 		if (outError) *outError = [NSError errorWithDomain:VSSourceAddonErrorDomain code:VSSourceAddonGameNotFoundError userInfo:nil];
 		return NO;
 	}
 	
-	NSString *destPath = [addonsFolderPath stringByAppendingPathComponent:[sourceFilePath lastPathComponent]];
+	NSString *destPath = [addonsFolderPath stringByAppendingPathComponent:sourceFilePath.lastPathComponent];
 	
 	if ([destPath isEqualToString:sourceFilePath]) {
 		NSLog(@"[%@ %@] source and destination item are the same file; not overwriting!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -1331,11 +1331,11 @@ static inline NSDictionary *VSMakeLaunchAgentPlist(NSString *jobLabel, NSArray *
 		return NO;
 	}
 	
-	if (overwrite == NO && [currentAddonFilenames containsObject:[sourceFilePath lastPathComponent]]) {
-		NSLog(@"[%@ %@] addons folder already contains an item named '%@' && overwrite == NO; not copying item...", NSStringFromClass([self class]), NSStringFromSelector(_cmd), [sourceFilePath lastPathComponent]);
+	if (overwrite == NO && [currentAddonFilenames containsObject:sourceFilePath.lastPathComponent]) {
+		NSLog(@"[%@ %@] addons folder already contains an item named '%@' && overwrite == NO; not copying item...", NSStringFromClass([self class]), NSStringFromSelector(_cmd), sourceFilePath.lastPathComponent);
 		return NO;
 	}
-	if ([currentAddonFilenames containsObject:[sourceFilePath lastPathComponent]]) {
+	if ([currentAddonFilenames containsObject:sourceFilePath.lastPathComponent]) {
 		if (![fileManager removeItemAtPath:destPath error:outError]) {
 //			if (outError) *outError = [NSError errorWithDomain:VSSourceAddonErrorDomain code:VSSourceAddonSourceFileIsDestinationFileError userInfo:nil];
 			return NO;

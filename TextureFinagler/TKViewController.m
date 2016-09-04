@@ -71,7 +71,7 @@
 #endif
 	
 	if (self.viewSizeAutosaveName) {
-		NSString *existingSize = [[NSUserDefaults standardUserDefaults] objectForKey:[self viewControllerViewSizeAutosaveString]];
+		NSString *existingSize = [[NSUserDefaults standardUserDefaults] objectForKey:self.viewControllerViewSizeAutosaveString];
 		NSString *currentSize = NSStringFromSize(self.view.frame.size);
 		
 #if PC_DEBUG
@@ -79,12 +79,12 @@
 #endif
 
 		
-		[[NSUserDefaults standardUserDefaults] setObject:currentSize forKey:[self viewControllerViewSizeAutosaveString]];
+		[[NSUserDefaults standardUserDefaults] setObject:currentSize forKey:self.viewControllerViewSizeAutosaveString];
 		
-		NSString *newSavedSize = [[NSUserDefaults standardUserDefaults] objectForKey:[self viewControllerViewSizeAutosaveString]];
+		NSString *newSavedSize = [[NSUserDefaults standardUserDefaults] objectForKey:self.viewControllerViewSizeAutosaveString];
 		
 #if PC_DEBUG
-		NSLog(@"[%@ %@] ******* SAVING %@'s viewSize == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), [self viewSizeAutosaveName], newSavedSize);
+		NSLog(@"[%@ %@] ******* SAVING %@'s viewSize == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), self.viewSizeAutosaveName, newSavedSize);
 #endif
 
 	}
@@ -111,10 +111,10 @@
 	if (self.viewSizeAutosaveName) {
 //		NSString *key = [NSString stringWithFormat:@"TKViewController viewSize %@", [self viewSizeAutosaveName]];
 		
-		NSString *savedSize = [[NSUserDefaults standardUserDefaults] objectForKey:[self viewControllerViewSizeAutosaveString]];
+		NSString *savedSize = [[NSUserDefaults standardUserDefaults] objectForKey:self.viewControllerViewSizeAutosaveString];
 		
 		if (savedSize == nil) {
-			[[NSUserDefaults standardUserDefaults] setObject:NSStringFromSize(self.view.frame.size) forKey:[self viewControllerViewSizeAutosaveString]];
+			[[NSUserDefaults standardUserDefaults] setObject:NSStringFromSize(self.view.frame.size) forKey:self.viewControllerViewSizeAutosaveString];
 		}
 		
 //		if ([[NSUserDefaults standardUserDefaults] objectForKey:key] == nil) {
@@ -124,9 +124,9 @@
 #if PC_DEBUG
 //		NSLog(@"[%@ %@] self.view == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), self.view);
 		NSLog(@"[%@ %@] self.view.frame == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), NSStringFromRect(self.view.frame));
-		NSLog(@"[%@ %@] ******* RESTORING %@'s viewSize == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), [self viewSizeAutosaveName], [[NSUserDefaults standardUserDefaults] objectForKey:[self viewControllerViewSizeAutosaveString]]);
+		NSLog(@"[%@ %@] ******* RESTORING %@'s viewSize == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), self.viewSizeAutosaveName, [[NSUserDefaults standardUserDefaults] objectForKey:self.viewControllerViewSizeAutosaveString]);
 #endif
-		[self.view setFrameSize:NSSizeFromString([[NSUserDefaults standardUserDefaults] objectForKey:[self viewControllerViewSizeAutosaveString]])];
+		[self.view setFrameSize:NSSizeFromString([[NSUserDefaults standardUserDefaults] objectForKey:self.viewControllerViewSizeAutosaveString])];
 		
 //		[self.view setFrameSize:NSSizeFromString([[NSUserDefaults standardUserDefaults] objectForKey:key])];
 		

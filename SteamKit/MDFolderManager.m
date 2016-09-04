@@ -91,9 +91,9 @@ static MDFolderManager *sharedManager = nil;
 			if (err == noErr) {
 				path = [NSString stringWithFSRef:&folderRef];
 				if (path) {
-					NSString *folderName = [path lastPathComponent];
+					NSString *folderName = path.lastPathComponent;
 					
-					path = [[path stringByDeletingLastPathComponent] stringByAppendingPathComponent:[folderName stringByAppendingString:@" (Disabled)"]];
+					path = [path.stringByDeletingLastPathComponent stringByAppendingPathComponent:[folderName stringByAppendingString:@" (Disabled)"]];
 					
 					if ([fileManager fileExistsAtPath:path isDirectory:&isDir] && isDir) {
 						
@@ -105,16 +105,16 @@ static MDFolderManager *sharedManager = nil;
 						NSDictionary *attributes = nil;
 						
 						if (aDomain == MDLocalDomain) {
-							attributes = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithUnsignedLong:0775],NSFilePosixPermissions, [NSNumber numberWithUnsignedLong:0],NSFileOwnerAccountID, [NSNumber numberWithUnsignedLong:80],NSFileGroupOwnerAccountID, nil];							
+							attributes = @{NSFilePosixPermissions: @0775, NSFileOwnerAccountID: @0, NSFileGroupOwnerAccountID: @80};
 							
 						} else {
-							attributes = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithUnsignedLong:getuid()],NSFileOwnerAccountID, [NSNumber numberWithUnsignedLong:getgid()],NSFileGroupOwnerAccountID, nil];
+							attributes = @{NSFileOwnerAccountID: @(getuid()), NSFileGroupOwnerAccountID: @(getgid())};
 						}
 						
 						if (![fileManager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:attributes error:outError]) {
 							NSLog(@"[%@ %@] failed to createDirectoryAtPath: %@ attributes: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), path, attributes);
 							
-							attributes = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithUnsignedLong:0775],NSFilePosixPermissions, nil];							
+							attributes = @{NSFilePosixPermissions: @0775UL};							
 							
 							if (![fileManager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:attributes error:outError]) {
 								NSLog(@"[%@ %@] failed to createDirectoryAtPath: %@ attributes: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), path, attributes);
@@ -159,9 +159,9 @@ static MDFolderManager *sharedManager = nil;
 			size_t size = 0;
 			size = confstr(_CS_DARWIN_USER_CACHE_DIR, buffer, PATH_MAX + 1);
 			if (size > 0 && buffer != NULL) {
-				path = [NSString stringWithUTF8String:(const char *)buffer];
+				path = [[NSFileManager defaultManager] stringWithFileSystemRepresentation:(const char *)buffer length:strnlen((const char *)buffer, PATH_MAX)];
 				if (path) {
-					path = [path stringByStandardizingPath];
+					path = path.stringByStandardizingPath;
 					if ( !([fileManager fileExistsAtPath:path isDirectory:&isDir] && isDir)) {
 						path = nil;
 					}
@@ -257,7 +257,7 @@ static MDFolderManager *sharedManager = nil;
 		tempDirectory = [[initialTempDirectory stringByAppendingPathComponent:aName] stringByAppendingString:[NSString stringWithFormat:@".%u.noindex", getuid()]];
 		
 		if (flag) {
-			tempDirectory = [tempDirectory stringByAssuringUniqueFilename];
+			tempDirectory = tempDirectory.stringByAssuringUniqueFilename;
 				}
 		
 		if ( !([fileManager fileExistsAtPath:tempDirectory isDirectory:&isDir] && isDir) ) {
@@ -293,8 +293,4 @@ static MDFolderManager *sharedManager = nil;
 	return success;
 }
 
-
 @end
-
-
-

@@ -288,8 +288,4 @@ static MDQuickLookController *sharedQuickLookController = nil;
 	}
 }
 
-
 @end
-
-
-

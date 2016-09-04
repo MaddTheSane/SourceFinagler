@@ -19,8 +19,6 @@ using namespace HLLib;
 
 #define HK_LAZY_INIT 1
 
-
-
 @interface HKFolder (Private)
 - (void)populateChildrenIfNeeded;
 @end
@@ -28,8 +26,7 @@ using namespace HLLib;
 
 @implementation HKFolder
 
-
-- (id)initWithParent:(HKFolder *)aParent directoryFolder:(CDirectoryFolder *)aFolder showInvisibleItems:(BOOL)showInvisibles sortDescriptors:(NSArray *)aSortDescriptors container:(id)aContainer {
+- (instancetype)initWithParent:(HKFolder *)aParent directoryFolder:(CDirectoryFolder *)aFolder showInvisibleItems:(BOOL)showInvisibles sortDescriptors:(NSArray *)aSortDescriptors container:(id)aContainer {
 #if HK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -38,9 +35,9 @@ using namespace HLLib;
 		isLeaf = NO;
 		isExtractable = YES;
 		isVisible = YES;
-		size = [[NSNumber numberWithLongLong:-1] retain];
+		size = [@-1LL retain];
 		countOfVisibleChildNodes = NSNotFound;
-		[self setShowInvisibleItems:showInvisibles];
+		self.showInvisibleItems = showInvisibles;
 		
 #if !(HK_LAZY_INIT)
 		const hlChar *cName = static_cast<const CDirectoryFolder *>(_privateData)->GetName();
@@ -61,7 +58,7 @@ using namespace HLLib;
 #endif
 	if (name == nil) {
 		const hlChar *cName = static_cast<const CDirectoryFile *>(_privateData)->GetName();
-		if (cName) name = [[NSString stringWithCString:cName encoding:NSUTF8StringEncoding] retain];
+		if (cName) name = [@(cName) retain];
 	}
 	return name;
 }
@@ -70,7 +67,7 @@ using namespace HLLib;
 #if HK_DEBUG
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	if (nameExtension == nil) nameExtension = [[[self name] pathExtension] retain];
+	if (nameExtension == nil) nameExtension = [self.name.pathExtension retain];
 	return nameExtension;
 }
 
@@ -168,7 +165,7 @@ using namespace HLLib;
 	
 	[self populateChildrenIfNeeded];
 	
-	NSArray *pathComponents = [aPath pathComponents];
+	NSArray *pathComponents = aPath.pathComponents;
 	
 	NSMutableArray *revisedPathComponents = [NSMutableArray array];
 	
@@ -184,22 +181,22 @@ using namespace HLLib;
 	NSLog(@"[%@ %@] %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), description);
 #endif
 	
-	NSUInteger count = [revisedPathComponents count];
+	NSUInteger count = revisedPathComponents.count;
 	
 	if (count == 0) return nil;
 	
-	NSString *targetName = [revisedPathComponents objectAtIndex:0];
+	NSString *targetName = revisedPathComponents[0];
 	NSString *remainingPath = nil;
 	
 	if (count > 1) remainingPath = [NSString pathWithComponents:[revisedPathComponents subarrayWithRange:NSMakeRange(1, (count - 1))]];
 	
 	for (HKItem *child in childNodes) {
-		if ([[child name] isEqualToString:targetName]) {
+		if ([child.name isEqualToString:targetName]) {
 			if (remainingPath == nil) {
 				return child;
 			}
 			// if there's remaining path left, and the child isn't a folder, then bail
-			if ([child isLeaf]) return nil;
+			if (child.leaf) return nil;
 			
 			return [(HKFolder *)child descendantAtPath:remainingPath];
 		}
@@ -220,8 +217,8 @@ using namespace HLLib;
 	for (HKItem *node in childNodes) {
 		[descendants addObject:node];
 		
-		if (![node isLeaf]) {
-			[descendants addObjectsFromArray:[node descendants]];   // Recursive - will go down the chain to get all
+		if (!node.leaf) {
+			[descendants addObjectsFromArray:node.descendants];   // Recursive - will go down the chain to get all
 		}
 	}
 
@@ -239,8 +236,8 @@ using namespace HLLib;
 	
 	for (HKItem *node in visibleChildNodes) {
 		[visibleDescendants addObject:node];
-		if (![node isLeaf]) {
-			[visibleDescendants addObjectsFromArray:[node visibleDescendants]];	// Recursive - will go down the chain to get all
+		if (!node.leaf) {
+			[visibleDescendants addObjectsFromArray:node.visibleDescendants];	// Recursive - will go down the chain to get all
 		}
 	}
 	
@@ -254,12 +251,12 @@ using namespace HLLib;
 #endif
 	NSMutableDictionary *visibleDescendantsAndPaths = [[NSMutableDictionary alloc] init];
 	
-	NSArray *visibleDescendants = [self visibleDescendants];
+	NSArray *visibleDescendants = self.visibleDescendants;
 	
 	for (HKItem *item in visibleDescendants) {
 		NSString *itemPath = [item pathRelativeToItem:parentItem];
 		if (itemPath) {
-			[visibleDescendantsAndPaths setObject:item forKey:itemPath];
+			visibleDescendantsAndPaths[itemPath] = item;
 		}
 	}
 	return [visibleDescendantsAndPaths autorelease];

@@ -28,7 +28,7 @@ typedef NS_ENUM(NSUInteger, TKBrowserItemType) {
 + (NSArray<TKImageBrowserItem*> *)frameBrowserItemsWithImageRepsInArray:(NSArray<TKImageRep*> *)imageReps;
 + (instancetype)frameBrowserItemWithImageRep:(TKImageRep *)anImageRep;
 
-- (instancetype)initWithImageRep:(TKImageRep *)anImageRep type:(TKBrowserItemType)aType;
+- (instancetype)initWithImageRep:(TKImageRep *)anImageRep type:(TKBrowserItemType)aType NS_DESIGNATED_INITIALIZER;
 
 @property (nonatomic, retain) TKImageRep *imageRep;
 @property (nonatomic, assign) TKBrowserItemType type;

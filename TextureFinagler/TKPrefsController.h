@@ -9,10 +9,9 @@
 #import <Cocoa/Cocoa.h>
 
 
-enum {
+typedef NS_OPTIONS(NSUInteger, TKPrefsView) {
 	TKPrefsGeneralView	= 0
 };
-typedef NSUInteger TKPrefsView;
 
 
 
