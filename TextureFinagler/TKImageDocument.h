@@ -122,7 +122,7 @@ TEXTUREKIT_EXTERN NSString *TKImageIOLocalizedString(NSString *key);
 
 @property (retain) TKImage *image;
 
-@property (retain) NSString *dimensions;
+@property (copy) NSString *dimensions;
 
 @property (retain) TKImageExportPreset *exportPreset;
 

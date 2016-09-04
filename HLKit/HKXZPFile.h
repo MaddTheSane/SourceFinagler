@@ -9,9 +9,6 @@
 #import <HLKit/HKArchiveFile.h>
 
 
-@interface HKXZPFile : HKArchiveFile {
-	
-}
-
+@interface HKXZPFile : HKArchiveFile
 
 @end

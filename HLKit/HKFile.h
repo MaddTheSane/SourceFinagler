@@ -9,13 +9,7 @@
 #import <HLKit/HKItem.h>
 
 
-@interface HKFile : HKItem {
-
-@private
-	void *_privateData;
-	void *_fH;
-	void *_iS;
-}
+@interface HKFile : HKItem 
 
 // convenience
 - (BOOL)writeToFile:(NSString *)aPath assureUniqueFilename:(BOOL)assureUniqueFilename resultingPath:(NSString **)resultingPath error:(NSError **)outError;

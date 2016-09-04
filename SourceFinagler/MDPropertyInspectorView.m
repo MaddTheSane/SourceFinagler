@@ -22,9 +22,7 @@ static NSString * const MDIdentifierKey							= @"MDIdentifier";
 #define MD_DEBUG 1
 
 
-@interface MDPropertyInspectorView (MDPrivate)
-
-
+@interface MDPropertyInspectorView ()
 - (void)hideAndNotify:(BOOL)shouldNotify;
 - (void)showAndNotify:(BOOL)shouldNotify;
 
@@ -34,17 +32,23 @@ static NSString * const MDIdentifierKey							= @"MDIdentifier";
 @end
 
 
-
 @implementation MDPropertyInspectorView
-
-
 @synthesize titleButton;
 @synthesize disclosureButton;
 @synthesize delegate;
 @synthesize autosaveName;
-@synthesize isInitiallyShown;
+@synthesize initiallyShown=isInitiallyShown;
 @synthesize viewController;
 
+- (void)removeSubviews
+{
+	
+}
+
+- (void)restoreSubviews
+{
+	
+}
 
 
 static inline NSString *NSStringFromInspectorViewAutosaveName(NSString *anAutosaveName) {
@@ -96,7 +100,7 @@ static inline NSString *NSStringFromInspectorViewAutosaveName(NSString *anAutosa
 		
 		autosaveName = encodedName;
 		
-		self.isInitiallyShown = [[coder decodeObjectForKey:MDInspectorViewIsIntiallyExpandedKey] boolValue];
+		self.initiallyShown = [[coder decodeObjectForKey:MDInspectorViewIsIntiallyExpandedKey] boolValue];
 		
 //		hiddenHeight = 1.0;
 	}
@@ -307,7 +311,7 @@ static inline NSString *NSStringFromInspectorViewAutosaveName(NSString *anAutosa
 	for (NSUInteger	i = 0; i < windowSubviewCount; i++) {
 		
 		NSView *windowSubview = windowSubviews[i];
-		NSUInteger mask = windowSubview.autoresizingMask;
+		NSAutoresizingMaskOptions mask = windowSubview.autoresizingMask;
 		
 		[windowSubviewMasks addObject:@(mask)];
 		
@@ -348,7 +352,7 @@ static inline NSString *NSStringFromInspectorViewAutosaveName(NSString *anAutosa
 	
 	for (NSUInteger i = 0; i < ourSubviewCount; i++) {
 		NSView *ourSubview;
-		NSUInteger mask;
+		NSAutoresizingMaskOptions mask;
 		
 		ourSubview = ourSubviews[i];
 		mask = ourSubview.autoresizingMask;
@@ -398,7 +402,7 @@ static inline NSString *NSStringFromInspectorViewAutosaveName(NSString *anAutosa
 	count = ourSubviewMasks.count;
 	
 	for (NSUInteger i = 0; i < count; i++) {
-		((NSView *)ourSubviews[i]).autoresizingMask = [ourSubviewMasks[i] unsignedLongValue];
+		((NSView *)ourSubviews[i]).autoresizingMask = [ourSubviewMasks[i] unsignedIntegerValue];
 	}
 	
 }
@@ -440,11 +444,7 @@ static inline NSString *NSStringFromInspectorViewAutosaveName(NSString *anAutosa
 	}
 }
 
-
-
-
 #define MD_DRAWING_DEBUG 0
-
 
 - (void)drawRect:(NSRect)frame {
 	[super drawRect:frame];
@@ -455,13 +455,4 @@ static inline NSString *NSStringFromInspectorViewAutosaveName(NSString *anAutosa
 #endif
 }
 
-
-
-
 @end
-
-
-
-
-
-

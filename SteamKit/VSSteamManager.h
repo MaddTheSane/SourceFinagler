@@ -59,7 +59,7 @@ typedef NS_ENUM(NSUInteger, VSSourceFinaglerLaunchAgentStatus) {
 	NSMutableDictionary							*runningGamePathsAndGames;
 	
 	
-	id <VSSteamManagerDelegate>					delegate;						// non-retained
+	__unsafe_unretained id <VSSteamManagerDelegate> delegate;						// non-retained
 	
 	
 	VSSourceFinaglerLaunchAgentStatus			sourceFinaglerLaunchAgentStatus;
@@ -84,6 +84,7 @@ typedef NS_ENUM(NSUInteger, VSSourceFinaglerLaunchAgentStatus) {
 
 - (NSString *)defaultSteamAppsPath;
 
+@property (readonly, copy) NSString *defaultSteamAppsPath;
 @property (readonly, copy) NSString *steamAppsPath;
 
 @property (readonly) VSSteamAppsRelocationType steamAppsRelocationType;

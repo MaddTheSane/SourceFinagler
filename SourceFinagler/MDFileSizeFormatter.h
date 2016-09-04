@@ -28,7 +28,7 @@ typedef NS_ENUM(NSUInteger, MDFileSizeFormatterStyle) {
 	NSNumberFormatter				*numberFormatter;
 	NSNumberFormatter				*bytesFormatter;
 }
-- (instancetype)initWithUnitsType:(MDFileSizeFormatterUnitsType)aUnitsType style:(MDFileSizeFormatterStyle)aStyle NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithUnitsType:(MDFileSizeFormatterUnitsType)aUnitsType style:(MDFileSizeFormatterStyle)aStyle;
 
 @property MDFileSizeFormatterUnitsType unitsType;
 

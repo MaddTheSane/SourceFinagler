@@ -44,7 +44,7 @@ typedef NS_ENUM(NSInteger, MDDateFormatterStyle) {    // date and time format st
 	
 	
 }
-- (instancetype)initWithStyle:(MDDateFormatterStyle)aStyle isRelative:(BOOL)value NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithStyle:(MDDateFormatterStyle)aStyle isRelative:(BOOL)value;
 
 @property  MDDateFormatterStyle style;
 

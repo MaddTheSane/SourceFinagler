@@ -60,22 +60,22 @@ HLKIT_EXTERN NSString * const HKSystemErrorMessageKey;
 
 - (BOOL)writeToFile:(NSString *)aPath assureUniqueFilename:(BOOL)assureUniqueFilename resultingPath:(NSString **)resultingPath error:(NSError **)outError;
 
-@property (nonatomic, retain) NSString *name;
-@property (nonatomic, retain) NSString *nameExtension;
-@property (nonatomic, retain) NSString *kind;
-@property (nonatomic, retain) NSNumber *size;
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *nameExtension;
+@property (nonatomic, copy) NSString *kind;
+@property (nonatomic, copy) NSNumber *size;
 
-@property (nonatomic, retain) NSString *path;
+@property (nonatomic, copy) NSString *path;
 
-@property (nonatomic, retain) NSString *type;
-@property (nonatomic, retain) NSString *dimensions;
-@property (nonatomic, retain) NSString *version;
-@property (nonatomic, retain) NSString *compression;
-@property (nonatomic, retain, setter=setAlpha:) NSString *hasAlpha;
-@property (nonatomic, retain) NSString *hasMipmaps;
+@property (nonatomic, copy) NSString *type;
+@property (nonatomic, copy) NSString *dimensions;
+@property (nonatomic, copy) NSString *version;
+@property (nonatomic, copy) NSString *compression;
+@property (nonatomic, copy, setter=setAlpha:) NSString *hasAlpha;
+@property (nonatomic, copy) NSString *hasMipmaps;
 
-@property (nonatomic, assign, setter=setExtractable:) BOOL isExtractable;
-@property (nonatomic, assign, setter=setEncrypted:) BOOL isEncrypted;
+@property (nonatomic, assign, getter=isExtractable) BOOL extractable;
+@property (nonatomic, assign, getter=isEncrypted) BOOL encrypted;
 @property (nonatomic, assign) HKFileType fileType;
 
 

@@ -35,10 +35,10 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <size key="minSize" width="734" height="418"/>
-                                    <size key="maxSize" width="734" height="10000000"/>
+                                    <size key="maxSize" width="736" height="10000000"/>
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <size key="minSize" width="734" height="418"/>
-                                    <size key="maxSize" width="734" height="10000000"/>
+                                    <size key="maxSize" width="736" height="10000000"/>
                                     <connections>
                                         <binding destination="-2" name="attributedString" keyPath="materialString" id="100027"/>
                                     </connections>
@@ -61,6 +61,6 @@
                 <outlet property="delegate" destination="-2" id="17"/>
             </connections>
         </window>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
     </objects>
 </document>

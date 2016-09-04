@@ -197,7 +197,7 @@ TEXTUREKIT_EXTERN NSString * const TKImageRoundModeKey;
 	CGBitmapInfo			bitmapInfo;
 	CGImageAlphaInfo		alphaInfo;
 	
-	NSDictionary			*imageProperties;
+	NSDictionary<NSString*,id> *imageProperties;
 	
 }
 
@@ -230,7 +230,7 @@ TEXTUREKIT_EXTERN NSString * const TKImageRoundModeKey;
 @property (readonly, nonatomic, assign) CGBitmapInfo bitmapInfo;
 @property (readonly, nonatomic, assign) CGImageAlphaInfo alphaInfo;
 
-@property (retain) NSDictionary *imageProperties;
+@property (retain) NSDictionary<NSString*,id> *imageProperties;
 
 
 - (void)setSliceIndex:(NSUInteger)aSliceIndex face:(TKFace)aFace frameIndex:(NSUInteger)aFrameIndex mipmapIndex:(NSUInteger)aMipmapIndex;

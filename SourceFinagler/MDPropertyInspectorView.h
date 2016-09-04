@@ -31,7 +31,7 @@
 	IBOutlet NSButton								*titleButton;
 	IBOutlet NSButton								*disclosureButton;
 	
-	__unsafe_unretained id <MDInspectorViewDelegate>			delegate;
+	__unsafe_unretained id <MDInspectorViewDelegate> delegate;
 	
 	TKMaterialPropertyViewController				*viewController;
 	
@@ -68,7 +68,7 @@
 
 @property (nonatomic, copy) NSString *autosaveName;
 
-@property (nonatomic, assign, setter=setInitiallyShown:) BOOL isInitiallyShown;
+@property (nonatomic, assign, getter=isInitiallyShown) BOOL initiallyShown;
 
 @property (nonatomic, assign) IBOutlet id <MDInspectorViewDelegate> delegate;
 

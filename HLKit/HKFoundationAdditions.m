@@ -39,7 +39,7 @@
 #endif
 	if (anError) *anError = nil;
 	OSStatus status = noErr;
-	status = FSPathMakeRef((const UInt8 *)self.UTF8String, anFSRef, NULL);
+	status = FSPathMakeRef((const UInt8 *)self.fileSystemRepresentation, anFSRef, NULL);
 	if (status != noErr) {
 		if (anError) *anError = [NSError errorWithDomain:NSOSStatusErrorDomain code:status userInfo:nil];
 	}

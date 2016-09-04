@@ -96,9 +96,11 @@ static void HKInitializeIcons() {
 
 
 @synthesize name, nameExtension, kind, size,
-		type, isExtractable, isEncrypted,
+		type,
 		fileType, dimensions, version, compression,
 		hasAlpha, hasMipmaps;
+@synthesize encrypted = isEncrypted;
+@synthesize extractable = isExtractable;
 
 @dynamic path;
 

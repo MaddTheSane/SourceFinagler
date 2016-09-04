@@ -64,6 +64,10 @@ static NSDate *MDNilDate = nil;
 	return self;
 }
 
+- (instancetype)init
+{
+	return self = [self initWithStyle:MDDateFormatterMediumStyle isRelative:NO];
+}
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
 #if MD_DEBUG

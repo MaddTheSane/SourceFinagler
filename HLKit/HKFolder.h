@@ -11,10 +11,6 @@
 
 @interface HKFolder : HKItem {
 	NSUInteger			countOfVisibleChildNodes;
-	
-@private
-	void *_privateData;
-	
 }
 
 - (HKItem *)descendantAtPath:(NSString *)aPath;

@@ -8,38 +8,16 @@
 
 
 #import <Foundation/NSObject.h>
-
-@class NSImage, NSString, NSURL, NSDictionary;
+#import <Foundation/NSString.h>
+#import <Foundation/NSURL.h>
+#import <Foundation/NSDictionary.h>
+#import <AppKit/NSImage.h>
 
 
 typedef NSUInteger VSGameID;
 
 
-@interface VSGame : NSObject <NSCopying> {
-	
-	NSString				*executablePath;
-	
-	NSString				*displayName;
-	
-	NSImage					*icon;
-	
-	NSString				*iconPath;
-	
-	NSDictionary			*infoDictionary;
-	
-	NSString				*addonsFolderPath;
-	
-	pid_t					processIdentifier;
-	
-	VSGameID				gameID;
-	
-	OSType					creatorCode;
-	
-	BOOL					isHelped;
-	
-	BOOL					isRunning;
-	
-}
+@interface VSGame : NSObject <NSCopying>
 
 /** Indicates the path to the game's executable. */
 @property (readonly, copy) NSString *executablePath;

@@ -9,18 +9,7 @@
 #import <HLKit/HKArchiveFile.h>
 
 
-@interface HKGCFFile : HKArchiveFile {
-	
-	NSUInteger		packageID;
-	
-	NSUInteger		blockSize;
-	NSUInteger		totalBlockCount;
-	NSUInteger		usedBlockCount;
-	NSUInteger		freeBlockCount;
-	
-	NSUInteger		lastVersionPlayed;
-}
-
+@interface HKGCFFile : HKArchiveFile
 
 @property (nonatomic, readonly, assign) NSUInteger packageID;
 

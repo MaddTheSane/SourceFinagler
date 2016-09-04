@@ -18,7 +18,7 @@ NSDictionary *MDInfoForProcessWithBundleIdentifier(NSString *aBundleIdentifier) 
 	psn.lowLongOfPSN  = kNoProcess;
 	
 	while (GetNextProcess(&psn) == noErr) {
-		NSDictionary *processInfo = [(NSDictionary *)ProcessInformationCopyDictionary(&psn, kProcessDictionaryIncludeAllInformationMask) autorelease];
+		NSDictionary *processInfo = CFBridgingRelease(ProcessInformationCopyDictionary(&psn, kProcessDictionaryIncludeAllInformationMask));
 //		NSLog(@"processInfo == %@", processInfo);
 		if ([processInfo[(NSString *)kCFBundleIdentifierKey] isEqualToString:aBundleIdentifier]) {
 			return processInfo;

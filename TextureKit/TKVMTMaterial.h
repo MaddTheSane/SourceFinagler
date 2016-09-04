@@ -26,7 +26,7 @@
 - (instancetype)initWithData:(NSData *)aData error:(NSError **)outError NS_DESIGNATED_INITIALIZER;
 
 
-- (NSDictionary *)dictionaryRepresentation;
+- (NSDictionary<NSString*,id> *)dictionaryRepresentation;
 
 @property (readonly, copy) NSString *stringRepresentation;
 

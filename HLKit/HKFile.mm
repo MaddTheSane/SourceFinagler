@@ -33,7 +33,13 @@ using namespace HLLib::Streams;
 
 
 @implementation HKFile
-
+{
+	
+@private
+	const CDirectoryFile *_privateData;
+	HKFileHandle *_fH;
+	IStream *_iS;
+}
 
 - (instancetype)initWithParent:(HKFolder *)aParent directoryFile:(CDirectoryFile *)aFile container:(id)aContainer {
 #if HK_DEBUG
@@ -42,18 +48,18 @@ using namespace HLLib::Streams;
 	if ((self = [super initWithParent:aParent childNodes:nil sortDescriptors:nil container:aContainer])) {
 		_privateData = aFile;
 		
-		isExtractable = static_cast<const CDirectoryFile *>(_privateData)->GetExtractable();
+		isExtractable = _privateData->GetExtractable();
 		isVisible = isExtractable;
 		
 		isLeaf = YES;
 		
 #if !(HK_LAZY_INIT)
-		const hlChar *cName = static_cast<const CDirectoryFile *>(_privateData)->GetName();
+		const hlChar *cName = _privateData->GetName();
 		if (cName) name = [[NSString stringWithCString:cName encoding:NSUTF8StringEncoding] retain];
 		nameExtension = [[name pathExtension] retain];
 		
 		hlUInt fileSize = 0;
-		static_cast<const CDirectoryFile *>(_privateData)->GetPackage()->GetFileSize(static_cast<const CDirectoryFile *>(_privateData), fileSize);
+		_privateData->GetPackage()->GetFileSize(_privateData, fileSize);
 		size = [[NSNumber numberWithUnsignedLongLong:(unsigned long long)fileSize] retain];
 		
 		type = (NSString *)UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, (CFStringRef)nameExtension, NULL);
@@ -105,7 +111,7 @@ using namespace HLLib::Streams;
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	if (name == nil) {
-		const hlChar *cName = static_cast<const CDirectoryFile *>(_privateData)->GetName();
+		const hlChar *cName = _privateData->GetName();
 		if (cName) name = [@(cName) retain];
 	}
 	return name;
@@ -150,7 +156,7 @@ using namespace HLLib::Streams;
 #endif
 	if (size == nil) {
 		hlUInt fileSize = 0;
-		static_cast<const CDirectoryFile *>(_privateData)->GetPackage()->GetFileSize(static_cast<const CDirectoryFile *>(_privateData), fileSize);
+		_privateData->GetPackage()->GetFileSize(_privateData, fileSize);
 		size = [@((unsigned long long)fileSize) retain];
 	}
 	return size;
@@ -217,20 +223,20 @@ using namespace HLLib::Streams;
 	}
 	
 	_iS = 0;
-	IStream *pInput = static_cast<IStream *>(_iS);
+	IStream *pInput = _iS;
 	
-	if (!static_cast<const CDirectoryFile *>(_privateData)->GetPackage()->CreateStream(static_cast<const CDirectoryFile *>(_privateData), pInput)) {
+	if (!_privateData->GetPackage()->CreateStream(_privateData, pInput)) {
 		NSLog(@"[%@ %@] file->GetPackage()-CreateStream() failed!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-		[(HKFileHandle *)_fH release];
+		[_fH release];
 		_fH = nil;
 		return NO;
 	}
 	_iS = pInput;
 	
-	if (!static_cast<IStream *>(_iS)->Open(HL_MODE_READ)) {
+	if (!_iS->Open(HL_MODE_READ)) {
 		NSLog(@"[%@ %@] pInput->Open(HL_MODE_READ) failed for item == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), self);
-		static_cast<const CDirectoryFile *>(_privateData)->GetPackage()->ReleaseStream(static_cast<IStream *>(_iS));
-		[(HKFileHandle *)_fH release];
+		_privateData->GetPackage()->ReleaseStream(_iS);
+		[_fH release];
 		_fH = nil;
 		return NO;
 	}
@@ -248,7 +254,7 @@ using namespace HLLib::Streams;
 //	hlByte buffer[HL_DEFAULT_COPY_BUFFER_SIZE];
 	hlByte buffer[HK_COPY_BUFFER_SIZE];
 	
-	unsigned long long currentBytesRead = static_cast<IStream *>(_iS)->Read(buffer, sizeof(buffer));
+	unsigned long long currentBytesRead = _iS->Read(buffer, sizeof(buffer));
 	
 	if (currentBytesRead == 0) {
 		if (partialBytesLength) *partialBytesLength = 0;
@@ -261,7 +267,7 @@ using namespace HLLib::Streams;
 	
 //	NSData *writeData = [[NSData alloc] initWithBytes:buffer length:currentBytesRead];
 	if (writeData) {
-		[(HKFileHandle *)_fH writeData:writeData];
+		[_fH writeData:writeData];
 	}
 	[writeData release];
 	
@@ -277,12 +283,12 @@ using namespace HLLib::Streams;
 	
 	if (outError) *outError = nil;
 	
-	static_cast<IStream *>(_iS)->Close();
-	static_cast<const CDirectoryFile *>(_privateData)->GetPackage()->ReleaseStream(static_cast<IStream *>(_iS));
+	_iS->Close();
+	_privateData->GetPackage()->ReleaseStream(_iS);
 	_iS = 0;
 	
-	[(HKFileHandle *)_fH closeFile];
-	[(HKFileHandle *)_fH release];
+	[_fH closeFile];
+	[_fH release];
 	_fH = nil;
 	
 	return YES;
@@ -296,14 +302,14 @@ using namespace HLLib::Streams;
 	
 	if (outError) *outError = nil;
 	
-	static_cast<IStream *>(_iS)->Close();
-	static_cast<const CDirectoryFile *>(_privateData)->GetPackage()->ReleaseStream(static_cast<IStream *>(_iS));
+	_iS->Close();
+	_privateData->GetPackage()->ReleaseStream(_iS);
 	_iS = 0;
 	
-	NSString *filePath = [[((HKFileHandle *)_fH).path retain] autorelease];
+	NSString *filePath = [[(_fH).path retain] autorelease];
 	
-	[(HKFileHandle *)_fH closeFile];
-	[(HKFileHandle *)_fH release];
+	[_fH closeFile];
+	[_fH release];
 	_fH = nil;
 	
 	NSFileManager *fileManager = [[NSFileManager alloc] init];
@@ -345,13 +351,13 @@ using namespace HLLib::Streams;
 	}
 	
 	IStream *pInput = 0;
-	if (!static_cast<const CDirectoryFile *>(_privateData)->GetPackage()->CreateStream(static_cast<const CDirectoryFile *>(_privateData), pInput)) {
+	if (!_privateData->GetPackage()->CreateStream(_privateData, pInput)) {
 		NSLog(@"[%@ %@] file->GetPackage()-CreateStream() failed!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 		return NO;
 	}
 	if (!pInput->Open(HL_MODE_READ)) {
 		NSLog(@"[%@ %@] pInput->Open(HL_MODE_READ) failed for item == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), self);
-		static_cast<const CDirectoryFile *>(_privateData)->GetPackage()->ReleaseStream(pInput);
+		_privateData->GetPackage()->ReleaseStream(pInput);
 		return NO;
 	}
 	
@@ -378,7 +384,7 @@ using namespace HLLib::Streams;
 		
 	}
 	pInput->Close();
-	static_cast<const CDirectoryFile *>(_privateData)->GetPackage()->ReleaseStream(pInput);
+	_privateData->GetPackage()->ReleaseStream(pInput);
 	
 	if (resultingPath) *resultingPath = aPath;
 	
@@ -398,7 +404,7 @@ using namespace HLLib::Streams;
 		hlBool bResult = hlFalse;
 		
 		IStream *pInput = 0;
-		if (static_cast<const CDirectoryFile *>(_privateData)->GetPackage()->CreateStream(static_cast<const CDirectoryFile *>(_privateData), pInput)) {
+		if (_privateData->GetPackage()->CreateStream(_privateData, pInput)) {
 			if (pInput->Open(HL_MODE_READ)) {
 				
 				hlUInt totalBytesExtracted = 0;
@@ -424,7 +430,7 @@ using namespace HLLib::Streams;
 				
 				pInput->Close();
 			}
-			static_cast<const CDirectoryFile *>(_privateData)->GetPackage()->ReleaseStream(pInput);
+			_privateData->GetPackage()->ReleaseStream(pInput);
 		}
 		return [[mData copy] autorelease];
 	}

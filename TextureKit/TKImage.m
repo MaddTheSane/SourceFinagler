@@ -94,7 +94,11 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 	[NSImageRep registerImageRepClass:[TKImageRep class]];
 }
 
-@synthesize isAnimated, frameCount, mipmapCount, faceCount, sliceCount, hasAlpha, hasMipmaps, version, compression, imageType, isDepthTexture, isCubemap, isSpheremap;
+@synthesize frameCount, mipmapCount, faceCount, sliceCount, hasAlpha, hasMipmaps, version, compression, imageType;
+@synthesize depthTexture=isDepthTexture;
+@synthesize cubemap=isCubemap;
+@synthesize spheremap=isSpheremap;
+@synthesize animated=isAnimated;
 
 @synthesize allIndexes = _private;
 

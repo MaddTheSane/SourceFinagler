@@ -16,7 +16,6 @@
 	FSRef					fileRef;
 	FSIORefNum				forkRef;
 	unsigned long long		offsetInFile;
-	
 }
 
 

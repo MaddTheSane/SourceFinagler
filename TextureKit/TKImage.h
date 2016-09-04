@@ -7,6 +7,7 @@
 //
 
 #import <AppKit/NSImage.h>
+#import <TextureKit/TextureKitDefines.h>
 #import <TextureKit/TKDDSImageRep.h>
 #import <TextureKit/TKVTFImageRep.h>
 
@@ -72,10 +73,10 @@ TEXTUREKIT_EXTERN NSData * TKSFTextureImageMagicData;
 @property (readonly, nonatomic, assign) NSUInteger frameCount;
 @property (readonly, nonatomic, assign) NSUInteger mipmapCount;
 
-@property (readonly, nonatomic, assign) BOOL isDepthTexture;
-@property (readonly, nonatomic, assign) BOOL isAnimated;
-@property (readonly, nonatomic, assign) BOOL isSpheremap;
-@property (readonly, nonatomic, assign) BOOL isCubemap;
+@property (readonly, nonatomic, assign, getter=isDepthTexture) BOOL depthTexture;
+@property (readonly, nonatomic, assign, getter=isAnimated) BOOL animated;
+@property (readonly, nonatomic, assign, getter=isSpheremap) BOOL spheremap;
+@property (readonly, nonatomic, assign, getter=isCubemap) BOOL cubemap;
 @property (readonly, nonatomic, assign) BOOL hasMipmaps;
 
 

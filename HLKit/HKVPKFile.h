@@ -9,11 +9,7 @@
 #import <HLKit/HKArchiveFile.h>
 
 
-@interface HKVPKFile : HKArchiveFile {
-
-	NSUInteger		archiveCount;
-	NSUInteger		addonGameID;
-}
+@interface HKVPKFile : HKArchiveFile
 
 @property (nonatomic, readonly, assign) NSUInteger archiveCount;
 @property (nonatomic, readonly, assign) NSUInteger	addonGameID;

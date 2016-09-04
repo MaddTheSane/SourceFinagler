@@ -57,7 +57,7 @@
 	CGFloat									previewViewZoomFactor;
 	
 	
-	TKImageDocument							*document;	// non-retained
+	__unsafe_unretained TKImageDocument		*document;	// non-retained
 	
 	
 	NSMutableDictionary						*presetsAndNames;

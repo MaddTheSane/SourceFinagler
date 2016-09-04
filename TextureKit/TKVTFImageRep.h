@@ -102,9 +102,9 @@ NS_ENUM(OSType) {
 #endif
 
 
-+ (NSData *)VTFRepresentationOfImageRepsInArray:(NSArray<NSImageRep*> *)tkImageReps options:(NSDictionary *)options;
++ (NSData *)VTFRepresentationOfImageRepsInArray:(NSArray<NSImageRep*> *)tkImageReps options:(NSDictionary<NSString*,id> *)options;
 
-+ (NSData *)VTFRepresentationOfImageRepsInArray:(NSArray<NSImageRep*> *)tkImageReps usingFormat:(TKVTFFormat)aFormat quality:(TKDXTCompressionQuality)aQuality options:(NSDictionary *)options;
++ (NSData *)VTFRepresentationOfImageRepsInArray:(NSArray<NSImageRep*> *)tkImageReps usingFormat:(TKVTFFormat)aFormat quality:(TKDXTCompressionQuality)aQuality options:(NSDictionary<NSString*,id> *)options;
 
 
 @end

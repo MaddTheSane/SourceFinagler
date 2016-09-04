@@ -25,6 +25,10 @@ using namespace HLLib;
 
 
 @implementation HKFolder
+{
+@private
+	CDirectoryFolder *_privateData;
+}
 
 - (instancetype)initWithParent:(HKFolder *)aParent directoryFolder:(CDirectoryFolder *)aFolder showInvisibleItems:(BOOL)showInvisibles sortDescriptors:(NSArray *)aSortDescriptors container:(id)aContainer {
 #if HK_DEBUG
@@ -40,7 +44,7 @@ using namespace HLLib;
 		self.showInvisibleItems = showInvisibles;
 		
 #if !(HK_LAZY_INIT)
-		const hlChar *cName = static_cast<const CDirectoryFolder *>(_privateData)->GetName();
+		const hlChar *cName = _privateData->GetName();
 		if (cName) name = [[NSString stringWithCString:cName encoding:NSUTF8StringEncoding] retain];
 		nameExtension = [[name pathExtension] retain];
 		kind = [NSLocalizedString(@"Folder", @"") retain];
@@ -57,7 +61,7 @@ using namespace HLLib;
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	if (name == nil) {
-		const hlChar *cName = static_cast<const CDirectoryFile *>(_privateData)->GetName();
+		const hlChar *cName = _privateData->GetName();
 		if (cName) name = [@(cName) retain];
 	}
 	return name;
@@ -102,15 +106,15 @@ using namespace HLLib;
 
 
 - (NSUInteger)countOfChildNodes {
-	return (NSUInteger)static_cast<const CDirectoryFolder *>(_privateData)->GetCount();
+	return (NSUInteger)_privateData->GetCount();
 }
 
 - (NSUInteger)countOfVisibleChildNodes {
 	if (countOfVisibleChildNodes == NSNotFound) {
 		countOfVisibleChildNodes = 0;
-		NSUInteger numChildren = static_cast<const CDirectoryFolder *>(_privateData)->GetCount();
+		NSUInteger numChildren = _privateData->GetCount();
 		for (NSUInteger i = 0; i < numChildren; i++) {
-			CDirectoryItem *item = static_cast<CDirectoryFolder *>(_privateData)->GetItem(i);
+			CDirectoryItem *item = _privateData->GetItem(i);
 			HLDirectoryItemType itemType = item->GetType();
 			if (itemType == HL_ITEM_FOLDER) {
 				countOfVisibleChildNodes++;
@@ -133,10 +137,10 @@ using namespace HLLib;
 		
 		NSMutableArray *tempChildren = [[NSMutableArray alloc] init];
 		
-		hlUInt count = static_cast<const CDirectoryFolder *>(_privateData)->GetCount();
+		hlUInt count = _privateData->GetCount();
 		
 		for (NSUInteger i = 0; i < count; i++) {
-			const CDirectoryItem *item = static_cast<const CDirectoryFolder *>(_privateData)->GetItem(i);
+			const CDirectoryItem *item = _privateData->GetItem(i);
 			HLDirectoryItemType itemType = item->GetType();
 			
 			HKItem *child = nil;

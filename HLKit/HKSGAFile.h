@@ -9,11 +9,6 @@
 #import <HLKit/HKArchiveFile.h>
 
 
-@interface HKSGAFile : HKArchiveFile {
-	
-
-
-}
-
+@interface HKSGAFile : HKArchiveFile
 
 @end

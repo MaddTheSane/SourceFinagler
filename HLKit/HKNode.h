@@ -10,9 +10,9 @@
 
 
 @interface HKNode : NSObject {
-	id					container;	// not retained
+	__unsafe_unretained id container;	// not retained
 	
-	HKNode				*parent;	// not retained
+	__unsafe_unretained HKNode *parent;	// not retained
 
     NSMutableArray		*childNodes;
 	NSMutableArray		*visibleChildNodes;
@@ -22,9 +22,9 @@
 	BOOL				isLeaf;
 	
 	BOOL				isVisible;
-	BOOL				showInvisibleItems;
-	
+	BOOL				showInvisibleItems;	
 }
+
 - (instancetype)initWithParent:(HKNode *)aParent childNodes:(NSArray<HKNode*> *)theChildren sortDescriptors:(NSArray<NSSortDescriptor*> *)aSortDescriptors container:(id)aContainer NS_DESIGNATED_INITIALIZER;
 
 @property (nonatomic, assign) id container;

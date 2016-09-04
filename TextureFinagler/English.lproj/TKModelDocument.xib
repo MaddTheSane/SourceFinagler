@@ -52,15 +52,15 @@
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <scrollView autohidesScrollers="YES" horizontalLineScroll="26" horizontalPageScroll="10" verticalLineScroll="26" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="100253">
+                                            <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="100253">
                                                 <rect key="frame" x="0.0" y="0.0" width="208" height="240"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <clipView key="contentView" id="kYB-Wb-I1C">
+                                                <clipView key="contentView" drawsBackground="NO" id="kYB-Wb-I1C">
                                                     <rect key="frame" x="1" y="1" width="206" height="238"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowHeight="24" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="14" outlineTableColumn="100257" id="100256" userLabel="entitiesOutlineView">
-                                                            <rect key="frame" x="0.0" y="0.0" width="206" height="238"/>
+                                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="14" outlineTableColumn="100257" id="100256" userLabel="entitiesOutlineView">
+                                                            <rect key="frame" x="0.0" y="0.0" width="206" height="0.0"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <size key="intercellSpacing" width="3" height="2"/>
                                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -130,7 +130,7 @@
                                                             </connections>
                                                         </outlineView>
                                                     </subviews>
-                                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    <nil key="backgroundColor"/>
                                                 </clipView>
                                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" controlSize="small" horizontal="YES" id="100255">
                                                     <rect key="frame" x="1" y="224" width="191" height="11"/>
@@ -156,15 +156,15 @@
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <scrollView autohidesScrollers="YES" horizontalLineScroll="26" horizontalPageScroll="10" verticalLineScroll="26" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="100275">
+                                            <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="100275">
                                                 <rect key="frame" x="0.0" y="0.0" width="208" height="254"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <clipView key="contentView" id="lLF-xC-p5x">
+                                                <clipView key="contentView" drawsBackground="NO" id="lLF-xC-p5x">
                                                     <rect key="frame" x="1" y="1" width="206" height="252"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowHeight="24" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="14" outlineTableColumn="100279" id="100278" userLabel="sceneGraphOutlineView">
-                                                            <rect key="frame" x="0.0" y="0.0" width="206" height="252"/>
+                                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="14" outlineTableColumn="100279" id="100278" userLabel="sceneGraphOutlineView">
+                                                            <rect key="frame" x="0.0" y="0.0" width="206" height="0.0"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <size key="intercellSpacing" width="3" height="2"/>
                                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -234,7 +234,7 @@
                                                             </connections>
                                                         </outlineView>
                                                     </subviews>
-                                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    <nil key="backgroundColor"/>
                                                 </clipView>
                                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" controlSize="small" horizontal="YES" id="100277">
                                                     <rect key="frame" x="1" y="237" width="191" height="11"/>
@@ -257,7 +257,7 @@
                                 <rect key="frame" x="209" y="0.0" width="578" height="545"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
-                                    <sceneView loops="YES" playing="YES" jitteringEnabled="YES" autoenablesDefaultLighting="YES" allowsCameraControl="YES" preferredRenderingAPI="0" id="100024" userLabel="sceneView">
+                                    <sceneView loops="YES" playing="YES" jitteringEnabled="YES" autoenablesDefaultLighting="YES" allowsCameraControl="YES" preferredRenderingAPI="2" id="100024" userLabel="sceneView">
                                         <rect key="frame" x="0.0" y="0.0" width="578" height="545"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" red="0.50060125609999995" green="0.50392156860000004" blue="0.50392156860000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -332,7 +332,7 @@
                 <outlet property="delegate" destination="-2" id="17"/>
             </connections>
         </window>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="100186" userLabel="materialPropertiesView">
             <rect key="frame" x="0.0" y="0.0" width="271" height="190"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

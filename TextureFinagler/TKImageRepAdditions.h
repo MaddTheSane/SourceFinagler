@@ -22,7 +22,7 @@
 //- (NSString *)imageSubtitle;
 //- (BOOL)isSelectable;
 
-@property (readonly, copy) NSDictionary *imageProperties;
+@property (readonly, copy) NSDictionary<NSString*,id> *imageProperties;
 
 @end
 

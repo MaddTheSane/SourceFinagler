@@ -54,15 +54,15 @@ typedef NS_ENUM(NSUInteger, HKArchiveFileType) {
 - (instancetype)initWithContentsOfFile:(NSString *)aPath showInvisibleItems:(BOOL)showInvisibleItems sortDescriptors:(NSArray<NSSortDescriptor*> *)sortDescriptors error:(NSError **)outError;
 
 
-@property (retain, readonly) NSString *filePath;
+@property (copy, readonly) NSString *filePath;
 
 @property (nonatomic, readonly, assign) HKArchiveFileType fileType;
 
-@property (nonatomic, readonly, assign) BOOL isReadOnly;
+@property (nonatomic, readonly, assign, getter=isReadOnly) BOOL readOnly;
 @property (nonatomic, readonly, assign) BOOL haveGatheredAllItems;
 
 
-@property (retain) NSString *version;
+@property (copy) NSString *version;
 
 
 @property (readonly, strong) HKFolder *items;
@@ -70,7 +70,4 @@ typedef NS_ENUM(NSUInteger, HKArchiveFileType) {
 
 @property (readonly, copy) NSArray<HKItem*> *allItems;
 
-
 @end
-
-

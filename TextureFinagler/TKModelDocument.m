@@ -231,17 +231,8 @@
 	return nil;
 }
 
-
-
-
-
-
-
 #pragma mark END <NSOutlineViewDelegate>
 #pragma mark -
 
 @end
-
-
-
 

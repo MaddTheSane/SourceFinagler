@@ -52,7 +52,7 @@ static inline HLPackageType HLPackageTypeFromHKArchiveFileType(HKArchiveFileType
 
 @interface HKFolder (HKPrivateInterfaces)
 
-- (id)initWithParent:(HKFolder *)aParent directoryFolder:(const CDirectoryFolder *)aFolder showInvisibleItems:(BOOL)showInvisibles sortDescriptors:(NSArray *)aSortDescriptors container:(id)aContainer;
+- (instancetype)initWithParent:(HKFolder *)aParent directoryFolder:(const CDirectoryFolder *)aFolder showInvisibleItems:(BOOL)showInvisibles sortDescriptors:(NSArray *)aSortDescriptors container:(id)aContainer;
 
 @end
 

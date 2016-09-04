@@ -49,7 +49,7 @@ static HKArchiveFileTest HKArchiveFileTestTable[] = {
 @synthesize filePath;
 @synthesize fileType;
 @synthesize haveGatheredAllItems;
-@synthesize isReadOnly;
+@synthesize readOnly=isReadOnly;
 @synthesize version;
 
 
