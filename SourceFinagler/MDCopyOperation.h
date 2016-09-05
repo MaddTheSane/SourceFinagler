@@ -56,6 +56,7 @@ typedef NS_ENUM(NSUInteger, MDCopyOperationStage) {
 + (instancetype)operationWithSource:(MDHLDocument *)aSource destination:(id)aDestination itemsAndPaths:(NSDictionary *)anItemsAndPaths tag:(NSInteger)aTag;
 
 - (instancetype)initWithSource:(MDHLDocument *)aSource destination:(id)aDestination itemsAndPaths:(NSDictionary *)anItemsAndPaths tag:(NSInteger)aTag NS_DESIGNATED_INITIALIZER;
+- (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
 @property (assign) BOOL indeterminate;
 @property (assign, getter=isRolledOver) BOOL rolledOver;

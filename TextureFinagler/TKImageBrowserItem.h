@@ -29,6 +29,7 @@ typedef NS_ENUM(NSUInteger, TKBrowserItemType) {
 + (instancetype)frameBrowserItemWithImageRep:(TKImageRep *)anImageRep;
 
 - (instancetype)initWithImageRep:(TKImageRep *)anImageRep type:(TKBrowserItemType)aType NS_DESIGNATED_INITIALIZER;
+- (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
 @property (nonatomic, retain) TKImageRep *imageRep;
 @property (nonatomic, assign) TKBrowserItemType type;

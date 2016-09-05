@@ -25,20 +25,14 @@
 	NSInteger					tag;		// 0 thru 3
 }
 
+- (instancetype)init UNAVAILABLE_ATTRIBUTE;
 - (instancetype)initWithController:(TKImageExportController *)aController image:(TKImage *)anImage preset:(TKImageExportPreset *)aPreset tag:(NSInteger)aTag NS_DESIGNATED_INITIALIZER;
 
 @property (assign) TKImageExportController *controller;
-
 @property (retain) TKImage *image;
-
 @property (retain) TKImageRep *imageRep;
-
 @property (retain) TKImageExportPreset *preset;
-
 @property (assign) NSUInteger imageFileSize;
-
 @property (assign) NSInteger tag;
 
 @end
-
-

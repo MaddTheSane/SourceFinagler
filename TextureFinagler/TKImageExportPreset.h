@@ -17,7 +17,6 @@ TEXTUREKIT_EXTERN NSString * const TKImageExportDXTCompressionQualityKey;	// NSS
 TEXTUREKIT_EXTERN NSString * const TKImageExportMipmapGenerationKey;		// NSNumber with NSUInteger value
 
 
-
 @interface TKImageExportPreset : NSObject <NSCoding, NSCopying> {
 	NSString					*name;
 	NSString					*fileType;
@@ -26,7 +25,6 @@ TEXTUREKIT_EXTERN NSString * const TKImageExportMipmapGenerationKey;		// NSNumbe
 	TKMipmapGenerationType		mipmapGeneration;
 	
 }
-
 
 + (NSArray *)imageExportPresetsWithDictionaryRepresentations:(NSArray *)dictionaryRepresentations;
 + (NSArray *)dictionaryRepresentationsOfImageExportPresets:(NSArray *)presets;
@@ -38,6 +36,7 @@ TEXTUREKIT_EXTERN NSString * const TKImageExportMipmapGenerationKey;		// NSNumbe
 + (instancetype)imageExportPresetWithDictionary:(NSDictionary *)aDictionary;
 - (instancetype)initWithDictionary:(NSDictionary *)aDictionary NS_DESIGNATED_INITIALIZER;
 - (instancetype)initWithCoder:(NSCoder *)coder NS_DESIGNATED_INITIALIZER;
+- (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
 + (instancetype)imageExportPresetWithName:(NSString *)aName fileType:(NSString *)aFileType compressionFormat:(NSString *)aCompressionFormat compressionQuality:(NSString *)aQuality mipmapGeneration:(TKMipmapGenerationType)aMipmapGeneration;
 - (instancetype)initWithName:(NSString *)aName fileType:(NSString *)aFileType compressionFormat:(NSString *)aCompressionFormat compressionQuality:(NSString *)aQuality mipmapGeneration:(TKMipmapGenerationType)aMipmapGeneration NS_DESIGNATED_INITIALIZER;
@@ -60,15 +59,10 @@ TEXTUREKIT_EXTERN NSString * const TKImageExportMipmapGenerationKey;		// NSNumbe
 
 @end
 
-
 @interface TKDDSImageRep (TKImageExportPresetAdditions)
 + (NSData *)DDSRepresentationOfImageRepsInArray:(NSArray *)tkImageReps usingPreset:(TKImageExportPreset *)preset;
 @end
 
-
 @interface TKVTFImageRep (TKImageExportPresetAdditions)
 + (NSData *)VTFRepresentationOfImageRepsInArray:(NSArray *)tkImageReps usingPreset:(TKImageExportPreset *)preset;
 @end
-
-
-

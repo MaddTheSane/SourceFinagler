@@ -40,6 +40,7 @@ typedef NS_OPTIONS(NSUInteger, TKImageChannelMask) {
 
 + (instancetype)imageChannelWithImageRep:(TKImageRep *)anImageRep channelMask:(TKImageChannelMask)aChannelMask;
 - (instancetype)initWithImageRep:(TKImageRep *)anImageRep channelMask:(TKImageChannelMask)aChannelMask NS_DESIGNATED_INITIALIZER;
+- (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
 
 @property (copy) NSString *name;

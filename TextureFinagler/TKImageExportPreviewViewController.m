@@ -23,7 +23,6 @@
 
 @synthesize imageView;
 
-
 + (instancetype)previewViewControllerWithExportController:(TKImageExportController *)controller preset:(TKImageExportPreset *)preset tag:(NSInteger)tag {
 	return [[[[self class] alloc] initWithExportController:controller preset:preset tag:tag] autorelease];
 }
@@ -44,14 +43,12 @@
 	return self;
 }
 
-
 - (void)dealloc {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	[super dealloc];
 }
-
 
 - (void)awakeFromNib {
 #if TK_DEBUG
@@ -60,7 +57,6 @@
 	[progressIndicator setUsesThreadedAnimation:YES];
 	[imageView setImage:NULL imageProperties:nil];
 }
-
 
 - (void)setRepresentedObject:(id)representedObject {
 #if TK_DEBUG
@@ -73,7 +69,6 @@
 	}
 }
 
-
 - (NSString *)description {
 	NSMutableString *description = [NSMutableString stringWithFormat:@"%@, ", super.description];
 	[description appendFormat:@"representedObject == %@", self.representedObject];
@@ -81,4 +76,3 @@
 }
 
 @end
-

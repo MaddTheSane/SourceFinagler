@@ -41,7 +41,7 @@ using namespace HLLib::Streams;
 	IStream *_iS;
 }
 
-- (instancetype)initWithParent:(HKFolder *)aParent directoryFile:(CDirectoryFile *)aFile container:(id)aContainer {
+- (instancetype)initWithParent:(HKFolder *)aParent directoryFile:(const CDirectoryFile *)aFile container:(id)aContainer {
 #if HK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
