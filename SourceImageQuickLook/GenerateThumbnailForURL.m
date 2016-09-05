@@ -1,5 +1,6 @@
 #include <ApplicationServices/ApplicationServices.h>
 #include <QuickLook/QuickLook.h>
+#include "GenerateThumbnails.h"
 #import <Cocoa/Cocoa.h>
 #import "MDCGImage.h"
 #import <TextureKit/TextureKit.h>
@@ -17,14 +18,15 @@
 
 	
 OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thumbnail, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options, CGSize maxImageSize) {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+@autoreleasepool {
+	NSString *nsContentUTI = (__bridge NSString *)contentTypeUTI;
+	NSURL *nsUrl = (__bridge NSURL*)url;
 	
-	if (![(NSString *)contentTypeUTI isEqualToString:TKVTFType] &&
-		![(NSString *)contentTypeUTI isEqualToString:TKDDSType] &&
-		![(NSString *)contentTypeUTI isEqualToString:TKSFTextureImageType]) {
+	if (![nsContentUTI isEqualToString:TKVTFType] &&
+		![nsContentUTI isEqualToString:TKDDSType] &&
+		![nsContentUTI isEqualToString:TKSFTextureImageType]) {
 		
 		NSLog(@"SourceImage.qlgenerator; GenerateThumbnailForURL(): contentTypeUTI != VTF or DDS or SFTI; (contentTypeUTI == %@)", contentTypeUTI);
-		[pool release];
 		return noErr;
 	}
 	
@@ -32,12 +34,10 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 	NSLog(@"GenerateThumbnailForURL(): %@", [(NSURL *)url path]);
 #endif
 	
-	NSData *imageData = [[NSData alloc] initWithContentsOfURL:(NSURL *)url];
+	NSData *imageData = [[NSData alloc] initWithContentsOfURL:nsUrl];
 	
 	if (imageData == nil || [imageData length] < sizeof(OSType)) {
-		NSLog(@"GenerateThumbnailForURL(): data %@ for file == %@", (imageData == nil ? @"== nil" : @"length < 4"), [(NSURL *)url path]);
-		[imageData release];
-		[pool release];
+		NSLog(@"GenerateThumbnailForURL(): data %@ for file == %@", (imageData == nil ? @"== nil" : @"length < 4"), [nsUrl path]);
 		return noErr;
 	}
 	
@@ -46,56 +46,43 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 	magic = NSSwapBigIntToHost(magic);
 	
 	if (magic == TKHTMLErrorMagic) {
-		NSLog(@"GenerateThumbnailForURL(): file at path \"%@\" appears to be an ERROR 404 HTML file rather than a valid VTF", [(NSURL *)url path]);
-		[imageData release];
-		[pool release];
+		NSLog(@"GenerateThumbnailForURL(): file at path \"%@\" appears to be an ERROR 404 HTML file rather than a valid VTF", [nsUrl path]);
 		return noErr;
 	}
 	
 	CGImageRef imageRef = NULL;
 	
-	if ([(NSString *)contentTypeUTI isEqualToString:TKVTFType]) {
-		
+	if ([nsContentUTI isEqualToString:TKVTFType]) {
 		imageRef = [[TKVTFImageRep imageRepWithData:imageData] CGImage];
-		
-	} else if ([(NSString *)contentTypeUTI isEqualToString:TKDDSType]) {
-		
+	} else if ([nsContentUTI isEqualToString:TKDDSType]) {
 		imageRef = [[TKDDSImageRep imageRepWithData:imageData] CGImage];
-		
-	} else if ([(NSString *)contentTypeUTI isEqualToString:TKSFTextureImageType]) {
-		
+	} else if ([nsContentUTI isEqualToString:TKSFTextureImageType]) {
 		TKImage *tkImage = [[TKImage alloc] initWithData:imageData firstRepresentationOnly:NO];
-		
+		NSArray<TKImageRep*> *aTKImageReps;
 		if (tkImage) {
-			
-		TKImageRep *tkImageRep = nil;
+			TKImageRep *tkImageRep = nil;
 			
 			if ([tkImage sliceCount]) {
-				
-				
+				//TODO: implement?
 			} else if ([tkImage faceCount] && [tkImage frameCount]) {
-				
-				NSArray *aTKImageReps = [tkImage representationsForFaceIndexes:[tkImage firstFaceIndexSet]
-																  frameIndexes:[tkImage firstFrameIndexSet]
-																 mipmapIndexes:[tkImage firstMipmapIndexSet]];
-				
-				if ([aTKImageReps count]) tkImageRep = [aTKImageReps objectAtIndex:0];
-				
+				aTKImageReps = [tkImage
+								representationsForFaceIndexes:[tkImage firstFaceIndexSet]
+								frameIndexes:[tkImage firstFrameIndexSet]
+								mipmapIndexes:[tkImage firstMipmapIndexSet]];
+
+				tkImageRep = aTKImageReps.firstObject;
 			} else if ([tkImage faceCount]) {
+				aTKImageReps = [tkImage
+								representationsForFaceIndexes:[tkImage firstFaceIndexSet]
+								mipmapIndexes:[tkImage firstMipmapIndexSet]];
 				
-				NSArray *aTKImageReps = [tkImage representationsForFaceIndexes:[tkImage firstFaceIndexSet]
-																 mipmapIndexes:[tkImage firstMipmapIndexSet]];
-				
-				if ([aTKImageReps count]) tkImageRep = [aTKImageReps objectAtIndex:0];
-				
-				
+				tkImageRep = aTKImageReps.firstObject;
 			} else if ([tkImage frameCount]) {
+				aTKImageReps = [tkImage
+								representationsForFrameIndexes:[tkImage firstFrameIndexSet]
+								mipmapIndexes:[tkImage firstMipmapIndexSet]];
 				
-				NSArray *aTKImageReps = [tkImage representationsForFrameIndexes:[tkImage firstFrameIndexSet]
-																  mipmapIndexes:[tkImage firstMipmapIndexSet]];
-				
-				if ([aTKImageReps count]) tkImageRep = [aTKImageReps objectAtIndex:0];
-				
+				tkImageRep = aTKImageReps.firstObject;
 			} else {
 				if ([tkImage mipmapCount]) {
 					tkImageRep = [tkImage representationForMipmapIndex:0];
@@ -103,16 +90,11 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 			}
 			
 			imageRef = [tkImageRep CGImage];
-			
-			[tkImage release];
 		}
-		
 	}
 	
 	if (imageRef == NULL) {
-		NSLog(@"SourceImage.qlgenerator; GenerateThumbnailForURL(): MDCGImageCreateWithData() returned NULL for file %@", [(NSURL *)url path]);
-		[imageData release];
-		[pool release];
+		NSLog(@"SourceImage.qlgenerator; GenerateThumbnailForURL(): MDCGImageCreateWithData() returned NULL for file %@", [nsUrl path]);
 		return noErr;
 	}
 	
@@ -133,7 +115,7 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 		newSize.height = newSize.width * (CGFloat)CGImageGetHeight(imageRef)/(CGFloat)CGImageGetWidth(imageRef);
 		
 #if MD_DEBUG
-	NSLog(@"GenerateThumbnailForURL(): going to call CGCreateCopyWithSize()");
+		NSLog(@"GenerateThumbnailForURL(): going to call CGCreateCopyWithSize()");
 #endif
 		CGImageRef newImage = MDCGImageCreateCopyWithSize(imageRef, newSize);
 		QLThumbnailRequestSetImage(thumbnail, newImage, NULL);
@@ -147,10 +129,8 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 	NSLog(@"GenerateThumbnailForURL(): set thumbnail image");
 #endif
 	
-	[imageData release];
-	
-	[pool release];
 	return noErr;
+}
 }
 	
 void CancelThumbnailGeneration(void* thisInterface, QLThumbnailRequestRef thumbnail) {

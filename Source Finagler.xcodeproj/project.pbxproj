@@ -972,6 +972,7 @@
 		55B9F2B71D7D1A0E00641709 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		55B9F2BA1D7D1A2100641709 /* Shared.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Shared.xcassets; sourceTree = "<group>"; };
 		55B9F2BF1D7D21FC00641709 /* HLSpotlightMain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HLSpotlightMain.h; sourceTree = "<group>"; };
+		55B9F2C01D7D297B00641709 /* GenerateThumbnails.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GenerateThumbnails.h; sourceTree = "<group>"; };
 		55EF66A11D7B7DE800FFF7B2 /* TextureFinaglerImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = TextureFinaglerImages.xcassets; path = Resources/TextureFinaglerImages.xcassets; sourceTree = "<group>"; };
 		55F82CBB1D7BA77100D6DAC9 /* TKOpenGLDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKOpenGLDrawable.h; sourceTree = "<group>"; };
 		55F82CBD1D7BA7E300D6DAC9 /* TKMath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKMath.h; sourceTree = "<group>"; };
@@ -1130,7 +1131,7 @@
 		C1647893124E96FD0062B943 /* SourceImage-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SourceImage-Info.plist"; sourceTree = "<group>"; };
 		C16478F5124E988C0062B943 /* GenerateThumbnailForURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenerateThumbnailForURL.m; sourceTree = "<group>"; };
 		C16478F6124E988C0062B943 /* GeneratePreviewForURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratePreviewForURL.m; sourceTree = "<group>"; };
-		C16478F7124E988C0062B943 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		C16478F7124E988C0062B943 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; usesTabs = 0; };
 		C1675B6A16064477006E8B66 /* TKOpenGLObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKOpenGLObject.h; sourceTree = "<group>"; };
 		C1675B6B16064477006E8B66 /* TKOpenGLObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TKOpenGLObject.m; sourceTree = "<group>"; };
 		C1675B6C160644C8006E8B66 /* TKOpenGLBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKOpenGLBase.h; sourceTree = "<group>"; };
@@ -2387,6 +2388,7 @@
 		C16478A2124E97190062B943 /* SourceImage.qlgenerator */ = {
 			isa = PBXGroup;
 			children = (
+				55B9F2C01D7D297B00641709 /* GenerateThumbnails.h */,
 				C16478F5124E988C0062B943 /* GenerateThumbnailForURL.m */,
 				C16478F6124E988C0062B943 /* GeneratePreviewForURL.m */,
 				C16478F7124E988C0062B943 /* main.c */,
@@ -5825,6 +5827,7 @@
 		C1C2C65F127CBEF7003B24F6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -5842,6 +5845,7 @@
 		C1C2C660127CBEF7003B24F6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SourceFinagler/SourceFinagler_Prefix.pch;

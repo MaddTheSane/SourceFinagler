@@ -1,5 +1,6 @@
 #include <ApplicationServices/ApplicationServices.h>
 #include <QuickLook/QuickLook.h>
+#include "GenerateThumbnails.h"
 #import <Cocoa/Cocoa.h>
 #import <TextureKit/TextureKit.h>
 
@@ -18,42 +19,36 @@ extern "C" {
 	
 	
 OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options) {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+@autoreleasepool {
+	NSString *nsContentUTI = (__bridge NSString *)contentTypeUTI;
+	NSURL *nsUrl = (__bridge NSURL*)url;
 	
-	if (![(NSString *)contentTypeUTI isEqualToString:TKVTFType] &&
-		![(NSString *)contentTypeUTI isEqualToString:TKDDSType] &&
-		![(NSString *)contentTypeUTI isEqualToString:TKSFTextureImageType]) {
-		
+	if (![nsContentUTI isEqualToString:TKVTFType] &&
+		![nsContentUTI isEqualToString:TKDDSType] &&
+		![nsContentUTI isEqualToString:TKSFTextureImageType]) {
 		
 		NSLog(@"SourceImage.qlgenerator; GeneratePreviewForURL(): contentTypeUTI != VTF or DDS or SFTI; (contentTypeUTI == %@)", contentTypeUTI);
-		[pool release];
 		return noErr;
 	}
 	
 #if MD_DEBUG
-	NSLog(@"GeneratePreviewForURL(): %@", [(NSURL *)url path]);
+	NSLog(@"GeneratePreviewForURL(): %@", [nsUrl path]);
 #endif
 	
-	NSData *fileData = [NSData dataWithContentsOfURL:(NSURL *)url];
+	NSData *fileData = [[NSData alloc] initWithContentsOfURL:nsUrl options:NSDataReadingMappedIfSafe error:NULL];
 	if (fileData == nil) {
 		NSLog(@"SourceImage.qlgenerator; GeneratePreviewForURL(): fileData == nil for url == %@", url);
-		[pool release];
 		return noErr;
 	}
 	CGImageRef imageRef = NULL;
 	
-	if ([(NSString *)contentTypeUTI isEqualToString:TKVTFType]) {
-		
+	if ([nsContentUTI isEqualToString:TKVTFType]) {
 		imageRef = [[TKVTFImageRep imageRepWithData:fileData] CGImage];
-		
-	} else if ([(NSString *)contentTypeUTI isEqualToString:TKDDSType]) {
-		
+	} else if ([nsContentUTI isEqualToString:TKDDSType]) {
 		imageRef = [[TKDDSImageRep imageRepWithData:fileData] CGImage];
-		
-	} else if ([(NSString *)contentTypeUTI isEqualToString:TKSFTextureImageType]) {
-		
+	} else if ([nsContentUTI isEqualToString:TKSFTextureImageType]) {
 		TKImage *tkImage = [[TKImage alloc] initWithData:fileData firstRepresentationOnly:NO];
-		
+		NSArray<TKImageRep*> *aTKImageReps;
 		if (tkImage) {
 			
 			TKImageRep *tkImageRep = nil;
@@ -63,27 +58,21 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
 				
 			} else if ([tkImage faceCount] && [tkImage frameCount]) {
 				
-				NSArray *aTKImageReps = [tkImage representationsForFaceIndexes:[tkImage firstFaceIndexSet]
-																  frameIndexes:[tkImage firstFrameIndexSet]
-																 mipmapIndexes:[tkImage firstMipmapIndexSet]];
+				aTKImageReps = [tkImage representationsForFaceIndexes:[tkImage firstFaceIndexSet]
+														 frameIndexes:[tkImage firstFrameIndexSet]
+														mipmapIndexes:[tkImage firstMipmapIndexSet]];
 				
-				if ([aTKImageReps count]) tkImageRep = [aTKImageReps objectAtIndex:0];
-				
+				tkImageRep = aTKImageReps.firstObject;
 			} else if ([tkImage faceCount]) {
+				aTKImageReps = [tkImage representationsForFaceIndexes:[tkImage firstFaceIndexSet]
+														mipmapIndexes:[tkImage firstMipmapIndexSet]];
 				
-				NSArray *aTKImageReps = [tkImage representationsForFaceIndexes:[tkImage firstFaceIndexSet]
-																 mipmapIndexes:[tkImage firstMipmapIndexSet]];
-				
-				if ([aTKImageReps count]) tkImageRep = [aTKImageReps objectAtIndex:0];
-				
-				
+				tkImageRep = aTKImageReps.firstObject;
 			} else if ([tkImage frameCount]) {
+				aTKImageReps = [tkImage representationsForFrameIndexes:[tkImage firstFrameIndexSet]
+														 mipmapIndexes:[tkImage firstMipmapIndexSet]];
 				
-				NSArray *aTKImageReps = [tkImage representationsForFrameIndexes:[tkImage firstFrameIndexSet]
-																  mipmapIndexes:[tkImage firstMipmapIndexSet]];
-				
-				if ([aTKImageReps count]) tkImageRep = [aTKImageReps objectAtIndex:0];
-				
+				tkImageRep = aTKImageReps.firstObject;
 			} else {
 				if ([tkImage mipmapCount]) {
 					tkImageRep = [tkImage representationForMipmapIndex:0];
@@ -91,15 +80,11 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
 			}
 			
 			imageRef = [tkImageRep CGImage];
-			
-			[tkImage release];
 		}
-		
 	}
 	
 	if (imageRef == NULL) {
-		NSLog(@"SourceImage.qlgenerator; GeneratePreviewForURL(): MDCGImageCreateWithContentsOfFile() returned NULL for file %@", [(NSURL *)url path]);
-		[pool release];
+		NSLog(@"SourceImage.qlgenerator; GeneratePreviewForURL(): MDCGImageCreateWithContentsOfFile() returned NULL for file %@", [nsUrl path]);
 		return noErr;
 	}
 	
@@ -119,9 +104,8 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
 #if MD_DEBUG
 	NSLog(@"GeneratePreviewForURL(): drew preview request");
 #endif
-	[pool release];
 	return noErr;
-	
+}
 }
 	
 void CancelPreviewGeneration(void* thisInterface, QLPreviewRequestRef preview) {

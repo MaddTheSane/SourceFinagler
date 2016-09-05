@@ -9,13 +9,16 @@
 #import <ApplicationServices/ApplicationServices.h>
 #import <Foundation/Foundation.h>
 
+#ifndef __private_extern
+#define __private_extern __attribute__((visibility("hidden")))
+#endif
 
-	
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-CGImageRef MDCGImageCreateCopyWithSize(CGImageRef imageRef, CGSize size) CF_RETURNS_RETAINED;
+__private_extern CGImageRef MDCGImageCreateCopyWithSize(CGImageRef imageRef, CGSize size) CF_RETURNS_RETAINED;
 	
 #ifdef __cplusplus
 }
