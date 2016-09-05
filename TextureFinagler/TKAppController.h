@@ -71,9 +71,6 @@ extern BOOL			MDPlaySoundEffects;
 extern BOOL			MDPerformingBatchOperation;
 
 
-extern SInt32		TKSystemVersion;
-
-
 @interface TKAppController : NSObject <NSApplicationDelegate, NSOpenSavePanelDelegate, NSToolbarDelegate, NSSoundDelegate> {
     IBOutlet NSWindow					*window;
 	

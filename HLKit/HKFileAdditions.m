@@ -39,7 +39,7 @@
 	
 	if (shouldExtractToTempFile) {
 		NSString *tempPath = [NSTemporaryDirectory() stringByAppendingPathComponent:@"com.markdouma.SourceAddonFinagler"].stringByAssuringUniqueFilename;
-		NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
+		NSFileManager *fileManager = [[NSFileManager alloc] init];
 		if (![fileManager createDirectoryAtPath:tempPath withIntermediateDirectories:YES attributes:nil error:NULL]) {
 			NSLog(@"[%@ %@] failed to create tempDirectory to extract file in!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 			return nil;
@@ -59,17 +59,16 @@
 		if (![fileManager removeItemAtPath:tempPath error:NULL]) {
 			NSLog(@"[%@ %@] failed to cleanup temp folder!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 		}
-		
 	} else {
-		stringValue = [[[NSString alloc] initWithData:textData encoding:NSUTF8StringEncoding] autorelease];
+		stringValue = [[NSString alloc] initWithData:textData encoding:NSUTF8StringEncoding];
 		if (stringValue == nil) {
 			NSLog(@"[%@ %@] failed to create string with NSUTF8StringEncoding", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 			
-			stringValue = [[[NSString alloc] initWithData:textData encoding:NSASCIIStringEncoding] autorelease];
+			stringValue = [[NSString alloc] initWithData:textData encoding:NSASCIIStringEncoding];
 			if (stringValue == nil) {
 				NSLog(@"[%@ %@] failed to create string with NSASCIIStringEncoding", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 				
-				stringValue = [[[NSString alloc] initWithData:textData encoding:NSISOLatin1StringEncoding] autorelease];
+				stringValue = [[NSString alloc] initWithData:textData encoding:NSISOLatin1StringEncoding];
 				if (stringValue == nil) {
 					NSLog(@"[%@ %@] failed to create string with NSISOLatin1StringEncoding, data == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), textData);
 					stringValue = @"<failed to create string using UTF8, ASCII, or ISO Latin 1 encodings>";
@@ -80,14 +79,14 @@
 	return stringValue;
 }
 
-
 - (NSSound *)sound {
-	if (fileType != HKFileTypeSound) return nil;
+	if (fileType != HKFileTypeSound)
+		return nil;
 	NSData *soundData = self.data;
-	if (soundData) return [[[NSSound alloc] initWithData:soundData] autorelease];
+	if (soundData)
+		return [[NSSound alloc] initWithData:soundData];
 	return nil;
 }
-
 
 - (NSImage *)image {
 #if HK_DEBUG
@@ -98,7 +97,7 @@
 		NSData *data = self.data;
 		if (data) {
 			if ([type isEqualToString:TKVTFType]) {
-				theImage = [[[TKImage alloc] initWithData:data firstRepresentationOnly:YES] autorelease];
+				theImage = [[TKImage alloc] initWithData:data firstRepresentationOnly:YES];
 				if (theImage) {
 					self.version = ((TKImage *)theImage).version;
 					self.compression = ((TKImage *)theImage).compression;
@@ -106,7 +105,7 @@
 					self.hasAlpha = (((TKImage *)theImage).hasAlpha ? NSLocalizedString(@"Yes", @"") : NSLocalizedString(@"No", @""));
 				}
 			} else {
-				theImage = [[[NSImage alloc] initWithData:data] autorelease];
+				theImage = [[NSImage alloc] initWithData:data];
 			}
 		}
 		if (theImage) {
@@ -123,7 +122,6 @@
 	return theImage;
 }
 
-
 - (QTMovie *)movie {
 	QTMovie *movie = nil;
 	if (fileType == HKFileTypeMovie) {
@@ -138,6 +136,5 @@
 	}
 	return movie;
 }
-
 
 @end

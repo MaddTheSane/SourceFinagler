@@ -19,7 +19,6 @@ using namespace HLLib;
 
 @implementation HKXZPFile
 
-
 - (instancetype)initWithContentsOfFile:(NSString *)aPath mode:(HLFileMode)permission showInvisibleItems:(BOOL)showInvisibleItems sortDescriptors:(NSArray *)sortDescriptors error:(NSError **)outError {
 #if HK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -41,7 +40,6 @@ using namespace HLLib;
 	return self;
 }
 
-
 - (void)dealloc {
 #if HK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -50,9 +48,7 @@ using namespace HLLib;
 		static_cast<CXZPFile *>(_privateData)->Close();
 		delete static_cast<CXZPFile *>(_privateData);
 	}
-	[super dealloc];
 }
-
 
 - (NSString *)description {
 	NSMutableString *description = [NSMutableString stringWithString:@""];
@@ -60,8 +56,4 @@ using namespace HLLib;
 	return [NSString stringWithFormat:@"%@", description];
 }
 
-
 @end
-
-
-

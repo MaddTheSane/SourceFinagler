@@ -39,7 +39,7 @@ using namespace HLLib;
 		isLeaf = NO;
 		isExtractable = YES;
 		isVisible = YES;
-		size = [@-1LL retain];
+		size = @-1LL;
 		countOfVisibleChildNodes = NSNotFound;
 		self.showInvisibleItems = showInvisibles;
 		
@@ -62,7 +62,7 @@ using namespace HLLib;
 #endif
 	if (name == nil) {
 		const hlChar *cName = _privateData->GetName();
-		if (cName) name = [@(cName) retain];
+		if (cName) name = @(cName);
 	}
 	return name;
 }
@@ -71,7 +71,7 @@ using namespace HLLib;
 #if HK_DEBUG
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	if (nameExtension == nil) nameExtension = [self.name.pathExtension retain];
+	if (nameExtension == nil) nameExtension = self.name.pathExtension;
 	return nameExtension;
 }
 
@@ -89,7 +89,7 @@ using namespace HLLib;
 #if HK_DEBUG
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	if (kind == nil) kind = [NSLocalizedString(@"Folder", @"") retain];
+	if (kind == nil) kind = NSLocalizedString(@"Folder", @"");
 	return kind;
 }
 
@@ -152,14 +152,11 @@ using namespace HLLib;
 			}
 			if (child) {
 				[tempChildren addObject:child];
-				[child release];
 			}
 		}
 		[self insertChildNodes:tempChildren atIndex:0];
-		[tempChildren release];
 	}
 }
-
 
 - (HKItem *)descendantAtPath:(NSString *)aPath {
 #if HK_DEBUG
@@ -187,7 +184,8 @@ using namespace HLLib;
 	
 	NSUInteger count = revisedPathComponents.count;
 	
-	if (count == 0) return nil;
+	if (count == 0)
+		return nil;
 	
 	NSString *targetName = revisedPathComponents[0];
 	NSString *remainingPath = nil;
@@ -209,7 +207,6 @@ using namespace HLLib;
 	return nil;
 }
 
-
 - (NSArray *)descendants {
 #if HK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -226,9 +223,8 @@ using namespace HLLib;
 		}
 	}
 
-	return [descendants autorelease];
+	return descendants;
 }
-
 
 - (NSArray *)visibleDescendants {
 #if HK_DEBUG
@@ -245,9 +241,8 @@ using namespace HLLib;
 		}
 	}
 	
-	return [visibleDescendants autorelease];
+	return visibleDescendants;
 }
-
 
 - (NSDictionary *)visibleDescendantsAndPathsRelativeToItem:(HKItem *)parentItem {
 #if HK_DEBUG
@@ -263,9 +258,8 @@ using namespace HLLib;
 			visibleDescendantsAndPaths[itemPath] = item;
 		}
 	}
-	return [visibleDescendantsAndPaths autorelease];
+	return visibleDescendantsAndPaths;
 }
-
 
 - (HKNode *)childNodeAtIndex:(NSUInteger)index {
 	[self populateChildrenIfNeeded];
@@ -285,7 +279,7 @@ using namespace HLLib;
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	[self populateChildrenIfNeeded];
-    return [[childNodes copy] autorelease];
+    return [childNodes copy];
 }
 
 
@@ -294,9 +288,8 @@ using namespace HLLib;
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	[self populateChildrenIfNeeded];
-	return [[visibleChildNodes copy] autorelease];
+	return [visibleChildNodes copy];
 }
-
 
 - (BOOL)writeToFile:(NSString *)aPath assureUniqueFilename:(BOOL)assureUniqueFilename resultingPath:(NSString **)resultingPath error:(NSError **)outError {
 #if HK_DEBUG
@@ -308,18 +301,11 @@ using namespace HLLib;
 	
 	if (![fileManager createDirectoryAtPath:aPath withIntermediateDirectories:YES attributes:nil error:outError]) {
 		NSLog(@"[%@ %@] failed to create directory at %@!", NSStringFromClass([self class]), NSStringFromSelector(_cmd), aPath);
-		[fileManager release];
 		return NO;
 	}
-	[fileManager release];
 	if (resultingPath) *resultingPath = aPath;
 	return YES;
 	
 }
 
-
-
-
 @end
-
-

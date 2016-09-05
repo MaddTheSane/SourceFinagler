@@ -34,7 +34,6 @@ using namespace HLLib::Streams;
 
 @implementation HKFile
 {
-	
 @private
 	const CDirectoryFile *_privateData;
 	HKFileHandle *_fH;
@@ -96,14 +95,6 @@ using namespace HLLib::Streams;
 	return self;
 }
 
-
-- (void)dealloc {
-#if HK_DEBUG
-	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-#endif
-	[super dealloc];
-}
-
 #if (HK_LAZY_INIT)
 
 - (NSString *)name {
@@ -112,7 +103,7 @@ using namespace HLLib::Streams;
 #endif
 	if (name == nil) {
 		const hlChar *cName = _privateData->GetName();
-		if (cName) name = [@(cName) retain];
+		if (cName) name = @(cName);
 	}
 	return name;
 }
@@ -121,7 +112,7 @@ using namespace HLLib::Streams;
 #if HK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	if (nameExtension == nil) nameExtension = [self.name.pathExtension retain];
+	if (nameExtension == nil) nameExtension = self.name.pathExtension;
 	return nameExtension;
 }
 
@@ -130,7 +121,7 @@ using namespace HLLib::Streams;
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	if (type == nil) {
-		type = (NSString *)UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, (CFStringRef)self.nameExtension, NULL);
+		type = (__bridge_transfer NSString *)UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, (__bridge CFStringRef)self.nameExtension, NULL);
 	}
 	return type;
 }
@@ -140,11 +131,11 @@ using namespace HLLib::Streams;
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	if (kind == nil) {
-		kind = [[[NSWorkspace sharedWorkspace] localizedDescriptionForType:self.type] retain];
+		kind = [[NSWorkspace sharedWorkspace] localizedDescriptionForType:self.type];
 		if (kind == nil) {
 			CFStringRef tmpKind;
-			LSCopyKindStringForTypeInfo(kLSUnknownType, kLSUnknownCreator, (CFStringRef)self.nameExtension, (CFStringRef *)&tmpKind);
-			kind = (NSString*)tmpKind;
+			LSCopyKindStringForTypeInfo(kLSUnknownType, kLSUnknownCreator, (__bridge CFStringRef)self.nameExtension, &tmpKind);
+			kind = (NSString*)CFBridgingRelease(tmpKind);
 		}
 	}
 	return kind;
@@ -157,7 +148,7 @@ using namespace HLLib::Streams;
 	if (size == nil) {
 		hlUInt fileSize = 0;
 		_privateData->GetPackage()->GetFileSize(_privateData, fileSize);
-		size = [@((unsigned long long)fileSize) retain];
+		size = @((unsigned long long)fileSize);
 	}
 	return size;
 }
@@ -205,7 +196,7 @@ using namespace HLLib::Streams;
 		if (outError) *outError = [NSError errorWithDomain:HKErrorDomain code:HKErrorNotExtractable userInfo:nil];
 		return NO;
 	}
-	NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
+	NSFileManager *fileManager = [[NSFileManager alloc] init];
 	NSString *parentDirectory = aPath.stringByDeletingLastPathComponent;
 	
 	if (![fileManager createDirectoryAtPath:parentDirectory withIntermediateDirectories:YES attributes:nil error:outError]) {
@@ -216,7 +207,7 @@ using namespace HLLib::Streams;
 	
 	if (resultingPath) *resultingPath = aPath;
 	
-	_fH = [[HKFileHandle fileHandleForWritingAtPath:aPath] retain];
+	_fH = [HKFileHandle fileHandleForWritingAtPath:aPath];
 	if (_fH == nil) {
 		NSLog(@"[%@ %@] failed to create fileHandle at path == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), aPath);
 		return NO;
@@ -227,7 +218,6 @@ using namespace HLLib::Streams;
 	
 	if (!_privateData->GetPackage()->CreateStream(_privateData, pInput)) {
 		NSLog(@"[%@ %@] file->GetPackage()-CreateStream() failed!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-		[_fH release];
 		_fH = nil;
 		return NO;
 	}
@@ -236,14 +226,12 @@ using namespace HLLib::Streams;
 	if (!_iS->Open(HL_MODE_READ)) {
 		NSLog(@"[%@ %@] pInput->Open(HL_MODE_READ) failed for item == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), self);
 		_privateData->GetPackage()->ReleaseStream(_iS);
-		[_fH release];
 		_fH = nil;
 		return NO;
 	}
 	
 	return YES;
 }
-
 
 - (BOOL)continueWritingPartialBytesOfLength:(NSUInteger *)partialBytesLength error:(NSError **)outError {
 #if HK_DEBUG
@@ -269,12 +257,10 @@ using namespace HLLib::Streams;
 	if (writeData) {
 		[_fH writeData:writeData];
 	}
-	[writeData release];
 	
 	if (partialBytesLength) *partialBytesLength = currentBytesRead;
 	return YES;
 }
-
 
 - (BOOL)finishWritingWithError:(NSError **)outError {
 #if HK_DEBUG
@@ -288,12 +274,10 @@ using namespace HLLib::Streams;
 	_iS = 0;
 	
 	[_fH closeFile];
-	[_fH release];
 	_fH = nil;
 	
 	return YES;
 }
-
 
 - (BOOL)cancelWritingAndRemovePartialFileWithError:(NSError **)outError {
 #if HK_DEBUG
@@ -306,10 +290,9 @@ using namespace HLLib::Streams;
 	_privateData->GetPackage()->ReleaseStream(_iS);
 	_iS = 0;
 	
-	NSString *filePath = [[(_fH).path retain] autorelease];
+	NSString *filePath = (_fH).path;
 	
 	[_fH closeFile];
-	[_fH release];
 	_fH = nil;
 	
 	NSFileManager *fileManager = [[NSFileManager alloc] init];
@@ -317,11 +300,9 @@ using namespace HLLib::Streams;
 	if (![fileManager removeItemAtPath:filePath error:outError]) {
 		NSLog(@"[%@ %@] failed to delete partial file at %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), filePath);
 	}
-	[fileManager release];
 	
 	return YES;
 }
-
 
 - (BOOL)writeToFile:(NSString *)aPath assureUniqueFilename:(BOOL)assureUniqueFilename resultingPath:(NSString **)resultingPath error:(NSError **)anError {
 #if HK_DEBUG
@@ -335,7 +316,7 @@ using namespace HLLib::Streams;
 	
 	BOOL success = YES;
 	
-	NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
+	NSFileManager *fileManager = [[NSFileManager alloc] init];
 	NSString *parentDirectory = aPath.stringByDeletingLastPathComponent;
 	
 	if (![fileManager createDirectoryAtPath:parentDirectory withIntermediateDirectories:YES attributes:nil error:anError]) {
@@ -378,7 +359,6 @@ using namespace HLLib::Streams;
 		if (writeData) {
 			[fileHandle writeData:writeData];
 		}
-		[writeData release];
 		
 		totalBytesWritten += currentBytesRead;
 		
@@ -392,8 +372,6 @@ using namespace HLLib::Streams;
 	
 	return success;
 }
-
-
 
 - (NSData *)data {
 #if HK_DEBUG
@@ -432,12 +410,9 @@ using namespace HLLib::Streams;
 			}
 			_privateData->GetPackage()->ReleaseStream(pInput);
 		}
-		return [[mData copy] autorelease];
+		return [mData copy];
 	}
 	return nil;
 }
 
-
 @end
-
-

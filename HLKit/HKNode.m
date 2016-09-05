@@ -16,10 +16,7 @@
 - (BOOL)isDescendantOfNodeOrIsEqualToNode:(HKNode *)node;
 @end
 
-
-
 @implementation HKNode
-
 @synthesize container, parent, sortDescriptors;
 @dynamic showInvisibleItems;
 
@@ -33,10 +30,10 @@
 		isVisible = YES;
 		showInvisibleItems = NO;
 		
-		sortDescriptors = [aSortDescriptors retain];
+		sortDescriptors = aSortDescriptors;
 		
 		if (theChildren) {
-			childNodes = [[NSMutableArray arrayWithArray:theChildren] retain];
+			childNodes = [NSMutableArray arrayWithArray:theChildren];
 			visibleChildNodes = [[NSMutableArray alloc] init];
 			
 			for (HKNode *child in childNodes) {
@@ -51,20 +48,14 @@
 	return self;
 }
 
-
 - (void)dealloc {
 	container = nil;
 	parent = nil;
-    [childNodes release];
-	[visibleChildNodes release];
-	[sortDescriptors release];
-    [super dealloc];
 }
 
 - (BOOL)isRootNode {
 	return (parent == nil);
 }
-
 
 - (void)setNilValueForKey:(NSString *)key {
 #if HK_DEBUG
@@ -81,14 +72,12 @@
 	}
 }
 
-
 - (void)initializeChildrenIfNeeded {
 	if (childNodes == nil && visibleChildNodes == nil) {
 		childNodes = [[NSMutableArray alloc] init];
 		visibleChildNodes = [[NSMutableArray alloc] init];
 	}
 }
-
 
 - (void)insertChildNode:(HKNode *)child atIndex:(NSUInteger)index {
 	[self initializeChildrenIfNeeded];
@@ -103,8 +92,6 @@
 		[visibleChildNodes sortUsingDescriptors:sortDescriptors];
 	}
 }
-
-
 
 - (void)insertChildNodes:(NSArray *)newChildren atIndex:(NSUInteger)theIndex {
 #if HK_DEBUG
@@ -125,7 +112,6 @@
 	
 }
 
-
 - (void)_removeChildrenIdenticalTo:(NSArray *)theChildren {
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 	
@@ -136,7 +122,6 @@
 	}
 
 }
-
 
 - (void)removeChildNode:(HKNode *)child {
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -163,28 +148,24 @@
 }
 
 - (NSArray *)childNodes {
-	return [[childNodes copy] autorelease];
+	return [childNodes copy];
 }
 
 - (HKNode *)childNodeAtIndex:(NSUInteger)index {
     return childNodes[index];
 }
 
-
 - (NSUInteger)countOfVisibleChildNodes {
 	return visibleChildNodes.count;
 }
 
 - (NSArray *)visibleChildNodes {
-	return [[visibleChildNodes copy] autorelease];
+	return [visibleChildNodes copy];
 }
-
 
 - (HKNode *)visibleChildNodeAtIndex:(NSUInteger)index {
 	return visibleChildNodes[index];
 }
-
-
 
 // -------------------------------------------------------------------------------
 //	Returns YES if self is contained anywhere inside the children or children of
@@ -231,8 +212,6 @@
 	
 }
 
-
-
 - (BOOL)isDescendantOfNodeOrIsEqualToNode:(HKNode *)node {
 #if HK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -260,7 +239,6 @@
 	return NO;
 }
 
-
 - (void)setShowInvisibleItems:(BOOL)value {
 #if HK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -280,14 +258,12 @@
 	return showInvisibleItems;
 }
 
-
 - (void)setSortDescriptors:(NSArray *)aSortDescriptors {
 #if HK_DEBUG
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	return [self setSortDescriptors:aSortDescriptors recursively:YES];
 }
-
 
 - (void)setSortDescriptors:(NSArray *)aSortDescriptors recursively:(BOOL)recursively {
 #if HK_DEBUG
@@ -296,8 +272,6 @@
 	
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 	if (!isLeaf) {
-		[aSortDescriptors retain];
-		[sortDescriptors release];
 		sortDescriptors = aSortDescriptors;
 		
 		if (childNodes && recursively) {
@@ -305,7 +279,6 @@
 		}
 	}
 }
-
 
 - (void)recursiveSortChildren {
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -327,8 +300,4 @@
 	}
 }
 
-
 @end
-
-
-

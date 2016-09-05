@@ -21,13 +21,11 @@ NS_ENUM(OSType) {
 @end
 
 @implementation HKFileHandle
-
 @synthesize path;
 
 + (instancetype)fileHandleForWritingAtPath:(NSString *)aPath {
-	return [[[[self class] alloc] initForWritingAtPath:aPath] autorelease];
+	return [[[self class] alloc] initForWritingAtPath:aPath];
 }
-
 
 - (instancetype)initForWritingAtPath:(NSString *)aPath {
 	if ((self = [super init])) {
@@ -39,7 +37,6 @@ NS_ENUM(OSType) {
 		
 		if (status != noErr) {
 			NSLog(@"[%@ %@] FSGetDataForkName() returned %d", NSStringFromClass([self class]), NSStringFromSelector(_cmd), (int)status);
-			[self release];
 			return nil;
 		}
 		
@@ -51,8 +48,6 @@ NS_ENUM(OSType) {
 		if (!([fileManager fileExistsAtPath:aPath isDirectory:&isDir] && !isDir)) {
 			if (![aPath.stringByDeletingLastPathComponent getFSRef:&parentRef error:&anError]) {
 				NSLog(@"[%@ %@] failed to get parentRef", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-				[fileManager release];
-				[self release];
 				return nil;
 			}
 			
@@ -86,16 +81,12 @@ NS_ENUM(OSType) {
 			
 			if (status != noErr) {
 				NSLog(@"[%@ %@] FSCreateFileUnicode() returned %d", NSStringFromClass([self class]), NSStringFromSelector(_cmd), (int)status);
-				[fileManager release];
-				[self release];
 				return nil;
 			}
 			status = FSOpenFork(&fileRef, forkName.length, forkName.unicode, fsRdWrPerm, &forkRef);
 			
 			if (status != noErr) {
 				NSLog(@"[%@ %@] FSOpenFork() returned %d", NSStringFromClass([self class]), NSStringFromSelector(_cmd), (int)status);
-				[fileManager release];
-				[self release];
 				return nil;
 			}
 			
@@ -103,34 +94,24 @@ NS_ENUM(OSType) {
 			
 			if (![aPath getFSRef:&fileRef error:&anError]) {
 				NSLog(@"[%@ %@] failed to getFSRef:error:, error == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), anError);
-				[fileManager release];
-				[self release];
 				return nil;
 			}
 			
 			status = FSOpenFork(&fileRef, forkName.length, forkName.unicode, fsRdWrPerm, &forkRef);
 			if (status != noErr) {
 				NSLog(@"[%@ %@] FSOpenFork() returned %d", NSStringFromClass([self class]), NSStringFromSelector(_cmd), (int)status);
-				[fileManager release];
-				[self release];
 				return nil;
 			}
 		}
 		
 		offsetInFile = 0;
-		[fileManager release];
 	}
 	return self;
 }
 
-
 - (void)dealloc {
-	[path release];
 	[self closeFile];
-	[super dealloc];
 }
-
-
 
 - (void)writeData:(NSData *)aData {
 	unsigned long long dataLength = aData.length;
@@ -143,7 +124,6 @@ NS_ENUM(OSType) {
 	if (status != noErr) NSLog(@"[%@ %@] FSWriteFork() returned %d", NSStringFromClass([self class]), NSStringFromSelector(_cmd), (int)status);
 	
 	offsetInFile += actualCount;
-	
 }
 
 - (void)synchronizeFile {
@@ -152,7 +132,6 @@ NS_ENUM(OSType) {
 		if (status != noErr) NSLog(@"[%@ %@] FSFlushFork(forkRef) returned %d", NSStringFromClass([self class]), NSStringFromSelector(_cmd), (int)status);
 	}
 }
-
 
 - (void)closeFile {
 	[self synchronizeFile];
@@ -178,9 +157,7 @@ NS_ENUM(OSType) {
 		status = FSSetCatalogInfo(&fileRef, kFSCatInfoFinderInfo, &catalogInfo);
 		if (status != noErr) NSLog(@"[%@ %@] FSSetCatalogInfo() returned %d", NSStringFromClass([self class]), NSStringFromSelector(_cmd), (int)status);
 	}
-	
 }
-
 
 - (unsigned long long)offsetInFile {
 	if (forkRef != -1) {
@@ -193,7 +170,6 @@ NS_ENUM(OSType) {
 	return 0;
 }
 
-
 - (unsigned long long)seekToEndOfFile {
 	if (forkRef != -1) {
 		OSStatus status = noErr;
@@ -204,7 +180,6 @@ NS_ENUM(OSType) {
 	return 0;
 }
 
-
 - (void)seekToFileOffset:(unsigned long long)anOffset {
 	if (forkRef != -1) {
 		OSStatus status = noErr;
@@ -212,7 +187,6 @@ NS_ENUM(OSType) {
 		if (status != noErr) NSLog(@"[%@ %@] FSSetForkPosition(forkRef) returned %d", NSStringFromClass([self class]), NSStringFromSelector(_cmd), (int)status);
 	}
 }
-
 
 - (void)truncateFileAtOffset:(unsigned long long)anOffset {
 	if (forkRef != -1) {

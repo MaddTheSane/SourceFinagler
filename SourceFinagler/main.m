@@ -46,33 +46,9 @@ int main(int argc, char *argv[]) {
 
 
 int main(int argc, char *argv[]) {
-	SInt32 MDFullSystemVersion = 0;
-	SInt32 MDSystemVersion = 0;
-
-	Gestalt(gestaltSystemVersion, &MDFullSystemVersion);
-	MDSystemVersion = MDFullSystemVersion & 0xfffffff0;
-	
-	if (MDSystemVersion < TKSnowLeopard) {
-		
-		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-		
-		[NSApplication sharedApplication];
-
-		NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Source Finagler only works with Mac OS X 10.6 or greater!", @"")
-									   informativeText:NSLocalizedString(@"Sorry, but you need at least Mac OS X 10.6 on an Intel-based Mac to run this application!", @"")
-										   firstButton:NSLocalizedString(@"Quit", @"")
-										  secondButton:nil
-										   thirdButton:nil];
-		
-		[alert runModal];
-		
-		[pool release];
-		return 0;
-		
-	} else {
-		return NSApplicationMain(argc,  (const char **) argv);
-	}
+	return NSApplicationMain(argc,  (const char **) argv);
 }
+
 #endif
 
 

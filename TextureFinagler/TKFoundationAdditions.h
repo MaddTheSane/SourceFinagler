@@ -28,27 +28,10 @@
     #endif
 #endif
 
-
-NS_ENUM(SInt32) {
-	TKUndeterminedVersion	= -1,
-	TKCheetah				= 0x1000,
-	TKPuma					= 0x1010,
-	TKJaguar				= 0x1020,
-	TKPanther				= 0x1030,
-	TKTiger					= 0x1040,
-	TKLeopard				= 0x1050,
-	TKSnowLeopard			= 0x1060,
-	TKLion					= 0x1070,
-	TKMountainLion			= 0x1080,
-	TKUnknownKitty			= 0x1090,
-	TKUnknownVersion		= 0x1100
-};
-
 	
 	
 TKFOUNDATION_EXTERN BOOL TKMouseInRects(NSPoint inPoint, NSArray *inRects, BOOL isFlipped);
 TKFOUNDATION_EXTERN NSString *NSStringForAppleScriptListFromPaths(NSArray *paths);
-TKFOUNDATION_EXTERN SInt32 TKGetSystemVersion();
 	
 
 

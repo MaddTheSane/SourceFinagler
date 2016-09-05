@@ -23,7 +23,6 @@
 @synthesize freeBlockCount;
 @synthesize lastVersionPlayed;
 
-
 - (instancetype)initWithContentsOfFile:(NSString *)aPath mode:(HLFileMode)permission showInvisibleItems:(BOOL)showInvisibleItems sortDescriptors:(NSArray *)sortDescriptors error:(NSError **)outError {
 #if HK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -48,7 +47,7 @@
 					
 					
 					if (static_cast<CGCFFile *>(_privateData)->GetAttribute(HL_GCF_PACKAGE_VERSION, versionAttr)) {
-						version = [[NSString stringWithFormat:@"1.%lu", (unsigned long)versionAttr.Value.UnsignedInteger.uiValue] retain];
+						version = [NSString stringWithFormat:@"1.%lu", (unsigned long)versionAttr.Value.UnsignedInteger.uiValue];
 					}
 					if (static_cast<CGCFFile *>(_privateData)->GetAttribute(HL_GCF_PACKAGE_ID, packageIDAttr)) {
 						packageID = (NSUInteger)packageIDAttr.Value.UnsignedInteger.uiValue;
@@ -74,7 +73,6 @@
 	return self;
 }
 
-
 - (void)dealloc {
 #if HK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -83,9 +81,7 @@
 		static_cast<CGCFFile *>(_privateData)->Close();
 		delete static_cast<CGCFFile *>(_privateData);
 	}
-	[super dealloc];
 }
-
 
 - (NSString *)description {
 	NSMutableString *description = [NSMutableString stringWithString:@""];

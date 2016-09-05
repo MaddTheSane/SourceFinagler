@@ -39,18 +39,16 @@ static void HKInitializeIcons() {
 	if (iconsInitialized == NO) {
 		icons = [[NSMutableDictionary alloc] init];
 		if (folderImage == nil) {
-			folderImage = [[[NSWorkspace sharedWorkspace] iconForFileType:NSFileTypeForHFSTypeCode(kGenericFolderIcon)] retain];
+			folderImage = [[NSWorkspace sharedWorkspace] iconForFileType:NSFileTypeForHFSTypeCode(kGenericFolderIcon)];
 		}
 		if (fileImage == nil) {
-			fileImage = [[[NSWorkspace sharedWorkspace] iconForFileType:NSFileTypeForHFSTypeCode(kGenericDocumentIcon)] retain];
+			fileImage = [[NSWorkspace sharedWorkspace] iconForFileType:NSFileTypeForHFSTypeCode(kGenericDocumentIcon)];
 		}
 		iconsInitialized = YES;
 	}
 }
 
-
 @implementation HKItem
-
 
 + (void)initialize {
 #if HK_DEBUG
@@ -58,7 +56,6 @@ static void HKInitializeIcons() {
 #endif
 	if (iconsInitialized == NO) HKInitializeIcons();
 }
-
 
 + (NSImage *)iconForItem:(HKItem *)item {
 #if HK_DEBUG
@@ -82,18 +79,14 @@ static void HKInitializeIcons() {
 	return image;
 }
 
-
-
 + (NSImage *)copiedImageForItem:(HKItem *)anItem {
 #if HK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	NSImage *image = [[self class] iconForItem:anItem];
-	NSImage *copiedImage = [[image copy] autorelease];
+	NSImage *copiedImage = [image copy];
 	return copiedImage;
 }
-
-
 
 @synthesize name, nameExtension, kind, size,
 		type,
@@ -111,33 +104,12 @@ static void HKInitializeIcons() {
 	return [self initWithParent:nil childNodes:nil sortDescriptors:nil container:nil];
 }
 
-
 - (instancetype)initWithParent:(HKNode *)aParent childNodes:(NSArray *)theChildren sortDescriptors:(NSArray *)aSortDescriptors container:(id)aContainer {
 	if ((self = [super initWithParent:aParent childNodes:theChildren sortDescriptors:aSortDescriptors container:aContainer])) {
 		fileType = HKFileTypeNone;
 	}
 	return self;
 }
-
-
-- (void)dealloc {
-#if HK_DEBUG
-	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-#endif
-	[name release];
-	[nameExtension release];
-	[kind release];
-	[size release];
-	[path release];
-	[type release];
-	[dimensions release];
-	[version release];
-	[compression release];
-	[hasAlpha release];
-	[hasMipmaps release];
-	[super dealloc];
-}
-
 
 - (NSString *)path {
 	if (path) return path;
@@ -154,10 +126,8 @@ static void HKInitializeIcons() {
 	return nil;
 }
 
-
 - (void)setPath:(NSString *)aPath {
 	NSString *copy = [aPath copy];
-	[path release];
 	path = copy;
 }
 
@@ -187,7 +157,6 @@ static void HKInitializeIcons() {
 	return relativePath;
 }
 
-
 - (BOOL)writeToFile:(NSString *)aPath assureUniqueFilename:(BOOL)assureUniqueFilename resultingPath:(NSString **)resultingPath error:(NSError **)outError {
 	NSLog(@"[%@ %@] (HKItem) subclasses must implement!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 	NSException *exception = [NSException exceptionWithName:NSInternalInconsistencyException
@@ -196,7 +165,6 @@ static void HKInitializeIcons() {
 	[exception raise];
 	return NO;
 }
-
 
 // -------------------------------------------------------------------------------
 //	Override this for any non-object values
@@ -215,7 +183,6 @@ static void HKInitializeIcons() {
 		[super setNilValueForKey:key];
 	}
 }
-
 
 // -------------------------------------------------------------------------------
 //	Generates an array of all descendants.
@@ -274,10 +241,7 @@ static NSString * const HKFileTypeDescription[] = {
 	return description;
 }
 
-
 @end
-
-
 
 // -------------------------------------------------------------------------------
 //	Finds the receiver's parent from the nodes contained in the array.

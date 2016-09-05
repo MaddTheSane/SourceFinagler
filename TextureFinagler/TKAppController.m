@@ -84,8 +84,6 @@ BOOL	MDPerformingBatchOperation = NO;
 #define defaultBrowserViewFontAndIconSize 13
 
 
-SInt32 TKSystemVersion = 0;
-
 BOOL needSpotlightReimport = NO;
 BOOL needSourceAddonFinaglerRegister = NO;
 
@@ -107,11 +105,6 @@ static NSArray *appClassNames = nil;
 		if (appClassNames == nil) {
 			appClassNames = [[NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"TKAppController" ofType:@"plist"]][@"TKAppControllerClassNames"] retain];
 		}
-		
-		SInt32 MDFullSystemVersion = 0;
-		
-		Gestalt(gestaltSystemVersion, &MDFullSystemVersion);
-		TKSystemVersion = MDFullSystemVersion & 0xfffffff0;
 		
 		
 		// need to run it here in case the font document isn't created prior to the view options window being instantiated.
@@ -282,12 +275,7 @@ static NSArray *appClassNames = nil;
 	
 	[viewModeAsListMenuItem retain];
 	
-	if (TKSystemVersion < TKSnowLeopard) {
-		[viewMenu removeItem:viewModeAsColumnsMenuItem];
-		viewModeAsColumnsMenuItem = nil;
-	} else {
-		[viewModeAsColumnsMenuItem retain];
-	}
+	[viewModeAsColumnsMenuItem retain];
 	
 	
 	[viewTogglePathBarMenuItem retain];
@@ -463,14 +451,7 @@ static NSArray *appClassNames = nil;
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	
-	if (TKSystemVersion == TKLeopard) {
-		[viewMenu setItemArray:@[viewModeAsListMenuItem,[NSMenuItem separatorItem], viewTogglePathBarMenuItem, [NSMenuItem separatorItem], viewToggleToolbarShownMenuItem,viewCustomizeToolbarMenuItem,[NSMenuItem separatorItem],viewOptionsMenuItem]];
-		
-	} else if (TKSystemVersion >= TKSnowLeopard) {
-		[viewMenu setItemArray:@[viewModeAsListMenuItem,viewModeAsColumnsMenuItem,[NSMenuItem separatorItem], viewTogglePathBarMenuItem, [NSMenuItem separatorItem], viewToggleToolbarShownMenuItem,viewCustomizeToolbarMenuItem,[NSMenuItem separatorItem],viewOptionsMenuItem]];
-		
-	}
-	
+	[viewMenu setItemArray:@[viewModeAsListMenuItem,viewModeAsColumnsMenuItem,[NSMenuItem separatorItem], viewTogglePathBarMenuItem, [NSMenuItem separatorItem], viewToggleToolbarShownMenuItem,viewCustomizeToolbarMenuItem,[NSMenuItem separatorItem],viewOptionsMenuItem]];
 }
 
 

@@ -87,28 +87,16 @@ static HKArchiveFileTest HKArchiveFileTestTable[] = {
 #endif
 	if (aPath == nil) {
 		NSLog(@"[%@ %@] path == nil!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-		[self release];
 		return nil;
 	}
 	
 	if ((self = [super init])) {
-		filePath = [aPath retain];
+		filePath = [aPath copy];
 		_privateData = 0;
 		haveGatheredAllItems = NO;
 		isReadOnly = !(permission & HL_MODE_WRITE);
 	}
 	return self;
-}
-
-- (void)dealloc {
-#if HK_DEBUG
-	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-#endif
-	[filePath release];
-	[items release];
-	[allItems release];
-	[version release];
-	[super dealloc];
 }
 
 - (HKFolder *)items {
@@ -131,7 +119,7 @@ static HKArchiveFileTest HKArchiveFileTestTable[] = {
 #endif
 	
 	if (!haveGatheredAllItems) {
-		NSDate *startDate = [[NSDate date] retain];
+		NSDate *startDate = [NSDate date];
 		NSMutableArray *gatheredItems;
 		
 		@autoreleasepool {
@@ -153,8 +141,6 @@ static HKArchiveFileTest HKArchiveFileTestTable[] = {
 		
 		NSLog(@"[%@ %@] ****** TIME to gather allItems == %.7f sec, gatheredItems count == %lu, allItems count == %lu", NSStringFromClass([self class]), NSStringFromSelector(_cmd), fabs(startDate.timeIntervalSinceNow), (unsigned long)gatheredItems.count, (unsigned long)allItems.count);
 		
-		[gatheredItems release];
-		[startDate release];
 		startDate = nil;
 	}
 	return allItems;

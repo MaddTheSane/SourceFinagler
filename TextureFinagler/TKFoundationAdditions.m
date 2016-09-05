@@ -28,19 +28,6 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray *inRects, BOOL isFlipped) {
 	}
 	return NO;
 }
-
-
-static SInt32 TKSystemVersion = TKUnknownVersion;
-
-
-SInt32 TKGetSystemVersion() {
-	if (TKSystemVersion == TKUnknownVersion) {
-		SInt32 fullVersion = 0;
-		Gestalt(gestaltSystemVersion, &fullVersion);
-		TKSystemVersion = fullVersion & 0xfffffff0;
-	}
-	return TKSystemVersion;
-}
 	
 	
 

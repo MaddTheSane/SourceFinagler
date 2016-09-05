@@ -19,7 +19,6 @@ using namespace HLLib;
 
 @implementation HKNCFFile
 
-
 - (instancetype)initWithContentsOfFile:(NSString *)aPath mode:(HLFileMode)permission showInvisibleItems:(BOOL)showInvisibleItems sortDescriptors:(NSArray *)sortDescriptors error:(NSError **)outError {
 #if HK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -42,7 +41,6 @@ using namespace HLLib;
 	return self;
 }
 
-
 - (void)dealloc {
 #if HK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -51,9 +49,7 @@ using namespace HLLib;
 		static_cast<CNCFFile *>(_privateData)->Close();
 		delete static_cast<CNCFFile *>(_privateData);
 	}
-	[super dealloc];
 }
-
 
 - (NSString *)description {
 	NSMutableString *description = [NSMutableString stringWithString:@""];

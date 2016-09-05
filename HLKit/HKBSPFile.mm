@@ -42,7 +42,6 @@ using namespace HLLib;
 	return self;
 }
 
-
 - (void)dealloc {
 #if HK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -51,9 +50,7 @@ using namespace HLLib;
 		static_cast<CBSPFile *>(_privateData)->Close();
 		delete static_cast<CBSPFile *>(_privateData);
 	}
-	[super dealloc];
 }
-
 
 - (NSString *)description {
 	NSMutableString *description = [NSMutableString stringWithString:@""];
@@ -61,8 +58,4 @@ using namespace HLLib;
 	return [NSString stringWithFormat:@"%@", description];
 }
 
-
 @end
-
-
-

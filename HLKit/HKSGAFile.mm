@@ -17,7 +17,6 @@
 @implementation HKSGAFile
 
 
-
 - (instancetype)initWithContentsOfFile:(NSString *)aPath mode:(HLFileMode)permission showInvisibleItems:(BOOL)showInvisibleItems sortDescriptors:(NSArray *)sortDescriptors error:(NSError **)outError {
 #if HK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -36,14 +35,13 @@
 					HLAttribute majorVersion;
 					HLAttribute minorVersion;
 					
-					
 					if (static_cast<CSGAFile *>(_privateData)->GetAttribute(HL_SGA_PACKAGE_VERSION_MAJOR, majorVersion)) {
 						
 						if (static_cast<CSGAFile *>(_privateData)->GetAttribute(HL_SGA_PACKAGE_VERSION_MAJOR, minorVersion)) {
 							
-							version = [[NSString stringWithFormat:@"%lu.%lu",
+							version = [NSString stringWithFormat:@"%lu.%lu",
 										(unsigned long)majorVersion.Value.UnsignedInteger.uiValue, 
-										(unsigned long)minorVersion.Value.UnsignedInteger.uiValue] retain];
+										(unsigned long)minorVersion.Value.UnsignedInteger.uiValue];
 						}
 					}
 					
@@ -54,7 +52,6 @@
 	return self;
 }
 
-
 - (void)dealloc {
 #if HK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -63,9 +60,7 @@
 		static_cast<CSGAFile *>(_privateData)->Close();
 		delete static_cast<CSGAFile *>(_privateData);
 	}
-	[super dealloc];
 }
-
 
 - (NSString *)description {
 	NSMutableString *description = [NSMutableString stringWithString:@""];
@@ -74,16 +69,4 @@
 	return [NSString stringWithFormat:@"%@", description];
 }
 
-
-
 @end
-
-
-
-
-
-
-
-
-
-

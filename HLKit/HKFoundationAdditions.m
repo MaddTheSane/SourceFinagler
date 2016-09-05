@@ -15,7 +15,6 @@
 
 @implementation NSString (HKAdditions)
 
-
 + (NSString *)stringWithFSRef:(const FSRef *)anFSRef {
 #if HK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -31,8 +30,6 @@
 	}
 }
 
-
-
 - (BOOL)getFSRef:(FSRef *)anFSRef error:(NSError **)anError {
 #if HK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -46,15 +43,12 @@
 	return (status == noErr);
 }
 
-
-
 /* TODO: I need to make sure that this method doesn't exceed the max 255 character filename limit	(NAME_MAX) */
-
 - (NSString *)stringByAssuringUniqueFilename {
 #if HK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
+	NSFileManager *fileManager = [[NSFileManager alloc] init];
 	BOOL isDir;
 	
 	if ([fileManager fileExistsAtPath:self isDirectory:&isDir]) {
@@ -111,7 +105,6 @@
 	return self;
 }
 
-
 - (NSComparisonResult)caseInsensitiveNumericalCompare:(NSString *)string {
 #if HK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -125,7 +118,6 @@
 #endif
 	return [self compare:string options:NSLiteralSearch | NSCaseInsensitiveSearch | NSNumericSearch range:NSMakeRange(0, string.length) locale:[NSLocale currentLocale]];
 }
-
 
 - (BOOL)containsString:(NSString *)aString {
 #if HK_DEBUG
@@ -143,7 +135,6 @@
     return newString;
 }
 
-
 - (NSString *)slashToColon {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -157,7 +148,6 @@
 #endif
 	return [self stringByReplacing:@":" with:@"/"];
 }
-
 
 @end
 
@@ -201,6 +191,4 @@
 	[self insertObjects:array atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(anIndex, array.count)]];
 }
 
-
 @end
-

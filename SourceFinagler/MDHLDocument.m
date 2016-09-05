@@ -117,13 +117,6 @@ static NSInteger copyTag = 0;
 @synthesize image, kind, outlineViewIsReloadingData, version, isSearching;
 @dynamic shouldShowInvisibleItems, searchPredicate;
 
-+ (void)initialize {
-	SInt32 MDFullSystemVersion = 0;
-	Gestalt(gestaltSystemVersion, &MDFullSystemVersion);
-	TKSystemVersion = MDFullSystemVersion & 0xfffffff0;
-}
-
-
 + (NSString *)calculateNewUniqueID {
 	static NSUInteger	gIDCounter;
 	static BOOL			gUniqueInited = NO;
@@ -156,17 +149,15 @@ static NSInteger copyTag = 0;
 				
 		copyOperationsAndTags = [[NSMutableDictionary alloc] init];
 		
-		if (TKSystemVersion >= TKLeopard) {
-			if (!MDPerformingBatchOperation) {
-				NSNumber *enabled = [[MDUserDefaults standardUserDefaults] objectForKey:MDSystemSoundEffectsLeopardKey forAppIdentifier:MDSystemSoundEffectsLeopardBundleIdentifierKey inDomain:MDUserDefaultsUserDomain];
-				
-				/*	enabled is an NSNumber, not a YES or NO value. If enabled is nil, we assume the default sound effect setting, which is enabled. Only if enabled is non-nil do we have an actual YES or NO answer to examine	*/
-				
-				if (enabled) {
-					MDPlaySoundEffects = (BOOL)enabled.intValue;
-				} else {
-					MDPlaySoundEffects = YES;
-				}
+		if (!MDPerformingBatchOperation) {
+			NSNumber *enabled = [[MDUserDefaults standardUserDefaults] objectForKey:MDSystemSoundEffectsLeopardKey forAppIdentifier:MDSystemSoundEffectsLeopardBundleIdentifierKey inDomain:MDUserDefaultsUserDomain];
+			
+			/*	enabled is an NSNumber, not a YES or NO value. If enabled is nil, we assume the default sound effect setting, which is enabled. Only if enabled is non-nil do we have an actual YES or NO answer to examine	*/
+			
+			if (enabled) {
+				MDPlaySoundEffects = (BOOL)enabled.intValue;
+			} else {
+				MDPlaySoundEffects = YES;
 			}
 		}
 		
@@ -326,10 +317,7 @@ static NSInteger copyTag = 0;
 
 
 - (NSString *)windowNibName {
-	if (TKSystemVersion >= TKLion) {
-		return @"MDHLDocumentLion";
-	}
-	return @"MDHLDocumentSnowLeopard";
+	return @"MDHLDocumentLion";
 }
 
 
@@ -352,13 +340,9 @@ static NSInteger copyTag = 0;
 	[outlineViewMenuShowInspectorMenuItem retain];
 	[outlineViewMenuShowViewOptionsMenuItem retain];
 	
-
-	if (TKSystemVersion >= TKSnowLeopard) {
-		browserMenuShowQuickLookMenuItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Quick Look", @"") action:@selector(toggleShowQuickLook:) keyEquivalent:@""];
-		[browserMenuShowInspectorMenuItem retain];
-		[browserMenuShowViewOptionsMenuItem retain];
-	}
-	
+	browserMenuShowQuickLookMenuItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Quick Look", @"") action:@selector(toggleShowQuickLook:) keyEquivalent:@""];
+	[browserMenuShowInspectorMenuItem retain];
+	[browserMenuShowViewOptionsMenuItem retain];
 	
 	outlineView.target = self;
 	scrollView.borderType = NSNoBorder;
