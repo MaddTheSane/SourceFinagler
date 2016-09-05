@@ -41,7 +41,6 @@ static MDFileManager *sharedManager = nil;
 						 MDFileIsStationery, MDFileNameLocked, MDFileIsPackage, MDFileIsInvisible, MDFileIsAliasFile, nil];
 }
 
-
 + (MDFileManager *)defaultManager {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -52,7 +51,6 @@ static MDFileManager *sharedManager = nil;
 	return sharedManager;
 }
 
-
 + (id)allocWithZone:(NSZone *)zone {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -60,46 +58,35 @@ static MDFileManager *sharedManager = nil;
 	return [[self defaultManager] retain];
 }
 
-
 - (id)init {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	if ((self = [super init])) {
-#if MAC_OS_X_VERSION_10_5 <= MAC_OS_X_VERSION_MAX_ALLOWED
 		fileManager = [[NSFileManager alloc] init];
-#else
-		fileManager = [[NSFileManager defaultManager] retain];
-#endif
 	}
 	return self;
 }
-
 
 - (id)copyWithZone:(NSZone *)zone {
 	return self;
 }
 
-
 - (id)retain {
 	return self;
 }
-
 
 - (NSUInteger)retainCount {
 	return NSUIntegerMax;	//denotes an object that cannot be released
 }
 
-
 - (oneway void)release {
 	// do nothing
 }
 
-
 - (id)autorelease {
 	return self;
 }
-
 
 - (NSDictionary *)attributesOfItemAtPath:(NSString *)path error:(NSError **)outError {
 #if MD_DEBUG
@@ -108,12 +95,9 @@ static MDFileManager *sharedManager = nil;
 	if (path == nil) return nil;
 	if (outError) *outError = nil;
 	
-#if MAC_OS_X_VERSION_10_5 <= MAC_OS_X_VERSION_MAX_ALLOWED
 	NSDictionary *attributes = [fileManager attributesOfItemAtPath:path error:outError];
-#else
-	NSDictionary *attributes = [fileManager fileAttributesAtPath:path traverseLink:YES];
-#endif
-	if (attributes == nil) return nil;
+	if (attributes == nil)
+		return nil;
 	
 	FSRef itemRef;
 	
@@ -159,18 +143,11 @@ static MDFileManager *sharedManager = nil;
 		isInvisible		= (fInfo->finderFlags & kIsInvisible);
 		isInvisible = (isInvisible >> 14L);
 		
-		NSNumber *labelColorNum		= @(labelColor);
-		NSNumber *hasCustomIconNum	= [NSNumber numberWithBool:(BOOL)!!hasCustomIcon];
-		NSNumber *nameLockedNum		= [NSNumber numberWithBool:(BOOL)!!nameLocked];
-		NSNumber *isPackageNum		= [NSNumber numberWithBool:(BOOL)!!isPackage];
-		NSNumber *isInvisibleNum	= [NSNumber numberWithBool:(BOOL)!!isInvisible];
-		
-		mAttributes[MDFileLabelNumber] = labelColorNum;
-		mAttributes[MDFileHasCustomIcon] = hasCustomIconNum;
-		mAttributes[MDFileNameLocked] = nameLockedNum;
-		mAttributes[MDFileIsPackage] = isPackageNum;
-		mAttributes[MDFileIsInvisible] = isInvisibleNum;
-		
+		mAttributes[MDFileLabelNumber] = @(labelColor);
+		mAttributes[MDFileHasCustomIcon] = @((BOOL)!!hasCustomIcon);
+		mAttributes[MDFileNameLocked] = @((BOOL)!!nameLocked);
+		mAttributes[MDFileIsPackage] = @((BOOL)!!isPackage);
+		mAttributes[MDFileIsInvisible] = @((BOOL)!!isInvisible);
 	} else {
 		FileInfo	*fInfo = (FileInfo *)&catalogInfo.finderInfo;
 		
@@ -192,19 +169,12 @@ static MDFileManager *sharedManager = nil;
 		isAlias			= (fInfo->finderFlags & kIsAlias);
 		isAlias = (isAlias >> 15L);
 		
-		NSNumber *labelColorNum		= @(labelColor);
-		NSNumber *hasCustomIconNum	= [NSNumber numberWithBool:(BOOL)!!hasCustomIcon];
-		NSNumber *isStationeryNum	= [NSNumber numberWithBool:(BOOL)!!isStationery];
-		NSNumber *nameLockedNum		= [NSNumber numberWithBool:(BOOL)!!nameLocked];
-		NSNumber *isInvisibleNum	= [NSNumber numberWithBool:(BOOL)!!isInvisible];
-		NSNumber *isAliasNum		= [NSNumber numberWithBool:(BOOL)!!isAlias];
-		
-		mAttributes[MDFileLabelNumber] = labelColorNum;
-		mAttributes[MDFileHasCustomIcon] = hasCustomIconNum;
-		mAttributes[MDFileIsStationery] = isStationeryNum;
-		mAttributes[MDFileNameLocked] = nameLockedNum;
-		mAttributes[MDFileIsInvisible] = isInvisibleNum;
-		mAttributes[MDFileIsAliasFile] = isAliasNum;
+		mAttributes[MDFileLabelNumber] = @(labelColor);
+		mAttributes[MDFileHasCustomIcon] = @((BOOL)!!hasCustomIcon);
+		mAttributes[MDFileIsStationery] = @((BOOL)!!isStationery);
+		mAttributes[MDFileNameLocked] = @((BOOL)!!nameLocked);
+		mAttributes[MDFileIsInvisible] = @((BOOL)!!isInvisible);
+		mAttributes[MDFileIsAliasFile] = @((BOOL)!!isAlias);
 		
 		err = FSGetTotalForkSizes(&itemRef, &totalFileSize, NULL, NULL);
 		if (err == noErr) {
@@ -222,22 +192,23 @@ static MDFileManager *sharedManager = nil;
 	return [rAttributes autorelease];
 }
 
-
 - (BOOL)setAttributes:(NSDictionary *)attributes ofItemAtPath:(NSString *)path error:(NSError **)error {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	if (error) *error = nil;
-	if (attributes == nil || path == nil) return NO;
+	if (error)
+		*error = nil;
+	if (attributes == nil || path == nil)
+		return NO;
 	
 	NSArray *keys = attributes.allKeys;
 	id matchingKey = [keys firstObjectCommonWithArray:fileAttributeKeys];
 	
 	if (matchingKey) {
-		
 		FSRef itemRef;
 		
-		if (![path getFSRef:&itemRef error:error]) return NO;
+		if (![path getFSRef:&itemRef error:error])
+			return NO;
 		
 		FSCatalogInfo catalogInfo;
 		OSErr err = noErr;
@@ -382,32 +353,20 @@ static MDFileManager *sharedManager = nil;
 	[normalAttributes removeObjectsForKeys:fileAttributeKeys];
 	
 	if (normalAttributes.count) {
-#if MAC_OS_X_VERSION_10_5 <= MAC_OS_X_VERSION_MAX_ALLOWED
 		if (![fileManager setAttributes:normalAttributes ofItemAtPath:path error:error]) {
 			[normalAttributes release];
 			return NO;
 		}
-#else
-		if (![fileManager changeFileAttributes:normalAttributes atPath:path]) {
-			[normalAttributes release];
-			return NO;
-		}
-#endif
 	}
 	[normalAttributes release];
 	return YES;
 }
 
-
 - (NSDictionary *)fileAttributesAtPath:(NSString *)path traverseLink:(BOOL)linkFlag {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-#if MAC_OS_X_VERSION_10_5 <= MAC_OS_X_VERSION_MAX_ALLOWED
 	NSDictionary *attributes = [fileManager attributesOfItemAtPath:path error:NULL];
-#else
-	NSDictionary *attributes = [fileManager fileAttributesAtPath:path traverseLink:linkFlag];
-#endif
 	NSMutableDictionary *mAttributes = [attributes mutableCopy];
 	
 	FSRef fileRef;
@@ -425,8 +384,6 @@ static MDFileManager *sharedManager = nil;
 	[mAttributes release];
 	return [rAttributes autorelease];
 }
-	
-
 
 - (BOOL)isDeletableFileAtPath:(NSString *)path {
 #if MD_DEBUG
@@ -436,11 +393,7 @@ static MDFileManager *sharedManager = nil;
 	
 	if (isDeletable) {
 		
-#if MAC_OS_X_VERSION_10_5 <= MAC_OS_X_VERSION_MAX_ALLOWED
 		NSDictionary *attributes = [fileManager attributesOfItemAtPath:path error:NULL];
-#else
-		NSDictionary *attributes = [fileManager fileAttributesAtPath:path traverseLink:YES];
-#endif
 		if (attributes && [attributes fileIsImmutable]) {
 			isDeletable = NO;
 		}
@@ -448,9 +401,7 @@ static MDFileManager *sharedManager = nil;
 	return isDeletable;
 }
 
-
 @end
-
 
 static OSErr FSGetTotalForkSizes(const FSRef *ref,
 						  UInt64 *totalLogicalSize,	/* can be NULL */
@@ -514,19 +465,17 @@ FSIterateForks:
 	return err;
 }
 
-
-
 @implementation NSDictionary (MDFileAttributes)
 
 /* files & folders	*/
-- (NSUInteger)fileLabelColor {
+- (NSInteger)fileLabelColor {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	NSUInteger labelColor = MDFileLabelUnsupported;
+	NSInteger labelColor = MDFileLabelUnsupported;
 	NSNumber *labelColorNum = self[MDFileLabelNumber];
 	if (labelColorNum) {
-		labelColor = labelColorNum.unsignedIntegerValue;
+		labelColor = labelColorNum.integerValue;
 	}
 	return labelColor;
 }
@@ -544,7 +493,6 @@ FSIterateForks:
 	return setCustomIcon;
 }
 
-
 /* files only		*/
 - (BOOL)fileIsStationery {
 #if MD_DEBUG
@@ -557,7 +505,6 @@ FSIterateForks:
 	}
 	return isStationery;
 }
-
 
 /* files & folders	(value isn't used by OS X) */
 - (BOOL)fileNameLocked {
@@ -572,7 +519,6 @@ FSIterateForks:
 	return nameLocked;
 }
 
-
 /* folders only		(maps to kHasBundle, which for files means a 'BNDL' resource, and is therefore obsolete in OS X) */
 - (BOOL)fileIsPackage {
 #if MD_DEBUG
@@ -585,7 +531,6 @@ FSIterateForks:
 	}
 	return isPackage;
 }
-
 
 /* files & folders */
 - (BOOL)fileIsInvisible {
@@ -614,8 +559,4 @@ FSIterateForks:
 	return fileIsAlias;
 }
 
-
 @end
-
-
-

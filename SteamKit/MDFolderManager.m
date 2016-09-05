@@ -55,11 +55,9 @@ static MDFolderManager *sharedManager = nil;
 	return self;
 }
 
-
 + (NSString *)tempDirectoryWithIdentifier:(NSString *)aName {
 	return [[MDFolderManager defaultManager] tempDirectoryWithIdentifier:aName assureUniqueFilename:NO];
 }
-
 
 + (NSString *)tempDirectoryWithIdentifier:(NSString *)aName assureUniqueFilename:(BOOL)flag {
 	return [[MDFolderManager defaultManager] tempDirectoryWithIdentifier:aName assureUniqueFilename:flag];
@@ -69,11 +67,9 @@ static MDFolderManager *sharedManager = nil;
 	return [[MDFolderManager defaultManager] cleanupTempDirectoryAtPath:aPath error:outError];
 }
 
-
 - (NSString *)pathForDirectory:(MDSearchPathDirectory)aDirectory inDomain:(MDSearchPathDomain)aDomain error:(NSError **)outError {
 	return [self pathForDirectory:aDirectory inDomain:aDomain create:NO error:outError];
 }
-
 
 - (NSString *)pathForDirectory:(MDSearchPathDirectory)aDirectory inDomain:(MDSearchPathDomain)aDomain create:(BOOL)create error:(NSError **)outError {
 	NSString *path = nil;
@@ -170,9 +166,9 @@ static MDFolderManager *sharedManager = nil;
 				NSLog(@"[%@ %@] size <= 0 || buffer == NULL", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 				if (outError) *outError = [NSError errorWithDomain:NSPOSIXErrorDomain	code:errno userInfo:nil];
 			}
-			if (buffer) free(buffer);
+			if (buffer)
+				free(buffer);
 		}
-		
 	} else {
 		err = FSFindFolder(aDomain, aDirectory, create, &folderRef);
 		if (err == noErr) {
@@ -184,8 +180,6 @@ static MDFolderManager *sharedManager = nil;
 	}
 	return path;
 }
-
-
 
 - (NSString *)pathForDirectory:(MDSearchPathDirectory)aDirectory forItemAtPath:(NSString *)aPath error:(NSError **)outError {
 	return [self pathForDirectory:aDirectory forItemAtPath:aPath create:NO error:outError];
@@ -206,11 +200,9 @@ static MDFolderManager *sharedManager = nil;
 	return path;
 }
 
-
 - (NSString *)pathForDirectoryWithName:(NSString *)aName inDirectory:(MDSearchPathDirectory)aDirectory inDomain:(MDSearchPathDomain)aDomain error:(NSError **)outError {
 	return [self pathForDirectoryWithName:aName inDirectory:aDirectory inDomain:aDomain create:NO error:outError];
 }
-
 
 - (NSString *)pathForDirectoryWithName:(NSString *)aName inDirectory:(MDSearchPathDirectory)aDirectory inDomain:(MDSearchPathDomain)aDomain create:(BOOL)create error:(NSError **)outError {
 #if MD_DEBUG
@@ -236,29 +228,26 @@ static MDFolderManager *sharedManager = nil;
 	return path;
 }
 
-
-
 - (NSString *)tempDirectoryWithIdentifier:(NSString *)aName {
 	return [self tempDirectoryWithIdentifier:aName assureUniqueFilename:NO];
 }
 
-
 - (NSString *)tempDirectoryWithIdentifier:(NSString *)aName assureUniqueFilename:(BOOL)flag {
 	NSString *tempDirectory = nil;
 	NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
-			BOOL isDir;
+	BOOL isDir;
 	NSError *outError = nil;
-
+	
 	if (aName == nil) aName = @"com.markdouma.folder";
-
+	
 	NSString *initialTempDirectory = [self pathForDirectory:MDTemporaryDirectory inDomain:MDAllDomains create:YES error:&outError];
-
+	
 	if (initialTempDirectory) {
 		tempDirectory = [[initialTempDirectory stringByAppendingPathComponent:aName] stringByAppendingString:[NSString stringWithFormat:@".%u.noindex", getuid()]];
 		
 		if (flag) {
 			tempDirectory = tempDirectory.stringByAssuringUniqueFilename;
-				}
+		}
 		
 		if ( !([fileManager fileExistsAtPath:tempDirectory isDirectory:&isDir] && isDir) ) {
 			if (![fileManager createDirectoryAtPath:tempDirectory withIntermediateDirectories:YES attributes:nil error:NULL]) {
@@ -269,14 +258,13 @@ static MDFolderManager *sharedManager = nil;
 		if (tempDirectory) {
 			if (tempDirectories == nil) {
 				tempDirectories = [[NSMutableArray alloc] init];
-	}
+			}
 			[tempDirectories addObject:tempDirectory];
-}
+		}
 	}
 	return tempDirectory;
 }
 
-	
 - (BOOL)cleanupTempDirectoryAtPath:(NSString *)aPath error:(NSError **)outError {
 	BOOL success = YES;
 	if (outError) {

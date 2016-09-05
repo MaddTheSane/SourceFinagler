@@ -20,8 +20,9 @@
 
 @implementation MDPreviewViewController
 
-@synthesize sound, isPlayingSound, isQuickLookPanel;
-
+@synthesize sound;
+@synthesize playingSound = isPlayingSound;
+@synthesize quickLookPanel = isQuickLookPanel;
 
 - (instancetype)init {
 #if MD_DEBUG
@@ -30,16 +31,14 @@
 	return [self initWithNibName:@"MDHLColumnPreviewView" bundle:nil];
 }
 
-
 - (void)awakeFromNib {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
+	[super awakeFromNib];
 	isQuickLookPanel = NO;
 	textView.font = [NSFont userFixedPitchFontOfSize:[NSFont smallSystemFontSize]];
 }
-
-
 
 - (void)setRepresentedObject:(id)representedObject {
 #if MD_DEBUG
@@ -95,15 +94,11 @@
 	super.representedObject = representedObject;
 }
 
-
-
 - (void)sound:(NSSound *)aSound didFinishPlaying:(BOOL)didFinishPlaying {
 	if (didFinishPlaying) {
 		soundButton.image = [NSImage imageNamed:@"play"];
 	}
 }
-
-
 
 - (IBAction)togglePlaySound:(id)sender {
 #if MD_DEBUG
@@ -117,6 +112,5 @@
 		[sound play];
 	}
 }
-
 
 @end

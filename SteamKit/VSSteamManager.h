@@ -69,11 +69,9 @@ typedef NS_ENUM(NSUInteger, VSSourceFinaglerLaunchAgentStatus) {
 	NSTimeInterval								timeToLocateSteamApps;
 	
 	BOOL										monitoringGames;
-	
 }
 
-/* Get the shared instance of VSSteamManager. This method will create an instance of VSSteamManager if it has not been created yet. You should not attempt to instantiate instances of VSSteamManager yourself, and you should not attempt to subclass VSSteamManager. */
-
+/** Get the shared instance of VSSteamManager. This method will create an instance of \c VSSteamManager if it has not been created yet. You should not attempt to instantiate instances of \c VSSteamManager yourself, and you should not attempt to subclass <code>VSSteamManager</code>. */
 + (VSSteamManager *)defaultManager; // singleton
 #if __has_feature(objc_class_property)
 @property (readonly, retain) VSSteamManager *defaultManager;
@@ -117,8 +115,6 @@ typedef NS_ENUM(NSUInteger, VSSourceFinaglerLaunchAgentStatus) {
 
 - (BOOL)launchGame:(VSGame *)game options:(VSGameLaunchOptions)options error:(NSError **)outError;
 
-
-
 @property (readonly) VSSourceFinaglerLaunchAgentStatus sourceFinaglerLaunchAgentStatus;
 
 @property (readonly, copy) NSString *sourceFinaglerLaunchAgentPath;
@@ -129,13 +125,10 @@ typedef NS_ENUM(NSUInteger, VSSourceFinaglerLaunchAgentStatus) {
 
 @end
 
-
 typedef NS_ENUM(NSUInteger, VSSourceAddonInstallMethod) {
 	VSSourceAddonInstallByMoving	= 1,
 	VSSourceAddonInstallByCopying	= 2
 };
-
-
 
 NS_ENUM(NSInteger) {
 	VSSourceAddonNotAValidAddonFileError				= 6000,
@@ -145,7 +138,6 @@ NS_ENUM(NSInteger) {
 	VSSourceAddonNoGameIDFoundInAddonInfoError			= 6004,
 	VSSourceAddonGameNotFoundError						= 6005
 };
-
 
 @interface VSSteamManager (VSAddonsSupport)
 

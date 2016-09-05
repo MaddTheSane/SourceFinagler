@@ -88,8 +88,8 @@ static NSDate *MDNilDate = nil;
 		CFRelease(currentLocale);
 		
 		
-		self.style = [[coder decodeObjectForKey:@"MDStyle"] integerValue];
-		self.relative = [[coder decodeObjectForKey:@"MDRelative"] boolValue];
+		self.style = [coder decodeIntegerForKey:@"MDStyle"];
+		self.relative = [coder decodeIntegerForKey:@"MDRelative"];
 		
 
 		today = @"Today";
@@ -117,12 +117,9 @@ static NSDate *MDNilDate = nil;
 	
 	[super encodeWithCoder:coder];
 	
-	[coder encodeObject:@(style) forKey:@"MDStyle"];
-	[coder encodeObject:@(relative) forKey:@"MDRelative"];
-	
+	[coder encodeInteger:style forKey:@"MDStyle"];
+	[coder encodeInteger:relative forKey:@"MDRelative"];
 }
-
-
 
 - (id)copyWithZone:(NSZone *)zone {
 #if MD_DEBUG

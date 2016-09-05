@@ -99,13 +99,13 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 	NSDictionary *usbInfo = MDInfoForProcessWithBundleIdentifier(MDUSBOverdriveHelperBundleIdentifierKey);
 	
 	
-	mouseSoftware |= (usbInfo == nil ? 0 : MDUSBOverdrive);
-	mouseSoftware |= (MDInfoForProcessWithBundleIdentifier(MDSteerMouseBundleIdentifierKey) == nil ? 0 : MDSteerMouse);
-	mouseSoftware |= (MDInfoForProcessWithBundleIdentifier(MDLogitechBundleIdentifierKey) == nil ? 0 : MDLogitech);
+	mouseSoftware |= (usbInfo == nil ? 0 : MDMouseSoftwareUSBOverdrive);
+	mouseSoftware |= (MDInfoForProcessWithBundleIdentifier(MDSteerMouseBundleIdentifierKey) == nil ? 0 : MDMouseSoftwareSteerMouse);
+	mouseSoftware |= (MDInfoForProcessWithBundleIdentifier(MDLogitechBundleIdentifierKey) == nil ? 0 : MDMouseSoftwareLogitech);
 	
-	usbOverdriveView.hidden = !(mouseSoftware & MDUSBOverdrive);
+	usbOverdriveView.hidden = !(mouseSoftware & MDMouseSoftwareUSBOverdrive);
 	
-	if (mouseSoftware & MDUSBOverdrive) {
+	if (mouseSoftware & MDMouseSoftwareUSBOverdrive) {
 //		NSLog(@"[%@ %@] usbInfo == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), usbInfo);
 		NSString *bundlePath = usbInfo[@"BundlePath"];
 		if (bundlePath) {
@@ -294,9 +294,9 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 #if VS_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	mouseSoftware |= (MDInfoForProcessWithBundleIdentifier(MDUSBOverdriveHelperBundleIdentifierKey) == nil ? 0 : MDUSBOverdrive);
-	mouseSoftware |= (MDInfoForProcessWithBundleIdentifier(MDSteerMouseBundleIdentifierKey) == nil ? 0 : MDSteerMouse);
-	mouseSoftware |= (MDInfoForProcessWithBundleIdentifier(MDLogitechBundleIdentifierKey) == nil ? 0 : MDLogitech);
+	mouseSoftware |= (MDInfoForProcessWithBundleIdentifier(MDUSBOverdriveHelperBundleIdentifierKey) == nil ? 0 : MDMouseSoftwareUSBOverdrive);
+	mouseSoftware |= (MDInfoForProcessWithBundleIdentifier(MDSteerMouseBundleIdentifierKey) == nil ? 0 : MDMouseSoftwareSteerMouse);
+	mouseSoftware |= (MDInfoForProcessWithBundleIdentifier(MDLogitechBundleIdentifierKey) == nil ? 0 : MDMouseSoftwareLogitech);
 	
 	NSArray *selectedGames = gamesController.selectedObjects;
 	if (selectedGames.count == 0) return;
@@ -311,7 +311,7 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 				NSLog(@"[%@ %@] failed to unhelp game == %@, error = %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), game, error);
 			}
 		} else {
-			if (![steamManager helpGame:game forUSBOverdrive:(mouseSoftware & MDUSBOverdrive) updateLaunchAgent:YES error:&error]) {
+			if (![steamManager helpGame:game forUSBOverdrive:(mouseSoftware & MDMouseSoftwareUSBOverdrive) updateLaunchAgent:YES error:&error]) {
 				NSLog(@"[%@ %@] failed to help game == %@, error = %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), game, error);
 			}
 		}
@@ -329,7 +329,7 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 	NSError *error = nil;
 	
 	for (VSGame *game in selectedGames) {
-		if (![steamManager helpGame:game forUSBOverdrive:(mouseSoftware & MDUSBOverdrive) updateLaunchAgent:YES error:&error]) {
+		if (![steamManager helpGame:game forUSBOverdrive:(mouseSoftware & MDMouseSoftwareUSBOverdrive) updateLaunchAgent:YES error:&error]) {
 			NSLog(@"[%@ %@] failed to help game == %@, error = %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), game, error);
 		}
 	}

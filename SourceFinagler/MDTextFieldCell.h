@@ -29,10 +29,9 @@
 
 - (void)drawWithFrame:(NSRect)cellFrame inImage:(NSImage *)dragImage;
 
-- (NSArray *)hitRectsForFrame:(NSRect)cellFrame isFlipped:(BOOL)isFlipped;
+- (NSArray<NSValue*> *)hitRectsForFrame:(NSRect)cellFrame isFlipped:(BOOL)isFlipped;
 
 @property  CGFloat leftEdgePadding;
-
 @property  BOOL centerImageVertically;
 
 
@@ -45,8 +44,4 @@
 @property (nonatomic, retain) NSMutableDictionary *enabledAttributes;
 @property (nonatomic, retain) NSMutableDictionary *disabledAttributes;
 
-
 @end
-
-
-

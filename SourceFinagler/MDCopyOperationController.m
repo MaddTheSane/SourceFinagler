@@ -182,10 +182,4 @@ static MDCopyOperationController *sharedController = nil;
 	[self.window makeKeyAndOrderFront:sender];
 }
 
-
-
-
 @end
-
-
-

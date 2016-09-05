@@ -15,10 +15,10 @@
 
 
 typedef NS_OPTIONS(NSUInteger, MDMouseSoftware) {
-	MDNoMouseSoftware	= 0,
-	MDUSBOverdrive		= 1 << 1,
-	MDSteerMouse		= 1 << 2,
-	MDLogitech			= 1 << 3
+	MDMouseSoftwareNone			= 0,
+	MDMouseSoftwareUSBOverdrive	= 1 << 1,
+	MDMouseSoftwareSteerMouse	= 1 << 2,
+	MDMouseSoftwareLogitech		= 1 << 3
 };
 
 
@@ -33,7 +33,7 @@ typedef NS_OPTIONS(NSUInteger, MDMouseSoftware) {
 	IBOutlet NSWindow			*usbOverdriveWindow;
 	
 	
-	NSMutableArray				*games;
+	NSMutableArray<VSGame*>		*games;
 	
 	VSSteamManager				*steamManager;
 	
@@ -43,9 +43,9 @@ typedef NS_OPTIONS(NSUInteger, MDMouseSoftware) {
 }
 
 
-@property (readonly, copy) NSArray *games;
+@property (readonly, copy) NSArray<VSGame*> *games;
 @property (readonly) NSUInteger countOfGames;
-- (id)objectInGamesAtIndex:(NSUInteger)theIndex;
+- (VSGame*)objectInGamesAtIndex:(NSUInteger)theIndex;
 
 - (IBAction)showUSBOverdriveTip:(id)sender;
 - (IBAction)ok:(id)sender;
@@ -58,7 +58,7 @@ typedef NS_OPTIONS(NSUInteger, MDMouseSoftware) {
 
 @property (assign) BOOL enableSourceFinaglerAgent;
 
-@property (nonatomic, retain) NSArray *sortDescriptors;
+@property (copy) NSArray<NSSortDescriptor*> *sortDescriptors;
 
 
 - (IBAction)toggleEnableAgent:(id)sender;

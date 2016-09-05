@@ -26,15 +26,12 @@
 NSString * const MDSteamBundleIdentifierKey = @"com.valvesoftware.steam";
 
 
-
 @implementation MDSteamAppsRelocatorController
-
 @synthesize currentURL;
 @synthesize proposedNewPath;
 @synthesize canCreate;
 @synthesize steamIsRunning;
 @synthesize steamDidLaunch;
-
 
 
 - (instancetype)init {
@@ -55,7 +52,6 @@ NSString * const MDSteamBundleIdentifierKey = @"com.valvesoftware.steam";
 	return self;
 }
 
-
 - (void)dealloc {
 	[currentURL release];
 	[proposedNewPath release];
@@ -64,16 +60,13 @@ NSString * const MDSteamBundleIdentifierKey = @"com.valvesoftware.steam";
 	[super dealloc];
 }
 
-
 - (NSString *)title {
 	return NSLocalizedString(@"Steam Apps Re-locator", @"");
 }
 
-
 - (NSString *)viewSizeAutosaveName {
 	return @"steamAppsRelocatorView";
 }
-
 
 - (void)awakeFromNib {
 #if VS_DEBUG
@@ -87,7 +80,6 @@ NSString * const MDSteamBundleIdentifierKey = @"com.valvesoftware.steam";
 	}
 }
 
-
 - (void)applicationDidLaunch:(NSNotification *)notification {
 #if VS_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -100,10 +92,9 @@ NSString * const MDSteamBundleIdentifierKey = @"com.valvesoftware.steam";
 		if (currentURL == nil) {
 			steamDidLaunch = YES;
 			[self performSelector:@selector(updateSteamPath:) withObject:nil afterDelay:5.0];
-	}
+		}
 	}
 }
-	
 
 - (void)updateSteamPath:(id)sender {
 #if VS_DEBUG
@@ -114,14 +105,11 @@ NSString * const MDSteamBundleIdentifierKey = @"com.valvesoftware.steam";
 		if (currentPath) {
 			self.currentURL = [NSURL fileURLWithPath:currentPath];
 			steamDidLaunch = NO;
-			
 		} else {
-			
 			[self performSelector:@selector(updateSteamPath:) withObject:nil afterDelay:5.0];
-}
+		}
 	}
 }
-
 
 - (void)applicationDidTerminate:(NSNotification *)notification {
 #if VS_DEBUG
@@ -133,7 +121,6 @@ NSString * const MDSteamBundleIdentifierKey = @"com.valvesoftware.steam";
 		statusField.stringValue = @"";
 	}
 }
-
 
 - (IBAction)quitSteam:(id)sender {
 #if VS_DEBUG
@@ -181,7 +168,6 @@ NSString * const MDSteamBundleIdentifierKey = @"com.valvesoftware.steam";
 	if (status) {
 		statusField.stringValue = status;
 	}
-	
 }
 
 - (IBAction)revealInFinder:(id)sender {
@@ -190,9 +176,7 @@ NSString * const MDSteamBundleIdentifierKey = @"com.valvesoftware.steam";
 #endif
 	if (currentURL) {
 		[[NSWorkspace sharedWorkspace] revealInFinder:@[currentURL.path]];
-		
 	}
-	
 }
 
 - (BOOL)panel:(id)sender shouldShowFilename:(NSString *)filename {
@@ -266,10 +250,5 @@ NSString * const MDSteamBundleIdentifierKey = @"com.valvesoftware.steam";
 	}
 }
 
-
 @end
 //#endif
-
-
-
-

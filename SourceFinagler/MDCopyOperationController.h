@@ -28,6 +28,9 @@
 }
 
 + (MDCopyOperationController *)sharedController;
+#if __has_feature(objc_class_property)
+@property (class, readonly, retain) MDCopyOperationController *sharedController;
+#endif
 
 
 @property (assign) NSInteger tag;

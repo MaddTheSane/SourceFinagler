@@ -14,7 +14,7 @@
 extern "C" {
 #endif
 	
-extern NSDictionary *MDInfoForProcessWithBundleIdentifier(NSString *aBundleIdentifier);
+extern NSDictionary<NSString*,id> *__nullable MDInfoForProcessWithBundleIdentifier(NSString *__nonnull aBundleIdentifier);
 	
 #ifdef __cplusplus
 }

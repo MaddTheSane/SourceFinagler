@@ -6,13 +6,9 @@
 //  Copyright 2010 Mark Douma LLC. All rights reserved.
 //
 
-//#if TARGET_CPU_X86 || TARGET_CPU_X86_64
-
 #import "TKViewController.h"
 
 @class VSSteamManager;
-
-
 
 @interface MDSteamAppsRelocatorController : TKViewController <NSOpenSavePanelDelegate> {
 	
@@ -23,11 +19,8 @@
 	NSString					*proposedNewPath;
 	
 	VSSteamManager				*steamManager;
-	
 	BOOL						canCreate;
-	
 	BOOL						steamIsRunning;
-	
 	BOOL						steamDidLaunch;
 }
 
@@ -43,5 +36,3 @@
 - (IBAction)quitSteam:(id)sender;
 
 @end
-
-//#endif

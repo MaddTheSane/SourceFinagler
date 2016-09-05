@@ -19,6 +19,7 @@
 #define kFontCollectionsFolderType 'fncl'
 #endif
 
+NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(FSVolumeRefNum, MDSearchPathDomain) {
 	MDUserDomain	=	kUserDomain,			/**<	~/										*/
@@ -62,23 +63,24 @@ typedef NS_ENUM(OSType, MDSearchPathDirectory) {
 #if __has_feature(objc_class_property)
 @property (class, readonly, retain) MDFolderManager *defaultManager;
 #endif
-+ (NSString *)tempDirectoryWithIdentifier:(NSString *)aName;
-+ (NSString *)tempDirectoryWithIdentifier:(NSString *)aName assureUniqueFilename:(BOOL)flag;
-+ (BOOL)cleanupTempDirectoryAtPath:(NSString *)aPath error:(NSError **)outError;
++ (nullable NSString *)tempDirectoryWithIdentifier:(nullable NSString *)aName;
++ (nullable NSString *)tempDirectoryWithIdentifier:(nullable NSString *)aName assureUniqueFilename:(BOOL)flag;
++ (BOOL)cleanupTempDirectoryAtPath:(NSString *)aPath error:(NSError *__nullable*__nullable)outError;
 
-- (NSString *)tempDirectoryWithIdentifier:(NSString *)aName;
-- (NSString *)tempDirectoryWithIdentifier:(NSString *)aName assureUniqueFilename:(BOOL)flag;
-- (BOOL)cleanupTempDirectoryAtPath:(NSString *)aPath error:(NSError **)outError;
+- (nullable NSString *)tempDirectoryWithIdentifier:(nullable NSString *)aName;
+- (nullable NSString *)tempDirectoryWithIdentifier:(nullable NSString *)aName assureUniqueFilename:(BOOL)flag;
+- (BOOL)cleanupTempDirectoryAtPath:(NSString *)aPath error:(NSError *__nullable*__nullable)outError;
 
-- (NSString *)pathForDirectory:(MDSearchPathDirectory)aDirectory inDomain:(MDSearchPathDomain)aDomain error:(NSError **)outError;
-- (NSString *)pathForDirectory:(MDSearchPathDirectory)aDirectory inDomain:(MDSearchPathDomain)aDomain create:(BOOL)create error:(NSError **)outError;
+- (nullable NSString *)pathForDirectory:(MDSearchPathDirectory)aDirectory inDomain:(MDSearchPathDomain)aDomain error:(NSError *__nullable*__nullable)outError;
+- (nullable NSString *)pathForDirectory:(MDSearchPathDirectory)aDirectory inDomain:(MDSearchPathDomain)aDomain create:(BOOL)create error:(NSError *__nullable*__nullable)outError;
 
-- (NSString *)pathForDirectory:(MDSearchPathDirectory)aDirectory forItemAtPath:(NSString *)aPath error:(NSError **)outError;
-- (NSString *)pathForDirectory:(MDSearchPathDirectory)aDirectory forItemAtPath:(NSString *)aPath create:(BOOL)create error:(NSError **)outError;
+- (nullable NSString *)pathForDirectory:(MDSearchPathDirectory)aDirectory forItemAtPath:(NSString *)aPath error:(NSError *__nullable*__nullable)outError;
+- (nullable NSString *)pathForDirectory:(MDSearchPathDirectory)aDirectory forItemAtPath:(NSString *)aPath create:(BOOL)create error:(NSError *__nullable*__nullable)outError;
 
-- (NSString *)pathForDirectoryWithName:(NSString *)aName inDirectory:(MDSearchPathDirectory)aDirectory inDomain:(MDSearchPathDomain)aDomain error:(NSError **)outError;
-- (NSString *)pathForDirectoryWithName:(NSString *)aName inDirectory:(MDSearchPathDirectory)aDirectory inDomain:(MDSearchPathDomain)aDomain create:(BOOL)create error:(NSError **)outError;
+- (nullable NSString *)pathForDirectoryWithName:(NSString *)aName inDirectory:(MDSearchPathDirectory)aDirectory inDomain:(MDSearchPathDomain)aDomain error:(NSError *__nullable*__nullable)outError;
+- (nullable NSString *)pathForDirectoryWithName:(NSString *)aName inDirectory:(MDSearchPathDirectory)aDirectory inDomain:(MDSearchPathDomain)aDomain create:(BOOL)create error:(NSError *__nullable*__nullable)outError;
 
 @end
 
+NS_ASSUME_NONNULL_END
 
