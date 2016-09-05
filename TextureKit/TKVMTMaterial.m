@@ -16,12 +16,9 @@
 @interface TKVMTMaterial (TKPrivate)
 
 - (BOOL)parseData:(NSData *)aData error:(NSError **)outError;
-
 + (void)raiseExceptionWithName:(NSString *)name description:(NSString *)description;
 
 @end
-
-
 
 typedef NS_ENUM(NSUInteger, TKTokenType) {
 	TKTokenEOF			= 0,	///< No more tokens to read.
@@ -42,7 +39,6 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 	NSString			*stringValue;
 	TKTokenType			type;
 	unichar				charValue;
-	
 }
 
 - (instancetype)initWithType:(TKTokenType)aType stringValue:(NSString *)aString char:(unichar)aChar;
@@ -56,47 +52,39 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 + (instancetype)stringTokenWithStringValue:(NSString *)aString isQuoted:(BOOL)isQuoted;
 
 
-@property (nonatomic, retain) NSString *stringValue;
+@property (nonatomic, strong) NSString *stringValue;
 @property (nonatomic, assign) TKTokenType type;
 @property (nonatomic, assign) unichar charValue;
 
 - (void)toSpecial:(NSString *)aSpecialString;
 
-
 @end
 
-
 @implementation TKToken
-
 @synthesize stringValue;
 @synthesize type;
 @synthesize charValue;
 
-
-
 + (id)tokenWithType:(TKTokenType)aType {
-	return [[[[self class] alloc] initWithType:aType stringValue:nil char:'\0'] autorelease];
+	return [[[self class] alloc] initWithType:aType stringValue:nil char:'\0'];
 }
 
 + (id)tokenWithType:(TKTokenType)aType char:(unichar)aChar {
-	return [[[[self class] alloc] initWithType:aType stringValue:nil char:aChar] autorelease];
+	return [[[self class] alloc] initWithType:aType stringValue:nil char:aChar];
 }
-
 
 + (id)charTokenWithChar:(unichar)aCharValue {
-	return [[[[self class] alloc] initWithType:TKTokenChar stringValue:nil char:aCharValue] autorelease];
+	return [[[self class] alloc] initWithType:TKTokenChar stringValue:nil char:aCharValue];
 }
-
 
 + (id)stringTokenWithStringValue:(NSString *)aString isQuoted:(BOOL)isQuoted {
-	return [[[[self class] alloc] initWithType:(isQuoted ? TKTokenQuotedString : TKTokenString) stringValue:aString char:'\0'] autorelease];
+	return [[[self class] alloc] initWithType:(isQuoted ? TKTokenQuotedString : TKTokenString) stringValue:aString char:'\0'];
 }
-
 
 - (id)initWithType:(TKTokenType)aType stringValue:(NSString *)aString char:(unichar)aChar {
 	if ((self = [super init])) {
 		type = aType;
-		stringValue = [aString retain];
+		stringValue = aString;
 		charValue = aChar;
 	}
 	return self;
@@ -107,15 +95,9 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 	return copy;
 }
 
-
-- (void)dealloc {
-    [stringValue release];
-    [super dealloc];
-}
-
-// Convert the current token to a special token.
-// We need to do this because the tokenizer reads ahead and doesn't
-// know if the requested token will be special until after the fact.
+/// Convert the current token to a special token.
+/// We need to do this because the tokenizer reads ahead and doesn't
+/// know if the requested token will be special until after the fact.
 - (void)toSpecial:(NSString *)aSpecialString {
 	if (type == TKTokenEOF) return;
 	
@@ -132,7 +114,7 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 @end
 
 
-// Tokenizes single byte tokens.
+/// Tokenizes single byte tokens.
 @interface TKByteTokenizer : NSObject {
 	NSData				*data;
 	NSUInteger			currentDataIndex;
@@ -147,8 +129,8 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 - (instancetype)initWithData:(NSData *)aData;
 
 
-@property (nonatomic, retain) TKToken *currentToken;
-@property (nonatomic, retain) TKToken *nextToken;
+@property (nonatomic, strong) TKToken *currentToken;
+@property (nonatomic, strong) TKToken *nextToken;
 @property (nonatomic, assign) NSUInteger lineIndex;
 
 //	equiv of CByteTokenizer::GetNextToken()
@@ -161,36 +143,22 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 
 @end
 
-
-
-
 @implementation TKByteTokenizer
-
 @synthesize currentToken;
 @synthesize nextToken;
 @synthesize lineIndex;
 
 + (id)byteTokenizerWithData:(NSData *)aData {
-	return [[[[self class] alloc] initWithData:aData] autorelease];
+	return [[[self class] alloc] initWithData:aData];
 }
-
 
 - (id)initWithData:(NSData *)aData {
 	if ((self = [super init])) {
-		data = [aData retain];
+		data = aData;
 		[self scanToString:nil];
 	}
 	return self;
 }
-
-
-- (void)dealloc {
-	[data release];
-    [currentToken release];
-	[nextToken release];
-    [super dealloc];
-}
-
 
 - (void)scanToString:(NSString *)aString {
 #if TK_DEBUG
@@ -229,31 +197,24 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 	
 	if (nextChar == '\r' || nextChar == '\n') {
 		self.nextToken = [TKToken tokenWithType:TKTokenNewline char:nextChar];
-		
 	} else if (isspace(nextChar)) {
 		self.nextToken = [TKToken tokenWithType:TKTokenWhitespace char:nextChar];
-		
 	} else if (nextChar == '/') {
 		self.nextToken = [TKToken tokenWithType:TKTokenForwardSlash char:nextChar];
-		
 	} else if (nextChar == '\"') {
 		self.nextToken = [TKToken tokenWithType:TKTokenQuote char:nextChar];
-		
 	} else if (nextChar == '{') {
 		self.nextToken = [TKToken tokenWithType:TKTokenOpenBrace char:nextChar];
-		
 	} else if (nextChar == '}') {
 		self.nextToken = [TKToken tokenWithType:TKTokenCloseBrace char:nextChar];
-		
 	} else {
 		self.nextToken = [TKToken charTokenWithChar:nextChar];
-		
 	}
 }
 
 
-// equiv of CByteTokenizer::Next()
-// "Get the current token and return the next one."
+/// equiv of CByteTokenizer::Next()
+/// "Get the current token and return the next one."
 - (TKToken *)nextTokenWithString:(NSString *)aString {
 	self.currentToken = nextToken;
 	self.nextToken = nil;
@@ -272,7 +233,6 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 
 @end
 
-
 // Tokenizes multi byte tokens.
 @interface TKTokenizer : NSObject {
 	TKByteTokenizer		*byteTokenizer;
@@ -280,12 +240,12 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 	TKToken				*nextToken;
 }
 
-+ (id)tokenizerWithByteTokenizer:(TKByteTokenizer *)aByteTokenizer;
-- (id)initWithByteTokenizer:(TKByteTokenizer *)aByteTokenizer;
++ (instancetype)tokenizerWithByteTokenizer:(TKByteTokenizer *)aByteTokenizer;
+- (instancetype)initWithByteTokenizer:(TKByteTokenizer *)aByteTokenizer;
 
-@property (nonatomic, retain) TKByteTokenizer *byteTokenizer;
-@property (nonatomic, retain) TKToken *currentToken;
-@property (nonatomic, retain) TKToken *nextToken;
+@property (nonatomic, strong) TKByteTokenizer *byteTokenizer;
+@property (nonatomic, strong) TKToken *currentToken;
+@property (nonatomic, strong) TKToken *nextToken;
 
 //	equiv of CTokenizer::GetNextToken()
 - (void)scan;
@@ -300,40 +260,28 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 //  equiv of CTokenizer::GetLine()
 - (NSUInteger)lineIndex;
 
-
 @end
 
 
 
 // Tokenizes multi byte tokens.
 @implementation TKTokenizer
-
 @synthesize byteTokenizer;
 @synthesize currentToken;
 @synthesize nextToken;
 
 
 + (id)tokenizerWithByteTokenizer:(TKByteTokenizer *)aByteTokenizer {
-	return [[[[self class] alloc] initWithByteTokenizer:aByteTokenizer] autorelease];
+	return [[[self class] alloc] initWithByteTokenizer:aByteTokenizer];
 }
-
 
 - (id)initWithByteTokenizer:(TKByteTokenizer *)aByteTokenizer {
 	if ((self = [super init])) {
-		byteTokenizer = [aByteTokenizer retain];
+		byteTokenizer = aByteTokenizer;
 		[self scan];
 	}
 	return self;
 }
-
-
-- (void)dealloc {
-    [byteTokenizer release];
-	[currentToken release];
-	[nextToken release];
-    [super dealloc];
-}
-
 
 //	equiv of CTokenizer::GetNextToken()
 - (void)scan {
@@ -431,7 +379,7 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 		case TKTokenOpenBrace :
 		case TKTokenCloseBrace : {
 			
-			self.nextToken = [[token copy] autorelease];
+			self.nextToken = [token copy];
 			
 			break;
 		}
@@ -469,7 +417,6 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 	return byteTokenizer.lineIndex;
 }
 
-
 @end
 
 
@@ -481,7 +428,7 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 + (id)parserWithTokenizer:(TKTokenizer *)aTokenizer;
 - (id)initWithTokenizer:(TKTokenizer *)aTokenizer;
 
-@property (nonatomic, retain) TKTokenizer *tokenizer;
+@property (nonatomic, strong) TKTokenizer *tokenizer;
 
 //	equivalent to CParser::Parse(void)
 - (TKVMTNode *)rootNode;
@@ -492,30 +439,19 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 
 @end
 
-
-
-
 @implementation TKVMTParser
-
 @synthesize tokenizer;
 
 + (id)parserWithTokenizer:(TKTokenizer *)aTokenizer {
-	return [[[[self class] alloc] initWithTokenizer:aTokenizer] autorelease];
+	return [[[self class] alloc] initWithTokenizer:aTokenizer];
 }
-
 
 - (id)initWithTokenizer:(TKTokenizer *)aTokenizer {
 	if ((self = [super init])) {
-		tokenizer = [aTokenizer retain];
+		tokenizer = aTokenizer;
 	}
 	return self;
 }
-
-- (void)dealloc {
-	[tokenizer release];
-	[super dealloc];
-}
-
 
 - (TKVMTNode *)rootNode {
 	TKVMTNode *groupNode = nil;
@@ -575,8 +511,7 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 	return groupNode;
 }
 
-
-//	Parse a group starting at the first brace and ending at the last.
+///	Parse a group starting at the first brace and ending at the last.
 - (void)parseGroupNode:(TKVMTNode *)groupNode {
 	TKToken *token = [tokenizer next];
 	
@@ -693,18 +628,12 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 									  description:@"expected close brace or group name or attribute name"];
 		}
 	}
-	
-	
 }
-
-
 
 @end
 
 
-
 @implementation TKVMTMaterial
-
 @synthesize rootNode;
 
 + (void)raiseExceptionWithName:(NSString *)name description:(NSString *)description {
@@ -712,29 +641,24 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 }
 
 + (instancetype)materialWithContentsOfFile:(NSString *)aPath error:(NSError **)outError {
-	return [[[[self class] alloc] initWithContentsOfFile:aPath error:outError] autorelease];
+	return [[[self class] alloc] initWithContentsOfFile:aPath error:outError];
 }
-
 
 + (instancetype)materialWithContentsOfURL:(NSURL *)URL error:(NSError **)outError {
-	return [[(TKVMTMaterial *)[[self class] alloc] initWithContentsOfURL:URL error:outError] autorelease];
+	return [(TKVMTMaterial *)[[self class] alloc] initWithContentsOfURL:URL error:outError];
 }
-
 
 + (instancetype)materialWithData:(NSData *)aData error:(NSError **)outError {
-	return [[[[self class] alloc] initWithData:aData error:outError] autorelease];
+	return [[[self class] alloc] initWithData:aData error:outError];
 }
-
 
 - (instancetype)initWithContentsOfFile:(NSString *)aPath error:(NSError **)outError {
 	return [self initWithContentsOfURL:[NSURL fileURLWithPath:aPath] error:outError];
 }
 
-
 - (instancetype)initWithContentsOfURL:(NSURL *)URL error:(NSError **)outError {
 	return [self initWithData:[NSData dataWithContentsOfURL:URL] error:outError];
 }
-
 
 - (instancetype)initWithData:(NSData *)aData error:(NSError **)outError {
 	NSParameterAssert(aData != nil);
@@ -752,7 +676,6 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 		
 		@catch (NSException *exception) {
 			NSLog(@"[%@ %@] Error while parsing VMT file (%@)", NSStringFromClass([self class]), NSStringFromSelector(_cmd), exception);
-			[self release];
 			return nil;
 			
 		}
@@ -778,12 +701,10 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 	
 	TKVMTParser *parser = [TKVMTParser parserWithTokenizer:[TKTokenizer tokenizerWithByteTokenizer:[TKByteTokenizer byteTokenizerWithData:aData]]];
 	
-	rootNode = [[parser rootNode] retain];
+	rootNode = [parser rootNode];
 	
 	return rootNode != nil;
 }
-
-
 
 - (NSDictionary *)dictionaryRepresentation {
 #if TK_DEBUG
@@ -792,14 +713,12 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 	return nil;
 }
 
-
 - (NSString *)stringRepresentation {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	return nil;
 }
-
 
 - (NSString *)description {
 	NSMutableString *description = [NSMutableString stringWithFormat:@"%@\n", super.description];
@@ -808,7 +727,3 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 }
 
 @end
-
-
-
-

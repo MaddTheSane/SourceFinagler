@@ -116,9 +116,9 @@
 
 //@property (readonly, nonatomic, assign) GLuint vertexArrayObjectName;
 
-@property (retain) TKShaderProgram *shaderProgram;
+@property (strong) TKShaderProgram *shaderProgram;
 
-@property (retain) TKTexture *texture;
+@property (strong) TKTexture *texture;
 
 //@property (nonatomic, retain) TKShaderProgram *shaderProgram;
 //

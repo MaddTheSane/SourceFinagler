@@ -21,11 +21,9 @@ typedef NS_ENUM(NSUInteger, TKVMTNodeKind) {
 };
 
 
-
 @interface TKVMTNode : NSObject <NSCopying> {
-	__unsafe_unretained TKVMTNode			*rootNode;		// non-retained
-	
-	__unsafe_unretained TKVMTNode			*parent;		// non-retained
+	__weak TKVMTNode	*rootNode;		// non-retained
+	__weak TKVMTNode	*parent;		// non-retained
 	
 	NSMutableArray		*children;
 	
@@ -35,11 +33,8 @@ typedef NS_ENUM(NSUInteger, TKVMTNodeKind) {
 	TKVMTNodeKind		kind;
 	
 	NSUInteger			index;
-	
 	NSUInteger			level;
-	
 	BOOL				leaf;
-
 }
 
 + (instancetype)nodeWithName:(NSString *)aName kind:(TKVMTNodeKind)aKind objectValue:(id)anObjectValue;
@@ -53,12 +48,11 @@ typedef NS_ENUM(NSUInteger, TKVMTNodeKind) {
 + (instancetype)floatNodeWithName:(NSString *)aName floatValue:(CGFloat)aFloat;
 
 
-
-@property (readonly, nonatomic, assign) TKVMTNode *rootNode;
-@property (readonly, nonatomic, assign) TKVMTNode *parent;
+@property (readonly, nonatomic, weak) TKVMTNode *rootNode;
+@property (readonly, nonatomic, weak) TKVMTNode *parent;
 
 @property (nonatomic, copy) NSString *name;
-@property (nonatomic, retain) id objectValue;
+@property (nonatomic, strong) id objectValue;
 
 @property (nonatomic, assign) TKVMTNodeKind kind;
 
@@ -81,6 +75,5 @@ typedef NS_ENUM(NSUInteger, TKVMTNodeKind) {
 @property (readonly, copy) NSString *stringValue;
 @property (readonly) NSInteger integerValue;
 @property (readonly) CGFloat floatValue;
-
 
 @end

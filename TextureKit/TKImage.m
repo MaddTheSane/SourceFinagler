@@ -65,7 +65,7 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 
 @interface TKImage ()
 
-@property (retain) NSMutableDictionary *allIndexes;
+@property (strong) NSMutableDictionary *allIndexes;
 
 - (TKImageRep *)representationForSliceIndex:(NSUInteger)sliceIndex face:(TKFace)aFace frameIndex:(NSUInteger)frameIndex mipmapIndex:(NSUInteger)mipmapIndex;
 - (void)setRepresentation:(TKImageRep *)representation forSliceIndex:(NSUInteger)sliceIndex face:(TKFace)aFace frameIndex:(NSUInteger)frameIndex mipmapIndex:(NSUInteger)mipmapIndex;
@@ -82,7 +82,7 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 #endif
 	
 	if (TKImageNotApplicableKey == nil) {
-		TKImageNotApplicableKey = [[NSString stringWithFormat:@"%lu", (unsigned long)NSNotFound] retain];
+		TKImageNotApplicableKey = [NSString stringWithFormat:@"%lu", (unsigned long)NSNotFound];
 	}
 	
 	if (TKSFTextureImageMagicData == nil) {
@@ -138,7 +138,6 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 	NSArray *representations = self.representations.deepMutableCopy;
 	
 	[copy addRepresentations:representations];
-	[representations release];
 	return copy;
 }
 
@@ -270,7 +269,6 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 	
 	if (dataLength < TKSFTextureImageMagicData.length) {
 		NSLog(@"[%@ %@] [data length] < 8 bytes!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-		[self release];
 		return nil;
 	}
 	
@@ -306,10 +304,9 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 		TKImage *archivedImage = [NSKeyedUnarchiver unarchiveObjectWithData:aData];
 		if (archivedImage == nil) {
 			NSLog(@"[%@ %@] TKImage *archivedImage = [NSKeyedUnarchiver unarchiveObjectWithData:aData] failed!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-			[self release];
 			return nil;
 		}
-		self = [archivedImage retain];
+		self = archivedImage;
 		return self;
 		
 	} else {
@@ -349,13 +346,6 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	[version release];
-	[compression release];
-	[reps release];
-	
-	[_private release];
-	
-	[super dealloc];
 }
 
 
@@ -467,26 +457,26 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 
 
 - (NSIndexSet *)allSliceIndexes {
-	return [[[self valueForKeyPath:TKImageAllSliceIndexesKey] copy] autorelease];
+	return [[self valueForKeyPath:TKImageAllSliceIndexesKey] copy];
 }
 
 - (NSIndexSet *)allFaceIndexes {
-	return [[[self valueForKeyPath:TKImageAllFaceIndexesKey] copy] autorelease];
+	return [[self valueForKeyPath:TKImageAllFaceIndexesKey] copy];
 }
 
 - (NSIndexSet *)allFrameIndexes {
-	return [[[self valueForKeyPath:TKImageAllFrameIndexesKey] copy] autorelease];
+	return [[self valueForKeyPath:TKImageAllFrameIndexesKey] copy];
 }
 
 - (NSIndexSet *)allMipmapIndexes {
-	return [[[self valueForKeyPath:TKImageAllMipmapIndexesKey] copy] autorelease];
+	return [[self valueForKeyPath:TKImageAllMipmapIndexesKey] copy];
 }
 
 
 - (NSIndexSet *)mipmapIndexes {
-	NSMutableIndexSet *mipmapIndexes = [[[NSMutableIndexSet alloc] initWithIndexSet:self.allMipmapIndexes] autorelease];
+	NSMutableIndexSet *mipmapIndexes = [[NSMutableIndexSet alloc] initWithIndexSet:self.allMipmapIndexes];
 	[mipmapIndexes removeIndexes:self.firstMipmapIndexSet];
-	return [[mipmapIndexes copy] autorelease];
+	return [mipmapIndexes copy];
 }
 
 
@@ -601,7 +591,7 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 		mipmapIndex = [mipmapIndexes indexGreaterThanIndex:mipmapIndex];
 	}
 	
-	return [[representations copy] autorelease];
+	return [representations copy];
 }
 
 
@@ -701,7 +691,7 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 		
 		frameIndex = [frameIndexes indexGreaterThanIndex:frameIndex];
 	}
-	return [[representations copy] autorelease];
+	return [representations copy];
 }
 
 
@@ -818,7 +808,7 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 		
 		faceIndex = [faceIndexes indexGreaterThanIndex:faceIndex];
 	}
-	return [[representations copy] autorelease];
+	return [representations copy];
 }
 
 
@@ -942,7 +932,7 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 		faceIndex = [faceIndexes indexGreaterThanIndex:faceIndex];
 		
 	}
-	return [[representations copy] autorelease];
+	return [representations copy];
 }
 
 
@@ -1578,7 +1568,7 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 		return nil;
 	}
 	
-	NSMutableDictionary *mProperties = [properties.deepMutableCopy autorelease];
+	NSMutableDictionary *mProperties = [properties deepMutableCopy];
 	TKImageRep *targetImageRep = [TKImageRep largestRepresentationInArray:(id)self.representations];
 	
 #if TK_DEBUG
@@ -1611,30 +1601,30 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 	CGImageDestinationFinalize(imageDest);
 	
 	CFRelease(imageDest);
-	return [[imageData copy] autorelease];
+	return [imageData copy];
 }
 
 
 
 typedef struct TKImageTypeDescription {
 	TKImageType		imageType;
-	NSString		*description;
+	const char		*description;
 } TKImageTypeDescription;
 
 static const TKImageTypeDescription TKImageTypeDescriptionTable[] = {
-	{ TKVTFImageType, @"TKVTFImageType" },
-	{ TKDDSImageType, @"TKDDSImageType" },
-	{ TKSFTIImageType, @"TKSFTIImageType" },
-	{ TKRegularImageType, @"TKRegularImageType" },
-	{ TKEmptyImageType, @"TKEmptyImageType" },
-	{ TKUnknownImageType, @"TKUnknownImageType" }
+	{ TKVTFImageType, "TKVTFImageType" },
+	{ TKDDSImageType, "TKDDSImageType" },
+	{ TKSFTIImageType, "TKSFTIImageType" },
+	{ TKRegularImageType, "TKRegularImageType" },
+	{ TKEmptyImageType, "TKEmptyImageType" },
+	{ TKUnknownImageType, "TKUnknownImageType" }
 };
 static const NSUInteger TKImageTypeDescriptionTableCount = sizeof(TKImageTypeDescriptionTable)/sizeof(TKImageTypeDescriptionTable[0]);
 
 static inline NSString *NSStringFromImageType(TKImageType aType) {
 	for (NSUInteger i = 0; i < TKImageTypeDescriptionTableCount; i++) {
 		if (aType == TKImageTypeDescriptionTable[i].imageType) {
-			return TKImageTypeDescriptionTable[i].description;
+			return @(TKImageTypeDescriptionTable[i].description);
 		}
 	}
 	return @"<unknown>";
@@ -1655,6 +1645,3 @@ static inline NSString *NSStringFromImageType(TKImageType aType) {
 }
 
 @end
-
-
-

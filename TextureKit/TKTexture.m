@@ -64,13 +64,7 @@ static inline TKPixelFormatMapping TKPixelFormatMappingForPixelFormat(TKPixelFor
 }
 
 
-
 @implementation TKTexture
-
-//@dynamic name;
-
-//@synthesize name;
-
 @synthesize data;
 @synthesize size;
 @synthesize width;
@@ -78,39 +72,36 @@ static inline TKPixelFormatMapping TKPixelFormatMappingForPixelFormat(TKPixelFor
 @synthesize pixelFormat;
 @synthesize dataType;
 @synthesize rowByteSize;
+//@dynamic name;
+
+//@synthesize name;
 
 
 + (id)textureWithContentsOfFile:(NSString *)aPath {
-	return [[[[self class] alloc] initWithContentsOfFile:aPath] autorelease];
+	return [[[self class] alloc] initWithContentsOfFile:aPath];
 }
-
 
 + (id)textureWithContentsOfURL:(NSURL *)URL {
-	return [[[[self class] alloc] initWithContentsOfURL:URL] autorelease];
+	return [[[self class] alloc] initWithContentsOfURL:URL];
 }
-
 
 + (id)textureWithData:(NSData *)aData {
-	return [[[[self class] alloc] initWithData:aData] autorelease];
+	return [[[self class] alloc] initWithData:aData];
 }
-
 
 + (id)textureNamed:(NSString *)name {
 	NSString *fullPath = [[NSBundle mainBundle] pathForImageResource:name];
 	if (fullPath == nil) return nil;
-	return [[[[self class] alloc] initWithContentsOfFile:fullPath] autorelease];
+	return [[[self class] alloc] initWithContentsOfFile:fullPath];
 }
-
 
 - (id)initWithContentsOfFile:(NSString *)aPath {
 	return [self initWithContentsOfURL:[NSURL fileURLWithPath:aPath]];
 }
 
-
 - (id)initWithContentsOfURL:(NSURL *)URL {
 	return [self initWithData:[NSData dataWithContentsOfURL:URL]];
 }
-
 
 - (id)initWithData:(NSData *)aData {
 	NSParameterAssert(aData != nil);
@@ -127,16 +118,13 @@ static inline TKPixelFormatMapping TKPixelFormatMappingForPixelFormat(TKPixelFor
 	if ([magic8Data isEqualToData:TKSFTextureImageMagicData]) {
 		// TKImage
 		
-		
 	} else {
-		
 		OSType magic = 0;
 		[aData getBytes:&magic length:sizeof(magic)];
 		magic = NSSwapBigIntToHost(magic);
 		
 		if (magic == TKVTFMagic) {
 			TKVTFTexture *vtfTexture = [[TKVTFTexture alloc] initWithData:aData];
-			[self release];
 			self = (TKTexture *)vtfTexture;
 			
 			[self generateName];
@@ -145,7 +133,6 @@ static inline TKPixelFormatMapping TKPixelFormatMappingForPixelFormat(TKPixelFor
 			
 		} else if (magic == TKDDSMagic) {
 			TKDDSTexture *ddsTexture = [[TKDDSTexture alloc] initWithData:aData];
-			[self release];
 			self = (TKTexture *)ddsTexture;
 			
 			[self generateName];
@@ -207,7 +194,6 @@ static inline TKPixelFormatMapping TKPixelFormatMappingForPixelFormat(TKPixelFor
 	glDeleteTextures(1, &name);
 	free(data);
 //	glDeleteBuffers(1, &pixelBuffer);
-	[super dealloc];
 }
 
 
@@ -284,7 +270,6 @@ static inline TKPixelFormatMapping TKPixelFormatMappingForPixelFormat(TKPixelFor
 	
 }
 
-
 - (NSString *)description {
 	NSMutableString *description = [NSMutableString stringWithFormat:@"%@,	", [super description]];
 	[description appendFormat:@"{%u x %u},	", (unsigned int)width, (unsigned int)height];
@@ -292,12 +277,4 @@ static inline TKPixelFormatMapping TKPixelFormatMappingForPixelFormat(TKPixelFor
 	return description;
 }
 
-
-
 @end
-
-
-
-
-
-

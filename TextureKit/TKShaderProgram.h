@@ -11,4 +11,7 @@
 
 @interface TKShaderProgram : NSObject
 - (void)useProgram;
+
+- (void)setValue:(id)value forUniformKey:(NSString *)key;
+
 @end

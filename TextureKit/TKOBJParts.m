@@ -15,11 +15,10 @@ NSString * const TKOBJVertexNormalKey		= @"vn";
 
 
 @implementation TKOBJVertex
-
 @synthesize vertex;
 
 + (id)vertexWithString:(NSString *)string {
-	return [[[[self class] alloc] initWithString:string] autorelease];
+	return [[[self class] alloc] initWithString:string];
 }
 
 - (id)initWithString:(NSString *)string {
@@ -54,20 +53,18 @@ NSString * const TKOBJVertexNormalKey		= @"vn";
 		TKVector3 v = [vertex vertex];
 		[mData appendBytes:&v.v length:sizeof(TKVector3)];
 	}
-	return [[mData copy] autorelease];
+	return [mData copy];
 }
 
 @end
 
 
 @implementation TKOBJTextureVertex
-
 @synthesize textureVertex;
 
 + (id)textureVertexWithString:(NSString *)string {
-	return [[[[self class] alloc] initWithString:string] autorelease];
+	return [[[self class] alloc] initWithString:string];
 }
-
 
 - (id)initWithString:(NSString *)string {
 	NSParameterAssert([string hasPrefix:TKOBJTextureVertexKey]);
@@ -88,7 +85,6 @@ NSString * const TKOBJVertexNormalKey		= @"vn";
 	return self;
 }
 
-
 + (NSData *)dataWithTextureVerticesInArray:(NSArray *)textureVertices {
 	NSParameterAssert(textureVertices != nil);
 	
@@ -98,19 +94,17 @@ NSString * const TKOBJVertexNormalKey		= @"vn";
 		TKVector2 v = [textureVertex textureVertex];
 		[mData appendBytes:&v.v length:sizeof(TKVector2)];
 	}
-	return [[mData copy] autorelease];
+	return [mData copy];
 }
 
 @end
 
 
-
 @implementation TKOBJVertexNormal
-
 @synthesize vertexNormal;
 
 + (id)vertexNormalWithString:(NSString *)string {
-	return [[[[self class] alloc] initWithString:string] autorelease];
+	return [[[self class] alloc] initWithString:string];
 }
 
 - (id)initWithString:(NSString *)string {
@@ -144,41 +138,30 @@ NSString * const TKOBJVertexNormalKey		= @"vn";
 		TKVector3 v = [vertexNormal vertexNormal];
 		[mData appendBytes:&v.v length:sizeof(TKVector3)];
 	}
-	return [[mData copy] autorelease];
+	return [mData copy];
 }
-
 
 @end
 
 
-
 @implementation TKOBJTriplet
-
 @synthesize vertex;
 @synthesize textureVertex;
 @synthesize vertexNormal;
 
 
 + (id)tripletWithVertex:(TKOBJVertex *)aVertex textureVertex:(TKOBJTextureVertex *)aTextureVertex vertexNormal:(TKOBJVertexNormal *)aVertexNormal {
-	return [[[[self class] alloc] initWithVertex:aVertex textureVertex:aTextureVertex vertexNormal:aVertexNormal] autorelease];
+	return [[[self class] alloc] initWithVertex:aVertex textureVertex:aTextureVertex vertexNormal:aVertexNormal];
 }
 
 
 - (id)initWithVertex:(TKOBJVertex *)aVertex textureVertex:(TKOBJTextureVertex *)aTextureVertex vertexNormal:(TKOBJVertexNormal *)aVertexNormal {
 	if ((self = [super init])) {
-		vertex = [aVertex retain];
-		textureVertex = [aTextureVertex retain];
-		vertexNormal = [aVertexNormal retain];
+		vertex = aVertex;
+		textureVertex = aTextureVertex;
+		vertexNormal = aVertexNormal;
 	}
 	return self;
-}
-
-
-- (void)dealloc {
-	[vertex release];
-	[textureVertex release];
-	[vertexNormal release];
-	[super dealloc];
 }
 
 

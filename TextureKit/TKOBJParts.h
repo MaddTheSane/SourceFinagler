@@ -69,14 +69,11 @@ TEXTUREKIT_EXTERN NSString * const TKOBJVertexNormalKey;		// vn
 + (instancetype)tripletWithVertex:(TKOBJVertex *)aVertex textureVertex:(TKOBJTextureVertex *)aTextureVertex vertexNormal:(TKOBJVertexNormal *)aVertexNormal;
 - (instancetype)initWithVertex:(TKOBJVertex *)aVertex textureVertex:(TKOBJTextureVertex *)aTextureVertex vertexNormal:(TKOBJVertexNormal *)aVertexNormal;
 
-@property (nonatomic, retain) TKOBJVertex *vertex;
-@property (nonatomic, retain) TKOBJTextureVertex *textureVertex;
-@property (nonatomic, retain) TKOBJVertexNormal *vertexNormal;
+@property (nonatomic, strong) TKOBJVertex *vertex;
+@property (nonatomic, strong) TKOBJTextureVertex *textureVertex;
+@property (nonatomic, strong) TKOBJVertexNormal *vertexNormal;
 
 @end
-
-
-
 
 @interface TKOBJFace : NSObject {
 	
@@ -84,8 +81,3 @@ TEXTUREKIT_EXTERN NSString * const TKOBJVertexNormalKey;		// vn
 
 
 @end
-
-
-
-
-

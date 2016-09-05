@@ -15,4 +15,9 @@
 	
 }
 
+- (void)setValue:(id)value forUniformKey:(NSString *)key
+{
+	
+}
+
 @end

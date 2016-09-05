@@ -82,16 +82,16 @@ typedef struct {
 
 
 + (id)modelWithContentsOfFile:(NSString *)filePath {
-	return [[[[self class] alloc] initWithContentsOfFile:filePath] autorelease];
+	return [[[self class] alloc] initWithContentsOfFile:filePath];
 }
 
 + (id)modelWithContentsOfURL:(NSURL *)URL {
-	return [[[[self class] alloc] initWithContentsOfURL:URL] autorelease];
+	return [[[self class] alloc] initWithContentsOfURL:URL];
 }
 
 
 + (id)modelWithData:(NSData *)data {
-	return [[[[self class] alloc] initWithData:data] autorelease];
+	return [[[self class] alloc] initWithData:data];
 }
 
 - (id)initWithContentsOfFile:(NSString *)filePath {
@@ -194,7 +194,7 @@ typedef struct {
 }
 
 + (id)quadModel {
-	return [[[[self class] alloc] initQuadModel] autorelease];
+	return [[[self class] alloc] initQuadModel];
 }
 
 
@@ -204,9 +204,6 @@ typedef struct {
 	free(normals);
 	free(elements);
 	[self destroyVertexArrayObjectWithName:name];
-	[shaderProgram release];
-	[texture release];
-	[super dealloc];
 }
 
 

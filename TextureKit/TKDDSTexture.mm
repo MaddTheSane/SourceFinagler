@@ -11,12 +11,12 @@
 #import <TextureKit/TKDDSImageRep.h>
 
 #if TK_ENABLE_OPENGL3
-	#import <OpenGL/gl3ext.h>
+	#include <OpenGL/gl3ext.h>
 #else
-	#import <OpenGL/glext.h>
+	#include <OpenGL/glext.h>
 #endif
 
-#import <NVTextureTools/NVTextureTools.h>
+#include <NVTextureTools/NVTextureTools.h>
 
 
 
@@ -36,15 +36,9 @@ struct TKDDSTextureFormatMapping {
 
 static const TKDDSTextureFormatMapping TKDDSTextureFormatMappingTable[] = {
 	{}
-	
 };
 
-
-
-
-
 @implementation TKDDSTexture
-
 
 - (id)initWithData:(NSData *)aData {
 #if TK_DEBUG
@@ -94,7 +88,6 @@ static const TKDDSTextureFormatMapping TKDDSTextureFormatMappingTable[] = {
 		
 		if (!dds->readSurface(0, 0, data, surfaceSize)) {
 			NSLog(@"[%@ %@] dds->readSurface(0, 0, data, surfaceSize) failed!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-			
 		}
 		
 		delete dds;
@@ -102,18 +95,4 @@ static const TKDDSTextureFormatMapping TKDDSTextureFormatMappingTable[] = {
 	return self;
 }
 
-
-
-
-
-
-
-
-
 @end
-
-
-
-
-
-

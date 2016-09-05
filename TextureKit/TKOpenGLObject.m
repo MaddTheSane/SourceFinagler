@@ -25,14 +25,6 @@
 	return self;
 }
 
-
-- (void)dealloc {
-	[nameLock release];
-	[super dealloc];
-}
-
-
-
 - (GLuint)name {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -59,12 +51,4 @@
 //	[nameLock unlock];
 }
 
-
-
 @end
-
-
-
-
-
-

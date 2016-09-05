@@ -32,9 +32,6 @@
 @property (readonly, copy) NSString *stringRepresentation;
 
 
-@property (nonatomic, retain) TKVMTNode *rootNode;
-
+@property (nonatomic, strong) TKVMTNode *rootNode;
 
 @end
-
-

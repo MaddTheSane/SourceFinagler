@@ -126,8 +126,8 @@
 		C1275F62129182C40041ACD7 /* VSSourceAddon.m in Sources */ = {isa = PBXBuildFile; fileRef = C1275F61129182C40041ACD7 /* VSSourceAddon.m */; };
 		C1279D3612DCB0EB0065F5D7 /* defaultPresets.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1279D3512DCB0EA0065F5D7 /* defaultPresets.plist */; };
 		C12B4DAA13B7179C0096FC0E /* ForEach.h in Headers */ = {isa = PBXBuildFile; fileRef = C12B4DA913B7179B0096FC0E /* ForEach.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C12CFB5A12DFB3AE00A08A4B /* TKDDSImageRep.mm in Sources */ = {isa = PBXBuildFile; fileRef = C12DB4B4125FADE00051A751 /* TKDDSImageRep.mm */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		C12CFB7612DFBCB400A08A4B /* TKFoundationAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C1AF851912C6294B00027B75 /* TKFoundationAdditions.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		C12CFB5A12DFB3AE00A08A4B /* TKDDSImageRep.mm in Sources */ = {isa = PBXBuildFile; fileRef = C12DB4B4125FADE00051A751 /* TKDDSImageRep.mm */; };
+		C12CFB7612DFBCB400A08A4B /* TKFoundationAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C1AF851912C6294B00027B75 /* TKFoundationAdditions.m */; };
 		C12D372D12E14CD200397411 /* MDScopeBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = C12D372C12E14CD200397411 /* MDScopeBarView.m */; };
 		C12F1022147B6B0300F398DE /* TextureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17319B21298D11400C29732 /* TextureKit.framework */; };
 		C12F102C147B6B2400F398DE /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1CA269613A2E1B900235C98 /* QTKit.framework */; };
@@ -531,9 +531,9 @@
 		C1E6DABF12BC22BA009D8AD6 /* TKImage.h in Headers */ = {isa = PBXBuildFile; fileRef = C17025F6128486BE0056A23D /* TKImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C1E6DAC012BC22BB009D8AD6 /* TKImage.m in Sources */ = {isa = PBXBuildFile; fileRef = C17025F7128486BE0056A23D /* TKImage.m */; };
 		C1E6DAC112BC22BB009D8AD6 /* TKImageRep.h in Headers */ = {isa = PBXBuildFile; fileRef = C17026191284BC6F0056A23D /* TKImageRep.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C1E6DAC212BC22BC009D8AD6 /* TKImageRep.m in Sources */ = {isa = PBXBuildFile; fileRef = C170261A1284BC6F0056A23D /* TKImageRep.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		C1E6DAC212BC22BC009D8AD6 /* TKImageRep.m in Sources */ = {isa = PBXBuildFile; fileRef = C170261A1284BC6F0056A23D /* TKImageRep.m */; };
 		C1E6DAC312BC22C2009D8AD6 /* TKVTFImageRep.h in Headers */ = {isa = PBXBuildFile; fileRef = C1647768124E91DB0062B943 /* TKVTFImageRep.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C1E6DAC412BC22C3009D8AD6 /* TKVTFImageRep.mm in Sources */ = {isa = PBXBuildFile; fileRef = C1647769124E91DB0062B943 /* TKVTFImageRep.mm */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		C1E6DAC412BC22C3009D8AD6 /* TKVTFImageRep.mm in Sources */ = {isa = PBXBuildFile; fileRef = C1647769124E91DB0062B943 /* TKVTFImageRep.mm */; };
 		C1E6DAC512BC22C7009D8AD6 /* TKDDSImageRep.h in Headers */ = {isa = PBXBuildFile; fileRef = C12DB4B3125FADE00051A751 /* TKDDSImageRep.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C1E6DACA12BC232F009D8AD6 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C11B279211BDFBB8004D4CC0 /* ApplicationServices.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		C1E6DB0312BC236C009D8AD6 /* VTF.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1B95275124E73B200E83451 /* VTF.framework */; settings = {ATTRIBUTES = (Required, ); }; };
@@ -5525,6 +5525,7 @@
 		C17319B41298D11500C29732 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
@@ -5545,6 +5546,7 @@
 		C17319B51298D11500C29732 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;

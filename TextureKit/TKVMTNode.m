@@ -15,46 +15,36 @@
 
 typedef struct TKVMTNodeKindMapping {
 	TKVMTNodeKind	kind;
-	NSString		*description;
+	const char		*description;
 } TKVMTNodeKindMapping;
 
 static const TKVMTNodeKindMapping TKVMTNodeKindMappingTable[] = {
-	{TKVMTInvalidKind,	@"TKVMTInvalidKind" },
-	{TKVMTGroupKind,	@"TKVMTGroupKind" },
-	{TKVMTCommentKind,	@"TKVMTCommentKind" },
-	{TKVMTStringKind,	@"TKVMTStringKind" },
-	{TKVMTIntegerKind,	@"TKVMTIntegerKind" },
-	{TKVMTFloatKind,	@"TKVMTFloatKind" }
+	{TKVMTInvalidKind,	"TKVMTInvalidKind" },
+	{TKVMTGroupKind,	"TKVMTGroupKind" },
+	{TKVMTCommentKind,	"TKVMTCommentKind" },
+	{TKVMTStringKind,	"TKVMTStringKind" },
+	{TKVMTIntegerKind,	"TKVMTIntegerKind" },
+	{TKVMTFloatKind,	"TKVMTFloatKind" }
 };
 static const NSUInteger TKVMTNodeKindMappingTableCount = sizeof(TKVMTNodeKindMappingTable)/sizeof(TKVMTNodeKindMappingTable[0]);
 
 static inline NSString *NSStringFromTKVMTNodeKind(TKVMTNodeKind kind) {
 	for (NSUInteger i = 0; i < TKVMTNodeKindMappingTableCount; i++) {
 		if (TKVMTNodeKindMappingTable[i].kind == kind) {
-			return TKVMTNodeKindMappingTable[i].description;
+			return @(TKVMTNodeKindMappingTable[i].description);
 		}
 	}
 	return @"<Unknown>";
 }
 
 
-
-
-
-
-
-
-
 @interface TKVMTNode ()
 
-@property (nonatomic, assign) TKVMTNode *rootNode;
-@property (nonatomic, assign) TKVMTNode *parent;
-@property (nonatomic, assign, getter=isLeaf) BOOL leaf;
+@property (readwrite, nonatomic, weak) TKVMTNode *rootNode;
+@property (readwrite, nonatomic, weak) TKVMTNode *parent;
+@property (readwrite, nonatomic, assign, getter=isLeaf) BOOL leaf;
 
 @end
-
-
-
 
 @interface TKVMTNode (TKPrivate)
 
@@ -62,13 +52,9 @@ static inline NSString *NSStringFromTKVMTNodeKind(TKVMTNodeKind kind) {
 //
 //- (BOOL)parseNodeString:(NSString *)string error:(NSError **)outError;
 
-
-
 - (void)setChildren:(NSArray *)anArray;
 
 @end
-
-
 
 @implementation TKVMTNode
 @synthesize rootNode;
@@ -103,30 +89,28 @@ static inline NSString *NSStringFromTKVMTNodeKind(TKVMTNodeKind kind) {
 
 
 + (instancetype)nodeWithName:(NSString *)aName kind:(TKVMTNodeKind)aKind objectValue:(id)anObjectValue {
-	return [[[[self class] alloc] initWithName:aName kind:aKind objectValue:anObjectValue] autorelease];
+	return [[[self class] alloc] initWithName:aName kind:aKind objectValue:anObjectValue];
 }
 
-
 + (id)stringNodeWithName:(NSString *)aName stringValue:(NSString *)stringValue {
-	return [[[[self class] alloc] initWithName:aName kind:TKVMTStringKind objectValue:stringValue] autorelease];
+	return [[[self class] alloc] initWithName:aName kind:TKVMTStringKind objectValue:stringValue];
 }
 
 + (id)integerNodeWithName:(NSString *)aName integerValue:(NSInteger)anInteger {
-	return [[[[self class] alloc] initWithName:aName kind:TKVMTIntegerKind objectValue:@(anInteger)] autorelease];
+	return [[[self class] alloc] initWithName:aName kind:TKVMTIntegerKind objectValue:@(anInteger)];
 }
 
 + (id)floatNodeWithName:(NSString *)aName floatValue:(CGFloat)aFloat {
-	return [[[[self class] alloc] initWithName:aName kind:TKVMTFloatKind objectValue:@(aFloat)] autorelease];
+	return [[[self class] alloc] initWithName:aName kind:TKVMTFloatKind objectValue:@(aFloat)];
 }
 
 + (id)commentNodeWithStringValue:(NSString *)stringValue {
-	return [[[[self class] alloc] initWithName:nil kind:TKVMTCommentKind objectValue:stringValue] autorelease];
+	return [[[self class] alloc] initWithName:nil kind:TKVMTCommentKind objectValue:stringValue];
 }
 
 + (id)groupNodeWithName:(NSString *)aName {
-	return [[[[self class] alloc] initWithName:aName kind:TKVMTGroupKind objectValue:nil] autorelease];
+	return [[[self class] alloc] initWithName:aName kind:TKVMTGroupKind objectValue:nil];
 }
-
 
 - (instancetype)initWithName:(NSString *)aName kind:(TKVMTNodeKind)aKind objectValue:(id)anObjectValue {
 	if ((self = [super init])) {
@@ -141,7 +125,6 @@ static inline NSString *NSStringFromTKVMTNodeKind(TKVMTNodeKind kind) {
 	return self;
 }
 
-
 - (id)copyWithZone:(NSZone *)zone {
 	TKVMTNode *copy = [[[self class] alloc] init];
 	copy->children = nil;
@@ -153,14 +136,6 @@ static inline NSString *NSStringFromTKVMTNodeKind(TKVMTNodeKind kind) {
 	return copy;
 }
 
-- (void)dealloc {
-    [children release];
-	[name release];
-	[objectValue release];
-    [super dealloc];
-}
-
-
 - (NSUInteger)countOfChildren {
 	return children.count;
 }
@@ -169,18 +144,15 @@ static inline NSString *NSStringFromTKVMTNodeKind(TKVMTNodeKind kind) {
 	return children[anIndex];
 }
 
-
 - (void)insertChild:(TKVMTNode *)aChild atIndex:(NSUInteger)anIndex {
 	aChild.parent = self;
 	aChild.rootNode = rootNode;
 	[children insertObject:aChild atIndex:anIndex];
 }
 
-
 - (NSArray *)children {
-	return [[children copy] autorelease];
+	return [children copy];
 }
-
 
 - (void)setChildren:(NSArray *)anArray {
 	if (children == nil) children = [[NSMutableArray alloc] init];
@@ -191,14 +163,12 @@ static inline NSString *NSStringFromTKVMTNodeKind(TKVMTNodeKind kind) {
 	[self insertChild:aChild atIndex:children.count];
 }
 
-
 - (void)tk__removeChildrenIdenticalTo:(NSArray *)theChildren {
 	[theChildren makeObjectsPerformSelector:@selector(setParent:) withObject:nil];
 	for (TKVMTNode *child in theChildren) {
 		[children removeObjectIdenticalTo:child];
 	}
 }
-
 
 - (void)removeChild:(TKVMTNode *)aChild {
 	NSUInteger cIndex = [children indexOfObject:aChild];
@@ -211,11 +181,9 @@ static inline NSString *NSStringFromTKVMTNodeKind(TKVMTNodeKind kind) {
 	
 }
 
-
 - (NSString *)stringRepresentation {
 	return nil;
 }
-
 
 - (NSString *)stringValue {
 	return nil;
@@ -234,10 +202,8 @@ static inline NSString *NSStringFromTKVMTNodeKind(TKVMTNodeKind kind) {
 	if (kind == TKVMTGroupKind) {
 		[description appendFormat:@"	%@\n", name];
 		[description appendFormat:@"			%@\n", children];
-		
 	} else {
 		[description appendFormat:@"	%@		%@\n", name, objectValue];
-		
 	}
 	return description;
 }
