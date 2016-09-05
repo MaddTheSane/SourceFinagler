@@ -1,4 +1,5 @@
 #include <CoreServices/CoreServices.h>
+#include "HLSpotlightMain.h"
 #import <Cocoa/Cocoa.h>
 #import <NVTextureTools/NVTextureTools.h>
 #import <VTF/VTF.h>
@@ -14,7 +15,7 @@ extern "C" {
 	
 	
 	
-BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *contentTypeUTI, NSMutableDictionary *attributes, NSError **error);
+static BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *contentTypeUTI, NSMutableDictionary *attributes, NSError **error);
 
 //	Boolean GetMetadataForURL(void *thisInterface, CFMutableDictionaryRef attributes, CFStringRef contentTypeUTI, CFURLRef url);
 	
@@ -23,13 +24,13 @@ Boolean GetMetadataForFile(void *thisInterface, CFMutableDictionaryRef attribute
     /* Return the attribute keys and attribute values in the dict */
     /* Return TRUE if successful, FALSE if there was no data provided */
 	
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	@autoreleasepool {
+		NSString *nsContentUTI = (__bridge NSString*)contentTypeUTI;
 	
-	if (![(NSString *)contentTypeUTI isEqualToString:TKVTFType] &&
-		![(NSString *)contentTypeUTI isEqualToString:TKDDSType] &&
-		![(NSString *)contentTypeUTI isEqualToString:TKSFTextureImageType]) {
+	if (![nsContentUTI isEqualToString:TKVTFType] &&
+		![nsContentUTI isEqualToString:TKDDSType] &&
+		![nsContentUTI isEqualToString:TKSFTextureImageType]) {
 		NSLog(@"Source.mdimporter; GetMetadataForFile(): contentTypeUTI != vtf or dds or sfti; (contentTypeUTI == %@)", contentTypeUTI);
-		[pool release];
 		return FALSE;
 	}
 	
@@ -37,10 +38,10 @@ Boolean GetMetadataForFile(void *thisInterface, CFMutableDictionaryRef attribute
 	NSLog(@"Source.mdimporter; GetMetadataForFile() file == %@", pathToFile);
 #endif
 	
-	BOOL result = MDGetMetadataFromImageWithContentsOfFile((NSString *)pathToFile, (NSString *)contentTypeUTI, (NSMutableDictionary *)attributes, NULL);
+	BOOL result = MDGetMetadataFromImageWithContentsOfFile((__bridge NSString *)pathToFile, nsContentUTI, (__bridge NSMutableDictionary *)attributes, NULL);
 	
-	[pool release];
 	return (Boolean)result;
+	}
 }
 
 	
@@ -50,20 +51,17 @@ using namespace nv;
 BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *contentTypeUTI, NSMutableDictionary *attributes, NSError **error) {
 	if (attributes == nil || filePath == nil || contentTypeUTI == nil) return NO;
 	
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	@autoreleasepool {
 	
 	NSData *data = [[NSData alloc] initWithContentsOfFile:filePath];
 	
 	if (data == nil) {
 		NSLog(@"MDGetMetadataFromImageWithContentsOfFile(): data == nil for filePath == %@", filePath);
-		[pool release];
 		return NO;
 	}
 	
 	if ([data length] < sizeof(OSType)) {
 		NSLog(@"MDGetMetadataFromImageWithContentsOfFile(): [data length] < 4 for filePath == %@", filePath);
-		[data release];
-		[pool release];
 		return NO;
 	}
 	
@@ -77,8 +75,6 @@ BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *cont
 		
 		if (sfti == nil) {
 			NSLog(@"MDGetMetadataFromImageWithContentsOfFile(): failed to create a TKImage for file at %@!", filePath);
-			[data release];
-			[pool release];
 			return NO;
 		}
 		
@@ -93,10 +89,6 @@ BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *cont
 		[attributes setObject:[NSNumber numberWithUnsignedInteger:imageSize.height] forKey:(id)kMDItemPixelHeight];
 		[attributes setObject:[NSNumber numberWithUnsignedInteger:imageSize.width * imageSize.height] forKey:(id)kMDItemPixelCount];
 		
-		[sfti release];
-		[data release];
-		[pool release];
-		
 		return YES;
 		
 	
@@ -104,8 +96,6 @@ BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *cont
 		
 		if (magic == TKHTMLErrorMagic) {
 			NSLog(@"MDGetMetadataFromImageWithContentsOfFile(): file at fileURL \"%@\" appears to be an ERROR 404 HTML file rather than a valid VTF", filePath);
-			[data release];
-			[pool release];
 			return NO;
 		}
 		
@@ -113,8 +103,6 @@ BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *cont
 		
 		if (file == 0) {
 			NSLog(@"MDGetMetadataFromImageWithContentsOfFile(): CVTFFile() returned NULL (for %@)", filePath);
-			[data release];
-			[pool release];
 			return NO;
 		}
 		
@@ -125,8 +113,6 @@ BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *cont
 				NSLog(@"MDGetMetadataFromImageWithContentsOfFile(): file->Load() (for %@) failed! (does not appear to be a valid VTF; magic == 0x%x, %@)", filePath, (unsigned int)magic, NSFileTypeForHFSTypeCode(magic));
 			}
 			delete file;
-			[data release];
-			[pool release];
 			return NO;
 		}
 		
@@ -157,8 +143,6 @@ BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *cont
 		if (theCompression) [attributes setObject:theCompression forKey:@"com_markdouma_image_compression"];
 		
 		delete file;
-		[data release];
-		[pool release];
 		return YES;
 		
 		
@@ -166,8 +150,6 @@ BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *cont
 		
 		if (magic != TKDDSMagic) {
 			NSLog(@"MDGetMetadataFromImageWithContentsOfFile(): file at filePath \"%@\" does not appear to be a valid DDS; magic == 0x%x, %@", filePath, (unsigned int)magic, NSFileTypeForHFSTypeCode(magic));
-			[data release];
-			[pool release];
 			return NO;
 		}
 		
@@ -182,8 +164,6 @@ BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *cont
 			}
 			dds->printInfo();
 			delete dds;
-			[data release];
-			[pool release];
 			return NO;
 		}
 		
@@ -216,14 +196,11 @@ BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *cont
 		[attributes setObject:[NSNumber numberWithUnsignedInteger:theWidth * theHeight] forKey:(id)kMDItemPixelCount];
 		if (theCompression) [attributes setObject:theCompression forKey:@"com_markdouma_image_compression"];
 		
-		[data release];
-		[pool release];
 		return YES;
 		
 	}
 	
-	[data release];
-	[pool release];
+	}
 	return NO;
 }
 	

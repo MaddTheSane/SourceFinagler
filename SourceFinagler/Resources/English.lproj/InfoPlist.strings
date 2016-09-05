@@ -1,6 +1,6 @@
 /* Localized versions of Info.plist keys */
 
-/*
+
 com.valvesoftware.source.vtf = "Source VTF Image";
 com.microsoft.dds = "Microsoft DDS Image";
 com.valvesoftware.source.gcf = "Steam Cache file";
@@ -44,12 +44,3 @@ com.valvesoftware.source.vbsp = "Source Detail Prop";
 com.valvesoftware.source.vtx = "Source Mesh Strip file";
 com.valvesoftware.source.vvd = "Source Vertex Data file";
 public.linux-so = "Linux dynamic library";
-
-*/
-
-
-
-
-
-
-

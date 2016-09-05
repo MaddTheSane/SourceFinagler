@@ -373,7 +373,7 @@ static TKDDSFormat defaultDDSFormat = TKDDSFormatDefault;
 
 
 + (TKDDSFormat)defaultFormat {
-	TKDDSFormat defaultFormat = 0;
+	TKDDSFormat defaultFormat = TKDDSFormatDXT1;
 	@synchronized(self) {
 		defaultFormat = defaultDDSFormat;
 	}
@@ -608,8 +608,8 @@ static TKDDSFormat defaultDDSFormat = TKDDSFormatDefault;
 	inputOptions.setTextureLayout((faceCount == 1 ? TextureType_2D : TextureType_Cube), maxWidth, maxHeight);
 	inputOptions.setFormat(InputFormat_BGRA_8UB);
 	
-	inputOptions.setWrapMode(WrapModeFromTKWrapMode(nWrapMode.unsignedIntegerValue));
-	inputOptions.setRoundMode(RoundModeFromTKRoundMode(nRoundMode.unsignedIntegerValue));
+	inputOptions.setWrapMode(WrapModeFromTKWrapMode(TKWrapMode(nWrapMode.unsignedIntegerValue)));
+	inputOptions.setRoundMode(RoundModeFromTKRoundMode(TKRoundMode(nRoundMode.unsignedIntegerValue)));
 	inputOptions.setNormalMap(false);
 	inputOptions.setConvertToNormalMap(false);
 	inputOptions.setGamma(2.2, 2.2);
@@ -618,7 +618,7 @@ static TKDDSFormat defaultDDSFormat = TKDDSFormatDefault;
 		inputOptions.setMipmapGeneration(false);
 	} else {
 		inputOptions.setMipmapGeneration(true);
-		inputOptions.setMipmapFilter(DDSMipmapFilterFromTKMipmapGenerationType(nMipmapType.unsignedIntegerValue));
+		inputOptions.setMipmapFilter(DDSMipmapFilterFromTKMipmapGenerationType(TKMipmapGenerationType(nMipmapType.unsignedIntegerValue)));
 	}
 	
 	for (NSImageRep *imageRep in tkImageReps) {
@@ -792,7 +792,7 @@ static unsigned char *TKCreateRGBADataFromColor32(Color32 *pixels, NSUInteger pi
 					
 					TKDDSImageRep *imageRep = [[TKDDSImageRep alloc] initWithCGImage:imageRef
 																		  sliceIndex:TKSliceIndexNone
-																				face:faceIndex
+																				face:TKFace(faceIndex)
 																		  frameIndex:TKFrameIndexNone
 																		 mipmapIndex:mipmap];
 					

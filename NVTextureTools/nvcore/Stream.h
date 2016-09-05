@@ -78,7 +78,9 @@ namespace nv
 
         // friends	
         friend Stream & operator<<( Stream & s, bool & c ) {
-#if NV_OS_DARWIN
+			// the size of bool seems to differ between C++ versions
+			// on OS X.
+#if NV_OS_DARWIN && __cplusplus < 201103L
             nvStaticCheck(sizeof(bool) == 4);
             uint8 b = c ? 1 : 0;
             s.serialize( &b, 1 );

@@ -197,7 +197,7 @@
 			<string>Viewer</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>com.markdouma.obj</string>
+				<string>public.geometry-definition-format</string>
 			</array>
 			<key>NSDocumentClass</key>
 			<string>TKModelDocument</string>
@@ -758,7 +758,7 @@
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 	<key>NSSupportsSuddenTermination</key>
-	<string>NO</string>
+	<false/>
 	<key>OSAScriptingDefinition</key>
 	<string>Source Finagler.sdef</string>
 	<key>SUFeedURL</key>
@@ -1869,27 +1869,6 @@
 				<string>public.plain-text</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>Wavefront 3D Object file</string>
-			<key>UTTypeIconFile</key>
-			<string></string>
-			<key>UTTypeIdentifier</key>
-			<string>com.markdouma.obj</string>
-			<key>UTTypeReferenceURL</key>
-			<string></string>
-			<key>UTTypeTagSpecification</key>
-			<dict>
-				<key>public.filename-extension</key>
-				<array>
-					<string>obj</string>
-				</array>
-			</dict>
-		</dict>
-		<dict>
-			<key>UTTypeConformsTo</key>
-			<array>
-				<string>public.plain-text</string>
-			</array>
-			<key>UTTypeDescription</key>
 			<string>Wavefront 3D Object Material file</string>
 			<key>UTTypeIconFile</key>
 			<string></string>
@@ -1909,6 +1888,7 @@
 			<key>UTTypeConformsTo</key>
 			<array>
 				<string>public.data</string>
+				<string>public.3d-content</string>
 			</array>
 			<key>UTTypeDescription</key>
 			<string>Digital Asset Exchange (DAE)</string>
@@ -1931,6 +1911,7 @@
 			<array>
 				<string>com.apple.package</string>
 				<string>public.composite-content</string>
+				<string>public.3d-content</string>
 			</array>
 			<key>UTTypeDescription</key>
 			<string>Digital Asset Exchange (DAE) Document with Attachments</string>

@@ -282,7 +282,7 @@ static BOOL vtfInitialized = NO;
 
 
 + (TKVTFFormat)defaultFormat {
-	TKVTFFormat defaultFormat = 0;
+	TKVTFFormat defaultFormat = TKVTFFormatRGB;
 	@synchronized(self) {
 		defaultFormat = defaultVTFFormat;
 	}
@@ -402,7 +402,7 @@ static BOOL vtfInitialized = NO;
 		}
 		
 		if (generateMipmaps) {
-			vlBool success = vtfFile->GenerateMipmaps(VTFMipmapFilterFromTKMipmapGenerationType(nMipmapType.unsignedIntegerValue), SHARPEN_FILTER_DEFAULT);
+			vlBool success = vtfFile->GenerateMipmaps(VTFMipmapFilterFromTKMipmapGenerationType(TKMipmapGenerationType(nMipmapType.unsignedIntegerValue)), SHARPEN_FILTER_DEFAULT);
 			if (!success) {
 				NSLog(@"[%@ %@] vtfFile->GenerateMipmaps() failed!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 	
@@ -462,7 +462,7 @@ static BOOL vtfInitialized = NO;
 		}
 		
 		if (generateMipmaps) {
-			vlBool success = vtfFile->GenerateMipmaps(VTFMipmapFilterFromTKMipmapGenerationType(nMipmapType.unsignedIntegerValue), SHARPEN_FILTER_DEFAULT);
+			vlBool success = vtfFile->GenerateMipmaps(VTFMipmapFilterFromTKMipmapGenerationType(TKMipmapGenerationType(nMipmapType.unsignedIntegerValue)), SHARPEN_FILTER_DEFAULT);
 			if (!success) {
 				NSLog(@"[%@ %@] vtfFile->GenerateMipmaps() failed!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 			}
@@ -649,7 +649,7 @@ static BOOL vtfInitialized = NO;
 					
 					TKVTFImageRep *imageRep = [[TKVTFImageRep alloc] initWithCGImage:imageRef
 																		  sliceIndex:slice
-																				face:faceIndex
+																				face:TKFace(faceIndex)
 																		  frameIndex:frame
 																		 mipmapIndex:mipmapNumber];
 					

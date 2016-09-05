@@ -63,7 +63,7 @@ static inline TKPixelFormatInfo TKPixelFormatInfoFromPixelFormat(TKPixelFormat a
 			return pixelFormatInfo;
 		}
 	}
-	TKPixelFormatInfo pixelFormatInfo = {0, 0, 0, 0, kCGColorSpaceModelUnknown, kCGRenderingIntentDefault};
+	TKPixelFormatInfo pixelFormatInfo = {TKPixelFormatXRGB1555, 0, 0, 0, kCGColorSpaceModelUnknown, kCGRenderingIntentDefault};
 	return pixelFormatInfo;
 }
 
