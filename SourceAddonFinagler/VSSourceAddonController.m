@@ -34,16 +34,9 @@ NSString * const VSSourceAddonInstallMethodKey = @"VSSourceAddonInstallMethod";
 	if ((self = [super init])) {
 		installedAddons = [[NSMutableArray alloc] init];
 		problemAddons = [[NSMutableArray alloc] init];
-		steamManager = [[VSSteamManager defaultManager] retain];
+		steamManager = [VSSteamManager defaultManager];
 	}
 	return self;
-}
-
-- (void)dealloc {
-	[installedAddons release];
-	[problemAddons release];
-	[steamManager release];
-	[super dealloc];
 }
 
 

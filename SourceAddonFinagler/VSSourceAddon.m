@@ -15,13 +15,13 @@
 @synthesize path, fileName, fileIcon, gameName, gameIcon, problem;
 
 + (id)sourceAddonWithPath:(NSString *)aPath game:(VSGame *)aGame error:(NSError *)inError {
-	return [[[[self class] alloc] initWithPath:aPath game:aGame error:inError] autorelease];
+	return [[[self class] alloc] initWithPath:aPath game:aGame error:inError];
 }
 
 - (id)initWithPath:(NSString *)aPath game:(VSGame *)game error:(NSError *)inError {
 	if ((self = [super init])) {
-		path = [aPath retain];
-		fileName = [[path lastPathComponent] retain];
+		path = [aPath copy];
+		fileName = [path lastPathComponent];
 		
 		NSImage *icon = [[NSWorkspace sharedWorkspace] iconForFile:path];
 		if (icon) [icon setSize:NSMakeSize(16.0, 16.0)];
@@ -81,18 +81,6 @@
 	}
 	return self;
 }
-
-
-- (void)dealloc {
-	[path release];
-	[fileName release];
-	[fileIcon release];
-	[gameName release];
-	[gameIcon release];
-	[problem release];
-	[super dealloc];
-}
-
 
 
 @end

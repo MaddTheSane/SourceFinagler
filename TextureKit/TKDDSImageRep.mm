@@ -328,7 +328,7 @@ static TKDDSFormat defaultDDSFormat = TKDDSFormatDefault;
 #if TK_DEBUG
 //		NSLog(@"[%@ %@] super's imageUnfilteredPasteboardTypes == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), types);
 #endif
-		imageUnfilteredPasteboardTypes = [[types arrayByAddingObject:TKDDSPboardType] retain];
+		imageUnfilteredPasteboardTypes = [types arrayByAddingObject:TKDDSPboardType];
 	}
 	return imageUnfilteredPasteboardTypes;
 }
@@ -458,9 +458,7 @@ static TKDDSFormat defaultDDSFormat = TKDDSFormatDefault;
 		if (imageRep) [tkImageReps addObject:imageRep];
 	}
 	
-	[mipmapData release];
-	
-	return [[tkImageReps copy] autorelease];
+	return [tkImageReps copy];
 }
 
 
@@ -545,12 +543,10 @@ static TKDDSFormat defaultDDSFormat = TKDDSFormatDefault;
 			if (imageRep) [tkImageReps addObject:imageRep];
 		}
 		
-		[normalMapData release];
-		
-		return [[tkImageReps copy] autorelease];
+		return [tkImageReps copy];
 		
 	} else if (normalMapLibrary == TKNormalMapLibraryUseAccelerateFramework) {
-		
+		//TODO: implement
 		
 		
 		
@@ -669,9 +665,7 @@ static TKDDSFormat defaultDDSFormat = TKDDSFormatDefault;
 #if TK_DEBUG
 	NSLog(@"[%@ %@] ddsData length == %lu", NSStringFromClass([self class]), NSStringFromSelector(_cmd), (unsigned long)ddsData.length);
 #endif
-	NSData *copiedData = [ddsData copy];
-	[ddsData release];
-	return [copiedData autorelease];
+	return [ddsData copy];
 }
 
 static unsigned char *TKCreateRGBADataFromColor32(Color32 *pixels, NSUInteger pixelCount, NSUInteger bitsPerPixel, NSUInteger *length) CF_RETURNS_RETAINED;
@@ -771,7 +765,7 @@ static unsigned char *TKCreateRGBADataFromColor32(Color32 *pixels, NSUInteger pi
 				NSData *convertedData = [[NSData alloc] initWithBytes:bytes length:length];
 				free(bytes);
 				CGDataProviderRef provider = CGDataProviderCreateWithCFData((CFDataRef)convertedData);
-				[convertedData release];
+				convertedData = nil;
 				CGColorSpaceRef colorSpace = CGColorSpaceCreateWithName(kCGColorSpaceGenericRGB);
 				NSUInteger bitsPerPixel = (dds->hasAlpha() ? 32 : 24);
 				CGImageRef imageRef = CGImageCreate(nvImage.width(),
@@ -799,12 +793,11 @@ static unsigned char *TKCreateRGBADataFromColor32(Color32 *pixels, NSUInteger pi
 					CGImageRelease(imageRef);
 					if (imageRep) {
 						[bitmapImageReps addObject:imageRep];
-						[imageRep release];
 					}
 					
 					if (firstRepOnly && faceIndex == 0 && mipmap == 0) {
 						delete dds;
-						return [[bitmapImageReps copy] autorelease];
+						return [bitmapImageReps copy];
 					}
 					
 				} else {
@@ -814,7 +807,7 @@ static unsigned char *TKCreateRGBADataFromColor32(Color32 *pixels, NSUInteger pi
 		}
 	}
 	delete dds;
-	return [[bitmapImageReps copy] autorelease];
+	return [bitmapImageReps copy];
 	
 }
 
@@ -826,13 +819,13 @@ static unsigned char *TKCreateRGBADataFromColor32(Color32 *pixels, NSUInteger pi
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	if ([aBitmapImageRep isKindOfClass:[TKImageRep class]]) {
-		return [[[[self class] alloc] initWithCGImage:aBitmapImageRep.CGImage
-										   sliceIndex:((TKImageRep *)aBitmapImageRep).sliceIndex
-												 face:((TKImageRep *)aBitmapImageRep).face
-										   frameIndex:((TKImageRep *)aBitmapImageRep).frameIndex
-										  mipmapIndex:((TKImageRep *)aBitmapImageRep).mipmapIndex] autorelease];
+		return [[[self class] alloc] initWithCGImage:aBitmapImageRep.CGImage
+										  sliceIndex:((TKImageRep *)aBitmapImageRep).sliceIndex
+												face:((TKImageRep *)aBitmapImageRep).face
+										  frameIndex:((TKImageRep *)aBitmapImageRep).frameIndex
+										 mipmapIndex:((TKImageRep *)aBitmapImageRep).mipmapIndex];
 	}
-	return [[[[self class] alloc] initWithCGImage:aBitmapImageRep.CGImage] autorelease];
+	return [[[self class] alloc] initWithCGImage:aBitmapImageRep.CGImage];
 }
 
 
@@ -873,10 +866,9 @@ static unsigned char *TKCreateRGBADataFromColor32(Color32 *pixels, NSUInteger pi
 #endif
 	NSArray *imageReps = [[self class] imageRepsWithData:aData firstRepresentationOnly:YES];
 	if ((imageReps == nil) || !(imageReps.count > 0)) {
-		[self release];
 		return nil;
 	}
-	self = [imageReps[0] retain];
+	self = imageReps[0];
 	return self;
 }
 
@@ -1069,6 +1061,3 @@ static NSData *TKImageDataFromNSData(NSData *inputData, NSUInteger pixelCount, N
 static NSData *TKBGRADataFromImageData(NSData *data, NSUInteger pixelCount, NSUInteger bitsPerPixel, CGBitmapInfo sourceBitmapInfo) {
 	return TKImageDataFromNSData(data, pixelCount, bitsPerPixel, sourceBitmapInfo, TKBGRA);
 }
-
-
-

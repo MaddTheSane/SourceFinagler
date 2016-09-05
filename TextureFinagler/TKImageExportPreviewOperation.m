@@ -40,7 +40,7 @@ NSString * const TKImageExportPreviewKey	= @"TKImageExportPreview";
 
 
 - (void)main {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+@autoreleasepool {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -79,7 +79,7 @@ NSString * const TKImageExportPreviewKey	= @"TKImageExportPreview";
 														object:imageExportPreview.controller
 													  userInfo:@{TKImageExportPreviewKey: imageExportPreview}];
 	
-	[pool release];
+}
 }
 
 
@@ -91,9 +91,5 @@ NSString * const TKImageExportPreviewKey	= @"TKImageExportPreview";
 	}
 	return NO;
 }
-
-
-
-
 
 @end

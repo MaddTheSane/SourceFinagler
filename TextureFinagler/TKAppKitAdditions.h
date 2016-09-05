@@ -82,11 +82,11 @@ extern NSString *NSStringFromDefaultsKeyPath(NSString *defaultsKey);
 
 @interface NSWorkspace (TKAdditions)
 
-- (BOOL)revealInFinder:(NSArray *)filePaths;
+- (BOOL)revealInFinder:(NSArray<NSString*> *)filePaths;
 
 - (NSImage *)iconForApplicationForURL:(NSURL *)aURL;
 - (NSString *)absolutePathForAppBundleWithIdentifier:(NSString *)aBundleIdentifier name:(NSString *)aNameWithDotApp creator:(NSString *)creator;
-- (BOOL)launchApplicationAtPath:(NSString *)path arguments:(NSArray *)argv error:(NSError **)outError;
+- (BOOL)launchApplicationAtPath:(NSString *)path arguments:(NSArray<NSString*> *)argv error:(NSError **)outError;
 
 @end
 

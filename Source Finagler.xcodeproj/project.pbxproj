@@ -126,7 +126,7 @@
 		C1275F62129182C40041ACD7 /* VSSourceAddon.m in Sources */ = {isa = PBXBuildFile; fileRef = C1275F61129182C40041ACD7 /* VSSourceAddon.m */; };
 		C1279D3612DCB0EB0065F5D7 /* defaultPresets.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1279D3512DCB0EA0065F5D7 /* defaultPresets.plist */; };
 		C12B4DAA13B7179C0096FC0E /* ForEach.h in Headers */ = {isa = PBXBuildFile; fileRef = C12B4DA913B7179B0096FC0E /* ForEach.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C12CFB5A12DFB3AE00A08A4B /* TKDDSImageRep.mm in Sources */ = {isa = PBXBuildFile; fileRef = C12DB4B4125FADE00051A751 /* TKDDSImageRep.mm */; };
+		C12CFB5A12DFB3AE00A08A4B /* TKDDSImageRep.mm in Sources */ = {isa = PBXBuildFile; fileRef = C12DB4B4125FADE00051A751 /* TKDDSImageRep.mm */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		C12CFB7612DFBCB400A08A4B /* TKFoundationAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C1AF851912C6294B00027B75 /* TKFoundationAdditions.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		C12D372D12E14CD200397411 /* MDScopeBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = C12D372C12E14CD200397411 /* MDScopeBarView.m */; };
 		C12F1022147B6B0300F398DE /* TextureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17319B21298D11400C29732 /* TextureKit.framework */; };
@@ -187,7 +187,7 @@
 		C140E9381388B78300027DD6 /* SteamKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C140E63D13889A9400027DD6 /* SteamKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C145AF1712BD8F22005D7E21 /* TextureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17319B21298D11400C29732 /* TextureKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		C145AF5F12BD8F6A005D7E21 /* TextureKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C17319B21298D11400C29732 /* TextureKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C146091B14F3377200B7286B /* TKAppKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C146091814F3373700B7286B /* TKAppKitAdditions.m */; };
+		C146091B14F3377200B7286B /* TKAppKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C146091814F3373700B7286B /* TKAppKitAdditions.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		C146091C14F3377300B7286B /* TKAppKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C146091814F3373700B7286B /* TKAppKitAdditions.m */; };
 		C146091D14F337BB00B7286B /* TKFoundationAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C1AF851912C6294B00027B75 /* TKFoundationAdditions.m */; };
 		C146091E14F337BC00B7286B /* TKFoundationAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C1AF851912C6294B00027B75 /* TKFoundationAdditions.m */; };
@@ -455,7 +455,7 @@
 		C1C2C552127CBCA0003B24F6 /* MDTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A117DD11D695EA008BBABD /* MDTableView.m */; };
 		C1C2C554127CBCA0003B24F6 /* MDUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = C1BB6F5D11FCA90300B88BBE /* MDUserDefaults.m */; };
 		C1C2C556127CBCA0003B24F6 /* MDHLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C124A2123A0990004674B4 /* MDHLDocument.m */; };
-		C1C2C55C127CBCA0003B24F6 /* MDTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C124D5123A0A8A004674B4 /* MDTextFieldCell.m */; };
+		C1C2C55C127CBCA0003B24F6 /* MDTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C124D5123A0A8A004674B4 /* MDTextFieldCell.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		C1C2C55D127CBCA0003B24F6 /* MDBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C124D9123A0AEC004674B4 /* MDBrowser.m */; };
 		C1C2C55E127CBCA0003B24F6 /* MDBrowserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C124DB123A0AEC004674B4 /* MDBrowserCell.m */; };
 		C1C2C55F127CBCA0003B24F6 /* MDQuickLookPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C124DD123A0AEC004674B4 /* MDQuickLookPreviewViewController.m */; };
@@ -531,9 +531,9 @@
 		C1E6DABF12BC22BA009D8AD6 /* TKImage.h in Headers */ = {isa = PBXBuildFile; fileRef = C17025F6128486BE0056A23D /* TKImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C1E6DAC012BC22BB009D8AD6 /* TKImage.m in Sources */ = {isa = PBXBuildFile; fileRef = C17025F7128486BE0056A23D /* TKImage.m */; };
 		C1E6DAC112BC22BB009D8AD6 /* TKImageRep.h in Headers */ = {isa = PBXBuildFile; fileRef = C17026191284BC6F0056A23D /* TKImageRep.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C1E6DAC212BC22BC009D8AD6 /* TKImageRep.m in Sources */ = {isa = PBXBuildFile; fileRef = C170261A1284BC6F0056A23D /* TKImageRep.m */; };
+		C1E6DAC212BC22BC009D8AD6 /* TKImageRep.m in Sources */ = {isa = PBXBuildFile; fileRef = C170261A1284BC6F0056A23D /* TKImageRep.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		C1E6DAC312BC22C2009D8AD6 /* TKVTFImageRep.h in Headers */ = {isa = PBXBuildFile; fileRef = C1647768124E91DB0062B943 /* TKVTFImageRep.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C1E6DAC412BC22C3009D8AD6 /* TKVTFImageRep.mm in Sources */ = {isa = PBXBuildFile; fileRef = C1647769124E91DB0062B943 /* TKVTFImageRep.mm */; };
+		C1E6DAC412BC22C3009D8AD6 /* TKVTFImageRep.mm in Sources */ = {isa = PBXBuildFile; fileRef = C1647769124E91DB0062B943 /* TKVTFImageRep.mm */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		C1E6DAC512BC22C7009D8AD6 /* TKDDSImageRep.h in Headers */ = {isa = PBXBuildFile; fileRef = C12DB4B3125FADE00051A751 /* TKDDSImageRep.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C1E6DACA12BC232F009D8AD6 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C11B279211BDFBB8004D4CC0 /* ApplicationServices.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		C1E6DB0312BC236C009D8AD6 /* VTF.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1B95275124E73B200E83451 /* VTF.framework */; settings = {ATTRIBUTES = (Required, ); }; };
@@ -6047,6 +6047,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = sourceFinagler;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6072,6 +6073,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = sourceFinagler;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

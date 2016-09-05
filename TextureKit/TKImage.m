@@ -1565,7 +1565,7 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	return [TKVTFImageRep VTFRepresentationOfImageRepsInArray:self.representations usingFormat:aFormat quality:aQuality options:options];
+	return [TKVTFImageRep VTFRepresentationOfImageRepsInArray:(id)self.representations usingFormat:aFormat quality:aQuality options:options];
 }
 
 

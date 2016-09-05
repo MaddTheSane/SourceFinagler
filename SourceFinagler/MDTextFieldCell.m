@@ -72,7 +72,7 @@
 #if MD_DEBUG
     NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	NSMutableParagraphStyle *style = [[[NSParagraphStyle defaultParagraphStyle] mutableCopy] autorelease];
+	NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
 	style.lineBreakMode = NSLineBreakByTruncatingMiddle;
 	style.alignment = self.alignment;
 	
@@ -124,7 +124,7 @@
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	if ((self = [super initImageCell:value])) {
-		image = [value retain];
+		image = value;
 		leftEdgePadding = MD_LEFT_EDGE_PADDING;
 		[self initAttributes];
 	}
@@ -163,48 +163,9 @@
 	[coder encodeObject:@(centerImageVertically) forKey:@"MDCenterImageVertically"];
 }
 
-
-- (void)dealloc {
-	[image release];
-	[highlightedActiveEnabledAttributes release];
-	[highlightedActiveDisabledAttributes release];
-	[highlightedInactiveEnabledAttributes release];
-	[highlightedInactiveDisabledAttributes release];
-	[enabledAttributes release];
-	[disabledAttributes release];
-	[super dealloc];
-}
-
-
-- (NSImage *)image {
-    return image;
-}
-
-
-- (void)setImage:(NSImage *)value {
-    [value retain];
-    [image release];
-    image = value;
-}
-
-
-- (void)setLeftEdgePadding:(CGFloat)aPadding {
-	leftEdgePadding = aPadding;
-}
-
-
-- (CGFloat)leftEdgePadding {
-	return leftEdgePadding;
-}
-
-
-- (BOOL)centerImageVertically {
-    return centerImageVertically;
-}
-
-- (void)setCenterImageVertically:(BOOL)value {
-	centerImageVertically = value;
-}
+@synthesize image;
+@synthesize leftEdgePadding;
+@synthesize centerImageVertically;
 
 
 - (NSPoint)calculatedImagePointForFrame:(NSRect)cellFrame imageSize:(NSSize)imageSize isFlipped:(BOOL)isFlipped {
@@ -341,8 +302,8 @@
 	
 	if (self.highlighted) {
 		
-		NSImage *tempImage = [image retain];
-		id tempObject = [self.objectValue retain];
+		NSImage *tempImage = image;
+		id tempObject = self.objectValue;
 		
 		[self setImage:nil];
 		self.stringValue = @"";
@@ -351,9 +312,6 @@
 		
 		self.image = tempImage;
 		self.objectValue = tempObject;
-		
-		[tempImage release];
-		[tempObject release];
 		
 		if (controlView.window.keyWindow) {
 			attributes = (isEnabled ? highlightedActiveEnabledAttributes : highlightedActiveDisabledAttributes);
@@ -376,7 +334,6 @@
 			[transform scaleXBy:0.0 yBy:-1.0];
 			[transform translateXBy:0.0 yBy:-cellFrame.origin.y];
 			[transform concat];
-			[transform release];
 		}
 		[image drawAtPoint:imagePoint fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:(isEnabled ? 1.0 : 0.5)];
 		if (isFlipped) [[NSGraphicsContext currentContext] restoreGraphicsState];
@@ -384,7 +341,7 @@
 //		[image compositeToPoint:imagePoint operation:NSCompositeSourceOver fraction:(isEnabled ? 1.0 : 0.5)];
 	}
 	
-	NSAttributedString *richText = [[[NSAttributedString alloc] initWithString:self.stringValue attributes:attributes] autorelease];
+	NSAttributedString *richText = [[NSAttributedString alloc] initWithString:self.stringValue attributes:attributes];
 	
 	NSRect richTextRect = [self calculatedRichTextRectForFrame:cellFrame richText:richText fontSize:self.font.pointSize imageSize:imageSize isFlipped:controlView.flipped];
 	
@@ -452,7 +409,7 @@
 	
 	NSDictionary *attributes = @{NSFontAttributeName: self.font, NSForegroundColorAttributeName: [[NSColor controlTextColor] colorWithAlphaComponent:0.37]};
 	
-	NSAttributedString *richText = [[[NSAttributedString alloc] initWithString:self.stringValue attributes:attributes] autorelease];
+	NSAttributedString *richText = [[NSAttributedString alloc] initWithString:self.stringValue attributes:attributes];
 	
 	NSRect richTextRect = [self calculatedRichTextRectForFrame:cellFrame richText:richText fontSize:self.font.pointSize imageSize:imageSize isFlipped:[dragImage isFlipped]];
 	
@@ -483,19 +440,19 @@
 		[hitRects addObject:[NSValue valueWithRect:imageFrame]];
 	}
 	
-	NSMutableParagraphStyle *style = [[[NSParagraphStyle defaultParagraphStyle] mutableCopy] autorelease];
+	NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
 	style.lineBreakMode = NSLineBreakByTruncatingMiddle;
 	style.alignment = self.alignment;
 	
 	NSDictionary *attributes = @{NSFontAttributeName: self.font, NSParagraphStyleAttributeName: style};
 	
-	NSAttributedString *richText = [[[NSAttributedString alloc] initWithString:self.stringValue attributes:attributes] autorelease];
+	NSAttributedString *richText = [[NSAttributedString alloc] initWithString:self.stringValue attributes:attributes];
 	
 	NSRect richTextRect = [self calculatedRichTextRectForFrame:cellFrame richText:richText fontSize:self.font.pointSize imageSize:imageSize isFlipped:isFlipped];
 	
 	[hitRects addObject:[NSValue valueWithRect:richTextRect]];
 	
-	return [[hitRects copy] autorelease];
+	return [hitRects copy];
 }
 
 

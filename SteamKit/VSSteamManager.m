@@ -1017,23 +1017,23 @@ static inline NSDictionary *VSMakeLaunchAgentPlist(NSString *jobLabel, NSArray *
 			return NO;
 		}
 		
-		if (![fileManager copyPath:sourcePath toPath:destUSBPath handler:nil]) {
+		if (![fileManager copyItemAtPath:sourcePath toPath:destUSBPath error:NULL]) {
 			NSLog(@"[%@ %@] failed to copy hl2_osx.app to destination!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 			return NO;
 		}
 		
 		if ([executableName isEqualToString:VSPortal2ExecutableNameKey]) {
-			if (![fileManager movePath:[[[destUSBPath stringByAppendingPathComponent:@"Contents"] stringByAppendingPathComponent:@"MacOS"] stringByAppendingPathComponent:VSHalfLife2ExecutableNameKey]
-								toPath:[[[destUSBPath stringByAppendingPathComponent:@"Contents"] stringByAppendingPathComponent:@"MacOS"] stringByAppendingPathComponent:VSPortal2ExecutableNameKey]
-							   handler:nil]) {
+			if (![fileManager moveItemAtPath:[[[destUSBPath stringByAppendingPathComponent:@"Contents"] stringByAppendingPathComponent:@"MacOS"] stringByAppendingPathComponent:VSHalfLife2ExecutableNameKey]
+									  toPath:[[[destUSBPath stringByAppendingPathComponent:@"Contents"] stringByAppendingPathComponent:@"MacOS"] stringByAppendingPathComponent:VSPortal2ExecutableNameKey]
+									   error:NULL]) {
 				
 				NSLog(@"[%@ %@] failed to delete unneeded hl2_osx inside 'portal2_osx (for USB Overdrive).app'!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 				return NO;
 			}
 		} else if ([executableName isEqualToString:VSCounterStrikeGlobalOffensiveExecutableNameKey]) {
-			if (![fileManager movePath:[[[destUSBPath stringByAppendingPathComponent:@"Contents"] stringByAppendingPathComponent:@"MacOS"] stringByAppendingPathComponent:VSHalfLife2ExecutableNameKey]
-								toPath:[[[destUSBPath stringByAppendingPathComponent:@"Contents"] stringByAppendingPathComponent:@"MacOS"] stringByAppendingPathComponent:VSCounterStrikeGlobalOffensiveExecutableNameKey]
-							   handler:nil]) {
+			if (![fileManager moveItemAtPath:[[[destUSBPath stringByAppendingPathComponent:@"Contents"] stringByAppendingPathComponent:@"MacOS"] stringByAppendingPathComponent:VSHalfLife2ExecutableNameKey]
+									  toPath:[[[destUSBPath stringByAppendingPathComponent:@"Contents"] stringByAppendingPathComponent:@"MacOS"] stringByAppendingPathComponent:VSCounterStrikeGlobalOffensiveExecutableNameKey]
+									   error:NULL]) {
 				
 				NSLog(@"[%@ %@] failed to delete unneeded hl2_osx inside 'csgo_osx (for USB Overdrive).app'!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 				return NO;
@@ -1049,7 +1049,7 @@ static inline NSDictionary *VSMakeLaunchAgentPlist(NSString *jobLabel, NSArray *
 					return NO;
 				}
 			}
-			if (![fileManager copyPath:iconPath toPath:destIconPath handler:nil]) {
+			if (![fileManager copyItemAtPath:iconPath toPath:destIconPath error:NULL]) {
 				NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 				return NO;
 			}

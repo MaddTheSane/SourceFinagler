@@ -16,7 +16,7 @@ extern NSString * const TKImageExportPreviewKey;
 
 
 @interface TKImageExportPreviewOperation : NSOperation {
-	TKImageExportPreview		*imageExportPreview;
+	__unsafe_unretained TKImageExportPreview		*imageExportPreview;
 	
 }
 

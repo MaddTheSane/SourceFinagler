@@ -54,7 +54,7 @@ int main(int argc, char *argv[]) {
 	
 	if (MDSystemVersion < TKSnowLeopard) {
 		
-		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+		@autoreleasepool {
 		
 		[NSApplication sharedApplication];
 
@@ -65,10 +65,8 @@ int main(int argc, char *argv[]) {
 										   thirdButton:nil];
 		
 		[alert runModal];
-		
-		[pool release];
 		return 0;
-		
+		}
 	} else {
 		return NSApplicationMain(argc, (const char **)argv);
 	}

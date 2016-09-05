@@ -30,7 +30,7 @@ NSString *NSStringFromDefaultsKeyPath(NSString *defaultsKey) {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+	NSAlert *alert = [[NSAlert alloc] init];
 	alert.messageText = messageText;
 	alert.informativeText = informativeText;
 	if (firstButtonTitle) {
@@ -246,7 +246,7 @@ NSString *NSStringFromDefaultsKeyPath(NSString *defaultsKey) {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	NSToolbarItem *toolbarItem = [[[[self class] alloc] initWithItemIdentifier:anIdentifier] autorelease];
+	NSToolbarItem *toolbarItem = [[[self class] alloc] initWithItemIdentifier:anIdentifier];
 	toolbarItem.tag = aTag;
 	toolbarItem.image = anImage;
 	toolbarItem.label = aLabel;
@@ -441,61 +441,13 @@ static NSView *blankView() {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	if (TKGetSystemVersion() >= TKSnowLeopard) {
-		NSMutableArray *URLs = [NSMutableArray array];
-		for (NSString *path in filePaths) {
-			NSURL *URL = [NSURL fileURLWithPath:path];
-			if (URL) [URLs addObject:URL];
-		}
-		[[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:URLs];
-		return YES;
+	NSMutableArray *URLs = [NSMutableArray array];
+	for (NSString *path in filePaths) {
+		NSURL *URL = [NSURL fileURLWithPath:path];
+		if (URL) [URLs addObject:URL];
 	}
-	
-	BOOL success = YES;
-	
-	/* If we are given a list of multiple files to reveal, and any of those
-	 files is within the same parent folder, then we do the smart thing and 
-	 create a single Finder window where the selection will be of multiple files.
-	 This is far better than spamming the user with new windows for each individual file. */
-	
-	NSMutableDictionary *groupedFilePaths = [NSMutableDictionary dictionary];
-	
-	for (NSString *filePath in filePaths) {
-		NSString *parentDirectory = filePath.stringByDeletingLastPathComponent;
-		
-		if (groupedFilePaths[parentDirectory] == nil) {
-			NSMutableArray *files = [NSMutableArray arrayWithObject:filePath];
-			groupedFilePaths[parentDirectory] = files;
-			
-		} else {
-			[groupedFilePaths[parentDirectory] addObject:filePath];
-		}
-	}
-	
-	NSArray *folderPaths = groupedFilePaths.allKeys;
-	
-	for (NSString *folderPath in folderPaths) {
-		NSArray *files = groupedFilePaths[folderPath];
-		
-		NSString *applescriptListString = NSStringForAppleScriptListFromPaths(files);
-		
-		NSDictionary *errorMessage = nil;
-		NSAppleEventDescriptor *result = nil;
-		
-		NSAppleScript *script = [[[NSAppleScript alloc] initWithSource:[NSString stringWithFormat:@"set targetFolder to (POSIX path of ((\"%@\" as POSIX file) as alias))\nset fileList to %@\n\ntell application \"Finder\"\n	activate\n	set finderWindows to every Finder window\n	repeat with i from 1 to (count of finderWindows)\n		set finderWindow to item i of finderWindows\n		try\n			set targetPath to (POSIX path of ((target of finderWindow) as alias))\n			if targetPath = targetFolder then\n				select every item of fileList\n				return\n			end if\n		end try\n	end repeat\n	set newWindow to make new Finder window to (targetFolder as POSIX file)\n	select every item of fileList\nend tell", folderPath, applescriptListString]] autorelease];
-		
-		if (script) {
-			result = [script executeAndReturnError:&errorMessage];
-			
-			if (errorMessage) {
-				NSLog(@"%@", errorMessage);
-				success = NO;
-			}
-		} else {
-			success = NO;
-		}
-	}
-	return success;
+	[[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:URLs];
+	return YES;
 }
 
 
@@ -510,7 +462,14 @@ static NSView *blankView() {
 		NSString *appPath = nil;
 		OSStatus status = noErr;
 		
-		status = LSGetApplicationForURL((CFURLRef)aURL, kLSRolesAll, &appRef, NULL);
+		NSURL *appURL = CFBridgingRelease(LSCopyDefaultApplicationURLForURL((__bridge CFURLRef)aURL, kLSRolesAll, NULL));
+		if (appURL) {
+			image = [self iconForFile:[appURL path]];
+			if (image) {
+				return image;
+			}
+		}
+		status = LSGetApplicationForURL((__bridge CFURLRef)aURL, kLSRolesAll, &appRef, NULL);
 		if (status == noErr) {
 			appPath = [NSString stringWithFSRef:&appRef];
 			if (appPath) {
@@ -536,8 +495,10 @@ static NSView *blankView() {
 				creatorCode = creatorType;
 			}
 		}
+		
+		//TODO: LSCopyApplicationURLsForBundleIdentifier
 		OSStatus status = noErr;
-		status = LSFindApplicationForInfo(creatorCode, (aBundleIdentifier ? (CFStringRef)aBundleIdentifier : NULL), (aNameWithDotApp ? (CFStringRef)aNameWithDotApp : NULL), &fileRef, NULL);
+		status = LSFindApplicationForInfo(creatorCode, (aBundleIdentifier ? (__bridge CFStringRef)aBundleIdentifier : NULL), (aNameWithDotApp ? (__bridge CFStringRef)aNameWithDotApp : NULL), &fileRef, NULL);
 		
 		if (status == noErr) {
 			absolutePath = [NSString stringWithFSRef:&fileRef];
@@ -547,7 +508,7 @@ static NSView *blankView() {
 }
 
 
-- (BOOL)launchApplicationAtPath:(NSString *)path arguments:(NSArray *)argv error:(NSError **)outError {
+- (BOOL)launchApplicationAtPath:(NSString *)path arguments:(NSArray<NSString*> *)argv error:(NSError **)outError {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -557,7 +518,7 @@ static NSView *blankView() {
 	if (path) {
 		FSRef itemRef;
 		if ([path getFSRef:&itemRef error:outError]) {
-			LSApplicationParameters appParameters = {0, kLSLaunchDefaults, &itemRef, NULL, NULL, (argv ? (CFArrayRef)argv : NULL), NULL };
+			LSApplicationParameters appParameters = {0, kLSLaunchDefaults, &itemRef, NULL, NULL, (argv ? (__bridge CFArrayRef)argv : NULL), NULL };
 			OSStatus status = noErr;
 			status = LSOpenApplication(&appParameters, NULL);
 			

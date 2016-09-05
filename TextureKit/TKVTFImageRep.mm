@@ -238,7 +238,7 @@ static BOOL vtfInitialized = NO;
 #if TK_DEBUG
 //		NSLog(@"[%@ %@] super's imageUnfilteredPasteboardTypes == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), types);
 #endif
-		imageUnfilteredPasteboardTypes = [[types arrayByAddingObject:TKVTFPboardType] retain];
+		imageUnfilteredPasteboardTypes = [types arrayByAddingObject:TKVTFPboardType];
 	}
 	return imageUnfilteredPasteboardTypes;
 }
@@ -541,9 +541,7 @@ static BOOL vtfInitialized = NO;
 	
 	
 	TKPixelFormat destinationPixelFormat = TKNativePixelFormatFromVTFImageFormat(imageFormat);
-	
 	TKPixelFormatInfo pixelFormatInfo = TKPixelFormatInfoFromPixelFormat(destinationPixelFormat);
-	
 	NSMutableArray *bitmapImageReps = [NSMutableArray array];
 	
 	for (vlUInt mipmapNumber = 0; mipmapNumber < mipmapCount; mipmapNumber++) {
@@ -600,7 +598,7 @@ static BOOL vtfInitialized = NO;
 						
 						NSData *existingData = [NSData dataWithBytes:existingBytes length:existingBytesLength];
 						
-						data = [[TKImageRep dataRepresentationOfData:existingData inPixelFormat:TKPixelFormatRGBA16161616F size:NSMakeSize(mipmapWidth, mipmapHeight) usingPixelFormat:TKPixelFormatRGBA32323232F] retain];
+						data = [TKImageRep dataRepresentationOfData:existingData inPixelFormat:TKPixelFormatRGBA16161616F size:NSMakeSize(mipmapWidth, mipmapHeight) usingPixelFormat:TKPixelFormatRGBA32323232F];
 						
 					} else if (conversionNeeded) {
 						
@@ -612,19 +610,18 @@ static BOOL vtfInitialized = NO;
 					}
 					
 					CGDataProviderRef provider = CGDataProviderCreateWithCFData((CFDataRef)data);
-					[data release];
 					
-					NSString *colorSpaceName = nil;
+					CFStringRef colorSpaceName = NULL;
 					
 					if (pixelFormatInfo.colorSpaceModel == kCGColorSpaceModelRGB && pixelFormatInfo.bitmapInfo & kCGBitmapFloatComponents) {
-						colorSpaceName = (NSString *)kCGColorSpaceGenericRGBLinear;
+						colorSpaceName = kCGColorSpaceGenericRGBLinear;
 					} else if (pixelFormatInfo.colorSpaceModel == kCGColorSpaceModelRGB) {
-						colorSpaceName = (NSString *)kCGColorSpaceGenericRGB;
+						colorSpaceName = kCGColorSpaceGenericRGB;
 					} else if (pixelFormatInfo.colorSpaceModel == kCGColorSpaceModelMonochrome) {
-						colorSpaceName = (NSString *)kCGColorSpaceGenericGrayGamma2_2;
+						colorSpaceName = kCGColorSpaceGenericGrayGamma2_2;
 					}
 					
-					CGColorSpaceRef colorSpace = CGColorSpaceCreateWithName((CFStringRef)colorSpaceName);
+					CGColorSpaceRef colorSpace = CGColorSpaceCreateWithName(colorSpaceName);
 					
 					CGImageRef imageRef = CGImageCreate(mipmapWidth,
 														mipmapHeight,
@@ -656,14 +653,13 @@ static BOOL vtfInitialized = NO;
 					CGImageRelease(imageRef);
 					if (imageRep) {
 						[bitmapImageReps addObject:imageRep];
-						[imageRep release];
 					}
 					
 					delete [] convertedBytes;
 					
 					if (firstRepOnly && frame == 0 && faceIndex == 0 && slice == 0 && mipmapNumber == 0) {
 						delete file;
-						return [[bitmapImageReps copy] autorelease];
+						return [bitmapImageReps copy];
 					}
 					
 				}
@@ -671,7 +667,7 @@ static BOOL vtfInitialized = NO;
 		}
 	}
 	delete file;
-	return [[bitmapImageReps copy] autorelease];
+	return [bitmapImageReps copy];
 }
 
 
@@ -866,8 +862,7 @@ static BOOL vtfInitialized = NO;
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	NSArray *imageReps = [[self class] imageRepsWithData:aData firstRepresentationOnly:YES];
-	if (imageReps.count) return imageReps[0];
-	return nil;
+	return imageReps.firstObject;
 }
 
 - (instancetype)initWithData:(NSData *)aData {
@@ -875,14 +870,15 @@ static BOOL vtfInitialized = NO;
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	NSArray *imageReps = [[self class] imageRepsWithData:aData firstRepresentationOnly:YES];
-	if ((imageReps == nil) || !(imageReps.count > 0)) {
-		[self release];
-		return nil;
-	}
-	self = [imageReps[0] retain];
-	return self;
+	return imageReps.firstObject;
+	
+	//if ((imageReps == nil) || !(imageReps.count > 0)) {
+	//	return nil;
+	//}
+	//return imageReps[0];
+	//self = imageReps[0];
+	//return self;
 }
-
 
 - (id)copyWithZone:(NSZone *)zone {
 #if TK_DEBUG
@@ -894,7 +890,6 @@ static BOOL vtfInitialized = NO;
 #endif
 	return copy;
 }
-
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
 #if TK_DEBUG
@@ -915,4 +910,3 @@ static BOOL vtfInitialized = NO;
 }
 
 @end
-

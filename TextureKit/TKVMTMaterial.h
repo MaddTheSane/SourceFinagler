@@ -21,6 +21,7 @@
 + (instancetype)materialWithContentsOfURL:(NSURL *)URL error:(NSError **)outError;
 + (instancetype)materialWithData:(NSData *)aData error:(NSError **)outError;
 
+- (instancetype)init UNAVAILABLE_ATTRIBUTE;
 - (instancetype)initWithContentsOfFile:(NSString *)aPath error:(NSError **)outError;
 - (instancetype)initWithContentsOfURL:(NSURL *)URL error:(NSError **)outError;
 - (instancetype)initWithData:(NSData *)aData error:(NSError **)outError NS_DESIGNATED_INITIALIZER;

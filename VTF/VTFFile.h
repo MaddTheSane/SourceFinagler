@@ -365,7 +365,9 @@ namespace VTFLib
 		/*!
 			Get the reflectivity value for each vector axis from the VTF header.
 
-			\param sX, sY, sZ are the variables to hold the values reflectivity vector.
+			\param sX are the variables to hold the values reflectivity vector.
+			\param sY are the variables to hold the values reflectivity vector.
+			\param sZ are the variables to hold the values reflectivity vector.
 		*/
 		vlVoid GetReflectivity(vlSingle &sX, vlSingle &sY, vlSingle &sZ) const;
 
@@ -373,7 +375,9 @@ namespace VTFLib
 		/*!
 			Set the reflectivity value for each vector axis in the VTF header.
 
-			\param sX, sY, sZ are the values for each reflectivity vector axis.
+			\param sX are the values for each reflectivity vector axis.
+			\param sY are the values for each reflectivity vector axis.
+			\param sZ are the values for each reflectivity vector axis.
 		*/
 		vlVoid SetReflectivity(vlSingle sX, vlSingle sY, vlSingle sZ);
 
@@ -387,6 +391,7 @@ namespace VTFLib
 			\param uiFace is the desired face.
 			\param uiSlice is the desired z slice.
 			\param uiMipmapLevel is the desired MIP level.
+			\return vlByte pointer to the image data.
 			\note Frames start at index 0 for the first frame. Faces start at index 0
 			for the first face. Cubemaps have 6 faces, others only 1. MIP levels start
 			at index 0 for the largest image moving down in size.
@@ -404,7 +409,6 @@ namespace VTFLib
 			\param uiSlice is the desired z slice.
 			\param uiMipmapLevel is the desired MIP level.
 			\param lpData is a pointer to the image data.
-			\return vlByte pointer to the image data.
 			\note Frames start at index 0 for the first frame. Faces start at index 0
 			for the first face. Cubemaps have 6 faces, others only 1. MIP levels start
 			at index 0 for the largest image moving down in size.
@@ -740,7 +744,9 @@ namespace VTFLib
 			\param lpImageDataRGBA8888 is a pointer to the image data in RGBA8888 format.
 			\param uiWidth is the width of the source image in pixels.
 			\param uiHeight is the height of the source image in pixels.
-			\param sX, sY, sZ are the variables to hold the values reflectivity vector.
+			\param sX are the variables to hold the values reflectivity vector.
+			\param sY are the variables to hold the values reflectivity vector.
+			\param sZ are the variables to hold the values reflectivity vector.
 			\see ComputeReflectivity()
 			\see GetReflectivity()
 			\see SetReflectivity()

@@ -40,21 +40,21 @@
 
 /*!
  * @abstract Sent to each object in the responder chain to find a controller.
- * @param panel The Preview Panel looking for a controller.
+ * @param controller The Preview Panel looking for a controller.
  * @result YES if the receiver accepts to control the panel. You should never call this method directly.
  */
 - (BOOL)acceptsImageInspectorControl:(TKImageInspectorController *)controller;
 
 /*!
  * @abstract Sent to the object taking control of the Preview Panel.
- * @param panel The Preview Panel the receiver will control.
+ * @param controller The Preview Panel the receiver will control.
  * @discussion The receiver should setup the preview panel (data source, delegate, binding, etc.) here. You should never call this method directly.
  */
 - (void)beginImageInspectorControl:(TKImageInspectorController *)controller;
 
 /*!
  * @abstract Sent to the object in control of the Preview Panel just before stopping its control.
- * @param panel The Preview Panel that the receiver will stop controlling.
+ * @param controller The Preview Panel that the receiver will stop controlling.
  * @discussion The receiver should unsetup the preview panel (data source, delegate, binding, etc.) here. You should never call this method directly.
  */
 - (void)endImageInspectorControl:(TKImageInspectorController *)controller;

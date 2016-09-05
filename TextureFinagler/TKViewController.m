@@ -56,7 +56,6 @@
 	(self.view.window).maxSize = maxWinSize;
 	
 	[self.view.window standardWindowButton:NSWindowZoomButton].enabled = resizable;
-	
 }
 	
 	
@@ -138,8 +137,4 @@
 	[self viewDidLoad];
 }
 
-
 @end
-
-
-

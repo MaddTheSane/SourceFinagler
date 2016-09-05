@@ -44,6 +44,7 @@ typedef NS_ENUM(NSUInteger, TKVMTNodeKind) {
 
 + (instancetype)nodeWithName:(NSString *)aName kind:(TKVMTNodeKind)aKind objectValue:(id)anObjectValue;
 - (instancetype)initWithName:(NSString *)aName kind:(TKVMTNodeKind)aKind objectValue:(id)anObjectValue NS_DESIGNATED_INITIALIZER;
+-(instancetype)init UNAVAILABLE_ATTRIBUTE;
 
 + (instancetype)groupNodeWithName:(NSString *)aName;
 + (instancetype)commentNodeWithStringValue:(NSString *)stringValue;
@@ -68,30 +69,18 @@ typedef NS_ENUM(NSUInteger, TKVMTNodeKind) {
 
 
 @property (readonly, copy) NSArray<TKVMTNode*> *children;
-
 @property (readonly) NSUInteger countOfChildren;
-
 - (TKVMTNode *)childAtIndex:(NSUInteger)anIndex;
-
 - (void)insertChild:(TKVMTNode *)aChild atIndex:(NSUInteger)anIndex;
-
 - (void)addChild:(TKVMTNode *)aChild;
-
 - (void)removeChild:(TKVMTNode *)aChild;
-
 - (void)removeAllChildren;
 
 
 @property (readonly, copy) NSString *stringRepresentation;
-
 @property (readonly, copy) NSString *stringValue;
-
 @property (readonly) NSInteger integerValue;
-
 @property (readonly) CGFloat floatValue;
 
 
 @end
-
-
-

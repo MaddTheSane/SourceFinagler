@@ -24,7 +24,7 @@ Boolean GetMetadataForFile(void *thisInterface, CFMutableDictionaryRef attribute
     /* Return the attribute keys and attribute values in the dict */
     /* Return TRUE if successful, FALSE if there was no data provided */
 	
-	@autoreleasepool {
+@autoreleasepool {
 		NSString *nsContentUTI = (__bridge NSString*)contentTypeUTI;
 	
 	if (![nsContentUTI isEqualToString:TKVTFType] &&
@@ -41,7 +41,7 @@ Boolean GetMetadataForFile(void *thisInterface, CFMutableDictionaryRef attribute
 	BOOL result = MDGetMetadataFromImageWithContentsOfFile((__bridge NSString *)pathToFile, nsContentUTI, (__bridge NSMutableDictionary *)attributes, NULL);
 	
 	return (Boolean)result;
-	}
+}
 }
 
 	
@@ -51,8 +51,7 @@ using namespace nv;
 BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *contentTypeUTI, NSMutableDictionary *attributes, NSError **error) {
 	if (attributes == nil || filePath == nil || contentTypeUTI == nil) return NO;
 	
-	@autoreleasepool {
-	
+@autoreleasepool {
 	NSData *data = [[NSData alloc] initWithContentsOfFile:filePath];
 	
 	if (data == nil) {
@@ -70,7 +69,6 @@ BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *cont
 	magic = NSSwapBigIntToHost(magic);
 	
 	if ([contentTypeUTI isEqualToString:TKSFTextureImageType]) {
-		
 		TKImage *sfti = [[TKImage alloc] initWithData:data firstRepresentationOnly:NO];
 		
 		if (sfti == nil) {
@@ -80,20 +78,18 @@ BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *cont
 		
 		NSSize imageSize = [sfti size];
 		
-		[attributes setObject:[NSNumber numberWithBool:[sfti hasAlpha]] forKey:(id)kMDItemHasAlphaChannel];
-		[attributes setObject:[NSNumber numberWithBool:[sfti hasMipmaps]] forKey:@"com_markdouma_image_mipmaps"];
-		[attributes setObject:[NSNumber numberWithBool:[sfti isAnimated]] forKey:@"com_markdouma_image_animated"];
+		[attributes setObject:@([sfti hasAlpha]) forKey:(id)kMDItemHasAlphaChannel];
+		[attributes setObject:@([sfti hasMipmaps]) forKey:@"com_markdouma_image_mipmaps"];
+		[attributes setObject:@([sfti isAnimated]) forKey:@"com_markdouma_image_animated"];
 		
-		[attributes setObject:[NSNumber numberWithBool:([sfti isCubemap] || [sfti isSpheremap])] forKey:@"com_markdouma_image_environment_map"];
-		[attributes setObject:[NSNumber numberWithUnsignedInteger:imageSize.width] forKey:(id)kMDItemPixelWidth];
-		[attributes setObject:[NSNumber numberWithUnsignedInteger:imageSize.height] forKey:(id)kMDItemPixelHeight];
-		[attributes setObject:[NSNumber numberWithUnsignedInteger:imageSize.width * imageSize.height] forKey:(id)kMDItemPixelCount];
+		[attributes setObject:@(([sfti isCubemap] || [sfti isSpheremap])) forKey:@"com_markdouma_image_environment_map"];
+		[attributes setObject:@((NSUInteger)imageSize.width) forKey:(id)kMDItemPixelWidth];
+		[attributes setObject:@((NSUInteger)imageSize.height) forKey:(id)kMDItemPixelHeight];
+		[attributes setObject:@((NSUInteger)(imageSize.width * imageSize.height)) forKey:(id)kMDItemPixelCount];
 		
 		return YES;
-		
 	
 	} else if ([contentTypeUTI isEqualToString:TKVTFType]) {
-		
 		if (magic == TKHTMLErrorMagic) {
 			NSLog(@"MDGetMetadataFromImageWithContentsOfFile(): file at fileURL \"%@\" appears to be an ERROR 404 HTML file rather than a valid VTF", filePath);
 			return NO;
@@ -106,7 +102,7 @@ BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *cont
 			return NO;
 		}
 		
-		if ( file->Load([data bytes], [data length], vlTrue) == NO) {
+		if (file->Load([data bytes], [data length], vlTrue) == NO) {
 			if (magic == TKVTFMagic) {
 				NSLog(@"MDGetMetadataFromImageWithContentsOfFile(): file->Load() (for %@) failed!", filePath);
 			} else {
@@ -124,21 +120,21 @@ BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *cont
 		NSString *theCompression = nil;
 		SVTFImageFormatInfo imageFormatInfo = file->GetImageFormatInfo(file->GetFormat());
 		if (imageFormatInfo.lpName != NULL) {
-			theCompression = [NSString stringWithFormat:@"%s", imageFormatInfo.lpName];
+			theCompression = @(imageFormatInfo.lpName);
 		}
 		NSUInteger theWidth = file->GetWidth();
 		NSUInteger theHeight = file->GetHeight();
 		NSString *theVersion = [NSString stringWithFormat:@"%u.%u", file->GetMajorVersion(), file->GetMinorVersion()];
 		
-		[attributes setObject:[NSNumber numberWithBool:hasAlphaChannel] forKey:(NSString *)kMDItemHasAlphaChannel];
-		[attributes setObject:[NSNumber numberWithBool:hasMipmaps] forKey:@"com_markdouma_image_mipmaps"];
-		[attributes setObject:[NSNumber numberWithBool:isAnimated] forKey:@"com_markdouma_image_animated"];
+		[attributes setObject:@(hasAlphaChannel) forKey:(NSString *)kMDItemHasAlphaChannel];
+		[attributes setObject:@(hasMipmaps) forKey:@"com_markdouma_image_mipmaps"];
+		[attributes setObject:@(isAnimated) forKey:@"com_markdouma_image_animated"];
 		
 		// only set environment mask if it's true?
-		[attributes setObject:[NSNumber numberWithBool:isEnvironmentMap] forKey:@"com_markdouma_image_environment_map"];
+		[attributes setObject:@(isEnvironmentMap) forKey:@"com_markdouma_image_environment_map"];
 		
-		[attributes setObject:[NSNumber numberWithUnsignedInteger:theWidth] forKey:(NSString *)kMDItemPixelWidth];
-		[attributes setObject:[NSNumber numberWithUnsignedInteger:theHeight] forKey:(NSString *)kMDItemPixelHeight];
+		[attributes setObject:@(theWidth) forKey:(NSString *)kMDItemPixelWidth];
+		[attributes setObject:@(theHeight) forKey:(NSString *)kMDItemPixelHeight];
 		if (theVersion) [attributes setObject:theVersion forKey:(NSString *)kMDItemVersion];
 		if (theCompression) [attributes setObject:theCompression forKey:@"com_markdouma_image_compression"];
 		
@@ -147,7 +143,6 @@ BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *cont
 		
 		
 	} else if ([contentTypeUTI isEqualToString:TKDDSType]) {
-		
 		if (magic != TKDDSMagic) {
 			NSLog(@"MDGetMetadataFromImageWithContentsOfFile(): file at filePath \"%@\" does not appear to be a valid DDS; magic == 0x%x, %@", filePath, (unsigned int)magic, NSFileTypeForHFSTypeCode(magic));
 			return NO;
@@ -179,34 +174,29 @@ BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *cont
 		const char *compression = NULL;
 		compression = dds->header.d3d9FormatString();
 		if (compression) {
-			theCompression = [NSString stringWithFormat:@"%s", compression];
+			theCompression = @(compression);
 		}
 		
 		NSUInteger theWidth = dds->width();
 		NSUInteger theHeight = dds->height();
 		
-		[attributes setObject:[NSNumber numberWithBool:hasAlphaChannel] forKey:(NSString *)kMDItemHasAlphaChannel];
-		[attributes setObject:[NSNumber numberWithBool:hasMipmaps] forKey:@"com_markdouma_image_mipmaps"];
+		[attributes setObject:@(hasAlphaChannel) forKey:(NSString *)kMDItemHasAlphaChannel];
+		[attributes setObject:@(hasMipmaps) forKey:@"com_markdouma_image_mipmaps"];
 		
 		// only set environment mask if it's true?
-		[attributes setObject:[NSNumber numberWithBool:isEnvironmentMap] forKey:@"com_markdouma_image_environment_map"];
+		[attributes setObject:@(isEnvironmentMap) forKey:@"com_markdouma_image_environment_map"];
 		
-		[attributes setObject:[NSNumber numberWithUnsignedInteger:theWidth] forKey:(NSString *)kMDItemPixelWidth];
-		[attributes setObject:[NSNumber numberWithUnsignedInteger:theHeight] forKey:(NSString *)kMDItemPixelHeight];
-		[attributes setObject:[NSNumber numberWithUnsignedInteger:theWidth * theHeight] forKey:(id)kMDItemPixelCount];
+		[attributes setObject:@(theWidth) forKey:(NSString *)kMDItemPixelWidth];
+		[attributes setObject:@(theHeight) forKey:(NSString *)kMDItemPixelHeight];
+		[attributes setObject:@(theWidth * theHeight) forKey:(id)kMDItemPixelCount];
 		if (theCompression) [attributes setObject:theCompression forKey:@"com_markdouma_image_compression"];
 		
 		return YES;
-		
 	}
-	
-	}
+}
 	return NO;
 }
-	
-	
-	
-	
+
 #ifdef __cplusplus
 }
 #endif

@@ -104,23 +104,23 @@ NSString * const TKImageRoundModeKey					= @"TKImageRoundMode";
 
 typedef struct TKDXTCompressionQualityDescription {
 	TKDXTCompressionQuality		compressionQuality;
-	NSString					*description;
+	const char					*description;
 } TKDXTCompressionQualityDescription;
 
 static const TKDXTCompressionQualityDescription TKDXTCompressionQualityDescriptionTable[] = {
-	{ TKDXTCompressionLowQuality, @"Low" },
-	{ TKDXTCompressionMediumQuality, @"Medium" },
-	{ TKDXTCompressionHighQuality, @"High" },
-	{ TKDXTCompressionHighestQuality, @"Highest" },
-	{ TKDXTCompressionDefaultQuality, @"Default" },
-	{ TKDXTCompressionNotApplicable, @"N/A" }
+	{ TKDXTCompressionLowQuality, "Low" },
+	{ TKDXTCompressionMediumQuality, "Medium" },
+	{ TKDXTCompressionHighQuality, "High" },
+	{ TKDXTCompressionHighestQuality, "Highest" },
+	{ TKDXTCompressionDefaultQuality, "Default" },
+	{ TKDXTCompressionNotApplicable, "N/A" }
 };
 static const NSUInteger TKDXTCompressionQualityDescriptionTableCount = sizeof(TKDXTCompressionQualityDescriptionTable)/sizeof(TKDXTCompressionQualityDescription);
 
 NSString *NSStringFromDXTCompressionQuality(TKDXTCompressionQuality aQuality) {
 	for (NSUInteger i = 0; i < TKDXTCompressionQualityDescriptionTableCount; i++) {
 		if (TKDXTCompressionQualityDescriptionTable[i].compressionQuality == aQuality) {
-			return TKDXTCompressionQualityDescriptionTable[i].description;
+			return @(TKDXTCompressionQualityDescriptionTable[i].description);
 		}
 	}
 	return @"<Unknown>";
@@ -128,7 +128,7 @@ NSString *NSStringFromDXTCompressionQuality(TKDXTCompressionQuality aQuality) {
 
 TKDXTCompressionQuality TKDXTCompressionQualityFromString(NSString *aQuality) {
 	for (NSUInteger i = 0; i < TKDXTCompressionQualityDescriptionTableCount; i++) {
-		if ([TKDXTCompressionQualityDescriptionTable[i].description isEqualToString:aQuality]) {
+		if ([@(TKDXTCompressionQualityDescriptionTable[i].description) isEqualToString:aQuality]) {
 			return TKDXTCompressionQualityDescriptionTable[i].compressionQuality;
 		}
 	}
@@ -188,7 +188,7 @@ static TKDXTCompressionQuality defaultDXTCompressionQuality = TKDXTCompressionDe
 #endif
 	
 	if (handledUTITypes == nil) {
-		handledUTITypes = (NSArray *)CGImageSourceCopyTypeIdentifiers();
+		handledUTITypes = CFBridgingRelease(CGImageSourceCopyTypeIdentifiers());
 #if TK_DEBUG
 //		NSLog(@"[%@ %@] CGImageSourceCopyTypeIdentifiers() == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), handledUTITypes);
 #endif
@@ -208,10 +208,10 @@ static TKDXTCompressionQuality defaultDXTCompressionQuality = TKDXTCompressionDe
 	if (handledFileTypes == nil) {
 		NSMutableArray *mFileTypes = [NSMutableArray array];
 		
-		NSArray *utiTypes = [(NSArray *)CGImageSourceCopyTypeIdentifiers() autorelease];
+		NSArray *utiTypes = CFBridgingRelease(CGImageSourceCopyTypeIdentifiers());
 		if (utiTypes && utiTypes.count) {
 			for (NSString *utiType in utiTypes) {
-				NSDictionary *utiDeclarations = [(NSDictionary *)UTTypeCopyDeclaration((CFStringRef)utiType) autorelease];
+				NSDictionary *utiDeclarations = CFBridgingRelease(UTTypeCopyDeclaration((__bridge CFStringRef)utiType));
 				NSDictionary *utiSpec = utiDeclarations[(NSString *)kUTTypeTagSpecificationKey];
 				if (utiSpec) {
 					id extensions = utiSpec[(NSString *)kUTTagClassFilenameExtension];
@@ -247,7 +247,7 @@ static TKDXTCompressionQuality defaultDXTCompressionQuality = TKDXTCompressionDe
 #if TK_DEBUG
 //		NSLog(@"[%@ %@] super's imageUnfilteredPasteboardTypes == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), types);
 #endif
-		imageUnfilteredPasteboardTypes = [types retain];
+		imageUnfilteredPasteboardTypes = types;
 	}
 	return imageUnfilteredPasteboardTypes;
 }
@@ -350,7 +350,7 @@ static TKDXTCompressionQuality defaultDXTCompressionQuality = TKDXTCompressionDe
 //			NSLog(@"[%@ %@] metadata == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), metadata);
 //#endif
 			
-			NSDictionary *properties = [(NSDictionary *)CGImageSourceCopyPropertiesAtIndex(source, i, (CFDictionaryRef)options) autorelease];
+			NSDictionary *properties = CFBridgingRelease(CGImageSourceCopyPropertiesAtIndex(source, i, (CFDictionaryRef)options));
 			
 			TKImageRep *imageRep = [[TKImageRep alloc] initWithCGImage:imageRef
 															sliceIndex:TKSliceIndexNone
@@ -362,20 +362,19 @@ static TKDXTCompressionQuality defaultDXTCompressionQuality = TKDXTCompressionDe
 				imageRep.imageProperties = properties;
 				
 				[imageReps addObject:imageRep];
-				[imageRep release];
 			}
 			CGImageRelease(imageRef);
 		}
 		
 		if (firstRepOnly && i == 0) {
 			CFRelease(source);
-			return [[imageReps copy] autorelease];
+			return [imageReps copy];
 		}
 	}
 	
 	CFRelease(source);
 
-	return [[imageReps copy] autorelease];
+	return [imageReps copy];
 }
 
 
@@ -403,10 +402,9 @@ static TKDXTCompressionQuality defaultDXTCompressionQuality = TKDXTCompressionDe
 #endif
 	NSArray *imageReps = [[self class] imageRepsWithData:aData firstRepresentationOnly:YES];
 	if ((imageReps == nil) || !(imageReps.count > 0)) {
-		[self release];
 		return nil;
 	}
-	self = [imageReps[0] retain];
+	self = imageReps[0];
 	return self;
 }
 
@@ -435,13 +433,13 @@ static TKDXTCompressionQuality defaultDXTCompressionQuality = TKDXTCompressionDe
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	if ([aBitmapImageRep isKindOfClass:[TKImageRep class]]) {
-		return [[[[self class] alloc] initWithCGImage:aBitmapImageRep.CGImage
+		return [[[self class] alloc] initWithCGImage:aBitmapImageRep.CGImage
 										   sliceIndex:((TKImageRep *)aBitmapImageRep).sliceIndex
 												 face:((TKImageRep *)aBitmapImageRep).face
 										   frameIndex:((TKImageRep *)aBitmapImageRep).frameIndex
-										  mipmapIndex:((TKImageRep *)aBitmapImageRep).mipmapIndex] autorelease];
+										  mipmapIndex:((TKImageRep *)aBitmapImageRep).mipmapIndex];
 	}
-	return [[[[self class] alloc] initWithCGImage:aBitmapImageRep.CGImage] autorelease];
+	return [[[self class] alloc] initWithCGImage:aBitmapImageRep.CGImage];
 }
 
 
@@ -537,20 +535,14 @@ static TKDXTCompressionQuality defaultDXTCompressionQuality = TKDXTCompressionDe
 }
 
 
-- (void)dealloc {
-	[imageProperties release];
-	[super dealloc];
-}
-
-
 - (NSData *)data {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	[self getBitmapInfoAndPixelFormatIfNecessary];
 	CGImageRef imageRef = self.CGImage;
-	NSData *imageData = (NSData *)CGDataProviderCopyData(CGImageGetDataProvider(imageRef));
-	return [imageData autorelease];
+	NSData *imageData = CFBridgingRelease(CGDataProviderCopyData(CGImageGetDataProvider(imageRef)));
+	return imageData;
 //	return [(NSData *)CGDataProviderCopyData(CGImageGetDataProvider(imageRef)) autorelease];
 }
 
@@ -966,9 +958,6 @@ void TKFreeBuffer(vImage_Buffer *buffer) {
 		
 		NSComparisonResult comparisonResult = [ourIndexPath compare:theirIndexPath];
 		
-		[ourIndexPath release];
-		[theirIndexPath release];
-		
 		return comparisonResult;
 	}
 	
@@ -1003,29 +992,10 @@ void TKFreeBuffer(vImage_Buffer *buffer) {
 #endif
 //	if ([object isKindOfClass:[self class]]) {
 	if ([object isKindOfClass:[TKImageRep class]]) {
-		if (TKGetSystemVersion() <= TKLeopard) {
 #if TK_DEBUG
-			NSLog(@"[%@ %@] (TKImageRepLeopardIsEqualCompatability)", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+		NSLog(@"[%@ %@] (TKImageRepLeopardIsEqualCompatability)", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-			return [super isEqual:object];
-		}
-		
-		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-		
-		BOOL isEqual = NO;
-		
-		NSData *otherImageRepData = ((TKImageRep *)object).data;
-		NSData *ourData = self.data;
-		
-		if ([ourData isEqualToData:otherImageRepData] &&
-			sliceIndex == ((TKImageRep *)object).sliceIndex && 
-			face == ((TKImageRep *)object).face &&
-			frameIndex == ((TKImageRep *)object).frameIndex &&
-			mipmapIndex == ((TKImageRep *)object).mipmapIndex) {
-			isEqual = YES;
-		}
-		[pool release];
-		return isEqual;
+		return [super isEqual:object];
 	}
 	return NO;
 }

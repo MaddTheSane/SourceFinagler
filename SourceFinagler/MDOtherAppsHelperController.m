@@ -31,12 +31,9 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 
 
 @implementation MDOtherAppsHelperController
-
 @synthesize enableSourceFinaglerAgent;
 
 @dynamic sortDescriptors;
-
-
 
 + (void)initialize {
 	NSMutableDictionary *defaults = [NSMutableDictionary dictionary];
@@ -44,8 +41,6 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
     [defaults setSortDescriptors:sortDescriptors forKey:MDOtherAppsHelperSortDescriptorsKey];
 	[[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
 }
-
-
 
 - (instancetype)init {
 	if ((self = [super init])) {
@@ -62,26 +57,22 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 	return self;
 }
 
-
 - (void)dealloc {
 	[games release];
 	[steamManager release];
 	[super dealloc];
 }
 
-
 - (NSString *)title {
 	return NSLocalizedString(@"Other Apps Helper", @"");
 }
-
 
 - (NSString *)viewSizeAutosaveName {
 	return @"otherAppsHelperView";
 }
 
-
-
 - (void)awakeFromNib {
+	[super awakeFromNib];
 #if VS_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -118,14 +109,11 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 	
 	[VSSteamManager	setDefaultPersistentOptions:VSGameLaunchDefault];
 	[steamManager setMonitoringGames:YES];
-	
 }
-
 
 - (void)setSortDescriptors:(NSArray *)aSortDescriptors {
 	tableView.sortDescriptors = aSortDescriptors;
 }
-
 
 - (NSArray *)sortDescriptors {
 	return tableView.sortDescriptors;
@@ -185,7 +173,7 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 
 
 - (NSArray *)games {
-    return games;
+    return [[games copy] autorelease];
 }
 
 - (NSUInteger)countOfGames {
@@ -239,7 +227,6 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 	return NO;
 }
 
-
 - (void)tableView:(NSTableView *)aTableView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
 	if ([tableColumn.identifier isEqualToString:@"displayName"]) {
 		VSGame *game = gamesController.arrangedObjects[row];
@@ -249,8 +236,6 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 	}
 }
 
-
-
 - (IBAction)showUSBOverdriveTip:(id)sender {
 #if VS_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -258,7 +243,6 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 	[NSApp beginSheet:usbOverdriveWindow modalForWindow:self.view.window modalDelegate:self didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:) contextInfo:NULL];
 	
 }
-
 
 - (IBAction)ok:(id)sender {
 #if VS_DEBUG
@@ -274,7 +258,6 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 	[sheet orderOut:nil];
 }
 
-
 - (IBAction)launchGame:(id)sender {
 #if VS_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -288,7 +271,6 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 		}
 	}
 }
-
 
 - (IBAction)toggleHelpApps:(id)sender {
 #if VS_DEBUG
@@ -317,9 +299,7 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 		}
 	}
 	[self refresh:self];
-	
 }
-
 
 - (IBAction)helpApps:(id)sender {
 #if VS_DEBUG
@@ -335,7 +315,6 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 	}
 	[self refresh:self];
 }
-
 
 - (IBAction)restoreToDefault:(id)sender {
 #if VS_DEBUG
@@ -354,8 +333,6 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 	[self refresh:self];
 }
 
-
-
 - (IBAction)refresh:(id)sender {
 #if VS_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -370,7 +347,6 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 	[gamesController setSelectedObjects:selectedObjects];
 	[selectedObjects release];
 }
-
 
 - (IBAction)revealInFinder:(id)sender {
 #if VS_DEBUG
@@ -393,7 +369,6 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 	
 		}
 	}
-	
 }
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
@@ -425,11 +400,4 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 	return YES;
 }
 
-
 @end
-
-
-
-
-
-

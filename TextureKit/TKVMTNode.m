@@ -71,7 +71,6 @@ static inline NSString *NSStringFromTKVMTNodeKind(TKVMTNodeKind kind) {
 
 
 @implementation TKVMTNode
-
 @synthesize rootNode;
 @synthesize parent;
 @synthesize name;
@@ -230,7 +229,6 @@ static inline NSString *NSStringFromTKVMTNodeKind(TKVMTNodeKind kind) {
 	return 0.0;
 }
 
-
 - (NSString *)description {
 	NSMutableString *description = [NSMutableString stringWithFormat:@"%@\n", super.description];
 	if (kind == TKVMTGroupKind) {
@@ -244,10 +242,4 @@ static inline NSString *NSStringFromTKVMTNodeKind(TKVMTNodeKind kind) {
 	return description;
 }
 
-
-
 @end
-
-
-
-
