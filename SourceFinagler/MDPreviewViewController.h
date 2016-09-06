@@ -9,7 +9,6 @@
 #import <Cocoa/Cocoa.h>
 
 @class WebView;
-@class QTMovieView;
 @class MDTransparentView;
 
 

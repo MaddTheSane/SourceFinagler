@@ -8,12 +8,12 @@
 
 #import <HLKit/HKFolder.h>
 
-@class NSImage, QTMovie;
+@class NSImage, AVMovie;
 
 @interface HKFolder (HKAdditions)
 
 @property (readonly, copy) NSImage *image;
-@property (readonly, copy) QTMovie *movie;
+@property (readonly, copy) AVMovie *movie;
 
 @end
 

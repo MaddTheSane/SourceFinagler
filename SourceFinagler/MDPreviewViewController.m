@@ -8,7 +8,7 @@
 
 #import "MDPreviewViewController.h"
 #import <WebKit/WebKit.h>
-#import <QTKit/QTKit.h>
+#import <AVFoundation/AVFoundation.h>
 #import "MDTransparentView.h"
 #import "MDHLDocument.h"
 

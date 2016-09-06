@@ -8,7 +8,7 @@
 
 #import <HLKit/HKFolderAdditions.h>
 #import <Cocoa/Cocoa.h>
-#import <QTKit/QTKit.h>
+#import <AVFoundation/AVFoundation.h>
 
 
 @implementation HKFolder (MDAdditions)
@@ -19,7 +19,7 @@
 	return image;
 }
 
-- (QTMovie *)movie {
+- (AVMovie *)movie {
 	return nil;
 }
 

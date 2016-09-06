@@ -11,7 +11,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-#import <QTKit/QTKit.h>
+#import <AVFoundation/AVFoundation.h>
 
 #import <TextureKit/TKImage.h>
 #import <TextureKit/TKVTFImageRep.h>
@@ -122,15 +122,18 @@
 	return theImage;
 }
 
-- (QTMovie *)movie {
-	QTMovie *movie = nil;
+- (AVMovie *)movie {
+	AVMovie *movie = nil;
 	if (fileType == HKFileTypeMovie) {
 		NSData *data = self.data;
 		if (data) {
-			NSError *error = nil;
-			movie = [QTMovie movieWithData:data error:&error];
-			if (!movie) {
-				NSLog(@"[%@ %@] failed to create movie (error == %@)", NSStringFromClass([self class]), NSStringFromSelector(_cmd), error);
+			if ([AVMovie class] && [AVMovie instancesRespondToSelector:@selector(initWithData:options:)]) {
+				movie = [[AVMovie alloc] initWithData:data options:nil];
+				if (!movie) {
+					NSLog(@"[%@ %@] failed to create movie.", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+				}
+			} else {
+				NSLog(@"[%@ %@] AVMovie not found, or can not load from data!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 			}
 		}
 	}

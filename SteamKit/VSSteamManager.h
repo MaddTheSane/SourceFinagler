@@ -103,7 +103,7 @@ typedef NS_ENUM(NSUInteger, VSSourceFinaglerLaunchAgentStatus) {
 + (VSGameLaunchOptions)defaultPersistentOptions;
 + (void)setDefaultPersistentOptions:(VSGameLaunchOptions)options;
 #if __has_feature(objc_class_property)
-@property (class) VSGameLaunchOptions defaultPersistentOptions
+@property (class) VSGameLaunchOptions defaultPersistentOptions;
 #endif
 
 - (VSGameLaunchOptions)persistentOptionsForGame:(VSGame *)game;

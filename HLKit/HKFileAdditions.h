@@ -9,7 +9,7 @@
 #import <HLKit/HKFile.h>
 #import <AppKit/NSImage.h>
 #import <AppKit/NSSound.h>
-#import <QTKit/QTMovie.h>
+#import <AVFoundation/AVMovie.h>
 
 @interface HKFile (HKAdditions)
 
@@ -20,7 +20,7 @@
 
 @property (readonly, copy) NSSound *sound;
 
-@property (readonly, copy) QTMovie *movie;
+@property (readonly, copy) AVMovie *movie;
 
 @end
 

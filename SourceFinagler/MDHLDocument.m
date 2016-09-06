@@ -10,7 +10,7 @@
 #import "MDHLDocument.h"
 
 #import <CoreServices/CoreServices.h>
-#import <QTKit/QTKit.h>
+#import <AVFoundation/AVFoundation.h>
 
 #import <HLKit/HLKit.h>
 
