@@ -135,7 +135,7 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	TKImage *copy = [[TKImage alloc] initWithSize:self.size];
-	NSArray *representations = self.representations.deepMutableCopy;
+	NSArray *representations = [self.representations deepMutableCopy];
 	
 	[copy addRepresentations:representations];
 	return copy;
@@ -306,8 +306,7 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 			NSLog(@"[%@ %@] TKImage *archivedImage = [NSKeyedUnarchiver unarchiveObjectWithData:aData] failed!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 			return nil;
 		}
-		self = archivedImage;
-		return self;
+		return archivedImage;
 		
 	} else {
 		
@@ -845,7 +844,6 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 		
 		faceIndex = [faceIndexes indexGreaterThanIndex:faceIndex];
 	}
-	
 }
 
 
@@ -857,11 +855,9 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 	NSUInteger faceIndex = faceIndexes.lastIndex;
 	
 	while (faceIndex != NSNotFound) {
-		
 		NSUInteger mipmapIndex = mipmapIndexes.lastIndex;
 		
 		while (mipmapIndex != NSNotFound) {
-			
 			[self removeRepresentationForFace:faceIndex mipmapIndex:mipmapIndex];
 			
 			mipmapIndex = [mipmapIndexes indexLessThanIndex:mipmapIndex];

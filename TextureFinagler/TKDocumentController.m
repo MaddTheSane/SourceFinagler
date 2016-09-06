@@ -33,6 +33,9 @@ NSString * const TKApplicationBundleIdentifier = @"com.markdouma.SourceFinagler"
 	
 		for (NSDictionary *docType in docTypes) {
 			NSString *docClass = docType[@"NSDocumentClass"];
+			if ([docClass isEqualToString:@"TKImageDocument"]) {
+				continue;
+			}
 			if (docClass) {
 				NSArray *contentTypes = docType[@"LSItemContentTypes"];
 				if (contentTypes && contentTypes.count) {

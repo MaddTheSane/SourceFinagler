@@ -16,13 +16,10 @@ static CIKernel *TKMultiChannelFilterKernel = nil;
 
 
 @implementation TKMultiChannelFilter
-
 @synthesize redScale;
 @synthesize greenScale;
 @synthesize blueScale;
 @synthesize alphaScale;
-
-
 
 - (id)init {
 #if TK_DEBUG
@@ -35,32 +32,18 @@ static CIKernel *TKMultiChannelFilterKernel = nil;
 																					 encoding:NSUTF8StringEncoding
 																						error:NULL]];
 			if ([kernels count]) {
-				TKMultiChannelFilterKernel = [[kernels objectAtIndex:0] retain];
+				TKMultiChannelFilterKernel = [kernels objectAtIndex:0];
 			}
 		}
-		self.redScale = [NSNumber numberWithDouble:1.0/3.0];
-		self.greenScale = [NSNumber numberWithDouble:1.0/3.0];
-		self.blueScale = [NSNumber numberWithDouble:1.0/3.0];
-		self.alphaScale = [NSNumber numberWithDouble:1.0/3.0];
+		self.redScale = @(1.0/3.0);
+		self.greenScale = @(1.0/3.0);
+		self.blueScale = @(1.0/3.0);
+		self.alphaScale = @(1.0/3.0);
 		
-		self.name = @"grayscaleFilter";
+		self.name = @"multiChannelFilter";
 	}
 	return self;
 }
-
-
-- (void)dealloc {
-#if TK_DEBUG
-	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-#endif
-	[inputImage release];
-	[redScale release];
-	[greenScale release];
-	[blueScale release];
-	[alphaScale release];
-	[super dealloc];
-}
-
 
 - (NSDictionary *)customAttributes {
 #if TK_DEBUG
@@ -109,7 +92,6 @@ static CIKernel *TKMultiChannelFilterKernel = nil;
 	
 }
 
-
 // called when setting up for fragment program and also calls fragment program
 - (CIImage *)outputImage {
 #if TK_DEBUG
@@ -127,9 +109,4 @@ static CIKernel *TKMultiChannelFilterKernel = nil;
 			nil];
 }
 
-
-
 @end
-
-
-

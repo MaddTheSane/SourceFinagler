@@ -192,11 +192,8 @@ static TKImageInspectorController *sharedController = nil;
 				if ([dataSource respondsToSelector:@selector(imageInspectorController:didDisableImageChannel:)]) {
 					[dataSource imageInspectorController:self didDisableImageChannel:imageChannel];
 				}
-				
 			}
-			
 		}
-		
 	}
 }
 

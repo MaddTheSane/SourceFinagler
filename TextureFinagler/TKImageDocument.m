@@ -1139,8 +1139,6 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	return YES;
 }
 
-
-
 - (BOOL)splitView:(NSSplitView *)splitView canCollapseSubview:(NSView *)subview {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -1540,9 +1538,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 					[imageChannels setArray:[TKImageChannel imageChannelsWithImageRep:imageRep]];
 					
 				} else {
-					
 					[imageChannels makeObjectsPerformSelector:@selector(updateWithImageRep:) withObject:imageRep];
-					
 				}
 				
 				[imageInspectorController reloadData];
@@ -1907,9 +1903,9 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 		[imageView.imageKitLayer setValue:@NO forKeyPath:@"filters.alphaChannelFilter.enabled"];
 		
 		[imageView.imageKitLayer setValue:[CIVector vectorWithString:(imageChannelMask & TKImageChannelRedMask) ? @"[1.0 0.0 0.0 0.0]" : @"[0.0 0.0 0.0 0.0]"] forKeyPath:@"filters.multiChannelFilter.inputRVector"];
-		[imageView.imageKitLayer setValue:[CIVector vectorWithString:(imageChannelMask & TKImageChannelGreenMask) ? @"[1.0 0.0 0.0 0.0]" : @"[0.0 0.0 0.0 0.0]"] forKeyPath:@"filters.multiChannelFilter.inputGVector"];
-		[imageView.imageKitLayer setValue:[CIVector vectorWithString:(imageChannelMask & TKImageChannelBlueMask) ? @"[1.0 0.0 0.0 0.0]" : @"[0.0 0.0 0.0 0.0]"] forKeyPath:@"filters.multiChannelFilter.inputBVector"];
-		[imageView.imageKitLayer setValue:[CIVector vectorWithString:(imageChannelMask & TKImageChannelAlphaMask) ? @"[1.0 0.0 0.0 0.0]" : @"[0.0 0.0 0.0 0.0]"] forKeyPath:@"filters.multiChannelFilter.inputAVector"];
+		[imageView.imageKitLayer setValue:[CIVector vectorWithString:(imageChannelMask & TKImageChannelGreenMask) ? @"[0.0 1.0 0.0 0.0]" : @"[0.0 0.0 0.0 0.0]"] forKeyPath:@"filters.multiChannelFilter.inputGVector"];
+		[imageView.imageKitLayer setValue:[CIVector vectorWithString:(imageChannelMask & TKImageChannelBlueMask) ? @"[0.0 0.0 1.0 0.0]" : @"[0.0 0.0 0.0 0.0]"] forKeyPath:@"filters.multiChannelFilter.inputBVector"];
+		[imageView.imageKitLayer setValue:[CIVector vectorWithString:(imageChannelMask & TKImageChannelAlphaMask) ? @"[0.0 0.0 0.0 1.0]" : @"[0.0 0.0 0.0 0.0]"] forKeyPath:@"filters.multiChannelFilter.inputAVector"];
 
 		[imageView.imageKitLayer setValue:@YES forKeyPath:@"filters.multiChannelFilter.enabled"];
 
