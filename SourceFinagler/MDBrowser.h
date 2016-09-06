@@ -35,7 +35,6 @@ NS_ENUM(NSInteger) {
 	BOOL			shouldShowPreview;
 	
 	BOOL			highlighted;
-	
 }
 
 @property (nonatomic, copy) NSArray *sortDescriptors;

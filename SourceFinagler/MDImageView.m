@@ -20,12 +20,6 @@
     return self;
 }
 
-- (void)dealloc {
-	[image release];
-	[super dealloc];
-}
-
-
 - (void)awakeFromNib {
 	self.image = [NSImage imageNamed:@"sound"];
 }

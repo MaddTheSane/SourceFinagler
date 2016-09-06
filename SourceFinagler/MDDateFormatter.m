@@ -21,7 +21,7 @@ static NSDate *MDNilDate = nil;
 @implementation MDDateFormatter
 
 + (void)initialize {
-	MDNilDate = [[NSDate dateWithTimeIntervalSinceReferenceDate:MDNilDateTimeIntervalSinceReferenceDate] retain];
+	MDNilDate = [NSDate dateWithTimeIntervalSinceReferenceDate:MDNilDateTimeIntervalSinceReferenceDate];
 }
 
 
@@ -54,12 +54,6 @@ static NSDate *MDNilDate = nil;
 		today = NSLocalizedString(@"Today", @"");
 		yesterday = NSLocalizedString(@"Yesterday", @"");
 		tomorrow = NSLocalizedString(@"Tomorrow", @"");
-		
-		[today retain];
-		[yesterday retain];
-		[tomorrow retain];
-		
-		
 	}
 	return self;
 }
@@ -99,16 +93,9 @@ static NSDate *MDNilDate = nil;
 		today = NSLocalizedString(@"Today", @"");
 		yesterday = NSLocalizedString(@"Yesterday", @"");
 		tomorrow = NSLocalizedString(@"Tomorrow", @"");
-		
-		[today retain];
-		[yesterday retain];
-		[tomorrow retain];
-		
-		
 	}
 	return self;
 }
-
 
 - (void)encodeWithCoder:(NSCoder *)coder {
 #if MD_DEBUG
@@ -130,8 +117,6 @@ static NSDate *MDNilDate = nil;
 	return copy;
 }
 
-
-
 - (void)dealloc {
 	if (__mdFormatter != NULL) {
 		CFRelease(__mdFormatter);
@@ -141,14 +126,7 @@ static NSDate *MDNilDate = nil;
 		CFRelease(__mdTimeFormatter);
 		__mdTimeFormatter = NULL;
 	}
-	
-	[today release];
-	[yesterday release];
-	[tomorrow release];
-	
-	[super dealloc];
 }
-
 
 - (MDDateFormatterStyle)style {
 #if MD_DEBUG
@@ -156,7 +134,6 @@ static NSDate *MDNilDate = nil;
 #endif
     return style;
 }
-
 
 - (void)setStyle:(MDDateFormatterStyle)value {
 #if MD_DEBUG
@@ -184,7 +161,6 @@ static NSDate *MDNilDate = nil;
 	}
 }
 
-
 - (BOOL)isRelative {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -198,7 +174,6 @@ static NSDate *MDNilDate = nil;
 #endif
 	relative = value;
 }
-
 
 - (NSString *)stringForObjectValue:(id)anObject {
 #if MD_DEBUG
@@ -217,53 +192,48 @@ static NSDate *MDNilDate = nil;
 //		NSLog(@"[%@ %@] it is an NSDate == %@, __mdFormatter == %@, __mdTimeFormatter == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), anObject, __mdFormatter, __mdTimeFormatter);
 
 		if (relative) {
-			
-			NSCalendarDate *calendarDate = [[[NSCalendarDate alloc] initWithTimeIntervalSinceReferenceDate:[anObject timeIntervalSinceReferenceDate]] autorelease];
+			NSCalendarDate *calendarDate = [[NSCalendarDate alloc] initWithTimeIntervalSinceReferenceDate:[anObject timeIntervalSinceReferenceDate]];
 			
 			NSInteger todaysDayOfCommonEra = [[NSCalendarDate calendarDate] dayOfCommonEra];
 			NSInteger datesDayOfCommonEra = [calendarDate dayOfCommonEra];
 			
 			if (datesDayOfCommonEra < (todaysDayOfCommonEra - 1)) {
 				
-				string = (NSString *)CFDateFormatterCreateStringWithDate(NULL, __mdFormatter, (CFDateRef)anObject);
+				string = (NSString *)CFBridgingRelease(CFDateFormatterCreateStringWithDate(NULL, __mdFormatter, (CFDateRef)anObject));
 				
 			} else if (datesDayOfCommonEra == (todaysDayOfCommonEra - 1)) {
 				/* Yesterday, %@ */
 				
-				NSString *timeString = (NSString *)CFDateFormatterCreateStringWithDate(NULL, __mdTimeFormatter, (CFDateRef)anObject);
-				[timeString autorelease];
+				NSString *timeString = (NSString *)CFBridgingRelease(CFDateFormatterCreateStringWithDate(NULL, __mdTimeFormatter, (CFDateRef)anObject));
 				
 				string = [[NSString alloc] initWithFormat:@"%@, %@", yesterday, timeString];
 				
 			} else if (datesDayOfCommonEra == todaysDayOfCommonEra) {
 				/* Today, %@ */
 				
-				NSString *timeString = (NSString *)CFDateFormatterCreateStringWithDate(NULL, __mdTimeFormatter, (CFDateRef)anObject);
-				[timeString autorelease];
+				NSString *timeString = (NSString *)CFBridgingRelease(CFDateFormatterCreateStringWithDate(NULL, __mdTimeFormatter, (CFDateRef)anObject));
 				
 				string = [[NSString alloc] initWithFormat:@"%@, %@", today, timeString];
 				
 			} else if (datesDayOfCommonEra == (todaysDayOfCommonEra + 1)) {
 				/* Tomorrow, %@ */
-				NSString *timeString = (NSString *)CFDateFormatterCreateStringWithDate(NULL, __mdTimeFormatter, (CFDateRef)anObject);
-				[timeString autorelease];
+				NSString *timeString = (NSString *)CFBridgingRelease(CFDateFormatterCreateStringWithDate(NULL, __mdTimeFormatter, (CFDateRef)anObject));
 				
 				string = [[NSString alloc] initWithFormat:@"%@, %@", tomorrow, timeString];
 				
 			} else if (datesDayOfCommonEra > (todaysDayOfCommonEra + 1)) {
 				
-				string = (NSString *)CFDateFormatterCreateStringWithDate(NULL, __mdFormatter, (CFDateRef)anObject);
+				string = (NSString *)CFBridgingRelease(CFDateFormatterCreateStringWithDate(NULL, __mdFormatter, (CFDateRef)anObject));
 			}
 			
 		} else {
-			string = (NSString *)CFDateFormatterCreateStringWithDate(NULL, __mdFormatter, (CFDateRef)anObject);
+			string = (NSString *)CFBridgingRelease(CFDateFormatterCreateStringWithDate(NULL, __mdFormatter, (CFDateRef)anObject));
 		}
 		
-		return [string autorelease];
+		return string;
 	}
 	return nil;
 }
-
 
 - (BOOL)getObjectValue:(id *)anObject forString:(NSString *)string errorDescription:(NSString **)error {
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -271,17 +241,14 @@ static NSDate *MDNilDate = nil;
 	BOOL returnValue = NO;
 	NSDate *date = nil;
 	
-	date = (NSDate *)CFDateFormatterCreateDateFromString(NULL, __mdFormatter, (CFStringRef)string, NULL);
+	date = (NSDate *)CFBridgingRelease(CFDateFormatterCreateDateFromString(NULL, __mdFormatter, (CFStringRef)string, NULL));
 	
 	if (date) {
 		returnValue = YES;
 	}
 	
-	[date autorelease];
-	
 	return returnValue;
 }
-
 
 - (NSAttributedString *)attributedStringForObjectValue:(id)obj withDefaultAttributes:(NSDictionary *)attrs {
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));

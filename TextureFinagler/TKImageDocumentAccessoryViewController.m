@@ -21,7 +21,6 @@ static NSString * const kTKUTTypeOpenEXR = @"com.ilm.openexr-image";
 static NSString * const kTKUTTypeSGI = @"com.sgi.sgi-image";
 
 
-
 static NSString * const TKImageDocumentLastSavedFormatTypeKey		= @"TKImageDocumentLastSavedFormatType";
 
 static NSString * const TKImageDocumentVTFFormatKey					= @"TKImageDocumentVTFFormat";
@@ -45,7 +44,6 @@ static NSMutableDictionary *displayNameAndUTITypes = nil;
 
 
 @implementation TKImageDocumentAccessoryViewController
-
 @synthesize document;
 @synthesize savePanel;
 @synthesize image;
@@ -61,23 +59,24 @@ static NSMutableDictionary *displayNameAndUTITypes = nil;
 
 
 + (void)initialize {
-	NSMutableDictionary *defaultValues = [NSMutableDictionary dictionary];
-	defaultValues[TKImageDocumentLastSavedFormatTypeKey] = TKSFTextureImageType;
-	defaultValues[TKImageDocumentVTFFormatKey] = @([TKVTFImageRep defaultFormat]);
-	defaultValues[TKImageDocumentDDSFormatKey] = @([TKDDSImageRep defaultFormat]);
-	defaultValues[TKImageDocumentJPEGQualityKey] = @0.8;
-	defaultValues[TKImageDocumentJPEG2000QualityKey] = @0.8;
-	defaultValues[TKImageDocumentTIFFCompressionKey] = @(NSTIFFCompressionNone);
-	defaultValues[TKImageDocumentSaveAlphaKey] = @YES;
-	defaultValues[TKImageDocumentGenerateMipmapsKey] = @YES;
-	[[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		NSMutableDictionary *defaultValues = [NSMutableDictionary dictionary];
+		defaultValues[TKImageDocumentLastSavedFormatTypeKey] = TKSFTextureImageType;
+		defaultValues[TKImageDocumentVTFFormatKey] = @([TKVTFImageRep defaultFormat]);
+		defaultValues[TKImageDocumentDDSFormatKey] = @([TKDDSImageRep defaultFormat]);
+		defaultValues[TKImageDocumentJPEGQualityKey] = @0.8;
+		defaultValues[TKImageDocumentJPEG2000QualityKey] = @0.8;
+		defaultValues[TKImageDocumentTIFFCompressionKey] = @(NSTIFFCompressionNone);
+		defaultValues[TKImageDocumentSaveAlphaKey] = @YES;
+		defaultValues[TKImageDocumentGenerateMipmapsKey] = @YES;
+		[[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
+	});
 }
-
 
 - (instancetype)init {
 	return [self initWithImageDocument:nil];
 }
-
 
 - (instancetype)initWithImageDocument:(TKImageDocument *)aDocument {
 	if ((self = [super initWithNibName:self.nibName bundle:nil])) {
@@ -86,7 +85,7 @@ static NSMutableDictionary *displayNameAndUTITypes = nil;
 		
 		self.imageUTType = [[NSUserDefaults standardUserDefaults] objectForKey:TKImageDocumentLastSavedFormatTypeKey];
 		
-		if (imageUTTypes == nil) imageUTTypes = [[[document class] writableTypes] retain];
+		if (imageUTTypes == nil) imageUTTypes = [[document class] writableTypes];
 		
 		vtfFormat = [[[NSUserDefaults standardUserDefaults] objectForKey:TKImageDocumentVTFFormatKey] unsignedIntegerValue];
 		ddsFormat = [[[NSUserDefaults standardUserDefaults] objectForKey:TKImageDocumentDDSFormatKey] unsignedIntegerValue];
@@ -121,19 +120,13 @@ static NSMutableDictionary *displayNameAndUTITypes = nil;
 	[mediator unbind:@"contentObject"];
 	[mediator setContent:nil];
 	
-	[imageUTType release];
-	[imageUTTypes release];
 	document = nil;
 	savePanel = nil;
 }
 
-
-
-
 - (NSString *)nibName {
 	return @"TKImageDocumentAccessoryView";
 }
-
 
 - (void)awakeFromNib {
 #if TK_DEBUG
@@ -156,15 +149,13 @@ static NSMutableDictionary *displayNameAndUTITypes = nil;
 	NSMutableArray *menuItems = [NSMutableArray array];
 	
 	for (NSString *displayName in sortedDisplayNames) {
-		NSMenuItem *menuItem = [[[NSMenuItem alloc] initWithTitle:displayName action:NULL keyEquivalent:@""] autorelease];
+		NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:displayName action:NULL keyEquivalent:@""];
 		if (menuItem) {
 			[menuItems addObject:menuItem];
 		}
 	}
 	[formatPopUpButton setItemArray:menuItems];
 }
-
-
 
 - (BOOL)prepareSavePanel:(NSSavePanel *)aSavePanel {
 #if TK_DEBUG
@@ -176,7 +167,6 @@ static NSMutableDictionary *displayNameAndUTITypes = nil;
 	
 	return YES;
 }
-
 
 // save accessory panel
 - (IBAction)changeFormat:(id)sender {
@@ -245,11 +235,8 @@ static NSMutableDictionary *displayNameAndUTITypes = nil;
 			   [imageUTType isEqual:(NSString *)kUTTypePNG]) {
 		
 		compressionBox.contentView = alphaView;
-		
 	} else {
-		
 		compressionBox.contentView = blankView;
-		
 	}
 }
 
@@ -260,18 +247,13 @@ static NSMutableDictionary *displayNameAndUTITypes = nil;
 #endif
 	
 	if ([imageUTType isEqual:TKDDSType]) {
-		
 		self.ddsFormat = compressionPopUpButton.selectedItem.tag;
-		
 	} else if ([imageUTType isEqual:TKVTFType]) {
-		
 		self.vtfFormat = compressionPopUpButton.selectedItem.tag;
 	}
 }
 
-
 - (void)setNilValueForKey:(NSString *)key {
-	
 	if ([key isEqual:@"vtfFormat"]) {
 		vtfFormat = [TKVTFImageRep defaultFormat];
 		
@@ -355,7 +337,6 @@ static NSMutableDictionary *displayNameAndUTITypes = nil;
 			   [imageUTType isEqual:(NSString *)kUTTypePNG]) {
 		
 		if (imageHasAlpha && saveAlpha) imgProperties[(id)kCGImagePropertyHasAlpha] = @YES;
-		
 	}
 	
 	[self saveDefaults];
@@ -363,9 +344,4 @@ static NSMutableDictionary *displayNameAndUTITypes = nil;
 	return imgProperties;
 }
 
-
-
 @end
-
-
-

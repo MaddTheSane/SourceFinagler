@@ -144,7 +144,7 @@
 		C12F363412D7E46A00D28F26 /* TKImageExportPreview.m in Sources */ = {isa = PBXBuildFile; fileRef = C15594F612B75C8600FD0684 /* TKImageExportPreview.m */; };
 		C12F363512D7E46B00D28F26 /* TKImageExportPreset.m in Sources */ = {isa = PBXBuildFile; fileRef = C1583BC012B3ABA700A4AE2F /* TKImageExportPreset.m */; };
 		C12F363612D7E46C00D28F26 /* TKImageExportPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1583BBA12B3A55E00A4AE2F /* TKImageExportPanel.xib */; };
-		C12F363712D7E46D00D28F26 /* TKImageExportController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1583BB612B3A51300A4AE2F /* TKImageExportController.m */; };
+		C12F363712D7E46D00D28F26 /* TKImageExportController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1583BB612B3A51300A4AE2F /* TKImageExportController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C1305B8C12F08EF200D68170 /* ErrorMetric.h in Headers */ = {isa = PBXBuildFile; fileRef = C1305B7812F08E6E00D68170 /* ErrorMetric.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C1305B8D12F08EF300D68170 /* ErrorMetric.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1305B7712F08E6E00D68170 /* ErrorMetric.cpp */; };
 		C1305BD012F08F8100D68170 /* TaskDispatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = C1305BCE12F08F8100D68170 /* TaskDispatcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -162,22 +162,22 @@
 		C13C060A146766BC00A64EA3 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1537AC21294F80E0056DDE1 /* Accelerate.framework */; };
 		C140E72513889B7A00027DD6 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C11B279211BDFBB8004D4CC0 /* ApplicationServices.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		C140E72613889BD600027DD6 /* VSSteamManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C1034A9111C5619C0054740E /* VSSteamManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C140E72713889BD700027DD6 /* VSSteamManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1034A9211C5619C0054740E /* VSSteamManager.m */; };
+		C140E72713889BD700027DD6 /* VSSteamManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1034A9211C5619C0054740E /* VSSteamManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C140E72813889BD800027DD6 /* com.valvesoftware.games.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1A1096C11D4F149008BBABD /* com.valvesoftware.games.plist */; };
 		C140E72913889BDA00027DD6 /* VSGame.h in Headers */ = {isa = PBXBuildFile; fileRef = C103563611C5AF930054740E /* VSGame.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C140E72A13889BDC00027DD6 /* VSGame.m in Sources */ = {isa = PBXBuildFile; fileRef = C103563711C5AF930054740E /* VSGame.m */; };
 		C140E72B13889BDD00027DD6 /* hl2_osx.app in Resources */ = {isa = PBXBuildFile; fileRef = C139C68E137CCEBB00DDA21B /* hl2_osx.app */; };
-		C140E72C13889BF000027DD6 /* MDResourceFile.m in Sources */ = {isa = PBXBuildFile; fileRef = C12A944911C9CDED001D8E90 /* MDResourceFile.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		C140E72C13889BF000027DD6 /* MDResourceFile.m in Sources */ = {isa = PBXBuildFile; fileRef = C12A944911C9CDED001D8E90 /* MDResourceFile.m */; };
 		C140E72D13889BF100027DD6 /* MDResourceFile.h in Headers */ = {isa = PBXBuildFile; fileRef = C12A944811C9CDED001D8E90 /* MDResourceFile.h */; settings = {ATTRIBUTES = (); }; };
 		C140E72E13889BF200027DD6 /* MDResource.h in Headers */ = {isa = PBXBuildFile; fileRef = C1A10A6311D516A7008BBABD /* MDResource.h */; settings = {ATTRIBUTES = (); }; };
-		C140E72F13889BF300027DD6 /* MDResource.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A10A6411D516A7008BBABD /* MDResource.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		C140E72F13889BF300027DD6 /* MDResource.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A10A6411D516A7008BBABD /* MDResource.m */; };
 		C140E73113889C0000027DD6 /* TKFoundationAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C1AF851912C6294B00027B75 /* TKFoundationAdditions.m */; };
 		C140E73213889C0600027DD6 /* MDFolderManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C11B274B11BDE755004D4CC0 /* MDFolderManager.h */; settings = {ATTRIBUTES = (); }; };
-		C140E73313889C0800027DD6 /* MDFolderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C11B274C11BDE755004D4CC0 /* MDFolderManager.m */; };
+		C140E73313889C0800027DD6 /* MDFolderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C11B274C11BDE755004D4CC0 /* MDFolderManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C140E73513889C0D00027DD6 /* MDFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C1A10A2911D5124F008BBABD /* MDFileManager.h */; settings = {ATTRIBUTES = (); }; };
-		C140E73613889C0E00027DD6 /* MDFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A10A2A11D5124F008BBABD /* MDFileManager.m */; };
+		C140E73613889C0E00027DD6 /* MDFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A10A2A11D5124F008BBABD /* MDFileManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C140E73813889C2400027DD6 /* MDLaunchManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C1BB6F5A11FCA90300B88BBE /* MDLaunchManager.h */; settings = {ATTRIBUTES = (); }; };
-		C140E73913889C2500027DD6 /* MDLaunchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1BB6F5B11FCA90300B88BBE /* MDLaunchManager.m */; };
+		C140E73913889C2500027DD6 /* MDLaunchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1BB6F5B11FCA90300B88BBE /* MDLaunchManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C140E74513889CFB00027DD6 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14D206C121B40BC00AB4F96 /* ServiceManagement.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		C140E76E13889E6B00027DD6 /* SteamKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C140E76C13889E6B00027DD6 /* SteamKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C140E76F13889E6B00027DD6 /* SteamKitDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = C140E76D13889E6B00027DD6 /* SteamKitDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -187,7 +187,7 @@
 		C140E9381388B78300027DD6 /* SteamKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C140E63D13889A9400027DD6 /* SteamKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C145AF1712BD8F22005D7E21 /* TextureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17319B21298D11400C29732 /* TextureKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		C145AF5F12BD8F6A005D7E21 /* TextureKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C17319B21298D11400C29732 /* TextureKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C146091B14F3377200B7286B /* TKAppKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C146091814F3373700B7286B /* TKAppKitAdditions.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		C146091B14F3377200B7286B /* TKAppKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C146091814F3373700B7286B /* TKAppKitAdditions.m */; };
 		C146091C14F3377300B7286B /* TKAppKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C146091814F3373700B7286B /* TKAppKitAdditions.m */; };
 		C146091D14F337BB00B7286B /* TKFoundationAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C1AF851912C6294B00027B75 /* TKFoundationAdditions.m */; };
 		C146091E14F337BC00B7286B /* TKFoundationAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C1AF851912C6294B00027B75 /* TKFoundationAdditions.m */; };
@@ -282,7 +282,7 @@
 		C197B529148887CC00B64B1B /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C145AC6612BD69D1005D7E21 /* OpenGL.framework */; };
 		C19B1FC114514BC2005F7902 /* TKGrayscaleFilter.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = C1EEE1C21450AC0800CB8ED6 /* TKGrayscaleFilter.cikernel */; };
 		C19C1C0E1489901500EE2B12 /* TKImageKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C19C1C0C14898DA300EE2B12 /* TKImageKitAdditions.m */; };
-		C19EB0FD145575BB0021185E /* TKImageInspectorController.m in Sources */ = {isa = PBXBuildFile; fileRef = C19EB0FC145575BB0021185E /* TKImageInspectorController.m */; };
+		C19EB0FD145575BB0021185E /* TKImageInspectorController.m in Sources */ = {isa = PBXBuildFile; fileRef = C19EB0FC145575BB0021185E /* TKImageInspectorController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C19EB1021455768A0021185E /* TKImageInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = C19EB1011455768A0021185E /* TKImageInspector.xib */; };
 		C1A2DDD413D3B927001ABB83 /* TKImageExportPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A2DDD313D3B927001ABB83 /* TKImageExportPreviewView.m */; };
 		C1A2DDE213D3BF16001ABB83 /* TKImageExportPreviewOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A2DDE113D3BF16001ABB83 /* TKImageExportPreviewOperation.m */; };
@@ -453,9 +453,9 @@
 		C1C2C54A127CBCA0003B24F6 /* MDOtherAppsHelperController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A16F5D11C53539008E5361 /* MDOtherAppsHelperController.m */; };
 		C1C2C54E127CBCA0003B24F6 /* MDProcessManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C12A93E311C9A3D9001D8E90 /* MDProcessManager.m */; };
 		C1C2C552127CBCA0003B24F6 /* MDTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A117DD11D695EA008BBABD /* MDTableView.m */; };
-		C1C2C554127CBCA0003B24F6 /* MDUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = C1BB6F5D11FCA90300B88BBE /* MDUserDefaults.m */; };
+		C1C2C554127CBCA0003B24F6 /* MDUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = C1BB6F5D11FCA90300B88BBE /* MDUserDefaults.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C1C2C556127CBCA0003B24F6 /* MDHLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C124A2123A0990004674B4 /* MDHLDocument.m */; };
-		C1C2C55C127CBCA0003B24F6 /* MDTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C124D5123A0A8A004674B4 /* MDTextFieldCell.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		C1C2C55C127CBCA0003B24F6 /* MDTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C124D5123A0A8A004674B4 /* MDTextFieldCell.m */; };
 		C1C2C55D127CBCA0003B24F6 /* MDBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C124D9123A0AEC004674B4 /* MDBrowser.m */; };
 		C1C2C55E127CBCA0003B24F6 /* MDBrowserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C124DB123A0AEC004674B4 /* MDBrowserCell.m */; };
 		C1C2C55F127CBCA0003B24F6 /* MDQuickLookPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C124DD123A0AEC004674B4 /* MDQuickLookPreviewViewController.m */; };
@@ -470,9 +470,9 @@
 		C1C2C569127CBCA0003B24F6 /* MDInspectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C12501123A0BA3004674B4 /* MDInspectorView.m */; };
 		C1C2C56A127CBCA0003B24F6 /* MDSelfExpandingTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C12503123A0BA3004674B4 /* MDSelfExpandingTextField.m */; };
 		C1C2C56B127CBCA0003B24F6 /* MDViewOptionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C12509123A0BC1004674B4 /* MDViewOptionsController.m */; };
-		C1C2C56C127CBCA0003B24F6 /* MDQuickLookController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C1250D123A0BE1004674B4 /* MDQuickLookController.m */; };
+		C1C2C56C127CBCA0003B24F6 /* MDQuickLookController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C1250D123A0BE1004674B4 /* MDQuickLookController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C1C2C56D127CBCA0003B24F6 /* MDQuickLookControlButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C1250F123A0BE1004674B4 /* MDQuickLookControlButton.m */; };
-		C1C2C56E127CBCA0003B24F6 /* MDCopyOperationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C12514123A0C03004674B4 /* MDCopyOperationController.m */; };
+		C1C2C56E127CBCA0003B24F6 /* MDCopyOperationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C12514123A0C03004674B4 /* MDCopyOperationController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C1C2C56F127CBCA0003B24F6 /* MDCopyOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C12518123A0C18004674B4 /* MDCopyOperation.m */; };
 		C1C2C570127CBCA0003B24F6 /* MDCopyOperationView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C1251B123A0C32004674B4 /* MDCopyOperationView.m */; };
 		C1C2C571127CBCA0003B24F6 /* MDRolloverButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C1251D123A0C32004674B4 /* MDRolloverButton.m */; };
@@ -5412,6 +5412,7 @@
 		C140E63F13889A9400027DD6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
@@ -5436,6 +5437,7 @@
 		C140E64013889A9400027DD6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
@@ -5738,6 +5740,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = sourceFinagler;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(BUILD_DIR)\"/**",
@@ -5768,6 +5771,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = sourceFinagler;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(BUILD_DIR)\"/**",

@@ -30,15 +30,17 @@ static OSErr FSGetTotalForkSizes(const FSRef *ref,
 
 
 static NSArray *fileAttributeKeys = nil;
-
 static MDFileManager *sharedManager = nil;
 
 
 @implementation MDFileManager
 
 + (void)initialize {
-	fileAttributeKeys = [[NSArray alloc] initWithObjects:MDFileLabelNumber, MDFileHasCustomIcon,
-						 MDFileIsStationery, MDFileNameLocked, MDFileIsPackage, MDFileIsInvisible, MDFileIsAliasFile, nil];
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		fileAttributeKeys = [[NSArray alloc] initWithObjects:MDFileLabelNumber, MDFileHasCustomIcon,
+							 MDFileIsStationery, MDFileNameLocked, MDFileIsPackage, MDFileIsInvisible, MDFileIsAliasFile, nil];
+	});
 }
 
 + (MDFileManager *)defaultManager {

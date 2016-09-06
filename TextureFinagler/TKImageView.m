@@ -86,7 +86,7 @@ CGColorRef TKCreatePatternColorWithImage(CGImageRef imageRef);
 
 @implementation TKImageView
 
-@dynamic imageKitLayer;
+@synthesize imageKitLayer;
 
 @synthesize animationImageLayer;
 
@@ -112,13 +112,8 @@ CGColorRef TKCreatePatternColorWithImage(CGImageRef imageRef);
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	[imageKitLayer release];
-	[animationImageLayer release];
-	[animationImageReps release];
 	delegate = nil;
 	CGImageRelease(image);
-	[previewImageRep release];
-	[super dealloc];
 }
 
 
@@ -142,13 +137,6 @@ CGColorRef TKCreatePatternColorWithImage(CGImageRef imageRef);
     return imageKitLayer;
 }
 
-- (void)setImageKitLayer:(CALayer *)aLayer {
-	[aLayer retain];
-	[imageKitLayer release];
-	imageKitLayer = aLayer;
-}
-
-
 - (TKImageRep *)previewImageRep {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -162,8 +150,6 @@ CGColorRef TKCreatePatternColorWithImage(CGImageRef imageRef);
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	
-	[aPreviewImageRep retain];
-	[previewImageRep release];
 	previewImageRep = aPreviewImageRep;
 	
 	if (previewImageRep) {
@@ -204,7 +190,7 @@ CGColorRef TKCreatePatternColorWithImage(CGImageRef imageRef);
 		@synchronized([self class]) {
 			if (checkerboardImageRep == nil) {
 				NSImage *imgRep = [NSImage imageNamed:@"checkerboard"];
-				checkerboardImageRep = [[TKImageRep imageRepWithImageRep:(NSBitmapImageRep *)[[imgRep representations] firstObject]] retain];
+				checkerboardImageRep = [TKImageRep imageRepWithImageRep:(NSBitmapImageRep *)[[imgRep representations] firstObject]];
 			}
 		}
 		CGImageRef checkerboardImageRef = CGImageRetain(checkerboardImageRep.CGImage);
@@ -261,7 +247,7 @@ CGColorRef TKCreatePatternColorWithImage(CGImageRef imageRef);
 		
 		TKImageRep *largestRep = [TKImageRep largestRepresentationInArray:animationImageReps];
 		
-		if (animationImageLayer == nil) animationImageLayer = [[CALayer layer] retain];
+		if (animationImageLayer == nil) animationImageLayer = [CALayer layer];
 		
 		animationImageLayer.frame = NSRectToCGRect(NSMakeRect(0.0, 0.0, largestRep.size.width, largestRep.size.height));
 		animationImageLayer.position = NSPointToCGPoint(NSMakePoint(self.bounds.size.width/2.0, self.bounds.size.height/2.0));

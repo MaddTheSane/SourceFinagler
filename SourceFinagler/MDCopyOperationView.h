@@ -29,7 +29,7 @@ typedef NS_ENUM(NSUInteger, MDCopyOperationViewBackgroundColorType) {
 	NSColor										*alternateColor;
 }
 
-@property (retain) MDCopyOperationSeparatorView *separatorView;
+@property (strong) MDCopyOperationSeparatorView *separatorView;
 
 @property (assign) MDCopyOperationViewBackgroundColorType colorType;
 @property (assign) NSInteger tag;
@@ -40,6 +40,3 @@ typedef NS_ENUM(NSUInteger, MDCopyOperationViewBackgroundColorType) {
 + (NSSize)copyOperationViewSize;
 
 @end
-
-
-

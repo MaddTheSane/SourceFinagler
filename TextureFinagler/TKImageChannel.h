@@ -47,8 +47,7 @@ typedef NS_OPTIONS(NSUInteger, TKImageChannelMask) {
 @property (copy) NSImage *image;
 @property (assign) TKImageChannelMask channelMask;
 @property (assign, getter=isEnabled) BOOL enabled;
-@property (retain) CIFilter *filter;
-
+@property (strong) CIFilter *filter;
 
 - (void)updateWithImageRep:(TKImageRep *)anImageRep;
 

@@ -28,10 +28,10 @@
 
 @interface MDPropertyInspectorView : NSView <NSCoding> {
 	
-	IBOutlet NSButton								*titleButton;
-	IBOutlet NSButton								*disclosureButton;
+	NSButton								*__weak titleButton;
+	NSButton								*__weak disclosureButton;
 	
-	__unsafe_unretained id <MDInspectorViewDelegate> delegate;
+	__weak id <MDInspectorViewDelegate> delegate;
 	
 	TKMaterialPropertyViewController				*viewController;
 	
@@ -60,17 +60,17 @@
 @property (getter=isShown) BOOL shown;
 
 
-@property (nonatomic, assign) IBOutlet NSButton *titleButton;
+@property (nonatomic, weak) IBOutlet NSButton *titleButton;
 
-@property (nonatomic, assign) IBOutlet NSButton *disclosureButton;
+@property (nonatomic, weak) IBOutlet NSButton *disclosureButton;
 
-@property (nonatomic, retain) TKMaterialPropertyViewController *viewController;
+@property (nonatomic, strong) TKMaterialPropertyViewController *viewController;
 
 @property (nonatomic, copy) NSString *autosaveName;
 
 @property (nonatomic, assign, getter=isInitiallyShown) BOOL initiallyShown;
 
-@property (nonatomic, assign) IBOutlet id <MDInspectorViewDelegate> delegate;
+@property (nonatomic, weak) IBOutlet id <MDInspectorViewDelegate> delegate;
 
 
 - (void)changeWindowHeightBy:(CGFloat)value;

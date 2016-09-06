@@ -53,39 +53,16 @@ static SInt32 MDSystemVersion = MDUndeterminedVersion;
 	return self;
 }
 
-
-- (void)dealloc {
-#if MD_DEBUG
-	NSLog(@" \"%@\" [%@ %@]", [[[[self window] windowController] document] displayName], NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-#endif
-	[selectedIndexes release];
-	[totalCount release];
-	[freeSpace release];
-	[formatter release];
-	[super dealloc];
-}
-
-
-
 - (void)setSelectedIndexes:(NSIndexSet *)anIndexSet totalCount:(NSNumber *)aTotalCount freeSpace:(NSNumber *)aFreeSpace {
 #if MD_DEBUG
 	NSLog(@" \"%@\" [%@ %@]", [[[[self window] windowController] document] displayName], NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	[anIndexSet retain];
-	[selectedIndexes release];
 	selectedIndexes = anIndexSet;
-	
-	[aTotalCount retain];
-	[totalCount release];
 	totalCount = aTotalCount;
-	
-	[aFreeSpace retain];
-	[freeSpace release];
 	freeSpace = aFreeSpace;
 	
 	[self setNeedsDisplay:YES];
 }
-
 
 - (void)drawRect:(NSRect)rect {
 	
@@ -106,8 +83,8 @@ static SInt32 MDSystemVersion = MDUndeterminedVersion;
 			
 			[NSBezierPath strokeLineFromPoint:NSMakePoint(rect.origin.x, rect.origin.y + (rect.size.height - 2.0)) toPoint:NSMakePoint(rect.origin.x + rect.size.width, rect.origin.y + (rect.size.height - 2.0))];
 			
-			NSGradient *gradient = [[[NSGradient alloc] initWithStartingColor:[NSColor colorWithCalibratedRed:133.0/255.0 green:133.0/255.0 blue:133.0/255.0 alpha:1.0]
-																  endingColor:[NSColor colorWithCalibratedRed:177.0/255.0 green:177.0/255.0 blue:177.0/255.0 alpha:1.0]] autorelease];
+			NSGradient *gradient = [[NSGradient alloc] initWithStartingColor:[NSColor colorWithCalibratedRed:133.0/255.0 green:133.0/255.0 blue:133.0/255.0 alpha:1.0]
+																  endingColor:[NSColor colorWithCalibratedRed:177.0/255.0 green:177.0/255.0 blue:177.0/255.0 alpha:1.0]];
 			
 			NSRect gradientRect = rect;
 			gradientRect.size.height -= 2.0;
@@ -127,8 +104,8 @@ static SInt32 MDSystemVersion = MDUndeterminedVersion;
 			
 			[NSBezierPath strokeLineFromPoint:NSMakePoint(rect.origin.x, rect.origin.y + (rect.size.height - 2.0)) toPoint:NSMakePoint(rect.origin.x + rect.size.width, rect.origin.y + (rect.size.height - 2.0))];
 			
-			NSGradient *gradient = [[[NSGradient alloc] initWithStartingColor:[NSColor colorWithCalibratedRed:198.0/255.0 green:198.0/255.0 blue:198.0/255.0 alpha:1.0]
-																  endingColor:[NSColor colorWithCalibratedRed:222.0/255.0 green:222.0/255.0 blue:222.0/255.0 alpha:1.0]] autorelease];
+			NSGradient *gradient = [[NSGradient alloc] initWithStartingColor:[NSColor colorWithCalibratedRed:198.0/255.0 green:198.0/255.0 blue:198.0/255.0 alpha:1.0]
+																  endingColor:[NSColor colorWithCalibratedRed:222.0/255.0 green:222.0/255.0 blue:222.0/255.0 alpha:1.0]];
 			
 			
 			NSRect gradientRect = rect;
@@ -170,10 +147,10 @@ static SInt32 MDSystemVersion = MDUndeterminedVersion;
 	}
 
 	
-	NSMutableParagraphStyle *style = [[[NSParagraphStyle defaultParagraphStyle] mutableCopy] autorelease];
+	NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
 	style.lineBreakMode = NSLineBreakByTruncatingMiddle;
 	
-	NSShadow *shadow = [[[NSShadow alloc] init] autorelease];
+	NSShadow *shadow = [[NSShadow alloc] init];
 	shadow.shadowOffset = NSMakeSize(0.0, -1.0);
 	
 	shadow.shadowColor = [NSColor colorWithCalibratedRed:1.0 green:1.0 blue:1.0 alpha:0.41];
@@ -199,7 +176,7 @@ static SInt32 MDSystemVersion = MDUndeterminedVersion;
 	
 	NSDictionary *attributes = @{NSFontAttributeName: [NSFont systemFontOfSize:[NSFont smallSystemFontSize]], NSParagraphStyleAttributeName: style, NSShadowAttributeName: shadow, NSForegroundColorAttributeName: textColor};
 	
-	NSAttributedString *richText = [[[NSAttributedString alloc] initWithString:stringValue attributes:attributes] autorelease];
+	NSAttributedString *richText = [[NSAttributedString alloc] initWithString:stringValue attributes:attributes];
 	
 	NSRect richTextRect = NSZeroRect;
 	
@@ -220,9 +197,3 @@ static SInt32 MDSystemVersion = MDUndeterminedVersion;
 }
 
 @end
-
-	
-
-
-
-

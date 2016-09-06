@@ -35,16 +35,12 @@
 	return self;
 }
 
-
 - (void)dealloc {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
-	[super dealloc];
 }
-
-
 
 - (void)awakeFromNib {
 	[(NSPanel *)self.window setBecomesKeyOnlyIfNeeded:YES];

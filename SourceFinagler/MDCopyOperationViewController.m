@@ -14,18 +14,15 @@
 #define MD_DEBUG 0
 
 @implementation MDCopyOperationViewController
-
 @synthesize tag;
 
 + (instancetype)viewControllerWithViewColorType:(MDCopyOperationViewBackgroundColorType)aColorType tag:(NSInteger)aTag {
-	return [[[[self class] alloc] initWithViewColorType:aColorType tag:aTag] autorelease];
+	return [[[self class] alloc] initWithViewColorType:aColorType tag:aTag];
 }
-
 
 - (instancetype)init {
 	return [self initWithViewColorType:MDWhiteBackgroundColorType tag:-1];
 }
-
 
 - (instancetype)initWithViewColorType:(MDCopyOperationViewBackgroundColorType)aColorType tag:(NSInteger)aTag {
 	if ((self = [super initWithNibName:@"MDCopyOperationView" bundle:nil])) {
@@ -36,15 +33,6 @@
 	}
 	return self;
 }
-
-
-- (void)dealloc {
-#if MD_DEBUG
-	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-#endif
-	[super dealloc];
-}
-
 
 static inline NSString *NSStringFromAutoresizingMask(NSUInteger mask) {
 	NSMutableString *description = [NSMutableString string];
@@ -98,5 +86,3 @@ static inline NSString *NSStringFromAutoresizingMask(NSUInteger mask) {
 }
 
 @end
-
-

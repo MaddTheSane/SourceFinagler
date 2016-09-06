@@ -49,7 +49,6 @@ NSString * const MDShouldShowViewOptionsDidChangeNotification	= @"MDShouldShowVi
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
-	[super dealloc];
 }
 
 

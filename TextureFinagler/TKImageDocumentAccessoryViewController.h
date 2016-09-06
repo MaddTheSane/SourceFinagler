@@ -75,8 +75,8 @@
 @property (assign) TKImage *image;
 
 
-@property (retain) NSString *imageUTType;
-@property (readonly) NSDictionary *imageProperties;
+@property (strong) NSString *imageUTType;
+@property (weak, readonly) NSDictionary *imageProperties;
 
 @property (assign) TKVTFFormat vtfFormat;
 @property (assign) TKDDSFormat ddsFormat;

@@ -53,7 +53,6 @@ NSString * const TKImageExportPreviewKey	= @"TKImageExportPreview";
 		NSData *previewData = [TKDDSImageRep DDSRepresentationOfImageRepsInArray:imageExportPreview.image.representations usingPreset:imageExportPreview.preset];
 		TKDDSImageRep *imageRep = [[TKDDSImageRep alloc] initWithData:previewData];
 		imageExportPreview.imageRep = imageRep;
-		[imageRep release];
 		
 		imageExportPreview.imageFileSize = previewData.length;
 		
@@ -62,7 +61,6 @@ NSString * const TKImageExportPreviewKey	= @"TKImageExportPreview";
 		NSData *previewData = [TKVTFImageRep VTFRepresentationOfImageRepsInArray:imageExportPreview.image.representations usingPreset:imageExportPreview.preset];
 		TKVTFImageRep *imageRep = [[TKVTFImageRep alloc] initWithData:previewData];
 		imageExportPreview.imageRep = imageRep;
-		[imageRep release];
 		imageExportPreview.imageFileSize = previewData.length;
 		
 	} else if ([preset isEqualToPreset:[TKImageExportPreset originalImagePreset]]) {
@@ -81,9 +79,6 @@ NSString * const TKImageExportPreviewKey	= @"TKImageExportPreview";
 	
 }
 }
-
-
-
 
 - (BOOL)isEqual:(id)object {
 	if ([object isKindOfClass:[self class]]) {

@@ -19,7 +19,7 @@
 
 
 @implementation MDBrowserCell
-
+@synthesize itemIsInvisible;
 @synthesize image;
 
 - (instancetype)init {
@@ -44,22 +44,11 @@
 	return cell;
 }
 
-- (void)dealloc {
-	[image release];
-	[super dealloc];
-}
-
-- (BOOL)itemIsInvisible {
-    return itemIsInvisible;
-}
-
 - (void)setItemIsInvisible:(BOOL)value {
 	itemIsInvisible = value;
 	self.textColor = (itemIsInvisible ? [NSColor disabledControlTextColor] : [NSColor controlTextColor] );
 //	[self setTextColor:(itemIsInvisible ? [[NSColor controlTextColor] colorWithAlphaComponent:0.5] : [NSColor controlTextColor] )];
 }
-
-
 
 - (NSRect)imageRectForBounds:(NSRect)bounds {
 #if MD_DEBUG
@@ -77,7 +66,6 @@
 	bounds.origin.y += trunc((bounds.size.height - imageSize.height) / 2.0);
 	return bounds;
 }
-
 
 - (NSRect)titleRectForBounds:(NSRect)bounds {
 #if MD_DEBUG
@@ -101,8 +89,6 @@
 	return cellSize;
 }
 
-
-
 - (void)drawInteriorWithFrame:(NSRect)cellFrame inView:(NSView *)controlView {
 #if MD_DEBUG
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -119,7 +105,6 @@
 			[transform scaleXBy:1.0 yBy:-1.0];
 			[transform translateXBy:0.0 yBy:-cellFrame.origin.y];
 			[transform concat];
-			[transform release];
 		}
 //		NSLog(@"[%@ %@] drawing image", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 		[self.image drawInRect:imageRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:(itemIsInvisible ? 0.5 : 1.0)];
@@ -133,8 +118,4 @@
 	[super drawInteriorWithFrame:cellFrame inView:controlView];
 }
 
-
 @end
-
-
-

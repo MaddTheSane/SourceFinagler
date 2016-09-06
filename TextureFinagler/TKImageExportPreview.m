@@ -23,8 +23,8 @@
 	if (anImage == nil || aPreset == nil) return nil;
 	if ((self = [super init])) {
 		controller = aController;
-		image = [anImage retain];
-		preset = [aPreset retain];
+		image = anImage;
+		preset = aPreset;
 		tag = aTag;
 	}
 	return self;
@@ -36,10 +36,6 @@
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	controller = nil;
-	[image release];
-	[imageRep release];
-	[preset release];
-	[super dealloc];
 }
 
 
@@ -79,6 +75,3 @@
 }
 
 @end
-
-
-

@@ -29,7 +29,6 @@
 	if ((self = [super initWithFrame:aFrame])) {
 		[self finishSetup];
 	} else {
-		[self release];
 		return nil;
 	}
 	return self;
@@ -51,7 +50,6 @@
 #endif
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[self removeAllToolTips];
-	[super dealloc];
 }
 
 
@@ -65,7 +63,7 @@
 }
 
 - (void)awakeFromNib {
-	NSTrackingArea *tracker = [[[NSTrackingArea alloc] initWithRect:self.frame options:(NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways) owner:self userInfo:nil] autorelease];
+	NSTrackingArea *tracker = [[NSTrackingArea alloc] initWithRect:self.frame options:(NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways) owner:self userInfo:nil];
 	[self addTrackingArea:tracker];
 }
 

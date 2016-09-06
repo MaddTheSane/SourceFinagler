@@ -20,7 +20,7 @@ static NSColor *separatorColor = nil;
 @implementation MDCopyOperationSeparatorView
 
 + (void)initialize {
-	if (separatorColor == nil) separatorColor = [[NSColor colorWithCalibratedRed:184.0/255.0 green:184.0/255.0 blue:184.0/255.0 alpha:1.0] retain];
+	if (separatorColor == nil) separatorColor = [NSColor colorWithCalibratedRed:184.0/255.0 green:184.0/255.0 blue:184.0/255.0 alpha:1.0];
 }
 
 
@@ -37,7 +37,7 @@ static NSColor *separatorColor = nil;
 	NSRect frame = NSMakeRect(0.0, 0.0, (copyOperationView ? [[copyOperationView class] copyOperationViewSize].width : [MDCopyOperationView copyOperationViewSize].width), 1.0);
 	if (copyOperationView) frame.origin.y = copyOperationView.frame.origin.y + NSHeight(copyOperationView.frame);
 	
-	MDCopyOperationSeparatorView *separatorView = [[[[self class] alloc] initWithFrame:frame] autorelease];
+	MDCopyOperationSeparatorView *separatorView = [[[self class] alloc] initWithFrame:frame];
 	copyOperationView.separatorView = separatorView;
 	return separatorView;
 }
@@ -65,7 +65,5 @@ static NSColor *separatorColor = nil;
 - (BOOL)isOpaque {
 	return YES;
 }
-
-
 
 @end

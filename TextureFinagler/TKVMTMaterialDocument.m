@@ -20,12 +20,8 @@ static NSMutableDictionary *materialAttributes = nil;
 
 
 @implementation TKVMTMaterialDocument
-
-
 @synthesize material;
-
 @synthesize materialString;
-
 
 + (void)initialize {
 	@synchronized(self) {
@@ -45,13 +41,6 @@ static NSMutableDictionary *materialAttributes = nil;
     return self;
 }
 
-
-- (void)dealloc {
-    [material release];
-    [super dealloc];
-}
-
-
 - (NSString *)windowNibName {
     // Override returning the nib file name of the document
     // If you need to use a subclass of NSWindowController or if your document supports multiple NSWindowControllers, you should remove this method and override -makeWindowControllers instead.
@@ -70,19 +59,14 @@ static NSMutableDictionary *materialAttributes = nil;
 	NSString *vmtString = [NSString stringWithContentsOfURL:absURL usedEncoding:NULL error:outError];
 	
 	if (vmtString == nil) {
-		
-		
 		return material != nil;
 	}
-	
 	
 	materialString = [[NSMutableAttributedString alloc] initWithString:vmtString attributes:materialAttributes];
 	
 	
 	return material != nil;
 }
-
-
 
 - (BOOL)writeToURL:(NSURL *)absoluteURL ofType:(NSString *)typeName error:(NSError **)outError {
 #if TK_DEBUG

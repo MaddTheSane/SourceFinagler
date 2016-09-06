@@ -32,38 +32,23 @@ NSString * const MDCopyOperationStageKey				= @"MDCopyOperationStage";
 @synthesize cancelled = isCancelled;
 
 + (instancetype)operationWithSource:(MDHLDocument *)aSource destination:(id)aDestination itemsAndPaths:(NSDictionary *)anItemsAndPaths tag:(NSInteger)aTag {
-	return [[[[self class] alloc] initWithSource:aSource destination:aDestination itemsAndPaths:anItemsAndPaths tag:aTag] autorelease];
+	return [[[self class] alloc] initWithSource:aSource destination:aDestination itemsAndPaths:anItemsAndPaths tag:aTag];
 }
-
 
 - (instancetype)initWithSource:(MDHLDocument *)aSource destination:(id)aDestination itemsAndPaths:(NSDictionary *)anItemsAndPaths tag:(NSInteger)aTag {
 	if ((self = [super init])) {
 		
-		icon = [[NSImage imageNamed:NSImageNameMultipleDocuments] retain];
+		icon = [NSImage imageNamed:NSImageNameMultipleDocuments];
 		
 		source = aSource;
-		destination = [aDestination retain];
+		destination = aDestination;
 		tag = aTag;
-		itemsAndPaths = [anItemsAndPaths retain];
+		itemsAndPaths = anItemsAndPaths;
 		
 		[self setIndeterminate:YES];
 	}
 	return self;
 }
-
-
-- (void)dealloc {
-#if MD_DEBUG
-	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-#endif
-	[messageText release];
-	[informativeText release];
-	[icon release];
-	[destination release];
-	[itemsAndPaths release];
-	[super dealloc];
-}
-
 
 - (NSString *)informativeText {
 #if MD_DEBUG
@@ -72,20 +57,14 @@ NSString * const MDCopyOperationStageKey				= @"MDCopyOperationStage";
 	return (isRolledOver ? NSLocalizedString(@"Stop copying", @"") : informativeText);
 }
 
-
 - (void)setInformativeText:(NSString *)text {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	@synchronized(self) {
 		NSString *copy = [text copy];
-		[informativeText release];
 		informativeText = copy;
 	}
 }
 
-
 @end
-
-
-

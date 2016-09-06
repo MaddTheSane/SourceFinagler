@@ -43,6 +43,9 @@ static NSString * const MDIdentifierKey							= @"MDIdentifier";
 
 
 @implementation MDInspectorView
+@synthesize titleButton;
+@synthesize disclosureButton;
+@synthesize autosaveName;
 
 static inline NSString *NSStringFromInspectorViewAutosaveName(NSString *anAutosaveName) {
 	return [NSString stringWithFormat:MDInspectorViewIsShownFormatKey, anAutosaveName];
@@ -59,21 +62,18 @@ static inline NSString *NSStringFromInspectorViewAutosaveName(NSString *anAutosa
 		originalHeight = self.frame.size.height;
 		hiddenHeight = 0.0;
 		
-		autosaveName = [@"" retain];
+		autosaveName = @"";
 		
 //		[self setAutosaveName:@""];
 		[self setInitiallyShown:YES];
 		
 //		hiddenHeight = 1.0;
 	} else {
-		[self release];
 		return nil;
 	}
 	
 	return self;
 }
-
-
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
 #if MD_DEBUG
@@ -91,7 +91,7 @@ static inline NSString *NSStringFromInspectorViewAutosaveName(NSString *anAutosa
 			NSLog(@"[%@ %@] found legacy MDIdentifier", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 		}
 		
-		autosaveName = [encodedName retain];
+		autosaveName = [encodedName copy];
 		
 //		[self setAutosaveName:encodedName];
 		self.initiallyShown = [[coder decodeObjectForKey:MDInspectorViewIsIntiallyExpandedKey] boolValue];
@@ -109,17 +109,11 @@ static inline NSString *NSStringFromInspectorViewAutosaveName(NSString *anAutosa
     [super encodeWithCoder:coder];
 	[coder encodeObject:autosaveName forKey:MDInspectorViewAutosaveNameKey];
 	[coder encodeObject:@(isInitiallyShown) forKey:MDInspectorViewIsIntiallyExpandedKey];
-	
 }
-
 
 - (void)dealloc {
 	delegate = nil;
-	[autosaveName release];
-	[hiddenSubviews release];
-	[super dealloc];
 }
-
 
 - (void)awakeFromNib {
 #if MD_DEBUG
@@ -169,7 +163,6 @@ static inline NSString *NSStringFromInspectorViewAutosaveName(NSString *anAutosa
 	if ([key isEqualToString:@"isInitiallyShown"]) {
 		isInitiallyShown = YES;
 	} else if ([key isEqualToString:@"autosaveName"]) {
-		[autosaveName release];
 		autosaveName = [@"" copy];
 	}
 }
@@ -196,36 +189,6 @@ static inline NSString *NSStringFromInspectorViewAutosaveName(NSString *anAutosa
 		havePendingWindowHeightChange = NO;
 	}
 }
-
-
-- (NSButton *)titleButton {
-    return titleButton;
-}
-
-- (void)setTitleButton:(NSButton *)value {
-	titleButton = value;
-}
-
-
-- (NSButton *)disclosureButton {
-    return disclosureButton;
-}
-
-- (void)setDisclosureButton:(NSButton *)value {
-	disclosureButton = value;
-}
-
-
-- (NSString *)autosaveName {
-    return autosaveName;
-}
-
-- (void)setAutosaveName:(NSString *)value {
-	NSString *aCopy = [value copy];
-	[autosaveName release];
-	autosaveName = aCopy;
-}
-
 
 //@property (assign, setter=setInitiallyShown:) BOOL isInitiallyShown;
 
@@ -465,9 +428,7 @@ static inline NSString *NSStringFromInspectorViewAutosaveName(NSString *anAutosa
         [self addSubview:hiddenSubviews[subviewIndex]];
 	}
 
-    [hiddenSubviews release];
     hiddenSubviews = nil;
-	
 }
 
 

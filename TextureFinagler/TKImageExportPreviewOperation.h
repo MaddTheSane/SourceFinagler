@@ -16,13 +16,13 @@ extern NSString * const TKImageExportPreviewKey;
 
 
 @interface TKImageExportPreviewOperation : NSOperation {
-	__unsafe_unretained TKImageExportPreview		*imageExportPreview;
+	__weak TKImageExportPreview		*imageExportPreview;
 	
 }
 
 - (instancetype)initWithImageExportPreview:(TKImageExportPreview *)anImageExportPreview NS_DESIGNATED_INITIALIZER;
 
-@property (assign) TKImageExportPreview *imageExportPreview;
+@property (weak) TKImageExportPreview *imageExportPreview;
 
 - (BOOL)isEqual:(id)object;
 

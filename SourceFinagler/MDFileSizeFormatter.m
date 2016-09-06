@@ -48,14 +48,12 @@ NSString * const MDFileSizeFormatterUnitsTypeKey	= @"MDFileSizeFormatterUnitsTyp
 	return copy;
 }
 
-
 - (instancetype)init {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	return [self initWithUnitsType:MDFileSizeFormatterAutomaticUnitsType style:MDFileSizeFormatterPhysicalStyle];
 }
-
 
 - (instancetype)initWithUnitsType:(MDFileSizeFormatterUnitsType)aUnitsType style:(MDFileSizeFormatterStyle)aStyle {
 #if MD_DEBUG
@@ -68,7 +66,6 @@ NSString * const MDFileSizeFormatterUnitsTypeKey	= @"MDFileSizeFormatterUnitsTyp
 	}
 	return self;
 }
-
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
 #if MD_DEBUG
@@ -92,7 +89,6 @@ NSString * const MDFileSizeFormatterUnitsTypeKey	= @"MDFileSizeFormatterUnitsTyp
 	return self;
 }
 
-
 - (void)encodeWithCoder:(NSCoder *)coder {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -102,14 +98,6 @@ NSString * const MDFileSizeFormatterUnitsTypeKey	= @"MDFileSizeFormatterUnitsTyp
 	[coder encodeObject:@((unsigned long long)unitsType) forKey:MDFileSizeFormatterUnitsTypeKey];
 	[coder encodeObject:@((unsigned long long)style) forKey:MDFileSizeFormatterStyleKey];
 }
-
-
-- (void)dealloc {
-	[numberFormatter release];
-	[bytesFormatter release];
-	[super dealloc];
-}
-
 
 - (MDFileSizeFormatterUnitsType)unitsType {
 #if MD_DEBUG
@@ -158,10 +146,9 @@ NSString * const MDFileSizeFormatterUnitsTypeKey	= @"MDFileSizeFormatterUnitsTyp
 		if (bytesFormatter == nil) bytesFormatter = [[NSNumberFormatter alloc] init];
 		bytesFormatter.format = @"#,##0";
 	} else {
-		[bytesFormatter release]; bytesFormatter = nil;
+		bytesFormatter = nil;
 	}
 }
-
 
 - (BOOL)getObjectValue:(id *)anObject forString:(NSString *)string errorDescription:(NSString **)outError {
 #if MD_DEBUG
@@ -170,10 +157,10 @@ NSString * const MDFileSizeFormatterUnitsTypeKey	= @"MDFileSizeFormatterUnitsTyp
 #endif
 	if (anObject) *anObject = nil;
 	
-	if (outError) *outError = @"Why the hell is this being called?";
+	if (outError)
+		*outError = @"Why the hell is this being called?";
 	return NO;
 }
-
 
 - (NSString *)stringForObjectValue:(id)anObject {
 #if MD_DEBUG

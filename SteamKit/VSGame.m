@@ -24,18 +24,18 @@
 @dynamic executableURL;
 
 + (instancetype)gameWithPath:(NSString *)aPath infoPlist:(NSDictionary *)anInfoPlist {
-	return [[[[self class] alloc] initWithPath:aPath infoPlist:anInfoPlist] autorelease];
+	return [[[self class] alloc] initWithPath:aPath infoPlist:anInfoPlist];
 }
 
 
 - (instancetype)initWithPath:(NSString *)aPath infoPlist:(NSDictionary *)anInfoPlist {
 	if (aPath && anInfoPlist && (self = [super init])) {
 		isHelped = NO;
-		executablePath = [aPath retain];
+		executablePath = aPath;
 		creatorCode = [anInfoPlist[VSGameCreatorCodeKey] unsignedIntValue];
-		infoDictionary = [anInfoPlist[VSGameInfoPlistKey] retain];
+		infoDictionary = anInfoPlist[VSGameInfoPlistKey];
 		gameID = [anInfoPlist[VSGameIDKey] unsignedIntegerValue];
-		displayName = [infoDictionary[(NSString *)kCFBundleNameKey] retain];
+		displayName = infoDictionary[(NSString *)kCFBundleNameKey];
 		
 		NSString *shortFolderName = anInfoPlist[VSGameShortNameKey];
 		
@@ -45,11 +45,11 @@
 								stringByAppendingPathComponent:VSResourceNameKey]
 							   stringByAppendingPathComponent:VSGameIconNameKey];
 		}
-		NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
+		NSFileManager *fileManager = [[NSFileManager alloc] init];
 		BOOL isDir;
 		
 		if ([fileManager fileExistsAtPath:iconPath isDirectory:&isDir] && !isDir) {
-			NSImage *iconImage = [[[NSImage alloc] initByReferencingFile:iconPath] autorelease];
+			NSImage *iconImage = [[NSImage alloc] initByReferencingFile:iconPath];
 			self.icon = iconImage;
 		} else {
 			NSLog(@"[%@ %@] file doesn't exist at iconPath == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), iconPath);
@@ -87,18 +87,6 @@
 }
 
 
-
-- (void)dealloc {
-	[executablePath release];
-	[icon release];
-	[iconPath release];
-	[displayName release];
-	[infoDictionary release];
-	[addonsFolderPath release];
-	[super dealloc];
-}
-
-
 - (void)synchronizeHelped {
 #if VS_DEBUG
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -109,19 +97,16 @@
 	NSError *outError = nil;
 	if ( !([fileManager fileExistsAtPath:executablePath isDirectory:&isDir] && !isDir)) {
 		NSLog(@"[%@ %@] no file exists at %@!", NSStringFromClass([self class]), NSStringFromSelector(_cmd), executablePath);
-		[fileManager release];
 		return;
 	}
 	
 	NSDictionary *attributes = [fileManager attributesOfItemAtPath:executablePath error:&outError];
 	if (attributes == nil) {
 		NSLog(@"[%@ %@] failed to get attributes of item at path == %@; error == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), executablePath, outError);
-		[fileManager release];
 		return;
 	}
 	self.helped = ([attributes fileHFSCreatorCode] != 0);
 	
-	[fileManager release];
 }
 
 - (NSURL *)executableURL {
@@ -131,7 +116,6 @@
 - (void)setExecutableURL:(NSURL *)aURL {
 	
 }
-
 
 - (NSString *)description {
 	NSMutableString *description = [NSMutableString stringWithFormat:@"%@ -", super.description];
@@ -145,11 +129,9 @@
 	return description;
 }
 
-
 - (BOOL)isEqual:(id)anObject {
 	return [self isEqualToGame:anObject];
 }
-
 
 - (BOOL)isEqualToGame:(VSGame *)game {
 #if VS_DEBUG
@@ -161,7 +143,4 @@
 	return NO;
 }
 
-
-
 @end
-

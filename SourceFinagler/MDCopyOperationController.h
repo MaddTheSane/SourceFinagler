@@ -36,12 +36,7 @@
 @property (assign) NSInteger tag;
 @property (assign) MDCopyOperationViewBackgroundColorType colorType;
 
-
 - (void)addOperation:(MDCopyOperation *)operation;
 - (void)endOperation:(MDCopyOperation *)operation;
 
-
 @end
-
-
-

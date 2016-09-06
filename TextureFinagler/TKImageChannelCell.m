@@ -21,7 +21,6 @@
 
 
 @implementation TKImageChannelCell
-
 @synthesize image;
 
 - (instancetype)init {
@@ -34,7 +33,6 @@
     return self;
 }
 
-
 - (id)copyWithZone:(NSZone *)zone {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -44,12 +42,6 @@
 	cell.image = image;
 	return cell;
 }
-
-- (void)dealloc {
-	[image release];
-	[super dealloc];
-}
-
 
 - (NSRect)imageRectForBounds:(NSRect)bounds {
 #if TK_DEBUG
@@ -68,7 +60,6 @@
 	return bounds;
 }
 
-
 - (NSRect)titleRectForBounds:(NSRect)bounds {
 #if TK_DEBUG
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -78,7 +69,6 @@
 	bounds.size.width -= (TK_INSET_HORIZ + imageSize.width + TK_INTER_SPACE);
 	return [super titleRectForBounds:bounds];
 }
-
 
 - (NSSize)cellSizeForBounds:(NSRect)aRect {
 #if TK_DEBUG
@@ -91,13 +81,11 @@
 	return cellSize;
 }
 
-
 - (NSRect)adjustFrameToVerticallyCenterText:(NSRect)frame {
 	// super would normally draw text at the top of the cell
 	NSInteger offset = floor((NSHeight(frame) - (self.font.ascender - self.font.descender)) / 2);
 	return NSInsetRect(frame, 0.0, offset);
 }
-
 
 - (void)drawInteriorWithFrame:(NSRect)cellFrame inView:(NSView *)controlView {
 #if TK_DEBUG
@@ -129,7 +117,6 @@
 			[transform scaleXBy:1.0 yBy:-1.0];
 			[transform translateXBy:0.0 yBy:-cellFrame.origin.y];
 			[transform concat];
-			[transform release];
 		}
 //		NSLog(@"[%@ %@] drawing image", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 		[self.image drawInRect:imageRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
@@ -145,9 +132,5 @@
 //	cellFrame.size.height -= 1.0;
 //	[super drawInteriorWithFrame:cellFrame inView:controlView];
 }
-
-
-
-
 
 @end

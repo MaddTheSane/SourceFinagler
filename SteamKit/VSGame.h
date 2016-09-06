@@ -23,7 +23,7 @@ typedef NSUInteger VSGameID;
 @property (readonly, copy) NSString *executablePath;
 
 /** Indicates the URL to the game's executable. */
-@property (readonly, retain) NSURL *executableURL;
+@property (readonly, strong) NSURL *executableURL;
 
 /** Indicates the name of the game, suitable for presentation to the user. */
 @property (readonly, copy) NSString *displayName;
@@ -35,7 +35,7 @@ typedef NSUInteger VSGameID;
 @property (readonly, copy) NSString *iconPath;
 
 /** A dictionary, constructed from the game's Info.plist file, that contains information about the game */
-@property (readonly, retain) NSDictionary *infoDictionary;
+@property (readonly, strong) NSDictionary *infoDictionary;
 
 /** The path to the game's addons directory, or nil if the game doesn't support addons. */
 @property (readonly, copy) NSString *addonsFolderPath;
@@ -53,10 +53,7 @@ typedef NSUInteger VSGameID;
 /** Indicates the process identifier (pid) of the game. Do not rely on this for comparing processes. Use isEqual: instead. Not all games have a pid. Games without a pid return -1 from this method. */
 @property (readonly) pid_t processIdentifier;
 
-
 - (BOOL)isEqual:(id)anObject;
 - (BOOL)isEqualToGame:(VSGame *)game;
 
 @end
-
-

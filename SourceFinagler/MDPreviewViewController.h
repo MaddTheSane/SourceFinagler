@@ -35,7 +35,7 @@
 	BOOL						isQuickLookPanel;
 }
 
-@property (retain) NSSound *sound;
+@property (strong) NSSound *sound;
 @property (assign, getter=isPlayingSound) BOOL playingSound;
 @property (assign, getter=isQuickLookPanel) BOOL quickLookPanel;
 

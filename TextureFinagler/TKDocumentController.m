@@ -19,15 +19,11 @@
 
 #define TK_DEBUG 1
 
-
-
 static NSSet *nonImageUTTypes = nil;
-
 NSString * const TKApplicationBundleIdentifier = @"com.markdouma.SourceFinagler";
 
 
 @implementation TKDocumentController
-
 
 + (void)initialize {
 	if (nonImageUTTypes == nil) {
@@ -47,12 +43,9 @@ NSString * const TKApplicationBundleIdentifier = @"com.markdouma.SourceFinagler"
 				}
 			}
 		}
-		nonImageUTTypes = [[NSSet setWithArray:supportedDocTypes] retain];
+		nonImageUTTypes = [NSSet setWithArray:supportedDocTypes];
 	}
-	
 }
-
-
 
 // Return the names of NSDocument subclasses supported by this application.
 // In this app, the only class is "ImageDoc".
@@ -61,7 +54,7 @@ NSString * const TKApplicationBundleIdentifier = @"com.markdouma.SourceFinagler"
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 	static NSArray *documentClassNames = nil;
 	if (documentClassNames == nil) {
-		documentClassNames = [@[@"TKImageDocument",
+		documentClassNames = @[@"TKImageDocument",
 							   @"TKModelDocument",
 							   @"TKVMTMaterialDocument",
 							   @"MDGCFDocument",
@@ -71,15 +64,13 @@ NSString * const TKApplicationBundleIdentifier = @"com.markdouma.SourceFinagler"
 							   @"MDVPKDocument",
 							   @"MDWADDocument",
 							   @"MDSGADocument",
-							   @"MDXZPDocument"] retain];
+							   @"MDXZPDocument"];
 	}
 	return documentClassNames;
 }
 
-
 // Return the name of the document type that should be used when opening a URL
 // • For ImageIO images: "In this app, we return the UTI type returned by CGImageSourceGetType."
-
 - (NSString *)typeForContentsOfURL:(NSURL *)absURL error:(NSError **)outError {
 //	NSLog(@"[%@ %@] absURL == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), absURL);
 	
@@ -103,7 +94,7 @@ NSString * const TKApplicationBundleIdentifier = @"com.markdouma.SourceFinagler"
 		return nil;
 	}
 	
-	if (CFGetTypeID(typeRef) == CFStringGetTypeID()) utiType = (NSString *)typeRef;
+	if (CFGetTypeID(typeRef) == CFStringGetTypeID()) utiType = (NSString *)CFBridgingRelease(typeRef);
 //	NSLog(@"[%@ %@] LSCopyItemAttribute()'s utiType == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), utiType);
 	
 	if ([[NSWorkspace sharedWorkspace] type:utiType conformsToType:(NSString *)kUTTypeImage] &&
@@ -114,7 +105,7 @@ NSString * const TKApplicationBundleIdentifier = @"com.markdouma.SourceFinagler"
 		
 		CGImageSourceRef isrc = CGImageSourceCreateWithURL((CFURLRef)absURL, NULL);
 		if (isrc) {
-			documentUTType = [[(NSString *)CGImageSourceGetType(isrc) retain] autorelease];
+			documentUTType = (__bridge NSString *)CGImageSourceGetType(isrc);
 			CFRelease(isrc);
 			CFRelease(typeRef);
 //			NSLog(@"[%@ %@] CGImageSourceGetType()'s documentUTType == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), documentUTType);
@@ -130,7 +121,6 @@ NSString * const TKApplicationBundleIdentifier = @"com.markdouma.SourceFinagler"
 	return documentUTType;
 }
 
-
 // Given a document type name, return the subclass of NSDocument
 // that should be instantiated when opening a document of that type.
 // In this app, the only class is "ImageDoc".
@@ -145,7 +135,6 @@ NSString * const TKApplicationBundleIdentifier = @"com.markdouma.SourceFinagler"
     return [[NSBundle mainBundle] classNamed:@"TKImageDocument"];
 }
 
-
 // Given a document type name, return a string describing the document 
 // type that is fit to present to the user.
 //
@@ -158,7 +147,6 @@ NSString * const TKApplicationBundleIdentifier = @"com.markdouma.SourceFinagler"
     return TKImageIOLocalizedString(typeName);
 }
 
-
 // Given a document type, return an array of corresponding file name extensions 
 // and HFS file type strings of the sort returned by NSFileTypeForHFSTypeCode().
 // In this app, 'typeName' is a UTI type so we can call UTTypeCopyDeclaration().
@@ -168,7 +156,7 @@ NSString * const TKApplicationBundleIdentifier = @"com.markdouma.SourceFinagler"
 	
     NSArray *readExts = nil;
 	
-	NSDictionary *utiDeclarations = [(NSDictionary *)UTTypeCopyDeclaration((CFStringRef)typeName) autorelease];
+	NSDictionary *utiDeclarations = (NSDictionary *)CFBridgingRelease(UTTypeCopyDeclaration((__bridge CFStringRef)typeName));
 	NSDictionary *utiSpec = utiDeclarations[(NSString *)kUTTypeTagSpecificationKey];
 	if (utiSpec) {
 		id extensions = utiSpec[(NSString *)kUTTagClassFilenameExtension];
@@ -182,8 +170,4 @@ NSString * const TKApplicationBundleIdentifier = @"com.markdouma.SourceFinagler"
     return readExts;
 }
 
-
-
 @end
-
-

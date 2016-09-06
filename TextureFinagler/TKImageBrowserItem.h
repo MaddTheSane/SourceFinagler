@@ -31,16 +31,14 @@ typedef NS_ENUM(NSUInteger, TKBrowserItemType) {
 - (instancetype)initWithImageRep:(TKImageRep *)anImageRep type:(TKBrowserItemType)aType NS_DESIGNATED_INITIALIZER;
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
-@property (nonatomic, retain) TKImageRep *imageRep;
+@property (nonatomic, strong) TKImageRep *imageRep;
 @property (nonatomic, assign) TKBrowserItemType type;
 
 
 @property (readonly, copy) NSString *imageUID;
 @property (readonly, copy) NSString *imageRepresentationType;
-@property (readonly, retain) id imageRepresentation;
+@property (readonly, strong) id imageRepresentation;
 @property (readonly, copy) NSString *imageTitle;
 @property (readonly, getter=isSelectable) BOOL selectable;
-
-
 
 @end

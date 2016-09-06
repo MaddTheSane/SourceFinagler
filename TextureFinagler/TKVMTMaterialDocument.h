@@ -23,13 +23,8 @@
 	
 }
 
-@property (retain) TKVMTMaterial *material;
+@property (strong) TKVMTMaterial *material;
 
-@property (retain) NSMutableAttributedString *materialString;
-
-
+@property (strong) NSMutableAttributedString *materialString;
 
 @end
-
-
-

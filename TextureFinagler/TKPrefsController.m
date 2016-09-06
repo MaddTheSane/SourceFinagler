@@ -26,14 +26,13 @@ static NSArray *prefsClassNames = nil;
 + (void)initialize {
 	@synchronized(self) {
 		if (prefsClassNames == nil) {
-			prefsClassNames = [[NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"TKPrefs" ofType:@"plist"]][@"TKPrefsClassNames"] retain];
+			prefsClassNames = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"TKPrefs" ofType:@"plist"]][@"TKPrefsClassNames"];
 		}
 		NSMutableDictionary *defaults = [NSMutableDictionary dictionary];
 		defaults[TKPrefsCurrentViewKey] = @(TKPrefsGeneralView);
 		[[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
 	}
 }
-
 
 - (instancetype)init {
 	if ((self = [super initWithWindowNibName:@"TKPrefs"])) {
@@ -51,19 +50,12 @@ static NSArray *prefsClassNames = nil;
 	return self;
 }
 
-- (void)dealloc {
-	[viewControllers release];
-	[super dealloc];
-}
-
-
 - (void)awakeFromNib {
 #if TK_DEBUG
     NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	[self changeView:self];
 }
-
 
 - (IBAction)changeView:(id)sender {
 #if TK_DEBUG
@@ -91,23 +83,15 @@ static NSArray *prefsClassNames = nil;
 		viewController = [[viewControllerClass alloc] init];
 		
 		viewControllers[currentView] = viewController;
-		
-		[viewController release];
-		
 	}
 	
 	[self.window switchView:viewController.view newTitle:viewController.title];
 	[viewController didSwitchToView:self];
-	
 }
-
 
 - (IBAction)showWindow:(id)sender {
 	if (self.window.visible == NO) [self.window center];
 	[super showWindow:sender];
 }
 
-
 @end
-
-

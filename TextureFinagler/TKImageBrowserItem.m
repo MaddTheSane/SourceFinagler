@@ -28,17 +28,14 @@ static NSMutableDictionary	*placeholderImageBrowserItemsAndSizes = nil;
 
 
 @implementation TKImageBrowserItem
-
 @synthesize imageRep;
 @synthesize type;
-
 
 + (void)initialize {
 	@synchronized(self) {
 		if (placeholderImageBrowserItemsAndSizes == nil) placeholderImageBrowserItemsAndSizes = [[NSMutableDictionary alloc] init];
 	}
 }
-
 
 + (NSArray *)faceBrowserItemsWithImageRepsInArray:(NSArray *)imageReps {
 #if TK_DEBUG
@@ -78,7 +75,7 @@ static NSMutableDictionary	*placeholderImageBrowserItemsAndSizes = nil;
 									leftFaceItem, upFaceItem, rightFaceItem, downFaceItem,
 									placeholderItem, frontFaceItem, placeholderItem, placeholderItem];
 	
-	
+	//TODO: implement?
 //	TKImageRep *faceRight = [TKImageRep imageRepForFace:TKFaceRight ofImageRepsInArray:imageReps];
 //	TKImageRep *faceLeft = [TKImageRep imageRepForFace:TKFaceLeft ofImageRepsInArray:imageReps];
 //	TKImageRep *faceBack = [TKImageRep imageRepForFace:TKFaceBack ofImageRepsInArray:imageReps];
@@ -93,14 +90,12 @@ static NSMutableDictionary	*placeholderImageBrowserItemsAndSizes = nil;
 //	return [[faceBrowserItems copy] autorelease];
 }
 
-
 + (id)faceBrowserItemWithImageRep:(TKImageRep *)anImageRep {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	return [[[[self class] alloc] initWithImageRep:anImageRep type:TKFaceBrowserItemType] autorelease];
+	return [[[self class] alloc] initWithImageRep:anImageRep type:TKFaceBrowserItemType];
 }
-
 
 + (id)placeholderBrowserItemWithSize:(NSSize)aSize {
 #if TK_DEBUG
@@ -108,16 +103,15 @@ static NSMutableDictionary	*placeholderImageBrowserItemsAndSizes = nil;
 #endif
 	TKImageBrowserItem *placeholderBrowserItem = nil;
 	@synchronized(placeholderImageBrowserItemsAndSizes) {
-		placeholderBrowserItem = [placeholderImageBrowserItemsAndSizes[NSStringFromSize(aSize)] retain];
+		placeholderBrowserItem = placeholderImageBrowserItemsAndSizes[NSStringFromSize(aSize)];
 		if (placeholderBrowserItem == nil) {
 			TKImageRep *emptyImageRep = [TKImageRep emptyImageRepWithSize:aSize];
 			placeholderBrowserItem = [[[self class] alloc] initWithImageRep:emptyImageRep type:TKPlaceholderBrowserItemType];
 			placeholderImageBrowserItemsAndSizes[NSStringFromSize(aSize)] = placeholderBrowserItem;
 		}
 	}
-	return [placeholderBrowserItem autorelease];
+	return placeholderBrowserItem;
 }
-
 
 + (NSArray *)frameBrowserItemsWithImageRepsInArray:(NSArray *)imageReps {
 #if TK_DEBUG
@@ -128,32 +122,25 @@ static NSMutableDictionary	*placeholderImageBrowserItemsAndSizes = nil;
 		TKImageBrowserItem *browserItem = [[self class] frameBrowserItemWithImageRep:tkImageRep];
 		if (browserItem) [items addObject:browserItem];
 	}
-	return [[items copy] autorelease];
+	return [items copy];
 }
-
 
 + (id)frameBrowserItemWithImageRep:(TKImageRep *)anImageRep {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	return [[[[self class] alloc] initWithImageRep:anImageRep type:TKFrameBrowserItemType] autorelease];
+	return [[[self class] alloc] initWithImageRep:anImageRep type:TKFrameBrowserItemType];
 }
-
 
 - (instancetype)initWithImageRep:(TKImageRep *)anImageRep type:(TKBrowserItemType)aType {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	if ((self = [super init])) {
-		imageRep = [anImageRep retain];
+		imageRep = anImageRep;
 		type = aType;
 	}
 	return self;
-}
-
-- (void)dealloc {
-	[imageRep release];
-	[super dealloc];
 }
 
 - (NSString *)imageUID {
@@ -186,11 +173,9 @@ static NSMutableDictionary	*placeholderImageBrowserItemsAndSizes = nil;
 	return nil;
 }
 
-
 - (BOOL)isSelectable {
 	return !(type == TKPlaceholderBrowserItemType);
 }
-
 
 @end
 
@@ -203,7 +188,6 @@ static NSMutableDictionary	*placeholderImageBrowserItemsAndSizes = nil;
 #endif
 	NSMutableData *mData = [[NSMutableData alloc] initWithLength: aSize.width * aSize.height * 4];
 	CGDataProviderRef provider = CGDataProviderCreateWithCFData((CFDataRef)mData);
-	[mData release];
 	CGColorSpaceRef colorSpace = CGColorSpaceCreateWithName(kCGColorSpaceGenericRGB);
 	CGImageRef imageRef = CGImageCreate(aSize.width,
 										aSize.height,
@@ -218,7 +202,7 @@ static NSMutableDictionary	*placeholderImageBrowserItemsAndSizes = nil;
 										kCGRenderingIntentDefault);
 	CGColorSpaceRelease(colorSpace);
 	CGDataProviderRelease(provider);
-	TKImageRep *emptyImageRep = [[[[self class] alloc] initWithCGImage:imageRef] autorelease];
+	TKImageRep *emptyImageRep = [[[self class] alloc] initWithCGImage:imageRef];
 	CGImageRelease(imageRef);
 	return emptyImageRep;
 }

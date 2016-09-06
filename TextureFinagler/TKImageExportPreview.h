@@ -12,7 +12,7 @@
 
 @interface TKImageExportPreview : NSObject {
 	
-	__unsafe_unretained TKImageExportController		*controller;	// non-retained
+	__weak TKImageExportController		*controller;	// non-retained
 	
 	TKImage						*image;
 	
@@ -28,10 +28,10 @@
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
 - (instancetype)initWithController:(TKImageExportController *)aController image:(TKImage *)anImage preset:(TKImageExportPreset *)aPreset tag:(NSInteger)aTag NS_DESIGNATED_INITIALIZER;
 
-@property (assign) TKImageExportController *controller;
-@property (retain) TKImage *image;
-@property (retain) TKImageRep *imageRep;
-@property (retain) TKImageExportPreset *preset;
+@property (weak) TKImageExportController *controller;
+@property (strong) TKImage *image;
+@property (strong) TKImageRep *imageRep;
+@property (strong) TKImageExportPreset *preset;
 @property (assign) NSUInteger imageFileSize;
 @property (assign) NSInteger tag;
 

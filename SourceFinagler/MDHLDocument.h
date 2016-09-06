@@ -123,14 +123,14 @@ extern NSString * const MDHLDocumentURLKey;
 @property (readonly, strong) HKArchiveFile *file;
 
 
-@property (retain) NSImage *image;
+@property (strong) NSImage *image;
 @property (assign) BOOL outlineViewIsReloadingData;
 
-@property (retain) NSString *version;
-@property (assign, setter=setSearching:) BOOL isSearching;
-@property (retain) NSString *kind;
+@property (copy) NSString *version;
+@property (assign, getter=isSearching) BOOL searching;
+@property (copy) NSString *kind;
 
-@property (retain) NSPredicate *searchPredicate;
+@property (strong) NSPredicate *searchPredicate;
 
 
 - (IBAction)find:(id)sender;
@@ -204,5 +204,3 @@ extern NSString * const MDViewKey;
 extern NSString * const MDWillSwitchViewNotification;
 
 extern NSString * const MDViewNameKey;
-
-	

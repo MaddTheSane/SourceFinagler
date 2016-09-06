@@ -39,7 +39,7 @@
 }
 
 
-@property (nonatomic, retain) SCNScene *scene;
+@property (nonatomic, strong) SCNScene *scene;
 
 
 

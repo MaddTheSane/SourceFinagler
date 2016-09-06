@@ -20,5 +20,4 @@
 	[super mouseDown:event];
 }
 
-
 @end

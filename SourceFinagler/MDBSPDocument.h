@@ -9,8 +9,6 @@
 #import "MDHLDocument.h"
 
 
-@interface MDBSPDocument : MDHLDocument {
-
-}
+@interface MDBSPDocument : MDHLDocument
 
 @end

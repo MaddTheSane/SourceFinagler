@@ -97,13 +97,10 @@ static NSArray *appClassNames = nil;
 
 @implementation TKAppController
 
-
 + (void)initialize {
-	
 	@synchronized(self) {
-		
 		if (appClassNames == nil) {
-			appClassNames = [[NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"TKAppController" ofType:@"plist"]][@"TKAppControllerClassNames"] retain];
+			appClassNames = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"TKAppController" ofType:@"plist"]][@"TKAppControllerClassNames"];
 		}
 		
 		
@@ -194,7 +191,6 @@ static NSArray *appClassNames = nil;
 		defaultValues[MDCurrentViewKey] = @(TKSteamAppsRelocatorView);
 		[[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
 		[NSUserDefaultsController sharedUserDefaultsController].initialValues = defaultValues;
-		
 	}
 }
 
@@ -215,43 +211,19 @@ static NSArray *appClassNames = nil;
 		for (NSUInteger i = 0; i < count; i++) {
 			[viewControllers addObject:[NSNull null]];
 		}
-		
 	}
 	return self;
 }
 
 - (void)dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
-	
-	[viewControllers release];
-	
-	[aboutWindowController release];
-	
-	[inspectorController release];
-	[viewOptionsController release];
-	[quickLookController release];
-	
-	[imageInspectorController release];
-	
-	[prefsController release];
-		
-	[steamAppsRelocatorController release];
-	[otherAppsHelperController release];
-	
-	[viewToggleToolbarShownMenuItem release];
-	[viewCustomizeToolbarMenuItem release];
-	[viewOptionsMenuItem release];
-	
-	[globalUndoManager release];
-	
-	[super dealloc];
 }
 
 - (void)awakeFromNib {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	
+	//TODO: implement?
 }
 
 - (void)applicationWillFinishLaunching:(NSNotification *)notification {
@@ -272,17 +244,6 @@ static NSArray *appClassNames = nil;
 //			}
 //		}
 //	}
-	
-	[viewModeAsListMenuItem retain];
-	
-	[viewModeAsColumnsMenuItem retain];
-	
-	
-	[viewTogglePathBarMenuItem retain];
-	
-	[viewToggleToolbarShownMenuItem retain];
-	[viewCustomizeToolbarMenuItem retain];
-	[viewOptionsMenuItem retain];
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didSwitchTo:) name:MDDidSwitchDocumentNotification object:nil];
 	
@@ -345,7 +306,6 @@ static NSArray *appClassNames = nil;
 	}
 }
 
-
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -358,7 +318,7 @@ static NSArray *appClassNames = nil;
 	if (currentVersion > previousVersion || needSourceAddonFinaglerRegister) {
 		NSString *sourceAddonFinaglerPath = [[NSBundle mainBundle] pathForResource:@"Source Addon Finagler" ofType:@"app"];
 		if (sourceAddonFinaglerPath) {
-			OSStatus status = LSRegisterURL((CFURLRef)[NSURL fileURLWithPath:sourceAddonFinaglerPath], true);
+			OSStatus status = LSRegisterURL((__bridge CFURLRef)[NSURL fileURLWithPath:sourceAddonFinaglerPath], true);
 			if (status) {
 				NSLog(@"[%@ %@] LSRegisterURL() returned %d", NSStringFromClass([self class]), NSStringFromSelector(_cmd), (int)status);
 			} else {
@@ -378,9 +338,7 @@ static NSArray *appClassNames = nil;
 	if (currentVersion > previousVersion || needSpotlightReimport) {
 		[self performSelector:@selector(forceSpotlightReimport:) withObject:nil afterDelay:3.0];
 	}
-	
 }
-
 
 - (void)forceSpotlightReimport:(id)sender {
 //#if TK_DEBUG
@@ -418,16 +376,13 @@ static NSArray *appClassNames = nil;
 //	[[NSUserDefaults standardUserDefaults] setObject:[[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey] forKey:TKLastSpotlightImporterVersionKey];
 }
 
-
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {
 	return [[[NSUserDefaults standardUserDefaults] objectForKey:TKQuitAfterAllWindowsClosedKey] boolValue];
 }
 
-
 - (BOOL)applicationShouldOpenUntitledFile:(NSApplication *)sender {
 	return [[[NSUserDefaults standardUserDefaults] objectForKey:TKLaunchTimeActionKey] unsignedIntegerValue] & TKLaunchTimeActionOpenNewDocument;
 }
-
 
 - (void)applicationWillTerminate:(NSNotification *)notification {
 	[steamAppsRelocatorController cleanup];
@@ -444,7 +399,6 @@ static NSArray *appClassNames = nil;
 	return globalUndoManager;
 }
 
-
 	// this method is used 
 - (void)didSwitchTo:(NSNotification *)notification {
 #if TK_DEBUG
@@ -453,7 +407,6 @@ static NSArray *appClassNames = nil;
 	
 	[viewMenu setItemArray:@[viewModeAsListMenuItem,viewModeAsColumnsMenuItem,[NSMenuItem separatorItem], viewTogglePathBarMenuItem, [NSMenuItem separatorItem], viewToggleToolbarShownMenuItem,viewCustomizeToolbarMenuItem,[NSMenuItem separatorItem],viewOptionsMenuItem]];
 }
-
 
 - (IBAction)switchView:(id)sender {
 #if TK_DEBUG
@@ -488,15 +441,12 @@ static NSArray *appClassNames = nil;
 		viewController = [[viewControllerClass alloc] init];
 		
 		viewControllers[currentView] = viewController;
-		
-		[viewController release];
 	}
 	
 	[window switchView:viewController.view newTitle:viewController.title];
 	[viewController didSwitchToView:self];
 	
 }
-
 
 - (void)lastWindowDidClose:(NSNotification *)notification {
 #if TK_DEBUG
@@ -506,7 +456,6 @@ static NSArray *appClassNames = nil;
 	[viewMenu setItemArray:@[viewTogglePathBarMenuItem, [NSMenuItem separatorItem], viewToggleToolbarShownMenuItem, viewCustomizeToolbarMenuItem, [NSMenuItem separatorItem], viewOptionsMenuItem]];
 	
 }
-
 
 - (IBAction)toggleShowInspector:(id)sender {
 #if TK_DEBUG
@@ -523,16 +472,14 @@ static NSArray *appClassNames = nil;
 	}
 }
 
-
 - (void)shouldShowInspectorDidChange:(NSNotification *)notification {
 	if (MDShouldShowInspector == NO) {
 #if TK_DEBUG
 		NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-		[inspectorController release]; inspectorController = nil;
+		inspectorController = nil;
 	}
 }
-
 
 - (IBAction)toggleShowViewOptions:(id)sender {
 #if TK_DEBUG
@@ -549,16 +496,14 @@ static NSArray *appClassNames = nil;
 	}
 }
 
-
 - (void)shouldShowViewOptionsDidChange:(NSNotification *)notification {
 	if (MDShouldShowViewOptions == NO) {
 #if TK_DEBUG
 		NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-		[viewOptionsController release]; viewOptionsController = nil;
+		viewOptionsController = nil;
 	}
 }
-
 
 - (IBAction)toggleShowQuickLook:(id)sender {
 #if TK_DEBUG
@@ -567,23 +512,21 @@ static NSArray *appClassNames = nil;
 	MDShouldShowQuickLook = !MDShouldShowQuickLook;
 	
 	if (MDShouldShowQuickLook) {
-		if (quickLookController == nil) quickLookController = [[MDQuickLookController sharedQuickLookController] retain];
+		if (quickLookController == nil) quickLookController = [MDQuickLookController sharedQuickLookController];
 		[quickLookController showWindow:self];
 	} else {
 		if (quickLookController) [quickLookController.window performClose:self];
 	}
 }
 
-
 - (void)shouldShowQuickLookDidChange:(NSNotification *)notification {
 	if (MDShouldShowQuickLook == NO) {
 #if TK_DEBUG
 		NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-		[quickLookController release]; quickLookController = nil;
+		quickLookController = nil;
 	}
 }
-
 
 - (IBAction)toggleShowImageInspector:(id)sender {
 #if TK_DEBUG
@@ -593,13 +536,12 @@ static NSArray *appClassNames = nil;
 	TKShouldShowImageInspector = !TKShouldShowImageInspector;
 	
 	if (TKShouldShowImageInspector) {
-		if (imageInspectorController == nil) imageInspectorController = [[TKImageInspectorController sharedController] retain];
+		if (imageInspectorController == nil) imageInspectorController = [TKImageInspectorController sharedController];
 		[imageInspectorController showWindow:self];
 	} else {
 		if (imageInspectorController) [imageInspectorController.window performClose:self];
 	}
 }
-
 
 - (void)shouldShowImageInspectorDidChange:(NSNotification *)notification {
 	if (TKShouldShowImageInspector == NO) {
@@ -610,33 +552,27 @@ static NSArray *appClassNames = nil;
 	}
 }
 
-
-
 - (IBAction)showMainWindow:(id)sender {
 	if (!window.visible) [window makeKeyAndOrderFront:nil];
 }
-
 
 - (IBAction)showAboutWindow:(id)sender {
 	if (aboutWindowController == nil) aboutWindowController = [[TKAboutWindowController alloc] init];
 	[aboutWindowController showWindow:self];
 }
 
-
 - (IBAction)showPrefsWindow:(id)sender {
 	if (prefsController == nil) prefsController = [[TKPrefsController alloc] init];
 	[prefsController showWindow:self];
 }
-
 
 - (void)menuNeedsUpdate:(NSMenu *)menu {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	
-	
+	//TODO: implement?
 }
-
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
 //	NSLog(@"[%@ %@] %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), menuItem);
@@ -673,8 +609,6 @@ static NSArray *appClassNames = nil;
 	return YES;
 }
 
-
-
 - (IBAction)email:(id)sender {
 	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[[NSString stringWithFormat:TKEmailDynamicURLString, NSUserName()] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
 }
@@ -687,12 +621,8 @@ static NSArray *appClassNames = nil;
 	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:TKWebpage]];
 }
 
-
 - (IBAction)resetAllWarningDialogs:(id)sender {
 
 }
 
-
 @end
-
-

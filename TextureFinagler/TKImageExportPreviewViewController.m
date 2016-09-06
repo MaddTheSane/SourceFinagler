@@ -24,14 +24,14 @@
 @synthesize imageView;
 
 + (instancetype)previewViewControllerWithExportController:(TKImageExportController *)controller preset:(TKImageExportPreset *)preset tag:(NSInteger)tag {
-	return [[[[self class] alloc] initWithExportController:controller preset:preset tag:tag] autorelease];
+	return [[[self class] alloc] initWithExportController:controller preset:preset tag:tag];
 }
 
 - (instancetype)initWithExportController:(TKImageExportController *)controller preset:(TKImageExportPreset *)preset tag:(NSInteger)tag {
 	if (controller == nil ||preset == nil) return nil;
 	
 	if ((self = [super initWithNibName:@"TKImageExportPreviewView" bundle:nil])) {
-		TKImageExportPreview *preview = [[[TKImageExportPreview alloc] initWithController:controller image:controller.document.image preset:preset tag:tag] autorelease];
+		TKImageExportPreview *preview = [[TKImageExportPreview alloc] initWithController:controller image:controller.document.image preset:preset tag:tag];
 		self.representedObject = preview;
 		((TKImageExportPreviewView *)self.view).delegate = controller;
 		imageView.delegate = controller;
@@ -47,7 +47,6 @@
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	[super dealloc];
 }
 
 - (void)awakeFromNib {

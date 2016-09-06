@@ -31,9 +31,7 @@
 @implementation TKBlueBackgroundView
 
 //@dynamic backgroundColor;
-
 //@dynamic gradient;
-
 
 - (instancetype)initWithFrame:(NSRect)frame {
     if ((self = [super initWithFrame:frame])) {
@@ -43,7 +41,6 @@
     return self;
 }
 
-
 - (instancetype)initWithCoder:(NSCoder *)coder {
 	if ((self = [super initWithCoder:coder])) {
 		[self finishSetup];
@@ -51,13 +48,6 @@
 	}
 	return self;
 }
-
-
-- (void)dealloc {
-	[gradient release];
-	[super dealloc];
-}
-
 
 - (void)finishSetup {
 	gradient = [[NSGradient alloc] initWithStartingColor:[NSColor colorWithCalibratedRed:MD_DARKER_RED green:MD_DARKER_GREEN blue:MD_DARKER_BLUE alpha:1.0]
@@ -89,12 +79,9 @@
 	[gradient drawInRect:self.bounds angle:90.0];
 }
 
-
 @end
 
-
-
-
+//TODO: implement?
 //- (NSColor *)backgroundColor {
 //    return backgroundColor;
 //}
@@ -109,6 +96,7 @@
 //
 
 
+//TODO: implement?
 //@implementation TKBlueBackgroundView
 //
 //@dynamic backgroundColor;
@@ -156,5 +144,3 @@
 //
 //@end
 //
-
-

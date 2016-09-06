@@ -16,13 +16,10 @@ static CIKernel *TKGrayscaleFilterKernel = nil;
 
 
 @implementation TKGrayscaleFilter
-
 @synthesize redScale;
 @synthesize greenScale;
 @synthesize blueScale;
 @synthesize alphaScale;
-
-
 
 - (instancetype)init {
 #if TK_DEBUG
@@ -35,7 +32,7 @@ static CIKernel *TKGrayscaleFilterKernel = nil;
 																					 encoding:NSUTF8StringEncoding
 																						error:NULL]];
 			if (kernels.count) {
-				TKGrayscaleFilterKernel = [kernels[0] retain];
+				TKGrayscaleFilterKernel = kernels[0];
 			}
 		}
 		self.redScale = @(1.0/3.0);
@@ -48,19 +45,11 @@ static CIKernel *TKGrayscaleFilterKernel = nil;
 	return self;
 }
 
-
 - (void)dealloc {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	[inputImage release];
-	[redScale release];
-	[greenScale release];
-	[blueScale release];
-	[alphaScale release];
-	[super dealloc];
 }
-
 
 - (NSDictionary *)customAttributes {
 #if TK_DEBUG
@@ -97,7 +86,6 @@ static CIKernel *TKGrayscaleFilterKernel = nil;
 	
 }
 
-
 // called when setting up for fragment program and also calls fragment program
 - (CIImage *)outputImage {
 #if TK_DEBUG
@@ -115,9 +103,4 @@ static CIKernel *TKGrayscaleFilterKernel = nil;
 			nil];
 }
 
-
-
 @end
-
-
-

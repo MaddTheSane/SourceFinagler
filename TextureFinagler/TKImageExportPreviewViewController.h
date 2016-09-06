@@ -13,7 +13,7 @@
 
 
 @interface TKImageExportPreviewViewController : NSViewController {
-	TKImageView			*imageView;
+	TKImageView			*__weak imageView;
 	IBOutlet NSProgressIndicator	*progressIndicator;
 	
 	// representedObject is a TKImageExportPreview
@@ -23,7 +23,7 @@
 - (instancetype)initWithExportController:(TKImageExportController *)controller preset:(TKImageExportPreset *)preset tag:(NSInteger)tag;
 
 
-@property (assign) IBOutlet TKImageView *imageView;
+@property (weak) IBOutlet TKImageView *imageView;
 
 @end
 

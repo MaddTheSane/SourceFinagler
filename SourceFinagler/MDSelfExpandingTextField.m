@@ -53,7 +53,6 @@
 
 - (void)dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
-	[super dealloc];
 }
 
 - (void)awakeFromNib {
@@ -106,8 +105,8 @@ static NSTextContainer *textContainer = nil;
 	
 	if (textStorage == nil) {
 		textStorage = [[NSTextStorage alloc] initWithString:aValue];
-		textContainer = [[[NSTextContainer alloc] initWithContainerSize:NSMakeSize(self.frame.size.width, FLT_MAX)] autorelease];
-		layoutManager = [[[NSLayoutManager alloc] init] autorelease];
+		textContainer = [[NSTextContainer alloc] initWithContainerSize:NSMakeSize(self.frame.size.width, FLT_MAX)];
+		layoutManager = [[NSLayoutManager alloc] init];
 		[layoutManager addTextContainer:textContainer];
 		[textStorage addLayoutManager:layoutManager];
 		textContainer.lineFragmentPadding = 0.0;

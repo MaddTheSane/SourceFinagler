@@ -36,7 +36,7 @@ NSString * const MDSteamBundleIdentifierKey = @"com.valvesoftware.steam";
 
 - (instancetype)init {
 	if ((self = [super init])) {
-		steamManager = [[VSSteamManager defaultManager] retain];
+		steamManager = [VSSteamManager defaultManager];
 		
 		NSString *currentPath = steamManager.steamAppsPath;
 		
@@ -53,11 +53,7 @@ NSString * const MDSteamBundleIdentifierKey = @"com.valvesoftware.steam";
 }
 
 - (void)dealloc {
-	[currentURL release];
-	[proposedNewPath release];
-	[steamManager release];
 	[[NSWorkspace sharedWorkspace].notificationCenter removeObserver:self];
-	[super dealloc];
 }
 
 - (NSString *)title {
@@ -129,7 +125,7 @@ NSString * const MDSteamBundleIdentifierKey = @"com.valvesoftware.steam";
 	NSDictionary *errorMessage = nil;
 	NSAppleEventDescriptor *result = nil;
 	
-	NSAppleScript *script = [[[NSAppleScript alloc] initWithSource:@"tell app \"Steam\" to quit"] autorelease];
+	NSAppleScript *script = [[NSAppleScript alloc] initWithSource:@"tell app \"Steam\" to quit"];
 	if (script) {
 		result = [script executeAndReturnError:&errorMessage];
 		if (errorMessage) {

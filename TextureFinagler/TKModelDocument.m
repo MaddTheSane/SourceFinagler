@@ -13,11 +13,7 @@
 
 #import "TKMaterialPropertyViewController.h"
 
-
-
-
 #define TK_DEBUG 1
-
 
 
 @implementation TKModelDocument
@@ -44,7 +40,7 @@
 #endif
 	if ((self = [super init])) {
 		
-		scene = [[SCNScene scene] retain];
+		scene = [SCNScene scene];
 		
 		// Add a camera to the scene
 		SCNNode *cameraNode = [SCNNode node];
@@ -73,17 +69,6 @@
 	}
 	return self;
 }
-
-
-
-
-- (void)dealloc {
-	[scene release];
-	[super dealloc];
-}
-
-
-
 
 - (NSString *)windowNibName {
     // Override returning the nib file name of the document
@@ -235,4 +220,3 @@
 #pragma mark -
 
 @end
-

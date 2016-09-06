@@ -13,6 +13,6 @@
 	NSImage *image;
 }
 
-@property (retain) NSImage *image;
+@property (strong) NSImage *image;
 
 @end

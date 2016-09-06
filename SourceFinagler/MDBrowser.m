@@ -26,23 +26,23 @@ NSString * const MDBrowserSortByKey								= @"MDBrowserSortBy";
 
 typedef struct MDBrowserSortOptionMapping {
 	NSInteger	sortOption;
-	NSString	*key;
-	NSString	*selectorName;
+	const char	*key;
+	const char	*selectorName;
 } MDBrowserSortOptionMapping;
 
 static MDBrowserSortOptionMapping MDBrowserSortOptionMappingTable[] = {
-	{ MDBrowserSortByName, @"name", @"caseInsensitiveNumericalCompare:" },
-	{ MDBrowserSortBySize, @"size", @"compare:" },
-	{ MDBrowserSortByKind, @"kind", @"caseInsensitiveCompare:" }
+	{ MDBrowserSortByName, "name", "caseInsensitiveNumericalCompare:" },
+	{ MDBrowserSortBySize, "size", "compare:" },
+	{ MDBrowserSortByKind, "kind", "caseInsensitiveCompare:" }
 };
 static const NSUInteger MDBrowserSortOptionMappingTableCount = sizeof(MDBrowserSortOptionMappingTable)/sizeof(MDBrowserSortOptionMapping);
 
 static inline NSArray *MDSortDescriptorsFromSortOption(NSInteger sortOption) {
 	for (NSUInteger i = 0; i < MDBrowserSortOptionMappingTableCount; i++) {
 		if (MDBrowserSortOptionMappingTable[i].sortOption == sortOption) {
-			return @[[[[NSSortDescriptor alloc] initWithKey:MDBrowserSortOptionMappingTable[i].key
+			return @[[[NSSortDescriptor alloc] initWithKey:@(MDBrowserSortOptionMappingTable[i].key)
 												 ascending:YES
-												  selector:NSSelectorFromString(MDBrowserSortOptionMappingTable[i].selectorName)] autorelease]];
+												  selector:NSSelectorFromString(@(MDBrowserSortOptionMappingTable[i].selectorName))]];
 		}
 	}
 	return nil;
@@ -55,9 +55,7 @@ static inline NSArray *MDSortDescriptorsFromSortOption(NSInteger sortOption) {
 
 
 @implementation MDBrowser
-
 @synthesize sortDescriptors, shouldShowIcons, shouldShowPreview;
-
 
 - (instancetype)initWithFrame:(NSRect)frameRect {
 #if MD_DEBUG
@@ -72,7 +70,6 @@ static inline NSArray *MDSortDescriptorsFromSortOption(NSInteger sortOption) {
 	}
 	return self;
 }
-
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
 #if MD_DEBUG
@@ -89,19 +86,15 @@ static inline NSArray *MDSortDescriptorsFromSortOption(NSInteger sortOption) {
 	return self;
 }
 
-
 - (void)dealloc {
 #if MD_DEBUG
 	NSLog(@" \"%@\" [%@ %@]", [[[[self window] windowController] document] displayName], NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	[sortDescriptors release];
 	[[NSUserDefaultsController sharedUserDefaultsController] removeObserver:self forKeyPath:NSStringFromDefaultsKeyPath(MDBrowserFontAndIconSizeKey)];
 	[[NSUserDefaultsController sharedUserDefaultsController] removeObserver:self forKeyPath:NSStringFromDefaultsKeyPath(MDBrowserShouldShowIconsKey)];
 	[[NSUserDefaultsController sharedUserDefaultsController] removeObserver:self forKeyPath:NSStringFromDefaultsKeyPath(MDBrowserShouldShowPreviewKey)];
 	[[NSUserDefaultsController sharedUserDefaultsController] removeObserver:self forKeyPath:NSStringFromDefaultsKeyPath(MDBrowserSortByKey)];
-	[super dealloc];
 }
-
 
 - (void)awakeFromNib {
 #if MD_DEBUG
@@ -132,8 +125,6 @@ static inline NSArray *MDSortDescriptorsFromSortOption(NSInteger sortOption) {
 
 }
 
-
-
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
 #if MD_DEBUG
 	NSLog(@" \"%@\" [%@ %@]", [[[[self window] windowController] document] displayName], NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -152,7 +143,7 @@ static inline NSArray *MDSortDescriptorsFromSortOption(NSInteger sortOption) {
 		NSInteger selectedColumn = self.selectedColumn;
 		
 		if (selectedColumn != -1) {
-			NSIndexSet *selectedRowIndexes = [[[self selectedRowIndexesInColumn:selectedColumn] retain] autorelease];
+			NSIndexSet *selectedRowIndexes = [self selectedRowIndexesInColumn:selectedColumn];
 			[self reloadData];
 			if (selectedRowIndexes.count == 1) {
 				[self selectRowIndexes:[NSIndexSet indexSet] inColumn:selectedColumn];
@@ -174,7 +165,6 @@ static inline NSArray *MDSortDescriptorsFromSortOption(NSInteger sortOption) {
 		}
 	}
 }
-
 
 - (void)calculateRowHeight {
 #if MD_DEBUG
@@ -198,9 +188,8 @@ static inline NSArray *MDSortDescriptorsFromSortOption(NSInteger sortOption) {
 		if (item) [items addObject:item];
 		index = [rowIndexes indexGreaterThanIndex:index];
 	}
-	return [[items copy] autorelease];
+	return [items copy];
 }
-
 
 - (void)reloadData {
 #if MD_DEBUG
@@ -216,7 +205,6 @@ static inline NSArray *MDSortDescriptorsFromSortOption(NSInteger sortOption) {
 		[self reloadColumn:i];
 	}
 }
-	
 
 - (NSInteger)fontAndIconSize {
 	return fontAndIconSize;
@@ -245,7 +233,7 @@ static inline NSArray *MDSortDescriptorsFromSortOption(NSInteger sortOption) {
 #if MD_DEBUG
 	NSLog(@" \"%@\" [%@ %@]", [[[[self window] windowController] document] displayName], NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	NSIndexSet *selectedRowIndexes = [[[self selectedRowIndexesInColumn:columnIndex] retain] autorelease];
+	NSIndexSet *selectedRowIndexes = [self selectedRowIndexesInColumn:columnIndex];
 	
 	[super selectRowIndexes:indexes inColumn:columnIndex];
 	
@@ -253,7 +241,6 @@ static inline NSArray *MDSortDescriptorsFromSortOption(NSInteger sortOption) {
 		[[NSNotificationCenter defaultCenter] postNotificationName:MDBrowserSelectionDidChangeNotification object:self userInfo:nil];
 	}
 }
-
 
 - (NSDragOperation)draggingSourceOperationMaskForLocal:(BOOL)isLocal {
 #if MD_DEBUG
@@ -268,7 +255,7 @@ static inline NSArray *MDSortDescriptorsFromSortOption(NSInteger sortOption) {
 #pragma mark -
 
 
-enum {
+NS_ENUM(unsigned short) {
 	MDEscapeKey		= 0x35
 };
 
@@ -291,7 +278,6 @@ enum {
 	}
 }
 
-
 - (void)rightMouseDown:(NSEvent *)event {
 #if MD_DEBUG
 	NSLog(@" \"%@\" [%@ %@]", [[[[self window] windowController] document] displayName], NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -303,7 +289,6 @@ enum {
 	
 	[super rightMouseDown:event];
 }
-
 
 - (void)mouseDown:(NSEvent *)event {
 #if MD_DEBUG
@@ -323,7 +308,4 @@ enum {
 	[super mouseDown:event];
 }
 
-
 @end
-
-

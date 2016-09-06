@@ -25,8 +25,8 @@
 }
 
 @property (nonatomic, assign) BOOL canCreate;
-@property (nonatomic, retain) NSURL *currentURL;
-@property (nonatomic, retain) NSString *proposedNewPath;
+@property (nonatomic, strong) NSURL *currentURL;
+@property (nonatomic, strong) NSString *proposedNewPath;
 @property (nonatomic, assign) BOOL steamIsRunning;
 @property (nonatomic, assign) BOOL steamDidLaunch;
 

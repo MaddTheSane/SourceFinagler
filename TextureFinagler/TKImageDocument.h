@@ -107,7 +107,7 @@ TEXTUREKIT_EXTERN NSString *TKImageIOLocalizedString(NSString *key);
 	TKGrayscaleFilter							*grayscaleFilter;
 	
 	
-	TKImageInspectorController					*imageInspectorController;	// non-retained
+	TKImageInspectorController					*__weak imageInspectorController;	// non-retained
 	
 	NSMutableArray								*imageChannels;
 	
@@ -117,14 +117,14 @@ TEXTUREKIT_EXTERN NSString *TKImageIOLocalizedString(NSString *key);
 	
 	NSArray										*draggedFilenames;
 	
-	IKImageBrowserView							*currentMenuBrowserView;
+	IKImageBrowserView							*__weak currentMenuBrowserView;
 }
 
-@property (retain) TKImage *image;
+@property (strong) TKImage *image;
 
 @property (copy) NSString *dimensions;
 
-@property (retain) TKImageExportPreset *exportPreset;
+@property (strong) TKImageExportPreset *exportPreset;
 
 
 @property (assign) BOOL shouldShowFaceBrowserView;
@@ -146,13 +146,13 @@ TEXTUREKIT_EXTERN NSString *TKImageIOLocalizedString(NSString *key);
 
 @property (assign) BOOL normalizeMipmaps;
 
-@property (retain) TKGrayscaleFilter *grayscaleFilter;
+@property (strong) TKGrayscaleFilter *grayscaleFilter;
 
-@property (assign) TKImageInspectorController *imageInspectorController;
+@property (weak) TKImageInspectorController *imageInspectorController;
 
-@property (retain) NSArray *draggedFilenames;
+@property (strong) NSArray *draggedFilenames;
 
-@property (assign) IKImageBrowserView *currentMenuBrowserView;
+@property (weak) IKImageBrowserView *currentMenuBrowserView;
 
 
 - (IBAction)cancel:(id)sender;

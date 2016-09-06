@@ -40,15 +40,11 @@ NSString * const MDListViewFontSizeKey								= @"MDListViewFontSize";
 #if MD_DEBUG
 	NSLog(@" \"%@\" [%@ %@]", [[[[self window] windowController] document] displayName], NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	[kindColumn release];
-	[sizeColumn release];
 	
 	[[NSUserDefaultsController sharedUserDefaultsController] removeObserver:self forKeyPath:NSStringFromDefaultsKeyPath(MDListViewFontSizeKey)];
 	[[NSUserDefaultsController sharedUserDefaultsController] removeObserver:self forKeyPath:NSStringFromDefaultsKeyPath(MDListViewIconSizeKey)];
 	[[NSUserDefaultsController sharedUserDefaultsController] removeObserver:self forKeyPath:NSStringFromDefaultsKeyPath(MDShouldShowKindColumnKey)];
 	[[NSUserDefaultsController sharedUserDefaultsController] removeObserver:self forKeyPath:NSStringFromDefaultsKeyPath(MDShouldShowSizeColumnKey)];
-	
-	[super dealloc];
 }
 
 
@@ -77,9 +73,6 @@ NSString * const MDListViewFontSizeKey								= @"MDListViewFontSize";
 	[nameColumn.dataCell setFont:[NSFont systemFontOfSize:(CGFloat)fontSize]];
 	[sizeColumn.dataCell setFont:[NSFont systemFontOfSize:(CGFloat)fontSize]];
 	[kindColumn.dataCell setFont:[NSFont systemFontOfSize:(CGFloat)fontSize]];
-	
-	[kindColumn retain];
-	[sizeColumn retain];
 
 	shouldShowKindColumn = [[userDefaults objectForKey:MDShouldShowKindColumnKey] boolValue];
 	if (!shouldShowKindColumn) [self removeTableColumn:kindColumn];
@@ -165,7 +158,7 @@ NSString * const MDListViewFontSizeKey								= @"MDListViewFontSize";
 		if (item) [items addObject:item];
 		index = [rowIndexes indexGreaterThanIndex:index];
 	}
-	return [[items copy] autorelease];
+	return [items copy];
 }
 
 
@@ -181,7 +174,7 @@ NSString * const MDListViewFontSizeKey								= @"MDListViewFontSize";
 			[rowIndexes addIndex:(NSUInteger)index];
 		}
 	}
-	return [[rowIndexes copy] autorelease];
+	return [rowIndexes copy];
 }
 
 

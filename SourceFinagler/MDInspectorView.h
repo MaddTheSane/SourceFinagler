@@ -32,10 +32,10 @@ extern NSString * const MDInspectorViewDidHideNotification;
 
 @interface MDInspectorView : NSView <NSCoding> {
 	
-	IBOutlet NSButton						*titleButton;
-	IBOutlet NSButton						*disclosureButton;
+	__weak NSButton						*titleButton;
+	__weak NSButton						*disclosureButton;
 	
-	IBOutlet id <MDInspectorViewDelegate>	delegate;
+	__weak id <MDInspectorViewDelegate>	delegate;
 	
 	NSString								*autosaveName;
 	
@@ -63,15 +63,15 @@ extern NSString * const MDInspectorViewDidHideNotification;
 @property (getter=isShown) BOOL shown;
 
 
-@property (strong) NSButton *titleButton;
+@property (weak) IBOutlet NSButton *titleButton;
 
-@property (strong) NSButton *disclosureButton;
+@property (weak) IBOutlet NSButton *disclosureButton;
 
 @property (copy) NSString *autosaveName;
 
 @property (getter=isInitiallyShown) BOOL initiallyShown;
 
-@property (assign) id<MDInspectorViewDelegate> delegate;
+@property (weak) IBOutlet id<MDInspectorViewDelegate> delegate;
 
 
 //@property (assign) IBOutlet NSButton	*titleButton;

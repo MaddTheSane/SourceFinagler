@@ -27,7 +27,7 @@ NS_ENUM(NSInteger) {
 @interface TKImageView : IKImageView {
 	
 	
-	__unsafe_unretained id<TKImageViewDelegate>	delegate;		// non-retained
+	__weak id<TKImageViewDelegate>				delegate;		// non-retained
 	
 	
 	CALayer										*imageKitLayer;
@@ -44,9 +44,9 @@ NS_ENUM(NSInteger) {
 	BOOL										showsImageBackground;
 }
 
-@property (retain) CALayer *imageKitLayer;
+@property (nonatomic, strong) CALayer *imageKitLayer;
 
-@property (retain) CALayer *animationImageLayer;
+@property (strong) CALayer *animationImageLayer;
 
 @property (copy) NSArray<TKImageRep*> *animationImageReps;
 
@@ -56,8 +56,8 @@ NS_ENUM(NSInteger) {
 @property (readonly, getter=isAnimating) BOOL animating;
 
 
-@property (assign) IBOutlet id <TKImageViewDelegate> delegate;
-@property (retain) TKImageRep *previewImageRep;
+@property (weak) IBOutlet id <TKImageViewDelegate> delegate;
+@property (strong) TKImageRep *previewImageRep;
 @property (assign, getter=isPreviewing) BOOL previewing;
 @property (assign) BOOL showsImageBackground;
 

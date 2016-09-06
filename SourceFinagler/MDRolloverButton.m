@@ -13,19 +13,16 @@
 
 @implementation MDRolloverButton
 
-
-
 - (void)awakeFromNib {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	NSTrackingArea *trackingArea = [[[NSTrackingArea alloc] initWithRect:self.visibleRect
+	NSTrackingArea *trackingArea = [[NSTrackingArea alloc] initWithRect:self.visibleRect
 																 options:NSTrackingMouseEnteredAndExited | NSTrackingInVisibleRect | NSTrackingActiveAlways
 																   owner:self
-																userInfo:nil] autorelease];
+																userInfo:nil];
 	
 	[self addTrackingArea:trackingArea];
-	
 }
 
 - (void)mouseEntered:(NSEvent *)theEvent {
@@ -38,10 +35,7 @@
 	if (delegate && [delegate respondsToSelector:@selector(mouseDidEnterRolloverButton:)]) {
 		[delegate mouseDidEnterRolloverButton:self];
 	}
-	
 }
-
-
 
 - (void)mouseExited:(NSEvent *)theEvent {
 #if MD_DEBUG
@@ -53,10 +47,6 @@
 	if (delegate && [delegate respondsToSelector:@selector(mouseDidExitRolloverButton:)]) {
 		[delegate mouseDidExitRolloverButton:self];
 	}
-	
 }
-
-
-
 
 @end

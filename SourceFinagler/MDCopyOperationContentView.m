@@ -27,19 +27,9 @@
     return self;
 }
 
-- (void)dealloc {
-#if MD_DEBUG
-	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-#endif
-	[viewsAndTags release];
-	[super dealloc];
-}
-
-
 - (BOOL)isOpaque {
 	return YES;
 }
-
 
 static inline NSArray *MDReversedArray(NSArray *array) {
 	NSMutableArray *reversedArray = [NSMutableArray array];
@@ -50,8 +40,6 @@ static inline NSArray *MDReversedArray(NSArray *array) {
 	}
 	return reversedArray;
 }
-
-
 
 - (void)addCopyOperationView:(MDCopyOperationView *)copyOperationView {
 #if MD_DEBUG
@@ -113,10 +101,8 @@ static inline NSArray *MDReversedArray(NSArray *array) {
 		NSLog(@"[%@ %@] subviews (AFTER) == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), MDReversedArray([self subviews]));
 		NSLog(@"[%@ %@] height   (AFTER) == %.3f", NSStringFromClass([self class]), NSStringFromSelector(_cmd), NSHeight([self frame]));
 #endif
-		
 	}
 }
-
 
 - (void)removeCopyOperationView:(MDCopyOperationView *)copyOperationView {
 #if MD_DEBUG
@@ -130,8 +116,6 @@ static inline NSArray *MDReversedArray(NSArray *array) {
 		NSLog(@"[%@ %@] subviews (BEFORE) == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), MDReversedArray([self subviews]));
 		NSLog(@"[%@ %@] height   (BEFORE) == %.3f", NSStringFromClass([self class]), NSStringFromSelector(_cmd), NSHeight([self frame]));
 #endif
-		
-		[[copyOperationView retain] autorelease];
 		
 		NSUInteger viewCount = viewsAndTags.count;
 		
@@ -217,20 +201,11 @@ static inline NSArray *MDReversedArray(NSArray *array) {
 		
 		[self setNeedsDisplay:YES];
 		
-		
 #if MD_DEBUG
 		NSLog(@"[%@ %@] subviews (AFTER) == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), MDReversedArray([self subviews]));
 		NSLog(@"[%@ %@] height   (AFTER) == %.3f", NSStringFromClass([self class]), NSStringFromSelector(_cmd), NSHeight([self frame]));
 #endif
-		
 	}
-	
 }
 
-
 @end
-
-
-
-
-

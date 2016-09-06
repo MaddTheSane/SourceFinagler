@@ -14,18 +14,12 @@
 
 #define TK_CHANNEL_IMAGE_DIMENSION 32.0
 
-
-
 @interface TKImageChannel ()
-
 - (NSImage *)imageWithImageRep:(TKImageRep *)anImageRep;
-
 @end
 
 
 @implementation TKImageChannel
-
-
 @synthesize name;
 @synthesize image;
 @synthesize channelMask;
@@ -52,14 +46,12 @@
 		TKImageChannel *alphaChannel = [[self class] imageChannelWithImageRep:anImageRep channelMask:TKImageChannelAlphaMask];
 		if (alphaChannel) [imageChannels addObject:alphaChannel];
 	}
-	return [[imageChannels copy] autorelease];
+	return [imageChannels copy];
 }
-
 
 + (instancetype)imageChannelWithImageRep:(TKImageRep *)anImageRep channelMask:(TKImageChannelMask)aChannelMask {
-	return [[[[self class] alloc] initWithImageRep:anImageRep channelMask:aChannelMask] autorelease];
+	return [[[self class] alloc] initWithImageRep:anImageRep channelMask:aChannelMask];
 }
-
 
 - (instancetype)initWithImageRep:(TKImageRep *)anImageRep channelMask:(TKImageChannelMask)aChannelMask {
 #if TK_DEBUG
@@ -69,17 +61,17 @@
 		channelMask = aChannelMask;
 		
 		switch (channelMask) {
-			case TKImageChannelRedMask :
-				name = [NSLocalizedString(@"Red", @"") retain];
+			case TKImageChannelRedMask:
+				name = NSLocalizedString(@"Red", @"");
 				break;
-			case TKImageChannelGreenMask :
-				name = [NSLocalizedString(@"Green", @"") retain];
+			case TKImageChannelGreenMask:
+				name = NSLocalizedString(@"Green", @"");
 				break;
-			case TKImageChannelBlueMask :
-				name = [NSLocalizedString(@"Blue", @"") retain];
+			case TKImageChannelBlueMask:
+				name = NSLocalizedString(@"Blue", @"");
 				break;
-			case TKImageChannelAlphaMask :
-				name = [NSLocalizedString(@"Alpha", @"") retain];
+			case TKImageChannelAlphaMask:
+				name = NSLocalizedString(@"Alpha", @"");
 				break;
 			default:
 				break;
@@ -92,24 +84,13 @@
 	return self;
 }
 
-
-- (void)dealloc {
-	[name release];
-	[image release];
-	[filter release];
-	[super dealloc];
-}
-
-
 - (void)updateWithImageRep:(TKImageRep *)anImageRep {
 	self.image = [self imageWithImageRep:anImageRep];
 }
 
-
 - (NSImage *)imageWithImageRep:(TKImageRep *)anImageRep {
 	CIImage *coreImage = [[CIImage alloc] initWithCGImage:anImageRep.CGImage];
 	[filter setValue:coreImage forKey:@"inputImage"];
-	[coreImage release];
 	
 	CIImage *outputImage = [filter valueForKey:@"outputImage"];
 	
@@ -119,13 +100,10 @@
 	
 	[anImage addRepresentation:ciImageRep];
 	
-	[ciImageRep release];
-	
-	return [anImage autorelease];
+	return anImage;
 }
 
 @end
-
 
 @implementation CIFilter (TKImageChannelAdditions)
 
@@ -138,8 +116,7 @@
 	[imageFilter setDefaults];
 	
 	switch (aChannelMask) {
-		case TKImageChannelRedMask : {
-			
+		case TKImageChannelRedMask: {
 			[imageFilter setValuesForKeysWithDictionary:@{@"inputRVector": [CIVector vectorWithString:@"[1.0 0.0 0.0 0.0]"],
 														 @"inputGVector": [CIVector vectorWithString:@"[1.0 0.0 0.0 0.0]"],
 														 @"inputBVector": [CIVector vectorWithString:@"[1.0 0.0 0.0 0.0]"],
@@ -148,8 +125,7 @@
 			break;
 		}
 			
-		case TKImageChannelGreenMask : {
-			
+		case TKImageChannelGreenMask: {
 			[imageFilter setValuesForKeysWithDictionary:@{@"inputRVector": [CIVector vectorWithString:@"[0.0 1.0 0.0 0.0]"],
 														 @"inputGVector": [CIVector vectorWithString:@"[0.0 1.0 0.0 0.0]"],
 														 @"inputBVector": [CIVector vectorWithString:@"[0.0 1.0 0.0 0.0]"],
@@ -157,8 +133,7 @@
 			break;
 		}
 			
-		case TKImageChannelBlueMask : {
-			
+		case TKImageChannelBlueMask: {
 			[imageFilter setValuesForKeysWithDictionary:@{@"inputRVector": [CIVector vectorWithString:@"[0.0 0.0 1.0 0.0]"],
 														 @"inputGVector": [CIVector vectorWithString:@"[0.0 0.0 1.0 0.0]"],
 														 @"inputBVector": [CIVector vectorWithString:@"[0.0 0.0 1.0 0.0]"],
@@ -167,7 +142,6 @@
 		}
 			
 		case TKImageChannelAlphaMask : {
-			
 			[imageFilter setValuesForKeysWithDictionary:@{@"inputRVector": [CIVector vectorWithString:@"[0.0 0.0 0.0 1.0]"],
 														 @"inputGVector": [CIVector vectorWithString:@"[0.0 0.0 0.0 1.0]"],
 														 @"inputBVector": [CIVector vectorWithString:@"[0.0 0.0 0.0 1.0]"],
@@ -176,8 +150,7 @@
 			break;
 		}
 			
-		case TKImageChannelRGBAMask : {
-			
+		case TKImageChannelRGBAMask: {
 			[imageFilter setValuesForKeysWithDictionary:@{@"inputRVector": [CIVector vectorWithString:@"[1.0 0.0 0.0 0.0]"],
 														 @"inputGVector": [CIVector vectorWithString:@"[0.0 1.0 0.0 0.0]"],
 														 @"inputBVector": [CIVector vectorWithString:@"[0.0 0.0 1.0 0.0]"],

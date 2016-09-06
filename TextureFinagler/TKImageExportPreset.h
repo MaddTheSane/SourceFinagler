@@ -42,11 +42,11 @@ TEXTUREKIT_EXTERN NSString * const TKImageExportMipmapGenerationKey;		// NSNumbe
 - (instancetype)initWithName:(NSString *)aName fileType:(NSString *)aFileType compressionFormat:(NSString *)aCompressionFormat compressionQuality:(NSString *)aQuality mipmapGeneration:(TKMipmapGenerationType)aMipmapGeneration NS_DESIGNATED_INITIALIZER;
 
 
-@property (retain) NSString	*name;
-@property (retain) NSString *fileType;
-@property (retain) NSString *compressionFormat;
-@property (retain) NSString *compressionQuality;
-@property (assign) TKMipmapGenerationType mipmapGeneration;
+@property (copy) NSString *name;
+@property (nonatomic, copy) NSString *fileType;
+@property (nonatomic, copy) NSString *compressionFormat;
+@property (nonatomic, copy) NSString *compressionQuality;
+@property (nonatomic, assign) TKMipmapGenerationType mipmapGeneration;
 
 
 - (BOOL)isEqual:(id)object;

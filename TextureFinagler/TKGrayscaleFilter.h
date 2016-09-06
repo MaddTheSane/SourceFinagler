@@ -15,14 +15,11 @@
 	NSNumber		*greenScale;
 	NSNumber		*blueScale;
 	NSNumber		*alphaScale;
-	
-	
 }
 
-@property (retain) NSNumber *redScale;
-@property (retain) NSNumber *greenScale;
-@property (retain) NSNumber *blueScale;
-@property (retain) NSNumber *alphaScale;
-
+@property (strong) NSNumber *redScale;
+@property (strong) NSNumber *greenScale;
+@property (strong) NSNumber *blueScale;
+@property (strong) NSNumber *alphaScale;
 
 @end

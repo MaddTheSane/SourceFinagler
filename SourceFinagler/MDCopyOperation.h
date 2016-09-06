@@ -26,10 +26,7 @@ typedef NS_ENUM(NSUInteger, MDCopyOperationStage) {
 	MDCopyOperationCancelledStage		= 4
 };
 
-
-
 @interface MDCopyOperation : NSObject {
-	
 	double							zeroBytes;
 	double							currentBytes;
 	double							totalBytes;
@@ -39,7 +36,7 @@ typedef NS_ENUM(NSUInteger, MDCopyOperationStage) {
 	
 	NSImage							*icon;
 	
-	MDHLDocument					*source;
+	MDHLDocument					*__weak source;
 	id								destination; // can be MDHLDocument or an NSString (path)
 	
 	NSDictionary					*itemsAndPaths;
@@ -58,7 +55,7 @@ typedef NS_ENUM(NSUInteger, MDCopyOperationStage) {
 - (instancetype)initWithSource:(MDHLDocument *)aSource destination:(id)aDestination itemsAndPaths:(NSDictionary *)anItemsAndPaths tag:(NSInteger)aTag NS_DESIGNATED_INITIALIZER;
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
-@property (assign) BOOL indeterminate;
+@property (assign, getter=isIndeterminate) BOOL indeterminate;
 @property (assign, getter=isRolledOver) BOOL rolledOver;
 
 @property (assign, getter=isCancelled)	BOOL cancelled;
@@ -71,15 +68,13 @@ typedef NS_ENUM(NSUInteger, MDCopyOperationStage) {
 @property (copy) NSString *messageText;
 @property (copy) NSString *informativeText;
 
-@property (retain) NSImage *icon;
+@property (strong) NSImage *icon;
 
-@property (readonly, assign) MDHLDocument *source;
-@property (readonly, retain) id destination;
-@property (readonly, retain) NSDictionary *itemsAndPaths;
+@property (readonly, weak) MDHLDocument *source;
+@property (readonly, strong) id destination;
+@property (readonly, strong) NSDictionary *itemsAndPaths;
 
 @property (readonly, assign) NSInteger tag;
 
 
 @end
-
-

@@ -42,7 +42,7 @@
 	CGDataProviderRef provider = CGImageGetDataProvider(imageRef);
 	CGImageSourceRef imageSource = CGImageSourceCreateWithDataProvider(provider, NULL);
 	
-	NSDictionary *theImageProperties = [(NSDictionary *)CGImageSourceCopyPropertiesAtIndex(imageSource, 0, NULL) autorelease];
+	NSDictionary *theImageProperties = (NSDictionary *)CFBridgingRelease(CGImageSourceCopyPropertiesAtIndex(imageSource, 0, NULL));
 	
 #if TK_DEBUG
 	NSLog(@"[%@ %@] imageProperties == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), theImageProperties);

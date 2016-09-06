@@ -16,9 +16,7 @@
 
 - (void)dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
-	[super dealloc];
 }
-
 
 - (void)awakeFromNib {
  #if TK_DEBUG
@@ -29,7 +27,6 @@
 
 }
 
-
 - (void)windowDidBecomeMain:(NSNotification *)notification {
 	[self setNeedsDisplay:YES];
 }
@@ -37,7 +34,5 @@
 - (void)windowDidResignMain:(NSNotification *)notification {
 	[self setNeedsDisplay:YES];
 }
-
-
 
 @end

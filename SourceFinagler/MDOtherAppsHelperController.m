@@ -45,7 +45,7 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 - (instancetype)init {
 	if ((self = [super init])) {
 		games = [[NSMutableArray alloc] init];
-		steamManager = [[VSSteamManager defaultManager] retain];
+		steamManager = [VSSteamManager defaultManager];
 		steamManager.delegate = self;
 
 		if (steamManager.sourceFinaglerLaunchAgentStatus == VSSourceFinaglerLaunchAgentUpdateNeeded) {
@@ -55,12 +55,6 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 		enableSourceFinaglerAgent = (steamManager.sourceFinaglerLaunchAgentStatus == VSSourceFinaglerLaunchAgentInstalled);
 	}
 	return self;
-}
-
-- (void)dealloc {
-	[games release];
-	[steamManager release];
-	[super dealloc];
 }
 
 - (NSString *)title {
@@ -173,7 +167,7 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 
 
 - (NSArray *)games {
-    return [[games copy] autorelease];
+    return [games copy];
 }
 
 - (NSUInteger)countOfGames {
@@ -340,12 +334,11 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 	[steamManager locateSteamApps];
 	
 	NSArray *theGames = steamManager.games;
-	NSArray *selectedObjects = [gamesController.selectedObjects retain];
+	NSArray *selectedObjects = gamesController.selectedObjects;
 	if (theGames) {
 		[[self mutableArrayValueForKey:@"games"] setArray:theGames];
 	}
 	[gamesController setSelectedObjects:selectedObjects];
-	[selectedObjects release];
 }
 
 - (IBAction)revealInFinder:(id)sender {

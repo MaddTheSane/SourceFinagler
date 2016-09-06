@@ -43,12 +43,6 @@
 	return cell;
 }
 
-- (void)dealloc {
-	[image release];
-	[super dealloc];
-}
-
-
 - (NSRect)imageRectForBounds:(NSRect)bounds {
 #if MD_DEBUG
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -107,7 +101,6 @@
 			[transform scaleXBy:1.0 yBy:-1.0];
 			[transform translateXBy:0.0 yBy:-cellFrame.origin.y];
 			[transform concat];
-			[transform release];
 		}
 //		NSLog(@"[%@ %@] drawing image", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 		[self.image drawInRect:imageRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
@@ -121,8 +114,4 @@
 	[super drawInteriorWithFrame:cellFrame inView:controlView];
 }
 
-
 @end
-
-
-

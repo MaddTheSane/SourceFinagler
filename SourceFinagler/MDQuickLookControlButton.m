@@ -26,8 +26,6 @@
 
 @implementation MDQuickLookControlButton
 
-
-
 - (instancetype)initWithFrame:(NSRect)frame {
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 	if ((self = [super initWithFrame:frame])) {
@@ -35,7 +33,6 @@
 	}
 	return self;
 }
-
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -45,34 +42,21 @@
 	return self;
 }
 
-
 - (void)encodeWithCoder:(NSCoder *)coder {
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 	[super encodeWithCoder:coder];
 }
 
-
-
 - (void)finishSetup {
-
+	//TODO: implement?
 }
-
-
-- (void)dealloc {
-
-	[super dealloc];
-	
-}
-
 
 - (BOOL)acceptsFirstResponder {
 	BOOL accepts = super.acceptsFirstResponder;
 	NSLog(@"[%@ %@] super's acceptsFirstResponder == %d", NSStringFromClass([self class]), NSStringFromSelector(_cmd), accepts);
 	
 	return NO;
-	
 }
-
 
 - (BOOL)becomeFirstResponder {
 	return NO;
@@ -80,59 +64,58 @@
 
 
 - (void)_showToolTipWithText:(NSString *)aString {
-	
+	//TODO: implement?
 }
 
 
 - (void)_closeToolTip {
-	
+	//TODO: implement?
 }
 
 
 - (void)_updateToolTip {
-	
+	//TODO: implement?
 }
 
 
 - (void)mouseEntered:(id)sender {
-	
+	//TODO: implement?
 }
 
 
 - (void)mouseExited:(id)sender {
-	
+	//TODO: implement?
 	
 }
 
 
 - (void)viewWillMoveToWindow:(id)fp8 {
-	
+	//TODO: implement?
 	
 }
 
 
 - (void)viewDidMoveToWindow {
-	
+	//TODO: implement?
 	
 }
 
 
 
 - (void)viewDidHide {
-	
+	//TODO: implement?
 	
 }
 
 
 - (void)viewDidUnhide {
-	
+	//TODO: implement?
 	
 }
 
 
 - (void)setTitle:(NSString *)aTitle {
-	
-	
+	//TODO: implement?
 }
 
 

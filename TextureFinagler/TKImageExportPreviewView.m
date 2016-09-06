@@ -12,11 +12,8 @@
 #define TK_DEBUG 0
 
 @implementation TKImageExportPreviewView
-
+@synthesize highlighted = isHighlighted;
 @synthesize delegate, viewController;
-
-@dynamic isHighlighted;
-
 
 - (instancetype)initWithFrame:(NSRect)frame {
 #if TK_DEBUG
@@ -34,9 +31,7 @@
 #endif
 	delegate = nil;
 	viewController = nil;
-	[super dealloc];
 }
-
 
 - (BOOL)acceptsFirstResponder {
 #if TK_DEBUG
@@ -44,7 +39,6 @@
 #endif
 	return YES;
 }
-
 
 - (BOOL)becomeFirstResponder {
 #if TK_DEBUG
@@ -57,7 +51,6 @@
 	return YES;
 }
 
-
 - (BOOL)resignFirstResponder {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -66,13 +59,6 @@
 	return YES;
 }
 
-
-
-- (BOOL)isHighlighted {
-	return isHighlighted;
-}
-
-
 - (void)setHighlighted:(BOOL)aHighlighted {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -80,7 +66,6 @@
 	isHighlighted = aHighlighted;
 	[self setNeedsDisplay:YES];
 }
-
 
 // this method needs work, I believe
 - (void)drawRect:(NSRect)dirtyRect {
@@ -93,7 +78,5 @@
 		[NSBezierPath strokeRect:dirtyRect];
 	}
 }
-
-
 
 @end

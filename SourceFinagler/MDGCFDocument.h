@@ -9,8 +9,6 @@
 #import "MDHLDocument.h"
 
 
-@interface MDGCFDocument : MDHLDocument {
-
-}
+@interface MDGCFDocument : MDHLDocument
 
 @end

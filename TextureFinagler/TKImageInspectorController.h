@@ -14,10 +14,6 @@
 @class TKImageInspectorController;
 
 
-
-
-
-
 @protocol TKImageInspectorDataSource <NSObject>
 
 @required
@@ -62,10 +58,6 @@
 @end
 
 
-
-
-
-
 @interface TKImageInspectorController : NSWindowController <NSTableViewDataSource, NSTableViewDelegate, NSWindowDelegate> {
 	IBOutlet NSTableView								*tableView;
 	
@@ -85,6 +77,3 @@
 - (void)reloadData;
 
 @end
-
-
-

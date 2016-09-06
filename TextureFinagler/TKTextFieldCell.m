@@ -24,17 +24,17 @@ static NSDictionary *inactiveAttributes = nil;
 + (void)initialize {
 	@synchronized(self) {
 		if (activeAttributes == nil && inactiveAttributes == nil) {
-			NSShadow *shadow = [[[NSShadow alloc] init] autorelease];
+			NSShadow *shadow = [[NSShadow alloc] init];
 			shadow.shadowOffset = NSMakeSize(0.0, -1.0);
 			shadow.shadowColor = [NSColor colorWithCalibratedRed:1.0 green:1.0 blue:1.0 alpha:1.0];
 			
-			activeAttributes = [@{NSFontAttributeName: [NSFont boldSystemFontOfSize:[NSFont smallSystemFontSize]],
+			activeAttributes = @{NSFontAttributeName: [NSFont boldSystemFontOfSize:[NSFont smallSystemFontSize]],
 								 NSForegroundColorAttributeName: [NSColor colorWithCalibratedRed:112.0/255.0 green:126.0/255.0 blue:140.0/255 alpha:1.0],
-								 NSShadowAttributeName: shadow} retain];
+								 NSShadowAttributeName: shadow};
 			
-			inactiveAttributes = [@{NSFontAttributeName: [NSFont boldSystemFontOfSize:[NSFont smallSystemFontSize]],
+			inactiveAttributes = @{NSFontAttributeName: [NSFont boldSystemFontOfSize:[NSFont smallSystemFontSize]],
 								 NSForegroundColorAttributeName: [NSColor colorWithCalibratedRed:134.0/255.0 green:139.0/255.0 blue:146.0/255 alpha:1.0],
-								 NSShadowAttributeName: shadow} retain];
+								 NSShadowAttributeName: shadow};
 		}
 	}
 }
@@ -47,12 +47,6 @@ static NSDictionary *inactiveAttributes = nil;
 		[self finishSetup];
 	}
 	return self;
-}
-
-
-- (void)dealloc {
-	[richText release];
-	[super dealloc];
 }
 
 
