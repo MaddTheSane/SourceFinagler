@@ -16,14 +16,10 @@
 @end
 
 
-@interface TKImageExportPreviewView : NSView {
-	BOOL isHighlighted;
-}
-
+@interface TKImageExportPreviewView : NSView
 @property (weak) IBOutlet id <TKImageExportPreviewViewDelegate> delegate;
 @property (weak) IBOutlet TKImageExportPreviewViewController *viewController;
 @property (nonatomic, assign, getter=isHighlighted) BOOL highlighted;
-
 
 @end
 

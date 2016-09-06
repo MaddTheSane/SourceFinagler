@@ -192,7 +192,7 @@ DQ
                     </buttonCell>
                     <connections>
                         <action selector="helpApps:" target="-2" id="1141"/>
-                        <binding destination="858" name="enabled" keyPath="selection.isHelped" id="1151">
+                        <binding destination="858" name="enabled" keyPath="selection.helped" id="1151">
                             <dictionary key="options">
                                 <string key="NSValueTransformerName">NSNegateBoolean</string>
                             </dictionary>
@@ -208,7 +208,7 @@ DQ
                     </buttonCell>
                     <connections>
                         <action selector="restoreToDefault:" target="-2" id="1140"/>
-                        <binding destination="858" name="enabled" keyPath="selection.isHelped" id="1149"/>
+                        <binding destination="858" name="enabled" keyPath="selection.helped" id="1149"/>
                     </connections>
                 </button>
                 <imageView id="1052">
@@ -293,10 +293,10 @@ Note: You can also double-click on a game in the list to launch it (it will be h
                 <string>icon</string>
                 <string>executablePath</string>
                 <string>displayName</string>
-                <string>isHelped</string>
+                <string>helped</string>
                 <string>helpedStateString</string>
                 <string>helpedStateColor</string>
-                <string>isRunning</string>
+                <string>running</string>
                 <string>runningStateImage</string>
                 <string>executableURL</string>
             </declaredKeys>

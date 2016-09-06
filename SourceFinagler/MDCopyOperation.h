@@ -76,5 +76,4 @@ typedef NS_ENUM(NSUInteger, MDCopyOperationStage) {
 
 @property (readonly, assign) NSInteger tag;
 
-
 @end

@@ -173,9 +173,9 @@ static void HKInitializeIcons() {
 #if HK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	if ([key isEqualToString:@"isExtractable"]) {
+	if ([key isEqualToString:@"extractable"]) {
 		isExtractable = NO;
-	} else if ([key isEqualToString:@"isEncrypted"]) {
+	} else if ([key isEqualToString:@"encrypted"]) {
 		isEncrypted = NO;
 	} else if ([key isEqualToString:@"fileType"]) {
 		fileType = HKFileTypeNone;

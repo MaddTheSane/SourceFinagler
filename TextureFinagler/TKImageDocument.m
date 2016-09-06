@@ -41,9 +41,9 @@ typedef NS_OPTIONS(NSUInteger, TKImageContentMask) {
 
 static inline TKImageContentMask TKImageContentMaskForImage(TKImage *anImage) {
 	TKImageContentMask imageContentMask = 0;
-	if (anImage.isDepthTexture) imageContentMask |= TKImageContentSlicesMask;
-	if (anImage.isCubemap || anImage.isSpheremap) imageContentMask |= TKImageContentFacesMask;
-	if (anImage.isAnimated) imageContentMask |= TKImageContentFramesMask;
+	if (anImage.depthTexture) imageContentMask |= TKImageContentSlicesMask;
+	if (anImage.cubemap || anImage.isSpheremap) imageContentMask |= TKImageContentFacesMask;
+	if (anImage.animated) imageContentMask |= TKImageContentFramesMask;
 	if (anImage.hasMipmaps) imageContentMask |= TKImageContentMipmapsMask;
 	return imageContentMask;
 }
@@ -533,7 +533,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	[mipmapBrowserView reloadData];
 	
 	
-	[togglePlaySegmentedControl setEnabled:image.isAnimated forSegment:0];
+	[togglePlaySegmentedControl setEnabled:image.animated forSegment:0];
 	
 	
 #if TK_DEBUG
@@ -2017,7 +2017,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	
-	if (image.isDepthTexture) return NO;
+	if (image.depthTexture) return NO;
 	
 	[image generateMipmapsUsingFilter:aFilter];
 	
@@ -2046,7 +2046,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	
-	if (image.isDepthTexture) return NO;
+	if (image.depthTexture) return NO;
 	
 	[image removeMipmaps];
 	

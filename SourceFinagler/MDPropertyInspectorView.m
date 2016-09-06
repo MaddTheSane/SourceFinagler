@@ -100,7 +100,7 @@ static inline NSString *NSStringFromInspectorViewAutosaveName(NSString *anAutosa
 		
 		autosaveName = encodedName;
 		
-		self.initiallyShown = [[coder decodeObjectForKey:MDInspectorViewIsIntiallyExpandedKey] boolValue];
+		self.initiallyShown = [coder decodeBoolForKey:MDInspectorViewIsIntiallyExpandedKey];
 		
 //		hiddenHeight = 1.0;
 	}
@@ -114,7 +114,7 @@ static inline NSString *NSStringFromInspectorViewAutosaveName(NSString *anAutosa
 #endif
     [super encodeWithCoder:coder];
 	[coder encodeObject:autosaveName forKey:MDInspectorViewAutosaveNameKey];
-	[coder encodeObject:@(isInitiallyShown) forKey:MDInspectorViewIsIntiallyExpandedKey];
+	[coder encodeBool:isInitiallyShown forKey:MDInspectorViewIsIntiallyExpandedKey];
 	
 }
 
@@ -414,7 +414,7 @@ static inline NSString *NSStringFromInspectorViewAutosaveName(NSString *anAutosa
 #if MD_DEBUG
 	NSLog(@"\"%@\" [%@ %@]", autosaveName, NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	if ([key isEqualToString:@"isInitiallyShown"]) {
+	if ([key isEqualToString:@"initiallyShown"]) {
 		isInitiallyShown = YES;
 	} else if ([key isEqualToString:@"autosaveName"]) {
 		self.autosaveName = @"";

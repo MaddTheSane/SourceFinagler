@@ -46,6 +46,7 @@ static NSString * const MDIdentifierKey							= @"MDIdentifier";
 @synthesize titleButton;
 @synthesize disclosureButton;
 @synthesize autosaveName;
+@synthesize initiallyShown = isInitiallyShown;
 
 static inline NSString *NSStringFromInspectorViewAutosaveName(NSString *anAutosaveName) {
 	return [NSString stringWithFormat:MDInspectorViewIsShownFormatKey, anAutosaveName];
@@ -126,7 +127,7 @@ static inline NSString *NSStringFromInspectorViewAutosaveName(NSString *anAutosa
 		NSNumber *isShownNumber = [[NSUserDefaults standardUserDefaults] objectForKey:NSStringFromInspectorViewAutosaveName(autosaveName)];
 		if (isShownNumber == nil) {
 			// if no value is present in user defaults, then set the default value of YES (or whatever the present value is by this point)
-			[[NSUserDefaults standardUserDefaults] setObject:@(isShown) forKey:NSStringFromInspectorViewAutosaveName(autosaveName)];
+			[[NSUserDefaults standardUserDefaults] setBool:isShown forKey:NSStringFromInspectorViewAutosaveName(autosaveName)];
 		}
 		isShown = [[[NSUserDefaults standardUserDefaults] objectForKey:NSStringFromInspectorViewAutosaveName(autosaveName)] boolValue];
 		
@@ -160,7 +161,7 @@ static inline NSString *NSStringFromInspectorViewAutosaveName(NSString *anAutosa
 #if MD_DEBUG
 	NSLog(@"\"%@\" [%@ %@]", autosaveName, NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	if ([key isEqualToString:@"isInitiallyShown"]) {
+	if ([key isEqualToString:@"initiallyShown"]) {
 		isInitiallyShown = YES;
 	} else if ([key isEqualToString:@"autosaveName"]) {
 		autosaveName = [@"" copy];
@@ -189,17 +190,6 @@ static inline NSString *NSStringFromInspectorViewAutosaveName(NSString *anAutosa
 		havePendingWindowHeightChange = NO;
 	}
 }
-
-//@property (assign, setter=setInitiallyShown:) BOOL isInitiallyShown;
-
-- (BOOL)isInitiallyShown {
-    return isInitiallyShown;
-}
-
-- (void)setInitiallyShown:(BOOL)value {
-	isInitiallyShown = value;
-}
-
 
 - (id <MDInspectorViewDelegate>)delegate {
 #if MD_DEBUG
