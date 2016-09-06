@@ -114,7 +114,9 @@
 }
 
 - (void)setExecutableURL:(NSURL *)aURL {
-	
+	if ([aURL isFileURL]) {
+		self.executablePath = aURL.path;
+	}
 }
 
 - (NSString *)description {
