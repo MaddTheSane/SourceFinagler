@@ -394,7 +394,6 @@
 		C1C2C502127CBCA0003B24F6 /* MDCopyOperationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1C124A9123A0A0C004674B4 /* MDCopyOperationView.xib */; };
 		C1C2C503127CBCA0003B24F6 /* MDCopyOperationWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1C124AB123A0A0C004674B4 /* MDCopyOperationWindow.xib */; };
 		C1C2C504127CBCA0003B24F6 /* MDHLColumnPreviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1C124AD123A0A0C004674B4 /* MDHLColumnPreviewView.xib */; };
-		C1C2C505127CBCA0003B24F6 /* MDHLDocumentLeopard.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1C124B1123A0A0C004674B4 /* MDHLDocumentLeopard.xib */; };
 		C1C2C506127CBCA0003B24F6 /* MDHLDocumentSnowLeopard.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1C124B3123A0A0C004674B4 /* MDHLDocumentSnowLeopard.xib */; };
 		C1C2C507127CBCA0003B24F6 /* MDInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1C124B5123A0A0C004674B4 /* MDInspector.xib */; };
 		C1C2C508127CBCA0003B24F6 /* MDQuickLook.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1C124B7123A0A0C004674B4 /* MDQuickLook.xib */; };
@@ -4093,7 +4092,6 @@
 				C1C2C502127CBCA0003B24F6 /* MDCopyOperationView.xib in Resources */,
 				C1C2C503127CBCA0003B24F6 /* MDCopyOperationWindow.xib in Resources */,
 				C1C2C504127CBCA0003B24F6 /* MDHLColumnPreviewView.xib in Resources */,
-				C1C2C505127CBCA0003B24F6 /* MDHLDocumentLeopard.xib in Resources */,
 				C1C2C506127CBCA0003B24F6 /* MDHLDocumentSnowLeopard.xib in Resources */,
 				C1C2C507127CBCA0003B24F6 /* MDInspector.xib in Resources */,
 				C1C2C508127CBCA0003B24F6 /* MDQuickLook.xib in Resources */,
@@ -4942,6 +4940,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
@@ -4961,6 +4960,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Developer ID Application: Mark Douma";
 				COPY_PHASE_STRIP = NO;
