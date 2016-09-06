@@ -12,9 +12,7 @@
 
 @interface HKFolder (HKAdditions)
 
-@property (readonly, copy) NSImage *image;
-@property (readonly, copy) QTMovie *movie;
+@property (readonly, copy, nonnull) NSImage *image;
+@property (readonly, copy, nullable) QTMovie *movie;
 
 @end
-
-

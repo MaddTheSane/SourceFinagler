@@ -9,8 +9,9 @@
 #import <HLKit/HKNode.h>
 #import <HLKit/HLKitDefines.h>
 
+NS_ASSUME_NONNULL_BEGIN
 
-NS_ENUM(NSInteger) {
+typedef NS_ENUM(NSInteger, HKErrors) {
 	HKErrorNotExtractable = 1
 };
 
@@ -58,14 +59,14 @@ HLKIT_EXTERN NSString * const HKSystemErrorMessageKey;
 + (NSImage *)iconForItem:(HKItem *)anItem;
 + (NSImage *)copiedImageForItem:(HKItem *)anItem;
 
-- (BOOL)writeToFile:(NSString *)aPath assureUniqueFilename:(BOOL)assureUniqueFilename resultingPath:(NSString **)resultingPath error:(NSError **)outError;
+- (BOOL)writeToFile:(NSString *)aPath assureUniqueFilename:(BOOL)assureUniqueFilename resultingPath:(NSString *__nullable*__nullable)resultingPath error:(NSError **)outError;
 
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *nameExtension;
 @property (nonatomic, copy) NSString *kind;
 @property (nonatomic, copy) NSNumber *size;
 
-@property (nonatomic, copy) NSString *path;
+@property (nonatomic, copy, nullable) NSString *path;
 
 @property (nonatomic, copy) NSString *type;
 @property (nonatomic, copy) NSString *dimensions;
@@ -89,4 +90,4 @@ HLKIT_EXTERN NSString * const HKSystemErrorMessageKey;
 
 @end
 
-
+NS_ASSUME_NONNULL_END

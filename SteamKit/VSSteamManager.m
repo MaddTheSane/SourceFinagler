@@ -916,9 +916,10 @@ static inline NSDictionary *VSMakeLaunchAgentPlist(NSString *jobLabel, NSArray *
 	NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
 	
 	OSType creatorCode = game.creatorCode;
+	static const OSType typeCode = 'APPL';
 	
 	NSDictionary *attributes = @{NSFileHFSCreatorCode: @(creatorCode),
-								NSFileHFSTypeCode: @('APPL'),
+								NSFileHFSTypeCode: @(typeCode),
 								MDFileHasCustomIcon: @YES};
 	
 	NSDictionary *infoPlist = game.infoDictionary;

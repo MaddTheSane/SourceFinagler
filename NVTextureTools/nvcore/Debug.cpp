@@ -485,7 +485,7 @@ namespace
 
     static bool hasStackTrace() {
 #if NV_OS_DARWIN
-        return backtrace != NULL;
+        return &backtrace != NULL;
 #else
         return true;
 #endif

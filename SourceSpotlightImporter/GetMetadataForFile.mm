@@ -102,7 +102,7 @@ BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *cont
 			return NO;
 		}
 		
-		if (file->Load([data bytes], [data length], vlTrue) == NO) {
+		if (file->Load([data bytes], (vlUInt)[data length], vlTrue) == NO) {
 			if (magic == TKVTFMagic) {
 				NSLog(@"MDGetMetadataFromImageWithContentsOfFile(): file->Load() (for %@) failed!", filePath);
 			} else {
@@ -148,7 +148,7 @@ BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *cont
 			return NO;
 		}
 		
-		DirectDrawSurface *dds = new DirectDrawSurface((unsigned char *)[data bytes], [data length]);
+		DirectDrawSurface *dds = new DirectDrawSurface((unsigned char *)[data bytes], (uint)[data length]);
 		if (!dds->isValid() || !dds->isSupported() || (dds->width() > 65535 || (dds->height() > 65535))) {
 			if (!dds->isValid()) {
 				NSLog(@"MDGetMetadataFromImageWithContentsOfFile(): file at filePath \"%@\": dds image is not valid, info follows:", filePath);

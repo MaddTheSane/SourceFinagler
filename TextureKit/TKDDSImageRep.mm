@@ -413,7 +413,7 @@ static TKDDSFormat defaultDDSFormat = TKDDSFormatDefault;
 	
 	NSData *imageData = self.data;
 	NSData *swappedData = TKBGRADataFromImageData(imageData, self.pixelsWide * self.pixelsHigh, self.bitsPerPixel, cgAlphaInfo);
-	inputOptions.setMipmapData(swappedData.bytes, self.pixelsWide, self.pixelsHigh, 1, (face == TKFaceNone ? 0 : face), mipmapIndex);
+	inputOptions.setMipmapData(swappedData.bytes, self.pixelsWide, self.pixelsHigh, 1, (face == TKFaceNone ? 0 :(int)face), mipmapIndex);
 	
 	
 	

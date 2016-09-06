@@ -567,7 +567,7 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray *inRects, BOOL isFlipped) {
 	
 	// make sure to print out the remaining hrStr part, aligned of course
 	if ((len % linelen) != 0) {
-		int bytesRemain = linelen - (len % linelen); // un-printed bytes
+		NSInteger bytesRemain = linelen - (len % linelen); // un-printed bytes
 		for (i = 0; i < bytesRemain; i++) {
 			[string appendString:@"   "];
 		}

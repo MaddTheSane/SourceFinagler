@@ -148,8 +148,8 @@ static inline TKPixelFormatMapping TKPixelFormatMappingForPixelFormat(TKPixelFor
 					return nil;
 				}
 				
-				width = [imageRep pixelsWide];
-				height = [imageRep pixelsHigh];
+				width = (GLuint)[imageRep pixelsWide];
+				height = (GLuint)[imageRep pixelsHigh];
 				
 				TKPixelFormat tkPixelFormat = [imageRep pixelFormat];
 				

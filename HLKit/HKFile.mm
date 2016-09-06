@@ -390,7 +390,7 @@ using namespace HLLib::Streams;
 				hlByte buffer[HK_COPY_BUFFER_SIZE];
 				
 				while (hlTrue) {
-					hlUInt currentBytesRead = pInput->Read(buffer, sizeof(buffer));
+					hlULongLong currentBytesRead = pInput->Read(buffer, sizeof(buffer));
 					
 					if (currentBytesRead == 0) {
 						bResult = (totalBytesExtracted == pInput->GetStreamSize());

@@ -15,6 +15,7 @@
 #import "TKBlueBackgroundView.h"
 #import "TKGrayscaleFilter.h"
 #import "TKImageKitAdditions.h"
+#import "MDHLDocument.h"
 
 
 #import "TKAppController.h"

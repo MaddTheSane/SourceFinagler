@@ -105,16 +105,16 @@ using namespace HLLib;
 #endif
 
 
-- (NSUInteger)countOfChildNodes {
+- (NSInteger)countOfChildNodes {
 	return (NSUInteger)_privateData->GetCount();
 }
 
-- (NSUInteger)countOfVisibleChildNodes {
+- (NSInteger)countOfVisibleChildNodes {
 	if (countOfVisibleChildNodes == NSNotFound) {
 		countOfVisibleChildNodes = 0;
 		NSUInteger numChildren = _privateData->GetCount();
-		for (NSUInteger i = 0; i < numChildren; i++) {
-			CDirectoryItem *item = _privateData->GetItem(i);
+		for (NSInteger i = 0; i < numChildren; i++) {
+			CDirectoryItem *item = _privateData->GetItem(int(i));
 			HLDirectoryItemType itemType = item->GetType();
 			if (itemType == HL_ITEM_FOLDER) {
 				countOfVisibleChildNodes++;
@@ -140,7 +140,7 @@ using namespace HLLib;
 		hlUInt count = _privateData->GetCount();
 		
 		for (NSUInteger i = 0; i < count; i++) {
-			const CDirectoryItem *item = _privateData->GetItem(i);
+			const CDirectoryItem *item = _privateData->GetItem(int(i));
 			HLDirectoryItemType itemType = item->GetType();
 			
 			HKItem *child = nil;
@@ -258,15 +258,15 @@ using namespace HLLib;
 			visibleDescendantsAndPaths[itemPath] = item;
 		}
 	}
-	return visibleDescendantsAndPaths;
+	return [visibleDescendantsAndPaths copy];
 }
 
-- (HKNode *)childNodeAtIndex:(NSUInteger)index {
+- (HKNode *)childNodeAtIndex:(NSInteger)index {
 	[self populateChildrenIfNeeded];
 	return [super childNodeAtIndex:index];
 }
 
-- (HKNode *)visibleChildNodeAtIndex:(NSUInteger)index {
+- (HKNode *)visibleChildNodeAtIndex:(NSInteger)index {
 #if HK_DEBUG
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif

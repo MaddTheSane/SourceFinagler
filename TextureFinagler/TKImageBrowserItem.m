@@ -195,7 +195,7 @@ static NSMutableDictionary	*placeholderImageBrowserItemsAndSizes = nil;
 										32,
 										aSize.width * 4,
 										colorSpace,
-										kCGImageAlphaLast,
+										(CGBitmapInfo)kCGImageAlphaLast,
 										provider,
 										NULL,
 										false,

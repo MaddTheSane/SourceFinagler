@@ -136,7 +136,7 @@ static inline GLenum TKOpenGLCubeMapFaceFromVTFCubeMapFace(VTFCubeMapFace vtfCub
 			return nil;
 		}
 		
-		if (file->Load([aData bytes], [aData length], vlFalse) == NO) {
+		if (file->Load([aData bytes], vlUInt([aData length]), vlFalse) == NO) {
 			if (magic == TKVTFMagic) {
 				NSLog(@"[%@ %@] file->Load() failed! (DOES appear to be a valid VTF; magic == 0x%x, %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), (unsigned int)magic, NSFileTypeForHFSTypeCode(magic));
 			} else {

@@ -10,6 +10,7 @@
 #import "MDHLDocument.h"
 #import "MDTextFieldCell.h"
 #import "TKAppKitAdditions.h"
+#import "TKAppController.h"
 
 
 NSString * const MDShouldShowKindColumnKey							= @"MDShouldShowKindColumn";

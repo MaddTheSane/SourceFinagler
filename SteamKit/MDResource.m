@@ -98,7 +98,7 @@
 }
 
 
-- (void)setResourceSize:(SInt32)value {
+- (void)setResourceSize:(long)value {
 	resourceSize = value;
 	[self setResChanged:YES];
 }

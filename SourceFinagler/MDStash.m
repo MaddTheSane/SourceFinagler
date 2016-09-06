@@ -21,7 +21,7 @@
 
 UInt32 MDMakeStash(const char *string) {
 	if (string) {
-		int len = strlen(string);
+		int len = (int)strlen(string);
 		int k;
 		UInt32 s1 = len * 0x0101;
 		UInt32 s2 = s1 ^ 0xffff;

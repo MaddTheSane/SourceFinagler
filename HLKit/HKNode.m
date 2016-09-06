@@ -79,7 +79,7 @@
 	}
 }
 
-- (void)insertChildNode:(HKNode *)child atIndex:(NSUInteger)index {
+- (void)insertChildNode:(HKNode *)child atIndex:(NSInteger)index {
 	[self initializeChildrenIfNeeded];
 	
 	child.parent = self;
@@ -93,7 +93,7 @@
 	}
 }
 
-- (void)insertChildNodes:(NSArray *)newChildren atIndex:(NSUInteger)theIndex {
+- (void)insertChildNodes:(NSArray *)newChildren atIndex:(NSInteger)theIndex {
 #if HK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -135,15 +135,15 @@
     [parent removeChildNode:self];
 }
 
-- (NSUInteger)indexOfChildNode:(HKNode *)child {
+- (NSInteger)indexOfChildNode:(HKNode *)child {
     return [childNodes indexOfObject:child];
 }
 
-- (NSUInteger)indexOfChildNodeIdenticalTo:(HKNode *)child {
+- (NSInteger)indexOfChildNodeIdenticalTo:(HKNode *)child {
     return [childNodes indexOfObjectIdenticalTo:child];
 }
 
-- (NSUInteger)countOfChildNodes {
+- (NSInteger)countOfChildNodes {
     return childNodes.count;
 }
 
@@ -151,11 +151,11 @@
 	return [childNodes copy];
 }
 
-- (HKNode *)childNodeAtIndex:(NSUInteger)index {
+- (HKNode *)childNodeAtIndex:(NSInteger)index {
     return childNodes[index];
 }
 
-- (NSUInteger)countOfVisibleChildNodes {
+- (NSInteger)countOfVisibleChildNodes {
 	return visibleChildNodes.count;
 }
 
@@ -163,7 +163,7 @@
 	return [visibleChildNodes copy];
 }
 
-- (HKNode *)visibleChildNodeAtIndex:(NSUInteger)index {
+- (HKNode *)visibleChildNodeAtIndex:(NSInteger)index {
 	return visibleChildNodes[index];
 }
 

@@ -8,11 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
 
 @interface HKNode : NSObject {
-	__unsafe_unretained id container;	// not retained
+	__weak id container;	// not retained
 	
-	__unsafe_unretained HKNode *parent;	// not retained
+	__weak HKNode *parent;	// not retained
 
     NSMutableArray		*childNodes;
 	NSMutableArray		*visibleChildNodes;
@@ -25,10 +26,10 @@
 	BOOL				showInvisibleItems;	
 }
 
-- (instancetype)initWithParent:(HKNode *)aParent childNodes:(NSArray<HKNode*> *)theChildren sortDescriptors:(NSArray<NSSortDescriptor*> *)aSortDescriptors container:(id)aContainer NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithParent:(nullable HKNode *)aParent childNodes:(nullable NSArray<HKNode*> *)theChildren sortDescriptors:(nullable NSArray<NSSortDescriptor*> *)aSortDescriptors container:(nullable id)aContainer NS_DESIGNATED_INITIALIZER;
 
-@property (nonatomic, assign) id container;
-@property (nonatomic, assign) HKNode *parent;
+@property (nonatomic, weak, nullable) id container;
+@property (nonatomic, weak, nullable) HKNode *parent;
 @property (nonatomic, assign, getter=isVisible) BOOL visible;
 @property (nonatomic, assign) BOOL showInvisibleItems;
 @property (nonatomic, assign, getter=isLeaf) BOOL leaf;
@@ -38,21 +39,21 @@
 @property (nonatomic, assign, readonly, getter=isRootNode) BOOL rootNode;
 
 
-- (void)insertChildNode:(HKNode *)child atIndex:(NSUInteger)index;
-- (void)insertChildNodes:(NSArray *)newChildren atIndex:(NSUInteger)index;
+- (void)insertChildNode:(HKNode *)child atIndex:(NSInteger)index;
+- (void)insertChildNodes:(NSArray<HKNode*> *)newChildren atIndex:(NSInteger)index;
 - (void)removeChildNode:(HKNode *)child;
 - (void)removeFromParent;
 
-- (NSUInteger)indexOfChildNode:(HKNode *)child;
-- (NSUInteger)indexOfChildNodeIdenticalTo:(HKNode *)child;
+- (NSInteger)indexOfChildNode:(HKNode *)child;
+- (NSInteger)indexOfChildNodeIdenticalTo:(HKNode *)child;
 
-@property (readonly) NSUInteger countOfChildNodes;
+@property (readonly) NSInteger countOfChildNodes;
 @property (readonly, copy) NSArray<HKNode *> *childNodes;
-- (HKNode *)childNodeAtIndex:(NSUInteger)index;
+- (HKNode *)childNodeAtIndex:(NSInteger)index;
 
-@property (readonly) NSUInteger countOfVisibleChildNodes;
+@property (readonly) NSInteger countOfVisibleChildNodes;
 @property (readonly, copy) NSArray<HKNode *> *visibleChildNodes;
-- (HKNode *)visibleChildNodeAtIndex:(NSUInteger)index;
+- (HKNode *)visibleChildNodeAtIndex:(NSInteger)index;
 
 
 - (BOOL)isContainedInNodes:(NSArray<HKNode*> *)nodes;
@@ -68,3 +69,4 @@
 
 @end
 
+NS_ASSUME_NONNULL_END

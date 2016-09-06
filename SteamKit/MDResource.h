@@ -23,7 +23,7 @@ typedef NS_OPTIONS(ResAttributes, MDResourceAttributes) {
 @interface MDResource : NSObject {
 	NSString			*resourceName;
 	NSData				*resourceData;
-	SInt32				resourceSize;
+	long				resourceSize;
 	ResType				resourceType;
 	ResourceIndex		resourceIndex;
 	ResID				resourceID;
@@ -47,7 +47,7 @@ typedef NS_OPTIONS(ResAttributes, MDResourceAttributes) {
 @property (nonatomic) ResID resourceID;
 @property (nonatomic, copy) NSString *resourceName;
 @property (nonatomic, copy) NSData *resourceData;
-@property (nonatomic) SInt32 resourceSize;
+@property (nonatomic) long resourceSize;
 @property (nonatomic) ResourceIndex resourceIndex;
 @property (nonatomic) MDResourceAttributes resourceAttributes;
 @property BOOL resChanged;
