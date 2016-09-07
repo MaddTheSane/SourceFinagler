@@ -174,7 +174,7 @@ static SInt32 MDSystemVersion = MDUndeterminedVersion;
 	}
 	
 	
-	NSDictionary *attributes = @{NSFontAttributeName: [NSFont systemFontOfSize:[NSFont smallSystemFontSize]], NSParagraphStyleAttributeName: style, NSShadowAttributeName: shadow, NSForegroundColorAttributeName: textColor};
+	NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]],NSFontAttributeName, style,NSParagraphStyleAttributeName, shadow,NSShadowAttributeName, textColor,NSForegroundColorAttributeName, nil];
 	
 	NSAttributedString *richText = [[NSAttributedString alloc] initWithString:stringValue attributes:attributes];
 	

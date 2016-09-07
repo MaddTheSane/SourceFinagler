@@ -197,6 +197,7 @@ CGColorRef TKCreatePatternColorWithImage(CGImageRef imageRef);
 		CGColorRef patternColorRef = TKCreatePatternColorWithImage(checkerboardImageRef);
 		imageKitLayer.backgroundColor = patternColorRef;
 		CGColorRelease(patternColorRef);
+		CGImageRelease(checkerboardImageRef);
 		
 	} else {
 		imageKitLayer.backgroundColor = nil;

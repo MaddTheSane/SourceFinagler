@@ -121,7 +121,7 @@ using namespace HLLib::Streams;
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	if (type == nil) {
-		type = (__bridge_transfer NSString *)UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, (__bridge CFStringRef)self.nameExtension, NULL);
+		type = CFBridgingRelease(UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, (__bridge CFStringRef)self.nameExtension, NULL));
 	}
 	return type;
 }
@@ -133,9 +133,7 @@ using namespace HLLib::Streams;
 	if (kind == nil) {
 		kind = [[NSWorkspace sharedWorkspace] localizedDescriptionForType:self.type];
 		if (kind == nil) {
-			CFStringRef tmpKind;
-			LSCopyKindStringForTypeInfo(kLSUnknownType, kLSUnknownCreator, (__bridge CFStringRef)self.nameExtension, &tmpKind);
-			kind = (NSString*)CFBridgingRelease(tmpKind);
+			kind = (NSString*)CFBridgingRelease(UTTypeCopyDescription((__bridge CFStringRef)self.type));
 		}
 	}
 	return kind;

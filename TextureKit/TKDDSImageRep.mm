@@ -763,7 +763,7 @@ static unsigned char *TKCreateRGBADataFromColor32(Color32 *pixels, NSUInteger pi
 			unsigned char *bytes = TKCreateRGBADataFromColor32(nvImage.pixels(), nvImage.width() * nvImage.height(), (nvImage.format() == Image::Format_ARGB ? 32 : 24), &length);
 			if (bytes) {
 				NSData *convertedData = [[NSData alloc] initWithBytes:bytes length:length];
-				free(bytes);
+				::free(bytes);
 				CGDataProviderRef provider = CGDataProviderCreateWithCFData((CFDataRef)convertedData);
 				convertedData = nil;
 				CGColorSpaceRef colorSpace = CGColorSpaceCreateWithName(kCGColorSpaceGenericRGB);
@@ -923,7 +923,7 @@ typedef struct TKColor32 {
 #pragma pack()
 
 
-enum {
+NS_ENUM(uint32_t) {
 	TKBGRA	= UINT_MAX
 };
 
@@ -951,7 +951,6 @@ static NSData *TKImageDataFromNSData(NSData *inputData, NSUInteger pixelCount, N
 		if (destBitmapInfo == kCGImageAlphaNone) {
 			free(vBytes);
 			return inputData;
-			
 		} else {
 			TKColor32 *destPixels = (TKColor32 *)vBytes;
 			TKColor32 destPixel;

@@ -71,16 +71,15 @@ static MDLaunchManager *sharedManager = nil;
 #endif
 	NSDictionary *job = nil;
 	if (pid > 0 && domain == MDLaunchUserDomain) {
-		
-			NSArray *jobs = CFBridgingRelease(SMCopyAllJobDictionaries((domain == MDLaunchUserDomain ? kSMDomainUserLaunchd : kSMDomainSystemLaunchd)));
-			if (jobs) {
-				for (NSDictionary *aJob in jobs) {
-					if ([aJob[NSStringFromLaunchJobKey(LAUNCH_JOBKEY_PID)] intValue] == pid) {
-						job = aJob;
-						break;
-					}
+		NSArray *jobs = CFBridgingRelease(SMCopyAllJobDictionaries((domain == MDLaunchUserDomain ? kSMDomainUserLaunchd : kSMDomainSystemLaunchd)));
+		if (jobs) {
+			for (NSDictionary *aJob in jobs) {
+				if ([aJob[NSStringFromLaunchJobKey(LAUNCH_JOBKEY_PID)] intValue] == pid) {
+					job = aJob;
+					break;
 				}
 			}
+		}
 	}
 	return job;
 }

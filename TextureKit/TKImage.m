@@ -306,7 +306,7 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 			NSLog(@"[%@ %@] TKImage *archivedImage = [NSKeyedUnarchiver unarchiveObjectWithData:aData] failed!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 			return nil;
 		}
-		return archivedImage;
+		return self = archivedImage;
 		
 	} else {
 		
