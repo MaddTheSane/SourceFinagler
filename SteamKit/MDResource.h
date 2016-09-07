@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreServices/CoreServices.h>
+#include <CoreServices/CoreServices.h>
 
 /* Resource Attribute Masks*/
 typedef NS_OPTIONS(ResAttributes, MDResourceAttributes) {

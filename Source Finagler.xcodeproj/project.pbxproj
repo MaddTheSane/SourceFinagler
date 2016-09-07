@@ -1954,8 +1954,6 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
-				C1C12548123A0EC6004674B4 /* Localizable.strings */,
 				C11CE9BF119B7FE3000E26D2 /* Extras */,
 				C10355FB11C5AA930054740E /* MDSteamAppsRelocator */,
 				C10355FC11C5AAAF0054740E /* MDOtherAppsHelper */,
@@ -2051,6 +2049,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
+				C1C12548123A0EC6004674B4 /* Localizable.strings */,
 				C15521FD11D9A4D600CCEDD3 /* dsa_pub.pem */,
 				C132DF73124D521B00A8DE04 /* LGPL.rtf */,
 				C1C1252B123A0CAE004674B4 /* Source Finagler.sdef */,
@@ -5146,7 +5146,6 @@
 				1DDD58150DA1D0A300B32029 /* English */,
 			);
 			name = MainMenu.xib;
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		55B9F2681D7CB1EF00641709 /* InfoPlist.strings */ = {
@@ -5356,7 +5355,6 @@
 				C1C12549123A0EC6004674B4 /* English */,
 			);
 			name = Localizable.strings;
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		C1D5B01E147BE6F200B0599B /* MDHLDocumentLion.xib */ = {

@@ -50,9 +50,8 @@ typedef NS_ENUM(NSInteger, MDDateFormatterStyle) {    // date and time format st
 	NSString *today;
 	NSString *yesterday;
 	NSString *tomorrow;
-	
-	
 }
+
 - (instancetype)initWithStyle:(MDDateFormatterStyle)aStyle isRelative:(BOOL)value;
 
 @property  MDDateFormatterStyle style;

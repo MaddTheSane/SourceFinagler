@@ -7,12 +7,12 @@
 //
 
 #import <TextureKit/TKImageRep.h>
-#import <CoreServices/CoreServices.h>
+#include <CoreServices/CoreServices.h>
 
 #import <TextureKit/TKDDSImageRep.h>
 #import <TextureKit/TKVTFImageRep.h>
 
-#import <Accelerate/Accelerate.h>
+#include <Accelerate/Accelerate.h>
 
 #import "TKFoundationAdditions.h"
 #import "TKPrivateInterfaces.h"

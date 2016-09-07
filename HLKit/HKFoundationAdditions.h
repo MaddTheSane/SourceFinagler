@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreServices/CoreServices.h>
+#include <CoreServices/CoreServices.h>
 #import <HLKit/HLKitDefines.h>
 
 NS_ASSUME_NONNULL_BEGIN

@@ -11,7 +11,7 @@
 
 #import "TKImageDocument.h"
 
-#import <CoreServices/CoreServices.h>
+#include <CoreServices/CoreServices.h>
 
 #import "TKFoundationAdditions.h"
 

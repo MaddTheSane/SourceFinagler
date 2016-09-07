@@ -1,8 +1,8 @@
 #include <CoreServices/CoreServices.h>
 #include "HLSpotlightMain.h"
 #import <Cocoa/Cocoa.h>
-#import <NVTextureTools/NVTextureTools.h>
-#import <VTF/VTF.h>
+#include <NVTextureTools/NVTextureTools.h>
+#include <VTF/VTF.h>
 #import <TextureKit/TextureKit.h>
 
 

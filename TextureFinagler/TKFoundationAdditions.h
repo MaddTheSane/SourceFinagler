@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreServices/CoreServices.h>
+#include <CoreServices/CoreServices.h>
 
 
 #if defined(__cplusplus)

@@ -17,7 +17,6 @@
 
 
 @protocol VSSteamManagerDelegate <NSObject>
-
 - (void)gameDidLaunch:(VSGame *)game;
 - (void)gameDidTerminate:(VSGame *)game;
 

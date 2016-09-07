@@ -51,8 +51,6 @@ static SInt32 MDMetalBevelViewSystemVersion = 0;
     return self;
 }
 
-
-
 - (void)drawRect:(NSRect)rect {
 	
 //	[super drawRect:rect]; // ??
@@ -102,13 +100,6 @@ static SInt32 MDMetalBevelViewSystemVersion = 0;
 			
 		}
 	}
-}
-
-
-
-
-- (BOOL)drawsBackground {
-    return drawsBackground;
 }
 
 - (void)setDrawsBackground:(BOOL)value {

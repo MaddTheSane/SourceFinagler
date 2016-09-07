@@ -9,7 +9,7 @@
 #import <TextureKit/TKImage.h>
 #import <TextureKit/TextureKitDefines.h>
 #import "TKFoundationAdditions.h"
-#import <CoreServices/CoreServices.h>
+#include <CoreServices/CoreServices.h>
 
 // Notes:
 // NSImage's initWithSize: appears to be the designated initializer.

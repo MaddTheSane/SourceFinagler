@@ -13,7 +13,6 @@
 
 @implementation MDQuickLookPanel
 
-
 - (void)keyDown:(NSEvent *)theEvent {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -25,6 +24,5 @@
 		[super keyDown:theEvent];
 	}
 }
-
 
 @end

@@ -6,6 +6,8 @@
 //  Copyright 2008 Mark Douma. All rights reserved.
 //
 
+#include <math.h>
+#include <tgmath.h>
 #import "MDBottomBar.h"
 #import "MDFileSizeFormatter.h"
 
@@ -172,7 +174,6 @@ static SInt32 MDSystemVersion = MDUndeterminedVersion;
 			textColor = [NSColor disabledControlTextColor];
 		}
 	}
-	
 	
 	NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]],NSFontAttributeName, style,NSParagraphStyleAttributeName, shadow,NSShadowAttributeName, textColor,NSForegroundColorAttributeName, nil];
 	

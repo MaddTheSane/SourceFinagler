@@ -11,11 +11,9 @@
 
 @implementation VSGame (VSAdditions)
 
-
 - (NSString *)helpedStateString {
 	return (self.helped ? @"Helped" : @"Not helped");
 }
-
 
 - (NSColor *)helpedStateColor {
 	if (self.helped) {
@@ -24,18 +22,15 @@
 	return [NSColor colorWithCalibratedRed:183.0/255.0 green:130.0/255.0 blue:0.0/255.0 alpha:1.0];
 }
 
-
 - (NSImage *)runningStateImage {
-	if (self.running) return [NSImage imageNamed:NSImageNameStatusAvailable];
+	if (self.running)
+		return [NSImage imageNamed:NSImageNameStatusAvailable];
 	return nil;
 }
-
 
 + (NSSet *)keyPathsForValuesAffectingRunningStateImage {
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 	return [NSSet setWithObjects:@"running", nil];
 }
-
-
 
 @end

@@ -8,7 +8,7 @@
 
 #import "TKImageBrowserItem.h"
 #import <TextureKit/TextureKit.h>
-#import <ApplicationServices/ApplicationServices.h>
+#include <ApplicationServices/ApplicationServices.h>
 #import "TKImageRepAdditions.h"
 
 

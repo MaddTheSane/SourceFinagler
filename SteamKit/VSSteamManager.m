@@ -95,11 +95,8 @@ static VSSteamManager *sharedManager = nil;
 
 
 @implementation VSSteamManager
-
 @synthesize delegate;
 @synthesize monitoringGames;
-
-
 
 + (VSSteamManager *)defaultManager {
 	@synchronized(self) {
@@ -117,7 +114,6 @@ static VSSteamManager *sharedManager = nil;
 - (id)copyWithZone:(NSZone *)zone {
 	return self;
 }
-
 
 - (instancetype)init {
 #if VS_DEBUG

@@ -12,7 +12,7 @@ NSString * const TKImageExportNameKey						= @"TKImageExportName";
 NSString * const TKImageExportFileTypeKey					= @"TKImageExportFileType";
 NSString * const TKImageExportFormatKey						= @"TKImageExportFormat";
 NSString * const TKImageExportDXTCompressionQualityKey		= @"TKImageExportDXTCompressionQuality";
-NSString * const TKImageExportMipmapGenerationKey					= @"TKImageExportMipmaps";
+NSString * const TKImageExportMipmapGenerationKey			= @"TKImageExportMipmaps";
 
 
 #define TK_DEBUG 1

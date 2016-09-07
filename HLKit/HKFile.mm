@@ -11,10 +11,8 @@
 #import <HLKit/HKFoundationAdditions.h>
 #import "HKPrivateInterfaces.h"
 #import <HLKit/HKFileHandle.h>
-#import <HL/HL.h>
-
-
-#import <CoreServices/CoreServices.h>
+#include <HL/HL.h>
+#include <CoreServices/CoreServices.h>
 
 #define HK_DEBUG 0
 

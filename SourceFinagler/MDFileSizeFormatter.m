@@ -8,7 +8,7 @@
 
 
 #import "MDFileSizeFormatter.h"
-#import <CoreServices/CoreServices.h>
+#include <CoreServices/CoreServices.h>
 
 
 NS_ENUM(SInt32) {

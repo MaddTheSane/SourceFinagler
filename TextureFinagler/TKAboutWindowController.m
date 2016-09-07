@@ -25,8 +25,8 @@
 	return self;
 }
 
-
 - (void)awakeFromNib {
+	[super awakeFromNib];
 	nameField.stringValue = [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString *)kCFBundleNameKey];
 	versionField.stringValue = [NSString stringWithFormat:@"%@ %@ (%@)",
 								  [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleExecutable"],
@@ -36,15 +36,12 @@
 	copyrightField.stringValue = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"NSHumanReadableCopyright"];
 }
 
-
-
 - (IBAction)showWindow:(id)sender {
 	if (!self.window.visible) {
 		[self.window center];
 	}
 	[self.window makeKeyAndOrderFront:nil];
 }
-
 
 - (IBAction)showAcknowledgements:(id)sender {
 #if TK_DEBUG
@@ -56,6 +53,4 @@
 	}
 }
 
-
 @end
-

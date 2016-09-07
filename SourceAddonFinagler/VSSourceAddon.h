@@ -18,14 +18,14 @@
 	NSImage			*gameIcon;
 	NSString		*problem;
 }
-+ (id)sourceAddonWithPath:(NSString *)aPath game:(VSGame *)aGame error:(NSError *)inError;
-- (id)initWithPath:(NSString *)aPath game:(VSGame *)game error:(NSError *)inError;
++ (instancetype)sourceAddonWithPath:(NSString *)aPath game:(VSGame *)aGame error:(NSError *)inError;
+- (instancetype)initWithPath:(NSString *)aPath game:(VSGame *)game error:(NSError *)inError;
 
-@property (retain) NSString *path;
-@property (retain) NSString *fileName;
+@property (copy) NSString *path;
+@property (copy) NSString *fileName;
 @property (retain) NSImage *fileIcon;
-@property (retain) NSString *gameName;
+@property (copy) NSString *gameName;
 @property (retain) NSImage *gameIcon;
-@property (retain) NSString *problem;
+@property (copy) NSString *problem;
 
 @end

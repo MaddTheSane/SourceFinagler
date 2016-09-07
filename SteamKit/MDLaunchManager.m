@@ -8,7 +8,7 @@
 
 #import "MDLaunchManager.h"
 #import "MDFolderManager.h"
-#import <ServiceManagement/ServiceManagement.h>
+#include <ServiceManagement/ServiceManagement.h>
 
 
 #define MD_DEBUG 0

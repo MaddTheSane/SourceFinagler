@@ -12,7 +12,7 @@
 
 #import <HLKit/HLKit.h>
 
-#import <CoreServices/CoreServices.h>
+#include <CoreServices/CoreServices.h>
 #import "MDQuickLookPreviewViewController.h"
 #import "TKAppKitAdditions.h"
 
@@ -31,10 +31,7 @@ static MDQuickLookController *sharedQuickLookController = nil;
 
 
 @implementation MDQuickLookController
-
-
 @synthesize items, document;
-
 
 + (MDQuickLookController *)sharedQuickLookController {
 	if (sharedQuickLookController == nil) {
@@ -242,7 +239,6 @@ static MDQuickLookController *sharedQuickLookController = nil;
 		
 	}
 }
-
 
 - (void)loadItemAtIndex:(NSInteger)anIndex {
 #if MD_DEBUG

@@ -26,12 +26,14 @@ TEXTUREKIT_EXTERN NSString * const TKImageExportMipmapGenerationKey;		// NSNumbe
 	
 }
 
-+ (NSArray *)imageExportPresetsWithDictionaryRepresentations:(NSArray *)dictionaryRepresentations;
-+ (NSArray *)dictionaryRepresentationsOfImageExportPresets:(NSArray *)presets;
++ (NSArray<TKImageExportPreset*> *)imageExportPresetsWithDictionaryRepresentations:(NSArray<NSDictionary<NSString*,id>*> *)dictionaryRepresentations;
++ (NSArray<NSDictionary<NSString*,id>*> *)dictionaryRepresentationsOfImageExportPresets:(NSArray<TKImageExportPreset*> *)presets;
 
 
 + (TKImageExportPreset *)originalImagePreset;
-
+#if __has_feature(objc_class_property)
+@property (class, readonly, copy) TKImageExportPreset *originalImagePreset;
+#endif
 
 + (instancetype)imageExportPresetWithDictionary:(NSDictionary *)aDictionary;
 - (instancetype)initWithDictionary:(NSDictionary *)aDictionary NS_DESIGNATED_INITIALIZER;

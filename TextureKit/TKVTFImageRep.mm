@@ -8,8 +8,8 @@
 
 #import <TextureKit/TKVTFImageRep.h>
 #import <Foundation/Foundation.h>
-#import <ApplicationServices/ApplicationServices.h>
-#import <VTF/VTF.h>
+#include <ApplicationServices/ApplicationServices.h>
+#include <VTF/VTF.h>
 
 #define TK_DEBUG 1
 
@@ -445,9 +445,7 @@ static BOOL vtfInitialized = NO;
 		}
 		
 		for (NSImageRep *imageRep in tkImageReps) {
-			
 			if ([imageRep isKindOfClass:[TKImageRep class]]) {
-				
 				vlUInt theFrameIndex = (vlUInt)(((TKImageRep *)imageRep).frameIndex == TKFrameIndexNone ? 0 : ((TKImageRep *)imageRep).frameIndex);
 				vlUInt theFace = (vlUInt)(((TKImageRep *)imageRep).face == TKFaceNone ? 0 : ((TKImageRep *)imageRep).face);
 				vlUInt theSliceIndex = (vlUInt)(((TKImageRep *)imageRep).sliceIndex == TKSliceIndexNone ? 0 : ((TKImageRep *)imageRep).sliceIndex);
@@ -593,6 +591,7 @@ static BOOL vtfInitialized = NO;
 					
 					NSData *data = nil;
 					
+					//todo: more formats checking.
 					if (imageFormat == IMAGE_FORMAT_BGRA8888) {
 						convertedBytesLength = existingBytesLength;
 						convertedBytes = new vlByte[convertedBytesLength];
@@ -606,11 +605,9 @@ static BOOL vtfInitialized = NO;
 					}
 					
 					if (imageFormat == IMAGE_FORMAT_RGBA16161616F) {
-						
 						NSData *existingData = [NSData dataWithBytes:existingBytes length:existingBytesLength];
 						
 						data = [TKImageRep dataRepresentationOfData:existingData inPixelFormat:TKPixelFormatRGBA16161616F size:NSMakeSize(mipmapWidth, mipmapHeight) usingPixelFormat:TKPixelFormatRGBA32323232F];
-						
 					} else if (conversionNeeded) {
 						data = [[NSData alloc] initWithBytes:convertedBytes length:convertedBytesLength];
 					} else {

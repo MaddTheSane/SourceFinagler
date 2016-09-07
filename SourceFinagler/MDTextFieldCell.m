@@ -27,13 +27,15 @@
 
 
 @implementation MDTextFieldCell
-
 @synthesize highlightedActiveEnabledAttributes;
 @synthesize highlightedActiveDisabledAttributes;
 @synthesize highlightedInactiveEnabledAttributes;
 @synthesize highlightedInactiveDisabledAttributes;
 @synthesize enabledAttributes;
 @synthesize disabledAttributes;
+@synthesize image;
+@synthesize leftEdgePadding;
+@synthesize centerImageVertically;
 
 
 - (id)copyWithZone:(NSZone *)zone {
@@ -66,7 +68,6 @@
 	
 	return cell;
 }
-
 
 - (void)initAttributes {
 #if MD_DEBUG
@@ -105,8 +106,6 @@
 	
 }
 
-
-
 - (instancetype)initTextCell:(NSString *)value {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -117,7 +116,6 @@
 	}
 	return self;
 }
-
 
 - (instancetype)initImageCell:(NSImage *)value {
 #if MD_DEBUG
@@ -131,7 +129,6 @@
 	return self;
 }
 
-
 - (instancetype)init {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -141,7 +138,6 @@
 	}
 	return self;
 }
-
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
 #if MD_DEBUG
@@ -156,17 +152,11 @@
 	return self;
 }
 
-
 - (void)encodeWithCoder:(NSCoder *)coder {
 	[super encodeWithCoder:coder];
-	[coder encodeObject:@((double) MD_LEFT_EDGE_PADDING) forKey:@"MDLeftEdgePadding"];
-	[coder encodeObject:@(centerImageVertically) forKey:@"MDCenterImageVertically"];
+	[coder encodeDouble:(double) MD_LEFT_EDGE_PADDING forKey:@"MDLeftEdgePadding"];
+	[coder encodeBool:centerImageVertically forKey:@"MDCenterImageVertically"];
 }
-
-@synthesize image;
-@synthesize leftEdgePadding;
-@synthesize centerImageVertically;
-
 
 - (NSPoint)calculatedImagePointForFrame:(NSRect)cellFrame imageSize:(NSSize)imageSize isFlipped:(BOOL)isFlipped {
 #if MD_DEBUG
@@ -204,7 +194,6 @@
 	}
 	return imagePoint;
 }
-
 
 - (NSRect)calculatedRichTextRectForFrame:(NSRect)cellFrame richText:(NSAttributedString *)richText fontSize:(CGFloat)fontSize imageSize:(NSSize)imageSize isFlipped:(BOOL)isFlipped {
 #if MD_DEBUG
@@ -267,7 +256,6 @@
 	return richTextRect;
 }
 
-
 - (void)setFont:(NSFont *)fontObj {
 #if MD_DEBUG
     NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -280,8 +268,6 @@
 	disabledAttributes[NSFontAttributeName] = fontObj;
 	super.font = fontObj;
 }
-
-
 
 - (void)drawWithFrame:(NSRect)cellFrame inView:(NSView *)controlView {
 #if MD_DEBUG
@@ -363,8 +349,6 @@
 //	}
 }
 
-
-
 - (NSSize)cellSize {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -380,7 +364,6 @@
 	}
 	return cellSize;
 }
-
 
 - (void)drawWithFrame:(NSRect)cellFrame inImage:(NSImage *)dragImage {
 #if MD_DEBUG
@@ -418,8 +401,6 @@
 	[dragImage unlockFocus];
 }
 
-
-	
 - (NSArray *)hitRectsForFrame:(NSRect)cellFrame isFlipped:(BOOL)isFlipped {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -455,6 +436,4 @@
 	return [hitRects copy];
 }
 
-
 @end
-

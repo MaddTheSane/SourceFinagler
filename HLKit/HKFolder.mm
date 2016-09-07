@@ -9,7 +9,7 @@
 #import <HLKit/HKFolder.h>
 #import <HLKit/HKFile.h>
 #import <HLKit/HKFoundationAdditions.h>
-#import <HL/HL.h>
+#include <HL/HL.h>
 
 #import "HKPrivateInterfaces.h"
 

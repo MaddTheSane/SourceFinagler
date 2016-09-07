@@ -8,8 +8,8 @@
 
 #import <TextureKit/TKDDSImageRep.h>
 #import <Foundation/Foundation.h>
-#import <ApplicationServices/ApplicationServices.h>
-#import <NVTextureTools/NVTextureTools.h>
+#include <ApplicationServices/ApplicationServices.h>
+#include <NVTextureTools/NVTextureTools.h>
 
 #import "TKFoundationAdditions.h"
 

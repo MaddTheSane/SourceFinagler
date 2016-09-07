@@ -17,12 +17,8 @@
 - (void)mouseDidExitRolloverButton:(MDRolloverButton *)button;
 @end
 
-
-
 @interface MDRolloverButton : NSButton {
-	
 	IBOutlet id <MDRolloverButtonDelegate> delegate;
 }
-
 
 @end
