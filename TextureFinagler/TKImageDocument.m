@@ -310,7 +310,7 @@ NSString *TKImageIOLocalizedString(NSString *key) {
 	NSLog(@"[%@ %@] typeName == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), typeName);
 #endif
 	
-	NSData *imageData = [NSData dataWithContentsOfURL:absURL];
+	NSData *imageData = [NSData dataWithContentsOfURL:absURL options:NSDataReadingMappedIfSafe error:outError];
 	if (imageData) image = [[TKImage alloc] initWithData:imageData];
 	
 	if (image) self.dimensions = [NSString stringWithFormat:@"%lu x %lu", (unsigned long)image.size.width, (unsigned long)image.size.height];

@@ -46,9 +46,9 @@ static const TKVTFFormatMapping TKVTFFormatMappingTable[] = {
 	{ TKVTFFormatRGB565,		IMAGE_FORMAT_RGB565,			TKPixelFormatRGB565,	TKPixelFormatRGB,		@"RGB565" },
 	
 	{ TKVTFFormatBGR,			IMAGE_FORMAT_BGR888,			TKPixelFormatRGB,		TKPixelFormatRGB,		@"BGR"  },
-	{ TKVTFFormatBGRA,			IMAGE_FORMAT_BGRA8888,			TKPixelFormatBGRA,		TKPixelFormatRGBA,		@"BGRA" },
+	{ TKVTFFormatBGRA,			IMAGE_FORMAT_BGRA8888,			TKPixelFormatBGRA,		TKPixelFormatARGB,		@"BGRA" },
 	{ TKVTFFormatBGRX,			IMAGE_FORMAT_BGRX8888,			TKPixelFormatRGBA,		TKPixelFormatRGB,		@"BGRX" },
-	{ TKVTFFormatABGR,			IMAGE_FORMAT_ABGR8888,			TKPixelFormatARGB,		TKPixelFormatRGBA,		@"ABGR" },
+	{ TKVTFFormatABGR,			IMAGE_FORMAT_ABGR8888,			TKPixelFormatABGR,		TKPixelFormatARGB,		@"ABGR" },
 	
 	{ TKVTFFormatBluescreenBGR,	IMAGE_FORMAT_BGR888_BLUESCREEN,	TKPixelFormatRGBA,		TKPixelFormatRGBA,		 @"BluescreenBGR"  },
 	{ TKVTFFormatBGR565,		IMAGE_FORMAT_BGR565,			TKPixelFormatRGBA,		TKPixelFormatRGBA,		 @"BGR565" },
@@ -591,27 +591,20 @@ static BOOL vtfInitialized = NO;
 					
 					NSData *data = nil;
 					
-					//todo: more formats checking.
-					if (imageFormat == IMAGE_FORMAT_BGRA8888) {
-						convertedBytesLength = existingBytesLength;
-						convertedBytes = new vlByte[convertedBytesLength];
-						for (NSInteger i = 0; i < convertedBytesLength; i += 4) {
-							unsigned int *toConv = (unsigned int*)(&convertedBytes[i]);
-							*toConv = CFSwapInt32(*(unsigned int*)(&existingBytes[i]));
-						}
-						destinationPixelFormat = TKPixelFormatARGB;
-						pixelFormatInfo = TKPixelFormatInfoFromPixelFormat(destinationPixelFormat);
-						conversionNeeded = YES;
-					}
-					
+					@autoreleasepool {
 					if (imageFormat == IMAGE_FORMAT_RGBA16161616F) {
-						NSData *existingData = [NSData dataWithBytes:existingBytes length:existingBytesLength];
+						NSData *existingData = [[NSData alloc] initWithBytes:existingBytes length:existingBytesLength];
 						
 						data = [TKImageRep dataRepresentationOfData:existingData inPixelFormat:TKPixelFormatRGBA16161616F size:NSMakeSize(mipmapWidth, mipmapHeight) usingPixelFormat:TKPixelFormatRGBA32323232F];
+					} else if (imageFormat == IMAGE_FORMAT_BGRA8888 || imageFormat == IMAGE_FORMAT_ABGR8888) {
+						NSData *existingData = [[NSData alloc] initWithBytes:existingBytes length:existingBytesLength];
+						
+						data = [TKImageRep dataRepresentationOfData:existingData inPixelFormat:TKPixelFormatFromVTFImageFormat(imageFormat) size:NSMakeSize(mipmapWidth, mipmapHeight) usingPixelFormat:TKPixelFormatARGB];
 					} else if (conversionNeeded) {
 						data = [[NSData alloc] initWithBytes:convertedBytes length:convertedBytesLength];
 					} else {
 						data = [[NSData alloc] initWithBytes:existingBytes length:existingBytesLength];
+					}
 					}
 					
 					CGDataProviderRef provider = CGDataProviderCreateWithCFData((CFDataRef)data);
@@ -621,7 +614,7 @@ static BOOL vtfInitialized = NO;
 					if (pixelFormatInfo.colorSpaceModel == kCGColorSpaceModelRGB && pixelFormatInfo.bitmapInfo & kCGBitmapFloatComponents) {
 						colorSpaceName = kCGColorSpaceGenericRGBLinear;
 					} else if (pixelFormatInfo.colorSpaceModel == kCGColorSpaceModelRGB) {
-						colorSpaceName = kCGColorSpaceGenericRGB;
+						colorSpaceName = kCGColorSpaceSRGB;
 					} else if (pixelFormatInfo.colorSpaceModel == kCGColorSpaceModelMonochrome) {
 						colorSpaceName = kCGColorSpaceGenericGrayGamma2_2;
 					}

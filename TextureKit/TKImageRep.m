@@ -734,58 +734,226 @@ void TKFreeBuffer(vImage_Buffer *buffer) {
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 //#endif
 	
-	if (sourcePixelFormat == TKPixelFormatRGBA16161616F && destPixelFormat == TKPixelFormatRGBA32323232F) {
-		UInt16 *sourceRGBAHalfBytes = (UInt16 *)data.bytes;
-//		UInt16 *planarARGBHalfBytes = calloc([data length], sizeof(UInt16));
-		UInt16 *planarARGBHalfBytes = malloc(data.length);
+	if ((sourcePixelFormat == TKPixelFormatRGBA16161616F || sourcePixelFormat == TKPixelFormatABGR16161616F) && destPixelFormat == TKPixelFormatRGBA32323232F) {
 		
-		NSUInteger pixelCount = size.width * size.height;
-		
-		NSUInteger pA, pR, pG, pB, sR, sG, sB, sA = 0;
-		
-		
-		for (NSUInteger i = 0; i < pixelCount / 2; i++) {
-			pA = i * sizeof(UInt16)  + 0 * pixelCount * sizeof(UInt16);
-			pR = i * sizeof(UInt16)  + 1 * pixelCount * sizeof(UInt16);
-			pG = i * sizeof(UInt16)  + 2 * pixelCount * sizeof(UInt16);
-			pB = i * sizeof(UInt16)  + 3 * pixelCount * sizeof(UInt16);
-			
-			sR = i * sizeof(UInt16) + 3 * sizeof(UInt16);
-			sG = i * sizeof(UInt16) + 0 * sizeof(UInt16);
-			sB = i * sizeof(UInt16) + 1 * sizeof(UInt16);
-			sA = i * sizeof(UInt16) + 2 * sizeof(UInt16);
-			
-			// alpha
-			planarARGBHalfBytes[i * sizeof(UInt16)  + 0 * pixelCount * sizeof(UInt16)] = sourceRGBAHalfBytes[i * sizeof(UInt16) + 3 * sizeof(UInt16)];
-			planarARGBHalfBytes[i * sizeof(UInt16)  + 1 * pixelCount * sizeof(UInt16)] = sourceRGBAHalfBytes[i * sizeof(UInt16) + 0 * sizeof(UInt16)];
-			planarARGBHalfBytes[i * sizeof(UInt16)  + 2 * pixelCount * sizeof(UInt16)] = sourceRGBAHalfBytes[i * sizeof(UInt16) + 1 * sizeof(UInt16)];
-			planarARGBHalfBytes[i * sizeof(UInt16)  + 3 * pixelCount * sizeof(UInt16)] = sourceRGBAHalfBytes[i * sizeof(UInt16) + 2 * sizeof(UInt16)];
-		}
-		
+		vImage_Buffer preSourceBuffer;
+		preSourceBuffer.data = (void*)data.bytes;
+		preSourceBuffer.height = size.height;
+		preSourceBuffer.width = size.width;
+		preSourceBuffer.rowBytes = size.width * sizeof(UInt16)  * 4;
+
+		//First, convert it to a full float:
 		vImage_Buffer sourceBuffer;
-		sourceBuffer.data = planarARGBHalfBytes;
-		sourceBuffer.height = size.height;
-		sourceBuffer.width = size.width;
-		sourceBuffer.rowBytes = size.width * sizeof(UInt16) * 4;
+		TKInitBuffer(&sourceBuffer, size.height, size.width, 32);
 		
-		vImage_Buffer destBuffer;
-		TKInitBuffer(&destBuffer, size.height, size.width, 16);
-		
-		vImage_Error error = vImageConvert_Planar16FtoPlanarF(&sourceBuffer, &destBuffer, kvImageNoFlags);
+		vImage_Error error = vImageConvert_Planar16FtoPlanarF(&preSourceBuffer, &sourceBuffer, kvImageNoFlags);
 		
 		if (error != kvImageNoError) {
 			NSLog(@"[%@ %@] vImageConvert_Planar16FtoPlanarF() returned %d", NSStringFromClass([self class]), NSStringFromSelector(_cmd), (unsigned int)error);
 			
 		}
+
+		NSMutableData *rData = [NSMutableData dataWithLength:size.width * size.height * sizeof(float)];
+		NSMutableData *gData = [NSMutableData dataWithLength:size.width * size.height * sizeof(float)];
+		NSMutableData *bData = [NSMutableData dataWithLength:size.width * size.height * sizeof(float)];
+		NSMutableData *aData = [NSMutableData dataWithLength:size.width * size.height * sizeof(float)];
+		vImage_Buffer rBuffer;
+		rBuffer.height = size.height;
+		rBuffer.width = size.width;
+		rBuffer.rowBytes = size.width * sizeof(float);
+		vImage_Buffer gBuffer;
+		vImage_Buffer bBuffer;
+		vImage_Buffer aBuffer;
 		
-//		NSData *dataRepresentation = [NSData dataWithBytesNoCopy:destBuffer.data length:size.width * size.height * sizeof(float) * 4 freeWhenDone:YES];
+		gBuffer = bBuffer = aBuffer = rBuffer;
+		
+		rBuffer.data = rData.mutableBytes;
+		gBuffer.data = gData.mutableBytes;
+		bBuffer.data = bData.mutableBytes;
+		aBuffer.data = aData.mutableBytes;
+		
+		switch (sourcePixelFormat) {
+			case TKPixelFormatRGBA16161616F:
+				vImageExtractChannel_ARGBFFFF(&sourceBuffer, &rBuffer, 0, kvImageNoFlags);
+				vImageExtractChannel_ARGBFFFF(&sourceBuffer, &gBuffer, 1, kvImageNoFlags);
+				vImageExtractChannel_ARGBFFFF(&sourceBuffer, &bBuffer, 2, kvImageNoFlags);
+				vImageExtractChannel_ARGBFFFF(&sourceBuffer, &aBuffer, 3, kvImageNoFlags);
+				break;
+				
+			case TKPixelFormatABGR16161616F:
+				vImageExtractChannel_ARGBFFFF(&sourceBuffer, &aBuffer, 0, kvImageNoFlags);
+				vImageExtractChannel_ARGBFFFF(&sourceBuffer, &bBuffer, 1, kvImageNoFlags);
+				vImageExtractChannel_ARGBFFFF(&sourceBuffer, &gBuffer, 2, kvImageNoFlags);
+				vImageExtractChannel_ARGBFFFF(&sourceBuffer, &rBuffer, 3, kvImageNoFlags);
+				break;
+				
+			default:
+				break;
+		}
+		
+		TKFreeBuffer(&sourceBuffer);
+		
+		vImage_Buffer destBuffer;
+		TKInitBuffer(&destBuffer, size.height, size.width, 32);
+		
+		vImageOverwriteChannels_ARGBFFFF(&bBuffer, &destBuffer, &destBuffer,  0x1, kvImageNoFlags);
+		vImageOverwriteChannels_ARGBFFFF(&gBuffer, &destBuffer, &destBuffer,  0x2, kvImageNoFlags);
+		vImageOverwriteChannels_ARGBFFFF(&rBuffer, &destBuffer, &destBuffer,  0x4, kvImageNoFlags);
+		vImageOverwriteChannels_ARGBFFFF(&aBuffer, &destBuffer, &destBuffer,  0x8, kvImageNoFlags);
+		
+		//NSData *dataRepresentation = [NSData dataWithBytesNoCopy:destBuffer.data length:size.width * size.height * sizeof(float) * 4 freeWhenDone:YES];
 		
 		NSData *dataRepresentation = [NSData dataWithBytes:destBuffer.data length:size.width * size.height * sizeof(float) * 4];
+		TKFreeBuffer(&destBuffer);
+
 		return dataRepresentation;
+	} else if ((sourcePixelFormat == TKPixelFormatBGRA || sourcePixelFormat == TKPixelFormatABGR || sourcePixelFormat == TKPixelFormatXBGR || sourcePixelFormat == TKPixelFormatXRGB || sourcePixelFormat == TKPixelFormatRGBX || sourcePixelFormat == TKPixelFormatARGB || sourcePixelFormat == TKPixelFormatRGBA || sourcePixelFormat == TKPixelFormatRGB) && (destPixelFormat == TKPixelFormatARGB || destPixelFormat == TKPixelFormatRGBA)) {
+		vImage_Buffer sourceBuffer;
+		sourceBuffer.data = (void*)data.bytes;
+		sourceBuffer.height = size.height;
+		sourceBuffer.width = size.width;
+		if (sourcePixelFormat == TKPixelFormatRGB) {
+			sourceBuffer.rowBytes = size.width * 3;
+		} else {
+			sourceBuffer.rowBytes = size.width * 4;
+		}
+		NSMutableData *rData = [NSMutableData dataWithLength:size.width * size.height];
+		NSMutableData *gData = [NSMutableData dataWithLength:size.width * size.height];
+		NSMutableData *bData = [NSMutableData dataWithLength:size.width * size.height];
+		NSMutableData *aData = [NSMutableData dataWithLength:size.width * size.height];
+		vImage_Buffer rBuffer;
+		rBuffer.height = size.height;
+		rBuffer.width = size.width;
+		rBuffer.rowBytes = size.width;
+		vImage_Buffer gBuffer;
+		vImage_Buffer bBuffer;
+		vImage_Buffer aBuffer;
 		
+		gBuffer = bBuffer = aBuffer = rBuffer;
+
+		rBuffer.data = rData.mutableBytes;
+		gBuffer.data = gData.mutableBytes;
+		bBuffer.data = bData.mutableBytes;
+		aBuffer.data = aData.mutableBytes;
+		switch (sourcePixelFormat) {
+			case TKPixelFormatBGRA:
+				vImageExtractChannel_ARGB8888(&sourceBuffer, &bBuffer, 0, kvImageNoFlags);
+				vImageExtractChannel_ARGB8888(&sourceBuffer, &gBuffer, 1, kvImageNoFlags);
+				vImageExtractChannel_ARGB8888(&sourceBuffer, &rBuffer, 2, kvImageNoFlags);
+				vImageExtractChannel_ARGB8888(&sourceBuffer, &aBuffer, 3, kvImageNoFlags);
+				break;
+				
+			case TKPixelFormatABGR:
+			case TKPixelFormatXBGR:
+				vImageExtractChannel_ARGB8888(&sourceBuffer, &aBuffer, 0, kvImageNoFlags);
+				vImageExtractChannel_ARGB8888(&sourceBuffer, &bBuffer, 1, kvImageNoFlags);
+				vImageExtractChannel_ARGB8888(&sourceBuffer, &gBuffer, 2, kvImageNoFlags);
+				vImageExtractChannel_ARGB8888(&sourceBuffer, &rBuffer, 3, kvImageNoFlags);
+				break;
+				
+			case TKPixelFormatRGBA:
+			case TKPixelFormatRGBX:
+				vImageExtractChannel_ARGB8888(&sourceBuffer, &aBuffer, 3, kvImageNoFlags);
+				//fall-through
+			case TKPixelFormatRGB:
+				vImageExtractChannel_ARGB8888(&sourceBuffer, &rBuffer, 0, kvImageNoFlags);
+				vImageExtractChannel_ARGB8888(&sourceBuffer, &gBuffer, 1, kvImageNoFlags);
+				vImageExtractChannel_ARGB8888(&sourceBuffer, &bBuffer, 2, kvImageNoFlags);
+				break;
+				
+			case TKPixelFormatARGB:
+			case TKPixelFormatXRGB:
+				vImageExtractChannel_ARGB8888(&sourceBuffer, &aBuffer, 0, kvImageNoFlags);
+				vImageExtractChannel_ARGB8888(&sourceBuffer, &rBuffer, 1, kvImageNoFlags);
+				vImageExtractChannel_ARGB8888(&sourceBuffer, &gBuffer, 2, kvImageNoFlags);
+				vImageExtractChannel_ARGB8888(&sourceBuffer, &bBuffer, 3, kvImageNoFlags);
+				break;
+				
+			default:
+				break;
+		}
+		if (sourcePixelFormat == TKPixelFormatXBGR || sourcePixelFormat == TKPixelFormatXRGB || sourcePixelFormat == TKPixelFormatRGBX || sourcePixelFormat == TKPixelFormatRGB) {
+			//because the alpha channel will likely contain garbage data.
+			memset(aData.mutableBytes, 0xFF, aData.length);
+		}
 		
+		NSMutableData *combinedData = [NSMutableData dataWithLength:size.width * 4 * size.height];
+		vImage_Buffer combinedBuffer;
+		combinedBuffer.data = combinedData.mutableBytes;
+		combinedBuffer.height = size.height;
+		combinedBuffer.width = size.width;
+		combinedBuffer.rowBytes = size.width * 4;
+		
+		if (destPixelFormat == TKPixelFormatARGB) {
+			vImageOverwriteChannels_ARGB8888(&bBuffer, &combinedBuffer, &combinedBuffer,  0x1, kvImageNoFlags);
+			vImageOverwriteChannels_ARGB8888(&gBuffer, &combinedBuffer, &combinedBuffer,  0x2, kvImageNoFlags);
+			vImageOverwriteChannels_ARGB8888(&rBuffer, &combinedBuffer, &combinedBuffer,  0x4, kvImageNoFlags);
+			vImageOverwriteChannels_ARGB8888(&aBuffer, &combinedBuffer, &combinedBuffer,  0x8, kvImageNoFlags);
+		} else  if (destPixelFormat == TKPixelFormatRGBA) {
+			vImageOverwriteChannels_ARGB8888(&bBuffer, &combinedBuffer, &combinedBuffer,  0x2, kvImageNoFlags);
+			vImageOverwriteChannels_ARGB8888(&gBuffer, &combinedBuffer, &combinedBuffer,  0x4, kvImageNoFlags);
+			vImageOverwriteChannels_ARGB8888(&rBuffer, &combinedBuffer, &combinedBuffer,  0x8, kvImageNoFlags);
+			vImageOverwriteChannels_ARGB8888(&aBuffer, &combinedBuffer, &combinedBuffer,  0x1, kvImageNoFlags);
+		}
+		
+		return [combinedData copy];
+	} else if (sourcePixelFormat == TKPixelFormatABGR32323232F && destPixelFormat == TKPixelFormatRGBA32323232F) {
+		vImage_Buffer sourceBuffer;
+		sourceBuffer.data = (void*)data.bytes;
+		sourceBuffer.height = size.height;
+		sourceBuffer.width = size.width;
+		sourceBuffer.rowBytes = size.width * sizeof(float) * 4;
+		NSMutableData *rData = [NSMutableData dataWithLength:size.width * size.height * sizeof(float)];
+		NSMutableData *gData = [NSMutableData dataWithLength:size.width * size.height * sizeof(float)];
+		NSMutableData *bData = [NSMutableData dataWithLength:size.width * size.height * sizeof(float)];
+		NSMutableData *aData = [NSMutableData dataWithLength:size.width * size.height * sizeof(float)];
+		vImage_Buffer rBuffer;
+		rBuffer.height = size.height;
+		rBuffer.width = size.width;
+		rBuffer.rowBytes = size.width * sizeof(float);
+		vImage_Buffer gBuffer;
+		vImage_Buffer bBuffer;
+		vImage_Buffer aBuffer;
+		
+		gBuffer = bBuffer = aBuffer = rBuffer;
+		
+		rBuffer.data = rData.mutableBytes;
+		gBuffer.data = gData.mutableBytes;
+		bBuffer.data = bData.mutableBytes;
+		aBuffer.data = aData.mutableBytes;
+		
+		switch (sourcePixelFormat) {
+			case TKPixelFormatRGBA16161616F:
+				vImageExtractChannel_ARGBFFFF(&sourceBuffer, &rBuffer, 0, kvImageNoFlags);
+				vImageExtractChannel_ARGBFFFF(&sourceBuffer, &gBuffer, 1, kvImageNoFlags);
+				vImageExtractChannel_ARGBFFFF(&sourceBuffer, &bBuffer, 2, kvImageNoFlags);
+				vImageExtractChannel_ARGBFFFF(&sourceBuffer, &aBuffer, 3, kvImageNoFlags);
+				break;
+				
+			case TKPixelFormatABGR32323232F:
+				vImageExtractChannel_ARGBFFFF(&sourceBuffer, &aBuffer, 0, kvImageNoFlags);
+				vImageExtractChannel_ARGBFFFF(&sourceBuffer, &bBuffer, 1, kvImageNoFlags);
+				vImageExtractChannel_ARGBFFFF(&sourceBuffer, &gBuffer, 2, kvImageNoFlags);
+				vImageExtractChannel_ARGBFFFF(&sourceBuffer, &rBuffer, 3, kvImageNoFlags);
+				break;
+				
+			default:
+				break;
+		}
+		
+		vImage_Buffer destBuffer;
+		TKInitBuffer(&destBuffer, size.height, size.width, 32);
+		
+		vImageOverwriteChannels_ARGBFFFF(&bBuffer, &destBuffer, &destBuffer,  0x1, kvImageNoFlags);
+		vImageOverwriteChannels_ARGBFFFF(&gBuffer, &destBuffer, &destBuffer,  0x2, kvImageNoFlags);
+		vImageOverwriteChannels_ARGBFFFF(&rBuffer, &destBuffer, &destBuffer,  0x4, kvImageNoFlags);
+		vImageOverwriteChannels_ARGBFFFF(&aBuffer, &destBuffer, &destBuffer,  0x8, kvImageNoFlags);
+		
+		NSData *dataRepresentation = [[NSData alloc] initWithBytes:destBuffer.data length:size.width * size.height * sizeof(float) * 4];
+		TKFreeBuffer(&destBuffer);
+		
+		return dataRepresentation;
 	}
-	
 	
 	return nil;
 }
@@ -796,7 +964,7 @@ void TKFreeBuffer(vImage_Buffer *buffer) {
 	if (sourcePixelFormat == destPixelFormat) return aData;
 	
 	if (sourcePixelFormat == TKPixelFormatRGBA16161616F && destPixelFormat == TKPixelFormatRGBA32323232F) {
-		
+		// TODO: implement
 		
 	}
 	

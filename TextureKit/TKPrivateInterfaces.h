@@ -37,7 +37,8 @@ static const TKPixelFormatInfo TKPixelFormatInfoTable[] = {
 	{TKPixelFormatBGR565,			5, 16, (CGBitmapInfo)kCGImageAlphaNoneSkipFirst, kCGColorSpaceModelRGB,	kCGRenderingIntentDefault},
 	{TKPixelFormatBGRX5551,			5, 16, (CGBitmapInfo)kCGImageAlphaNoneSkipLast, kCGColorSpaceModelRGB,	kCGRenderingIntentDefault},
 	{TKPixelFormatBGRA5551,			5, 16, (CGBitmapInfo)kCGImageAlphaNoneSkipFirst, kCGColorSpaceModelRGB,	kCGRenderingIntentDefault},
-	{TKPixelFormatBGRA,				8, 32, (CGBitmapInfo)kCGImageAlphaPremultipliedLast, kCGColorSpaceModelRGB,	kCGRenderingIntentDefault},
+	{TKPixelFormatBGRA,				8, 32, (CGBitmapInfo)kCGImageAlphaPremultipliedFirst, kCGColorSpaceModelRGB,	kCGRenderingIntentDefault},
+	{TKPixelFormatABGR,				8, 32, (CGBitmapInfo)kCGImageAlphaPremultipliedFirst, kCGColorSpaceModelRGB,	kCGRenderingIntentDefault},
 	{TKPixelFormatRGBA16161616F,	16, 64, kCGImageAlphaPremultipliedLast | kCGBitmapFloatComponents | kCGBitmapByteOrder16Host, kCGColorSpaceModelRGB,	kCGRenderingIntentDefault},
 };
 static const NSUInteger TKPixelFormatInfoTableCount = sizeof(TKPixelFormatInfoTable)/sizeof(TKPixelFormatInfoTable[0]);
