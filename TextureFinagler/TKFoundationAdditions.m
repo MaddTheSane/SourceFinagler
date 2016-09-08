@@ -267,9 +267,16 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray *inRects, BOOL isFlipped) {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	return CFBridgingRelease(CFStringCreateWithPascalString(kCFAllocatorDefault, aPStr, kCFStringEncodingMacRoman));
+	return [self stringWithPascalString:aPStr encoding:kCFStringEncodingMacRoman];
 }
 
++ (NSString *)stringWithPascalString:(ConstStr255Param)aPStr encoding:(CFStringEncoding)encoding;
+{
+#if TK_DEBUG
+	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+#endif
+	return CFBridgingRelease(CFStringCreateWithPascalString(kCFAllocatorDefault, aPStr, encoding));
+}
 
 
 //- (BOOL)getFSSpec:(FSSpec *)anFSSpec {
@@ -400,32 +407,15 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray *inRects, BOOL isFlipped) {
 	NSString *resolvedPath = nil;
 	if (outError) *outError = nil;
 	if (bookmarkData) {
-		AliasHandle alias = NULL;
-		FSRef resolvedRef;
-		Boolean wasChanged = false;
-		OSErr err = noErr;
-		err = PtrToHand(bookmarkData.bytes, (Handle *)&alias, bookmarkData.length);
-		if (err == noErr) {
-			err = FSResolveAliasWithMountFlags(NULL, alias, &resolvedRef, &wasChanged, (options & TKBookmarkResolutionWithoutUI ? kResolveAliasFileNoUI : 0));
-			if (err == noErr) {
-				resolvedPath = [NSString stringWithFSRef:&resolvedRef];
-				if (isStale) *isStale = wasChanged;
-			} else {
-				NSLog(@"[%@ %@] FSResolveAliasWithMountFlags() returned %hi", NSStringFromClass([self class]), NSStringFromSelector(_cmd), err);
-				if (outError) *outError = [NSError errorWithDomain:NSOSStatusErrorDomain code:err userInfo:nil];
-			}
-		} else {
-			NSLog(@"[%@ %@] PtrToHand() returned %hi", NSStringFromClass([self class]), NSStringFromSelector(_cmd), err);
-			if (outError) *outError = [NSError errorWithDomain:NSOSStatusErrorDomain code:err userInfo:nil];
+		NSURL *newURL =[NSURL URLByResolvingBookmarkData:bookmarkData options:(NSURLBookmarkResolutionOptions)(options &= ~TKBookmarkResolutionDefaultOptions) relativeToURL:nil bookmarkDataIsStale:isStale error:outError];
+		if (newURL) {
+			resolvedPath = [newURL path];
 		}
 	}
-	return resolvedPath;
+	return resolvedPath ? [[self class] stringWithString:resolvedPath] : nil;
 }
 
-
 @end
-
-
 
 @implementation NSUserDefaults (TKSortDescriptorAdditions)
 
@@ -438,7 +428,6 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray *inRects, BOOL isFlipped) {
 - (NSArray *)sortDescriptorsForKey:(NSString *)key {
 	return [NSKeyedUnarchiver unarchiveObjectWithData:[self objectForKey:key]];
 }
-
 
 @end
 

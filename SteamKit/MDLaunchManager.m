@@ -91,7 +91,7 @@ static MDLaunchManager *sharedManager = nil;
 	NSDictionary *job = nil;
 	
 	if (label && domain == MDLaunchUserDomain) {
-		job = CFBridgingRelease(SMJobCopyDictionary((domain == MDLaunchUserDomain ? kSMDomainUserLaunchd : kSMDomainSystemLaunchd), (CFStringRef)label));
+		job = CFBridgingRelease(SMJobCopyDictionary((domain == MDLaunchUserDomain ? kSMDomainUserLaunchd : kSMDomainSystemLaunchd), (__bridge CFStringRef)label));
 	}
 	return job;
 }
@@ -142,12 +142,14 @@ static MDLaunchManager *sharedManager = nil;
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	if (label == nil || domain != MDLaunchUserDomain) return NO;
-	
-	if (outError) *outError = nil;
+	if (label == nil || domain != MDLaunchUserDomain) {
+		if (outError) {
+			*outError = [NSError errorWithDomain:NSOSStatusErrorDomain code:paramErr userInfo:nil];
+		}
+		return NO;
+	}
 	
 	@synchronized(self) {
-		
 		MDFolderManager *folderManager = [MDFolderManager defaultManager];
 		NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
 		

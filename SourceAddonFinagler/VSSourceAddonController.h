@@ -47,10 +47,6 @@
 }
 
 - (IBAction)showPrefsWindow:(id)sender;
-
 - (IBAction)ok:(id)sender;
 
-
 @end
-
-

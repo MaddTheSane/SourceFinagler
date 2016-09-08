@@ -130,7 +130,7 @@
 	if (!anObject) {
 		return NO;
 	}
-	if (![anObject isKindOfClass:[self class]]) {
+	if (![anObject isKindOfClass:[VSGame class]]) {
 		return NO;
 	}
 	return [self isEqualToGame:anObject];

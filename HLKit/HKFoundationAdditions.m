@@ -15,7 +15,8 @@
 
 @implementation NSString (HKAdditions)
 
-+ (NSString *)stringWithFSRef:(const FSRef *)anFSRef {
++ (nullable NSString *)stringWithFSRef:(const FSRef *)anFSRef error:(NSError *__nullable*__nullable)anError
+{
 #if HK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -26,8 +27,15 @@
 	if (status == noErr) {
 		return [[NSFileManager defaultManager] stringWithFileSystemRepresentation:(const char *)thePath length:strnlen((const char *)thePath, PATH_MAX)];
 	} else {
+		if (anError) {
+			*anError = [NSError errorWithDomain:NSOSStatusErrorDomain code:status userInfo:NULL];
+		}
 		return nil;
 	}
+}
+
++ (NSString *)stringWithFSRef:(const FSRef *)anFSRef {
+	return [self stringWithFSRef:anFSRef error:NULL];
 }
 
 - (BOOL)getFSRef:(FSRef *)anFSRef error:(NSError **)anError {

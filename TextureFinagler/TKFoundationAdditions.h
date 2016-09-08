@@ -91,6 +91,7 @@ typedef NS_OPTIONS(NSUInteger, TKBookmarkResolutionOptions) {
 @property (readonly, copy) NSString *stringByAbbreviatingFilenameTo31Characters;
 @property (readonly) NSSize sizeForStringWithSavedFrame;
 + (NSString *)stringWithPascalString:(ConstStr255Param)aPStr;
++ (NSString *)stringWithPascalString:(ConstStr255Param)aPStr encoding:(CFStringEncoding)encoding;
 //- (BOOL)getFSSpec:(FSSpec *)anFSSpec;
 - (BOOL)pascalString:(StringPtr)aBuffer length:(SInt16)aLength;
 

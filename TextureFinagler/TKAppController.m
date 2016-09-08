@@ -414,7 +414,6 @@ static NSArray *appClassNames = nil;
 #endif
 	
 	if (sender == self || sender == nil) {
-		
 		NSUInteger count = viewControllers.count;
 		
 		while (currentView >= count) {
@@ -433,7 +432,7 @@ static NSArray *appClassNames = nil;
 	
 	TKViewController *viewController = viewControllers[currentView];
 	
-	if ((NSNull *)viewController == [NSNull null]) {
+	if ([viewController isEqual:[NSNull null]]) {
 		NSString *className = appClassNames[currentView];
 		
 		Class viewControllerClass = NSClassFromString(className);
@@ -445,7 +444,6 @@ static NSArray *appClassNames = nil;
 	
 	[window switchView:viewController.view newTitle:viewController.title];
 	[viewController didSwitchToView:self];
-	
 }
 
 - (void)lastWindowDidClose:(NSNotification *)notification {
@@ -454,7 +452,6 @@ static NSArray *appClassNames = nil;
 #endif
 	
 	[viewMenu setItemArray:@[viewTogglePathBarMenuItem, [NSMenuItem separatorItem], viewToggleToolbarShownMenuItem, viewCustomizeToolbarMenuItem, [NSMenuItem separatorItem], viewOptionsMenuItem]];
-	
 }
 
 - (IBAction)toggleShowInspector:(id)sender {
@@ -536,10 +533,12 @@ static NSArray *appClassNames = nil;
 	TKShouldShowImageInspector = !TKShouldShowImageInspector;
 	
 	if (TKShouldShowImageInspector) {
-		if (imageInspectorController == nil) imageInspectorController = [TKImageInspectorController sharedController];
+		if (imageInspectorController == nil)
+			imageInspectorController = [TKImageInspectorController sharedController];
 		[imageInspectorController showWindow:self];
 	} else {
-		if (imageInspectorController) [imageInspectorController.window performClose:self];
+		if (imageInspectorController)
+			[imageInspectorController.window performClose:self];
 	}
 }
 
@@ -553,16 +552,19 @@ static NSArray *appClassNames = nil;
 }
 
 - (IBAction)showMainWindow:(id)sender {
-	if (!window.visible) [window makeKeyAndOrderFront:nil];
+	if (!window.visible)
+		[window makeKeyAndOrderFront:nil];
 }
 
 - (IBAction)showAboutWindow:(id)sender {
-	if (aboutWindowController == nil) aboutWindowController = [[TKAboutWindowController alloc] init];
+	if (aboutWindowController == nil)
+		aboutWindowController = [[TKAboutWindowController alloc] init];
 	[aboutWindowController showWindow:self];
 }
 
 - (IBAction)showPrefsWindow:(id)sender {
-	if (prefsController == nil) prefsController = [[TKPrefsController alloc] init];
+	if (prefsController == nil)
+		prefsController = [[TKPrefsController alloc] init];
 	[prefsController showWindow:self];
 }
 

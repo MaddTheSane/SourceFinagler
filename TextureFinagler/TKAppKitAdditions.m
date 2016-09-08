@@ -453,25 +453,10 @@ static NSView *blankView() {
 #endif
 	NSImage *image = nil;
 	if (aURL) {
-		FSRef appRef;
-		NSString *appPath = nil;
-		OSStatus status = noErr;
-		
 		NSURL *appURL = CFBridgingRelease(LSCopyDefaultApplicationURLForURL((__bridge CFURLRef)aURL, kLSRolesAll, NULL));
 		if (appURL) {
 			image = [self iconForFile:[appURL path]];
-			if (image) {
-				return image;
-			}
 		}
-		status = LSGetApplicationForURL((__bridge CFURLRef)aURL, kLSRolesAll, &appRef, NULL);
-		if (status == noErr) {
-			appPath = [NSString stringWithFSRef:&appRef];
-			if (appPath) {
-				image = [self iconForFile:appPath];
-			}
-		}
-		
 	}
 	return image;
 }

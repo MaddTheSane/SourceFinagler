@@ -16,7 +16,6 @@
 	IBOutlet NSProgressIndicator				*progressIndicator;
 	MDCopyOperationViewBackgroundColorType		colorType;
 	NSInteger									tag;
-	
 }
 
 + (instancetype)viewControllerWithViewColorType:(MDCopyOperationViewBackgroundColorType)aColorType tag:(NSInteger)aTag;

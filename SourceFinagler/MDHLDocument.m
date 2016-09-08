@@ -1325,8 +1325,8 @@ static NSInteger copyTag = 0;
 				NSLog(@"[%@ %@] elapsed time to size %lu items == %.7f sec / %.4f ms", NSStringFromClass([self class]), NSStringFromSelector(_cmd), (unsigned long)allItems.count, elapsedTime, elapsedTime * 1000.0);
 				
 				NSDictionary *dictionary = @{MDCopyOperationKey: copyOperation,
-											MDCopyOperationStageKey: @(MDCopyOperationPreparingStage),
-											MDCopyOperationDestinationKey: destination,
+											 MDCopyOperationStageKey: @(MDCopyOperationPreparingStage),
+											 MDCopyOperationDestinationKey: destination,
 											 MDCopyOperationTotalItemCountKey: @(allItems.count)};
 											
 				[self performSelectorOnMainThread:@selector(updateProgressWithDictionary:) withObject:dictionary waitUntilDone:NO];
@@ -1389,12 +1389,10 @@ static NSInteger copyTag = 0;
 							}
 							
 							while (1) {
-								
 								if (copyOperation.isCancelled) {
 									if (![(HKFile *)item cancelWritingAndRemovePartialFileWithError:&outError]) {
 										
 									}
-									
 									
 									NSDictionary *dictionary = @{MDCopyOperationKey: copyOperation,
 																MDCopyOperationTotalBytesKey: @(totalBytes),
@@ -1454,13 +1452,10 @@ static NSInteger copyTag = 0;
 											MDCopyOperationStageKey: @(MDCopyOperationFinishingStage)};
 				
 				[self performSelectorOnMainThread:@selector(updateProgressWithDictionary:) withObject:dictionary waitUntilDone:NO];
-				
 			}
 		}
 	}
 }
-
-
 
 - (void)updateProgressWithDictionary:(NSDictionary *)dictionary {
 //	NSLog(@" \"%@\" [%@ %@]", [self displayName], NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -1486,9 +1481,7 @@ static NSInteger copyTag = 0;
 				copyOperation.informativeText = [NSString stringWithFormat:NSLocalizedString(@"Preparing to copy %lu items", @""), totalItemCount];
 			}
 			
-			
 		} else if (stage == MDCopyOperationCopyingStage) {
-			
 			if (copyOperation.indeterminate) {
 				copyOperation.totalBytes = (double)[dictionary[MDCopyOperationTotalBytesKey] unsignedLongLongValue];
 				copyOperation.currentBytes = 0.0;
@@ -1528,7 +1521,6 @@ static NSInteger copyTag = 0;
 			@synchronized(copyOperationsAndTags) {
 				[copyOperationsAndTags removeObjectForKey:@(copyOperation.tag)];
 			}
-			
 		} else if (stage == MDCopyOperationCancelledStage) {
 			copyOperation.messageText = @"";
 			copyOperation.informativeText = @"";

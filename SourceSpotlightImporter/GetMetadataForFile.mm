@@ -6,15 +6,8 @@
 #import <TextureKit/TextureKit.h>
 
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-	
 #define MD_DEBUG 0
-	
-	
-	
+
 static BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *contentTypeUTI, NSMutableDictionary *attributes, NSError **error);
 
 //	Boolean GetMetadataForURL(void *thisInterface, CFMutableDictionaryRef attributes, CFStringRef contentTypeUTI, CFURLRef url);
@@ -25,7 +18,7 @@ Boolean GetMetadataForFile(void *thisInterface, CFMutableDictionaryRef attribute
     /* Return TRUE if successful, FALSE if there was no data provided */
 	
 @autoreleasepool {
-		NSString *nsContentUTI = (__bridge NSString*)contentTypeUTI;
+	NSString *nsContentUTI = (__bridge NSString*)contentTypeUTI;
 	
 	if (![nsContentUTI isEqualToString:TKVTFType] &&
 		![nsContentUTI isEqualToString:TKDDSType] &&
@@ -44,10 +37,9 @@ Boolean GetMetadataForFile(void *thisInterface, CFMutableDictionaryRef attribute
 }
 }
 
-	
 using namespace VTFLib;
 using namespace nv;
-	
+
 BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *contentTypeUTI, NSMutableDictionary *attributes, NSError **error) {
 	if (attributes == nil || filePath == nil || contentTypeUTI == nil) return NO;
 	
@@ -197,11 +189,6 @@ BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *cont
 	return NO;
 }
 
-#ifdef __cplusplus
-}
-#endif
-
-		
 /* -----------------------------------------------------------------------------
  Step 1
  Set the UTI types the importer supports

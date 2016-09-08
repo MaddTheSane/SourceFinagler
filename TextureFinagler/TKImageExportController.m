@@ -46,20 +46,18 @@ NSString * const TKImageExportSavedFrameKey					= @"TKImageExportSavedFrame";
 
 @end
 
-
+#if DEBUG
 #define TK_DEBUG 1
+#else
+#define TK_DEBUG 0
+#endif
 
-
-enum {
-	TKPreviewMode2Up	= 0,
-	TKPreviewMode4Up	= 1
-};
 
 @implementation TKImageExportController
 
 @synthesize image, document, selectedTag, previewViewZoomFactor;
-
-@dynamic preset, previewMode;
+@synthesize previewMode;
+@synthesize preset;
 
 + (void)initialize {
 #if TK_DEBUG
@@ -96,8 +94,6 @@ enum {
 	
 	[[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
 }
-
-
 
 - (instancetype)initWithImageDocument:(TKImageDocument *)aDocument {
 #if TK_DEBUG
@@ -141,7 +137,6 @@ enum {
 	return self;
 }
 
-
 - (void)dealloc {
 #if TK_DEBUG
 	NSLog(@"********* [%@ %@] *********", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -149,11 +144,9 @@ enum {
 	[super dealloc];
 }
 
-
 - (NSString *)windowNibName {
 	return @"TKImageExportPanel";
 }
-
 
 - (oneway void)release {
 #if TK_DEBUG
@@ -161,7 +154,6 @@ enum {
 #endif
 	[super release];
 }
-
 
 - (void)cleanup {
 #if TK_DEBUG
@@ -229,7 +221,6 @@ enum {
 	} else {
 		if (previewControllers.count < 4) {
 			if (previewControllers.count == 0) {
-				
 				TKImageExportPreviewViewController *firstController = [TKImageExportPreviewViewController previewViewControllerWithExportController:self
 																																			 preset:presets[0]
 																																				tag:0];
@@ -261,11 +252,9 @@ enum {
 			[previewControllers addObject:fourthController];
 			
 			[fourthController.imageView bind:@"zoomFactor" toObject:zoomMediator withKeyPath:@"selection.previewViewZoomFactor" options:nil];
-			
 		}
 	}
 }
-
 
 - (void)windowDidLoad {
 #if TK_DEBUG
@@ -281,50 +270,48 @@ enum {
 	[vtfMenu retain];
 	[ddsMenu retain];
 	
-	if (previewMode == TKPreviewMode2Up) {
-		[self assureInitializationForPreviewMode:TKPreviewMode2Up];
-		
-		dualViewFirstBox.contentView = [previewControllers[0] view];
-		dualViewSecondBox.contentView = [previewControllers[1] view];
-		
-		[previewControllers[0] view].nextKeyView = [previewControllers[1] view];
-		[previewControllers[1] view].nextKeyView = [previewControllers[0] view];
-		
-		mainBox.contentView = dualView;
-		
-		[self performSelector:@selector(beginPreviewOperationForTag:) withObject:@0 afterDelay:0.0];
-		[self performSelector:@selector(beginPreviewOperationForTag:) withObject:@1 afterDelay:0.0];
-		
-	} else if (previewMode == TKPreviewMode4Up) {
-		
-		[self assureInitializationForPreviewMode:TKPreviewMode4Up];
-		
-		quadViewFirstBox.contentView = [previewControllers[0] view];
-		quadViewSecondBox.contentView = [previewControllers[1] view];
-		quadViewThirdBox.contentView = [previewControllers[2] view];
-		quadViewFourthBox.contentView = [previewControllers[3] view];
-		
-		[previewControllers[0] view].nextKeyView = [previewControllers[1] view];
-		[previewControllers[1] view].nextKeyView = [previewControllers[2] view];
-		[previewControllers[2] view].nextKeyView = [previewControllers[3] view];
-		[previewControllers[3] view].nextKeyView = [previewControllers[0] view];
-		
-		mainBox.contentView = quadView;
-		
-		[self performSelector:@selector(beginPreviewOperationForTag:) withObject:@0 afterDelay:0.0];
-		[self performSelector:@selector(beginPreviewOperationForTag:) withObject:@1 afterDelay:0.0];
-		[self performSelector:@selector(beginPreviewOperationForTag:) withObject:@2 afterDelay:0.0];
-		[self performSelector:@selector(beginPreviewOperationForTag:) withObject:@3 afterDelay:0.0];
-		
+	switch (previewMode) {
+		case TKPreviewMode2Up:
+			[self assureInitializationForPreviewMode:TKPreviewMode2Up];
+			
+			dualViewFirstBox.contentView = [previewControllers[0] view];
+			dualViewSecondBox.contentView = [previewControllers[1] view];
+			
+			[previewControllers[0] view].nextKeyView = [previewControllers[1] view];
+			[previewControllers[1] view].nextKeyView = [previewControllers[0] view];
+			
+			mainBox.contentView = dualView;
+			
+			[self performSelector:@selector(beginPreviewOperationForTag:) withObject:@0 afterDelay:0.0];
+			[self performSelector:@selector(beginPreviewOperationForTag:) withObject:@1 afterDelay:0.0];
+			break;
+			
+		case TKPreviewMode4Up:
+			[self assureInitializationForPreviewMode:TKPreviewMode4Up];
+			
+			quadViewFirstBox.contentView = [previewControllers[0] view];
+			quadViewSecondBox.contentView = [previewControllers[1] view];
+			quadViewThirdBox.contentView = [previewControllers[2] view];
+			quadViewFourthBox.contentView = [previewControllers[3] view];
+			
+			[previewControllers[0] view].nextKeyView = [previewControllers[1] view];
+			[previewControllers[1] view].nextKeyView = [previewControllers[2] view];
+			[previewControllers[2] view].nextKeyView = [previewControllers[3] view];
+			[previewControllers[3] view].nextKeyView = [previewControllers[0] view];
+			
+			mainBox.contentView = quadView;
+			
+			[self performSelector:@selector(beginPreviewOperationForTag:) withObject:@0 afterDelay:0.0];
+			[self performSelector:@selector(beginPreviewOperationForTag:) withObject:@1 afterDelay:0.0];
+			[self performSelector:@selector(beginPreviewOperationForTag:) withObject:@2 afterDelay:0.0];
+			[self performSelector:@selector(beginPreviewOperationForTag:) withObject:@3 afterDelay:0.0];
+			break;
 	}
-	 
-	[self.window makeFirstResponder:[previewControllers[0] view]];
 	
+	[self.window makeFirstResponder:[previewControllers[0] view]];
 }
 
-
-
-- (void)setPreviewMode:(NSInteger)aMode {
+- (void)setPreviewMode:(TKPreviewMode)aMode {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -374,7 +361,6 @@ enum {
 		}
 		
 	} else if (previewMode == TKPreviewMode4Up) {
-		
 		[self assureInitializationForPreviewMode:TKPreviewMode4Up];
 		
 		NSView *firstView = [[[previewControllers[0] view] retain] autorelease];
@@ -393,7 +379,6 @@ enum {
 #endif
 			[dualViewSecondBox.contentView removeFromSuperview];
 		}
-		
 		
 		quadViewFirstBox.contentView = [previewControllers[0] view];
 		quadViewSecondBox.contentView = [previewControllers[1] view];
@@ -425,8 +410,6 @@ enum {
 	
 	[[NSUserDefaults standardUserDefaults] setObject:@(previewMode) forKey:TKImageExportSelectedPreviewModeKey];
 }
-
-
 
 - (void)synchronizeUI {
 #if TK_DEBUG
@@ -462,13 +445,9 @@ enum {
 		initializedPopUpMenu = YES;
 	}
 	
-	
 	NSArray *allPresets = presetsAndNames.allValues;
-	
 	NSArray *allItems = presetPopUpButton.menu.itemArray;
-	
 	NSMenuItem *lastItem = allItems.lastObject;
-	
 	
 	if ([allPresets containsObject:preset]) {
 		
@@ -484,23 +463,20 @@ enum {
 			
 			selectedItemTitle = presetName;
 		}
-		
 	} else {
-		
 		if (![lastItem.title isEqualToString:NSLocalizedString(@"[Custom]", @"")]) {
 			
 			[presetPopUpButton.menu addItem:[NSMenuItem separatorItem]];
 			
 			NSMenuItem *customMenuItem = [[[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"[Custom]", @"") action:NULL keyEquivalent:@""] autorelease];
 			
-			if (customMenuItem) [presetPopUpButton.menu addItem:customMenuItem];
-			
+			if (customMenuItem)
+				[presetPopUpButton.menu addItem:customMenuItem];
 		}
 		
 		[presetPopUpButton selectItemWithTitle:NSLocalizedString(@"[Custom]", @"")];
 		
 		selectedItemTitle = NSLocalizedString(@"[Custom]", @"");
-
 	}
 	
 	allItems = presetPopUpButton.menu.itemArray;
@@ -519,12 +495,10 @@ enum {
 	
 	NSString *selectedCompressionFormat = preset.compressionFormat;
 	
-	if ([preset.fileType.lowercaseString isEqualToString:TKVTFFileType]) {
-		
+	if ([preset.fileType caseInsensitiveCompare:TKVTFFileType] == NSOrderedSame) {
 		compressionPopUpButton.menu = vtfMenu;
 		
 		BOOL hasTitle = NO;
-		
 		NSArray *menuItems = vtfMenu.itemArray;
 		
 		for (NSMenuItem *menuItem in menuItems) {
@@ -539,13 +513,10 @@ enum {
 		}
 		
 		vtfFormat = TKVTFFormatFromString(preset.compressionFormat);
-		
-	} else if ([preset.fileType.lowercaseString isEqualToString:TKDDSFileType]) {
-		
+	} else if ([preset.fileType caseInsensitiveCompare:TKDDSFileType] == NSOrderedSame) {
 		compressionPopUpButton.menu = ddsMenu;
 		
 		BOOL hasTitle = NO;
-		
 		NSArray *menuItems = ddsMenu.itemArray;
 		
 		for (NSMenuItem *menuItem in menuItems) {
@@ -600,20 +571,17 @@ enum {
 	} else {
 		[mipmapsPopUpButton setEnabled:YES];
 		
-		if (!mipmapsPopUpButton.hidden) [mipmapsPopUpButton selectItemWithTag:preset.mipmapGeneration];
-		
+		if (!mipmapsPopUpButton.hidden)
+			[mipmapsPopUpButton selectItemWithTag:preset.mipmapGeneration];
 	}
-	
 }
 
-
-- (TKImageExportPreset *)preset {
 #if TK_DEBUG
+- (TKImageExportPreset *)preset {
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-#endif
     return preset;
 }
-
+#endif
 
 - (void)setPreset:(TKImageExportPreset *)aPreset {
 #if TK_DEBUG
@@ -630,7 +598,6 @@ enum {
 	[self synchronizeUI];
 }
 
-
 - (void)didSelectImageExportPreviewView:(TKImageExportPreviewView *)anImageExportPreviewView {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -638,9 +605,7 @@ enum {
 	TKImageExportPreset *thePreset = ((TKImageExportPreview *)anImageExportPreviewView.viewController.representedObject).preset;
 	self.selectedTag = ((TKImageExportPreview *)anImageExportPreviewView.viewController.representedObject).tag;
 	self.preset = thePreset;
-	
 }
-
 
 - (void)imageViewDidBecomeFirstResponder:(TKImageView *)anImageView {
 #if TK_DEBUG
@@ -652,8 +617,6 @@ enum {
 		}
 	}
 }
-
-
 
 - (IBAction)changePreset:(id)sender {
 #if TK_DEBUG
@@ -677,7 +640,6 @@ enum {
 	[self performSelector:@selector(beginPreviewOperationForTag:) withObject:@(selectedTag) afterDelay:0.0];
 }
 
-
 - (IBAction)changeFormat:(id)sender {
 #if TK_DEBUG
 	NSString *selectedTitle = ((NSPopUpButton *)sender).titleOfSelectedItem;
@@ -692,7 +654,6 @@ enum {
 	[self performSelector:@selector(beginPreviewOperationForTag:) withObject:@(selectedTag) afterDelay:0.0];
 }
 
-
 - (IBAction)changeCompression:(id)sender {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -705,7 +666,6 @@ enum {
 	[self performSelector:@selector(beginPreviewOperationForTag:) withObject:@(selectedTag) afterDelay:0.0];
 }
 
-
 - (IBAction)changeQuality:(id)sender {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -717,7 +677,6 @@ enum {
 	
 	[self performSelector:@selector(beginPreviewOperationForTag:) withObject:@(selectedTag) afterDelay:0.0];
 }
-
 
 - (IBAction)changeMipmaps:(id)sender {
 #if TK_DEBUG
@@ -748,9 +707,8 @@ enum {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	
+	//TODO: implement?
 }
-
 
 - (void)beginPreviewOperationForTag:(NSNumber *)aTag {
 #if TK_DEBUG
@@ -768,7 +726,6 @@ enum {
 	}
 }
 
-
 - (void)imageExportPreviewDidComplete:(NSNotification *)notification {
 	if (notification.object == self) {
 #if TK_DEBUG
@@ -777,7 +734,6 @@ enum {
 		[self performSelectorOnMainThread:@selector(mainThreadImageExportPreviewDidComplete:) withObject:notification waitUntilDone:NO];
 	}
 }
-
 
 - (void)mainThreadImageExportPreviewDidComplete:(NSNotification *)notification {
 	if (notification.object == self) {
@@ -791,10 +747,8 @@ enum {
 		
 		NSInteger tag = imageExportPreview.tag;
 		[(TKImageView *)[previewControllers[tag] imageView] setImage:imageRep.CGImage imageProperties:nil];
-		
 	}
 }
-
 
 - (void)saveDefaults {
 #if TK_DEBUG
@@ -806,10 +760,7 @@ enum {
 	[[NSUserDefaults standardUserDefaults] setObject:[(TKImageExportPreset *)presets[1] dictionaryRepresentation] forKey:TKImageExportSecondPresetKey];
 	[[NSUserDefaults standardUserDefaults] setObject:[(TKImageExportPreset *)presets[2] dictionaryRepresentation] forKey:TKImageExportThirdPresetKey];
 	[[NSUserDefaults standardUserDefaults] setObject:[(TKImageExportPreset *)presets[3] dictionaryRepresentation] forKey:TKImageExportFourthPresetKey];
-
-	
 }
-
 
 - (IBAction)cancel:(id)sender {
 #if TK_DEBUG
@@ -827,27 +778,13 @@ enum {
 	[document exportWithPreset:preset];
 }
 
-
-
 - (IBAction)changeTool:(id)sender {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 //	NSInteger tag = [sender tag];
-	
-	
-	
+	// TODO: implement
 	
 }
 
-
-
-
-
-
-
-
 @end
-
-
-

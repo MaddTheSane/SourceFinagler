@@ -22,13 +22,8 @@ NSString * const TKImageExportMipmapGenerationKey			= @"TKImageExportMipmaps";
 - (void)updateName;
 @end
 
-
-
 extern NSString * const TKImageExportPresetsKey;
-
-
 static TKImageExportPreset *originalImagePreset = nil;
-
 static NSMutableArray *imagePresets = nil;
 
 
@@ -45,7 +40,6 @@ static NSMutableArray *imagePresets = nil;
 		[imagePresets setArray:[TKImageExportPreset imageExportPresetsWithDictionaryRepresentations:[[NSUserDefaults standardUserDefaults] objectForKey:TKImageExportPresetsKey]]];
 	}
 }
-
 
 + (NSArray *)imageExportPresetsWithDictionaryRepresentations:(NSArray *)dictionaryRepresentations {
 	if (dictionaryRepresentations == nil) return nil;
@@ -80,7 +74,6 @@ static NSMutableArray *imagePresets = nil;
 	}
 	return originalImagePreset;
 }
-
 
 + (instancetype)imageExportPresetWithDictionary:(NSDictionary *)aDictionary {
 #if TK_DEBUG
@@ -205,7 +198,7 @@ static NSMutableArray *imagePresets = nil;
 }
 
 - (void)setCompressionQuality:(NSString *)value {
-	compressionQuality = value;
+	compressionQuality = [value copy];
 	[self updateName];
 }
 
@@ -227,36 +220,32 @@ static NSMutableArray *imagePresets = nil;
 }
 
 - (BOOL)isEqual:(id)object {
+	if (!object || ![object isKindOfClass:[TKImageExportPreset class]]) {
+		return NO;
+	}
 	return [self isEqualToPreset:object];
 }
 
 - (BOOL)isEqualToPreset:(TKImageExportPreset *)preset {
-	if ([preset isKindOfClass:[self class]]) {
-		
-		if ([preset.name isEqualToString:NSLocalizedString(@"Original", @"")] &&
-			[name isEqualToString:NSLocalizedString(@"Original", @"")] &&
-			[preset.name isEqualToString:name]) {
-			return YES;
-		}
-		
-		return ([preset.name isEqualToString:name] &&
-				[preset.fileType isEqualToString:fileType] &&
-				[preset.compressionFormat isEqualToString:compressionFormat] &&
-				[preset.compressionQuality isEqualToString:compressionQuality] &&
-				preset.mipmapGeneration == mipmapGeneration);
+	if ([preset.name isEqualToString:NSLocalizedString(@"Original", @"")] &&
+		[name isEqualToString:NSLocalizedString(@"Original", @"")] &&
+		[preset.name isEqualToString:name]) {
+		return YES;
 	}
-	return NO;
+	
+	return ([preset.name isEqualToString:name] &&
+			[preset.fileType isEqualToString:fileType] &&
+			[preset.compressionFormat isEqualToString:compressionFormat] &&
+			[preset.compressionQuality isEqualToString:compressionQuality] &&
+			preset.mipmapGeneration == mipmapGeneration);
 }
 
 // matchesPreset: all but name is equal
 - (BOOL)matchesPreset:(TKImageExportPreset *)preset {
-	if ([preset isKindOfClass:[self class]]) {
-		return ([preset.fileType isEqualToString:fileType] &&
-				[preset.compressionFormat isEqualToString:compressionFormat] &&
-				[preset.compressionQuality isEqualToString:compressionQuality] &&
-				preset.mipmapGeneration == mipmapGeneration);
-	}
-	return NO;
+	return ([preset.fileType isEqualToString:fileType] &&
+			[preset.compressionFormat isEqualToString:compressionFormat] &&
+			[preset.compressionQuality isEqualToString:compressionQuality] &&
+			preset.mipmapGeneration == mipmapGeneration);
 }
 
 - (NSString *)description {
