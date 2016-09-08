@@ -21,7 +21,7 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Info" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="inspector" animationBehavior="default" id="656" userLabel="window" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" resizable="YES" utility="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
@@ -225,9 +225,7 @@
                             </textField>
                         </subviews>
                         <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="isInitiallyShown">
-                                <bool key="value" value="NO"/>
-                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="initiallyShown" value="NO"/>
                             <userDefinedRuntimeAttribute type="string" keyPath="autosaveName" value="general"/>
                         </userDefinedRuntimeAttributes>
                         <connections>
@@ -410,9 +408,7 @@
                             </textField>
                         </subviews>
                         <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="isInitiallyShown">
-                                <bool key="value" value="NO"/>
-                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isInitiallyShown" value="NO"/>
                             <userDefinedRuntimeAttribute type="string" keyPath="autosaveName" value="moreInfo"/>
                         </userDefinedRuntimeAttributes>
                         <connections>
@@ -436,9 +432,7 @@
                             </box>
                         </subviews>
                         <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="isInitiallyShown">
-                                <bool key="value" value="NO"/>
-                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isInitiallyShown" value="NO"/>
                             <userDefinedRuntimeAttribute type="string" keyPath="autosaveName" value="preview"/>
                         </userDefinedRuntimeAttributes>
                         <connections>

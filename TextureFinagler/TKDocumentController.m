@@ -11,7 +11,7 @@
 
 #import "TKImageDocument.h"
 
-#import <CoreServices/CoreServices.h>
+#include <CoreServices/CoreServices.h>
 
 #import "TKFoundationAdditions.h"
 
@@ -33,6 +33,9 @@ NSString * const TKApplicationBundleIdentifier = @"com.markdouma.SourceFinagler"
 	
 		for (NSDictionary *docType in docTypes) {
 			NSString *docClass = docType[@"NSDocumentClass"];
+			if ([docClass isEqualToString:@"TKImageDocument"]) {
+				continue;
+			}
 			if (docClass) {
 				NSArray *contentTypes = docType[@"LSItemContentTypes"];
 				if (contentTypes && contentTypes.count) {
@@ -75,26 +78,14 @@ NSString * const TKApplicationBundleIdentifier = @"com.markdouma.SourceFinagler"
 //	NSLog(@"[%@ %@] absURL == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), absURL);
 	
     NSString *documentUTType = nil;
-	
-	FSRef itemRef;
-	
-	if (![absURL.path getFSRef:&itemRef error:outError]) {
-		return nil;
-	}
-	
-	OSStatus status = noErr;
 	NSString *utiType = nil;
+	id typeRef = NULL;
 	
-	CFTypeRef typeRef = NULL;
-	
-	status = LSCopyItemAttribute(&itemRef, kLSRolesAll, kLSItemContentType, &typeRef);
-	
-	if (status != noErr) {
-		if (typeRef) CFRelease(typeRef);
+	if (![absURL getResourceValue:&typeRef forKey:NSURLTypeIdentifierKey error:outError]) {
 		return nil;
 	}
 	
-	if (CFGetTypeID(typeRef) == CFStringGetTypeID()) utiType = (NSString *)CFBridgingRelease(typeRef);
+	utiType = (NSString *)(typeRef);
 //	NSLog(@"[%@ %@] LSCopyItemAttribute()'s utiType == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), utiType);
 	
 	if ([[NSWorkspace sharedWorkspace] type:utiType conformsToType:(NSString *)kUTTypeImage] &&
@@ -107,7 +98,6 @@ NSString * const TKApplicationBundleIdentifier = @"com.markdouma.SourceFinagler"
 		if (isrc) {
 			documentUTType = (__bridge NSString *)CGImageSourceGetType(isrc);
 			CFRelease(isrc);
-			CFRelease(typeRef);
 //			NSLog(@"[%@ %@] CGImageSourceGetType()'s documentUTType == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), documentUTType);
 			return documentUTType;
 		}
@@ -115,8 +105,6 @@ NSString * const TKApplicationBundleIdentifier = @"com.markdouma.SourceFinagler"
 	// otherwise, file is one we handle, so let super handle it
 	documentUTType = [super typeForContentsOfURL:absURL error:outError];
 //	NSLog(@"[%@ %@] super's typeForContentsOfURL:error: == documentUTType == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), documentUTType);
-	
-	CFRelease(typeRef);
 	
 	return documentUTType;
 }

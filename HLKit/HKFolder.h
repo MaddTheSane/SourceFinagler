@@ -15,6 +15,6 @@
 
 - (HKItem *)descendantAtPath:(NSString *)aPath;
 
-- (NSDictionary *)visibleDescendantsAndPathsRelativeToItem:(HKItem *)parentItem;
+- (NSDictionary<NSString*,HKItem*> *)visibleDescendantsAndPathsRelativeToItem:(HKItem *)parentItem;
 
 @end

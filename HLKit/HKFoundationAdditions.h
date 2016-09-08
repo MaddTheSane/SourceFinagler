@@ -7,14 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreServices/CoreServices.h>
+#include <CoreServices/CoreServices.h>
 #import <HLKit/HLKitDefines.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NSString (HKAdditions)
 
-+ (nullable NSString *)stringWithFSRef:(const FSRef *)anFSRef;
++ (nullable NSString *)stringWithFSRef:(const FSRef *)anFSRef NS_SWIFT_UNAVAILABLE("no throws");
++ (nullable NSString *)stringWithFSRef:(const FSRef *)anFSRef error:(NSError *__nullable*__nullable)anError;
 - (BOOL)getFSRef:(FSRef *)anFSRef error:(NSError *__nullable*__nullable)anError;
 
 @property (readonly, copy) NSString *stringByAssuringUniqueFilename;

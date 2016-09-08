@@ -7,9 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
 #import <SteamKit/SteamKit.h>
-
 #import "MDLaunchManager.h"
 
 

@@ -18,7 +18,7 @@
 
 
 @interface TKModel : TKOpenGLObject <TKOpenGLDrawable> {
-	
+@protected
 //	GLuint					name;	vertexArrayObjectName
 //	GLuint					vertexArrayObjectName;
 	
@@ -69,15 +69,15 @@
 	
 }
 
-+ (id)quadModel;
++ (instancetype)quadModel;
 
-+ (id)modelWithContentsOfFile:(NSString *)filePath;
-+ (id)modelWithContentsOfURL:(NSURL *)URL;
-+ (id)modelWithData:(NSData *)data;
++ (instancetype)modelWithContentsOfFile:(NSString *)filePath;
++ (instancetype)modelWithContentsOfURL:(NSURL *)URL;
++ (instancetype)modelWithData:(NSData *)data;
 
-- (id)initWithContentsOfFile:(NSString *)filePath;
-- (id)initWithContentsOfURL:(NSURL *)URL;
-- (id)initWithData:(NSData *)data;
+- (instancetype)initWithContentsOfFile:(NSString *)filePath;
+- (instancetype)initWithContentsOfURL:(NSURL *)URL;
+- (instancetype)initWithData:(NSData *)data;
 
 
 @property (readonly, nonatomic, assign) GLuint numVertices;

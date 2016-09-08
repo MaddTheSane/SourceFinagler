@@ -14,6 +14,10 @@
 @class TKImage, TKImageExportPreviewViewController, TKImageDocument, TKImageExportPreset, TKImageExportPreview;
 
 
+typedef NS_ENUM(NSInteger, TKPreviewMode) {
+	TKPreviewMode2Up	= 0,
+	TKPreviewMode4Up	= 1
+};
 
 @interface TKImageExportController : NSWindowController <TKImageExportPreviewViewDelegate, TKImageViewDelegate, NSMenuDelegate> {
 	IBOutlet NSBox							*mainBox;
@@ -69,7 +73,7 @@
 	
 	NSMutableArray							*previewControllers;
 	
-	NSInteger								previewMode;
+	TKPreviewMode							previewMode;
 	
 	NSInteger								selectedTag;
 	
@@ -93,9 +97,9 @@
 
 @property (assign) TKImageDocument *document;
 
-@property (retain) TKImageExportPreset *preset;
+@property (nonatomic, retain) TKImageExportPreset *preset;
 
-@property (assign) NSInteger previewMode;
+@property (nonatomic, assign) TKPreviewMode previewMode;
 
 @property (assign) NSInteger selectedTag;
 

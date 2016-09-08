@@ -16,7 +16,6 @@ static CIKernel *TKSingleChannelFilterKernel = nil;
 
 
 @implementation TKSingleChannelFilter
-
 @synthesize redScale;
 @synthesize greenScale;
 @synthesize blueScale;
@@ -33,32 +32,18 @@ static CIKernel *TKSingleChannelFilterKernel = nil;
 																					 encoding:NSUTF8StringEncoding
 																						error:NULL]];
 			if ([kernels count]) {
-				TKSingleChannelFilterKernel = [[kernels objectAtIndex:0] retain];
+				TKSingleChannelFilterKernel = [kernels objectAtIndex:0];
 			}
 		}
-		self.redScale = [NSNumber numberWithDouble:1.0/3.0];
-		self.greenScale = [NSNumber numberWithDouble:1.0/3.0];
-		self.blueScale = [NSNumber numberWithDouble:1.0/3.0];
-		self.alphaScale = [NSNumber numberWithDouble:1.0/3.0];
+		self.redScale = @(1.0/3.0);
+		self.greenScale = @(1.0/3.0);
+		self.blueScale = @(1.0/3.0);
+		self.alphaScale = @(1.0/3.0);
 		
-		self.name = @"grayscaleFilter";
+		self.name = @"singleChannelFilter";
 	}
 	return self;
 }
-
-
-- (void)dealloc {
-#if TK_DEBUG
-	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-#endif
-	[inputImage release];
-	[redScale release];
-	[greenScale release];
-	[blueScale release];
-	[alphaScale release];
-	[super dealloc];
-}
-
 
 - (NSDictionary *)customAttributes {
 #if TK_DEBUG

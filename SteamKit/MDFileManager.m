@@ -9,7 +9,7 @@
 
 #import "MDFileManager.h"
 #import "TKFoundationAdditions.h"
-#import <CoreServices/CoreServices.h>
+#include <CoreServices/CoreServices.h>
 
 
 #define MD_DEBUG 0

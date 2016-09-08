@@ -13,14 +13,12 @@
 
 @implementation TKPrefsGeneralController
 
-
 - (NSString *)title {
 	return NSLocalizedString(@"General", @"");
 }
 
-
 - (void)awakeFromNib {
-	
+	[super awakeFromNib];
 	resizable = NO;
 	
 	if ([[[NSUserDefaults standardUserDefaults] objectForKey:TKLaunchTimeActionKey] unsignedIntegerValue] & TKLaunchTimeActionOpenMainWindow) {
@@ -32,9 +30,7 @@
 	}
 }
 
-
 - (IBAction)changeLaunchTimeOptions:(id)sender {
-	
 	TKLaunchTimeActionType newLaunchTimeAction = TKLaunchTimeActionNone;
 	
 	if (openMainWindowCheckbox.state == NSOnState) {
@@ -48,11 +44,8 @@
 	[[NSUserDefaults standardUserDefaults] setObject:@(newLaunchTimeAction) forKey:TKLaunchTimeActionKey];
 }
 
-
 - (IBAction)resetWarnings:(id)sender {
 	[[NSUserDefaults standardUserDefaults] removeObjectForKey:TKImageDocumentDoNotShowWarningAgainKey];
 }
-
-
 
 @end

@@ -31,7 +31,7 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 	}
 	
 #if MD_DEBUG
-	NSLog(@"GenerateThumbnailForURL(): %@", [(NSURL *)url path]);
+	NSLog(@"GenerateThumbnailForURL(): %@", [nsUrl path]);
 #endif
 	
 	NSData *imageData = [[NSData alloc] initWithContentsOfURL:nsUrl];
@@ -122,7 +122,6 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 		CGImageRelease(newImage);
 	} else {
 		QLThumbnailRequestSetImage(thumbnail, imageRef, NULL);
-		
 	}
 	
 #if MD_DEBUG

@@ -11,17 +11,17 @@
 #import <AppKit/NSSound.h>
 #import <AVFoundation/AVMovie.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface HKFile (HKAdditions)
 
 @property (readonly, copy) NSString *stringValue;
 - (NSString *)stringValueByExtractingToTempFile:(BOOL)shouldExtractToTempFile;
 
 @property (readonly, copy) NSImage *image;
-
-@property (readonly, copy) NSSound *sound;
-
-@property (readonly, copy) AVMovie *movie;
+@property (readonly, copy, nullable) NSSound *sound;
+@property (readonly, copy, nullable) AVMovie *movie;
 
 @end
 
-
+NS_ASSUME_NONNULL_END

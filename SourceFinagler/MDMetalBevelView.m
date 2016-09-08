@@ -13,32 +13,8 @@
 
 #define MD_DEBUG 0
 
-NS_ENUM(SInt32) {
-	MDUndeterminedVersion	= -1,
-	MDCheetah				= 0x1000,
-	MDPuma					= 0x1010,
-	MDJaguar				= 0x1020,
-	MDPanther				= 0x1030,
-	MDTiger					= 0x1040,
-	MDLeopard				= 0x1050,
-	MDSnowLeopard			= 0x1060,
-	MDLion					= 0x1070,
-	MDMountainLion			= 0x1080,
-	MDUnknownKitty			= 0x1090,
-	MDUnknownVersion		= 0x1100
-};
-
-
-static SInt32 MDMetalBevelViewSystemVersion = 0;
-
 @implementation MDMetalBevelView
-
-+ (void)initialize {
-	SInt32 MDFullSystemVersion = 0;
-	Gestalt(gestaltSystemVersion, &MDFullSystemVersion);
-	MDMetalBevelViewSystemVersion = MDFullSystemVersion & 0xfffffff0;
-}
-
+@synthesize drawsBackground;
 
 - (instancetype)initWithFrame:(NSRect)frame {
 #if MD_DEBUG
@@ -51,8 +27,6 @@ static SInt32 MDMetalBevelViewSystemVersion = 0;
     return self;
 }
 
-
-
 - (void)drawRect:(NSRect)rect {
 	
 //	[super drawRect:rect]; // ??
@@ -62,53 +36,23 @@ static SInt32 MDMetalBevelViewSystemVersion = 0;
 	
 	BOOL isMain = self.window.mainWindow;
 	
-	if (MDMetalBevelViewSystemVersion == MDLeopard) {
-		
-		if (drawsBackground) {
-			if (isMain) {
-				[[NSColor colorWithCalibratedRed:81.0/255.0 green:81.0/255.0 blue:81.0/255.0 alpha:1.0] set];
-			} else {
-				[[NSColor colorWithCalibratedRed:81.0/255.0 green:81.0/255.0 blue:81.0/255.0 alpha:1.0] set];
-			}
-			
-			[NSBezierPath setDefaultLineWidth:2.0];
-			
-			[NSBezierPath strokeLineFromPoint:NSMakePoint(0.0,rect.size.height) toPoint:NSMakePoint(rect.size.width, rect.size.height)];
-			
-			[NSBezierPath strokeLineFromPoint:NSMakePoint(0.0,0.0) toPoint:NSMakePoint(rect.size.width, 0.0)];
-			
+	if (drawsBackground) {
+		if (isMain) {
+			[[NSColor colorWithCalibratedRed:81.0/255.0 green:81.0/255.0 blue:81.0/255.0 alpha:1.0] set];
 		} else {
-			[super drawRect:rect];
-			
+			[[NSColor colorWithCalibratedRed:81.0/255.0 green:81.0/255.0 blue:81.0/255.0 alpha:1.0] set];
 		}
 		
-	} else if (MDMetalBevelViewSystemVersion >= MDSnowLeopard) {
+		[NSBezierPath setDefaultLineWidth:2.0];
 		
-		if (drawsBackground) {
-			if (isMain) {
-				[[NSColor colorWithCalibratedRed:81.0/255.0 green:81.0/255.0 blue:81.0/255.0 alpha:1.0] set];
-			} else {
-				[[NSColor colorWithCalibratedRed:81.0/255.0 green:81.0/255.0 blue:81.0/255.0 alpha:1.0] set];
-			}
-			
-			[NSBezierPath setDefaultLineWidth:2.0];
-			
-			[NSBezierPath strokeLineFromPoint:NSMakePoint(0.0,rect.size.height) toPoint:NSMakePoint(rect.size.width, rect.size.height)];
-			
-			[NSBezierPath strokeLineFromPoint:NSMakePoint(0.0,0.0) toPoint:NSMakePoint(rect.size.width, 0.0)];
-			
-		} else {
-			[super drawRect:rect];
-			
-		}
+		[NSBezierPath strokeLineFromPoint:NSMakePoint(0.0,rect.size.height) toPoint:NSMakePoint(rect.size.width, rect.size.height)];
+		
+		[NSBezierPath strokeLineFromPoint:NSMakePoint(0.0,0.0) toPoint:NSMakePoint(rect.size.width, 0.0)];
+		
+	} else {
+		[super drawRect:rect];
+		
 	}
-}
-
-
-
-
-- (BOOL)drawsBackground {
-    return drawsBackground;
 }
 
 - (void)setDrawsBackground:(BOOL)value {

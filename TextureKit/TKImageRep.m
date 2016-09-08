@@ -7,15 +7,15 @@
 //
 
 #import <TextureKit/TKImageRep.h>
-#import <CoreServices/CoreServices.h>
+#include <CoreServices/CoreServices.h>
 
 #import <TextureKit/TKDDSImageRep.h>
 #import <TextureKit/TKVTFImageRep.h>
 
-#import <Accelerate/Accelerate.h>
+#include <Accelerate/Accelerate.h>
 
-#import "TKPrivateInterfaces.h"
 #import "TKFoundationAdditions.h"
+#import "TKPrivateInterfaces.h"
 
 
 
@@ -391,8 +391,7 @@ static TKDXTCompressionQuality defaultDXTCompressionQuality = TKDXTCompressionDe
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	NSArray *imageReps = [[self class] imageRepsWithData:aData firstRepresentationOnly:YES];
-	if (imageReps.count) return imageReps[0];
-	return nil;
+	return imageReps.firstObject;
 }
 
 
@@ -401,13 +400,8 @@ static TKDXTCompressionQuality defaultDXTCompressionQuality = TKDXTCompressionDe
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	NSArray *imageReps = [[self class] imageRepsWithData:aData firstRepresentationOnly:YES];
-	if ((imageReps == nil) || !(imageReps.count > 0)) {
-		return nil;
-	}
-	self = imageReps[0];
-	return self;
+	return self = imageReps.firstObject;
 }
-
 
 - (instancetype)init {
 #if TK_DEBUG
@@ -482,20 +476,18 @@ static TKDXTCompressionQuality defaultDXTCompressionQuality = TKDXTCompressionDe
 	return self;
 }
 
-
-
 - (instancetype)initWithCoder:(NSCoder *)coder {
 #if TK_DEBUG
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	if ((self = [super initWithCoder:coder])) {
-		self.sliceIndex = [[coder decodeObjectForKey:TKImageRepSliceIndexKey] unsignedIntegerValue];
-		self.face = [[coder decodeObjectForKey:TKImageRepFaceKey] unsignedIntegerValue];
-		self.frameIndex = [[coder decodeObjectForKey:TKImageRepFrameIndexKey] unsignedIntegerValue];
-		self.mipmapIndex = [[coder decodeObjectForKey:TKImageRepMipmapIndexKey] unsignedIntegerValue];
+		self.sliceIndex = [coder decodeIntegerForKey:TKImageRepSliceIndexKey];
+		self.face = [coder decodeIntegerForKey:TKImageRepFaceKey];
+		self.frameIndex = [coder decodeIntegerForKey:TKImageRepFrameIndexKey];
+		self.mipmapIndex = [coder decodeIntegerForKey:TKImageRepMipmapIndexKey];
 		
 		self.bitmapInfo = [[coder decodeObjectForKey:TKImageRepBitmapInfoKey] unsignedIntValue];
-		self.pixelFormat = [[coder decodeObjectForKey:TKImageRepPixelFormatKey] unsignedIntegerValue];
+		self.pixelFormat = [coder decodeIntegerForKey:TKImageRepPixelFormatKey];
 		
 		self.imageProperties = [coder decodeObjectForKey:TKImageRepImagePropertiesKey];
 	}
@@ -508,18 +500,16 @@ static TKDXTCompressionQuality defaultDXTCompressionQuality = TKDXTCompressionDe
 #endif
 	[super encodeWithCoder:coder];
 	
-	[coder encodeObject:@(sliceIndex) forKey:TKImageRepSliceIndexKey];
-	[coder encodeObject:@(face) forKey:TKImageRepFaceKey];
-	[coder encodeObject:@(frameIndex) forKey:TKImageRepFrameIndexKey];
-	[coder encodeObject:@(mipmapIndex) forKey:TKImageRepMipmapIndexKey];
+	[coder encodeInteger:sliceIndex forKey:TKImageRepSliceIndexKey];
+	[coder encodeInteger:face forKey:TKImageRepFaceKey];
+	[coder encodeInteger:frameIndex forKey:TKImageRepFrameIndexKey];
+	[coder encodeInteger:mipmapIndex forKey:TKImageRepMipmapIndexKey];
 	
 	[coder encodeObject:@(bitmapInfo) forKey:TKImageRepBitmapInfoKey];
-	[coder encodeObject:@(pixelFormat) forKey:TKImageRepPixelFormatKey];
+	[coder encodeInteger:pixelFormat forKey:TKImageRepPixelFormatKey];
 	
 	[coder encodeObject:imageProperties forKey:TKImageRepImagePropertiesKey];
-
 }
-
 
 - (id)copyWithZone:(NSZone *)zone {
 #if TK_DEBUG
@@ -533,7 +523,6 @@ static TKDXTCompressionQuality defaultDXTCompressionQuality = TKDXTCompressionDe
 	copy.imageProperties = imageProperties;
 	return copy;
 }
-
 
 - (NSData *)data {
 #if TK_DEBUG
@@ -637,6 +626,9 @@ static TKDXTCompressionQuality defaultDXTCompressionQuality = TKDXTCompressionDe
 	pixelFormat = aFormat;
 }
 
+- (NSData *)RGBAData {
+	return [self representationUsingPixelFormat:TKPixelFormatRGBA];
+}
 
 - (NSData *)representationUsingPixelFormat:(TKPixelFormat)aPixelFormat {
 #if TK_DEBUG
@@ -917,8 +909,6 @@ void TKFreeBuffer(vImage_Buffer *buffer) {
 																	 normalMapLibrary:normalMapLibrary];
 }
 
-
-
 - (NSArray *)mipmapImageRepsUsingFilter:(TKMipmapGenerationType)filterType {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -927,15 +917,12 @@ void TKFreeBuffer(vImage_Buffer *buffer) {
 	return [ddsImageRep mipmapImageRepsUsingFilter:filterType];
 }
 
-
 - (void)setProperty:(NSString *)property withValue:(id)value {
 #if TK_DEBUG
 //	NSLog(@"[%@ %@] property == %@, value == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), property, value);
 #endif
 	[super setProperty:property withValue:value];
 }
-
-
 
 - (NSComparisonResult)compare:(TKImageRep *)anImageRep {
 #if TK_DEBUG
@@ -972,8 +959,6 @@ void TKFreeBuffer(vImage_Buffer *buffer) {
 	return NSOrderedDescending;
 }
 
-
-
 + (TKImageRep *)imageRepForFace:(TKFace)aFace ofImageRepsInArray:(NSArray *)imageReps {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -983,8 +968,6 @@ void TKFreeBuffer(vImage_Buffer *buffer) {
 	}
 	return nil;
 }
-
-
 
 - (BOOL)isEqual:(id)object {
 #if TK_DEBUG
@@ -1000,7 +983,6 @@ void TKFreeBuffer(vImage_Buffer *buffer) {
 	return NO;
 }
 
-
 - (NSString *)description {
 	NSMutableString *description = [NSMutableString string];
 	[description appendFormat:@"%@ sliceIndex == %lu, ", super.description, (unsigned long)sliceIndex];
@@ -1011,7 +993,7 @@ void TKFreeBuffer(vImage_Buffer *buffer) {
 	[description appendFormat:@"alphaInfo == %lu, ", (unsigned long)self.alphaInfo];
 	[description appendFormat:@"bitmapFormat == %lu, ", (unsigned long)self.bitmapFormat];
 	[description appendFormat:@"imageProperties == %@", self.imageProperties];
-	return description;
+	return [description copy];
 }
 
 

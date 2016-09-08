@@ -133,10 +133,10 @@ HRESULT QuickLookGeneratorQueryInterface(void *thisInstance,REFIID iid,LPVOID *p
     interfaceID = CFUUIDCreateFromUUIDBytes(kCFAllocatorDefault, iid);
 
     if (CFEqual(interfaceID, kQLGeneratorCallbacksInterfaceID)) {
-            /* If the Right interface was requested, bump the ref count,
-             * set the ppv parameter equal to the instance, and
-             * return good status.
-             */
+        /* If the Right interface was requested, bump the ref count,
+         * set the ppv parameter equal to the instance, and
+         * return good status.
+         */
         ((QLGeneratorInterfaceStruct *)((HLQLGeneratorPlug *)thisInstance)->conduitInterface)->GenerateThumbnailForURL = GenerateThumbnailForURL;
         ((QLGeneratorInterfaceStruct *)((HLQLGeneratorPlug *)thisInstance)->conduitInterface)->CancelThumbnailGeneration = CancelThumbnailGeneration;
         ((QLGeneratorInterfaceStruct *)((HLQLGeneratorPlug *)thisInstance)->conduitInterface)->GeneratePreviewForURL = GeneratePreviewForURL;
@@ -196,6 +196,6 @@ void *QuickLookGeneratorPluginFactory(CFAllocatorRef allocator,CFUUIDRef typeID)
         CFRelease(uuid);
         return result;
     }
-        /* If the requested type is incorrect, return NULL. */
+    /* If the requested type is incorrect, return NULL. */
     return NULL;
 }

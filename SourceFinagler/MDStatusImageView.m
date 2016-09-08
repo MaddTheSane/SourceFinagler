@@ -83,15 +83,12 @@
 	
 }
 
-
 - (void)windowDidResignMain:(NSNotification *)notification {
 	
 	if (notification.object == self.window) {
 		[self setNeedsDisplay:YES];
 	}
 }
-
-
 
 - (void)drawRect:(NSRect)rect {
 	if (self.image) {
@@ -106,27 +103,8 @@
 	}
 }
 
-
-
 - (BOOL)mouseDownCanMoveWindow {
 	return YES;
 }
 
-
-
 @end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

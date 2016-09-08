@@ -11,10 +11,8 @@
 #import <HLKit/HKFoundationAdditions.h>
 #import "HKPrivateInterfaces.h"
 #import <HLKit/HKFileHandle.h>
-#import <HL/HL.h>
-
-
-#import <CoreServices/CoreServices.h>
+#include <HL/HL.h>
+#include <CoreServices/CoreServices.h>
 
 #define HK_DEBUG 0
 
@@ -121,7 +119,7 @@ using namespace HLLib::Streams;
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	if (type == nil) {
-		type = (__bridge_transfer NSString *)UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, (__bridge CFStringRef)self.nameExtension, NULL);
+		type = CFBridgingRelease(UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, (__bridge CFStringRef)self.nameExtension, NULL));
 	}
 	return type;
 }
@@ -133,9 +131,7 @@ using namespace HLLib::Streams;
 	if (kind == nil) {
 		kind = [[NSWorkspace sharedWorkspace] localizedDescriptionForType:self.type];
 		if (kind == nil) {
-			CFStringRef tmpKind;
-			LSCopyKindStringForTypeInfo(kLSUnknownType, kLSUnknownCreator, (__bridge CFStringRef)self.nameExtension, &tmpKind);
-			kind = (NSString*)CFBridgingRelease(tmpKind);
+			kind = (NSString*)CFBridgingRelease(UTTypeCopyDescription((__bridge CFStringRef)self.type));
 		}
 	}
 	return kind;
@@ -390,7 +386,7 @@ using namespace HLLib::Streams;
 				hlByte buffer[HK_COPY_BUFFER_SIZE];
 				
 				while (hlTrue) {
-					hlUInt currentBytesRead = pInput->Read(buffer, sizeof(buffer));
+					hlULongLong currentBytesRead = pInput->Read(buffer, sizeof(buffer));
 					
 					if (currentBytesRead == 0) {
 						bResult = (totalBytesExtracted == pInput->GetStreamSize());

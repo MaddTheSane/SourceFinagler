@@ -8,7 +8,7 @@
 
 #import "MDLaunchManager.h"
 #import "MDFolderManager.h"
-#import <ServiceManagement/ServiceManagement.h>
+#include <ServiceManagement/ServiceManagement.h>
 
 
 #define MD_DEBUG 0
@@ -71,16 +71,15 @@ static MDLaunchManager *sharedManager = nil;
 #endif
 	NSDictionary *job = nil;
 	if (pid > 0 && domain == MDLaunchUserDomain) {
-		
-			NSArray *jobs = CFBridgingRelease(SMCopyAllJobDictionaries((domain == MDLaunchUserDomain ? kSMDomainUserLaunchd : kSMDomainSystemLaunchd)));
-			if (jobs) {
-				for (NSDictionary *aJob in jobs) {
-					if ([aJob[NSStringFromLaunchJobKey(LAUNCH_JOBKEY_PID)] intValue] == pid) {
-						job = aJob;
-						break;
-					}
+		NSArray *jobs = CFBridgingRelease(SMCopyAllJobDictionaries((domain == MDLaunchUserDomain ? kSMDomainUserLaunchd : kSMDomainSystemLaunchd)));
+		if (jobs) {
+			for (NSDictionary *aJob in jobs) {
+				if ([aJob[NSStringFromLaunchJobKey(LAUNCH_JOBKEY_PID)] intValue] == pid) {
+					job = aJob;
+					break;
 				}
 			}
+		}
 	}
 	return job;
 }
@@ -92,7 +91,7 @@ static MDLaunchManager *sharedManager = nil;
 	NSDictionary *job = nil;
 	
 	if (label && domain == MDLaunchUserDomain) {
-		job = CFBridgingRelease(SMJobCopyDictionary((domain == MDLaunchUserDomain ? kSMDomainUserLaunchd : kSMDomainSystemLaunchd), (CFStringRef)label));
+		job = CFBridgingRelease(SMJobCopyDictionary((domain == MDLaunchUserDomain ? kSMDomainUserLaunchd : kSMDomainSystemLaunchd), (__bridge CFStringRef)label));
 	}
 	return job;
 }
@@ -143,12 +142,14 @@ static MDLaunchManager *sharedManager = nil;
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	if (label == nil || domain != MDLaunchUserDomain) return NO;
-	
-	if (outError) *outError = nil;
+	if (label == nil || domain != MDLaunchUserDomain) {
+		if (outError) {
+			*outError = [NSError errorWithDomain:NSOSStatusErrorDomain code:paramErr userInfo:nil];
+		}
+		return NO;
+	}
 	
 	@synchronized(self) {
-		
 		MDFolderManager *folderManager = [MDFolderManager defaultManager];
 		NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
 		

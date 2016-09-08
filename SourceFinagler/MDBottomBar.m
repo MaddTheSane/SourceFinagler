@@ -6,6 +6,8 @@
 //  Copyright 2008 Mark Douma. All rights reserved.
 //
 
+#include <math.h>
+#include <tgmath.h>
 #import "MDBottomBar.h"
 #import "MDFileSizeFormatter.h"
 
@@ -15,36 +17,7 @@
 #define MD_DEBUG 0
 
 
-NS_ENUM(SInt32) {
-	MDUndeterminedVersion	= -1,
-	MDCheetah				= 0x1000,
-	MDPuma					= 0x1010,
-	MDJaguar				= 0x1020,
-	MDPanther				= 0x1030,
-	MDTiger					= 0x1040,
-	MDLeopard				= 0x1050,
-	MDSnowLeopard			= 0x1060,
-	MDLion					= 0x1070,
-	MDMountainLion			= 0x1080,
-	MDUnknownKitty			= 0x1090,
-	MDUnknownVersion		= 0x1100
-};
-
-static SInt32 MDSystemVersion = MDUndeterminedVersion;
-
 @implementation MDBottomBar
-
-+ (void)initialize {
-#if MD_DEBUG
-	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-#endif
-	if (MDSystemVersion == MDUndeterminedVersion) {
-		SInt32 MDFullSystemVersion = 0;
-		Gestalt(gestaltSystemVersion, &MDFullSystemVersion);
-		MDSystemVersion = MDFullSystemVersion & 0xfffffff0;
-	}
-}
-
 
 - (instancetype)initWithFrame:(NSRect)frame {
 	if ((self = [super initWithFrame:frame])) {
@@ -67,56 +40,6 @@ static SInt32 MDSystemVersion = MDUndeterminedVersion;
 - (void)drawRect:(NSRect)rect {
 	
 	BOOL isMainWindow = self.window.mainWindow;
-	
-	
-	if (MDSystemVersion == MDLeopard) {
-		
-		if (isMainWindow) {
-			[NSBezierPath setDefaultLineWidth:2.0];
-			
-			[[NSColor colorWithCalibratedRed:47.0/255.0 green:47.0/255.0 blue:47.0/255.0 alpha:1.0] set];
-			
-			[NSBezierPath strokeLineFromPoint:NSMakePoint(rect.origin.x, rect.origin.y + (rect.size.height - 1.0)) toPoint:NSMakePoint(rect.origin.x + rect.size.width, rect.origin.y + (rect.size.height - 1.0))];
-			
-			[[NSColor colorWithCalibratedRed:208.0/255.0 green:208.0/255.0 blue:208.0/255.0 alpha:1.0] set];
-			
-			
-			[NSBezierPath strokeLineFromPoint:NSMakePoint(rect.origin.x, rect.origin.y + (rect.size.height - 2.0)) toPoint:NSMakePoint(rect.origin.x + rect.size.width, rect.origin.y + (rect.size.height - 2.0))];
-			
-			NSGradient *gradient = [[NSGradient alloc] initWithStartingColor:[NSColor colorWithCalibratedRed:133.0/255.0 green:133.0/255.0 blue:133.0/255.0 alpha:1.0]
-																  endingColor:[NSColor colorWithCalibratedRed:177.0/255.0 green:177.0/255.0 blue:177.0/255.0 alpha:1.0]];
-			
-			NSRect gradientRect = rect;
-			gradientRect.size.height -= 2.0;
-			
-			[gradient drawInRect:gradientRect angle:90];
-			
-		} else {
-			
-			[NSBezierPath setDefaultLineWidth:2.0];
-			
-			[[NSColor colorWithCalibratedRed:117.0/255.0 green:117.0/255.0 blue:117.0/255.0 alpha:1.0] set];
-			
-			[NSBezierPath strokeLineFromPoint:NSMakePoint(rect.origin.x, rect.origin.y + (rect.size.height - 1.0)) toPoint:NSMakePoint(rect.origin.x + rect.size.width, rect.origin.y + (rect.size.height - 1.0))];
-			
-			[[NSColor colorWithCalibratedRed:234.0/255.0 green:234.0/255.0 blue:234.0/255.0 alpha:1.0] set];
-			
-			
-			[NSBezierPath strokeLineFromPoint:NSMakePoint(rect.origin.x, rect.origin.y + (rect.size.height - 2.0)) toPoint:NSMakePoint(rect.origin.x + rect.size.width, rect.origin.y + (rect.size.height - 2.0))];
-			
-			NSGradient *gradient = [[NSGradient alloc] initWithStartingColor:[NSColor colorWithCalibratedRed:198.0/255.0 green:198.0/255.0 blue:198.0/255.0 alpha:1.0]
-																  endingColor:[NSColor colorWithCalibratedRed:222.0/255.0 green:222.0/255.0 blue:222.0/255.0 alpha:1.0]];
-			
-			
-			NSRect gradientRect = rect;
-			gradientRect.size.height -= 2.0;
-			
-			[gradient drawInRect:gradientRect angle:90];
-			
-		}
-		
-	}
-	
 	
 //	BOOL debug = YES;
 //	
@@ -157,24 +80,13 @@ static SInt32 MDSystemVersion = MDUndeterminedVersion;
 	
 	NSColor *textColor = nil;
 	
-	if (MDSystemVersion == MDLeopard) {
-		if (isMainWindow) {
-			textColor = [NSColor controlTextColor];
-		} else {
-//			textColor = [NSColor disabledControlTextColor];
-			textColor = [NSColor colorWithCalibratedRed:47.0/255.0 green:47.0/255.0 blue:47.0/255.0 alpha:1.0];
-		}
-		
-	} else if (MDSystemVersion >= MDSnowLeopard) {
-		if (isMainWindow) {
-			textColor = [NSColor controlTextColor];
-		} else {
-			textColor = [NSColor disabledControlTextColor];
-		}
+	if (isMainWindow) {
+		textColor = [NSColor controlTextColor];
+	} else {
+		textColor = [NSColor disabledControlTextColor];
 	}
 	
-	
-	NSDictionary *attributes = @{NSFontAttributeName: [NSFont systemFontOfSize:[NSFont smallSystemFontSize]], NSParagraphStyleAttributeName: style, NSShadowAttributeName: shadow, NSForegroundColorAttributeName: textColor};
+	NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]],NSFontAttributeName, style,NSParagraphStyleAttributeName, shadow,NSShadowAttributeName, textColor,NSForegroundColorAttributeName, nil];
 	
 	NSAttributedString *richText = [[NSAttributedString alloc] initWithString:stringValue attributes:attributes];
 	
@@ -183,14 +95,7 @@ static SInt32 MDSystemVersion = MDUndeterminedVersion;
 	richTextRect.size = [richText size];
 	richTextRect.origin.x = ceil( (rect.size.width - richTextRect.size.width)/2.0);
 	
-	if (MDSystemVersion == MDLeopard) {
-		
-		richTextRect.origin.y = ceil( (rect.size.height - richTextRect.size.height)/2.0);
-		
-	} else if (MDSystemVersion >= MDSnowLeopard) {
-		richTextRect.origin.y = ceil( (rect.size.height - richTextRect.size.height)/2.0);
-		
-	}
+	richTextRect.origin.y = ceil( (rect.size.height - richTextRect.size.height)/2.0);
 	
 	[richText drawInRect:richTextRect];
 	

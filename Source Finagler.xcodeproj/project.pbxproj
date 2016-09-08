@@ -1954,8 +1954,6 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
-				C1C12548123A0EC6004674B4 /* Localizable.strings */,
 				C11CE9BF119B7FE3000E26D2 /* Extras */,
 				C10355FB11C5AA930054740E /* MDSteamAppsRelocator */,
 				C10355FC11C5AAAF0054740E /* MDOtherAppsHelper */,
@@ -2051,6 +2049,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
+				C1C12548123A0EC6004674B4 /* Localizable.strings */,
 				C15521FD11D9A4D600CCEDD3 /* dsa_pub.pem */,
 				C132DF73124D521B00A8DE04 /* LGPL.rtf */,
 				C1C1252B123A0CAE004674B4 /* Source Finagler.sdef */,
@@ -2118,6 +2118,17 @@
 				55B9F2681D7CB1EF00641709 /* InfoPlist.strings */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		55CED2EC1D7F5B9B0045520F /* OBJ */ = {
+			isa = PBXGroup;
+			children = (
+				C195802F149117DC0024C716 /* TKOBJModel.h */,
+				C1958030149117DC0024C716 /* TKOBJModel.m */,
+				C11116FD149151360040E4B5 /* TKOBJParts.h */,
+				C11116FE149151360040E4B5 /* TKOBJParts.m */,
+			);
+			name = OBJ;
 			sourceTree = "<group>";
 		};
 		55F82CD01D7BAB6500D6DAC9 /* Shader */ = {
@@ -2597,10 +2608,7 @@
 		C1958031149117EF0024C716 /* concrete-subclasses */ = {
 			isa = PBXGroup;
 			children = (
-				C195802F149117DC0024C716 /* TKOBJModel.h */,
-				C1958030149117DC0024C716 /* TKOBJModel.m */,
-				C11116FD149151360040E4B5 /* TKOBJParts.h */,
-				C11116FE149151360040E4B5 /* TKOBJParts.m */,
+				55CED2EC1D7F5B9B0045520F /* OBJ */,
 				C194114E144BA49200C56D91 /* MDL */,
 			);
 			name = "concrete-subclasses";
@@ -5138,7 +5146,6 @@
 				1DDD58150DA1D0A300B32029 /* English */,
 			);
 			name = MainMenu.xib;
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		55B9F2681D7CB1EF00641709 /* InfoPlist.strings */ = {
@@ -5348,7 +5355,6 @@
 				C1C12549123A0EC6004674B4 /* English */,
 			);
 			name = Localizable.strings;
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		C1D5B01E147BE6F200B0599B /* MDHLDocumentLion.xib */ = {
@@ -5388,7 +5394,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
@@ -5426,7 +5432,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;

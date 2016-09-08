@@ -8,7 +8,7 @@
 
 #import "TKImageBrowserItem.h"
 #import <TextureKit/TextureKit.h>
-#import <ApplicationServices/ApplicationServices.h>
+#include <ApplicationServices/ApplicationServices.h>
 #import "TKImageRepAdditions.h"
 
 
@@ -195,7 +195,7 @@ static NSMutableDictionary	*placeholderImageBrowserItemsAndSizes = nil;
 										32,
 										aSize.width * 4,
 										colorSpace,
-										kCGImageAlphaLast,
+										(CGBitmapInfo)kCGImageAlphaLast,
 										provider,
 										NULL,
 										false,

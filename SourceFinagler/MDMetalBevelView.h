@@ -15,7 +15,7 @@
 //	BOOL debug;
 	BOOL drawsBackground;
 }
-@property  BOOL drawsBackground;
+@property (nonatomic) BOOL drawsBackground;
 
 
 @end

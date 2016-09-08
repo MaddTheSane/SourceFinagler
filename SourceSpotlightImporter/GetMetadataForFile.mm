@@ -1,20 +1,13 @@
 #include <CoreServices/CoreServices.h>
 #include "HLSpotlightMain.h"
 #import <Cocoa/Cocoa.h>
-#import <NVTextureTools/NVTextureTools.h>
-#import <VTF/VTF.h>
+#include <NVTextureTools/NVTextureTools.h>
+#include <VTF/VTF.h>
 #import <TextureKit/TextureKit.h>
 
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-	
 #define MD_DEBUG 0
-	
-	
-	
+
 static BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *contentTypeUTI, NSMutableDictionary *attributes, NSError **error);
 
 //	Boolean GetMetadataForURL(void *thisInterface, CFMutableDictionaryRef attributes, CFStringRef contentTypeUTI, CFURLRef url);
@@ -25,7 +18,7 @@ Boolean GetMetadataForFile(void *thisInterface, CFMutableDictionaryRef attribute
     /* Return TRUE if successful, FALSE if there was no data provided */
 	
 @autoreleasepool {
-		NSString *nsContentUTI = (__bridge NSString*)contentTypeUTI;
+	NSString *nsContentUTI = (__bridge NSString*)contentTypeUTI;
 	
 	if (![nsContentUTI isEqualToString:TKVTFType] &&
 		![nsContentUTI isEqualToString:TKDDSType] &&
@@ -44,10 +37,9 @@ Boolean GetMetadataForFile(void *thisInterface, CFMutableDictionaryRef attribute
 }
 }
 
-	
 using namespace VTFLib;
 using namespace nv;
-	
+
 BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *contentTypeUTI, NSMutableDictionary *attributes, NSError **error) {
 	if (attributes == nil || filePath == nil || contentTypeUTI == nil) return NO;
 	
@@ -102,7 +94,7 @@ BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *cont
 			return NO;
 		}
 		
-		if (file->Load([data bytes], [data length], vlTrue) == NO) {
+		if (file->Load([data bytes], (vlUInt)[data length], vlTrue) == NO) {
 			if (magic == TKVTFMagic) {
 				NSLog(@"MDGetMetadataFromImageWithContentsOfFile(): file->Load() (for %@) failed!", filePath);
 			} else {
@@ -148,7 +140,7 @@ BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *cont
 			return NO;
 		}
 		
-		DirectDrawSurface *dds = new DirectDrawSurface((unsigned char *)[data bytes], [data length]);
+		DirectDrawSurface *dds = new DirectDrawSurface((unsigned char *)[data bytes], (uint)[data length]);
 		if (!dds->isValid() || !dds->isSupported() || (dds->width() > 65535 || (dds->height() > 65535))) {
 			if (!dds->isValid()) {
 				NSLog(@"MDGetMetadataFromImageWithContentsOfFile(): file at filePath \"%@\": dds image is not valid, info follows:", filePath);
@@ -197,11 +189,6 @@ BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *cont
 	return NO;
 }
 
-#ifdef __cplusplus
-}
-#endif
-
-		
 /* -----------------------------------------------------------------------------
  Step 1
  Set the UTI types the importer supports

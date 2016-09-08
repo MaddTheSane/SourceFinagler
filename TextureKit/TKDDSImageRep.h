@@ -12,10 +12,10 @@
 typedef NS_ENUM(NSUInteger, TKDDSFormat) {
 	//	DirectX 9 formats
 	TKDDSFormatDXT1		= 0,
-	TKDDSFormatDXT1a,		// DXT1 with binary alpha
+	TKDDSFormatDXT1a,		///< DXT1 with binary alpha
 	TKDDSFormatDXT3,
 	TKDDSFormatDXT5,
-	TKDDSFormatDXT5n,		// Compressed HILO: R=1, G=y, B=0, A=x
+	TKDDSFormatDXT5n,		///< Compressed HILO: R=1, G=y, B=0, A=x
 	
 	
 	TKDDSFormatRGB,
@@ -77,8 +77,8 @@ typedef NS_ENUM(NSUInteger, TKDDSFormat) {
 	TKDDSFormatBC1a		= TKDDSFormatDXT1a,
 	TKDDSFormatBC2		= TKDDSFormatDXT3,
 	TKDDSFormatBC3		= TKDDSFormatDXT5,
-	TKDDSFormatBC4		= 6,	// ATI1
-	TKDDSFormatBC5		= 7,	// 3DC, ATI2
+	TKDDSFormatBC4		= 6,	///< ATI1
+	TKDDSFormatBC5		= 7,	///< 3DC, ATI2
 	
 	TKDDSFormatDXT1n	= 8,	// not supported yet
 	TKDDSFormatCTX1		= 9,	// not supported yet

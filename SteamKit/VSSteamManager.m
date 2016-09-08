@@ -95,11 +95,8 @@ static VSSteamManager *sharedManager = nil;
 
 
 @implementation VSSteamManager
-
 @synthesize delegate;
 @synthesize monitoringGames;
-
-
 
 + (VSSteamManager *)defaultManager {
 	@synchronized(self) {
@@ -117,7 +114,6 @@ static VSSteamManager *sharedManager = nil;
 - (id)copyWithZone:(NSZone *)zone {
 	return self;
 }
-
 
 - (instancetype)init {
 #if VS_DEBUG
@@ -916,9 +912,10 @@ static inline NSDictionary *VSMakeLaunchAgentPlist(NSString *jobLabel, NSArray *
 	NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
 	
 	OSType creatorCode = game.creatorCode;
+	static const OSType typeCode = 'APPL';
 	
 	NSDictionary *attributes = @{NSFileHFSCreatorCode: @(creatorCode),
-								NSFileHFSTypeCode: @('APPL'),
+								NSFileHFSTypeCode: @(typeCode),
 								MDFileHasCustomIcon: @YES};
 	
 	NSDictionary *infoPlist = game.infoDictionary;

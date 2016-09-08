@@ -10,21 +10,16 @@
 #import <Cocoa/Cocoa.h>
 #import "MDCopyOperationView.h"
 
+NS_ASSUME_NONNULL_BEGIN
 
 @class MDCopyOperation, MDCopyOperationContentView;
 
 @interface MDCopyOperationController : NSWindowController {
-	
 	IBOutlet MDCopyOperationContentView			*contentView;
-	
 	NSMutableArray								*operations;
-	
 	NSMutableDictionary							*viewControllersAndTags;
-	
 	MDCopyOperationViewBackgroundColorType		colorType;
-	
 	NSInteger									tag;
-	
 }
 
 + (MDCopyOperationController *)sharedController;
@@ -40,3 +35,5 @@
 - (void)endOperation:(MDCopyOperation *)operation;
 
 @end
+
+NS_ASSUME_NONNULL_END

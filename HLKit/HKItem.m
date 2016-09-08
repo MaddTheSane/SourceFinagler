@@ -49,6 +49,7 @@ static void HKInitializeIcons() {
 }
 
 @implementation HKItem
+@synthesize path;
 
 + (void)initialize {
 #if HK_DEBUG
@@ -95,8 +96,6 @@ static void HKInitializeIcons() {
 @synthesize encrypted = isEncrypted;
 @synthesize extractable = isExtractable;
 
-@dynamic path;
-
 - (instancetype)init {
 #if HK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -124,11 +123,6 @@ static void HKInitializeIcons() {
 		return path;
 	}
 	return nil;
-}
-
-- (void)setPath:(NSString *)aPath {
-	NSString *copy = [aPath copy];
-	path = copy;
 }
 
 - (NSString *)pathRelativeToItem:(HKItem *)referenceItem {
@@ -173,9 +167,9 @@ static void HKInitializeIcons() {
 #if HK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	if ([key isEqualToString:@"isExtractable"]) {
+	if ([key isEqualToString:@"extractable"]) {
 		isExtractable = NO;
-	} else if ([key isEqualToString:@"isEncrypted"]) {
+	} else if ([key isEqualToString:@"encrypted"]) {
 		isEncrypted = NO;
 	} else if ([key isEqualToString:@"fileType"]) {
 		fileType = HKFileTypeNone;
@@ -239,6 +233,32 @@ static NSString * const HKFileTypeDescription[] = {
 //	[description appendFormat:@"\n\tisVisible == %@", (isVisible ? @"YES" : @"NO")];
 	
 	return description;
+}
+
+
+- (NSString *)debugDescription {
+	//	NSMutableString *description = [NSMutableString stringWithString:[super description]];
+	NSMutableString *description = [NSMutableString stringWithFormat:@"<%@> %@", NSStringFromClass([self class]), name];
+	//	[description appendFormat:@", %@", name];
+	[description appendFormat:@", %@", [self path]];
+	
+	//	NSMutableString *description = [NSMutableString stringWithString:@"{\n"];
+	////	[description appendFormat:@"%@\n\t", [super description]];
+	//	[description appendFormat:@"\tname == %@\n", name];
+	//	[description appendFormat:@"\tpath == %@\n", [self path]];
+	////	if (!isLeaf) [description appendFormat:@"\tshowInvisibleItems == %@\n", (showInvisibleItems ? @"YES" : @"NO")];
+	////	if (!isLeaf) [description appendFormat:@"\tsortDescriptors == %@\n", sortDescriptors];
+	//	[description appendFormat:@"}\n"];
+	
+	
+	[description appendFormat:@"\n\tnameExtension == %@", nameExtension];
+	[description appendFormat:@"\n\tkind == %@", kind];
+	[description appendFormat:@"\n\tsize == %@", size];
+	[description appendFormat:@"\n\ttype == %@", type];
+	[description appendFormat:@"\n\fileType == %@", HKFileTypeDescription[fileType]];
+	[description appendFormat:@"\n\tisVisible == %@", (isVisible ? @"YES" : @"NO")];
+	
+	return [description copy];
 }
 
 @end

@@ -239,6 +239,7 @@ TEXTUREKIT_EXTERN NSString * const TKImageRoundModeKey;
 @property (readonly, copy) NSData *data;
 
 - (NSData *)representationUsingPixelFormat:(TKPixelFormat)aPixelFormat;
+- (NSData *)RGBAData;
 
 + (NSData *)dataRepresentationOfData:(NSData *)data inPixelFormat:(TKPixelFormat)sourcePixelFormat size:(NSSize)size usingPixelFormat:(TKPixelFormat)destPixelFormat;
 

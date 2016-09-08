@@ -9,6 +9,10 @@
 #import <Cocoa/Cocoa.h>
 #import "MDHLDocument.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
+@class HKItem;
+
 extern NSString * const MDCopyOperationKey;
 extern NSString * const MDCopyOperationDestinationKey;
 extern NSString * const MDCopyOperationTotalBytesKey;
@@ -37,7 +41,7 @@ typedef NS_ENUM(NSUInteger, MDCopyOperationStage) {
 	NSImage							*icon;
 	
 	MDHLDocument					*__weak source;
-	id								destination; // can be MDHLDocument or an NSString (path)
+	id								destination; ///< can be \c MDHLDocument or an \c NSString (path)
 	
 	NSDictionary					*itemsAndPaths;
 	
@@ -50,9 +54,9 @@ typedef NS_ENUM(NSUInteger, MDCopyOperationStage) {
 	BOOL							isCancelled;
 }
 
-+ (instancetype)operationWithSource:(MDHLDocument *)aSource destination:(id)aDestination itemsAndPaths:(NSDictionary *)anItemsAndPaths tag:(NSInteger)aTag;
++ (instancetype)operationWithSource:(MDHLDocument *)aSource destination:(id)aDestination itemsAndPaths:(NSDictionary<NSString*,HKItem*> *)anItemsAndPaths tag:(NSInteger)aTag;
 
-- (instancetype)initWithSource:(MDHLDocument *)aSource destination:(id)aDestination itemsAndPaths:(NSDictionary *)anItemsAndPaths tag:(NSInteger)aTag NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithSource:(MDHLDocument *)aSource destination:(id)aDestination itemsAndPaths:(NSDictionary<NSString*,HKItem*> *)anItemsAndPaths tag:(NSInteger)aTag NS_DESIGNATED_INITIALIZER;
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
 @property (assign, getter=isIndeterminate) BOOL indeterminate;
@@ -71,10 +75,12 @@ typedef NS_ENUM(NSUInteger, MDCopyOperationStage) {
 @property (strong) NSImage *icon;
 
 @property (readonly, weak) MDHLDocument *source;
+//! can be \c MDHLDocument or an \c NSString (path)
 @property (readonly, strong) id destination;
-@property (readonly, strong) NSDictionary *itemsAndPaths;
+@property (readonly, strong) NSDictionary<NSString*,HKItem*> *itemsAndPaths;
 
 @property (readonly, assign) NSInteger tag;
 
-
 @end
+
+NS_ASSUME_NONNULL_END

@@ -9,7 +9,6 @@
 #import <Cocoa/Cocoa.h>
 
 @interface TKViewController : NSViewController {
-	
 	NSSize					minWinSize;
 	NSSize					maxWinSize;
 	

@@ -9,7 +9,7 @@
 #import <TextureKit/TKImage.h>
 #import <TextureKit/TextureKitDefines.h>
 #import "TKFoundationAdditions.h"
-#import <CoreServices/CoreServices.h>
+#include <CoreServices/CoreServices.h>
 
 // Notes:
 // NSImage's initWithSize: appears to be the designated initializer.
@@ -135,7 +135,7 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	TKImage *copy = [[TKImage alloc] initWithSize:self.size];
-	NSArray *representations = self.representations.deepMutableCopy;
+	NSArray *representations = [self.representations deepMutableCopy];
 	
 	[copy addRepresentations:representations];
 	return copy;
@@ -306,8 +306,7 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 			NSLog(@"[%@ %@] TKImage *archivedImage = [NSKeyedUnarchiver unarchiveObjectWithData:aData] failed!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 			return nil;
 		}
-		self = archivedImage;
-		return self;
+		return self = archivedImage;
 		
 	} else {
 		
@@ -845,7 +844,6 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 		
 		faceIndex = [faceIndexes indexGreaterThanIndex:faceIndex];
 	}
-	
 }
 
 
@@ -857,11 +855,9 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 	NSUInteger faceIndex = faceIndexes.lastIndex;
 	
 	while (faceIndex != NSNotFound) {
-		
 		NSUInteger mipmapIndex = mipmapIndexes.lastIndex;
 		
 		while (mipmapIndex != NSNotFound) {
-			
 			[self removeRepresentationForFace:faceIndex mipmapIndex:mipmapIndex];
 			
 			mipmapIndex = [mipmapIndexes indexLessThanIndex:mipmapIndex];
@@ -1070,13 +1066,13 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 		[(NSMutableIndexSet *)[self valueForKeyPath:TKImageAllSliceIndexesKey] addIndex:aSliceIndex];
 		
 		[self willChangeValueForKey:@"sliceCount"];
-		[self willChangeValueForKey:@"isDepthTexture"];
+		[self willChangeValueForKey:@"depthTexture"];
 		
 		sliceCount += 1;
 		isDepthTexture = (sliceCount > 0);
 		
 		[self didChangeValueForKey:@"sliceCount"];
-		[self didChangeValueForKey:@"isDepthTexture"];
+		[self didChangeValueForKey:@"depthTexture"];
 		
 		[aRepresentation setSliceIndex:aSliceIndex face:TKFaceNone frameIndex:TKFrameIndexNone mipmapIndex:TKMipmapIndexNone];
 		
@@ -1132,40 +1128,40 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 		
 		if (sliceCountAfter > sliceCountBefore) {
 			[self willChangeValueForKey:@"sliceCount"];
-			[self willChangeValueForKey:@"isDepthTexture"];
+			[self willChangeValueForKey:@"depthTexture"];
 			
 			sliceCount += 1;
 			isDepthTexture = (sliceCount > 0);
 			
 			[self didChangeValueForKey:@"sliceCount"];
-			[self didChangeValueForKey:@"isDepthTexture"];
+			[self didChangeValueForKey:@"depthTexture"];
 			
 		}
 		
 		if (faceCountAfter > faceCountBefore) {
 			[self willChangeValueForKey:@"faceCount"];
-			[self willChangeValueForKey:@"isCubemap"];
-			[self willChangeValueForKey:@"isSpheremap"];
+			[self willChangeValueForKey:@"cubemap"];
+			[self willChangeValueForKey:@"spheremap"];
 			
 			faceCount += 1;
 			isCubemap = (faceCount == 6);
 			isSpheremap = (faceCount == 7);
 			
 			[self didChangeValueForKey:@"faceCount"];
-			[self didChangeValueForKey:@"isCubemap"];
-			[self didChangeValueForKey:@"isSpheremap"];
+			[self didChangeValueForKey:@"cubemap"];
+			[self didChangeValueForKey:@"spheremap"];
 			
 		}
 		
 		if (frameCountAfter > frameCountBefore) {
 			[self willChangeValueForKey:@"frameCount"];
-			[self willChangeValueForKey:@"isAnimated"];
+			[self willChangeValueForKey:@"animated"];
 			
 			frameCount += 1;
 			isAnimated = (frameCount > 0);
 			
 			[self didChangeValueForKey:@"frameCount"];
-			[self didChangeValueForKey:@"isAnimated"];
+			[self didChangeValueForKey:@"animated"];
 			
 		}
 		
@@ -1259,37 +1255,37 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 		
 		if (sliceCountAfter < sliceCountBefore) {
 			[self willChangeValueForKey:@"sliceCount"];
-			[self willChangeValueForKey:@"isDepthTexture"];
+			[self willChangeValueForKey:@"depthTexture"];
 			
 			sliceCount -= 1;
 			isDepthTexture = (sliceCount > 0);
 			
-			[self didChangeValueForKey:@"isDepthTexture"];
+			[self didChangeValueForKey:@"depthTexture"];
 			[self didChangeValueForKey:@"sliceCount"];
 		}
 		
 		if (faceCountAfter < faceCountBefore) {
 			[self willChangeValueForKey:@"faceCount"];
-			[self willChangeValueForKey:@"isCubemap"];
-			[self willChangeValueForKey:@"isSpheremap"];
+			[self willChangeValueForKey:@"cubemap"];
+			[self willChangeValueForKey:@"spheremap"];
 			
 			faceCount -= 1;
 			isCubemap = (faceCount == 6);
 			isSpheremap = (faceCount == 7);
 			
-			[self didChangeValueForKey:@"isSpheremap"];
-			[self didChangeValueForKey:@"isCubemap"];
+			[self didChangeValueForKey:@"spheremap"];
+			[self didChangeValueForKey:@"cubemap"];
 			[self didChangeValueForKey:@"faceCount"];
 		}
 		
 		if (frameCountAfter < frameCountBefore) {
 			[self willChangeValueForKey:@"frameCount"];
-			[self willChangeValueForKey:@"isAnimated"];
+			[self willChangeValueForKey:@"animated"];
 			
 			frameCount -= 1;
 			isAnimated = (frameCount > 0);
 			
-			[self didChangeValueForKey:@"isAnimated"];
+			[self didChangeValueForKey:@"animated"];
 			[self didChangeValueForKey:@"frameCount"];
 		}
 		
@@ -1372,7 +1368,7 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 //								sliceCount -= 1;
 //								isDepthTexture = (sliceCount > 0);
 //								
-//								[self didChangeValueForKey:@"isDepthTexture"];
+//								[self didChangeValueForKey:@"depthTexture"];
 //								[self didChangeValueForKey:@"sliceCount"];
 //							}
 //							
@@ -1385,19 +1381,19 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 //								isCubemap = (faceCount == 6);
 //								isSpheremap = (faceCount == 7);
 //								
-//								[self didChangeValueForKey:@"isSpheremap"];
-//								[self didChangeValueForKey:@"isCubemap"];
+//								[self didChangeValueForKey:@"spheremap"];
+//								[self didChangeValueForKey:@"cubemap"];
 //								[self didChangeValueForKey:@"faceCount"];
 //							}
 //							
 //							if (frameCountAfter < frameCountBefore) {
 //								[self willChangeValueForKey:@"frameCount"];
-//								[self willChangeValueForKey:@"isAnimated"];
+//								[self willChangeValueForKey:@"animated"];
 //								
 //								frameCount -= 1;
 //								isAnimated = (frameCount > 0);
 //								
-//								[self didChangeValueForKey:@"isAnimated"];
+//								[self didChangeValueForKey:@"animated"];
 //								[self didChangeValueForKey:@"frameCount"];
 //							}
 //							

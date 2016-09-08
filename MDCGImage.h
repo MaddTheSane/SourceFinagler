@@ -6,7 +6,7 @@
 //  Copyright 2010 Mark Douma LLC. All rights reserved.
 //
 
-#import <ApplicationServices/ApplicationServices.h>
+#include <ApplicationServices/ApplicationServices.h>
 #import <Foundation/Foundation.h>
 
 #ifndef __private_extern

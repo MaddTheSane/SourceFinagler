@@ -13,10 +13,7 @@
 
 #define VS_DEBUG 0
 
-
-
 @implementation VSGame
-
 @synthesize gameID, executablePath, icon, iconPath, displayName, infoDictionary, creatorCode, addonsFolderPath, processIdentifier;
 @synthesize helped = isHelped;
 @synthesize running = isRunning;
@@ -26,7 +23,6 @@
 + (instancetype)gameWithPath:(NSString *)aPath infoPlist:(NSDictionary *)anInfoPlist {
 	return [[[self class] alloc] initWithPath:aPath infoPlist:anInfoPlist];
 }
-
 
 - (instancetype)initWithPath:(NSString *)aPath infoPlist:(NSDictionary *)anInfoPlist {
 	if (aPath && anInfoPlist && (self = [super init])) {
@@ -41,9 +37,9 @@
 		
 		if (shortFolderName) {
 			self.iconPath = [[[executablePath.stringByDeletingLastPathComponent
-								 stringByAppendingPathComponent:shortFolderName]
-								stringByAppendingPathComponent:VSResourceNameKey]
-							   stringByAppendingPathComponent:VSGameIconNameKey];
+							   stringByAppendingPathComponent:shortFolderName]
+							  stringByAppendingPathComponent:VSResourceNameKey]
+							 stringByAppendingPathComponent:VSGameIconNameKey];
 		}
 		NSFileManager *fileManager = [[NSFileManager alloc] init];
 		BOOL isDir;
@@ -67,7 +63,6 @@
 	return self;
 }
 
-
 - (id)copyWithZone:(NSZone *)zone {
 #if VS_DEBUG
 	NSLog(@"[%@ %@] why is this being called?", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -85,7 +80,6 @@
 	copy.running = isRunning;
 	return copy;
 }
-
 
 - (void)synchronizeHelped {
 #if VS_DEBUG
@@ -114,7 +108,10 @@
 }
 
 - (void)setExecutableURL:(NSURL *)aURL {
-	
+	if (![aURL isFileURL]) {
+		return;
+	}
+	self.executablePath = aURL.path;
 }
 
 - (NSString *)description {
@@ -130,6 +127,12 @@
 }
 
 - (BOOL)isEqual:(id)anObject {
+	if (!anObject) {
+		return NO;
+	}
+	if (![anObject isKindOfClass:[VSGame class]]) {
+		return NO;
+	}
 	return [self isEqualToGame:anObject];
 }
 
@@ -137,10 +140,7 @@
 #if VS_DEBUG
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	if ([game isKindOfClass:[self class]]) {
-		return (gameID == game.gameID && ([executablePath isEqualToString:game.executablePath] || [executablePath.lowercaseString isEqualToString:game.executablePath.lowercaseString]));
-	}
-	return NO;
+	return (gameID == game.gameID && ([executablePath caseInsensitiveCompare:game.executablePath] == NSOrderedSame));
 }
 
 @end

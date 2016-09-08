@@ -10,14 +10,10 @@
 
    This function's job is to create preview for designated file
    ----------------------------------------------------------------------------- */
-#ifdef __cplusplus
-extern "C" {
-#endif
-	
-	
+
 #define MD_DEBUG 0
-	
-	
+
+
 OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options) {
 @autoreleasepool {
 	NSString *nsContentUTI = (__bridge NSString *)contentTypeUTI;
@@ -50,14 +46,12 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
 		TKImage *tkImage = [[TKImage alloc] initWithData:fileData firstRepresentationOnly:NO];
 		NSArray<TKImageRep*> *aTKImageReps;
 		if (tkImage) {
-			
 			TKImageRep *tkImageRep = nil;
 			
 			if ([tkImage sliceCount]) {
-				
+				// TODO: implement?
 				
 			} else if ([tkImage faceCount] && [tkImage frameCount]) {
-				
 				aTKImageReps = [tkImage representationsForFaceIndexes:[tkImage firstFaceIndexSet]
 														 frameIndexes:[tkImage firstFrameIndexSet]
 														mipmapIndexes:[tkImage firstMipmapIndexSet]];
@@ -107,15 +101,9 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
 	return noErr;
 }
 }
-	
+
 void CancelPreviewGeneration(void* thisInterface, QLPreviewRequestRef preview) {
-//	NSLog(@"SourceImage.qlgenerator; CancelPreviewGeneration()");
+	//	NSLog(@"SourceImage.qlgenerator; CancelPreviewGeneration()");
 	
     // implement only if supported
 }
-
-
-#ifdef __cplusplus
-}
-#endif
-

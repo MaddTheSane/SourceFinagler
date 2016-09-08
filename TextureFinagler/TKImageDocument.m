@@ -15,6 +15,7 @@
 #import "TKBlueBackgroundView.h"
 #import "TKGrayscaleFilter.h"
 #import "TKImageKitAdditions.h"
+#import "MDHLDocument.h"
 
 
 #import "TKAppController.h"
@@ -41,9 +42,9 @@ typedef NS_OPTIONS(NSUInteger, TKImageContentMask) {
 
 static inline TKImageContentMask TKImageContentMaskForImage(TKImage *anImage) {
 	TKImageContentMask imageContentMask = 0;
-	if (anImage.isDepthTexture) imageContentMask |= TKImageContentSlicesMask;
-	if (anImage.isCubemap || anImage.isSpheremap) imageContentMask |= TKImageContentFacesMask;
-	if (anImage.isAnimated) imageContentMask |= TKImageContentFramesMask;
+	if (anImage.depthTexture) imageContentMask |= TKImageContentSlicesMask;
+	if (anImage.cubemap || anImage.isSpheremap) imageContentMask |= TKImageContentFacesMask;
+	if (anImage.animated) imageContentMask |= TKImageContentFramesMask;
 	if (anImage.hasMipmaps) imageContentMask |= TKImageContentMipmapsMask;
 	return imageContentMask;
 }
@@ -175,50 +176,41 @@ NSString *TKImageIOLocalizedString(NSString *key) {
 
 
 @implementation TKImageDocument
-
-
 @synthesize draggedFilenames;
-
 @synthesize image, dimensions, shouldShowFrameBrowserView, shouldShowMipmapBrowserView;
 @synthesize shouldShowFaceBrowserView;
-
 @synthesize exportPreset;
-
 @synthesize redScale;
 @synthesize greenScale;
 @synthesize blueScale;
 @synthesize alphaScale;
-
 @synthesize small;
 @synthesize medium;
 @synthesize big;
 @synthesize large;
-
 @synthesize normalMapWrapMode;
-
 @synthesize normalizeMipmaps;
-
 @synthesize imageInspectorController;
-
 @synthesize grayscaleFilter;
-
 @synthesize currentMenuBrowserView;
 
-
 + (void)initialize {
-	NSMutableDictionary *defaultValues = [NSMutableDictionary dictionary];
-	defaultValues[TKImageDocumentShowFaceBrowserViewKey] = @NO;
-	defaultValues[TKImageDocumentShowFrameBrowserViewKey] = @NO;
-	defaultValues[TKImageDocumentShowMipmapBrowserViewKey] = @YES;
-	defaultValues[TKImageDocumentDoNotShowWarningAgainKey] = @NO;
-	[[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
-	
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		NSDictionary *defaultValues = @{
+										TKImageDocumentShowFaceBrowserViewKey: @NO,
+										TKImageDocumentShowFrameBrowserViewKey: @NO,
+										TKImageDocumentShowMipmapBrowserViewKey: @YES,
+										TKImageDocumentDoNotShowWarningAgainKey: @NO,
+										};
+		
+		[[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
+	});
 }
 
-
-// Return the names of the types for which this class can be instantiated to play the 
-// Editor or Viewer role.  
-//
+/// Return the names of the types for which this class can be instantiated to play the
+/// Editor or Viewer role.
+///
 + (NSArray *)readableTypes {
 #if TK_DEBUG
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -232,10 +224,10 @@ NSString *TKImageIOLocalizedString(NSString *key) {
 	return readableTypes;
 }
 
-// Return the names of the types which this class can save. Typically this includes all types 
-// for which the application can play the Viewer role, plus types than can be merely exported by 
-// the application.
-//
+/// Return the names of the types which this class can save. Typically this includes all types
+/// for which the application can play the Viewer role, plus types than can be merely exported by
+/// the application.
+///
 + (NSArray *)writableTypes {
 #if TK_DEBUG
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -249,9 +241,8 @@ NSString *TKImageIOLocalizedString(NSString *key) {
 	return writableTypes;
 }
 
-
-// Return YES if instances of this class can be instantiated to play the Editor role.
-//
+/// Return YES if instances of this class can be instantiated to play the Editor role.
+///
 + (BOOL)isNativeType:(NSString *)aType {
 #if TK_DEBUG
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -259,14 +250,12 @@ NSString *TKImageIOLocalizedString(NSString *key) {
     return [[self writableTypes] containsObject:aType];
 }
 
-
 - (instancetype)init {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	
     if ((self = [super init])) {
-		
 		redScale = 1.0/3.0;
 		greenScale = 1.0/3.0;
 		blueScale = 1.0/3.0;
@@ -312,7 +301,6 @@ NSString *TKImageIOLocalizedString(NSString *key) {
 #endif
 	if ((self = [super initWithType:typeName error:outError])) {
 		image = [[TKImage alloc] initWithSize:NSMakeSize(512.0, 512.0)];
-		
 	}
 	return self;
 }
@@ -372,6 +360,7 @@ NSString *TKImageIOLocalizedString(NSString *key) {
 }
 
 - (void)awakeFromNib {
+	//TODO: implement?
 //	[self addObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath options:(NSKeyValueObservingOptions)options context:(void *)context
 //	[self bind:(NSString *)binding toObject:imageView withKeyPath:@"zoomFactor" options:(NSDictionary *)options
 }
@@ -533,7 +522,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	[mipmapBrowserView reloadData];
 	
 	
-	[togglePlaySegmentedControl setEnabled:image.isAnimated forSegment:0];
+	[togglePlaySegmentedControl setEnabled:image.animated forSegment:0];
 	
 	
 #if TK_DEBUG
@@ -591,9 +580,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 		}
 	}
 	
-	
 	if (mipmapSelectionIndexes.count) {
-		
 		NSIndexSet *allMipmapIndexes = image.allMipmapIndexes;
 		
 		if (![allMipmapIndexes containsIndexes:mipmapSelectionIndexes]) {
@@ -611,16 +598,16 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 		}
 	}
 	
-	if (revisedFaceSelectionIndexes) self.selectedFaceIndexes = revisedFaceSelectionIndexes;
+	if (revisedFaceSelectionIndexes)
+		self.selectedFaceIndexes = revisedFaceSelectionIndexes;
 	
-	if (revisedFrameSelectionIndexes) [frameBrowserView setSelectionIndexes:revisedFrameSelectionIndexes byExtendingSelection:NO];
+	if (revisedFrameSelectionIndexes)
+		[frameBrowserView setSelectionIndexes:revisedFrameSelectionIndexes byExtendingSelection:NO];
 	
-	if (revisedMipmapSelectionIndexes) [mipmapBrowserView setSelectionIndexes:revisedMipmapSelectionIndexes byExtendingSelection:NO];
-	
-	
+	if (revisedMipmapSelectionIndexes)
+		[mipmapBrowserView setSelectionIndexes:revisedMipmapSelectionIndexes byExtendingSelection:NO];
 	
 #if TK_DEBUG
-	
 	faceSelectionIndexes = self.selectedFaceIndexes;
 	frameSelectionIndexes = [frameBrowserView selectionIndexes];
 	mipmapSelectionIndexes = [mipmapBrowserView selectionIndexes];
@@ -661,12 +648,9 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 			}
 			
 			if (![self insertRepresentations:imageReps atFrameIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, imageReps.count)] mipmapIndexes:[NSIndexSet indexSetWithIndex:0]]) {
-				
-				
+				// TODO: implement?
 			}
 		}
-		
-	
 	}];
 	
 //	[self reloadData];
@@ -1138,8 +1122,6 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	return YES;
 }
 
-
-
 - (BOOL)splitView:(NSSplitView *)splitView canCollapseSubview:(NSView *)subview {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -1539,9 +1521,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 					[imageChannels setArray:[TKImageChannel imageChannelsWithImageRep:imageRep]];
 					
 				} else {
-					
 					[imageChannels makeObjectsPerformSelector:@selector(updateWithImageRep:) withObject:imageRep];
-					
 				}
 				
 				[imageInspectorController reloadData];
@@ -1906,9 +1886,9 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 		[imageView.imageKitLayer setValue:@NO forKeyPath:@"filters.alphaChannelFilter.enabled"];
 		
 		[imageView.imageKitLayer setValue:[CIVector vectorWithString:(imageChannelMask & TKImageChannelRedMask) ? @"[1.0 0.0 0.0 0.0]" : @"[0.0 0.0 0.0 0.0]"] forKeyPath:@"filters.multiChannelFilter.inputRVector"];
-		[imageView.imageKitLayer setValue:[CIVector vectorWithString:(imageChannelMask & TKImageChannelGreenMask) ? @"[1.0 0.0 0.0 0.0]" : @"[0.0 0.0 0.0 0.0]"] forKeyPath:@"filters.multiChannelFilter.inputGVector"];
-		[imageView.imageKitLayer setValue:[CIVector vectorWithString:(imageChannelMask & TKImageChannelBlueMask) ? @"[1.0 0.0 0.0 0.0]" : @"[0.0 0.0 0.0 0.0]"] forKeyPath:@"filters.multiChannelFilter.inputBVector"];
-		[imageView.imageKitLayer setValue:[CIVector vectorWithString:(imageChannelMask & TKImageChannelAlphaMask) ? @"[1.0 0.0 0.0 0.0]" : @"[0.0 0.0 0.0 0.0]"] forKeyPath:@"filters.multiChannelFilter.inputAVector"];
+		[imageView.imageKitLayer setValue:[CIVector vectorWithString:(imageChannelMask & TKImageChannelGreenMask) ? @"[0.0 1.0 0.0 0.0]" : @"[0.0 0.0 0.0 0.0]"] forKeyPath:@"filters.multiChannelFilter.inputGVector"];
+		[imageView.imageKitLayer setValue:[CIVector vectorWithString:(imageChannelMask & TKImageChannelBlueMask) ? @"[0.0 0.0 1.0 0.0]" : @"[0.0 0.0 0.0 0.0]"] forKeyPath:@"filters.multiChannelFilter.inputBVector"];
+		[imageView.imageKitLayer setValue:[CIVector vectorWithString:(imageChannelMask & TKImageChannelAlphaMask) ? @"[0.0 0.0 0.0 1.0]" : @"[0.0 0.0 0.0 0.0]"] forKeyPath:@"filters.multiChannelFilter.inputAVector"];
 
 		[imageView.imageKitLayer setValue:@YES forKeyPath:@"filters.multiChannelFilter.enabled"];
 
@@ -2017,7 +1997,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	
-	if (image.isDepthTexture) return NO;
+	if (image.depthTexture) return NO;
 	
 	[image generateMipmapsUsingFilter:aFilter];
 	
@@ -2046,7 +2026,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	
-	if (image.isDepthTexture) return NO;
+	if (image.depthTexture) return NO;
 	
 	[image removeMipmaps];
 	

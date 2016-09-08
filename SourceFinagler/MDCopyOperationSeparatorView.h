@@ -10,13 +10,14 @@
 
 @class MDCopyOperationView;
 
-@interface MDCopyOperationSeparatorView : NSView {
-
-}
+@interface MDCopyOperationSeparatorView : NSView
 
 + (instancetype)separatorView;
 + (instancetype)separatorViewPositionedAboveCopyOperationView:(MDCopyOperationView *)copyOperationView;
 
 + (CGFloat)separatorViewHeight;
+#if __has_feature(objc_class_property)
+@property (class, readonly) CGFloat separatorViewHeight;
+#endif
 
 @end
