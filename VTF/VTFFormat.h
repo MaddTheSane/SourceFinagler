@@ -59,7 +59,7 @@ extern "C" {
 	of bits per-pixel.
 	\note "Bluescreen" alpha uses any pixel with an pixel of R0, G0, B255 as transparent.
 */
-typedef enum tagVTFImageFormat
+typedef CF_ENUM(int, VTFImageFormat)
 {
 	IMAGE_FORMAT_RGBA8888 = 0,				//!<  = Red, Green, Blue, Alpha - 32 bpp
 	IMAGE_FORMAT_ABGR8888,					//!<  = Alpha, Blue, Green, Red - 32 bpp
@@ -120,11 +120,11 @@ typedef enum tagVTFImageFormat
 	*/
 	IMAGE_FORMAT_COUNT,
 	IMAGE_FORMAT_NONE = -1
-} VTFImageFormat;
+};
 
 
 //! VTF image header flags.
-typedef enum tagVTFImageFlag
+typedef CF_OPTIONS(vlUInt32, VTFImageFlag)
 {
 	TEXTUREFLAGS_POINTSAMPLE								= 0x00000001,
 	TEXTUREFLAGS_TRILINEAR									= 0x00000002,
@@ -167,7 +167,7 @@ typedef enum tagVTFImageFlag
 	TEXTUREFLAGS_DEPRECATED_SPECVAR_ALPHA					= 0x80000000,
 	TEXTUREFLAGS_LAST										= 0x20000000,
 	TEXTUREFLAGS_COUNT										= 30
-} VTFImageFlag;
+};
 
 //! VTF image cubemap face indices.
 typedef enum tagVTFCubeMapFace
@@ -356,7 +356,7 @@ typedef enum tagVTFResourceEntryTypeFlag
 
 //! Resource entry type idendifiers.
 //--------------------------------------------
-typedef enum tagVTFResourceEntryType
+typedef CF_ENUM(vlUInt, VTFResourceEntryType)
 {
 	VTF_LEGACY_RSRC_LOW_RES_IMAGE = MAKE_VTF_RSRC_ID(0x01, 0, 0),
 	VTF_LEGACY_RSRC_IMAGE = MAKE_VTF_RSRC_ID(0x30, 0, 0),
@@ -366,7 +366,7 @@ typedef enum tagVTFResourceEntryType
 	VTF_RSRC_TEXTURE_SETTINGS_EX = MAKE_VTF_RSRC_IDF('T', 'S', 'O', RSRCF_HAS_NO_DATA_CHUNK),
 	VTF_RSRC_KEY_VALUE_DATA = MAKE_VTF_RSRC_ID('K', 'V', 'D'),
 	VTF_RSRC_MAX_DICTIONARY_ENTRIES = 32
-} VTFResourceEntryType;
+};
 
 #pragma pack(1)
 

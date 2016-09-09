@@ -26,6 +26,27 @@
 #	endif
 #endif
 
+#ifdef __APPLE__
+#include <CoreFoundation/CFBase.h>
+#elif !(defined(__COREFOUNDATION_CFBASE__) || defined(CF_ENUM))
+#define __CF_ENUM_GET_MACRO(_1, _2, NAME, ...) NAME
+#if (__cplusplus && __cplusplus >= 201103L && (__has_extension(cxx_strong_enums) || __has_feature(objc_fixed_enum))) || (!__cplusplus && __has_feature(objc_fixed_enum))
+#define __CF_NAMED_ENUM(_type, _name)     enum _name : _type _name; enum _name : _type
+#define __CF_ANON_ENUM(_type)             enum : _type
+#if (__cplusplus)
+#define CF_OPTIONS(_type, _name) _type _name; enum : _type
+#else
+#define CF_OPTIONS(_type, _name) enum _name : _type _name; enum _name : _type
+#endif
+#else
+#define __CF_NAMED_ENUM(_type, _name) _type _name; enum
+#define __CF_ANON_ENUM(_type) enum
+#define CF_OPTIONS(_type, _name) _type _name; enum
+#endif
+
+#define CF_ENUM(...) __CF_ENUM_GET_MACRO(__VA_ARGS__, __CF_NAMED_ENUM, __CF_ANON_ENUM)(__VA_ARGS__)
+#endif
+
 typedef unsigned char		hlBool;
 typedef char				hlChar;
 #ifdef __cplusplus
@@ -73,14 +94,6 @@ typedef hlSingle		hlFloat;
 #define HL_DEFAULT_PACKAGE_TEST_BUFFER_SIZE 8
 #define HL_DEFAULT_VIEW_SIZE 131072
 #define HL_DEFAULT_COPY_BUFFER_SIZE 131072
-
-#ifdef __APPLE__
-#include <CoreFoundation/CFBase.h>
-#elif !defined(__COREFOUNDATION_CFBASE__)
-#define CF_ENUM(type, name) type name; enum
-#define CF_OPTIONS(type, name) type name; enum
-#endif
-
 
 #ifdef __cplusplus
 extern "C" {

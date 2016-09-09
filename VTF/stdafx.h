@@ -20,6 +20,27 @@
 #ifndef STDAFX_H
 #define STDAFX_H
 
+#ifdef __APPLE__
+#include <CoreFoundation/CFBase.h>
+#elif !(defined(__COREFOUNDATION_CFBASE__) || defined(CF_ENUM))
+#define __CF_ENUM_GET_MACRO(_1, _2, NAME, ...) NAME
+#if (__cplusplus && __cplusplus >= 201103L && (__has_extension(cxx_strong_enums) || __has_feature(objc_fixed_enum))) || (!__cplusplus && __has_feature(objc_fixed_enum))
+#define __CF_NAMED_ENUM(_type, _name)     enum _name : _type _name; enum _name : _type
+#define __CF_ANON_ENUM(_type)             enum : _type
+#if (__cplusplus)
+#define CF_OPTIONS(_type, _name) _type _name; enum : _type
+#else
+#define CF_OPTIONS(_type, _name) enum _name : _type _name; enum _name : _type
+#endif
+#else
+#define __CF_NAMED_ENUM(_type, _name) _type _name; enum
+#define __CF_ANON_ENUM(_type) enum
+#define CF_OPTIONS(_type, _name) _type _name; enum
+#endif
+
+#define CF_ENUM(...) __CF_ENUM_GET_MACRO(__VA_ARGS__, __CF_NAMED_ENUM, __CF_ANON_ENUM)(__VA_ARGS__)
+#endif
+
 #ifdef _MSC_VER
 #ifdef VTFLIB_EXPORTS
 #	define VTFLIB_API __declspec(dllexport)
