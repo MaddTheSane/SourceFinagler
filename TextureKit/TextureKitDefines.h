@@ -21,12 +21,16 @@
 
 #if defined(__MACH__)
 
+#ifndef __private_extern
+#define __private_extern __attribute__((visibility("hidden")))
+#endif
+
 #if defined(__cplusplus)
 	#define TEXTUREKIT_EXTERN		extern "C"
-	#define TEXTUREKIT_PRIVATE_EXTERN	__private_extern__
+	#define TEXTUREKIT_PRIVATE_EXTERN	__private_extern
 #else
 	#define TEXTUREKIT_EXTERN				extern
-	#define TEXTUREKIT_PRIVATE_EXTERN	__private_extern__
+	#define TEXTUREKIT_PRIVATE_EXTERN	__private_extern
 #endif
 
 #if !defined(TEXTUREKIT_INLINE)

@@ -72,7 +72,7 @@ BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *cont
 		
 		[attributes setObject:@([sfti hasAlpha]) forKey:(id)kMDItemHasAlphaChannel];
 		[attributes setObject:@([sfti hasMipmaps]) forKey:@"com_markdouma_image_mipmaps"];
-		[attributes setObject:@([sfti isAnimated]) forKey:@"com_markdouma_image_animated"];
+		[attributes setObject:@(sfti.animated) forKey:@"com_markdouma_image_animated"];
 		
 		[attributes setObject:@(([sfti isCubemap] || [sfti isSpheremap])) forKey:@"com_markdouma_image_environment_map"];
 		[attributes setObject:@((NSUInteger)imageSize.width) forKey:(id)kMDItemPixelWidth];
@@ -106,7 +106,7 @@ BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *cont
 		
 		BOOL isEnvironmentMap = (file->GetFaceCount() > 1);
 		
-		BOOL hasAlphaChannel = file->GetFlags() & (TEXTUREFLAGS_ONEBITALPHA | TEXTUREFLAGS_EIGHTBITALPHA);
+		BOOL hasAlphaChannel = !!(file->GetFlags() & (TEXTUREFLAGS_ONEBITALPHA | TEXTUREFLAGS_EIGHTBITALPHA));
 		BOOL hasMipmaps = (file->GetMipmapCount() > 1);
 		BOOL isAnimated = (file->GetFrameCount() > 1);
 		NSString *theCompression = nil;
@@ -114,8 +114,8 @@ BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *cont
 		if (imageFormatInfo.lpName != NULL) {
 			theCompression = @(imageFormatInfo.lpName);
 		}
-		NSUInteger theWidth = file->GetWidth();
-		NSUInteger theHeight = file->GetHeight();
+		vlUInt theWidth = file->GetWidth();
+		vlUInt theHeight = file->GetHeight();
 		NSString *theVersion = [NSString stringWithFormat:@"%u.%u", file->GetMajorVersion(), file->GetMinorVersion()];
 		
 		[attributes setObject:@(hasAlphaChannel) forKey:(NSString *)kMDItemHasAlphaChannel];
@@ -132,8 +132,6 @@ BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *cont
 		
 		delete file;
 		return YES;
-		
-		
 	} else if ([contentTypeUTI isEqualToString:TKDDSType]) {
 		if (magic != TKDDSMagic) {
 			NSLog(@"MDGetMetadataFromImageWithContentsOfFile(): file at filePath \"%@\" does not appear to be a valid DDS; magic == 0x%x, %@", filePath, (unsigned int)magic, NSFileTypeForHFSTypeCode(magic));
@@ -169,8 +167,8 @@ BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *cont
 			theCompression = @(compression);
 		}
 		
-		NSUInteger theWidth = dds->width();
-		NSUInteger theHeight = dds->height();
+		uint theWidth = dds->width();
+		uint theHeight = dds->height();
 		
 		[attributes setObject:@(hasAlphaChannel) forKey:(NSString *)kMDItemHasAlphaChannel];
 		[attributes setObject:@(hasMipmaps) forKey:@"com_markdouma_image_mipmaps"];

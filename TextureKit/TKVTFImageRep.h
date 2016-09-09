@@ -70,11 +70,8 @@ typedef NS_ENUM(NSUInteger, TKVTFFormat) {
 	TKVTFNoFormat				= 1000
 };
 
-
-
 TEXTUREKIT_EXTERN NSString *NSStringFromVTFFormat(TKVTFFormat aFormat);
 TEXTUREKIT_EXTERN TKVTFFormat TKVTFFormatFromString(NSString *aFormat);
-
 
 TEXTUREKIT_EXTERN NSString * const TKVTFType;			// UTI Type
 TEXTUREKIT_EXTERN NSString * const TKVTFFileType;		// filename extension

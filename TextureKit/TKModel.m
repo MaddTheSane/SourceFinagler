@@ -98,11 +98,9 @@ typedef struct {
 	return [self initWithContentsOfURL:[NSURL fileURLWithPath:filePath]];
 }
 
-
 - (id)initWithContentsOfURL:(NSURL *)URL {
 	return [self initWithData:[NSData dataWithContentsOfURL:URL]];
 }
-
 
 - (id)initWithData:(NSData *)data {
 	NSParameterAssert(data != nil);
@@ -123,7 +121,6 @@ typedef struct {
 	}
 	return self;
 }
-
 
 - (id)initQuadModel {
 	if ((self = [super init])) {
@@ -197,7 +194,6 @@ typedef struct {
 	return [[[self class] alloc] initQuadModel];
 }
 
-
 - (void)dealloc {
 	free(positions);
 	free(texcoords);
@@ -205,7 +201,6 @@ typedef struct {
 	free(elements);
 	[self destroyVertexArrayObjectWithName:name];
 }
-
 
 - (void)prepareToDraw {
 #if TK_DEBUG
@@ -233,7 +228,6 @@ typedef struct {
 	glCullFace(GL_BACK);
 }
 
-
 - (void)draw {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -245,7 +239,6 @@ typedef struct {
 		glDrawElements(primType, numElements, elementType, elements);
 	}
 }
-
 
 - (void)generateName {
 #if TK_DEBUG
@@ -886,10 +879,4 @@ typedef struct {
 	return YES;
 }
 
-
-
-
 @end
-
-
-

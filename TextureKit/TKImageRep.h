@@ -179,13 +179,9 @@ typedef NS_ENUM(NSUInteger, TKNormalMapLibrary) {
 	TKNormalMapLibraryUseAccelerateFramework	= 1
 };
 
-
-
 TEXTUREKIT_EXTERN NSString * const TKImageMipmapGenerationKey;
 TEXTUREKIT_EXTERN NSString * const TKImageWrapModeKey;
 TEXTUREKIT_EXTERN NSString * const TKImageRoundModeKey;
-
-
 
 @interface TKImageRep : NSBitmapImageRep <NSCoding, NSCopying> {
 	NSUInteger				sliceIndex;
@@ -198,10 +194,9 @@ TEXTUREKIT_EXTERN NSString * const TKImageRoundModeKey;
 	CGImageAlphaInfo		alphaInfo;
 	
 	NSDictionary<NSString*,id> *imageProperties;
-	
 }
 
-+ (NSArray *)imageRepsWithData:(NSData *)aData;
++ (NSArray<TKImageRep*> *)imageRepsWithData:(NSData *)aData;
 
 + (instancetype)imageRepWithData:(NSData *)aData;
 - (instancetype)initWithData:(NSData *)aData;
@@ -212,7 +207,6 @@ TEXTUREKIT_EXTERN NSString * const TKImageRoundModeKey;
 /* create TKImageRep(s) from NSBitmapImageRep(s) */
 + (instancetype)imageRepWithImageRep:(NSBitmapImageRep *)aBitmapImageRep;
 + (NSArray<TKImageRep*> *)imageRepsWithImageReps:(NSArray<NSBitmapImageRep*> *)bitmapImageReps;
-
 
 
 + (TKDXTCompressionQuality)defaultDXTCompressionQuality;
@@ -230,8 +224,7 @@ TEXTUREKIT_EXTERN NSString * const TKImageRoundModeKey;
 @property (readonly, nonatomic, assign) CGBitmapInfo bitmapInfo;
 @property (readonly, nonatomic, assign) CGImageAlphaInfo alphaInfo;
 
-@property (retain) NSDictionary<NSString*,id> *imageProperties;
-
+@property (copy) NSDictionary<NSString*,id> *imageProperties;
 
 - (void)setSliceIndex:(NSUInteger)aSliceIndex face:(TKFace)aFace frameIndex:(NSUInteger)aFrameIndex mipmapIndex:(NSUInteger)aMipmapIndex;
 
@@ -249,11 +242,9 @@ TEXTUREKIT_EXTERN NSString * const TKImageRoundModeKey;
 //+ (NSData *)representationUsingPixelFormat:(TKPixelFormat)destPixelFormat ofData:(NSData *)aData inPixelFormat:(TKPixelFormat)sourcePixelFormat;
 
 
-- (NSArray *)mipmapImageRepsUsingFilter:(TKMipmapGenerationType)filterType;
+- (NSArray<TKImageRep*> *)mipmapImageRepsUsingFilter:(TKMipmapGenerationType)filterType;
 
-
-
-- (NSArray *)imageRepsByApplyingNormalMapFilterWithHeightEvaluationWeights:(CIVector *)heightEvaluationWeights
+- (NSArray<TKImageRep*> *)imageRepsByApplyingNormalMapFilterWithHeightEvaluationWeights:(CIVector *)heightEvaluationWeights
 															 filterWeights:(CIVector *)aFilterWeights
 																  wrapMode:(TKWrapMode)aWrapMode
 														  normalizeMipmaps:(BOOL)normalizeMipmaps
@@ -265,13 +256,9 @@ TEXTUREKIT_EXTERN NSString * const TKImageRoundModeKey;
 //- (NSData *)representationForType:(NSString *)utiType;
 
 - (NSComparisonResult)compare:(TKImageRep *)imageRep;
-
-
-+ (TKImageRep *)imageRepForFace:(TKFace)aFace ofImageRepsInArray:(NSArray *)imageReps;
-
++ (TKImageRep *)imageRepForFace:(TKFace)aFace ofImageRepsInArray:(NSArray<TKImageRep*> *)imageReps;
 
 @end
-
 
 
 @interface TKImageRep (TKLargestRepresentationAdditions)

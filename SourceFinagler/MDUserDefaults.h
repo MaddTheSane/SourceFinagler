@@ -15,14 +15,14 @@ typedef NS_OPTIONS(NSUInteger, MDUserDefaultsDomain) {
 	MDUserDefaultsLocalAndUserDomain = 3
 };
 
+NS_ASSUME_NONNULL_BEGIN
 
 @interface MDUserDefaults : NSUserDefaults
 + (MDUserDefaults *)standardUserDefaults;
 
-- (void)setObject:(id)anObject forKey:(NSString *)aKey forAppIdentifier:(NSString *)anIdentifier inDomain:(MDUserDefaultsDomain)aDomain;
-- (id)objectForKey:(NSString *)aKey forAppIdentifier:(NSString *)anIdentifier inDomain:(MDUserDefaultsDomain)aDomain;
-- (void)removeObjectForKey:(NSString *)aKey forAppIdentifier:(NSString *)anIdentifier inDomain:(MDUserDefaultsDomain)aDomain;
+- (void)setObject:(nullable id)anObject forKey:(NSString *)aKey forAppIdentifier:(nullable NSString *)anIdentifier inDomain:(MDUserDefaultsDomain)aDomain;
+- (nullable id)objectForKey:(NSString *)aKey forAppIdentifier:(nullable NSString *)anIdentifier inDomain:(MDUserDefaultsDomain)aDomain;
+- (void)removeObjectForKey:(NSString *)aKey forAppIdentifier:(nullable NSString *)anIdentifier inDomain:(MDUserDefaultsDomain)aDomain;
 @end
 
-
-
+NS_ASSUME_NONNULL_END

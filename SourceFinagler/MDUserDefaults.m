@@ -54,12 +54,12 @@ static MDUserDefaults *sharedUserDefaults = nil;
 
 - (void)setObject:(id)anObject forKey:(NSString *)aKey forAppIdentifier:(NSString *)anIdentifier inDomain:(MDUserDefaultsDomain)aDomain {
 	
-	if (anIdentifier == nil) anIdentifier = (NSString *)kCFPreferencesAnyApplication;
+	if (anIdentifier == nil)
+		anIdentifier = (NSString *)kCFPreferencesAnyApplication;
 	
 	if (aDomain == MDUserDefaultsLocalDomain) {
 		CFPreferencesSetValue((CFStringRef)aKey, anObject, (CFStringRef)anIdentifier, kCFPreferencesAnyUser, kCFPreferencesCurrentHost);
 		CFPreferencesSynchronize((CFStringRef)anIdentifier, kCFPreferencesAnyUser, kCFPreferencesCurrentHost);
-		
 	} else if (aDomain == MDUserDefaultsUserDomain) {
 		CFPreferencesSetValue((CFStringRef)aKey, anObject, (CFStringRef)anIdentifier, kCFPreferencesCurrentUser, kCFPreferencesAnyHost);
 		CFPreferencesSynchronize((CFStringRef)anIdentifier, kCFPreferencesCurrentUser, kCFPreferencesAnyHost);
@@ -69,7 +69,8 @@ static MDUserDefaults *sharedUserDefaults = nil;
 
 - (id)objectForKey:(NSString *)aKey forAppIdentifier:(NSString *)anIdentifier inDomain:(MDUserDefaultsDomain)aDomain {
 	
-	if (anIdentifier == nil) anIdentifier = (NSString *)kCFPreferencesAnyApplication;
+	if (anIdentifier == nil)
+		anIdentifier = (NSString *)kCFPreferencesAnyApplication;
 	
 	id anObject = nil;
 	
@@ -88,24 +89,18 @@ static MDUserDefaults *sharedUserDefaults = nil;
 	return anObject;
 }
 
-
-
 - (void)removeObjectForKey:(NSString *)aKey forAppIdentifier:(NSString *)anIdentifier inDomain:(MDUserDefaultsDomain)aDomain {
 	
-	if (anIdentifier == nil) anIdentifier = (NSString *)kCFPreferencesAnyApplication;
+	if (anIdentifier == nil)
+		anIdentifier = (NSString *)kCFPreferencesAnyApplication;
 	
 	if (aDomain == MDUserDefaultsLocalDomain) {
-		
 		CFPreferencesSetValue((CFStringRef)aKey, NULL, (CFStringRef)anIdentifier, kCFPreferencesAnyUser, kCFPreferencesCurrentHost);
 		CFPreferencesSynchronize((CFStringRef)anIdentifier, kCFPreferencesAnyUser, kCFPreferencesCurrentHost);
-		
 	} else if (aDomain == MDUserDefaultsUserDomain) {
-		
 		CFPreferencesSetValue((CFStringRef)aKey, NULL, (CFStringRef)anIdentifier, kCFPreferencesCurrentUser, kCFPreferencesAnyHost);
 		CFPreferencesSynchronize((CFStringRef)anIdentifier, kCFPreferencesCurrentUser, kCFPreferencesAnyHost);
-		
 	} else if (aDomain == MDUserDefaultsLocalAndUserDomain) {
-		
 		CFPreferencesSetValue((CFStringRef)aKey, NULL, (CFStringRef)anIdentifier, kCFPreferencesAnyUser, kCFPreferencesCurrentHost);
 		CFPreferencesSynchronize((CFStringRef)anIdentifier, kCFPreferencesAnyUser, kCFPreferencesCurrentHost);
 		
@@ -114,7 +109,4 @@ static MDUserDefaults *sharedUserDefaults = nil;
 	}
 }
 
-
 @end
-
-

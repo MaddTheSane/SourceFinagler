@@ -65,8 +65,7 @@ TEXTUREKIT_EXTERN NSData * TKSFTextureImageMagicData;
 
 - (instancetype)initWithData:(NSData *)aData firstRepresentationOnly:(BOOL)firstRepOnly;
 
-- (void)removeRepresentations:(NSArray *)imageReps;
-
+- (void)removeRepresentations:(NSArray<NSImageRep*> *)imageReps;
 
 @property (readonly, nonatomic, assign) NSUInteger sliceCount;
 @property (readonly, nonatomic, assign) NSUInteger faceCount;
@@ -152,13 +151,10 @@ TEXTUREKIT_EXTERN NSData * TKSFTextureImageMagicData;
 
 
 - (void)generateMipmapsUsingFilter:(TKMipmapGenerationType)filterType;
-
 - (void)removeMipmaps;
-
 
 - (NSData *)DDSRepresentationWithOptions:(NSDictionary *)options;
 - (NSData *)DDSRepresentationUsingFormat:(TKDDSFormat)aFormat quality:(TKDXTCompressionQuality)aQuality options:(NSDictionary *)options;
-
 
 - (NSData *)VTFRepresentationWithOptions:(NSDictionary *)options;
 - (NSData *)VTFRepresentationUsingFormat:(TKVTFFormat)aFormat quality:(TKDXTCompressionQuality)aQuality options:(NSDictionary *)options;
