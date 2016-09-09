@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #include <CoreServices/CoreServices.h>
 
+NS_ASSUME_NONNULL_BEGIN
 
 #if defined(__cplusplus)
 #define TKFOUNDATION_EXTERN extern "C"
@@ -30,8 +31,8 @@
 
 	
 	
-TKFOUNDATION_EXTERN BOOL TKMouseInRects(NSPoint inPoint, NSArray *inRects, BOOL isFlipped);
-TKFOUNDATION_EXTERN NSString *NSStringForAppleScriptListFromPaths(NSArray *paths);
+TKFOUNDATION_EXTERN BOOL TKMouseInRects(NSPoint inPoint, NSArray<NSValue*> *inRects, BOOL isFlipped);
+TKFOUNDATION_EXTERN NSString *NSStringForAppleScriptListFromPaths(NSArray<NSString*> *paths);
 	
 
 
@@ -53,7 +54,12 @@ TKFOUNDATION_EXTERN NSString *NSStringForAppleScriptListFromPaths(NSArray *paths
 //		Declared in NSURL.h.
 
 typedef NS_OPTIONS(NSUInteger, TKBookmarkCreationOptions) {
-	TKBookmarkCreationDefaultOptions			= 1
+	TKBookmarkCreationUseAliasManager			= ( 1UL << 0 ),
+	TKBookmarkCreationMinimalBookmark			= ( 1UL << 9 ),
+	TKBookmarkCreationSuitableForBookmarkFile	= ( 1UL << 10 ),
+	TKBookmarkCreationWithSecurityScope NS_ENUM_AVAILABLE(10_7, NA) = ( 1UL << 11 ),
+	TKBookmarkCreationSecurityScopeAllowOnlyReadAccess NS_ENUM_AVAILABLE(10_7, NA) = ( 1UL << 12 ),
+	TKBookmarkCreationDefaultOptions			= TKBookmarkCreationUseAliasManager,
 };
 
 
@@ -68,7 +74,9 @@ typedef NS_OPTIONS(NSUInteger, TKBookmarkCreationOptions) {
 //		Declared in NSURL.h.
 typedef NS_OPTIONS(NSUInteger, TKBookmarkResolutionOptions) {
 	TKBookmarkResolutionDefaultOptions		= 1,
-	TKBookmarkResolutionWithoutUI = ( 1UL << 8 )
+	TKBookmarkResolutionWithoutUI			= ( 1UL << 8 ), /**< don't perform any user interaction during bookmark resolution */
+	TKBookmarkResolutionWithoutMounting		= ( 1UL << 9 ), /**< don't mount a volume during bookmark resolution */
+	TKBookmarkResolutionWithSecurityScope NS_ENUM_AVAILABLE(10_7, NA) = ( 1UL << 10 ) /**< use the secure information included at creation time to provide the ability to access the resource in a sandboxed process */
 };
 
 
@@ -77,16 +85,13 @@ typedef NS_OPTIONS(NSUInteger, TKBookmarkResolutionOptions) {
 //@end
 
 @interface NSString (TKAdditions)
-+ (instancetype)stringByResolvingBookmarkData:(NSData *)bookmarkData options:(TKBookmarkResolutionOptions)options bookmarkDataIsStale:(BOOL *)isStale error:(NSError **)outError;
-- (NSData *)bookmarkDataWithOptions:(TKBookmarkCreationOptions)options error:(NSError **)outError;
++ (nullable instancetype)stringByResolvingBookmarkData:(NSData *)bookmarkData options:(TKBookmarkResolutionOptions)options bookmarkDataIsStale:(BOOL *)isStale error:(NSError **)outError;
+- (nullable NSData *)bookmarkDataWithOptions:(TKBookmarkCreationOptions)options error:(NSError **)outError;
 
-#if (TARGET_CPU_PPC || TARGET_CPU_X86) && MAC_OS_X_VERSION_MIN_REQUIRED <= MAC_OS_X_VERSION_10_4
-+ (NSString *)stringWithFSSpec:(const FSSpec *)anFSSpec;
-#endif
++ (nullable NSString *)stringWithFSRef:(const FSRef *)anFSRef __OSX_AVAILABLE_BUT_DEPRECATED(__MAC_10_0, __MAC_10_8, __IPHONE_NA, __IPHONE_NA) NS_SWIFT_UNAVAILABLE("no throws");
++ (nullable NSString *)stringWithFSRef:(const FSRef *)anFSRef error:(NSError *__nullable*__nullable)anError __OSX_AVAILABLE_BUT_DEPRECATED(__MAC_10_0, __MAC_10_8, __IPHONE_NA, __IPHONE_NA);
+- (BOOL)getFSRef:(FSRef *)anFSRef error:(NSError *__nullable*__nullable)anError __OSX_AVAILABLE_BUT_DEPRECATED(__MAC_10_0, __MAC_10_8, __IPHONE_NA, __IPHONE_NA);
 
-+ (NSString *)stringWithFSRef:(const FSRef *)anFSRef;
-- (BOOL)getFSRef:(FSRef *)anFSRef error:(NSError **)anError;
-@property (readonly) BOOL boolValue;
 @property (readonly, copy) NSString *stringByAssuringUniqueFilename;
 @property (readonly, copy) NSString *stringByAbbreviatingFilenameTo31Characters;
 @property (readonly) NSSize sizeForStringWithSavedFrame;
@@ -94,6 +99,7 @@ typedef NS_OPTIONS(NSUInteger, TKBookmarkResolutionOptions) {
 + (NSString *)stringWithPascalString:(ConstStr255Param)aPStr encoding:(CFStringEncoding)encoding;
 //- (BOOL)getFSSpec:(FSSpec *)anFSSpec;
 - (BOOL)pascalString:(StringPtr)aBuffer length:(SInt16)aLength;
+- (BOOL)pascalString:(StringPtr)aBuffer length:(SInt16)aLength encoding:(CFStringEncoding)encoding;
 
 - (NSComparisonResult)caseInsensitiveNumericalCompare:(NSString *)string;
 - (NSComparisonResult)localizedCaseInsensitiveNumericalCompare:(NSString *)string;
@@ -113,13 +119,13 @@ typedef NS_OPTIONS(NSUInteger, TKBookmarkResolutionOptions) {
 @interface NSUserDefaults (TKSortDescriptorAdditions)
 
 - (void)setSortDescriptors:(NSArray<NSSortDescriptor*> *)sortDescriptors forKey:(NSString *)key;
-- (NSArray<NSSortDescriptor*> *)sortDescriptorsForKey:(NSString *)key;
+- (nullable NSArray<NSSortDescriptor*> *)sortDescriptorsForKey:(NSString *)key;
 
 @end
 
 @interface NSDictionary (TKSortDescriptorAdditions)
 
-- (NSArray<NSSortDescriptor*> *)sortDescriptorsForKey:(NSString *)key;
+- (nullable NSArray<NSSortDescriptor*> *)sortDescriptorsForKey:(NSString *)key;
 
 @end
 
@@ -129,8 +135,10 @@ typedef NS_OPTIONS(NSUInteger, TKBookmarkResolutionOptions) {
 
 @end
 
-
-
+@interface NSURL (TKAdditions)
++ (nullable NSURL*)URLWithFSRef:(const FSRef *)anFSRef __OSX_AVAILABLE_BUT_DEPRECATED(__MAC_10_0, __MAC_10_8, __IPHONE_NA, __IPHONE_NA);
+- (BOOL)getFSRef:(FSRef *)anFSRef error:(NSError *__nullable*__nullable)anError __OSX_AVAILABLE_BUT_DEPRECATED(__MAC_10_0, __MAC_10_8, __IPHONE_NA, __IPHONE_NA);
+@end
 
 @interface NSIndexSet (TKAdditions)
 + (instancetype)indexSetWithIndexSet:(NSIndexSet *)indexes;
@@ -139,14 +147,11 @@ typedef NS_OPTIONS(NSUInteger, TKBookmarkResolutionOptions) {
 
 @end
 
-
 @interface NSMutableIndexSet (TKAdditions)
 - (void)setIndexes:(NSIndexSet *)indexes;
 @end
 
-
 @interface NSData (TKDescriptionAdditions)
-
 @property (readonly, copy) NSString *stringRepresentation;
 @property (readonly, copy) NSString *enhancedDescription;
 
@@ -158,7 +163,6 @@ typedef NS_OPTIONS(NSUInteger, TKBookmarkResolutionOptions) {
 @interface NSData (TKAdditions)
 @property (readonly, copy) NSString *sha1HexHash;
 @property (readonly, copy) NSData *sha1Hash;
-
 
 @end
 
@@ -187,12 +191,9 @@ typedef NS_OPTIONS(NSUInteger, TKBookmarkResolutionOptions) {
 //- (BOOL)containsObjectIdenticalTo:(id)object;
 //@end
 //
-@interface NSMutableArray (TKAdditions)
-- (void)insertObjectsFromArray:(NSArray *)array atIndex:(NSUInteger)anIndex;
+@interface NSMutableArray<ObjectType> (TKAdditions)
+- (void)insertObjectsFromArray:(NSArray<ObjectType> *)array atIndex:(NSUInteger)anIndex;
 @end
-
-
-
 
 @interface NSObject (TKDeepMutableCopy)
 - (id)deepMutableCopy NS_RETURNS_RETAINED;
@@ -231,4 +232,6 @@ typedef NS_OPTIONS(NSUInteger, TKBookmarkResolutionOptions) {
 - (id)dateBySynchronizingToTimeOfDayOfDate:(NSDate *)aDate;
 @end
 #endif
+
+NS_ASSUME_NONNULL_END
 

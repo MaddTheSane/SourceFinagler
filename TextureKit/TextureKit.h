@@ -16,7 +16,8 @@
 #import <TextureKit/TKVMTMaterial.h>
 #import <TextureKit/TKVMTNode.h>
 
-
+#import <TextureKit/TKFoundationAdditions.h>
+#import <TextureKit/TKAppKitAdditions.h>
 
 
 

@@ -7,7 +7,7 @@
 //
 
 #import <HLKit/HKFileHandle.h>
-#import <HLKit/HKFoundationAdditions.h>
+#import <TextureKit/TKFoundationAdditions.h>
 
 
 

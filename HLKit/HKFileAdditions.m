@@ -7,7 +7,7 @@
 //
 
 #import <HLKit/HKFileAdditions.h>
-#import <HLKit/HKFoundationAdditions.h>
+#import <TextureKit/TKFoundationAdditions.h>
 
 #import <Cocoa/Cocoa.h>
 

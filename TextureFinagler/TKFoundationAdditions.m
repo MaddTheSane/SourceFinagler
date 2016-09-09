@@ -14,14 +14,12 @@
 
 
 
-BOOL TKMouseInRects(NSPoint inPoint, NSArray *inRects, BOOL isFlipped) {
+BOOL TKMouseInRects(NSPoint inPoint, NSArray<NSValue*> *inRects, BOOL isFlipped) {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	NSEnumerator *enumerator = [inRects objectEnumerator];
-	NSValue *rect;
 	
-	while ((rect = [enumerator nextObject])) {
+	for (NSValue *rect in inRects) {
 		if (NSMouseInRect(inPoint, rect.rectValue, isFlipped)) {
 			return YES;
 		}
@@ -66,8 +64,8 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray *inRects, BOOL isFlipped) {
 }
 #endif
 
-
-+ (NSString *)stringWithFSRef:(const FSRef *)anFSRef {
++ (nullable NSString *)stringWithFSRef:(const FSRef *)anFSRef error:(NSError *__nullable*__nullable)anError
+{
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -78,11 +76,20 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray *inRects, BOOL isFlipped) {
 	if (status == noErr) {
 		return [[NSFileManager defaultManager] stringWithFileSystemRepresentation:(const char *)thePath length:strnlen((const char *)thePath, PATH_MAX)];
 	} else {
+		if (anError) {
+			*anError = [NSError errorWithDomain:NSOSStatusErrorDomain code:status userInfo:NULL];
+		}
 		return nil;
 	}
 }
 
-
++ (NSString *)stringWithFSRef:(const FSRef *)anFSRef
+{
+#if TK_DEBUG
+	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+#endif
+	return [self stringWithFSRef:anFSRef error:NULL];
+}
 
 - (BOOL)getFSRef:(FSRef *)anFSRef error:(NSError **)anError {
 #if TK_DEBUG
@@ -97,27 +104,7 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray *inRects, BOOL isFlipped) {
 	return (status == noErr);
 }
 
-
-- (BOOL)boolValue {
-#if TK_DEBUG
-	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-#endif
-	BOOL value = NO;
-	if (self) {
-		if ([self isEqualToString:@"YES"] || [self isEqualToString:@"yes"]) {
-			value = YES;
-		} else if ([self isEqualToString:@"NO"] || [self isEqualToString:@"no"]) {
-			value = NO;
-}
-	} else {
-		value = NO;
-	}
-	return value;
-}
-
-
 /* TODO: I need to make sure that this method doesn't exceed the max 255 character filename limit	(NAME_MAX) */
-
 - (NSString *)stringByAssuringUniqueFilename {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -178,7 +165,6 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray *inRects, BOOL isFlipped) {
 	}
 	return self;
 }
-
 
 - (NSString *)stringByAbbreviatingFilenameTo31Characters {
 #if TK_DEBUG
@@ -243,7 +229,6 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray *inRects, BOOL isFlipped) {
 	return newFullPath;
 }
 
-
 - (NSSize)sizeForStringWithSavedFrame {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -262,7 +247,6 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray *inRects, BOOL isFlipped) {
 	return size;
 }
 
-
 + (NSString *)stringWithPascalString:(ConstStr255Param )aPStr {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -278,21 +262,16 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray *inRects, BOOL isFlipped) {
 	return CFBridgingRelease(CFStringCreateWithPascalString(kCFAllocatorDefault, aPStr, encoding));
 }
 
-
-//- (BOOL)getFSSpec:(FSSpec *)anFSSpec {
-//#if TK_DEBUG
-//	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-//#endif
-//	FSRef anFSRef;
-//	return [self getFSRef:&anFSRef] && (FSGetCatalogInfo( &anFSRef, kFSCatInfoNone, NULL, NULL, anFSSpec, NULL ) == noErr);
-//}
-
-
-- (BOOL)pascalString:(StringPtr)aBuffer length:(SInt16)aLength {
+- (BOOL)pascalString:(StringPtr)aBuffer length:(SInt16)aLength encoding:(CFStringEncoding)encoding
+{
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	return CFStringGetPascalString((CFStringRef)self, aBuffer, aLength, kCFStringEncodingMacRoman);
+	return CFStringGetPascalString((CFStringRef)self, aBuffer, aLength, encoding);
+}
+
+- (BOOL)pascalString:(StringPtr)aBuffer length:(SInt16)aLength {
+	return [self pascalString:aBuffer length:aLength encoding:kCFStringEncodingMacRoman];
 }
 
 - (NSComparisonResult)caseInsensitiveNumericalCompare:(NSString *)string {
@@ -309,7 +288,6 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray *inRects, BOOL isFlipped) {
 	return [self compare:string options:NSLiteralSearch | NSCaseInsensitiveSearch | NSNumericSearch range:NSMakeRange(0, string.length) locale:[NSLocale currentLocale]];
 }
 
-
 - (BOOL)containsString:(NSString *)aString {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -323,9 +301,8 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray *inRects, BOOL isFlipped) {
 #endif
 	NSMutableString *newString = [NSMutableString stringWithString:self];
     [newString replaceOccurrencesOfString:value withString:newValue options:NSLiteralSearch range:NSMakeRange(0, newString.length)];
-    return newString;
+    return [newString copy];
 }
-
 
 - (NSString *)slashToColon {
 #if TK_DEBUG
@@ -340,7 +317,6 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray *inRects, BOOL isFlipped) {
 #endif
 	return [self stringByReplacing:@":" with:@"/"];
 }
-
 
 - (NSString *)displayPath {
 #if TK_DEBUG
@@ -362,7 +338,6 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray *inRects, BOOL isFlipped) {
 	return displayPath;
 }
 
-
 - (NSData *)bookmarkDataWithOptions:(TKBookmarkCreationOptions)options error:(NSError **)outError {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -378,7 +353,7 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray *inRects, BOOL isFlipped) {
 		OSErr err = noErr;
 		FSRef itemRef;
 		if ([path getFSRef:&itemRef error:outError]) {
-			if (options & TKBookmarkCreationDefaultOptions) {
+			if (options & TKBookmarkCreationUseAliasManager) {
 				err = FSNewAlias(NULL, &itemRef, &alias);
 				if (err == noErr) {
 					HLock((Handle)alias);
@@ -390,6 +365,9 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray *inRects, BOOL isFlipped) {
 					NSLog(@"[%@ %@] FSNewAlias() returned %hi", NSStringFromClass([self class]), NSStringFromSelector(_cmd), err);
 					if (outError) *outError = [NSError errorWithDomain:NSOSStatusErrorDomain code:err userInfo:nil];
 				}
+			} else {
+				NSURL *fileURL = [NSURL fileURLWithPath:path];
+				return [fileURL bookmarkDataWithOptions:(NSURLBookmarkCreationOptions)options includingResourceValuesForKeys:nil relativeToURL:nil error:outError];
 			}
 		}
 	} else {
@@ -399,7 +377,6 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray *inRects, BOOL isFlipped) {
 	return bookmarkData;
 }
 
-
 + (instancetype)stringByResolvingBookmarkData:(NSData *)bookmarkData options:(TKBookmarkResolutionOptions)options bookmarkDataIsStale:(BOOL *)isStale error:(NSError **)outError {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -407,7 +384,7 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray *inRects, BOOL isFlipped) {
 	NSString *resolvedPath = nil;
 	if (outError) *outError = nil;
 	if (bookmarkData) {
-		NSURL *newURL =[NSURL URLByResolvingBookmarkData:bookmarkData options:(NSURLBookmarkResolutionOptions)(options &= ~TKBookmarkResolutionDefaultOptions) relativeToURL:nil bookmarkDataIsStale:isStale error:outError];
+		NSURL *newURL = [NSURL URLByResolvingBookmarkData:bookmarkData options:(NSURLBookmarkResolutionOptions)(options &= ~TKBookmarkResolutionDefaultOptions) relativeToURL:nil bookmarkDataIsStale:isStale error:outError];
 		if (newURL) {
 			resolvedPath = [newURL path];
 		}
@@ -448,15 +425,36 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray *inRects, BOOL isFlipped) {
 
 @end
 
+@implementation NSURL (TKAdditions)
++ (nullable NSURL*)URLWithFSRef:(const FSRef *)anFSRef
+{
+	return CFBridgingRelease(CFURLCreateFromFSRef(kCFAllocatorDefault, anFSRef));
+}
 
+- (BOOL)getFSRef:(FSRef *)anFSRef error:(NSError *__nullable*__nullable)anError
+{
+	//As this will only work on file urls, auto-fail if we aren't one.
+	if (![self isFileURL]) {
+		if (anError) {
+			*anError = [NSError
+						errorWithDomain:NSOSStatusErrorDomain code:paramErr
+						userInfo:@{NSLocalizedFailureReasonErrorKey: @"Can only convert from a file: URL scheme"
+								   }];
+		}
+		return NO;
+	}
+	
+	BOOL success = CFURLGetFSRef((CFURLRef)self, anFSRef);
+	if (success) {
+		return YES;
+	}
+	
+	//CFURLGetFSRef doesn't tell us HOW it failed, only that it did.
+	//So use the NSString method, just to double-check
+	return [[[self absoluteURL] path] getFSRef:anFSRef error:anError];
+}
 
-
-
-
-
-
-
-
+@end
 
 
 @implementation NSIndexSet (TKAdditions)
@@ -467,7 +465,6 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray *inRects, BOOL isFlipped) {
 #endif
 	return [[[self class] alloc] initWithIndexSet:indexes];
 }
-
 
 - (NSIndexSet *)indexesIntersectingIndexes:(NSIndexSet *)indexes {
 #if TK_DEBUG
@@ -486,7 +483,6 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray *inRects, BOOL isFlipped) {
 	return [intersectingIndexes copy];
 }
 
-
 @end
 
 
@@ -502,8 +498,6 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray *inRects, BOOL isFlipped) {
 }
 
 @end
-
-
 
 @implementation NSData (TKDescriptionAdditions)
 
@@ -646,7 +640,7 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray *inRects, BOOL isFlipped) {
 #endif
 
 
-NSString *NSStringForAppleScriptListFromPaths(NSArray *paths) {
+NSString *NSStringForAppleScriptListFromPaths(NSArray<NSString*> *paths) {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -718,13 +712,11 @@ NSString *NSStringForAppleScriptListFromPaths(NSArray *paths) {
     return result;
 }
 
-
 - (void)threadSafeRemoveObjectForKey:(id)aKey usingLock:(NSLock *)aLock {
     [aLock lock];
     [self removeObjectForKey:aKey];
     [aLock unlock];
 }
-
 
 - (void)threadSafeSetObject:(id)anObject forKey:(id)aKey usingLock:(NSLock *)aLock {
     [aLock lock];
@@ -733,7 +725,6 @@ NSString *NSStringForAppleScriptListFromPaths(NSArray *paths) {
     [aLock unlock];
 	anObject2 = nil;
 }
-
 
 @end
 

@@ -12,6 +12,7 @@
 #import "VSPrivateInterfaces.h"
 
 #import <HLKit/HLKit.h>
+#import <TextureKit/TKFoundationAdditions.h>
 
 #import "MDFolderManager.h"
 #import "MDFileManager.h"

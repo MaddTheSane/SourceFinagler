@@ -7,7 +7,7 @@
 //
 
 #import <HLKit/HKNode.h>
-#import <HLKit/HKFoundationAdditions.h>
+#import <TextureKit/TKFoundationAdditions.h>
 
 
 #define HK_DEBUG 0

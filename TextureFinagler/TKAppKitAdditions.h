@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "TKFoundationAdditions.h"
+#import <TextureKit/TKFoundationAdditions.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -38,8 +38,7 @@ extern NSString *NSStringFromDefaultsKeyPath(NSString *defaultsKey);
 
 @interface NSMenu (TKAdditions)
 - (BOOL)containsItem:(NSMenuItem *)aMenuItem;
-- (void)setItemArray:(NSArray *)anArray;
-//- (void)removeAllItems;
+- (void)setItemArray:(NSArray<NSMenuItem*> *)anArray;
 @end
 
 @interface NSOpenPanel (TKAdditions)
@@ -54,7 +53,7 @@ extern NSString *NSStringFromDefaultsKeyPath(NSString *defaultsKey);
 @end
 
 @interface NSPopUpButton (TKAdditions)
-- (void)setItemArray:(NSArray *)value;
+- (void)setItemArray:(NSArray<NSMenuItem*> *)value;
 @end
 
 @interface NSToolbarItem (TKAdditions)

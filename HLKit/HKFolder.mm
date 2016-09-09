@@ -8,7 +8,7 @@
 
 #import <HLKit/HKFolder.h>
 #import <HLKit/HKFile.h>
-#import <HLKit/HKFoundationAdditions.h>
+#import <TextureKit/TKFoundationAdditions.h>
 #include <HL/HL.h>
 
 #import "HKPrivateInterfaces.h"

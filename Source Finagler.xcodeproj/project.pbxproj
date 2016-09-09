@@ -22,6 +22,9 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		5543313E1D832FFC0052A31D /* TKFoundationAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = C146091914F3373700B7286B /* TKFoundationAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5543313F1D8330040052A31D /* TKAppKitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = C146091714F3373700B7286B /* TKAppKitAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		554331401D8330760052A31D /* TKAppKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C146091814F3373700B7286B /* TKAppKitAdditions.m */; };
 		558672FC1D7E874C00E26A11 /* NVImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA8FD125E71A200CA78FF /* NVImage.framework */; };
 		558673021D7E8BB700E26A11 /* NVCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA7EA125E5C9600CA78FF /* NVCore.framework */; };
 		55B9F2A41D7CB20600641709 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55B9F2681D7CB1EF00641709 /* InfoPlist.strings */; };
@@ -173,7 +176,6 @@
 		C140E72D13889BF100027DD6 /* MDResourceFile.h in Headers */ = {isa = PBXBuildFile; fileRef = C12A944811C9CDED001D8E90 /* MDResourceFile.h */; settings = {ATTRIBUTES = (); }; };
 		C140E72E13889BF200027DD6 /* MDResource.h in Headers */ = {isa = PBXBuildFile; fileRef = C1A10A6311D516A7008BBABD /* MDResource.h */; settings = {ATTRIBUTES = (); }; };
 		C140E72F13889BF300027DD6 /* MDResource.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A10A6411D516A7008BBABD /* MDResource.m */; };
-		C140E73113889C0000027DD6 /* TKFoundationAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C1AF851912C6294B00027B75 /* TKFoundationAdditions.m */; };
 		C140E73213889C0600027DD6 /* MDFolderManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C11B274B11BDE755004D4CC0 /* MDFolderManager.h */; settings = {ATTRIBUTES = (); }; };
 		C140E73313889C0800027DD6 /* MDFolderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C11B274C11BDE755004D4CC0 /* MDFolderManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C140E73513889C0D00027DD6 /* MDFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C1A10A2911D5124F008BBABD /* MDFileManager.h */; settings = {ATTRIBUTES = (); }; };
@@ -189,10 +191,6 @@
 		C140E9381388B78300027DD6 /* SteamKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C140E63D13889A9400027DD6 /* SteamKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C145AF1712BD8F22005D7E21 /* TextureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17319B21298D11400C29732 /* TextureKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		C145AF5F12BD8F6A005D7E21 /* TextureKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C17319B21298D11400C29732 /* TextureKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C146091B14F3377200B7286B /* TKAppKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C146091814F3373700B7286B /* TKAppKitAdditions.m */; };
-		C146091C14F3377300B7286B /* TKAppKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C146091814F3373700B7286B /* TKAppKitAdditions.m */; };
-		C146091D14F337BB00B7286B /* TKFoundationAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C1AF851912C6294B00027B75 /* TKFoundationAdditions.m */; };
-		C146091E14F337BC00B7286B /* TKFoundationAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C1AF851912C6294B00027B75 /* TKFoundationAdditions.m */; };
 		C14803F7147C26EF00FD7A0A /* NVThread.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C180E37914728E1B0001C07F /* NVThread.framework */; };
 		C14803F8147C271500FD7A0A /* NVThread.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C180E37914728E1B0001C07F /* NVThread.framework */; };
 		C14803F9147C274100FD7A0A /* NVCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA7EA125E5C9600CA78FF /* NVCore.framework */; };
@@ -582,8 +580,6 @@
 		C1F154021396699600E32057 /* HKXZPFile.mm in Sources */ = {isa = PBXBuildFile; fileRef = C1F153E21396699600E32057 /* HKXZPFile.mm */; };
 		C1F1579413969E3D00E32057 /* HL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C12634123A54F0004674B4 /* HL.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		C1F1579F13969EAB00E32057 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A112E511D66720008BBABD /* CoreServices.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		C1F157DE1396B05700E32057 /* HKFoundationAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = C1F157DC1396B05700E32057 /* HKFoundationAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C1F157DF1396B05700E32057 /* HKFoundationAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F157DD1396B05700E32057 /* HKFoundationAdditions.m */; };
 		C1F5C25C14BCF11E0091A36D /* TKVMTMaterialDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F5C25A14BCF11E0091A36D /* TKVMTMaterialDocument.m */; };
 		C1FBD12913E7F41D0020C06F /* TKImageExportTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FBD12813E7F41D0020C06F /* TKImageExportTextField.m */; };
 		C1FEA9B1125E889C00CA78FF /* NVCore.h in Headers */ = {isa = PBXBuildFile; fileRef = C1FEA8CA125E5D7E00CA78FF /* NVCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1583,8 +1579,6 @@
 		C1F153E01396699600E32057 /* HKWADFile.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HKWADFile.mm; sourceTree = "<group>"; };
 		C1F153E11396699600E32057 /* HKXZPFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKXZPFile.h; sourceTree = "<group>"; };
 		C1F153E21396699600E32057 /* HKXZPFile.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HKXZPFile.mm; sourceTree = "<group>"; };
-		C1F157DC1396B05700E32057 /* HKFoundationAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKFoundationAdditions.h; sourceTree = "<group>"; };
-		C1F157DD1396B05700E32057 /* HKFoundationAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKFoundationAdditions.m; sourceTree = "<group>"; };
 		C1F30C3714581E470076558F /* d3d9types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = d3d9types.h; sourceTree = "<group>"; };
 		C1F30C3814581E470076558F /* DXGIFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXGIFormat.h; sourceTree = "<group>"; };
 		C1F5C25914BCF11D0091A36D /* TKVMTMaterialDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKVMTMaterialDocument.h; sourceTree = "<group>"; };
@@ -3290,8 +3284,6 @@
 				C1F153D41396699600E32057 /* HKPrivateInterfaces.mm */,
 				C1F153C91396699600E32057 /* HKFileHandle.h */,
 				C1F153CA1396699600E32057 /* HKFileHandle.m */,
-				C1F157DC1396B05700E32057 /* HKFoundationAdditions.h */,
-				C1F157DD1396B05700E32057 /* HKFoundationAdditions.m */,
 			);
 			name = "HLKit framework";
 			path = HLKit;
@@ -3759,7 +3751,6 @@
 				C1F153FD1396699600E32057 /* HKVPKFile.h in Headers */,
 				C1F153FF1396699600E32057 /* HKWADFile.h in Headers */,
 				C1F154011396699600E32057 /* HKXZPFile.h in Headers */,
-				C1F157DE1396B05700E32057 /* HKFoundationAdditions.h in Headers */,
 				C16143CA1399975C0042B91B /* HKFileAdditions.h in Headers */,
 				C16A68F41600B62B0038A8B1 /* HLKitDefines.h in Headers */,
 				C16A68F51600B62C0038A8B1 /* HLKit.h in Headers */,
@@ -3782,6 +3773,8 @@
 				C1E6DB0A12BC2408009D8AD6 /* TextureKit.h in Headers */,
 				55F82CD51D7BACD900D6DAC9 /* TKValueAdditions.h in Headers */,
 				55F82CB71D7BA5A900D6DAC9 /* TKOBJParts.h in Headers */,
+				5543313E1D832FFC0052A31D /* TKFoundationAdditions.h in Headers */,
+				5543313F1D8330040052A31D /* TKAppKitAdditions.h in Headers */,
 				55F82CBE1D7BA7E500D6DAC9 /* TKMath.h in Headers */,
 				55F82CC81D7BAA9D00D6DAC9 /* TKShader.h in Headers */,
 				C1E6DFEE12BD102D009D8AD6 /* TextureKitDefines.h in Headers */,
@@ -4605,7 +4598,6 @@
 				C140E72A13889BDC00027DD6 /* VSGame.m in Sources */,
 				C140E72C13889BF000027DD6 /* MDResourceFile.m in Sources */,
 				C140E72F13889BF300027DD6 /* MDResource.m in Sources */,
-				C140E73113889C0000027DD6 /* TKFoundationAdditions.m in Sources */,
 				C140E73313889C0800027DD6 /* MDFolderManager.m in Sources */,
 				C140E73613889C0E00027DD6 /* MDFileManager.m in Sources */,
 				C140E73913889C2500027DD6 /* MDLaunchManager.m in Sources */,
@@ -4630,7 +4622,6 @@
 				C1F153FE1396699600E32057 /* HKVPKFile.mm in Sources */,
 				C1F154001396699600E32057 /* HKWADFile.mm in Sources */,
 				C1F154021396699600E32057 /* HKXZPFile.mm in Sources */,
-				C1F157DF1396B05700E32057 /* HKFoundationAdditions.m in Sources */,
 				C16143D11399975C0042B91B /* HKFileAdditions.m in Sources */,
 				C10A898E16026EB300791BEC /* HKFolderAdditions.m in Sources */,
 				C1BEA1F8161B77DE00464170 /* HKSGAFile.mm in Sources */,
@@ -4653,6 +4644,7 @@
 				C169FDDB147AF94300F9DCF8 /* TKVMTMaterial.m in Sources */,
 				55F82CD61D7BACD900D6DAC9 /* TKValueAdditions.m in Sources */,
 				55F82CCF1D7BAB5800D6DAC9 /* TKShaderProgram.m in Sources */,
+				554331401D8330760052A31D /* TKAppKitAdditions.m in Sources */,
 				55F82CB61D7BA58600D6DAC9 /* TKOBJParts.m in Sources */,
 				55F82CC91D7BAA9D00D6DAC9 /* TKShader.m in Sources */,
 				55F82CCA1D7BAACF00D6DAC9 /* TKOpenGLObject.m in Sources */,
@@ -4827,8 +4819,6 @@
 				C1770FD81488C9FF00E6F651 /* TKModelDocument.m in Sources */,
 				C19C1C0E1489901500EE2B12 /* TKImageKitAdditions.m in Sources */,
 				C1F5C25C14BCF11E0091A36D /* TKVMTMaterialDocument.m in Sources */,
-				C146091B14F3377200B7286B /* TKAppKitAdditions.m in Sources */,
-				C146091D14F337BB00B7286B /* TKFoundationAdditions.m in Sources */,
 				C1D00794160D320C0045EEC3 /* TKViewController.m in Sources */,
 				C1BEA1FC161B781900464170 /* MDSGADocument.m in Sources */,
 				C18AF3DD162128B900A04CCA /* TKMaterialPropertyViewController.m in Sources */,
@@ -4946,8 +4936,6 @@
 				C1FEAB92125F66BC00CA78FF /* VSSourceAddonFinaglerMain.m in Sources */,
 				C1275F62129182C40041ACD7 /* VSSourceAddon.m in Sources */,
 				C14D700712F9E5C000A2FD7E /* MDTextFieldCell.m in Sources */,
-				C146091C14F3377300B7286B /* TKAppKitAdditions.m in Sources */,
-				C146091E14F337BC00B7286B /* TKFoundationAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

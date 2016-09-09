@@ -147,7 +147,7 @@ NSString *NSStringFromDefaultsKeyPath(NSString *defaultsKey) {
 	return (!([self indexOfItem:aMenuItem] == -1));
 }
 
-- (void)setItemArray:(NSArray *)newArray {
+- (void)setItemArray:(NSArray<NSMenuItem*> *)newArray {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -212,13 +212,9 @@ NSString *NSStringFromDefaultsKeyPath(NSString *defaultsKey) {
 
 @end
 
-
-
-
-
 @implementation NSPopUpButton (TKAdditions)
 
-- (void)setItemArray:(NSArray *)value {
+- (void)setItemArray:(NSArray<NSMenuItem*> *)value {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -250,11 +246,10 @@ NSString *NSStringFromDefaultsKeyPath(NSString *defaultsKey) {
 	toolbarItem.action = anAction;
 	return toolbarItem;
 }
+
 @end
 
-
 @implementation NSUserDefaults (TKAdditions)
-
 
 - (void)setFont:(NSFont *)aFont forKey:(NSString *)aKey {
 #if TK_DEBUG
@@ -309,9 +304,7 @@ NSString *NSStringFromDefaultsKeyPath(NSString *defaultsKey) {
 	return color;
 }
 
-
 @end
-
 
 @implementation NSView (TKAdditions)
 
@@ -334,7 +327,6 @@ NSString *NSStringFromDefaultsKeyPath(NSString *defaultsKey) {
 	}
 	
 }
-
 
 - (NSString *)stringWithSavedFrame {
 #if TK_DEBUG
@@ -375,7 +367,6 @@ static NSView *blankView() {
 	return toolbarHeight;
 }
 
-
 - (void)resizeToSize:(NSSize)newSize {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -396,7 +387,6 @@ static NSView *blankView() {
 	
 	[self setFrame:aFrame display:YES animate:YES];
 }
-
 
 - (void)switchView:(NSView *)aView newTitle:(NSString *)aString {
 #if TK_DEBUG
@@ -423,13 +413,9 @@ static NSView *blankView() {
 	}
 }
 
-
 @end
 
-
-
 @implementation NSWorkspace (TKAdditions)
-
 
 // TODO: For 10.5+, rewrite to use Scripting Bridge rather than NSAppleScript
 - (BOOL)revealInFinder:(NSArray *)filePaths {
@@ -439,13 +425,12 @@ static NSView *blankView() {
 	NSMutableArray *URLs = [NSMutableArray array];
 	for (NSString *path in filePaths) {
 		NSURL *URL = [NSURL fileURLWithPath:path];
-		if (URL) [URLs addObject:URL];
+		if (URL)
+			[URLs addObject:URL];
 	}
 	[[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:URLs];
 	return YES;
 }
-
-
 
 - (NSImage *)iconForApplicationForURL:(NSURL *)aURL {
 #if TK_DEBUG
@@ -466,6 +451,12 @@ static NSView *blankView() {
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	NSString *absolutePath = nil;
+	if (aBundleIdentifier && !aNameWithDotApp && !creator) {
+		NSArray<NSURL*> *appURLs = CFBridgingRelease(LSCopyApplicationURLsForBundleIdentifier((__bridge CFStringRef)aBundleIdentifier, NULL));
+		if (appURLs && appURLs.count > 0) {
+			return appURLs.firstObject.path;
+		}
+	}
 	if (aBundleIdentifier || aNameWithDotApp || creator) {
 		FSRef fileRef;
 		OSType creatorCode = kLSUnknownCreator;
@@ -476,7 +467,6 @@ static NSView *blankView() {
 			}
 		}
 		
-		//TODO: LSCopyApplicationURLsForBundleIdentifier
 		OSStatus status = noErr;
 		status = LSFindApplicationForInfo(creatorCode, (aBundleIdentifier ? (__bridge CFStringRef)aBundleIdentifier : NULL), (aNameWithDotApp ? (__bridge CFStringRef)aNameWithDotApp : NULL), &fileRef, NULL);
 		
@@ -513,6 +503,3 @@ static NSView *blankView() {
 }
 
 @end
-
-
-
