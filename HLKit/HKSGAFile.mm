@@ -22,7 +22,7 @@
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	if ((self = [super initWithContentsOfFile:aPath mode:permission showInvisibleItems:showInvisibleItems sortDescriptors:sortDescriptors error:outError])) {
-		fileType = HKArchiveFileSGAType;
+		fileType = HKArchiveFileTypeSGA;
 		
 		_privateData = new CSGAFile();
 		
@@ -44,7 +44,6 @@
 										(unsigned long)minorVersion.Value.UnsignedInteger.uiValue];
 						}
 					}
-					
 				}
 			}
 		}

@@ -89,7 +89,7 @@ typedef NS_ENUM(NSUInteger, TKDDSFormat) {
 //	TKDDSFormatRGBE		= 12,	// ??
 	
 	TKDDSFormatDefault	= TKDDSFormatDXT1,
-	TKDDSNoFormat		= 1000
+	TKDDSFormatNone		= 1000
 };
 
 
@@ -110,7 +110,7 @@ NS_ENUM(OSType) {
 	
 }
 
-+ (NSArray *)imageRepsWithData:(NSData *)aData;
++ (NSArray<TKDDSImageRep*> *)imageRepsWithData:(NSData *)aData;
 
 + (instancetype)imageRepWithData:(NSData *)aData;
 - (instancetype)initWithData:(NSData *)aData;
@@ -160,7 +160,7 @@ NS_ENUM(OSType) {
 ////	TKDDSFormatRGBE		= 12,	// ??
 //	
 //	TKDDSFormatDefault	= TKDDSFormatDXT1,
-//	TKDDSNoFormat		= 1000
+//	TKDDSFormatNone		= 1000
 //};
 //typedef NSUInteger TKDDSFormat;
 

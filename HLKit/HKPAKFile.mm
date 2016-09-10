@@ -24,7 +24,7 @@ using namespace HLLib;
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	if ((self = [super initWithContentsOfFile:aPath mode:permission showInvisibleItems:showInvisibleItems sortDescriptors:sortDescriptors error:outError])) {
-		fileType = HKArchiveFilePAKType;
+		fileType = HKArchiveFileTypePAK;
 		
 		_privateData = new CPAKFile();
 		

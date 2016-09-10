@@ -24,17 +24,17 @@ struct HKArchiveFilePackagePair {
 };
 
 static const HKArchiveFilePackagePair HKArchiveFilePackagePairTable[] = {
-	{ HKArchiveFileNoType, HL_PACKAGE_NONE },
-	{ HKArchiveFileBSPType, HL_PACKAGE_BSP },
-	{ HKArchiveFileGCFType, HL_PACKAGE_GCF },
-	{ HKArchiveFilePAKType, HL_PACKAGE_PAK },
-	{ HKArchiveFileVBSPType, HL_PACKAGE_VBSP },
-	{ HKArchiveFileWADType, HL_PACKAGE_WAD },
-	{ HKArchiveFileXZPType, HL_PACKAGE_XZP },
-	{ HKArchiveFileZIPType, HL_PACKAGE_ZIP },
-	{ HKArchiveFileNCFType, HL_PACKAGE_NCF },
-	{ HKArchiveFileVPKType, HL_PACKAGE_VPK },
-	{ HKArchiveFileVPKType, HL_PACKAGE_SGA }
+	{ HKArchiveFileTypeNone, HL_PACKAGE_NONE },
+	{ HKArchiveFileTypeBSP, HL_PACKAGE_BSP },
+	{ HKArchiveFileTypeGCF, HL_PACKAGE_GCF },
+	{ HKArchiveFileTypePAK, HL_PACKAGE_PAK },
+	{ HKArchiveFileTypeVBSP, HL_PACKAGE_VBSP },
+	{ HKArchiveFileTypeWAD, HL_PACKAGE_WAD },
+	{ HKArchiveFileTypeXZP, HL_PACKAGE_XZP },
+	{ HKArchiveFileTypeZIP, HL_PACKAGE_ZIP },
+	{ HKArchiveFileTypeNCF, HL_PACKAGE_NCF },
+	{ HKArchiveFileTypeVPK, HL_PACKAGE_VPK },
+	{ HKArchiveFileTypeVPK, HL_PACKAGE_SGA }
 };
 static const NSUInteger HKArchiveFilePackagePairTableCount = sizeof(HKArchiveFilePackagePairTable)/sizeof(HKArchiveFilePackagePairTable[0]);
 

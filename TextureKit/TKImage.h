@@ -14,12 +14,12 @@
 @class NSIndexSet;
 
 typedef NS_ENUM(NSUInteger, TKImageType) {
-	TKVTFImageType			= 0, ///< loaded image is a VTF
-	TKDDSImageType			= 1, ///< loaded image is a DDS
-	TKSFTIImageType			= 2, ///< Source Finagler Texture Image type (NSCoding)
-	TKRegularImageType		= 3, ///< loaded image is a native type (anything ImageIO.framework supports)
-	TKEmptyImageType		= 4, ///< when an TKImage is created with \c initWithSize: ??
-	TKUnknownImageType		= NSNotFound
+	TKImageTypeVTF			= 0, ///< loaded image is a VTF
+	TKImageTypeDDS			= 1, ///< loaded image is a DDS
+	TKImageTypeSFTI			= 2, ///< Source Finagler Texture Image type (NSCoding)
+	TKImageTypeRegular		= 3, ///< loaded image is a native type (anything ImageIO.framework supports)
+	TKImageTypeEmpty		= 4, ///< when an TKImage is created with \c initWithSize: ??
+	TKImageTypeUnknown		= NSNotFound
 };
 
 // In VTF images:

@@ -67,7 +67,7 @@ typedef NS_ENUM(NSUInteger, TKVTFFormat) {
 	
 	TKVTFFormatDefault			= TKVTFFormatDXT1,
 	
-	TKVTFNoFormat				= 1000
+	TKVTFFormatNone				= 1000
 };
 
 TEXTUREKIT_EXTERN NSString *NSStringFromVTFFormat(TKVTFFormat aFormat);

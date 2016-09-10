@@ -108,12 +108,12 @@ typedef struct TKDXTCompressionQualityDescription {
 } TKDXTCompressionQualityDescription;
 
 static const TKDXTCompressionQualityDescription TKDXTCompressionQualityDescriptionTable[] = {
-	{ TKDXTCompressionLowQuality, "Low" },
-	{ TKDXTCompressionMediumQuality, "Medium" },
-	{ TKDXTCompressionHighQuality, "High" },
-	{ TKDXTCompressionHighestQuality, "Highest" },
-	{ TKDXTCompressionDefaultQuality, "Default" },
-	{ TKDXTCompressionNotApplicable, "N/A" }
+	{ TKDXTCompressionQualityLow, "Low" },
+	{ TKDXTCompressionQualityMedium, "Medium" },
+	{ TKDXTCompressionQualityHigh, "High" },
+	{ TKDXTCompressionQualityHighest, "Highest" },
+	{ TKDXTCompressionQualityDefault, "Default" },
+	{ TKDXTCompressionQualityNotApplicable, "N/A" }
 };
 static const NSUInteger TKDXTCompressionQualityDescriptionTableCount = sizeof(TKDXTCompressionQualityDescriptionTable)/sizeof(TKDXTCompressionQualityDescription);
 
@@ -132,7 +132,7 @@ TKDXTCompressionQuality TKDXTCompressionQualityFromString(NSString *aQuality) {
 			return TKDXTCompressionQualityDescriptionTable[i].compressionQuality;
 		}
 	}
-	return TKDXTCompressionDefaultQuality;
+	return TKDXTCompressionQualityDefault;
 }
 
 
@@ -160,7 +160,7 @@ TKDXTCompressionQuality TKDXTCompressionQualityFromString(NSString *aQuality) {
 static NSArray *handledUTITypes = nil;
 static NSArray *handledFileTypes = nil;
 
-static TKDXTCompressionQuality defaultDXTCompressionQuality = TKDXTCompressionDefaultQuality;
+static TKDXTCompressionQuality defaultDXTCompressionQuality = TKDXTCompressionQualityDefault;
 
 
 @implementation TKImageRep

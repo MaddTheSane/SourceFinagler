@@ -11,13 +11,13 @@
 
 
 typedef NS_ENUM(NSUInteger, TKVMTNodeKind) {
-	TKVMTInvalidKind	= 0,
-	TKVMTGroupKind,
-	TKVMTCommentKind,
-	TKVMTStringKind,
-	TKVMTIntegerKind,
-	TKVMTFloatKind,
-//	TKVMTRootKind
+	TKVMTNodeKindInvalid	= 0,
+	TKVMTNodeKindGroup,
+	TKVMTNodeKindComment,
+	TKVMTNodeKindString,
+	TKVMTNodeKindInteger,
+	TKVMTNodeKindFloat,
+//	TKVMTNodeKindRoot
 };
 
 

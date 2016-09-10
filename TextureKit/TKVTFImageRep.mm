@@ -155,10 +155,10 @@ struct TKVTFDXTQualityMapping {
 };
 
 static const TKVTFDXTQualityMapping TKVTFDXTQualityMappingTable[] = {
-	{TKDXTCompressionLowQuality, DXT_QUALITY_LOW },
-	{TKDXTCompressionMediumQuality, DXT_QUALITY_MEDIUM },
-	{TKDXTCompressionHighQuality, DXT_QUALITY_HIGH },
-	{TKDXTCompressionHighestQuality, DXT_QUALITY_HIGHEST }
+	{TKDXTCompressionQualityLow, DXT_QUALITY_LOW },
+	{TKDXTCompressionQualityMedium, DXT_QUALITY_MEDIUM },
+	{TKDXTCompressionQualityHigh, DXT_QUALITY_HIGH },
+	{TKDXTCompressionQualityHighest, DXT_QUALITY_HIGHEST }
 };
 static const NSUInteger TKVTFDXTQualityMappingTableCount = sizeof(TKVTFDXTQualityMappingTable)/sizeof(TKVTFDXTQualityMappingTable[0]);
 

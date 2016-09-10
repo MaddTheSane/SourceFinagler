@@ -32,12 +32,12 @@ NS_ENUM(NSInteger) {
 
 
 typedef NS_ENUM(NSUInteger, TKDXTCompressionQuality) {
-	TKDXTCompressionLowQuality		= 0,
-	TKDXTCompressionMediumQuality	= 1,
-	TKDXTCompressionHighQuality		= 2,
-	TKDXTCompressionHighestQuality	= 3,
-	TKDXTCompressionDefaultQuality	= TKDXTCompressionHighQuality,
-	TKDXTCompressionNotApplicable	= 1000
+	TKDXTCompressionQualityLow		= 0,
+	TKDXTCompressionQualityMedium	= 1,
+	TKDXTCompressionQualityHigh		= 2,
+	TKDXTCompressionQualityHighest	= 3,
+	TKDXTCompressionQualityDefault	= TKDXTCompressionQualityHigh,
+	TKDXTCompressionQualityNotApplicable	= 1000
 };
 
 TEXTUREKIT_EXTERN NSString *NSStringFromDXTCompressionQuality(TKDXTCompressionQuality aQuality);

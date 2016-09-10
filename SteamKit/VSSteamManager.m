@@ -132,7 +132,7 @@ static VSSteamManager *sharedManager = nil;
 			
 		}
 		
-		steamAppsRelocationType = VSSteamAppsUnknownRelocation;
+		steamAppsRelocationType = VSSteamAppsRelocationUnknown;
 		
 		sourceFinaglerLaunchAgentStatus = VSSourceFinaglerLaunchAgentStatusUnknown;
 		
@@ -260,7 +260,7 @@ static NSUInteger locateSteamAppsCount = 0;
 		locateSteamAppsCount++;
 		
 		timeToLocateSteamApps = 0.0;
-		steamAppsRelocationType = VSSteamAppsUnknownRelocation;
+		steamAppsRelocationType = VSSteamAppsRelocationUnknown;
 		
 		[defaultSteamAppsPath release];
 		defaultSteamAppsPath = nil;
@@ -292,7 +292,7 @@ static NSUInteger locateSteamAppsCount = 0;
 		
 		if ([[attributes fileType] isEqualToString:NSFileTypeSymbolicLink]) {
 			// exists and is symlink
-			steamAppsRelocationType = VSSteamAppsSymlinkRelocation;
+			steamAppsRelocationType = VSSteamAppsRelocationSymlink;
 			
 			steamAppsPath = defaultSteamAppsPath.stringByResolvingSymlinksInPath;
 			
@@ -304,7 +304,7 @@ static NSUInteger locateSteamAppsCount = 0;
 			}
 		} else if (attributes) {
 			// exists and is original folder
-			steamAppsRelocationType = VSSteamAppsNoRelocation;
+			steamAppsRelocationType = VSSteamAppsRelocationNone;
 			steamAppsPath = [defaultSteamAppsPath retain];
 		} else {
 			// doesn't exist

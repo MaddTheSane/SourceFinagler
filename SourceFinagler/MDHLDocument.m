@@ -184,48 +184,48 @@ static NSInteger copyTag = 0;
 	
 	
 	switch (fileType) {
-		case HKArchiveFileGCFType: {
+		case HKArchiveFileTypeGCF: {
 			[self setKind:NSLocalizedString(@"Steam Cache file", @"")];
 			file = [[HKGCFFile alloc] initWithContentsOfFile:url.path showInvisibleItems:shouldShowInvisibleItems sortDescriptors:nil error:outError];
 			break;
 		}
 			
-		case HKArchiveFileVPKType: {
+		case HKArchiveFileTypeVPK: {
 			[self setKind:NSLocalizedString(@"Source Addon file", @"")];
 			file = [[HKVPKFile alloc] initWithContentsOfFile:url.path showInvisibleItems:shouldShowInvisibleItems sortDescriptors:nil error:outError];
 			break;
 		}
 			
-		case HKArchiveFileSGAType: {
+		case HKArchiveFileTypeSGA: {
 			[self setKind:NSLocalizedString(@"Source Game Archive", @"")];
 			file = [[HKSGAFile alloc] initWithContentsOfFile:url.path showInvisibleItems:shouldShowInvisibleItems sortDescriptors:nil error:outError];
 			break;
 		}
 			
-		case HKArchiveFileNCFType: {
+		case HKArchiveFileTypeNCF: {
 			[self setKind:NSLocalizedString(@"Steam Non-Cache file", @"")];
 			file = [[HKNCFFile alloc] initWithContentsOfFile:url.path showInvisibleItems:shouldShowInvisibleItems sortDescriptors:nil error:outError];
 			break;
 		}
 			
-		case HKArchiveFileBSPType: {
+		case HKArchiveFileTypeBSP: {
 			[self setKind:NSLocalizedString(@"Source Level", @"")];
 			file = [[HKBSPFile alloc] initWithContentsOfFile:url.path showInvisibleItems:shouldShowInvisibleItems sortDescriptors:nil error:outError];
 			break;
 		}
-		case HKArchiveFilePAKType: {
+		case HKArchiveFileTypePAK: {
 			[self setKind:NSLocalizedString(@"Source Package file", @"")];
 			file = [[HKPAKFile alloc] initWithContentsOfFile:url.path showInvisibleItems:shouldShowInvisibleItems sortDescriptors:nil error:outError];
 			break;
 		}
 			
-		case HKArchiveFileWADType: {
+		case HKArchiveFileTypeWAD: {
 			[self setKind:NSLocalizedString(@"Source Texture Package file", @"")];
 			file = [[HKWADFile alloc] initWithContentsOfFile:url.path showInvisibleItems:shouldShowInvisibleItems sortDescriptors:nil error:outError];
 			break;
 		}
 			
-		case HKArchiveFileXZPType: {
+		case HKArchiveFileTypeXZP: {
 			[self setKind:NSLocalizedString(@"Source Xbox Package file", @"")];
 			file = [[HKXZPFile alloc] initWithContentsOfFile:url.path showInvisibleItems:shouldShowInvisibleItems sortDescriptors:nil error:outError];
 			break;
@@ -1849,28 +1849,28 @@ static NSInteger copyTag = 0;
 		if (tag == statusImageViewTag1) {
 			
 			switch (fileType) {
-				case HKArchiveFileBSPType :
+				case HKArchiveFileTypeBSP :
 					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that the items in this window are inside a %@", @""), NSLocalizedString(@"Source Level", @"")];
 					break;
-				case HKArchiveFileGCFType :
+				case HKArchiveFileTypeGCF :
 					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that the items in this window are inside a %@", @""), NSLocalizedString(@"Steam Cache file", @"")];
 					break;
-				case HKArchiveFilePAKType :
+				case HKArchiveFileTypePAK :
 					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that the items in this window are inside a %@", @""), NSLocalizedString(@"Source Package file", @"")];
 					break;
-				case HKArchiveFileVBSPType :
+				case HKArchiveFileTypeVBSP :
 					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that the items in this window are inside a %@", @""), NSLocalizedString(@"Source Level", @"")];
 					break;
-				case HKArchiveFileWADType :
+				case HKArchiveFileTypeWAD :
 					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that the items in this window are inside a %@", @""), NSLocalizedString(@"Source Texture Package file", @"")];
 					break;
-				case HKArchiveFileXZPType :
+				case HKArchiveFileTypeXZP :
 					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that the items in this window are inside a %@", @""), NSLocalizedString(@"Source Xbox Package file", @"")];
 					break;
-				case HKArchiveFileNCFType :
+				case HKArchiveFileTypeNCF :
 					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that the items in this window are inside a %@", @""), NSLocalizedString(@"Steam Non-Cache file", @"")];
 					break;
-				case HKArchiveFileVPKType :
+				case HKArchiveFileTypeVPK :
 					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that the items in this window are inside a %@", @""), NSLocalizedString(@"Source Addon file", @"")];
 					break;
 					
@@ -1882,28 +1882,28 @@ static NSInteger copyTag = 0;
 		} else if (tag == statusImageViewTag2) {
 			
 			switch (fileType) {
-				case HKArchiveFileBSPType :
+				case HKArchiveFileTypeBSP :
 					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that you cannot add or change the contents of this %@", @""), NSLocalizedString(@"Source Level", @"")];
 					break;
-				case HKArchiveFileGCFType :
+				case HKArchiveFileTypeGCF :
 					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that you cannot add or change the contents of this %@", @""), NSLocalizedString(@"Steam Cache file", @"")];
 					break;
-				case HKArchiveFilePAKType :
+				case HKArchiveFileTypePAK :
 					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that you cannot add or change the contents of this %@", @""), NSLocalizedString(@"Source Package file", @"")];
 					break;
-				case HKArchiveFileVBSPType :
+				case HKArchiveFileTypeVBSP :
 					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that you cannot add or change the contents of this %@", @""), NSLocalizedString(@"Source Level", @"")];
 					break;
-				case HKArchiveFileWADType :
+				case HKArchiveFileTypeWAD :
 					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that you cannot add or change the contents of this %@", @""), NSLocalizedString(@"Source Texture Package file", @"")];
 					break;
-				case HKArchiveFileXZPType :
+				case HKArchiveFileTypeXZP :
 					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that you cannot add or change the contents of this %@", @""), NSLocalizedString(@"Source Xbox Package file", @"")];
 					break;
-				case HKArchiveFileNCFType :
+				case HKArchiveFileTypeNCF :
 					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that you cannot add or change the contents of this %@", @""), NSLocalizedString(@"Steam Non-Cache file", @"")];
 					break;
-				case HKArchiveFileVPKType :
+				case HKArchiveFileTypeVPK :
 					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that you cannot add or change the contents of this %@", @""), NSLocalizedString(@"Source Addon file", @"")];
 					break;
 					
@@ -1917,28 +1917,28 @@ static NSInteger copyTag = 0;
 		if (tag == statusImageViewTag1) {
 			
 			switch (fileType) {
-				case HKArchiveFileBSPType :
+				case HKArchiveFileTypeBSP :
 					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Inside %@", @""), NSLocalizedString(@"Source Level", @"")];
 					break;
-				case HKArchiveFileGCFType :
+				case HKArchiveFileTypeGCF :
 					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Inside %@", @""), NSLocalizedString(@"Steam Cache file", @"")];
 					break;
-				case HKArchiveFilePAKType :
+				case HKArchiveFileTypePAK :
 					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Inside %@", @""), NSLocalizedString(@"Source Package file", @"")];
 					break;
-				case HKArchiveFileVBSPType :
+				case HKArchiveFileTypeVBSP :
 					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Inside %@", @""), NSLocalizedString(@"Source Level", @"")];
 					break;
-				case HKArchiveFileWADType :
+				case HKArchiveFileTypeWAD :
 					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Inside %@", @""), NSLocalizedString(@"Source Texture Package file", @"")];
 					break;
-				case HKArchiveFileXZPType :
+				case HKArchiveFileTypeXZP :
 					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Inside %@", @""), NSLocalizedString(@"Source Xbox Package file", @"")];
 					break;
-				case HKArchiveFileNCFType :
+				case HKArchiveFileTypeNCF :
 					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Inside %@", @""), NSLocalizedString(@"Steam Non-Cache file", @"")];
 					break;
-				case HKArchiveFileVPKType :
+				case HKArchiveFileTypeVPK :
 					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Inside %@", @""), NSLocalizedString(@"Source Addon file", @"")];
 					break;
 					

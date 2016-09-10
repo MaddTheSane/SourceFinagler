@@ -2402,7 +2402,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 
 		}
 	} else if (action == @selector(generateMipmaps:)) {
-		return image.imageType != TKEmptyImageType;
+		return image.imageType != TKImageTypeEmpty;
 		
 //		if (currentMenuBrowserView == faceBrowserView) {
 //			return [[self selectedFaceIndexes] count] > 0;

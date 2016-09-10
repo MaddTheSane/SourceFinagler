@@ -19,12 +19,12 @@ typedef struct TKVMTNodeKindMapping {
 } TKVMTNodeKindMapping;
 
 static const TKVMTNodeKindMapping TKVMTNodeKindMappingTable[] = {
-	{TKVMTInvalidKind,	"TKVMTInvalidKind" },
-	{TKVMTGroupKind,	"TKVMTGroupKind" },
-	{TKVMTCommentKind,	"TKVMTCommentKind" },
-	{TKVMTStringKind,	"TKVMTStringKind" },
-	{TKVMTIntegerKind,	"TKVMTIntegerKind" },
-	{TKVMTFloatKind,	"TKVMTFloatKind" }
+	{TKVMTNodeKindInvalid,	"TKVMTNodeKindInvalid" },
+	{TKVMTNodeKindGroup,	"TKVMTNodeKindGroup" },
+	{TKVMTNodeKindComment,	"TKVMTNodeKindComment" },
+	{TKVMTNodeKindString,	"TKVMTNodeKindString" },
+	{TKVMTNodeKindInteger,	"TKVMTNodeKindInteger" },
+	{TKVMTNodeKindFloat,	"TKVMTNodeKindFloat" }
 };
 static const NSUInteger TKVMTNodeKindMappingTableCount = sizeof(TKVMTNodeKindMappingTable)/sizeof(TKVMTNodeKindMappingTable[0]);
 
@@ -93,23 +93,23 @@ static inline NSString *NSStringFromTKVMTNodeKind(TKVMTNodeKind kind) {
 }
 
 + (id)stringNodeWithName:(NSString *)aName stringValue:(NSString *)stringValue {
-	return [[[self class] alloc] initWithName:aName kind:TKVMTStringKind objectValue:stringValue];
+	return [[[self class] alloc] initWithName:aName kind:TKVMTNodeKindString objectValue:stringValue];
 }
 
 + (id)integerNodeWithName:(NSString *)aName integerValue:(NSInteger)anInteger {
-	return [[[self class] alloc] initWithName:aName kind:TKVMTIntegerKind objectValue:@(anInteger)];
+	return [[[self class] alloc] initWithName:aName kind:TKVMTNodeKindInteger objectValue:@(anInteger)];
 }
 
 + (id)floatNodeWithName:(NSString *)aName floatValue:(CGFloat)aFloat {
-	return [[[self class] alloc] initWithName:aName kind:TKVMTFloatKind objectValue:@(aFloat)];
+	return [[[self class] alloc] initWithName:aName kind:TKVMTNodeKindFloat objectValue:@(aFloat)];
 }
 
 + (id)commentNodeWithStringValue:(NSString *)stringValue {
-	return [[[self class] alloc] initWithName:nil kind:TKVMTCommentKind objectValue:stringValue];
+	return [[[self class] alloc] initWithName:nil kind:TKVMTNodeKindComment objectValue:stringValue];
 }
 
 + (id)groupNodeWithName:(NSString *)aName {
-	return [[[self class] alloc] initWithName:aName kind:TKVMTGroupKind objectValue:nil];
+	return [[[self class] alloc] initWithName:aName kind:TKVMTNodeKindGroup objectValue:nil];
 }
 
 - (instancetype)initWithName:(NSString *)aName kind:(TKVMTNodeKind)aKind objectValue:(id)anObjectValue {
@@ -117,7 +117,7 @@ static inline NSString *NSStringFromTKVMTNodeKind(TKVMTNodeKind kind) {
 		self.name = aName;
 		self.objectValue = anObjectValue;
 		self.kind = aKind;
-		if (kind == TKVMTGroupKind) {
+		if (kind == TKVMTNodeKindGroup) {
 			children = [[NSMutableArray alloc] init];
 		}
 		
@@ -199,7 +199,7 @@ static inline NSString *NSStringFromTKVMTNodeKind(TKVMTNodeKind kind) {
 
 - (NSString *)description {
 	NSMutableString *description = [NSMutableString stringWithFormat:@"%@\n", super.description];
-	if (kind == TKVMTGroupKind) {
+	if (kind == TKVMTNodeKindGroup) {
 		[description appendFormat:@"	%@\n", name];
 		[description appendFormat:@"			%@\n", children];
 	} else {

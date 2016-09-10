@@ -115,7 +115,7 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 		
 		reps = [[NSMutableDictionary alloc] init];
 		
-		imageType = TKEmptyImageType;
+		imageType = TKImageTypeEmpty;
 		
 		self.allIndexes = [NSMutableDictionary dictionary];
 		
@@ -197,7 +197,7 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 	[coder encodeObject:version forKey:TKImageVersionKey];
 	[coder encodeObject:compression forKey:TKImageCompressionKey];
 	
-	[coder encodeInteger:TKSFTIImageType forKey:TKImageTypeKey];
+	[coder encodeInteger:TKImageTypeSFTI forKey:TKImageTypeKey];
 	
 	[coder encodeObject:self.representations forKey:TKImageImageRepsKey];
 }
@@ -247,11 +247,11 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 					[self addRepresentation:imageRep];
 					
 					if ([imageRep isKindOfClass:[TKVTFImageRep class]]) {
-						self.imageType = TKVTFImageType;
+						self.imageType = TKImageTypeVTF;
 					} else if ([imageRep isKindOfClass:[TKDDSImageRep class]]) {
-						self.imageType = TKDDSImageType;
+						self.imageType = TKImageTypeDDS;
 					} else {
-						self.imageType = TKRegularImageType;
+						self.imageType = TKImageTypeRegular;
 					}
 #if TK_DEBUG
 					NSLog(@"[%@ %@] size == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), NSStringFromSize(self.size));
@@ -290,9 +290,9 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 				NSImageRep *testImageRep = theReps[0];
 				
 				if ([testImageRep isKindOfClass:[TKVTFImageRep class]]) {
-					self.imageType = TKVTFImageType;
+					self.imageType = TKImageTypeVTF;
 				} else {
-					self.imageType = TKDDSImageType;
+					self.imageType = TKImageTypeDDS;
 				}
 				
 				self.hasAlpha = testImageRep.alpha;
@@ -320,11 +320,11 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 				NSImageRep *testImageRep = theReps[0];
 				
 				if ([testImageRep isKindOfClass:[TKVTFImageRep class]]) {
-					self.imageType = TKVTFImageType;
+					self.imageType = TKImageTypeVTF;
 				} else if ([testImageRep isKindOfClass:[TKDDSImageRep class]]) {
-					self.imageType = TKDDSImageType;
+					self.imageType = TKImageTypeDDS;
 				} else {
-					self.imageType = TKRegularImageType;
+					self.imageType = TKImageTypeRegular;
 				}
 				
 				self.hasAlpha = testImageRep.alpha;
@@ -1181,8 +1181,8 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 	
 	[super addRepresentation:aRepresentation];
 	
-	if (imageType == TKEmptyImageType) {
-		self.imageType = TKSFTIImageType;
+	if (imageType == TKImageTypeEmpty) {
+		self.imageType = TKImageTypeSFTI;
 	}
 }
 
@@ -1308,7 +1308,7 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 	}
 	
 	if (self.representations.count == 0) {
-		self.imageType = TKEmptyImageType;
+		self.imageType = TKImageTypeEmpty;
 	}
 }
 
@@ -1608,12 +1608,12 @@ typedef struct TKImageTypeDescription {
 } TKImageTypeDescription;
 
 static const TKImageTypeDescription TKImageTypeDescriptionTable[] = {
-	{ TKVTFImageType, "TKVTFImageType" },
-	{ TKDDSImageType, "TKDDSImageType" },
-	{ TKSFTIImageType, "TKSFTIImageType" },
-	{ TKRegularImageType, "TKRegularImageType" },
-	{ TKEmptyImageType, "TKEmptyImageType" },
-	{ TKUnknownImageType, "TKUnknownImageType" }
+	{ TKImageTypeVTF, "TKImageTypeVTF" },
+	{ TKImageTypeDDS, "TKImageTypeDDS" },
+	{ TKImageTypeSFTI, "TKImageTypeSFTI" },
+	{ TKImageTypeRegular, "TKImageTypeRegular" },
+	{ TKImageTypeEmpty, "TKImageTypeEmpty" },
+	{ TKImageTypeUnknown, "TKImageTypeUnknown" }
 };
 static const NSUInteger TKImageTypeDescriptionTableCount = sizeof(TKImageTypeDescriptionTable)/sizeof(TKImageTypeDescriptionTable[0]);
 

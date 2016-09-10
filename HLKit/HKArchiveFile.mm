@@ -28,17 +28,17 @@ typedef struct HKArchiveFileTest {
 
 
 static HKArchiveFileTest HKArchiveFileTestTable[] = {
-	{ HKArchiveFileBSPType, 4, { 0x1e, 0x00, 0x00, 0x00 } },
-	{ HKArchiveFileGCFType, 8, { 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00 } },
-	{ HKArchiveFileNCFType, 8, { 0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00 } },
-	{ HKArchiveFilePAKType, 4, { 'P', 'A', 'C', 'K' } },
-	{ HKArchiveFileSGAType, 8, { '_', 'A', 'R', 'C', 'H', 'I', 'V', 'E' } },
-	{ HKArchiveFileVBSPType, 4, { 'V', 'B', 'S', 'P' } },
-	{ HKArchiveFileVPKType, 4, { 0x34, 0x12, 0xaa, 0x55} },
-	{ HKArchiveFileWADType, 4, { 'W', 'A', 'D', '3' } },
-	{ HKArchiveFileXZPType, 4, { 'p', 'i', 'Z', 'x' } },
-	{ HKArchiveFileZIPType, 2, { 'P', 'K' } },
-	{ HKArchiveFileNoType, 0, { } }
+	{ HKArchiveFileTypeBSP, 4, { 0x1e, 0x00, 0x00, 0x00 } },
+	{ HKArchiveFileTypeGCF, 8, { 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00 } },
+	{ HKArchiveFileTypeNCF, 8, { 0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00 } },
+	{ HKArchiveFileTypePAK, 4, { 'P', 'A', 'C', 'K' } },
+	{ HKArchiveFileTypeSGA, 8, { '_', 'A', 'R', 'C', 'H', 'I', 'V', 'E' } },
+	{ HKArchiveFileTypeVBSP, 4, { 'V', 'B', 'S', 'P' } },
+	{ HKArchiveFileTypeVPK, 4, { 0x34, 0x12, 0xaa, 0x55} },
+	{ HKArchiveFileTypeWAD, 4, { 'W', 'A', 'D', '3' } },
+	{ HKArchiveFileTypeXZP, 4, { 'p', 'i', 'Z', 'x' } },
+	{ HKArchiveFileTypeZIP, 2, { 'P', 'K' } },
+	{ HKArchiveFileTypeNone, 0, { } }
 };
 
 
@@ -56,14 +56,14 @@ static HKArchiveFileTest HKArchiveFileTestTable[] = {
 #endif
 	NSUInteger dataLength = aData.length;
 	if (dataLength == 0) {
-		return HKArchiveFileNoType;
+		return HKArchiveFileTypeNone;
 	}
-	for (HKArchiveFileTest *packageTest = HKArchiveFileTestTable; packageTest->fileType != HKArchiveFileNoType; packageTest++) {
+	for (HKArchiveFileTest *packageTest = HKArchiveFileTestTable; packageTest->fileType != HKArchiveFileTypeNone; packageTest++) {
 		if (packageTest->testDataLength <= dataLength && memcmp(aData.bytes, packageTest->testData, packageTest->testDataLength) == 0) {
 			return packageTest->fileType;
 		}
 	}
-	return HKArchiveFileNoType;
+	return HKArchiveFileTypeNone;
 }
 
 

@@ -28,7 +28,7 @@
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	if ((self = [super initWithContentsOfFile:aPath mode:permission showInvisibleItems:showInvisibleItems sortDescriptors:sortDescriptors error:outError])) {
-		fileType = HKArchiveFileGCFType;
+		fileType = HKArchiveFileTypeGCF;
 		
 		_privateData = new CGCFFile();
 		

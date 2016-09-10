@@ -30,9 +30,14 @@ typedef NS_OPTIONS(NSUInteger, VSGameLaunchOptions) {
 };
 
 typedef NS_ENUM(NSUInteger, VSSteamAppsRelocationType) {
-	VSSteamAppsUnknownRelocation	= 0,
-	VSSteamAppsNoRelocation			= 1,
-	VSSteamAppsSymlinkRelocation	= 2
+	VSSteamAppsRelocationUnknown	= 0,
+	VSSteamAppsRelocationNone		= 1,
+	VSSteamAppsRelocationSymlink	= 2,
+	
+	VSSteamAppsUnknownRelocation	NS_SWIFT_UNAVAILABLE("Use .unknown instead") DEPRECATED_MSG_ATTRIBUTE("Use VSSteamAppsRelocationUnknown instead") = 0,
+	VSSteamAppsNoRelocation			NS_SWIFT_UNAVAILABLE("Use .none instead") DEPRECATED_MSG_ATTRIBUTE("Use VSSteamAppsRelocationNone instead") = 1,
+	VSSteamAppsSymlinkRelocation	NS_SWIFT_UNAVAILABLE("Use .symlink instead") DEPRECATED_MSG_ATTRIBUTE("Use VSSteamAppsRelocationSymlink instead") = 2
+
 };
 
 typedef NS_ENUM(NSUInteger, VSSourceFinaglerLaunchAgentStatus) {
@@ -73,7 +78,8 @@ typedef NS_ENUM(NSUInteger, VSSourceFinaglerLaunchAgentStatus) {
 /** Get the shared instance of VSSteamManager. This method will create an instance of \c VSSteamManager if it has not been created yet. You should not attempt to instantiate instances of \c VSSteamManager yourself, and you should not attempt to subclass <code>VSSteamManager</code>. */
 + (VSSteamManager *)defaultManager; // singleton
 #if __has_feature(objc_class_property)
-@property (readonly, retain) VSSteamManager *defaultManager;
+/** Get the shared instance of VSSteamManager. This method will create an instance of \c VSSteamManager if it has not been created yet. You should not attempt to instantiate instances of \c VSSteamManager yourself, and you should not attempt to subclass <code>VSSteamManager</code>. */
+@property (class, readonly, retain) VSSteamManager *defaultManager;
 #endif
 
 @property (assign) id <VSSteamManagerDelegate> delegate;
@@ -148,7 +154,7 @@ NS_ENUM(NSInteger) {
 
 @interface VSSteamManager (VSOtherAppsHelperAdditions)
 
-// force a refresh
+/// force a refresh
 - (void)locateSteamApps;
 
 @end
@@ -166,18 +172,12 @@ STEAMKIT_EXTERN NSString * const VSGameInfoPlistKey;
 
 STEAMKIT_EXTERN NSString * const VSResourceNameKey;
 STEAMKIT_EXTERN NSString * const VSGameIconNameKey;
-
 STEAMKIT_EXTERN NSString * const VSSteamAppsDirectoryNameKey;
 
 
 STEAMKIT_EXTERN NSString * const VSSourceAddonErrorDomain;
 
 STEAMKIT_EXTERN NSString * const VSSourceAddonGameIDKey;
-
-
-
 STEAMKIT_EXTERN NSString * const VSSourceAddonFolderNameKey;
 
 // SourceFinaglerAgent
-
-
