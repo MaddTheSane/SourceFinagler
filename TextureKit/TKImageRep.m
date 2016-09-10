@@ -922,24 +922,10 @@ void TKFreeBuffer(vImage_Buffer *buffer) {
 		bBuffer.data = bData.mutableBytes;
 		aBuffer.data = aData.mutableBytes;
 		
-		switch (sourcePixelFormat) {
-			case TKPixelFormatRGBA16161616F:
-				vImageExtractChannel_ARGBFFFF(&sourceBuffer, &rBuffer, 0, kvImageNoFlags);
-				vImageExtractChannel_ARGBFFFF(&sourceBuffer, &gBuffer, 1, kvImageNoFlags);
-				vImageExtractChannel_ARGBFFFF(&sourceBuffer, &bBuffer, 2, kvImageNoFlags);
-				vImageExtractChannel_ARGBFFFF(&sourceBuffer, &aBuffer, 3, kvImageNoFlags);
-				break;
-				
-			case TKPixelFormatABGR32323232F:
-				vImageExtractChannel_ARGBFFFF(&sourceBuffer, &aBuffer, 0, kvImageNoFlags);
-				vImageExtractChannel_ARGBFFFF(&sourceBuffer, &bBuffer, 1, kvImageNoFlags);
-				vImageExtractChannel_ARGBFFFF(&sourceBuffer, &gBuffer, 2, kvImageNoFlags);
-				vImageExtractChannel_ARGBFFFF(&sourceBuffer, &rBuffer, 3, kvImageNoFlags);
-				break;
-				
-			default:
-				break;
-		}
+		vImageExtractChannel_ARGBFFFF(&sourceBuffer, &aBuffer, 0, kvImageNoFlags);
+		vImageExtractChannel_ARGBFFFF(&sourceBuffer, &bBuffer, 1, kvImageNoFlags);
+		vImageExtractChannel_ARGBFFFF(&sourceBuffer, &gBuffer, 2, kvImageNoFlags);
+		vImageExtractChannel_ARGBFFFF(&sourceBuffer, &rBuffer, 3, kvImageNoFlags);
 		
 		vImage_Buffer destBuffer;
 		TKInitBuffer(&destBuffer, size.height, size.width, 32);
@@ -957,7 +943,6 @@ void TKFreeBuffer(vImage_Buffer *buffer) {
 	
 	return nil;
 }
-
 
 + (NSData *)representationUsingPixelFormat:(TKPixelFormat)destPixelFormat ofData:(NSData *)aData inPixelFormat:(TKPixelFormat)sourcePixelFormat {
 	NSParameterAssert(aData != nil);
