@@ -292,7 +292,7 @@ NSString *TKImageIOLocalizedString(NSString *key) {
 }
 
 - (NSString *)windowNibName {
-	return @"TKImageDocumentLion";
+	return @"TKImageDocument";
 }
 
 - (instancetype)initWithType:(NSString *)typeName error:(NSError **)outError {

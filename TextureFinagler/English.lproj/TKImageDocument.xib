@@ -8,219 +8,233 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TKImageDocument">
             <connections>
-                <outlet property="faceBrowserView" destination="101115" id="101173"/>
-                <outlet property="faceBrowserViewView" destination="101111" id="101169"/>
-                <outlet property="frameBrowserView" destination="101106" id="101168"/>
-                <outlet property="frameBrowserViewView" destination="101104" id="101167"/>
-                <outlet property="imageView" destination="101121" id="101172"/>
-                <outlet property="imageWindow" destination="101087" id="101165"/>
-                <outlet property="mipmapBrowserView" destination="101131" id="101171"/>
-                <outlet property="mipmapBrowserViewView" destination="101109" id="101170"/>
-                <outlet property="normalMapPanel" destination="101198" id="101201"/>
-                <outlet property="window" destination="101087" id="101166"/>
+                <outlet property="faceBrowserView" destination="101191" id="101206"/>
+                <outlet property="faceBrowserViewView" destination="101187" id="101214"/>
+                <outlet property="facesMipmapsSplitView" destination="101204" id="101497"/>
+                <outlet property="frameBrowserView" destination="101152" id="101207"/>
+                <outlet property="frameBrowserViewView" destination="101133" id="101208"/>
+                <outlet property="grayscalePanel" destination="101504" id="101600"/>
+                <outlet property="imageView" destination="101146" id="101212"/>
+                <outlet property="imageWindow" destination="101094" id="101209"/>
+                <outlet property="mainSplitView" destination="101205" id="101496"/>
+                <outlet property="mipmapBrowserView" destination="101144" id="101211"/>
+                <outlet property="mipmapBrowserViewView" destination="101136" id="101213"/>
+                <outlet property="normalMapPanel" destination="101222" id="101236"/>
+                <outlet property="togglePlaySegmentedControl" destination="101115" id="101217"/>
+                <outlet property="togglePlayToolbarItem" destination="101100" id="101216"/>
+                <outlet property="toolModeControl" destination="101119" id="101603"/>
+                <outlet property="viewControl" destination="101117" id="101215"/>
+                <outlet property="window" destination="101094" id="101210"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="Untitled" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="101087" userLabel="window">
+        <window title="Untitled" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="101094" userLabel="window">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
-            <rect key="contentRect" x="163" y="295" width="1000" height="733"/>
+            <rect key="contentRect" x="150" y="325" width="1000" height="733"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
             <value key="minSize" type="size" width="550" height="300"/>
-            <view key="contentView" id="101089">
+            <view key="contentView" id="101095">
                 <rect key="frame" x="0.0" y="0.0" width="1000" height="733"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <slider verticalHuggingPriority="750" id="101091">
-                        <rect key="frame" x="747" y="8" width="151" height="15"/>
+                    <slider verticalHuggingPriority="750" id="101128">
+                        <rect key="frame" x="829" y="7" width="151" height="15"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <sliderCell key="cell" controlSize="small" state="on" alignment="left" minValue="0.0625" maxValue="8" doubleValue="1" tickMarkPosition="above" sliderType="linear" id="101102"/>
+                        <sliderCell key="cell" controlSize="small" continuous="YES" state="on" alignment="left" maxValue="32" doubleValue="1" tickMarkPosition="above" sliderType="linear" id="101129"/>
+                        <connections>
+                            <binding destination="100483" name="value" keyPath="selection.zoomFactor" id="101184"/>
+                        </connections>
                     </slider>
-                    <textField verticalHuggingPriority="750" id="101092">
-                        <rect key="frame" x="646" y="9" width="56" height="14"/>
+                    <textField verticalHuggingPriority="750" id="101127">
+                        <rect key="frame" x="728" y="8" width="56" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="101100">
-                            <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="#,##0.#%" negativeFormat="#,##0.#%" numberStyle="percent" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" minimumFractionDigits="1" maximumFractionDigits="1" id="101101">
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="101130">
+                            <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="#,##0.#%" negativeFormat="#,##0.#%" numberStyle="percent" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" minimumFractionDigits="1" maximumFractionDigits="1" id="101131">
                                 <integer key="multiplier" value="100"/>
                             </numberFormatter>
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
+                        <connections>
+                            <binding destination="100483" name="value" keyPath="selection.zoomFactor" id="101183"/>
+                        </connections>
                     </textField>
-                    <textField verticalHuggingPriority="750" id="101094">
-                        <rect key="frame" x="112" y="9" width="56" height="14"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="101097">
-                            <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="#,##0.#%" negativeFormat="#,##0.#%" numberStyle="percent" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" minimumFractionDigits="1" maximumFractionDigits="1" id="101098">
-                                <integer key="multiplier" value="100"/>
-                            </numberFormatter>
-                            <font key="font" metaFont="smallSystem"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField verticalHuggingPriority="750" id="101093">
-                        <rect key="frame" x="704" y="9" width="38" height="14"/>
+                    <textField verticalHuggingPriority="750" id="101126">
+                        <rect key="frame" x="786" y="8" width="38" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Zoom:" id="101099">
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Zoom:" id="101132">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <slider verticalHuggingPriority="750" id="101095">
-                        <rect key="frame" x="11" y="8" width="96" height="16"/>
+                    <slider verticalHuggingPriority="750" id="101123">
+                        <rect key="frame" x="11" y="6" width="96" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <sliderCell key="cell" controlSize="mini" alignment="left" maxValue="1" tickMarkPosition="above" numberOfTickMarks="9" sliderType="linear" id="101096"/>
+                        <sliderCell key="cell" controlSize="mini" continuous="YES" alignment="left" maxValue="1" tickMarkPosition="above" numberOfTickMarks="9" sliderType="linear" id="101155"/>
+                        <connections>
+                            <binding destination="100589" name="value" keyPath="selection.zoomValue" id="101350"/>
+                        </connections>
                     </slider>
-                    <splitView id="101090">
-                        <rect key="frame" x="0.0" y="29" width="1000" height="704"/>
+                    <splitView dividerStyle="thin" id="101205" userLabel="mainSplitView">
+                        <rect key="frame" x="0.0" y="28" width="1000" height="705"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <splitView dividerStyle="thin" vertical="YES" id="101103">
-                                <rect key="frame" x="0.0" y="0.0" width="1000" height="577"/>
+                            <splitView dividerStyle="thin" vertical="YES" id="101204" userLabel="facesMipmapsSplitView">
+                                <rect key="frame" x="0.0" y="0.0" width="1000" height="584"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <customView id="101111" userLabel="faceBrowserViewView">
-                                        <rect key="frame" x="0.0" y="0.0" width="220" height="577"/>
-                                        <autoresizingMask key="autoresizingMask"/>
+                                    <customView id="101187" userLabel="faceBrowserViewView" customClass="TKBlueBackgroundView">
+                                        <rect key="frame" x="0.0" y="0.0" width="220" height="584"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <customView id="101112">
-                                                <rect key="frame" x="0.0" y="0.0" width="220" height="577"/>
+                                            <textField verticalHuggingPriority="750" id="101337" customClass="TKTextField">
+                                                <rect key="frame" x="8" y="565" width="54" height="14"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" title="FACES" id="101338" customClass="TKTextFieldCell">
+                                                    <font key="font" metaFont="smallSystemBold"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <scrollView autohidesScrollers="YES" horizontalLineScroll="102.5" horizontalPageScroll="10" verticalLineScroll="120" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="101190">
+                                                <rect key="frame" x="0.0" y="24" width="220" height="535"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <subviews>
-                                                    <scrollView autohidesScrollers="YES" horizontalLineScroll="102.5" horizontalPageScroll="10" verticalLineScroll="120" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="101114">
-                                                        <rect key="frame" x="0.0" y="24" width="220" height="553"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                        <clipView key="contentView" copiesOnScroll="NO" id="BUU-il-05j">
-                                                            <rect key="frame" x="1" y="1" width="218" height="551"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                            <subviews>
-                                                                <ikImageBrowserView autoresizesSubviews="NO" zoomValue="0.60302269458770752" constrainsToOriginalSize="YES" allowsReordering="YES" animates="YES" id="101115" userLabel="faceBrowserView">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="218" height="551"/>
-                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                                    <ikCellsStyle key="cellsStyleMask" shadowed="YES" outlined="YES" titled="YES"/>
-                                                                    <autoresizingMask key="contentResizingMask" heightSizable="YES"/>
-                                                                    <size key="cellSize" width="100" height="100"/>
-                                                                    <connections>
-                                                                        <outlet property="nextKeyView" destination="101106" id="101159"/>
-                                                                    </connections>
-                                                                </ikImageBrowserView>
-                                                            </subviews>
-                                                        </clipView>
-                                                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="101116">
-                                                            <rect key="frame" x="-100" y="-100" width="241" height="15"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                        </scroller>
-                                                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="101117">
-                                                            <rect key="frame" x="186" y="1" width="15" height="503"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                        </scroller>
-                                                    </scrollView>
-                                                    <customView id="101113" customClass="TKSplitterView">
-                                                        <rect key="frame" x="0.0" y="0.0" width="220" height="24"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                        <subviews>
-                                                            <button verticalHuggingPriority="750" id="101118">
-                                                                <rect key="frame" x="0.0" y="0.0" width="220" height="24"/>
-                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" imagePosition="only" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="101119">
-                                                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                                    <font key="font" metaFont="smallSystem"/>
-                                                                </buttonCell>
-                                                            </button>
-                                                        </subviews>
-                                                    </customView>
-                                                </subviews>
-                                            </customView>
-                                        </subviews>
-                                    </customView>
-                                    <customView id="101110">
-                                        <rect key="frame" x="221" y="0.0" width="558" height="577"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <subviews>
-                                            <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="101120">
-                                                <rect key="frame" x="0.0" y="0.0" width="558" height="577"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <clipView key="contentView" id="aFJ-b9-cnn">
-                                                    <rect key="frame" x="1" y="1" width="556" height="575"/>
+                                                <clipView key="contentView" copiesOnScroll="NO" id="Q0r-Uw-sCY">
+                                                    <rect key="frame" x="1" y="1" width="218" height="533"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <ikImageView wantsLayer="YES" zoomFactor="0.0" autoresizes="NO" editable="YES" id="101121" userLabel="imageView" customClass="TKImageView">
-                                                            <rect key="frame" x="0.0" y="0.0" width="556" height="575"/>
+                                                        <ikImageBrowserView autoresizesSubviews="NO" constrainsToOriginalSize="YES" allowsReordering="YES" animates="YES" id="101191" userLabel="faceBrowserView">
+                                                            <rect key="frame" x="0.0" y="0.0" width="218" height="533"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                            <color key="backgroundColor" red="0.50002288819999996" green="0.50002288819999996" blue="0.50002288819999996" alpha="1" colorSpace="deviceRGB"/>
+                                                            <ikCellsStyle key="cellsStyleMask" none="YES"/>
+                                                            <autoresizingMask key="contentResizingMask" heightSizable="YES"/>
+                                                            <size key="cellSize" width="44" height="44"/>
                                                             <connections>
-                                                                <outlet property="nextKeyView" destination="101131" id="101163"/>
+                                                                <outlet property="_dataSource" destination="-2" id="101203"/>
+                                                                <outlet property="_delegate" destination="-2" id="101196"/>
+                                                                <outlet property="_dragDestinationDelegate" destination="-2" id="101199"/>
+                                                                <outlet property="dataSource" destination="-2" id="101198"/>
+                                                                <outlet property="delegate" destination="-2" id="101202"/>
+                                                                <outlet property="dragDestinationDelegate" destination="-2" id="101201"/>
+                                                                <outlet property="menu" destination="100304" id="101200"/>
+                                                                <outlet property="nextKeyView" destination="101152" id="101197"/>
+                                                            </connections>
+                                                        </ikImageBrowserView>
+                                                    </subviews>
+                                                </clipView>
+                                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="101192">
+                                                    <rect key="frame" x="-100" y="-100" width="241" height="15"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </scroller>
+                                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="101193">
+                                                    <rect key="frame" x="186" y="1" width="15" height="503"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </scroller>
+                                            </scrollView>
+                                            <slider verticalHuggingPriority="750" id="101342">
+                                                <rect key="frame" x="20" y="3" width="96" height="16"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <sliderCell key="cell" controlSize="mini" continuous="YES" alignment="left" maxValue="1" tickMarkPosition="above" numberOfTickMarks="9" sliderType="linear" id="101343"/>
+                                                <connections>
+                                                    <binding destination="101348" name="value" keyPath="selection.zoomValue" id="101353"/>
+                                                </connections>
+                                            </slider>
+                                        </subviews>
+                                    </customView>
+                                    <customView id="101135">
+                                        <rect key="frame" x="221" y="0.0" width="558" height="584"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <subviews>
+                                            <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="101145">
+                                                <rect key="frame" x="0.0" y="0.0" width="558" height="584"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <clipView key="contentView" id="XKa-7Y-eDs">
+                                                    <rect key="frame" x="1" y="1" width="556" height="582"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <subviews>
+                                                        <ikImageView wantsLayer="YES" zoomFactor="0.0" autoresizes="NO" editable="YES" id="101146" userLabel="imageView" customClass="TKImageView">
+                                                            <rect key="frame" x="0.0" y="0.0" width="556" height="582"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <color key="backgroundColor" red="0.50002289" green="0.50002289" blue="0.50002289" alpha="1" colorSpace="deviceRGB"/>
+                                                            <connections>
+                                                                <outlet property="delegate" destination="-2" id="101163"/>
+                                                                <outlet property="menu" destination="100304" id="101170"/>
+                                                                <outlet property="nextKeyView" destination="101144" id="101156"/>
                                                             </connections>
                                                         </ikImageView>
                                                     </subviews>
                                                 </clipView>
-                                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="101122">
+                                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="101147">
                                                     <rect key="frame" x="1" y="548" width="600" height="15"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
-                                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="101123">
+                                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="101148">
                                                     <rect key="frame" x="601" y="1" width="15" height="547"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
                                             </scrollView>
                                         </subviews>
                                     </customView>
-                                    <customView id="101109" userLabel="mipmapBrowserViewView">
-                                        <rect key="frame" x="780" y="0.0" width="220" height="577"/>
-                                        <autoresizingMask key="autoresizingMask"/>
+                                    <customView id="101136" userLabel="mipmapBrowserViewView" customClass="TKBlueBackgroundView">
+                                        <rect key="frame" x="780" y="0.0" width="220" height="584"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <customView id="101124">
-                                                <rect key="frame" x="0.0" y="0.0" width="220" height="577"/>
+                                            <textField verticalHuggingPriority="750" id="101356" customClass="TKTextField">
+                                                <rect key="frame" x="8" y="565" width="66" height="14"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" title="MIPMAPS" id="101357" customClass="TKTextFieldCell">
+                                                    <font key="font" metaFont="smallSystemBold"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <scrollView autohidesScrollers="YES" horizontalLineScroll="102.5" horizontalPageScroll="10" verticalLineScroll="120" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="101138">
+                                                <rect key="frame" x="0.0" y="24" width="220" height="535"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <subviews>
-                                                    <scrollView autohidesScrollers="YES" horizontalLineScroll="102.5" horizontalPageScroll="10" verticalLineScroll="120" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="101125">
-                                                        <rect key="frame" x="0.0" y="24" width="220" height="553"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                        <clipView key="contentView" copiesOnScroll="NO" id="VNo-5C-jff">
-                                                            <rect key="frame" x="1" y="1" width="218" height="551"/>
+                                                <clipView key="contentView" copiesOnScroll="NO" id="hMV-Yd-3oA">
+                                                    <rect key="frame" x="1" y="1" width="218" height="533"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <subviews>
+                                                        <ikImageBrowserView autoresizesSubviews="NO" zoomValue="0.60302269458770752" constrainsToOriginalSize="YES" allowsReordering="YES" animates="YES" id="101144" userLabel="mipmapBrowserView">
+                                                            <rect key="frame" x="0.0" y="0.0" width="218" height="533"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                            <subviews>
-                                                                <ikImageBrowserView autoresizesSubviews="NO" zoomValue="0.60302269458770752" constrainsToOriginalSize="YES" allowsReordering="YES" animates="YES" id="101131" userLabel="mipmapBrowserView">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="218" height="551"/>
-                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                                    <ikCellsStyle key="cellsStyleMask" shadowed="YES" outlined="YES" titled="YES"/>
-                                                                    <autoresizingMask key="contentResizingMask" heightSizable="YES"/>
-                                                                    <size key="cellSize" width="100" height="100"/>
-                                                                    <connections>
-                                                                        <outlet property="nextKeyView" destination="101106" id="101162"/>
-                                                                    </connections>
-                                                                </ikImageBrowserView>
-                                                            </subviews>
-                                                        </clipView>
-                                                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="101130">
-                                                            <rect key="frame" x="-100" y="-100" width="241" height="15"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                        </scroller>
-                                                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="101129">
-                                                            <rect key="frame" x="186" y="1" width="15" height="503"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                        </scroller>
-                                                    </scrollView>
-                                                    <customView id="101126" customClass="TKSplitterView">
-                                                        <rect key="frame" x="0.0" y="0.0" width="220" height="24"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                        <subviews>
-                                                            <button verticalHuggingPriority="750" id="101127">
-                                                                <rect key="frame" x="0.0" y="0.0" width="220" height="24"/>
-                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" imagePosition="only" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="101128">
-                                                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                                    <font key="font" metaFont="smallSystem"/>
-                                                                </buttonCell>
-                                                            </button>
-                                                        </subviews>
-                                                    </customView>
-                                                </subviews>
-                                            </customView>
+                                                            <ikCellsStyle key="cellsStyleMask" shadowed="YES" outlined="YES" titled="YES"/>
+                                                            <autoresizingMask key="contentResizingMask" heightSizable="YES"/>
+                                                            <size key="cellSize" width="100" height="100"/>
+                                                            <connections>
+                                                                <outlet property="_dataSource" destination="-2" id="101165"/>
+                                                                <outlet property="_delegate" destination="-2" id="101172"/>
+                                                                <outlet property="_dragDestinationDelegate" destination="-2" id="101179"/>
+                                                                <outlet property="dataSource" destination="-2" id="101162"/>
+                                                                <outlet property="delegate" destination="-2" id="101169"/>
+                                                                <outlet property="dragDestinationDelegate" destination="-2" id="101176"/>
+                                                                <outlet property="menu" destination="100304" id="101177"/>
+                                                                <outlet property="nextKeyView" destination="101152" id="101158"/>
+                                                            </connections>
+                                                        </ikImageBrowserView>
+                                                    </subviews>
+                                                </clipView>
+                                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="101143">
+                                                    <rect key="frame" x="-100" y="-100" width="241" height="15"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </scroller>
+                                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="101142">
+                                                    <rect key="frame" x="186" y="1" width="15" height="503"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </scroller>
+                                            </scrollView>
+                                            <slider verticalHuggingPriority="750" id="101493">
+                                                <rect key="frame" x="20" y="3" width="96" height="16"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <sliderCell key="cell" controlSize="mini" continuous="YES" alignment="left" maxValue="1" tickMarkPosition="above" numberOfTickMarks="9" sliderType="linear" id="101494"/>
+                                                <connections>
+                                                    <binding destination="101500" name="value" keyPath="selection.zoomValue" id="101503"/>
+                                                </connections>
+                                            </slider>
                                         </subviews>
                                     </customView>
                                 </subviews>
@@ -229,39 +243,58 @@
                                     <real value="250"/>
                                     <real value="250"/>
                                 </holdingPriorities>
+                                <connections>
+                                    <outlet property="delegate" destination="-2" id="101498"/>
+                                </connections>
                             </splitView>
-                            <customView id="101104" userLabel="frameBrowserViewView">
-                                <rect key="frame" x="0.0" y="586" width="1000" height="118"/>
+                            <customView id="101133" userLabel="frameBrowserViewView" customClass="TKBlueBackgroundView">
+                                <rect key="frame" x="0.0" y="585" width="1000" height="120"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <scrollView autohidesScrollers="YES" horizontalLineScroll="92.25" horizontalPageScroll="10" verticalLineScroll="100" verticalPageScroll="10" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" id="101105">
-                                        <rect key="frame" x="0.0" y="0.0" width="1000" height="118"/>
+                                    <scrollView autohidesScrollers="YES" horizontalLineScroll="92.25" horizontalPageScroll="10" verticalLineScroll="100" verticalPageScroll="10" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" id="101149">
+                                        <rect key="frame" x="0.0" y="-5" width="1000" height="100"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <clipView key="contentView" copiesOnScroll="NO" id="2v7-8f-gsx">
-                                            <rect key="frame" x="1" y="1" width="998" height="116"/>
+                                        <clipView key="contentView" copiesOnScroll="NO" id="ofW-vd-jnY">
+                                            <rect key="frame" x="1" y="1" width="998" height="98"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <ikImageBrowserView autoresizesSubviews="NO" allowsReordering="YES" animates="YES" id="101106" userLabel="frameBrowserView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="998" height="116"/>
+                                                <ikImageBrowserView autoresizesSubviews="NO" allowsReordering="YES" animates="YES" id="101152" userLabel="frameBrowserView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="998" height="98"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <ikCellsStyle key="cellsStyleMask" shadowed="YES" outlined="YES" titled="YES"/>
                                                     <autoresizingMask key="contentResizingMask" heightSizable="YES"/>
                                                     <size key="cellSize" width="44" height="44"/>
                                                     <connections>
-                                                        <outlet property="nextKeyView" destination="101121" id="101161"/>
+                                                        <outlet property="_dataSource" destination="-2" id="101175"/>
+                                                        <outlet property="_delegate" destination="-2" id="101164"/>
+                                                        <outlet property="_dragDestinationDelegate" destination="-2" id="101178"/>
+                                                        <outlet property="dataSource" destination="-2" id="101168"/>
+                                                        <outlet property="delegate" destination="-2" id="101173"/>
+                                                        <outlet property="dragDestinationDelegate" destination="-2" id="101161"/>
+                                                        <outlet property="menu" destination="100304" id="101171"/>
+                                                        <outlet property="nextKeyView" destination="101146" id="101160"/>
                                                     </connections>
                                                 </ikImageBrowserView>
                                             </subviews>
                                         </clipView>
-                                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="101107">
+                                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="101151">
                                             <rect key="frame" x="1" y="102" width="401" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
-                                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="101108">
+                                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="101150">
                                             <rect key="frame" x="-100" y="-100" width="15" height="114"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
+                                    <textField verticalHuggingPriority="750" id="101358" customClass="TKTextField">
+                                        <rect key="frame" x="8" y="101" width="61" height="14"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" title="FRAMES" id="101359" customClass="TKTextFieldCell">
+                                            <font key="font" metaFont="smallSystemBold"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
                                 </subviews>
                             </customView>
                         </subviews>
@@ -269,160 +302,142 @@
                             <real value="250"/>
                             <real value="250"/>
                         </holdingPriorities>
+                        <connections>
+                            <outlet property="delegate" destination="-2" id="101499"/>
+                        </connections>
                     </splitView>
                 </subviews>
             </view>
-            <toolbar key="toolbar" implicitIdentifier="628AC581-FCCD-445C-A63E-70C875CE7A52" displayMode="iconAndLabel" sizeMode="regular" id="101088">
+            <toolbar key="toolbar" implicitIdentifier="628AC581-FCCD-445C-A63E-70C875CE7A52" displayMode="iconAndLabel" sizeMode="regular" id="101096">
                 <allowedToolbarItems>
-                    <toolbarItem implicitItemIdentifier="B6BDB09F-43EA-4891-ACD1-11D2E9706CC8" label="Zoom" paletteLabel="Zoom" id="101174">
+                    <toolbarItem implicitItemIdentifier="91D37AAB-54EA-4FE0-85C0-645B53749AB7" label="Zoom" paletteLabel="Zoom" id="101106">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="139" height="20"/>
-                        <size key="maxSize" width="143" height="25"/>
-                        <segmentedControl key="view" verticalHuggingPriority="750" id="101175">
-                            <rect key="frame" x="0.0" y="14" width="143" height="25"/>
+                        <size key="minSize" width="118" height="25"/>
+                        <size key="maxSize" width="130" height="25"/>
+                        <segmentedControl key="view" verticalHuggingPriority="750" id="101113">
+                            <rect key="frame" x="0.0" y="14" width="118" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="automatic" trackingMode="momentary" id="101176">
+                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="momentary" id="101114">
                                 <font key="font" metaFont="system"/>
                                 <segments>
-                                    <segment toolTip="Zoom Out" image="zoomOut" tag="-1"/>
-                                    <segment toolTip="Display at actual size" image="actualSize"/>
-                                    <segment toolTip="Zoom In" image="zoomIn" tag="1">
+                                    <segment toolTip="Zoom Out" image="zoomOutLionTemplate" width="38" tag="-1"/>
+                                    <segment toolTip="Display at actual size" image="actualSizeLionTemplate" width="38"/>
+                                    <segment toolTip="Zoom In" image="zoomInLionTemplate" width="38" tag="1">
                                         <nil key="label"/>
                                     </segment>
                                 </segments>
                             </segmentedCell>
                             <connections>
-                                <action selector="zoom:" target="101121" id="101194"/>
+                                <action selector="zoom:" target="101146" id="101159"/>
                             </connections>
                         </segmentedControl>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="CE6BA217-CC93-4E1B-BD21-ACEC2C9F0B1E" label="Zoom to Fit" paletteLabel="Zoom to Fit" id="101178">
+                    <toolbarItem implicitItemIdentifier="39CB5D84-5F5D-4C22-BA08-408A5F60576D" label="Zoom to Fit" paletteLabel="Zoom to Fit" id="101107">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="45" height="23"/>
-                        <size key="maxSize" width="45" height="25"/>
-                        <segmentedControl key="view" verticalHuggingPriority="750" id="101179">
-                            <rect key="frame" x="12" y="14" width="45" height="25"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="automatic" trackingMode="momentary" id="101180">
+                        <size key="minSize" width="38" height="25"/>
+                        <size key="maxSize" width="42" height="25"/>
+                        <segmentedControl key="view" verticalHuggingPriority="750" id="101111">
+                            <rect key="frame" x="16" y="14" width="38" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="momentary" id="101112">
                                 <font key="font" metaFont="system"/>
                                 <segments>
-                                    <segment toolTip="Zoom to fit" image="zoomToFit"/>
+                                    <segment toolTip="Zoom to fit" image="zoomToFitLionTemplate" width="36"/>
                                 </segments>
                             </segmentedCell>
                             <connections>
-                                <action selector="zoomImageToFit:" target="101121" id="101195"/>
+                                <action selector="zoomImageToFit:" target="101146" id="101157"/>
                             </connections>
                         </segmentedControl>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="8C5D995E-8BBD-4FF2-A09C-9F77851C0DD0" label="Crop" paletteLabel="Crop" id="101143">
+                    <toolbarItem implicitItemIdentifier="78568B1E-0553-42E9-91A7-3785F08B228D" label="Tool" paletteLabel="Tool" id="101098">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="71" height="25"/>
+                        <size key="maxSize" width="75" height="25"/>
+                        <segmentedControl key="view" verticalHuggingPriority="750" id="101119">
+                            <rect key="frame" x="0.0" y="14" width="71" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="101120">
+                                <font key="font" metaFont="system"/>
+                                <segments>
+                                    <segment toolTip="Move" image="grabLion" width="34" selected="YES" tag="1">
+                                        <nil key="label"/>
+                                    </segment>
+                                    <segment toolTip="Select" image="selectionLion" width="34" tag="2">
+                                        <nil key="label"/>
+                                    </segment>
+                                </segments>
+                            </segmentedCell>
+                            <connections>
+                                <action selector="changeToolMode:" target="-2" id="101218"/>
+                            </connections>
+                        </segmentedControl>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="8C5D995E-8BBD-4FF2-A09C-9F77851C0DD0" label="Crop" paletteLabel="Crop" id="101097">
                         <nil key="toolTip"/>
                         <size key="minSize" width="34" height="25"/>
                         <size key="maxSize" width="38" height="25"/>
-                        <segmentedControl key="view" verticalHuggingPriority="750" id="101144">
-                            <rect key="frame" x="0.0" y="14" width="38" height="25"/>
+                        <segmentedControl key="view" verticalHuggingPriority="750" id="101121">
+                            <rect key="frame" x="0.0" y="14" width="34" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="automatic" trackingMode="momentary" id="101145">
+                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="momentary" id="101122">
                                 <font key="font" metaFont="system"/>
                                 <segments>
                                     <segment image="cropLionTemplate" width="32"/>
                                 </segments>
                             </segmentedCell>
                             <connections>
-                                <action selector="crop:" target="101121" id="101197"/>
+                                <action selector="crop:" target="-1" id="101219"/>
                             </connections>
                         </segmentedControl>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="E4B33B23-E8B4-4089-855B-000EE73A1E51" label="Inspector" paletteLabel="Inspector" id="101182">
+                    <toolbarItem implicitItemIdentifier="85F22C9B-EE68-462F-8BDE-7FCBE97E5934" label="Inspector" paletteLabel="Inspector" id="101108">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="41" height="23"/>
-                        <size key="maxSize" width="45" height="25"/>
-                        <segmentedControl key="view" verticalHuggingPriority="750" id="101183">
-                            <rect key="frame" x="6" y="14" width="45" height="25"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="automatic" trackingMode="momentary" id="101184">
+                        <size key="minSize" width="32" height="25"/>
+                        <size key="maxSize" width="36" height="25"/>
+                        <segmentedControl key="view" verticalHuggingPriority="750" id="101109">
+                            <rect key="frame" x="13" y="14" width="32" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="momentary" id="101110">
                                 <font key="font" metaFont="system"/>
                                 <segments>
-                                    <segment toolTip="Show the Inspector" image="NSInfo"/>
+                                    <segment toolTip="Show the Inspector" image="inspectorLion" width="30"/>
                                 </segments>
                             </segmentedCell>
                             <connections>
-                                <action selector="toggleShowInspector:" target="-1" id="101185"/>
+                                <action selector="toggleShowImageInspector:" target="-1" id="101604"/>
                             </connections>
                         </segmentedControl>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="29816EF0-03B8-47FA-9F2A-B81048C3DF48" label="Play" paletteLabel="Play" id="101186">
+                    <toolbarItem implicitItemIdentifier="B8A4CD4A-52FE-4AD8-AB40-4C16C331E693" label="Play" paletteLabel="Play" id="101100">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="31" height="23"/>
-                        <size key="maxSize" width="45" height="25"/>
-                        <segmentedControl key="view" verticalHuggingPriority="750" id="101187">
-                            <rect key="frame" x="0.0" y="14" width="45" height="25"/>
+                        <size key="minSize" width="32" height="25"/>
+                        <size key="maxSize" width="36" height="25"/>
+                        <segmentedControl key="view" verticalHuggingPriority="750" id="101115">
+                            <rect key="frame" x="0.0" y="14" width="32" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="automatic" trackingMode="momentary" id="101188">
+                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="momentary" id="101116">
                                 <font key="font" metaFont="system"/>
                                 <segments>
-                                    <segment toolTip="Play the animated image" image="overlayPlay"/>
+                                    <segment toolTip="Play the animated image" image="NSRightFacingTriangleTemplate" width="30"/>
                                 </segments>
                             </segmentedCell>
                             <connections>
-                                <action selector="togglePlayAnimation:" target="-1" id="101189"/>
+                                <action selector="togglePlayAnimation:" target="-1" id="101181"/>
                             </connections>
                         </segmentedControl>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="A95BABCA-A62C-48A1-BEA0-6C8263979474" label="View" paletteLabel="View" id="101190">
-                        <nil key="toolTip"/>
-                        <size key="minSize" width="31" height="23"/>
-                        <size key="maxSize" width="134" height="25"/>
-                        <segmentedControl key="view" verticalHuggingPriority="750" id="101191">
-                            <rect key="frame" x="0.0" y="14" width="134" height="25"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="automatic" trackingMode="selectAny" id="101192">
-                                <font key="font" metaFont="system"/>
-                                <segments>
-                                    <segment toolTip="View faces for environment map images" image="viewFaceBrowserCapsuleStyle" tag="1"/>
-                                    <segment toolTip="View timeline for animated images" image="viewFrameBrowserCapsuleStyle" selected="YES" tag="1">
-                                        <nil key="label"/>
-                                    </segment>
-                                    <segment toolTip="View mipmaps" image="viewMipmapBrowserCapsuleStyle" selected="YES" tag="2">
-                                        <nil key="label"/>
-                                    </segment>
-                                </segments>
-                            </segmentedCell>
-                            <connections>
-                                <action selector="changeViewMode:" target="-1" id="101193"/>
-                            </connections>
-                        </segmentedControl>
-                    </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="78568B1E-0553-42E9-91A7-3785F08B228D" label="Tool" paletteLabel="Tool" id="101142">
-                        <nil key="toolTip"/>
-                        <size key="minSize" width="75" height="25"/>
-                        <size key="maxSize" width="75" height="25"/>
-                        <segmentedControl key="view" verticalHuggingPriority="750" id="101146">
-                            <rect key="frame" x="0.0" y="14" width="75" height="25"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="automatic" trackingMode="selectOne" id="101147">
-                                <font key="font" metaFont="system"/>
-                                <segments>
-                                    <segment toolTip="Move" image="grabLion" width="34" selected="YES">
-                                        <nil key="label"/>
-                                    </segment>
-                                    <segment toolTip="Select" image="selectionLion" width="34" tag="1">
-                                        <nil key="label"/>
-                                    </segment>
-                                </segments>
-                            </segmentedCell>
-                        </segmentedControl>
-                    </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="A1680904-B6DD-4D54-918C-EEBEF527779C" label="View" paletteLabel="View" id="101141">
+                    <toolbarItem implicitItemIdentifier="A1680904-B6DD-4D54-918C-EEBEF527779C" label="View" paletteLabel="View" id="101099">
                         <nil key="toolTip"/>
                         <size key="minSize" width="112" height="25"/>
                         <size key="maxSize" width="116" height="25"/>
-                        <segmentedControl key="view" verticalHuggingPriority="750" id="101148">
-                            <rect key="frame" x="0.0" y="14" width="116" height="25"/>
+                        <segmentedControl key="view" verticalHuggingPriority="750" id="101117">
+                            <rect key="frame" x="0.0" y="14" width="112" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="automatic" trackingMode="selectAny" id="101149">
+                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectAny" id="101118">
                                 <font key="font" metaFont="system"/>
                                 <segments>
-                                    <segment toolTip="View faces for environment map images" image="viewFaceBrowser" width="36" tag="1"/>
+                                    <segment toolTip="View faces for environment map images" image="viewFaceBrowserTemplate" width="36" tag="1"/>
                                     <segment toolTip="View timeline for animated images" image="viewFrameBrowser" width="36" selected="YES" tag="1">
                                         <nil key="label"/>
                                     </segment>
@@ -431,46 +446,50 @@
                                     </segment>
                                 </segments>
                             </segmentedCell>
+                            <connections>
+                                <action selector="changeViewMode:" target="-1" id="101182"/>
+                            </connections>
                         </segmentedControl>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="101136"/>
-                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="101135"/>
-                    <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="101139"/>
-                    <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="101138"/>
-                    <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="101137"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="101104"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="101105"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="101101"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="101102"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="101103"/>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
-                    <toolbarItem reference="101174"/>
-                    <toolbarItem reference="101178"/>
-                    <toolbarItem reference="101135"/>
-                    <toolbarItem reference="101143"/>
-                    <toolbarItem reference="101135"/>
-                    <toolbarItem reference="101142"/>
-                    <toolbarItem reference="101135"/>
-                    <toolbarItem reference="101186"/>
-                    <toolbarItem reference="101135"/>
-                    <toolbarItem reference="101182"/>
-                    <toolbarItem reference="101135"/>
-                    <toolbarItem reference="101190"/>
+                    <toolbarItem reference="101106"/>
+                    <toolbarItem reference="101107"/>
+                    <toolbarItem reference="101105"/>
+                    <toolbarItem reference="101097"/>
+                    <toolbarItem reference="101105"/>
+                    <toolbarItem reference="101098"/>
+                    <toolbarItem reference="101105"/>
+                    <toolbarItem reference="101100"/>
+                    <toolbarItem reference="101105"/>
+                    <toolbarItem reference="101108"/>
+                    <toolbarItem reference="101105"/>
+                    <toolbarItem reference="101099"/>
                 </defaultToolbarItems>
                 <connections>
-                    <outlet property="delegate" destination="-2" id="101196"/>
+                    <outlet property="delegate" destination="-2" id="101166"/>
                 </connections>
             </toolbar>
-            <contentBorderThickness minY="32"/>
+            <contentBorderThickness minY="28"/>
             <connections>
-                <outlet property="delegate" destination="-2" id="101164"/>
+                <outlet property="delegate" destination="-2" id="101174"/>
             </connections>
         </window>
+        <objectController id="101348" userLabel="facesZoomMediator">
+            <declaredKeys>
+                <string>zoomValue</string>
+            </declaredKeys>
+            <connections>
+                <outlet property="content" destination="101191" id="101349"/>
+            </connections>
+        </objectController>
         <menu id="100304" userLabel="browserViewMenu">
             <items>
-                <menuItem title="Open in New Window" id="100305">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="openInNewWindow:" target="-1" id="100358"/>
-                    </connections>
-                </menuItem>
-                <menuItem isSeparatorItem="YES" id="100308"/>
                 <menuItem title="Copy" id="101070">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
@@ -509,29 +528,10 @@
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem isSeparatorItem="YES" id="101069"/>
-                <menuItem title="Send to Mail…" id="100307">
+                <menuItem title="Remove Mipmaps" id="101605">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="sendImageTo:" target="-1" id="100360"/>
-                    </connections>
-                </menuItem>
-                <menuItem title="Send to iPhoto…" id="100310">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="sendImageTo:" target="-1" id="100361"/>
-                    </connections>
-                </menuItem>
-                <menuItem title="Send to Preview…" id="100311">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="sendImageTo:" target="-1" id="100362"/>
-                    </connections>
-                </menuItem>
-                <menuItem title="Send to Photoshop…" id="100312">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="sendImageTo:" target="-1" id="100363"/>
+                        <action selector="removeMipmaps:" target="-1" id="101606"/>
                     </connections>
                 </menuItem>
             </items>
@@ -544,11 +544,25 @@
                 <string>autoresizes</string>
                 <string>zoomFactor</string>
             </declaredKeys>
+            <connections>
+                <outlet property="content" destination="101146" id="101335"/>
+            </connections>
         </objectController>
         <objectController id="100589" userLabel="frameZoomMediator">
             <declaredKeys>
-                <string>zoomFactor</string>
+                <string>zoomValue</string>
             </declaredKeys>
+            <connections>
+                <outlet property="content" destination="101152" id="101336"/>
+            </connections>
+        </objectController>
+        <objectController id="101500" userLabel="mipmapsZoomMediator">
+            <declaredKeys>
+                <string>zoomValue</string>
+            </declaredKeys>
+            <connections>
+                <outlet property="content" destination="101144" id="101502"/>
+            </connections>
         </objectController>
         <objectController objectClassName="TKImageDocument" id="100024" userLabel="mediator">
             <declaredKeys>
@@ -562,42 +576,548 @@
                 <binding destination="-2" name="contentObject" keyPath="self" id="100026"/>
             </connections>
         </objectController>
-        <window title="Normal Map" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" frameAutosaveName="normalMapPanel" animationBehavior="default" id="101198" userLabel="normalMapPanel" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES" HUD="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="12" width="344" height="498"/>
+        <window title="Normal Map" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="normalMapPanel" animationBehavior="default" id="101222" userLabel="normalMapPanel" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" utility="YES" HUD="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
+            <rect key="contentRect" x="376" y="684" width="273" height="374"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
-            <view key="contentView" id="101199">
-                <rect key="frame" x="0.0" y="0.0" width="344" height="498"/>
+            <value key="minSize" type="size" width="273" height="374"/>
+            <value key="maxSize" type="size" width="273" height="374"/>
+            <view key="contentView" id="101223">
+                <rect key="frame" x="0.0" y="0.0" width="273" height="374"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <slider verticalHuggingPriority="750" id="101202">
-                        <rect key="frame" x="203" y="212" width="96" height="21"/>
+                    <textField verticalHuggingPriority="750" id="101226">
+                        <rect key="frame" x="112" y="324" width="70" height="19"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="101203"/>
-                    </slider>
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="101227">
+                            <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" minimumFractionDigits="3" maximumFractionDigits="6" id="101234"/>
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <binding destination="101235" name="value" keyPath="selection.redScale" id="101238"/>
+                        </connections>
+                    </textField>
+                    <textField verticalHuggingPriority="750" id="101228">
+                        <rect key="frame" x="17" y="351" width="138" height="14"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Height Evaluation Factor:" id="101229">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" id="101230">
+                        <rect key="frame" x="46" y="326" width="61" height="14"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Red:" id="101231">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" id="101232">
+                        <rect key="frame" x="184" y="322" width="15" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="101233">
+                            <font key="font" metaFont="smallSystem"/>
+                        </stepperCell>
+                        <connections>
+                            <binding destination="101235" name="value" keyPath="selection.redScale" id="101239"/>
+                        </connections>
+                    </stepper>
+                    <textField verticalHuggingPriority="750" id="101240">
+                        <rect key="frame" x="112" y="297" width="70" height="19"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="101245">
+                            <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" minimumFractionDigits="3" maximumFractionDigits="6" id="101246"/>
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <binding destination="101235" name="value" keyPath="selection.greenScale" id="101267"/>
+                        </connections>
+                    </textField>
+                    <textField verticalHuggingPriority="750" id="101241">
+                        <rect key="frame" x="46" y="299" width="61" height="14"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Green:" id="101244">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" id="101242">
+                        <rect key="frame" x="184" y="295" width="15" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="101243">
+                            <font key="font" metaFont="smallSystem"/>
+                        </stepperCell>
+                        <connections>
+                            <binding destination="101235" name="value" keyPath="selection.greenScale" id="101268"/>
+                        </connections>
+                    </stepper>
+                    <textField verticalHuggingPriority="750" id="101249">
+                        <rect key="frame" x="112" y="270" width="70" height="19"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="101254">
+                            <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" minimumFractionDigits="3" maximumFractionDigits="6" id="101255"/>
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <binding destination="101235" name="value" keyPath="selection.blueScale" id="101269"/>
+                        </connections>
+                    </textField>
+                    <textField verticalHuggingPriority="750" id="101250">
+                        <rect key="frame" x="46" y="272" width="61" height="14"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Blue:" id="101253">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" id="101251">
+                        <rect key="frame" x="184" y="268" width="15" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="101252">
+                            <font key="font" metaFont="smallSystem"/>
+                        </stepperCell>
+                        <connections>
+                            <binding destination="101235" name="value" keyPath="selection.blueScale" id="101270"/>
+                        </connections>
+                    </stepper>
+                    <textField verticalHuggingPriority="750" id="101258">
+                        <rect key="frame" x="112" y="243" width="70" height="19"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="101263">
+                            <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" minimumFractionDigits="3" maximumFractionDigits="6" id="101264"/>
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <binding destination="101235" name="value" keyPath="selection.alphaScale" id="101271"/>
+                        </connections>
+                    </textField>
+                    <textField verticalHuggingPriority="750" id="101259">
+                        <rect key="frame" x="46" y="245" width="61" height="14"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Alpha:" id="101262">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" id="101260">
+                        <rect key="frame" x="184" y="241" width="15" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="101261">
+                            <font key="font" metaFont="smallSystem"/>
+                        </stepperCell>
+                        <connections>
+                            <binding destination="101235" name="value" keyPath="selection.alphaScale" id="101272"/>
+                        </connections>
+                    </stepper>
+                    <textField verticalHuggingPriority="750" id="101273">
+                        <rect key="frame" x="17" y="211" width="183" height="14"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Normal Map Conversion Filter:" id="101274">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" id="101275">
+                        <rect key="frame" x="112" y="184" width="70" height="19"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="101301">
+                            <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" minimumFractionDigits="3" maximumFractionDigits="6" id="101302"/>
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <binding destination="101235" name="value" keyPath="selection.small" id="101317"/>
+                        </connections>
+                    </textField>
+                    <textField verticalHuggingPriority="750" id="101276">
+                        <rect key="frame" x="46" y="186" width="61" height="14"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Small:" id="101300">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" id="101277">
+                        <rect key="frame" x="184" y="182" width="15" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="101299">
+                            <font key="font" metaFont="smallSystem"/>
+                        </stepperCell>
+                        <connections>
+                            <binding destination="101235" name="value" keyPath="selection.small" id="101318"/>
+                        </connections>
+                    </stepper>
+                    <textField verticalHuggingPriority="750" id="101278">
+                        <rect key="frame" x="112" y="157" width="70" height="19"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="101297">
+                            <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" minimumFractionDigits="3" maximumFractionDigits="6" id="101298"/>
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <binding destination="101235" name="value" keyPath="selection.medium" id="101319"/>
+                        </connections>
+                    </textField>
+                    <textField verticalHuggingPriority="750" id="101279">
+                        <rect key="frame" x="46" y="159" width="61" height="14"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Medium:" id="101296">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" id="101280">
+                        <rect key="frame" x="184" y="155" width="15" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="101295">
+                            <font key="font" metaFont="smallSystem"/>
+                        </stepperCell>
+                        <connections>
+                            <binding destination="101235" name="value" keyPath="selection.medium" id="101320"/>
+                        </connections>
+                    </stepper>
+                    <textField verticalHuggingPriority="750" id="101281">
+                        <rect key="frame" x="112" y="130" width="70" height="19"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="101293">
+                            <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" minimumFractionDigits="3" maximumFractionDigits="6" id="101294"/>
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <binding destination="101235" name="value" keyPath="selection.big" id="101321"/>
+                        </connections>
+                    </textField>
+                    <textField verticalHuggingPriority="750" id="101282">
+                        <rect key="frame" x="46" y="132" width="61" height="14"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Big:" id="101292">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" id="101283">
+                        <rect key="frame" x="184" y="128" width="15" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="101291">
+                            <font key="font" metaFont="smallSystem"/>
+                        </stepperCell>
+                        <connections>
+                            <binding destination="101235" name="value" keyPath="selection.big" id="101322"/>
+                        </connections>
+                    </stepper>
+                    <textField verticalHuggingPriority="750" id="101284">
+                        <rect key="frame" x="112" y="103" width="70" height="19"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="101289">
+                            <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" minimumFractionDigits="3" maximumFractionDigits="6" id="101290"/>
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <binding destination="101235" name="value" keyPath="selection.large" id="101323"/>
+                        </connections>
+                    </textField>
+                    <textField verticalHuggingPriority="750" id="101285">
+                        <rect key="frame" x="46" y="105" width="61" height="14"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Large:" id="101288">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" id="101286">
+                        <rect key="frame" x="184" y="101" width="15" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="101287">
+                            <font key="font" metaFont="smallSystem"/>
+                        </stepperCell>
+                        <connections>
+                            <binding destination="101235" name="value" keyPath="selection.large" id="101324"/>
+                        </connections>
+                    </stepper>
+                    <button verticalHuggingPriority="750" id="101311">
+                        <rect key="frame" x="20" y="18" width="84" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="roundRect" title="Preview" bezelStyle="roundedRect" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="101312">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="previewNormalMap:" target="-2" id="101315"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" id="101313">
+                        <rect key="frame" x="175" y="18" width="78" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="roundRect" title="Apply" bezelStyle="roundedRect" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="101314">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="applyNormalMap:" target="-2" id="101316"/>
+                        </connections>
+                    </button>
+                    <popUpButton verticalHuggingPriority="750" id="101325">
+                        <rect key="frame" x="17" y="59" width="100" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <popUpButtonCell key="cell" type="push" title="Clamp" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="101328" id="101326">
+                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                            <menu key="menu" title="OtherViews" id="101327">
+                                <items>
+                                    <menuItem title="Clamp" state="on" id="101328"/>
+                                    <menuItem title="Repeat" tag="1" id="101329"/>
+                                    <menuItem title="Mirror" tag="2" id="101330"/>
+                                </items>
+                            </menu>
+                        </popUpButtonCell>
+                        <connections>
+                            <binding destination="101235" name="selectedTag" keyPath="selection.normalMapWrapMode" id="101334"/>
+                        </connections>
+                    </popUpButton>
+                    <button id="101331">
+                        <rect key="frame" x="126" y="62" width="129" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Normalize Mipmaps" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="101332">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="101235" name="value" keyPath="selection.normalizeMipmaps" id="101333"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
+        </window>
+        <objectController id="101235" userLabel="normalMapMediator">
+            <declaredKeys>
+                <string>redScale</string>
+                <string>greenScale</string>
+                <string>blueScale</string>
+                <string>alphaScale</string>
+                <string>small</string>
+                <string>medium</string>
+                <string>big</string>
+                <string>large</string>
+                <string>normalMapWrapMode</string>
+                <string>normalizeMipmaps</string>
+            </declaredKeys>
             <connections>
-                <outlet property="delegate" destination="-2" id="101200"/>
+                <binding destination="-2" name="contentObject" keyPath="self" id="101237"/>
             </connections>
+        </objectController>
+        <window title="Grayscale" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="101504" userLabel="grayscalePanel" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" utility="YES" HUD="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
+            <rect key="contentRect" x="376" y="875" width="273" height="183"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
+            <value key="minSize" type="size" width="273" height="183"/>
+            <value key="maxSize" type="size" width="273" height="374"/>
+            <view key="contentView" id="101505">
+                <rect key="frame" x="0.0" y="0.0" width="273" height="183"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField verticalHuggingPriority="750" id="101535">
+                        <rect key="frame" x="112" y="133" width="70" height="19"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="101536">
+                            <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" minimumFractionDigits="3" maximumFractionDigits="6" id="101537"/>
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <binding destination="101235" name="value" keyPath="selection.redScale" id="101582"/>
+                        </connections>
+                    </textField>
+                    <textField verticalHuggingPriority="750" id="101534">
+                        <rect key="frame" x="17" y="160" width="138" height="14"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Height Evaluation Factor:" id="101538">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" id="101533">
+                        <rect key="frame" x="46" y="135" width="61" height="14"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Red:" id="101539">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" id="101532">
+                        <rect key="frame" x="184" y="131" width="15" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="101540">
+                            <font key="font" metaFont="smallSystem"/>
+                        </stepperCell>
+                        <connections>
+                            <binding destination="101235" name="value" keyPath="selection.redScale" id="101585"/>
+                        </connections>
+                    </stepper>
+                    <textField verticalHuggingPriority="750" id="101531">
+                        <rect key="frame" x="112" y="106" width="70" height="19"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="101541">
+                            <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" minimumFractionDigits="3" maximumFractionDigits="6" id="101542"/>
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <binding destination="101235" name="value" keyPath="selection.greenScale" id="101591"/>
+                        </connections>
+                    </textField>
+                    <textField verticalHuggingPriority="750" id="101530">
+                        <rect key="frame" x="46" y="108" width="61" height="14"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Green:" id="101543">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" id="101529">
+                        <rect key="frame" x="184" y="104" width="15" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="101544">
+                            <font key="font" metaFont="smallSystem"/>
+                        </stepperCell>
+                        <connections>
+                            <binding destination="101235" name="value" keyPath="selection.greenScale" id="101590"/>
+                        </connections>
+                    </stepper>
+                    <textField verticalHuggingPriority="750" id="101528">
+                        <rect key="frame" x="112" y="79" width="70" height="19"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="101545">
+                            <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" minimumFractionDigits="3" maximumFractionDigits="6" id="101546"/>
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <binding destination="101235" name="value" keyPath="selection.blueScale" id="101580"/>
+                        </connections>
+                    </textField>
+                    <textField verticalHuggingPriority="750" id="101527">
+                        <rect key="frame" x="46" y="81" width="61" height="14"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Blue:" id="101547">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" id="101526">
+                        <rect key="frame" x="184" y="77" width="15" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="101548">
+                            <font key="font" metaFont="smallSystem"/>
+                        </stepperCell>
+                        <connections>
+                            <binding destination="101235" name="value" keyPath="selection.blueScale" id="101583"/>
+                        </connections>
+                    </stepper>
+                    <textField verticalHuggingPriority="750" id="101525">
+                        <rect key="frame" x="112" y="52" width="70" height="19"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="101549">
+                            <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" minimumFractionDigits="3" maximumFractionDigits="6" id="101550"/>
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <binding destination="101235" name="value" keyPath="selection.alphaScale" id="101596"/>
+                        </connections>
+                    </textField>
+                    <textField verticalHuggingPriority="750" id="101524">
+                        <rect key="frame" x="46" y="54" width="61" height="14"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Alpha:" id="101551">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" id="101523">
+                        <rect key="frame" x="184" y="50" width="15" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="101552">
+                            <font key="font" metaFont="smallSystem"/>
+                        </stepperCell>
+                        <connections>
+                            <binding destination="101235" name="value" keyPath="selection.alphaScale" id="101584"/>
+                        </connections>
+                    </stepper>
+                    <button verticalHuggingPriority="750" id="101509">
+                        <rect key="frame" x="20" y="18" width="84" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="roundRect" title="Preview" bezelStyle="roundedRect" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="101570">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="previewGrayscale:" target="-2" id="101601"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" id="101508">
+                        <rect key="frame" x="175" y="18" width="78" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="roundRect" title="Apply" bezelStyle="roundedRect" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="101571">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="applyGrayscale:" target="-2" id="101602"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
         </window>
     </objects>
     <resources>
-        <image name="NSInfo" width="32" height="32"/>
-        <image name="actualSize" width="29" height="14"/>
+        <image name="NSRightFacingTriangleTemplate" width="9" height="12"/>
+        <image name="actualSizeLionTemplate" width="18" height="18"/>
         <image name="cropLionTemplate" width="20" height="18"/>
         <image name="grabLion" width="18" height="18"/>
-        <image name="overlayPlay" width="29" height="29"/>
+        <image name="inspectorLion" width="18" height="18"/>
         <image name="selectionLion" width="16" height="18"/>
-        <image name="viewFaceBrowser" width="16" height="16"/>
-        <image name="viewFaceBrowserCapsuleStyle" width="27" height="24"/>
+        <image name="viewFaceBrowserTemplate" width="16" height="16"/>
         <image name="viewFrameBrowser" width="16" height="16"/>
-        <image name="viewFrameBrowserCapsuleStyle" width="27" height="24"/>
         <image name="viewMipmapBrowser" width="16" height="16"/>
-        <image name="viewMipmapBrowserCapsuleStyle" width="27" height="24"/>
-        <image name="zoomIn" width="29" height="19"/>
-        <image name="zoomOut" width="29" height="9"/>
-        <image name="zoomToFit" width="23" height="19"/>
+        <image name="zoomInLionTemplate" width="18" height="18"/>
+        <image name="zoomOutLionTemplate" width="18" height="18"/>
+        <image name="zoomToFitLionTemplate" width="20" height="18"/>
     </resources>
 </document>

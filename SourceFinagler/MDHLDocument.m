@@ -277,7 +277,7 @@ static NSInteger copyTag = 0;
 }
 
 - (NSString *)windowNibName {
-	return @"MDHLDocumentLion";
+	return @"MDHLDocument";
 }
 
 - (void)windowControllerDidLoadNib:(NSWindowController *)aController {

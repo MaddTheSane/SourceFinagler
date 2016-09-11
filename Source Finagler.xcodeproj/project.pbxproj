@@ -141,7 +141,6 @@
 		C12F10D8147B75AA00F398DE /* VTF.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1B95275124E73B200E83451 /* VTF.framework */; };
 		C12F35F612D7E24B00D28F26 /* TKDocumentController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C1249E123A0967004674B4 /* TKDocumentController.m */; };
 		C12F362212D7E45000D28F26 /* TKImageDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = C169D9D0128A0A4A00653B05 /* TKImageDocument.m */; };
-		C12F362312D7E45100D28F26 /* TKImageDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = C101A6D6125281C700BD8091 /* TKImageDocument.xib */; };
 		C12F362412D7E45400D28F26 /* TKImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C12C8DF3129226E000C8E667 /* TKImageView.m */; };
 		C12F362F12D7E46400D28F26 /* allDefaultPresets.plist in Resources */ = {isa = PBXBuildFile; fileRef = C145B29F12C034AC005D7E21 /* allDefaultPresets.plist */; };
 		C12F363212D7E46800D28F26 /* TKImageExportPreviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C155939912B71F1C00FD0684 /* TKImageExportPreviewView.xib */; };
@@ -286,7 +285,7 @@
 		C19EB1021455768A0021185E /* TKImageInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = C19EB1011455768A0021185E /* TKImageInspector.xib */; };
 		C1A2DDD413D3B927001ABB83 /* TKImageExportPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A2DDD313D3B927001ABB83 /* TKImageExportPreviewView.m */; };
 		C1A2DDE213D3BF16001ABB83 /* TKImageExportPreviewOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A2DDE113D3BF16001ABB83 /* TKImageExportPreviewOperation.m */; };
-		C1A92F90143948F200AFAF4F /* TKImageDocumentLion.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1A92F8E143948F200AFAF4F /* TKImageDocumentLion.xib */; };
+		C1A92F90143948F200AFAF4F /* TKImageDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1A92F8E143948F200AFAF4F /* TKImageDocument.xib */; };
 		C1AF8A8512CE653F00027B75 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C1C12548123A0EC6004674B4 /* Localizable.strings */; };
 		C1B95374124E73EC00E83451 /* Error.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1B95340124E73EC00E83451 /* Error.cpp */; };
 		C1B95375124E73EC00E83451 /* Error.h in Headers */ = {isa = PBXBuildFile; fileRef = C1B95341124E73EC00E83451 /* Error.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -427,7 +426,6 @@
 		C1C2C502127CBCA0003B24F6 /* MDCopyOperationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1C124A9123A0A0C004674B4 /* MDCopyOperationView.xib */; };
 		C1C2C503127CBCA0003B24F6 /* MDCopyOperationWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1C124AB123A0A0C004674B4 /* MDCopyOperationWindow.xib */; };
 		C1C2C504127CBCA0003B24F6 /* MDHLColumnPreviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1C124AD123A0A0C004674B4 /* MDHLColumnPreviewView.xib */; };
-		C1C2C506127CBCA0003B24F6 /* MDHLDocumentSnowLeopard.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1C124B3123A0A0C004674B4 /* MDHLDocumentSnowLeopard.xib */; };
 		C1C2C507127CBCA0003B24F6 /* MDInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1C124B5123A0A0C004674B4 /* MDInspector.xib */; };
 		C1C2C508127CBCA0003B24F6 /* MDQuickLook.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1C124B7123A0A0C004674B4 /* MDQuickLook.xib */; };
 		C1C2C509127CBCA0003B24F6 /* MDViewOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1C124B9123A0A0C004674B4 /* MDViewOptions.xib */; };
@@ -527,7 +525,7 @@
 		C1D00791160D302C0045EEC3 /* TKAppController.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1D00790160D302C0045EEC3 /* TKAppController.plist */; };
 		C1D00794160D320C0045EEC3 /* TKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1D00793160D320C0045EEC3 /* TKViewController.m */; };
 		C1D4496712602E9900A027EF /* decompress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1D4496612602E9900A027EF /* decompress.cpp */; };
-		C1D5B023147BE71F00B0599B /* MDHLDocumentLion.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1D5B01E147BE6F200B0599B /* MDHLDocumentLion.xib */; };
+		C1D5B023147BE71F00B0599B /* MDHLDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1D5B01E147BE6F200B0599B /* MDHLDocument.xib */; };
 		C1E1503116286A01000CBA7A /* TKPrivateInterfaces.h in Headers */ = {isa = PBXBuildFile; fileRef = C1E1503016286A01000CBA7A /* TKPrivateInterfaces.h */; };
 		C1E6DABF12BC22BA009D8AD6 /* TKImage.h in Headers */ = {isa = PBXBuildFile; fileRef = C17025F6128486BE0056A23D /* TKImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C1E6DAC012BC22BB009D8AD6 /* TKImage.m in Sources */ = {isa = PBXBuildFile; fileRef = C17025F7128486BE0056A23D /* TKImage.m */; };
@@ -998,7 +996,6 @@
 		55F82CD31D7BACD900D6DAC9 /* TKValueAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKValueAdditions.h; sourceTree = "<group>"; };
 		55F82CD41D7BACD900D6DAC9 /* TKValueAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKValueAdditions.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* SourceFinagler-Info.plist */ = {isa = PBXFileReference; explicitFileType = text.plist.info; fileEncoding = 4; name = "SourceFinagler-Info.plist"; path = "../SourceFinagler-Info.plist"; sourceTree = "<group>"; };
-		C101A6D7125281C700BD8091 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/TKImageDocument.xib; sourceTree = "<group>"; };
 		C1034A9111C5619C0054740E /* VSSteamManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSSteamManager.h; sourceTree = "<group>"; };
 		C1034A9211C5619C0054740E /* VSSteamManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSSteamManager.m; sourceTree = "<group>"; };
 		C103563611C5AF930054740E /* VSGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSGame.h; sourceTree = "<group>"; };
@@ -1290,7 +1287,7 @@
 		C1A2DDD313D3B927001ABB83 /* TKImageExportPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKImageExportPreviewView.m; sourceTree = "<group>"; };
 		C1A2DDE013D3BF16001ABB83 /* TKImageExportPreviewOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKImageExportPreviewOperation.h; sourceTree = "<group>"; };
 		C1A2DDE113D3BF16001ABB83 /* TKImageExportPreviewOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKImageExportPreviewOperation.m; sourceTree = "<group>"; };
-		C1A92F8F143948F200AFAF4F /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/TKImageDocumentLion.xib; sourceTree = "<group>"; };
+		C1A92F8F143948F200AFAF4F /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/TKImageDocument.xib; sourceTree = "<group>"; };
 		C1ABAB6712563BD800CAAFEB /* MDQuickLookPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDQuickLookPanel.h; sourceTree = "<group>"; };
 		C1ABAB6812563BD800CAAFEB /* MDQuickLookPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDQuickLookPanel.m; sourceTree = "<group>"; };
 		C1AF851912C6294B00027B75 /* TKFoundationAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKFoundationAdditions.m; sourceTree = "<group>"; };
@@ -1373,7 +1370,6 @@
 		C1C124AA123A0A0C004674B4 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MDCopyOperationView.xib; sourceTree = "<group>"; };
 		C1C124AC123A0A0C004674B4 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MDCopyOperationWindow.xib; sourceTree = "<group>"; };
 		C1C124AE123A0A0C004674B4 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MDHLColumnPreviewView.xib; sourceTree = "<group>"; };
-		C1C124B4123A0A0C004674B4 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MDHLDocumentSnowLeopard.xib; sourceTree = "<group>"; };
 		C1C124B6123A0A0C004674B4 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MDInspector.xib; sourceTree = "<group>"; };
 		C1C124B8123A0A0C004674B4 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MDQuickLook.xib; sourceTree = "<group>"; };
 		C1C124BA123A0A0C004674B4 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MDViewOptions.xib; sourceTree = "<group>"; };
@@ -1528,7 +1524,7 @@
 		C1D00793160D320C0045EEC3 /* TKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKViewController.m; sourceTree = "<group>"; };
 		C1D4494B12602E5100A027EF /* decompress */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = decompress; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1D4496612602E9900A027EF /* decompress.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = decompress.cpp; path = SourceFinagler/decompress.cpp; sourceTree = SOURCE_ROOT; };
-		C1D5B01F147BE6F200B0599B /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MDHLDocumentLion.xib; sourceTree = "<group>"; };
+		C1D5B01F147BE6F200B0599B /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MDHLDocument.xib; sourceTree = "<group>"; };
 		C1E1503016286A01000CBA7A /* TKPrivateInterfaces.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKPrivateInterfaces.h; sourceTree = "<group>"; };
 		C1E6DB0812BC2408009D8AD6 /* TextureKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureKit.h; sourceTree = "<group>"; };
 		C1E6DE6F12BC8CA1009D8AD6 /* packageIDs.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = packageIDs.txt; sourceTree = "<group>"; };
@@ -2199,8 +2195,7 @@
 			children = (
 				C11C5AC4126844E400B7E51E /* TKImageDocument.h */,
 				C169D9D0128A0A4A00653B05 /* TKImageDocument.m */,
-				C101A6D6125281C700BD8091 /* TKImageDocument.xib */,
-				C1A92F8E143948F200AFAF4F /* TKImageDocumentLion.xib */,
+				C1A92F8E143948F200AFAF4F /* TKImageDocument.xib */,
 				C13B4E721620EF5200D07CB3 /* TKImageRepAdditions.h */,
 				C13B4E731620EF5200D07CB3 /* TKImageRepAdditions.m */,
 				C1511734144305930042F13E /* model */,
@@ -2794,8 +2789,7 @@
 				C17D34F312791CCA00962584 /* HLPackageManager.m */,
 				C1C1269E123A7D6B004674B4 /* Abstract superclass */,
 				C1C1269F123A7D76004674B4 /* Concrete subclasses */,
-				C1C124B3123A0A0C004674B4 /* MDHLDocumentSnowLeopard.xib */,
-				C1D5B01E147BE6F200B0599B /* MDHLDocumentLion.xib */,
+				C1D5B01E147BE6F200B0599B /* MDHLDocument.xib */,
 				C1C124D3123A0A7C004674B4 /* Views */,
 				C1C12528123A0CA3004674B4 /* MDStash.h */,
 				C1C12529123A0CA3004674B4 /* MDStash.m */,
@@ -4464,7 +4458,6 @@
 				C1C2C503127CBCA0003B24F6 /* MDCopyOperationWindow.xib in Resources */,
 				55B9F2B81D7D1A0E00641709 /* Images.xcassets in Resources */,
 				C1C2C504127CBCA0003B24F6 /* MDHLColumnPreviewView.xib in Resources */,
-				C1C2C506127CBCA0003B24F6 /* MDHLDocumentSnowLeopard.xib in Resources */,
 				C1C2C507127CBCA0003B24F6 /* MDInspector.xib in Resources */,
 				C1C2C508127CBCA0003B24F6 /* MDQuickLook.xib in Resources */,
 				C1C2C509127CBCA0003B24F6 /* MDViewOptions.xib in Resources */,
@@ -4486,7 +4479,6 @@
 				C1C2C53C127CBCA0003B24F6 /* Source Addon Finagler.app in Resources */,
 				C1AF8A8512CE653F00027B75 /* Localizable.strings in Resources */,
 				C116FA0412D5549700551787 /* TKImageDocumentAccessoryView.xib in Resources */,
-				C12F362312D7E45100D28F26 /* TKImageDocument.xib in Resources */,
 				C12F362F12D7E46400D28F26 /* allDefaultPresets.plist in Resources */,
 				C12F363212D7E46800D28F26 /* TKImageExportPreviewView.xib in Resources */,
 				C12F363612D7E46C00D28F26 /* TKImageExportPanel.xib in Resources */,
@@ -4495,11 +4487,11 @@
 				C1351912139479C40074B5EA /* Acknowledgments.rtf in Resources */,
 				C1224DAA13B09351009AA0F4 /* SourceFinaglerAgent.app in Resources */,
 				55EF66A21D7B7DE800FFF7B2 /* TextureFinaglerImages.xcassets in Resources */,
-				C1A92F90143948F200AFAF4F /* TKImageDocumentLion.xib in Resources */,
+				C1A92F90143948F200AFAF4F /* TKImageDocument.xib in Resources */,
 				C122435417B9636800ADC195 /* TKVMTMaterialDocument.xib in Resources */,
 				C19B1FC114514BC2005F7902 /* TKGrayscaleFilter.cikernel in Resources */,
 				C19EB1021455768A0021185E /* TKImageInspector.xib in Resources */,
-				C1D5B023147BE71F00B0599B /* MDHLDocumentLion.xib in Resources */,
+				C1D5B023147BE71F00B0599B /* MDHLDocument.xib in Resources */,
 				C1770FDC1488CA4C00E6F651 /* TKModelDocument.xib in Resources */,
 				C1D00791160D302C0045EEC3 /* TKAppController.plist in Resources */,
 				C169F218160E30A6009F7C38 /* TKPrefs.plist in Resources */,
@@ -5144,14 +5136,6 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		C101A6D6125281C700BD8091 /* TKImageDocument.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C101A6D7125281C700BD8091 /* English */,
-			);
-			name = TKImageDocument.xib;
-			sourceTree = "<group>";
-		};
 		C122434C17B9623F00ADC195 /* TKMaterialPropertyViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -5258,12 +5242,12 @@
 			name = TKImageInspector.xib;
 			sourceTree = "<group>";
 		};
-		C1A92F8E143948F200AFAF4F /* TKImageDocumentLion.xib */ = {
+		C1A92F8E143948F200AFAF4F /* TKImageDocument.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				C1A92F8F143948F200AFAF4F /* English */,
 			);
-			name = TKImageDocumentLion.xib;
+			name = TKImageDocument.xib;
 			sourceTree = "<group>";
 		};
 		C1C124A7123A0A0C004674B4 /* TKAboutWindow.xib */ = {
@@ -5298,15 +5282,6 @@
 				C1C124AE123A0A0C004674B4 /* English */,
 			);
 			name = MDHLColumnPreviewView.xib;
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		C1C124B3123A0A0C004674B4 /* MDHLDocumentSnowLeopard.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C1C124B4123A0A0C004674B4 /* English */,
-			);
-			name = MDHLDocumentSnowLeopard.xib;
 			path = Resources;
 			sourceTree = "<group>";
 		};
@@ -5345,12 +5320,12 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
-		C1D5B01E147BE6F200B0599B /* MDHLDocumentLion.xib */ = {
+		C1D5B01E147BE6F200B0599B /* MDHLDocument.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				C1D5B01F147BE6F200B0599B /* English */,
 			);
-			name = MDHLDocumentLion.xib;
+			name = MDHLDocument.xib;
 			path = Resources;
 			sourceTree = "<group>";
 		};
