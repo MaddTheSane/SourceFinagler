@@ -26,43 +26,8 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray<NSValue*> *inRects, BOOL isFlipped)
 	}
 	return NO;
 }
-	
-	
-
-//@implementation NSURL (TKAdditions)
-//
-//- (BOOL)getFSRef:(FSRef *)anFSRef {
-//#if TK_DEBUG
-//	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-//#endif
-//	NSString *filePath = [self path];
-//	return [filePath getFSRef:anFSRef];
-//}
-//
-//@end
-
-
 
 @implementation NSString (TKAdditions)
-
-#if (TARGET_CPU_PPC || TARGET_CPU_X86) && MAC_OS_X_VERSION_MIN_REQUIRED <= MAC_OS_X_VERSION_10_4
-
-+ (NSString *)stringWithFSSpec:(const FSSpec *)anFSSpec {
-#if TK_DEBUG
-	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-#endif
-	OSStatus status = noErr;
-	FSRef fileRef;
-	
-	status = FSpMakeFSRef(anFSSpec, &fileRef);
-	
-	if (status == noErr) {
-		return [self stringWithFSRef:&fileRef];
-	} else {
-		return nil;
-	}
-}
-#endif
 
 + (nullable NSString *)stringWithFSRef:(const FSRef *)anFSRef error:(NSError *__nullable*__nullable)anError
 {
@@ -199,11 +164,8 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray<NSValue*> *inRects, BOOL isFlipped)
 				
 				prefix = [prefix substringToIndex:allowedPrefixLength];
 				filename = [prefix stringByAppendingString:suffix];
-				
 			}
-			
 		} else {
-			
 			NSString *suffix = [filename substringFromIndex:(pRange.location - 1)];
 			NSString *prefix = [filename substringToIndex:(pRange.location - 1)];
 			
@@ -214,12 +176,10 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray<NSValue*> *inRects, BOOL isFlipped)
 			prefix = [prefix substringToIndex:allowedPrefixLength];
 			
 			filename = [prefix stringByAppendingString:suffix];
-			
 		}
 		
 		if (![originalFilename isEqualToString:filename]) {
 			newFullPath = [self.stringByDeletingLastPathComponent stringByAppendingPathComponent:filename];
-			
 		} else {
 			newFullPath = self;
 		}
@@ -403,7 +363,18 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray<NSValue*> *inRects, BOOL isFlipped)
 
 
 - (NSArray *)sortDescriptorsForKey:(NSString *)key {
-	return [NSKeyedUnarchiver unarchiveObjectWithData:[self objectForKey:key]];
+	id obj = [self objectForKey:key];
+	if (![obj isKindOfClass:[NSData class]]) {
+		return nil;
+	}
+	
+	NSArray *toRet = [NSKeyedUnarchiver unarchiveObjectWithData:obj];
+	for (id obj2 in toRet) {
+		if (![obj2 isKindOfClass:[NSSortDescriptor class]]) {
+			return nil;
+		}
+	}
+	return toRet;
 }
 
 @end
@@ -411,7 +382,18 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray<NSValue*> *inRects, BOOL isFlipped)
 @implementation NSDictionary (TKSortDescriptorAdditions)
 
 - (NSArray *)sortDescriptorsForKey:(NSString *)key {
-	return [NSKeyedUnarchiver unarchiveObjectWithData:self[key]];
+	id obj = self[key];
+	if (![obj isKindOfClass:[NSData class]]) {
+		return nil;
+	}
+	
+	NSArray *toRet = [NSKeyedUnarchiver unarchiveObjectWithData:obj];
+	for (id obj2 in toRet) {
+		if (![obj2 isKindOfClass:[NSSortDescriptor class]]) {
+			return nil;
+		}
+	}
+	return toRet;
 }
 
 @end
@@ -695,7 +677,7 @@ NSString *NSStringForAppleScriptListFromPaths(NSArray<NSString*> *paths) {
 
 
 ////////////////////////////////////////////////////////////////
-////    NSMutableDictionary CATEGORY FOR THREAD-SAFETY
+#pragma mark    NSMutableDictionary CATEGORY FOR THREAD-SAFETY
 ////////////////////////////////////////////////////////////////
 
 
@@ -790,7 +772,7 @@ NSString *NSStringForAppleScriptListFromPaths(NSArray<NSString*> *paths) {
 		id copiedObject = [object deepMutableCopy];
 		[newArray addObject:copiedObject];
 	}
-    return newArray;
+	return [[self class] arrayWithArray:newArray];
 }
 	
 @end
@@ -811,7 +793,7 @@ NSString *NSStringForAppleScriptListFromPaths(NSArray<NSString*> *paths) {
 		id copiedObject = [object deepMutableCopy];
 		[newSet addObject:copiedObject];
 	}
-    return newSet;
+	return [[self class] setWithSet:newSet];
 }
 	
 @end
@@ -1193,10 +1175,6 @@ NSString *NSStringForAppleScriptListFromPaths(NSArray<NSString*> *paths) {
 	
 }
 
-
-
-
 @end
 
 #endif
-

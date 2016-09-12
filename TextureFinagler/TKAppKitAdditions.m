@@ -428,7 +428,7 @@ static NSView *blankView() {
 		if (URL)
 			[URLs addObject:URL];
 	}
-	[[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:URLs];
+	[self activateFileViewerSelectingURLs:URLs];
 	return YES;
 }
 
@@ -486,18 +486,8 @@ static NSView *blankView() {
 	if (outError) *outError = nil;
 	
 	if (path) {
-		FSRef itemRef;
-		if ([path getFSRef:&itemRef error:outError]) {
-			LSApplicationParameters appParameters = {0, kLSLaunchDefaults, &itemRef, NULL, NULL, (argv ? (__bridge CFArrayRef)argv : NULL), NULL };
-			OSStatus status = noErr;
-			status = LSOpenApplication(&appParameters, NULL);
-			
-			if (status != noErr) {
-				success = NO;
-				NSLog(@"[%@ %@] LSOpenApplication() returned %d for %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), (int)status, path);
-				if (outError) *outError = [NSError errorWithDomain:NSOSStatusErrorDomain code:status userInfo:nil];
-			}
-		}
+		//NSWorkspace launchApplicationAtURL:options:configuration:error
+		success = [self launchApplicationAtURL:[NSURL fileURLWithPath:path] options:NSWorkspaceLaunchDefault configuration:@{NSWorkspaceLaunchConfigurationArguments: argv ?: @[]} error:outError] != nil;
 	}
 	return success;
 }
