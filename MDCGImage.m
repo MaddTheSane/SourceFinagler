@@ -6,6 +6,8 @@
 //  Copyright 2010 Mark Douma LLC. All rights reserved.
 //
 
+#include <math.h>
+#include <tgmath.h>
 #include "MDCGImage.h"
 
 #define MD_DEBUG 1
@@ -19,7 +21,7 @@ CGImageRef MDCGImageCreateCopyWithSize(CGImageRef imageRef, CGSize size) {
 	//	size_t bitsPerComponent = CGImageGetBitsPerComponent(imageRef);
 	//	NSLog(@"old image %ld x %ld, bytesPerRow == %ld, bitsPerComponent == %lu; newImage == %f x %f, newBytesPerRow == %ld, adjustedNewBytesPerRow == %f", CGImageGetWidth(imageRef), CGImageGetHeight(imageRef),  bytesPerRow, bitsPerComponent, size.width, size.height, newBytesPerRow, adjustedNewBytesPerRow);
 	
-	void *bitmapData = malloc(adjustedNewBytesPerRow * size.height);
+	void *bitmapData = malloc(adjustedNewBytesPerRow * ceil(size.height));
 	if (bitmapData) {
 		//		CGBitmapInfo bitmapInfo = CGImageGetBitmapInfo(imageRef);
 		CGImageAlphaInfo alphaInfo = CGImageGetAlphaInfo(imageRef);

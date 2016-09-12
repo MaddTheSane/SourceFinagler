@@ -18,7 +18,7 @@
 extern "C" {
 #endif
 
-__private_extern CGImageRef MDCGImageCreateCopyWithSize(CGImageRef imageRef, CGSize size) CF_RETURNS_RETAINED;
+__private_extern CGImageRef __nullable MDCGImageCreateCopyWithSize(CGImageRef __nonnull imageRef, CGSize size) CF_RETURNS_RETAINED;
 	
 #ifdef __cplusplus
 }
