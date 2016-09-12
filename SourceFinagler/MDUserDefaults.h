@@ -10,9 +10,9 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_OPTIONS(NSUInteger, MDUserDefaultsDomain) {
-	MDUserDefaultsUserDomain = 1,
-	MDUserDefaultsLocalDomain = 2,
-	MDUserDefaultsLocalAndUserDomain = 3
+	MDUserDefaultsDomainUser = 1,
+	MDUserDefaultsDomainLocal = 2,
+	MDUserDefaultsDomainLocalAndUser = 3
 };
 
 NS_ASSUME_NONNULL_BEGIN

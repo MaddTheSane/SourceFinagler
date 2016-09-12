@@ -57,10 +57,10 @@ static MDUserDefaults *sharedUserDefaults = nil;
 	if (anIdentifier == nil)
 		anIdentifier = (NSString *)kCFPreferencesAnyApplication;
 	
-	if (aDomain == MDUserDefaultsLocalDomain) {
+	if (aDomain == MDUserDefaultsDomainLocal) {
 		CFPreferencesSetValue((CFStringRef)aKey, anObject, (CFStringRef)anIdentifier, kCFPreferencesAnyUser, kCFPreferencesCurrentHost);
 		CFPreferencesSynchronize((CFStringRef)anIdentifier, kCFPreferencesAnyUser, kCFPreferencesCurrentHost);
-	} else if (aDomain == MDUserDefaultsUserDomain) {
+	} else if (aDomain == MDUserDefaultsDomainUser) {
 		CFPreferencesSetValue((CFStringRef)aKey, anObject, (CFStringRef)anIdentifier, kCFPreferencesCurrentUser, kCFPreferencesAnyHost);
 		CFPreferencesSynchronize((CFStringRef)anIdentifier, kCFPreferencesCurrentUser, kCFPreferencesAnyHost);
 	}
@@ -74,16 +74,16 @@ static MDUserDefaults *sharedUserDefaults = nil;
 	
 	id anObject = nil;
 	
-	if (aDomain == MDUserDefaultsLocalDomain) {
+	if (aDomain == MDUserDefaultsDomainLocal) {
 		CFPreferencesSynchronize((CFStringRef)anIdentifier, kCFPreferencesAnyUser, kCFPreferencesCurrentHost);
-	} else if (aDomain == MDUserDefaultsUserDomain) {
+	} else if (aDomain == MDUserDefaultsDomainUser) {
 		CFPreferencesSynchronize((CFStringRef)anIdentifier, kCFPreferencesCurrentUser, kCFPreferencesAnyHost);
 	}
 	
-	if (aDomain == MDUserDefaultsLocalDomain) {
+	if (aDomain == MDUserDefaultsDomainLocal) {
 		anObject = [(id)CFPreferencesCopyValue((CFStringRef)aKey, (CFStringRef)anIdentifier, kCFPreferencesAnyUser, kCFPreferencesCurrentHost) autorelease];
 		
-	} else if (aDomain == MDUserDefaultsUserDomain) {
+	} else if (aDomain == MDUserDefaultsDomainUser) {
 		anObject = [(id)CFPreferencesCopyValue((CFStringRef)aKey, (CFStringRef)anIdentifier, kCFPreferencesCurrentUser, kCFPreferencesAnyHost) autorelease];
 	}
 	return anObject;
@@ -94,13 +94,13 @@ static MDUserDefaults *sharedUserDefaults = nil;
 	if (anIdentifier == nil)
 		anIdentifier = (NSString *)kCFPreferencesAnyApplication;
 	
-	if (aDomain == MDUserDefaultsLocalDomain) {
+	if (aDomain == MDUserDefaultsDomainLocal) {
 		CFPreferencesSetValue((CFStringRef)aKey, NULL, (CFStringRef)anIdentifier, kCFPreferencesAnyUser, kCFPreferencesCurrentHost);
 		CFPreferencesSynchronize((CFStringRef)anIdentifier, kCFPreferencesAnyUser, kCFPreferencesCurrentHost);
-	} else if (aDomain == MDUserDefaultsUserDomain) {
+	} else if (aDomain == MDUserDefaultsDomainUser) {
 		CFPreferencesSetValue((CFStringRef)aKey, NULL, (CFStringRef)anIdentifier, kCFPreferencesCurrentUser, kCFPreferencesAnyHost);
 		CFPreferencesSynchronize((CFStringRef)anIdentifier, kCFPreferencesCurrentUser, kCFPreferencesAnyHost);
-	} else if (aDomain == MDUserDefaultsLocalAndUserDomain) {
+	} else if (aDomain == MDUserDefaultsDomainLocalAndUser) {
 		CFPreferencesSetValue((CFStringRef)aKey, NULL, (CFStringRef)anIdentifier, kCFPreferencesAnyUser, kCFPreferencesCurrentHost);
 		CFPreferencesSynchronize((CFStringRef)anIdentifier, kCFPreferencesAnyUser, kCFPreferencesCurrentHost);
 		

@@ -108,7 +108,7 @@ static NSArray *appClassNames = nil;
 		
 		MDPlaySoundEffects = NO;
 		
-		NSNumber *enabled = [[MDUserDefaults standardUserDefaults] objectForKey:MDSystemSoundEffectsLeopardKey forAppIdentifier:MDSystemSoundEffectsLeopardBundleIdentifierKey inDomain:MDUserDefaultsUserDomain];
+		NSNumber *enabled = [[MDUserDefaults standardUserDefaults] objectForKey:MDSystemSoundEffectsLeopardKey forAppIdentifier:MDSystemSoundEffectsLeopardBundleIdentifierKey inDomain:MDUserDefaultsDomainUser];
 		
 		/*	enabled is an NSNumber, not a YES or NO value. If enabled is nil, we assume the default sound effect setting, which is enabled. Only if enabled is non-nil do we have an actual YES or NO answer to examine	*/
 		
@@ -127,10 +127,10 @@ static NSArray *appClassNames = nil;
 		MDUserDefaults *userDefaults = [MDUserDefaults standardUserDefaults];
 		
 		
-		finderListViewFontSize = [userDefaults objectForKey:@"StandardViewOptions" forAppIdentifier:TKFinderBundleIdentifierKey inDomain:MDUserDefaultsUserDomain][@"ListViewOptions"][@"FontSize"];
-		finderListViewIconSize = [userDefaults objectForKey:@"StandardViewOptions" forAppIdentifier:TKFinderBundleIdentifierKey inDomain:MDUserDefaultsUserDomain][@"ListViewOptions"][@"IconSize"];
+		finderListViewFontSize = [userDefaults objectForKey:@"StandardViewOptions" forAppIdentifier:TKFinderBundleIdentifierKey inDomain:MDUserDefaultsDomainUser][@"ListViewOptions"][@"FontSize"];
+		finderListViewIconSize = [userDefaults objectForKey:@"StandardViewOptions" forAppIdentifier:TKFinderBundleIdentifierKey inDomain:MDUserDefaultsDomainUser][@"ListViewOptions"][@"IconSize"];
 		
-		finderColumnViewFontAndIconSize = [userDefaults objectForKey:@"StandardViewOptions" forAppIdentifier:TKFinderBundleIdentifierKey inDomain:MDUserDefaultsUserDomain][@"ColumnViewOptions"][@"FontSize"];
+		finderColumnViewFontAndIconSize = [userDefaults objectForKey:@"StandardViewOptions" forAppIdentifier:TKFinderBundleIdentifierKey inDomain:MDUserDefaultsDomainUser][@"ColumnViewOptions"][@"FontSize"];
 		
 		defaultValues[MDDocumentViewModeKey] = @(MDListViewMode);
 		
