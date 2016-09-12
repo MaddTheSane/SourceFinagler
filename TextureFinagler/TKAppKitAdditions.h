@@ -9,6 +9,8 @@
 #import <Cocoa/Cocoa.h>
 #import <TextureKit/TKFoundationAdditions.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -21,7 +23,7 @@ extern NSString *NSStringFromDefaultsKeyPath(NSString *defaultsKey);
 
 	
 @interface NSAlert (TKAdditions)
-+ (NSAlert *)alertWithMessageText:(NSString *)messageText informativeText:(NSString *)informativeText firstButton:(NSString *)firstButtonTitle secondButton:(NSString *)secondButtonTitle thirdButton:(NSString *)thirdButtonTitle;
++ (NSAlert *)alertWithMessageText:(NSString *)messageText informativeText:(NSString *)informativeText firstButton:(nullable NSString *)firstButtonTitle secondButton:(nullable NSString *)secondButtonTitle thirdButton:(nullable NSString *)thirdButtonTitle;
 @end
 
 @interface NSBundle (TKAppKitAdditions)
@@ -42,13 +44,12 @@ extern NSString *NSStringFromDefaultsKeyPath(NSString *defaultsKey);
 @end
 
 @interface NSOpenPanel (TKAdditions)
-+ (NSOpenPanel *)openPanelWithTitle:(NSString *)title
-							message:(NSString *)message
-				  actionButtonTitle:(NSString *)actionButtonTitle
++ (NSOpenPanel *)openPanelWithTitle:(nullable NSString *)title
+							message:(nullable NSString *)message
+				  actionButtonTitle:(nullable NSString *)actionButtonTitle
 			allowsMultipleSelection:(BOOL)allowsMultipleSelection
 			   canChooseDirectories:(BOOL)canChooseDirectories
-						   delegate:(id <NSOpenSavePanelDelegate>)delegate;
-
+						   delegate:(nullable id <NSOpenSavePanelDelegate>)delegate;
 
 @end
 
@@ -84,9 +85,9 @@ extern NSString *NSStringFromDefaultsKeyPath(NSString *defaultsKey);
 - (BOOL)revealInFinder:(NSArray<NSString*> *)filePaths;
 
 - (NSImage *)iconForApplicationForURL:(NSURL *)aURL;
-- (NSString *)absolutePathForAppBundleWithIdentifier:(NSString *)aBundleIdentifier name:(NSString *)aNameWithDotApp creator:(NSString *)creator;
-- (BOOL)launchApplicationAtPath:(NSString *)path arguments:(NSArray<NSString*> *)argv error:(NSError **)outError;
+- (nullable NSString *)absolutePathForAppBundleWithIdentifier:(nullable NSString *)aBundleIdentifier name:(nullable NSString *)aNameWithDotApp creator:(nullable NSString *)creator;
+- (BOOL)launchApplicationAtPath:(NSString *)path arguments:(nullable NSArray<NSString*> *)argv error:(NSError *__nullable*__nullable)outError;
 
 @end
 
-
+NS_ASSUME_NONNULL_END

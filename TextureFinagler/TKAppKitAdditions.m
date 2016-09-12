@@ -19,7 +19,6 @@ NSString *NSStringFromDefaultsKeyPath(NSString *defaultsKey) {
 
 @implementation NSAlert (TKAdditions)
 
-
 + (NSAlert *)alertWithMessageText:(NSString *)messageText informativeText:(NSString *)informativeText firstButton:(NSString *)firstButtonTitle secondButton:(NSString *)secondButtonTitle thirdButton:(NSString *)thirdButtonTitle {
 	
 #if TK_DEBUG
@@ -61,8 +60,6 @@ NSString *NSStringFromDefaultsKeyPath(NSString *defaultsKey) {
 @end
 
 
-
-
 @implementation NSColor (TKAdditions)
 
 - (NSString *)hexValue {
@@ -79,9 +76,9 @@ NSString *NSStringFromDefaultsKeyPath(NSString *defaultsKey) {
 		
 		[convertedColor getRed:&red green:&green blue:&blue alpha:NULL];
 		
-		NSInteger redInt = red * 255.99999f;
-		NSInteger greenInt = green * 255.99999f;
-		NSInteger blueInt = blue * 255.99999f;
+		NSInteger redInt = red * 255.99999;
+		NSInteger greenInt = green * 255.99999;
+		NSInteger blueInt = blue * 255.99999;
 		
 		hexValue = [NSString stringWithFormat:@"#%02x%02x%02x", (unsigned int)redInt, (unsigned int)greenInt, (unsigned int)blueInt];
 		
@@ -100,45 +97,40 @@ NSString *NSStringFromDefaultsKeyPath(NSString *defaultsKey) {
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	
-	NSString *cssRepresentation = @"";
+	NSMutableString *cssRepresentation = [NSMutableString stringWithCapacity:120];
 	
 	NSString *familyName = self.familyName;
 	
 	if (familyName) {
 		NSFontSymbolicTraits symbolicTraits = self.fontDescriptor.symbolicTraits;
 		
-//		NSLog(@"[NSFont cssRepresentation] symbolicTraits == %u", symbolicTraits);
+		// NSLog(@"[NSFont cssRepresentation] symbolicTraits == %u", symbolicTraits);
 		BOOL isSansSerif = (symbolicTraits & NSFontSansSerifClass);
 		BOOL isBold = (symbolicTraits & NSFontBoldTrait);
 		BOOL isItalic = (symbolicTraits & NSFontItalicTrait);
 		
 		if (isSansSerif) {
-			cssRepresentation = [cssRepresentation stringByAppendingString:[NSString stringWithFormat:@"\nfont-family: \"%@\", sans-serif;", familyName]];
-			
+			[cssRepresentation appendFormat:@"\nfont-family: \"%@\", sans-serif;", familyName];
 		} else {
-			cssRepresentation = [cssRepresentation stringByAppendingString:[NSString stringWithFormat:@"\nfont-family: \"%@\", serif;", familyName]];
-			
+			[cssRepresentation appendFormat:@"\nfont-family: \"%@\", serif;", familyName];
 		}
 		
 		if (isBold) {
-			cssRepresentation = [cssRepresentation stringByAppendingString:@"\nfont-weight: bold;"];
+			[cssRepresentation appendString:@"\nfont-weight: bold;"];
 		}
 		
 		if (isItalic) {
-			cssRepresentation = [cssRepresentation stringByAppendingString:@"\nfont-style: italic;"];
+			[cssRepresentation appendString:@"\nfont-style: italic;"];
 		}
 		
 	}
-	return cssRepresentation;
+	return [cssRepresentation copy];
 }
 
 @end
 
 
-
-
 @implementation NSMenu (TKAdditions)
-
 
 - (BOOL)containsItem:(NSMenuItem *)aMenuItem {
 #if TK_DEBUG
@@ -325,7 +317,6 @@ NSString *NSStringFromDefaultsKeyPath(NSString *defaultsKey) {
 		
 		self.frame = boundsRect;
 	}
-	
 }
 
 - (NSString *)stringWithSavedFrame {
