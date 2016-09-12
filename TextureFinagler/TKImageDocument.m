@@ -1056,10 +1056,10 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 		if (imageRepData) [pboard setData:imageRepData forType:TKImageDocumentPboardType];
 	}
 	
-	if ([types containsObject:NSTIFFPboardType]) {
+	if ([types containsObject:NSPasteboardTypeTIFF]) {
 		TKImageRep *firstImageRep = imageReps[0];
 		NSData *TIFFRepresentation = [firstImageRep TIFFRepresentationUsingCompression:NSTIFFCompressionNone factor:0];
-		if (TIFFRepresentation) [pboard setData:TIFFRepresentation forType:NSTIFFPboardType];
+		if (TIFFRepresentation) [pboard setData:TIFFRepresentation forType:NSPasteboardTypeTIFF];
 	}
 	
 	return imageReps.count;
@@ -1269,7 +1269,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	}
 	
 	if (images && images.count) {
-		return [self writeImageReps:images toPasteboard:pboard forTypes:@[TKImageDocumentPboardType, NSTIFFPboardType]];
+		return [self writeImageReps:images toPasteboard:pboard forTypes:@[TKImageDocumentPboardType, NSPasteboardTypeTIFF]];
 		
 	}
 	return 0;
@@ -1986,7 +1986,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 #endif
 	
 	NSArray *selectedImageReps = self.selectedImageReps;
-	[self writeImageReps:selectedImageReps toPasteboard:[NSPasteboard generalPasteboard] forTypes:@[TKImageDocumentPboardType, NSTIFFPboardType]];
+	[self writeImageReps:selectedImageReps toPasteboard:[NSPasteboard generalPasteboard] forTypes:@[TKImageDocumentPboardType, NSPasteboardTypeTIFF]];
 }
 
 #pragma mark -
