@@ -9,6 +9,7 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
 
 /**********************************************************************
 
@@ -30,20 +31,17 @@ typedef NS_ENUM(NSInteger, MDDateFormatterStyle) {    // date and time format st
 };
 
 IB_DESIGNABLE
-@interface MDDateFormatter : NSFormatter <NSCoding, NSCopying> {
-	CFDateFormatterRef	__mdFormatter;
-	CFDateFormatterRef	__mdTimeFormatter;
-	
-	MDDateFormatterStyle	style;
-	BOOL					relative;
-}
+@interface MDDateFormatter : NSFormatter <NSCoding, NSCopying>
 
-- (nonnull instancetype)initWithStyle:(MDDateFormatterStyle)aStyle isRelative:(BOOL)value;
+- (instancetype)init;
+- (instancetype)initWithStyle:(MDDateFormatterStyle)aStyle isRelative:(BOOL)value;
 
 IBInspectable
-@property  MDDateFormatterStyle style;
+@property (nonatomic) MDDateFormatterStyle style;
 
 IBInspectable
 @property (getter=isRelative) BOOL relative;
 
 @end
+
+NS_ASSUME_NONNULL_END

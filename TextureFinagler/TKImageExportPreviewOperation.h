@@ -20,6 +20,7 @@ extern NSString * const TKImageExportPreviewKey;
 	
 }
 
+- (instancetype)init UNAVAILABLE_ATTRIBUTE;
 - (instancetype)initWithImageExportPreview:(TKImageExportPreview *)anImageExportPreview NS_DESIGNATED_INITIALIZER;
 
 @property (weak) TKImageExportPreview *imageExportPreview;

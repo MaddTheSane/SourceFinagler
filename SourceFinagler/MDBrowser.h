@@ -12,10 +12,10 @@
 @class MDBrowser;
 
 
-@protocol MDBrowserDelegate <NSObject>
+@protocol MDBrowserDelegate <NSBrowserDelegate>
 @optional
 
-- (void)browser:(MDBrowser *)aBrowser sortDescriptorsDidChange:(NSArray *)oldDescriptors;
+- (void)browser:(MDBrowser *)aBrowser sortDescriptorsDidChange:(NSArray<NSSortDescriptor*> *)oldDescriptors;
 
 @end
 

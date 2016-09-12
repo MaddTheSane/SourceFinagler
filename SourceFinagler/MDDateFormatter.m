@@ -20,6 +20,9 @@ static NSDate *MDNilDate = nil;
 @implementation MDDateFormatter
 {
 @private
+	CFDateFormatterRef	__mdFormatter;
+	CFDateFormatterRef	__mdTimeFormatter;
+	
 	NSString *today;
 	NSString *yesterday;
 	NSString *tomorrow;
@@ -49,7 +52,6 @@ static NSDate *MDNilDate = nil;
 		__mdTimeFormatter = CFDateFormatterCreate(NULL, currentLocale, kCFDateFormatterNoStyle, kCFDateFormatterShortStyle);
 		
 		CFRelease(currentLocale);
-		
 		
 		self.style = aStyle;
 		self.relative = value;
@@ -87,11 +89,6 @@ static NSDate *MDNilDate = nil;
 		
 		self.style = [coder decodeIntegerForKey:@"MDStyle"];
 		self.relative = [coder decodeBoolForKey:@"MDRelative"];
-		
-
-		today = @"Today";
-		yesterday = @"Yesterday";
-		tomorrow = @"Tomorrow";
 		
 		today = NSLocalizedString(@"Today", @"");
 		yesterday = NSLocalizedString(@"Yesterday", @"");
@@ -131,12 +128,12 @@ static NSDate *MDNilDate = nil;
 	}
 }
 
-- (MDDateFormatterStyle)style {
 #if MD_DEBUG
+- (MDDateFormatterStyle)style {
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-#endif
     return style;
 }
+#endif
 
 - (void)setStyle:(MDDateFormatterStyle)value {
 #if MD_DEBUG
@@ -177,19 +174,17 @@ static NSDate *MDNilDate = nil;
 	}
 }
 
-- (BOOL)isRelative {
 #if MD_DEBUG
+- (BOOL)isRelative {
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-#endif
     return relative;
 }
 
 - (void)setRelative:(BOOL)value {
-#if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-#endif
 	relative = value;
 }
+#endif
 
 - (NSString *)stringForObjectValue:(id)anObject {
 #if MD_DEBUG
