@@ -145,16 +145,7 @@
                             <rect key="frame" x="87" y="36" width="171" height="14"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingMiddle" selectable="YES" sendsActionOnEndEditing="YES" placeholderString="--" id="26">
-                                <customFormatter key="formatter" id="27" customClass="MDFileSizeFormatter">
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="unitsType">
-                                            <integer key="value" value="1"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="style">
-                                            <integer key="value" value="1"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                </customFormatter>
+                                <byteCountFormatter key="formatter" id="5d9-GI-IyC"/>
                                 <font key="font" metaFont="smallSystem"/>
                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>

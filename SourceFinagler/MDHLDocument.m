@@ -38,7 +38,6 @@
 #import "MDCopyOperation.h"
 #import "MDCopyOperationController.h"
 
-#import "MDFileSizeFormatter.h"
 #import "MDStatusImageView.h"
 
 
@@ -1460,9 +1459,9 @@ static NSInteger copyTag = 0;
 - (void)updateProgressWithDictionary:(NSDictionary *)dictionary {
 //	NSLog(@" \"%@\" [%@ %@]", [self displayName], NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 	
-	static MDFileSizeFormatter *fileSizeFormatter = nil;
+	static NSByteCountFormatter *fileSizeFormatter = nil;
 
-	if (fileSizeFormatter == nil) fileSizeFormatter = [[MDFileSizeFormatter alloc] initWithUnitsType:MDFileSizeFormatterAutomaticUnitsType style:MDFileSizeFormatterPhysicalStyle];
+	if (fileSizeFormatter == nil) fileSizeFormatter = [[NSByteCountFormatter alloc] init];
 	
 	MDCopyOperation *copyOperation = dictionary[MDCopyOperationKey];
 	if (copyOperation) {

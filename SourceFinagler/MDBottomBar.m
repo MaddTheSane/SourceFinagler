@@ -9,7 +9,6 @@
 #include <math.h>
 #include <tgmath.h>
 #import "MDBottomBar.h"
-#import "MDFileSizeFormatter.h"
 
 #define MD_DISABLED_OPACITY 0.1
 
@@ -21,7 +20,7 @@
 
 - (instancetype)initWithFrame:(NSRect)frame {
 	if ((self = [super initWithFrame:frame])) {
-		formatter = [[MDFileSizeFormatter alloc] init];
+		formatter = [[NSByteCountFormatter alloc] init];
 	}
 	return self;
 }
@@ -53,19 +52,13 @@
 	
 	if (selectedIndexes.count == 0) {
 		if (totalCount.unsignedIntegerValue == 0 || totalCount.unsignedIntegerValue >= 2) {
-			
 			stringValue = [NSString stringWithFormat:NSLocalizedString(@"%@ items, %@ available", @""), totalCount, [formatter stringForObjectValue:freeSpace]];
-			
 		} else if (totalCount.unsignedIntegerValue == 1) {
-			
 			stringValue = [NSString stringWithFormat:NSLocalizedString(@"%@ item, %@ available", @""), totalCount, [formatter stringForObjectValue:freeSpace]];
 		}
 	} else if (selectedIndexes.count == 1) {
-		
 		stringValue = [NSString stringWithFormat:NSLocalizedString(@"%lu(single) of %@ selected, %@ available", @"String for when only 1 item is selected"), (unsigned long)selectedIndexes.count, totalCount, [formatter stringForObjectValue:freeSpace]];
-		
 	} else if (selectedIndexes.count >= 2) {
-		
 		stringValue = [NSString stringWithFormat:NSLocalizedString(@"%lu(multiple) of %@ selected, %@ available", @"String for when more than one item is selected"), (unsigned long)selectedIndexes.count, totalCount, [formatter stringForObjectValue:freeSpace]];
 	}
 
@@ -98,7 +91,6 @@
 	richTextRect.origin.y = ceil( (rect.size.height - richTextRect.size.height)/2.0);
 	
 	[richText drawInRect:richTextRect];
-	
 }
 
 @end

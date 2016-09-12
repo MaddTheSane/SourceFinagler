@@ -576,7 +576,7 @@ Gw
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="AaB-3S-iSh">
                         <rect key="frame" x="0.0" y="23" width="560" height="307"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" autosaveName="outlineView" headerView="1081" indentationPerLevel="16" autoresizesOutlineColumn="YES" outlineTableColumn="1082" id="1080" customClass="MDOutlineView">
                                 <rect key="frame" x="0.0" y="0.0" width="560" height="19"/>
@@ -606,16 +606,7 @@ Gw
                                             <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
                                         </tableHeaderCell>
                                         <textFieldCell key="dataCell" lineBreakMode="truncatingMiddle" selectable="YES" editable="YES" alignment="right" id="1084" customClass="MDTextFieldCell">
-                                            <customFormatter key="formatter" id="1099" customClass="MDFileSizeFormatter">
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="unitsType">
-                                                        <integer key="value" value="1"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="style">
-                                                        <integer key="value" value="1"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </customFormatter>
+                                            <byteCountFormatter key="formatter" id="AAA-q0-lWm"/>
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>

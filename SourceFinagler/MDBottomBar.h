@@ -8,14 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class MDFileSizeFormatter;
-
 
 @interface MDBottomBar : NSView {
-	NSIndexSet			*selectedIndexes;
-	NSNumber			*totalCount;
-	NSNumber			*freeSpace;
-	MDFileSizeFormatter	*formatter;
+	NSIndexSet				*selectedIndexes;
+	NSNumber				*totalCount;
+	NSNumber				*freeSpace;
+	NSByteCountFormatter	*formatter;
 }
 - (void)setSelectedIndexes:(NSIndexSet *)anIndexSet totalCount:(NSNumber *)aTotalCount freeSpace:(NSNumber *)aFreeSpace;
 

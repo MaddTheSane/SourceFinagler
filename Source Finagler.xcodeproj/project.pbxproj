@@ -462,7 +462,6 @@
 		C1C2C562127CBCA0003B24F6 /* MDStatusImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C124E8123A0B18004674B4 /* MDStatusImageView.m */; };
 		C1C2C563127CBCA0003B24F6 /* MDBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C124EA123A0B18004674B4 /* MDBottomBar.m */; };
 		C1C2C564127CBCA0003B24F6 /* MDPathControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C124EC123A0B18004674B4 /* MDPathControlView.m */; };
-		C1C2C565127CBCA0003B24F6 /* MDFileSizeFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C124F3123A0B49004674B4 /* MDFileSizeFormatter.m */; };
 		C1C2C566127CBCA0003B24F6 /* MDDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C124F5123A0B49004674B4 /* MDDateFormatter.m */; };
 		C1C2C568127CBCA0003B24F6 /* MDInspectorController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C124FF123A0BA2004674B4 /* MDInspectorController.m */; };
 		C1C2C569127CBCA0003B24F6 /* MDInspectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C12501123A0BA3004674B4 /* MDInspectorView.m */; };
@@ -1391,8 +1390,6 @@
 		C1C124EA123A0B18004674B4 /* MDBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MDBottomBar.m; sourceTree = "<group>"; };
 		C1C124EB123A0B18004674B4 /* MDPathControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MDPathControlView.h; sourceTree = "<group>"; };
 		C1C124EC123A0B18004674B4 /* MDPathControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MDPathControlView.m; sourceTree = "<group>"; };
-		C1C124F2123A0B49004674B4 /* MDFileSizeFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MDFileSizeFormatter.h; sourceTree = "<group>"; };
-		C1C124F3123A0B49004674B4 /* MDFileSizeFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MDFileSizeFormatter.m; sourceTree = "<group>"; };
 		C1C124F4123A0B49004674B4 /* MDDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MDDateFormatter.h; sourceTree = "<group>"; };
 		C1C124F5123A0B49004674B4 /* MDDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MDDateFormatter.m; sourceTree = "<group>"; };
 		C1C124FE123A0BA2004674B4 /* MDInspectorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDInspectorController.h; sourceTree = "<group>"; };
@@ -2871,8 +2868,6 @@
 		C1C124F1123A0B2F004674B4 /* Formatters & Transformers */ = {
 			isa = PBXGroup;
 			children = (
-				C1C124F2123A0B49004674B4 /* MDFileSizeFormatter.h */,
-				C1C124F3123A0B49004674B4 /* MDFileSizeFormatter.m */,
 				C1C124F4123A0B49004674B4 /* MDDateFormatter.h */,
 				C1C124F5123A0B49004674B4 /* MDDateFormatter.m */,
 			);
@@ -4754,7 +4749,6 @@
 				C1C2C562127CBCA0003B24F6 /* MDStatusImageView.m in Sources */,
 				C1C2C563127CBCA0003B24F6 /* MDBottomBar.m in Sources */,
 				C1C2C564127CBCA0003B24F6 /* MDPathControlView.m in Sources */,
-				C1C2C565127CBCA0003B24F6 /* MDFileSizeFormatter.m in Sources */,
 				C1C2C566127CBCA0003B24F6 /* MDDateFormatter.m in Sources */,
 				C1C2C568127CBCA0003B24F6 /* MDInspectorController.m in Sources */,
 				C1C2C569127CBCA0003B24F6 /* MDInspectorView.m in Sources */,

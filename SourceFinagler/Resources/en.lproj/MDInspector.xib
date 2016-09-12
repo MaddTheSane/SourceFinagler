@@ -51,16 +51,7 @@
                         <rect key="frame" x="192" y="424" width="66" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="truncatingMiddle" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="right" placeholderString="--" id="663">
-                            <customFormatter key="formatter" id="785" customClass="MDFileSizeFormatter">
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="unitsType">
-                                        <integer key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="style">
-                                        <integer key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </customFormatter>
+                            <byteCountFormatter key="formatter" id="Sxc-Lj-WoN"/>
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -196,16 +187,7 @@
                                 <rect key="frame" x="65" y="25" width="197" height="14"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" controlSize="small" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="left" placeholderString="--" id="691">
-                                    <customFormatter key="formatter" id="786" customClass="MDFileSizeFormatter">
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="unitsType">
-                                                <integer key="value" value="1"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="style">
-                                                <integer key="value" value="2"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </customFormatter>
+                                    <byteCountFormatter key="formatter" includesActualByteCount="YES" id="iRY-wf-QCw"/>
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
