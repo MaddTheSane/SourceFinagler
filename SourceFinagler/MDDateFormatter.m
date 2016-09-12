@@ -14,16 +14,23 @@
 #define MD_DEBUG 0
 
 static const NSTimeInterval MDNilDateTimeIntervalSinceReferenceDate = -3061152000.0;
-
 static NSDate *MDNilDate = nil;
 
 
 @implementation MDDateFormatter
+{
+@private
+	NSString *today;
+	NSString *yesterday;
+	NSString *tomorrow;
+}
+
+@synthesize style;
+@synthesize relative;
 
 + (void)initialize {
 	MDNilDate = [NSDate dateWithTimeIntervalSinceReferenceDate:MDNilDateTimeIntervalSinceReferenceDate];
 }
-
 
 - (instancetype)initWithStyle:(MDDateFormatterStyle)aStyle isRelative:(BOOL)value {
 #if MD_DEBUG
@@ -39,17 +46,13 @@ static NSDate *MDNilDate = nil;
 		
 		CFLocaleRef currentLocale = CFLocaleCopyCurrent();
 		
-		__mdTimeFormatter = CFDateFormatterCreate(NULL, currentLocale, MDDateFormatterNoStyle, MDDateFormatterShortStyle);
+		__mdTimeFormatter = CFDateFormatterCreate(NULL, currentLocale, kCFDateFormatterNoStyle, kCFDateFormatterShortStyle);
 		
 		CFRelease(currentLocale);
 		
 		
 		self.style = aStyle;
 		self.relative = value;
-		
-		today = @"Today";
-		yesterday = @"Yesterday";
-		tomorrow = @"Tomorrow";
 		
 		today = NSLocalizedString(@"Today", @"");
 		yesterday = NSLocalizedString(@"Yesterday", @"");
@@ -77,13 +80,13 @@ static NSDate *MDNilDate = nil;
 		
 		CFLocaleRef currentLocale = CFLocaleCopyCurrent();
 		
-		__mdTimeFormatter = CFDateFormatterCreate(NULL, currentLocale, MDDateFormatterNoStyle, MDDateFormatterShortStyle);
+		__mdTimeFormatter = CFDateFormatterCreate(NULL, currentLocale, kCFDateFormatterNoStyle, kCFDateFormatterShortStyle);
 		
 		CFRelease(currentLocale);
 		
 		
 		self.style = [coder decodeIntegerForKey:@"MDStyle"];
-		self.relative = [coder decodeIntegerForKey:@"MDRelative"];
+		self.relative = [coder decodeBoolForKey:@"MDRelative"];
 		
 
 		today = @"Today";
@@ -105,7 +108,7 @@ static NSDate *MDNilDate = nil;
 	[super encodeWithCoder:coder];
 	
 	[coder encodeInteger:style forKey:@"MDStyle"];
-	[coder encodeInteger:relative forKey:@"MDRelative"];
+	[coder encodeBool:relative forKey:@"MDRelative"];
 }
 
 - (id)copyWithZone:(NSZone *)zone {
@@ -146,16 +149,29 @@ static NSDate *MDNilDate = nil;
 			__mdFormatter = NULL;
 		}
 		CFLocaleRef currentLocale = CFLocaleCopyCurrent();
-		if (style == MDDateFormatterFullStyle) {
-			__mdFormatter = CFDateFormatterCreate(NULL, currentLocale, MDDateFormatterFullStyle, MDDateFormatterShortStyle);
-		} else if (style == MDDateFormatterLongStyle) {
-			__mdFormatter = CFDateFormatterCreate(NULL, currentLocale, MDDateFormatterLongStyle, MDDateFormatterShortStyle);
-		} else if (style == MDDateFormatterMediumStyle) {
-			__mdFormatter = CFDateFormatterCreate(NULL, currentLocale, MDDateFormatterMediumStyle, MDDateFormatterShortStyle);
-		} else if (style == MDDateFormatterShortStyle) {
-			__mdFormatter = CFDateFormatterCreate(NULL, currentLocale, MDDateFormatterShortStyle, MDDateFormatterShortStyle);
-		} else if (style == MDDateFormatterNoStyle) {
-			__mdFormatter = CFDateFormatterCreate(NULL, currentLocale, MDDateFormatterShortStyle, MDDateFormatterNoStyle);
+		switch (style) {
+			case MDDateFormatterFullStyle:
+				__mdFormatter = CFDateFormatterCreate(NULL, currentLocale, kCFDateFormatterFullStyle, kCFDateFormatterShortStyle);
+				break;
+				
+			case MDDateFormatterLongStyle:
+				__mdFormatter = CFDateFormatterCreate(NULL, currentLocale, kCFDateFormatterLongStyle, kCFDateFormatterShortStyle);
+				break;
+
+			case MDDateFormatterMediumStyle:
+				__mdFormatter = CFDateFormatterCreate(NULL, currentLocale, kCFDateFormatterMediumStyle, kCFDateFormatterShortStyle);
+				break;
+
+			case MDDateFormatterShortStyle:
+				__mdFormatter = CFDateFormatterCreate(NULL, currentLocale, kCFDateFormatterShortStyle, kCFDateFormatterShortStyle);
+				break;
+
+			case MDDateFormatterNoStyle:
+				__mdFormatter = CFDateFormatterCreate(NULL, currentLocale, kCFDateFormatterShortStyle, kCFDateFormatterNoStyle);
+				break;
+
+			default:
+				break;
 		}
 		CFRelease(currentLocale);
 	}
@@ -192,37 +208,24 @@ static NSDate *MDNilDate = nil;
 //		NSLog(@"[%@ %@] it is an NSDate == %@, __mdFormatter == %@, __mdTimeFormatter == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), anObject, __mdFormatter, __mdTimeFormatter);
 
 		if (relative) {
-			NSCalendarDate *calendarDate = [[NSCalendarDate alloc] initWithTimeIntervalSinceReferenceDate:[anObject timeIntervalSinceReferenceDate]];
+			NSCalendar *calendar = [NSCalendar currentCalendar];
 			
-			NSInteger todaysDayOfCommonEra = [[NSCalendarDate calendarDate] dayOfCommonEra];
-			NSInteger datesDayOfCommonEra = [calendarDate dayOfCommonEra];
-			
-			if (datesDayOfCommonEra < (todaysDayOfCommonEra - 1)) {
-				
-				string = (NSString *)CFBridgingRelease(CFDateFormatterCreateStringWithDate(NULL, __mdFormatter, (CFDateRef)anObject));
-				
-			} else if (datesDayOfCommonEra == (todaysDayOfCommonEra - 1)) {
+			if ([calendar isDateInYesterday:anObject]) {
 				/* Yesterday, %@ */
-				
 				NSString *timeString = (NSString *)CFBridgingRelease(CFDateFormatterCreateStringWithDate(NULL, __mdTimeFormatter, (CFDateRef)anObject));
 				
 				string = [[NSString alloc] initWithFormat:@"%@, %@", yesterday, timeString];
-				
-			} else if (datesDayOfCommonEra == todaysDayOfCommonEra) {
+			} else if ([calendar isDateInToday:anObject]) {
 				/* Today, %@ */
-				
 				NSString *timeString = (NSString *)CFBridgingRelease(CFDateFormatterCreateStringWithDate(NULL, __mdTimeFormatter, (CFDateRef)anObject));
 				
 				string = [[NSString alloc] initWithFormat:@"%@, %@", today, timeString];
-				
-			} else if (datesDayOfCommonEra == (todaysDayOfCommonEra + 1)) {
+			} else if ([calendar isDateInTomorrow:anObject]) {
 				/* Tomorrow, %@ */
 				NSString *timeString = (NSString *)CFBridgingRelease(CFDateFormatterCreateStringWithDate(NULL, __mdTimeFormatter, (CFDateRef)anObject));
 				
 				string = [[NSString alloc] initWithFormat:@"%@, %@", tomorrow, timeString];
-				
-			} else if (datesDayOfCommonEra > (todaysDayOfCommonEra + 1)) {
-				
+			} else {
 				string = (NSString *)CFBridgingRelease(CFDateFormatterCreateStringWithDate(NULL, __mdFormatter, (CFDateRef)anObject));
 			}
 			

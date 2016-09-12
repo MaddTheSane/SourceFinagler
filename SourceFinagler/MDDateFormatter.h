@@ -21,7 +21,6 @@
 **********************************************************************/
 
 
-#if 0
 typedef NS_ENUM(NSInteger, MDDateFormatterStyle) {    // date and time format styles
     MDDateFormatterNoStyle		=	kCFDateFormatterNoStyle,
     MDDateFormatterShortStyle	=	kCFDateFormatterShortStyle,
@@ -29,35 +28,22 @@ typedef NS_ENUM(NSInteger, MDDateFormatterStyle) {    // date and time format st
     MDDateFormatterLongStyle	=	kCFDateFormatterLongStyle,
     MDDateFormatterFullStyle	=	kCFDateFormatterFullStyle
 };
-#else
-#define MDDateFormatterStyle CFDateFormatterStyle
 
-#define MDDateFormatterNoStyle			kCFDateFormatterNoStyle
-#define MDDateFormatterShortStyle		kCFDateFormatterShortStyle
-#define MDDateFormatterMediumStyle		kCFDateFormatterMediumStyle
-#define MDDateFormatterLongStyle		kCFDateFormatterLongStyle
-#define MDDateFormatterFullStyle		kCFDateFormatterFullStyle
-#endif
-
-
+IB_DESIGNABLE
 @interface MDDateFormatter : NSFormatter <NSCoding, NSCopying> {
 	CFDateFormatterRef	__mdFormatter;
 	CFDateFormatterRef	__mdTimeFormatter;
 	
 	MDDateFormatterStyle	style;
 	BOOL					relative;
-	
-	NSString *today;
-	NSString *yesterday;
-	NSString *tomorrow;
 }
 
-- (instancetype)initWithStyle:(MDDateFormatterStyle)aStyle isRelative:(BOOL)value;
+- (nonnull instancetype)initWithStyle:(MDDateFormatterStyle)aStyle isRelative:(BOOL)value;
 
+IBInspectable
 @property  MDDateFormatterStyle style;
 
+IBInspectable
 @property (getter=isRelative) BOOL relative;
 
 @end
-
-
