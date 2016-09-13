@@ -37,7 +37,7 @@ NS_ENUM(NSInteger) {
 	BOOL			highlighted;
 }
 
-@property (nonatomic, copy) NSArray *sortDescriptors;
+@property (nonatomic, copy) NSArray<NSSortDescriptor*> *sortDescriptors;
 
 @property (nonatomic, readonly, assign) BOOL shouldShowIcons;
 @property (nonatomic, readonly, assign) BOOL shouldShowPreview;

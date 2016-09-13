@@ -111,6 +111,10 @@ NSString * const MDViewNameKey										= @"MDViewName";
 
 static NSInteger copyTag = 0;
 
+@interface MDHLDocument () <MDBrowserDelegate>
+
+@end
+
 @implementation MDHLDocument
 @synthesize searching = isSearching;
 @synthesize image, kind, outlineViewIsReloadingData, version;
@@ -905,7 +909,7 @@ static NSInteger copyTag = 0;
 	}
 }
 
-- (void)browser:(MDBrowser *)aBrowser sortDescriptorsDidChange:(NSArray *)oldDescriptors {
+- (void)browser:(MDBrowser *)aBrowser sortDescriptorsDidChange:(NSArray<NSSortDescriptor*> *)oldDescriptors {
 #if MD_DEBUG
 	NSLog(@" \"%@\" [%@ %@]", self.displayName, NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif

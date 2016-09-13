@@ -118,7 +118,7 @@ static NSArray *appClassNames = nil;
 			MDPlaySoundEffects = YES;
 		}
 		
-		NSMutableDictionary *defaultValues = [NSMutableDictionary dictionary];
+		NSMutableDictionary *defaultValues = [[NSMutableDictionary alloc] initWithCapacity:20];
 		
 		NSNumber *finderListViewFontSize = nil;
 		NSNumber *finderListViewIconSize = nil;
@@ -624,7 +624,7 @@ static NSArray *appClassNames = nil;
 }
 
 - (IBAction)resetAllWarningDialogs:(id)sender {
-
+//TODO: implement
 }
 
 @end

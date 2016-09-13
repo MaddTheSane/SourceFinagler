@@ -56,6 +56,7 @@ static inline NSArray *MDSortDescriptorsFromSortOption(NSInteger sortOption) {
 
 @implementation MDBrowser
 @synthesize sortDescriptors, shouldShowIcons, shouldShowPreview;
+@synthesize fontAndIconSize;
 
 - (instancetype)initWithFrame:(NSRect)frameRect {
 #if MD_DEBUG
@@ -206,10 +207,6 @@ static inline NSArray *MDSortDescriptorsFromSortOption(NSInteger sortOption) {
 	}
 }
 
-- (NSInteger)fontAndIconSize {
-	return fontAndIconSize;
-}
-
 /* used by MDFontSuitcase when switching from column view to list view */
 - (IBAction)deselectAll:(id)sender {
 #if MD_DEBUG
@@ -294,7 +291,7 @@ NS_ENUM(unsigned short) {
 #if MD_DEBUG
 	NSLog(@" \"%@\" [%@ %@]", [[[[self window] windowController] document] displayName], NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	NSUInteger modifierFlags = event.modifierFlags;
+	NSEventModifierFlags modifierFlags = event.modifierFlags;
 	
 	if (modifierFlags & NSAlternateKeyMask || modifierFlags & NSCommandKeyMask) {
 		return [super mouseDown:event];

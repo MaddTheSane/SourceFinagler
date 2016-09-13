@@ -19,7 +19,7 @@ MDPreviewViewController, MDPathControlView, MDInspectorView;
 extern int CoreDockSetTrashFull(int full) __attribute__((weak_import));
 
 
-enum {
+NS_ENUM(NSInteger) {
 	MDListViewMode		= 1,
 	MDColumnViewMode	= 2,
 };
