@@ -86,7 +86,6 @@ static NSDate *MDNilDate = nil;
 		
 		CFRelease(currentLocale);
 		
-		
 		self.style = [coder decodeIntegerForKey:@"MDStyle"];
 		self.relative = [coder decodeBoolForKey:@"MDRelative"];
 		

@@ -7,6 +7,7 @@
 //
 
 
+#include <sys/types.h>
 #import <Foundation/NSObject.h>
 #import <Foundation/NSString.h>
 #import <Foundation/NSURL.h>
@@ -35,7 +36,7 @@ typedef NSUInteger VSGameID;
 @property (readonly, copy) NSString *iconPath;
 
 /** A dictionary, constructed from the game's Info.plist file, that contains information about the game */
-@property (readonly, strong) NSDictionary *infoDictionary;
+@property (readonly, strong) NSDictionary<NSString*,id> *infoDictionary;
 
 /** The path to the game's addons directory, or nil if the game doesn't support addons. */
 @property (readonly, copy) NSString *addonsFolderPath;

@@ -210,7 +210,7 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 
 
 - (id)initWithContentsOfURL:(NSURL *)aURL error:(NSError **)outError {
-	return [self initWithContentsOfURL:aURL permission:MDReadPermission fork:MDAnyFork error:outError];
+	return [self initWithContentsOfURL:aURL permission:MDPermissionRead fork:MDForkAny error:outError];
 }
 
 
@@ -220,7 +220,7 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 }
 
 - (id)initForUpdatingWithContentsOfURL:(NSURL *)aURL fork:(MDFork)aFork error:(NSError **)outError {
-	return [self initWithContentsOfURL:aURL permission:MDReadWritePermission fork:aFork error:outError];
+	return [self initWithContentsOfURL:aURL permission:MDPermissionReadWrite fork:aFork error:outError];
 }
 
 
@@ -255,16 +255,16 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 		}
 	}
 	
-	if (itemExists && aFork == MDAnyFork) {
+	if (itemExists && aFork == MDForkAny) {
 		if (resourceForkSize) {
-			aFork = MDResourceFork;
+			aFork = MDForkResource;
 		} else if (dataForkSize) {
-			aFork = MDDataFork;
+			aFork = MDForkData;
 		} else {
-			aFork = MDResourceFork;
+			aFork = MDForkResource;
 		}
-	} else if (!itemExists && aFork == MDAnyFork) {
-		aFork = MDResourceFork;
+	} else if (!itemExists && aFork == MDForkAny) {
+		aFork = MDForkResource;
 	}
 	
 	fork = aFork;
@@ -272,18 +272,18 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 	
 	HFSUniStr255	forkName;
 	
-	if (fork == MDResourceFork) {
+	if (fork == MDForkResource) {
 		err = FSGetResourceForkName(&forkName);
 	} else {
 		err = FSGetDataForkName(&forkName);
 	}
 	
 	if (err != noErr) {
-		NSLog(@"[%@ %@] %@ returned %hi", NSStringFromClass([self class]), NSStringFromSelector(_cmd), (aFork == MDResourceFork ? @"FSGetResourceForkName()" : @"FSGetDataForkName()"), err);
+		NSLog(@"[%@ %@] %@ returned %hi", NSStringFromClass([self class]), NSStringFromSelector(_cmd), (aFork == MDForkResource ? @"FSGetResourceForkName()" : @"FSGetDataForkName()"), err);
 		return nil;
 	}
 	
-	if (itemExists && ((fork == MDResourceFork && resourceForkSize) || (fork == MDDataFork && dataForkSize))) {
+	if (itemExists && ((fork == MDForkResource && resourceForkSize) || (fork == MDForkData && dataForkSize))) {
 		if (![filePath getFSRef:&fileRef error:outError]) {
 			return nil;
 		}
@@ -296,7 +296,7 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 			
 			NSLog(@"[%@ %@] the resource file at '%@' wasn't sane; MDCheckResourceFileSanity() returned err == %hi", NSStringFromClass([self class]), NSStringFromSelector(_cmd), aURL.path, err);
 			
-			NSLog(@"[%@ %@] ERROR: file appears to be a corrupt %@ and will not be opened...", NSStringFromClass([self class]), NSStringFromSelector(_cmd), (aFork == MDResourceFork ? @"resource file" : @"datafork-based resource file"));
+			NSLog(@"[%@ %@] ERROR: file appears to be a corrupt %@ and will not be opened...", NSStringFromClass([self class]), NSStringFromSelector(_cmd), (aFork == MDForkResource ? @"resource file" : @"datafork-based resource file"));
 			if (outError) *outError = [NSError errorWithDomain:MDResourceFileErrorDomain code:MDResourceFileCorruptResourceFileError userInfo:nil];
 			return nil;
 		}
@@ -321,8 +321,8 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 		 
 		 */
 		
-		if (permission == MDReadWritePermission ||
-			permission == MDCurrentAllowablePermission) {
+		if (permission == MDPermissionReadWrite ||
+			permission == MDPermissionCurrentAllowable) {
 			
 			if (![aURL.path.stringByDeletingLastPathComponent getFSRef:&parentRef error:outError]) {
 				NSLog(@"[%@ %@] (%@) getFSRef: for parentRef failed", NSStringFromClass([self class]), NSStringFromSelector(_cmd), aURL.path);
@@ -363,7 +363,7 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 					if (err == permErr) {
 						NSLog(@"[%@ %@] unable to open resource file with Read-Write access, will retry with Read-Only access...", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 						
-						permission = MDReadPermission;
+						permission = MDPermissionRead;
 						
 						err = FSOpenResourceFile(&fileRef, forkName.length, forkName.unicode, permission, &fileReference);
 						
@@ -415,7 +415,7 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	if (permission == MDReadPermission) return NO;
+	if (permission == MDPermissionRead) return NO;
 	if (aResource == nil) return NO;
 	if (outError) *outError = nil;
 	
@@ -434,7 +434,7 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	if (permission == MDReadPermission) return NO;
+	if (permission == MDPermissionRead) return NO;
 	if (aResource == nil) return NO;
 	if (outError) *outError = nil;
 	

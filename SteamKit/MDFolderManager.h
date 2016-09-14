@@ -15,10 +15,6 @@
 #define	_CS_DARWIN_USER_CACHE_DIR		65538
 #endif
 
-#ifndef kFontCollectionsFolderType	/* provided so compiler doesn't balk when using 10.3.9 or 10.4u SDKs */
-#define kFontCollectionsFolderType 'fncl'
-#endif
-
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(FSVolumeRefNum, MDSearchPathDomain) {
@@ -52,7 +48,10 @@ typedef NS_ENUM(OSType, MDSearchPathDirectory) {
 	MDTemporaryDirectory				=	kTemporaryFolderType,
 	MDTrashDirectory					=	kTrashFolderType,
 	MDUsersDirectory					=	kUsersFolderType,
-	MDDarwinUserCachesDirectory			=	'MDdc'
+	MDDarwinUserCachesDirectory			=	'MDdc',
+	MDQuickLookDirectory				=	kQuickLookFolderType,
+	MDServicesDirectory					=	kServicesFolderType,
+	MDColorSyncProfileDirectory			=	kColorSyncProfilesFolderType,
 };
 
 

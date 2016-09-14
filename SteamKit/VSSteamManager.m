@@ -943,7 +943,7 @@ static inline NSDictionary *VSMakeLaunchAgentPlist(NSString *jobLabel, NSArray *
 																	error:NULL] autorelease];
 			if (plistResource) {
 				
-				MDResourceFile *destFile = [[[MDResourceFile alloc] initForUpdatingWithContentsOfFile:path fork:MDResourceFork error:outError] autorelease];
+				MDResourceFile *destFile = [[[MDResourceFile alloc] initForUpdatingWithContentsOfFile:path fork:MDForkResource error:outError] autorelease];
 				
 				NSData *iconData = [NSData dataWithContentsOfFile:game.iconPath];
 				
@@ -1112,7 +1112,7 @@ static inline NSDictionary *VSMakeLaunchAgentPlist(NSString *jobLabel, NSArray *
 								NSFileHFSTypeCode: @0,
 								MDFileHasCustomIcon: @NO};
 	
-	MDResourceFile *resFile = [[[MDResourceFile alloc] initForUpdatingWithContentsOfFile:path fork:MDResourceFork error:outError] autorelease];
+	MDResourceFile *resFile = [[[MDResourceFile alloc] initForUpdatingWithContentsOfFile:path fork:MDForkResource error:outError] autorelease];
 	if (resFile == nil) return NO;
 	if ([resFile plistResource]) {
 		if (![resFile removeResource:[resFile plistResource] error:outError]) {

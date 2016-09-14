@@ -13,17 +13,17 @@
 @class MDResource;
 
 typedef NS_ENUM(UInt8, MDFork) {
-	MDAnyFork		= 0,
-	MDResourceFork	= 1,
-	MDDataFork		= 2
+	MDForkAny		= 0,
+	MDForkResource	= 1,
+	MDForkData		= 2
 };
 
 
 typedef NS_OPTIONS(char, MDPermission) {
-	MDCurrentAllowablePermission		= 0x00,
-	MDReadPermission					= 0x01,
-	MDWritePermission					= 0x02,
-	MDReadWritePermission				= 0x03
+	MDPermissionCurrentAllowable		= 0x00,
+	MDPermissionRead					= 0x01,
+	MDPermissionWrite					= 0x02,
+	MDPermissionReadWrite				= 0x03
 };
 
 
@@ -48,16 +48,16 @@ extern NSString *__nonnull const MDResourceFileErrorDomain;
 NS_ASSUME_NONNULL_BEGIN
 
 //! read-only; which fork is determined automatically
-- (nullable instancetype)initWithContentsOfFile:(NSString *)aPath error:(NSError *__nullable*__nullable)outError;
+- (nullable instancetype)initWithContentsOfFile:(NSString *)aPath error:(NSError *__nullable*__nullable)outError NS_SWIFT_NAME(init(contentsOf:));
 - (nullable instancetype)initWithContentsOfURL:(NSURL *)aURL error:(NSError *__nullable*__nullable)outError;
 
 
 //! read/write; the 'updating' comes from NSFileHandle
-- (nullable instancetype)initForUpdatingWithContentsOfFile:(NSString *)aPath fork:(MDFork)aFork error:(NSError *__nullable*__nullable)outError;
+- (nullable instancetype)initForUpdatingWithContentsOfFile:(NSString *)aPath fork:(MDFork)aFork error:(NSError *__nullable*__nullable)outError NS_SWIFT_NAME(init(forUpdatingWithContentsOf:fork:));
 - (nullable instancetype)initForUpdatingWithContentsOfURL:(NSURL *)aURL fork:(MDFork)aFork error:(NSError *__nullable*__nullable)outError;
 
 
-- (nullable instancetype)initWithContentsOfFile:(NSString *)aPath permission:(MDPermission)aPermission fork:(MDFork)aFork error:(NSError *__nullable*__nullable)outError;
+- (nullable instancetype)initWithContentsOfFile:(NSString *)aPath permission:(MDPermission)aPermission fork:(MDFork)aFork error:(NSError *__nullable*__nullable)outError NS_SWIFT_NAME(init(contentsOf:permission:fork:));
 - (nullable instancetype)initWithContentsOfURL:(NSURL *)aURL permission:(MDPermission)aPermission fork:(MDFork)aFork error:(NSError *__nullable*__nullable)outError;
 
 

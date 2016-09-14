@@ -128,7 +128,7 @@
 	Handle resHandle = Get1IndResource(resourceType, resourceIndex);
 	OSErr err = ResError();
 	if ( !(err == noErr && resHandle)) {
-		NSLog(@"[%@ %@] ERROR: Get1Resource() returned %hi", NSStringFromClass([self class]), NSStringFromSelector(_cmd), err);
+		NSLog(@"[%@ %@] ERROR: Get1IndResource() returned %hi", NSStringFromClass([self class]), NSStringFromSelector(_cmd), err);
 		if (outError) *outError = [NSError errorWithDomain:NSOSStatusErrorDomain code:err userInfo:nil];
 		return NO;
 	}
@@ -170,7 +170,7 @@
 	ReleaseResource(resHandle);
 	err = ResError();
 	if (err != noErr) {
-		NSLog(@"[%@ %@] ERROR: ResError() for GetResAttrs() returned %hi", NSStringFromClass([self class]), NSStringFromSelector(_cmd), err);
+		NSLog(@"[%@ %@] ERROR: ResError() for ReleaseResource() returned %hi", NSStringFromClass([self class]), NSStringFromSelector(_cmd), err);
 		if (outError) *outError = [NSError errorWithDomain:NSOSStatusErrorDomain code:err userInfo:nil];
 		return NO;
 	}

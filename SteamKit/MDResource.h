@@ -9,30 +9,30 @@
 #import <Foundation/Foundation.h>
 #include <CoreServices/CoreServices.h>
 
-/* Resource Attribute Masks*/
+/** Resource Attribute Masks*/
 typedef NS_OPTIONS(ResAttributes, MDResourceAttributes) {
-	MDResourceAttributeSystemHeap                 = 64,   /**<System or application heap?*/
-	MDResourceAttributePurgeable                  = 32,   /**<Purgeable resource?*/
-	MDResourceAttributeLocked                     = 16,   /**<Load it in locked?*/
-	MDResourceAttributeProtected                  = 8,    /**<Protected?*/
-	MDResourceAttributePreload                    = 4,    /**<Load in on OpenResFile?*/
-	MDResourceAttributeChanged                    = 2     /**<Resource changed?*/
+	MDResourceAttributeSystemHeap                 = 64,   /**< System or application heap? */
+	MDResourceAttributePurgeable                  = 32,   /**< Purgeable resource? */
+	MDResourceAttributeLocked                     = 16,   /**< Load it in locked? */
+	MDResourceAttributeProtected                  = 8,    /**< Protected? */
+	MDResourceAttributePreload                    = 4,    /**< Load in on OpenResFile? */
+	MDResourceAttributeChanged                    = 2     /**< Resource changed? */
 };
 
 
 @interface MDResource : NSObject {
-	NSString			*resourceName;
-	NSData				*resourceData;
-	long				resourceSize;
-	ResType				resourceType;
-	ResourceIndex		resourceIndex;
-	ResID				resourceID;
+	NSString			 *resourceName;
+	NSData				 *resourceData;
+	long				 resourceSize;
+	ResType				 resourceType;
+	ResourceIndex		 resourceIndex;
+	ResID				 resourceID;
 	MDResourceAttributes resourceAttributes;
-	BOOL				resChanged;
+	BOOL				 resChanged;
 	
 }
 
-+ (MDResource*)resourceWithType:(ResType)aType index:(ResourceIndex)anIndex error:(NSError **)outError;
++ (instancetype)resourceWithType:(ResType)aType index:(ResourceIndex)anIndex error:(NSError **)outError;
 
 - (instancetype)initWithType:(ResType)aType index:(ResourceIndex)anIndex error:(NSError **)outError;
 
