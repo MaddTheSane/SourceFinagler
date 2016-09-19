@@ -11,14 +11,15 @@
 
 @class MDRolloverButton;
 
+NS_ASSUME_NONNULL_BEGIN
 
 @protocol MDRolloverButtonDelegate <NSObject>
 - (void)mouseDidEnterRolloverButton:(MDRolloverButton *)button;
 - (void)mouseDidExitRolloverButton:(MDRolloverButton *)button;
 @end
 
-@interface MDRolloverButton : NSButton {
-	IBOutlet id <MDRolloverButtonDelegate> delegate;
-}
-
+@interface MDRolloverButton : NSButton
+@property (weak) IBOutlet id <MDRolloverButtonDelegate> delegate;
 @end
+
+NS_ASSUME_NONNULL_END

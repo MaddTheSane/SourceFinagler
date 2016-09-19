@@ -1328,7 +1328,7 @@ static NSInteger copyTag = 0;
 				NSLog(@"[%@ %@] elapsed time to size %lu items == %.7f sec / %.4f ms", NSStringFromClass([self class]), NSStringFromSelector(_cmd), (unsigned long)allItems.count, elapsedTime, elapsedTime * 1000.0);
 				
 				NSDictionary *dictionary = @{MDCopyOperationKey: copyOperation,
-											 MDCopyOperationStageKey: @(MDCopyOperationPreparingStage),
+											 MDCopyOperationStageKey: @(MDCopyOperationStagePreparing),
 											 MDCopyOperationDestinationKey: destination,
 											 MDCopyOperationTotalItemCountKey: @(allItems.count)};
 											
@@ -1349,7 +1349,7 @@ static NSInteger copyTag = 0;
 						NSDictionary *dictionary = @{MDCopyOperationKey: copyOperation,
 													MDCopyOperationTotalBytesKey: @(totalBytes),
 													MDCopyOperationCurrentBytesKey: @(currentBytes),
-													MDCopyOperationStageKey: @(MDCopyOperationCancelledStage)};
+													MDCopyOperationStageKey: @(MDCopyOperationStageCancelled)};
 						
 						[self performSelectorOnMainThread:@selector(updateProgressWithDictionary:) withObject:dictionary waitUntilDone:NO];
 						
@@ -1360,7 +1360,7 @@ static NSInteger copyTag = 0;
 					if (ABS([progressDate timeIntervalSinceNow]) > MD_PROGRESS_UPDATE_TIME_INTERVAL) {
 						
 						NSDictionary *dictionary = @{MDCopyOperationKey: copyOperation,
-													MDCopyOperationStageKey: @(MDCopyOperationCopyingStage),
+													MDCopyOperationStageKey: @(MDCopyOperationStageCopying),
 													MDCopyOperationDestinationKey: destination,
 													MDCopyOperationTotalBytesKey: @(totalBytes),
 													MDCopyOperationCurrentBytesKey: @(currentBytes),
@@ -1400,7 +1400,7 @@ static NSInteger copyTag = 0;
 									NSDictionary *dictionary = @{MDCopyOperationKey: copyOperation,
 																MDCopyOperationTotalBytesKey: @(totalBytes),
 																MDCopyOperationCurrentBytesKey: @(currentBytes),
-																MDCopyOperationStageKey: @(MDCopyOperationCancelledStage)};
+																MDCopyOperationStageKey: @(MDCopyOperationStageCancelled)};
 									
 									[self performSelectorOnMainThread:@selector(updateProgressWithDictionary:) withObject:dictionary waitUntilDone:NO];
 									
@@ -1419,7 +1419,7 @@ static NSInteger copyTag = 0;
 								if (ABS([progressDate timeIntervalSinceNow]) > MD_PROGRESS_UPDATE_TIME_INTERVAL) {
 									
 									NSDictionary *dictionary = @{MDCopyOperationKey: copyOperation,
-																MDCopyOperationStageKey: @(MDCopyOperationCopyingStage),
+																MDCopyOperationStageKey: @(MDCopyOperationStageCopying),
 																MDCopyOperationDestinationKey: destination,
 																MDCopyOperationTotalBytesKey: @(totalBytes),
 																MDCopyOperationCurrentBytesKey: @(currentBytes),
@@ -1452,7 +1452,7 @@ static NSInteger copyTag = 0;
 				dictionary = @{MDCopyOperationKey: copyOperation,
 											MDCopyOperationTotalBytesKey: @(totalBytes),
 											MDCopyOperationCurrentBytesKey: @(currentBytes),
-											MDCopyOperationStageKey: @(MDCopyOperationFinishingStage)};
+											MDCopyOperationStageKey: @(MDCopyOperationStageFinishing)};
 				
 				[self performSelectorOnMainThread:@selector(updateProgressWithDictionary:) withObject:dictionary waitUntilDone:NO];
 			}
@@ -1471,7 +1471,7 @@ static NSInteger copyTag = 0;
 	if (copyOperation) {
 		MDCopyOperationStage stage = [dictionary[MDCopyOperationStageKey] unsignedIntegerValue];
 		
-		if (stage == MDCopyOperationPreparingStage) {
+		if (stage == MDCopyOperationStagePreparing) {
 			NSString *destination = [dictionary[MDCopyOperationDestinationKey] lastPathComponent];
 			copyOperation.messageText = [NSString stringWithFormat:NSLocalizedString(@"Preparing to copy to \"%@\"", @""), destination.lastPathComponent];
 			
@@ -1484,7 +1484,7 @@ static NSInteger copyTag = 0;
 				copyOperation.informativeText = [NSString stringWithFormat:NSLocalizedString(@"Preparing to copy %lu items", @""), totalItemCount];
 			}
 			
-		} else if (stage == MDCopyOperationCopyingStage) {
+		} else if (stage == MDCopyOperationStageCopying) {
 			if (copyOperation.indeterminate) {
 				copyOperation.totalBytes = (double)[dictionary[MDCopyOperationTotalBytesKey] unsignedLongLongValue];
 				copyOperation.currentBytes = 0.0;
@@ -1510,7 +1510,7 @@ static NSInteger copyTag = 0;
 			copyOperation.informativeText = [NSString stringWithFormat:NSLocalizedString(@"%@ of %@", @""), [fileSizeFormatter stringForObjectValue:currentBytes],
 											   [fileSizeFormatter stringForObjectValue:totalBytes]];
 			
-		} else if (stage == MDCopyOperationFinishingStage) {
+		} else if (stage == MDCopyOperationStageFinishing) {
 			copyOperation.currentBytes = (double)[dictionary[MDCopyOperationCurrentBytesKey] unsignedLongLongValue];
 			copyOperation.messageText = @"";
 			copyOperation.informativeText = @"";
@@ -1524,7 +1524,7 @@ static NSInteger copyTag = 0;
 			@synchronized(copyOperationsAndTags) {
 				[copyOperationsAndTags removeObjectForKey:@(copyOperation.tag)];
 			}
-		} else if (stage == MDCopyOperationCancelledStage) {
+		} else if (stage == MDCopyOperationStageCancelled) {
 			copyOperation.messageText = @"";
 			copyOperation.informativeText = @"";
 			

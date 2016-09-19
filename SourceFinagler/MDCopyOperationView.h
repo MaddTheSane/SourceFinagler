@@ -10,8 +10,8 @@
 #import <Cocoa/Cocoa.h>
 
 typedef NS_ENUM(NSUInteger, MDCopyOperationViewBackgroundColorType) {
-	MDWhiteBackgroundColorType			= 0,
-	MDAlternateBackgroundColorType		= 1
+	MDWhiteBackgroundColorType			NS_SWIFT_NAME(MDCopyOperationViewBackgroundColorType.white) = 0,
+	MDAlternateBackgroundColorType		NS_SWIFT_NAME(MDCopyOperationViewBackgroundColorType.alternate) = 1
 };
 
 @class MDCopyOperationSeparatorView;

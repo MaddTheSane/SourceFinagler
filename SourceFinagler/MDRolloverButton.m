@@ -12,6 +12,7 @@
 #define MD_DEBUG 0
 
 @implementation MDRolloverButton
+@synthesize delegate;
 
 - (void)awakeFromNib {
 #if MD_DEBUG

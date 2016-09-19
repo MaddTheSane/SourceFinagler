@@ -24,10 +24,10 @@ extern NSString * const MDCopyOperationTagKey;
 extern NSString * const MDCopyOperationStageKey;
 
 typedef NS_ENUM(NSUInteger, MDCopyOperationStage) {
-	MDCopyOperationPreparingStage		= 1,
-	MDCopyOperationCopyingStage			= 2,
-	MDCopyOperationFinishingStage		= 3,
-	MDCopyOperationCancelledStage		= 4
+	MDCopyOperationStagePreparing		= 1,
+	MDCopyOperationStageCopying			= 2,
+	MDCopyOperationStageFinishing		= 3,
+	MDCopyOperationStageCancelled		= 4
 };
 
 @interface MDCopyOperation : NSObject {

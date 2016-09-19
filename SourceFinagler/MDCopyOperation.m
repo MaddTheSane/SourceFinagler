@@ -62,8 +62,7 @@ NSString * const MDCopyOperationStageKey				= @"MDCopyOperationStage";
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	@synchronized(self) {
-		NSString *copy = [text copy];
-		informativeText = copy;
+		informativeText = [text copy];
 	}
 }
 
