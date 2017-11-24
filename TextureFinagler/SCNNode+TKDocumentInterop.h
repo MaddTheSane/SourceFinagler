@@ -1,5 +1,5 @@
 //
-//  SCNScene+TKDocumentInterop.h
+//  SCNNode+TKDocumentInterop.h
 //  Source Finagler
 //
 //  Created by C.W. Betts on 11/24/17.
@@ -9,6 +9,12 @@
 #import <SceneKit/SceneKit.h>
 #import <TextureKit/TKModel.h>
 
-@interface SCNScene (TKDocumentInterop)
+NS_ASSUME_NONNULL_BEGIN
+
+@interface SCNNode (TKDocumentInterop)
+
++ (nullable SCNNode*)nodeFromTKModel:(nonnull TKModel*)model;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -15,8 +15,11 @@ NS_ENUM(OSType) {
 	//! The magic number for a Valve VVD file is 'IDSV' in little-endian
 	//! order
 	VVD_MAGIC_NUMBER = (('V'<<24)+('S'<<16)+('D'<<8)+'I'),
+	//! The magic number for a Valve MDL file is 'IDST' in little-endian
+	//! order
+	MDL_MAGIC_NUMBER = (('T'<<24)+('S'<<16)+('D'<<8)+'I'),
 	};
-#if 0
+#if 0 //Because Xcode is being a dumb-dumb about indentation.
 }
 #endif
 

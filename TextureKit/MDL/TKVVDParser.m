@@ -12,7 +12,7 @@
 
 
 typedef struct VVDHeader {
-	int    magic_number;
+	OSType magic_number;
 	int    vvd_version;
 	int    check_sum;
 	
