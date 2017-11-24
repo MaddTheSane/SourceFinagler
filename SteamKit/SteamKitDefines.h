@@ -23,10 +23,10 @@
 
 #ifdef __cplusplus
 #define STEAMKIT_EXTERN		extern "C"
-#define STEAMKIT_PRIVATE_EXTERN	__private_extern__
+#define STEAMKIT_PRIVATE_EXTERN	__attribute__((visibility("hidden")))
 #else
 #define STEAMKIT_EXTERN				extern
-#define STEAMKIT_PRIVATE_EXTERN	__private_extern__
+#define STEAMKIT_PRIVATE_EXTERN	__attribute__((visibility("hidden")))
 #endif
 
 #if !defined(STEAMKIT_INLINE)
