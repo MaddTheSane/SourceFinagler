@@ -50,7 +50,7 @@ static inline TKImageContentMask TKImageContentMaskForImage(TKImage *anImage) {
 }
 
 
-NS_ENUM(NSUInteger) {
+typedef NS_ENUM(NSUInteger, TKImageDocumentViewModeBrowserMasks) {
 	TKImageDocumentViewModeShowSlicesBrowserMask			= 1 << 0,
 	TKImageDocumentViewModeShowFacesBrowserMask				= 1 << 1,
 	TKImageDocumentViewModeShowFramesBrowserMask			= 1 << 2,

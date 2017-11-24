@@ -212,7 +212,7 @@ NSString * const TKDDSPboardType	= @"com.microsoft.dds";
 
 
 @interface TKDDSImageRep (TKPrivate)
-+ (NSArray *)imageRepsWithData:(NSData *)aData firstRepresentationOnly:(BOOL)firstRepOnly;
++ (NSArray<TKDDSImageRep*> *)imageRepsWithData:(NSData *)aData firstRepresentationOnly:(BOOL)firstRepOnly;
 @end
 
 

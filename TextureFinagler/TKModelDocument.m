@@ -26,32 +26,18 @@
     NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
     if ((self = [super init])) {
-		
-        // Add your subclass-specific initialization here.
-        // If an error occurs here, return nil.
-    }
-    return self;
-}
-
-
-- (instancetype)initWithType:(NSString *)typeName error:(NSError **)outError {
-#if TK_DEBUG
-    NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-#endif
-	if ((self = [super init])) {
-		
 		scene = [SCNScene scene];
 		
 		// Add a camera to the scene
 		SCNNode *cameraNode = [SCNNode node];
-		cameraNode.camera = [SCNCamera camera];	
+		cameraNode.camera = [SCNCamera camera];
 		cameraNode.position = SCNVector3Make(0, 0, 30);
 		[scene.rootNode addChildNode:cameraNode];
 		
 		
 		// Add a diffuse light to the scene
 		SCNNode *diffuseLightNode = [SCNNode node];
-//		self.diffuseLightNode = [SCNNode node];
+		//self.diffuseLightNode = [SCNNode node];
 		diffuseLightNode.light = [SCNLight light];
 		diffuseLightNode.light.type = SCNLightTypeOmni;
 		diffuseLightNode.position = SCNVector3Make(-30, 30, 50);
@@ -59,16 +45,15 @@
 		
 		// Add an ambient light to the scene
 		SCNNode *ambientLightNode = [SCNNode node];
-//		self.ambientLightNode = [SCNNode node];
+		//self.ambientLightNode = [SCNNode node];
 		ambientLightNode.light = [SCNLight light];
 		ambientLightNode.light.type = SCNLightTypeAmbient;
 		ambientLightNode.light.color = [NSColor colorWithDeviceWhite:0.1 alpha:1.0];
 		[scene.rootNode addChildNode:ambientLightNode];
-		
-		
-	}
-	return self;
+    }
+    return self;
 }
+
 
 - (NSString *)windowNibName {
     // Override returning the nib file name of the document
@@ -92,6 +77,10 @@
 #if TK_DEBUG
 	NSLog(@"[%@ %@] typeName == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), typeName);
 #endif
+	
+	if (outError) {
+		*outError = [NSError errorWithDomain:NSOSStatusErrorDomain code:unimpErr userInfo:nil];
+	}
 	
 	BOOL success = NO;
 	return success;

@@ -1,0 +1,34 @@
+framework module TextureKit {
+	umbrella header "TextureKit.h"
+	
+	export *
+	module * { export * }
+	
+	explicit module TKModel {
+		header "TKModel.h"
+		export *
+		
+		explicit module OBJ {
+			module Model {
+				header "TKOBJModel.h"
+				export *
+			}
+			
+			module Parts {
+				header "TKOBJParts.h"
+				export *
+			}
+			
+			export *
+		}
+		
+		explicit module MDL {
+			module Model {
+				header "TKMDLModel.h"
+				export *
+			}
+			
+			export *
+		}
+	}
+}
