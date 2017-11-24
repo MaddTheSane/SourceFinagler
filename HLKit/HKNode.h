@@ -26,6 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 	BOOL				showInvisibleItems;	
 }
 
+- (instancetype)init UNAVAILABLE_ATTRIBUTE;
 - (instancetype)initWithParent:(nullable HKNode *)aParent childNodes:(nullable NSArray<HKNode*> *)theChildren sortDescriptors:(nullable NSArray<NSSortDescriptor*> *)aSortDescriptors container:(nullable id)aContainer NS_DESIGNATED_INITIALIZER;
 
 @property (nonatomic, weak, nullable) id container;
