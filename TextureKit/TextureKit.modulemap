@@ -22,13 +22,13 @@ framework module TextureKit {
 			export *
 		}
 		
-		explicit module MDL {
+		/*explicit module MDL {
 			module Model {
 				header "TKMDLModel.h"
 				export *
 			}
 			
 			export *
-		}
+		}*/
 	}
 }

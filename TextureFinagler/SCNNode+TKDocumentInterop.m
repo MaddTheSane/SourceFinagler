@@ -10,9 +10,16 @@
 
 @interface TKModel (SCNGetters)
 
+- (SCNGeometry*)scnGeometry;
+
 @end
 
 @implementation TKModel (SCNGetters)
+
+- (SCNGeometry*)scnGeometry
+{
+	return nil;
+}
 
 @end
 

@@ -22,17 +22,11 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		5517012F1FC89F76002C13DE /* TKMDLModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 5517012D1FC89F76002C13DE /* TKMDLModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		551701301FC89F76002C13DE /* TKMDLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5517012E1FC89F76002C13DE /* TKMDLModel.m */; };
-		551701321FC8A239002C13DE /* TKMDLConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 551701311FC8A239002C13DE /* TKMDLConstants.h */; };
-		551701351FC8A2FD002C13DE /* TKVVDParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 551701331FC8A2FD002C13DE /* TKVVDParser.h */; };
-		551701361FC8A2FD002C13DE /* TKVVDParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 551701341FC8A2FD002C13DE /* TKVVDParser.m */; };
-		551701391FC8A38E002C13DE /* TKVTXParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 551701371FC8A38E002C13DE /* TKVTXParser.h */; };
-		5517013A1FC8A38E002C13DE /* TKVTXParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 551701381FC8A38E002C13DE /* TKVTXParser.m */; };
-		5517013D1FC8AB8B002C13DE /* TKMDLMeshParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 5517013B1FC8AB8B002C13DE /* TKMDLMeshParser.h */; };
-		5517013E1FC8AB8B002C13DE /* TKMDLMeshParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5517013C1FC8AB8B002C13DE /* TKMDLMeshParser.m */; };
-		551701411FC8ACD0002C13DE /* TKMDLParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 5517013F1FC8ACD0002C13DE /* TKMDLParser.h */; };
-		551701421FC8ACD0002C13DE /* TKMDLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 551701401FC8ACD0002C13DE /* TKMDLParser.m */; };
+		551701451FC8B525002C13DE /* TKMDLImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 551701441FC8B525002C13DE /* TKMDLImporter.m */; };
+		551701471FC8B6F7002C13DE /* TKMDLMeshParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5517013C1FC8AB8B002C13DE /* TKMDLMeshParser.m */; };
+		551701481FC8B6F7002C13DE /* TKVTXParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 551701381FC8A38E002C13DE /* TKVTXParser.m */; };
+		551701491FC8B6F7002C13DE /* TKVVDParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 551701341FC8A2FD002C13DE /* TKVVDParser.m */; };
+		5517014A1FC8B6F7002C13DE /* TKMDLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 551701401FC8ACD0002C13DE /* TKMDLParser.m */; };
 		5543313E1D832FFC0052A31D /* TKFoundationAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = C146091914F3373700B7286B /* TKFoundationAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5543313F1D8330040052A31D /* TKAppKitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = C146091714F3373700B7286B /* TKAppKitAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		554331401D8330760052A31D /* TKAppKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C146091814F3373700B7286B /* TKAppKitAdditions.m */; };
@@ -1001,6 +995,8 @@
 		5517013C1FC8AB8B002C13DE /* TKMDLMeshParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TKMDLMeshParser.m; sourceTree = "<group>"; };
 		5517013F1FC8ACD0002C13DE /* TKMDLParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKMDLParser.h; sourceTree = "<group>"; };
 		551701401FC8ACD0002C13DE /* TKMDLParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TKMDLParser.m; sourceTree = "<group>"; };
+		551701431FC8B525002C13DE /* TKMDLImporter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKMDLImporter.h; sourceTree = "<group>"; };
+		551701441FC8B525002C13DE /* TKMDLImporter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TKMDLImporter.m; sourceTree = "<group>"; };
 		558672FB1D7E857600E26A11 /* cmdline.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = cmdline.h; path = nvtt/tools/cmdline.h; sourceTree = "<group>"; };
 		55B9F2691D7CB1EF00641709 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		55B9F2B71D7D1A0E00641709 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -2089,6 +2085,13 @@
 			children = (
 				5517012D1FC89F76002C13DE /* TKMDLModel.h */,
 				5517012E1FC89F76002C13DE /* TKMDLModel.m */,
+			);
+			path = MDL;
+			sourceTree = "<group>";
+		};
+		551701461FC8B690002C13DE /* MDL */ = {
+			isa = PBXGroup;
+			children = (
 				551701331FC8A2FD002C13DE /* TKVVDParser.h */,
 				551701341FC8A2FD002C13DE /* TKVVDParser.m */,
 				551701371FC8A38E002C13DE /* TKVTXParser.h */,
@@ -2098,8 +2101,10 @@
 				5517013F1FC8ACD0002C13DE /* TKMDLParser.h */,
 				551701401FC8ACD0002C13DE /* TKMDLParser.m */,
 				551701311FC8A239002C13DE /* TKMDLConstants.h */,
+				551701431FC8B525002C13DE /* TKMDLImporter.h */,
+				551701441FC8B525002C13DE /* TKMDLImporter.m */,
 			);
-			path = MDL;
+			name = MDL;
 			sourceTree = "<group>";
 		};
 		552E8CD51D7C9FCD00D81717 /* Resources */ = {
@@ -2522,6 +2527,7 @@
 				C18AF3DA162128B900A04CCA /* TKMaterialPropertyViewController.h */,
 				C18AF3DB162128B900A04CCA /* TKMaterialPropertyViewController.m */,
 				C122434C17B9623F00ADC195 /* TKMaterialPropertyViewController.xib */,
+				551701461FC8B690002C13DE /* MDL */,
 			);
 			name = TKModelDocument;
 			sourceTree = "<group>";
@@ -3813,23 +3819,17 @@
 				5543313E1D832FFC0052A31D /* TKFoundationAdditions.h in Headers */,
 				5543313F1D8330040052A31D /* TKAppKitAdditions.h in Headers */,
 				55F82CBE1D7BA7E500D6DAC9 /* TKMath.h in Headers */,
-				551701391FC8A38E002C13DE /* TKVTXParser.h in Headers */,
 				55F82CC81D7BAA9D00D6DAC9 /* TKShader.h in Headers */,
 				C1E6DFEE12BD102D009D8AD6 /* TextureKitDefines.h in Headers */,
 				55F82CBF1D7BA7FF00D6DAC9 /* TKOpenGLObject.h in Headers */,
 				55F82CB81D7BA5DB00D6DAC9 /* TKModel.h in Headers */,
-				551701321FC8A239002C13DE /* TKMDLConstants.h in Headers */,
 				C169FDD9147AF93E00F9DCF8 /* TKVMTMaterial.h in Headers */,
-				551701351FC8A2FD002C13DE /* TKVVDParser.h in Headers */,
 				C1FF5A39145E6571005F36D5 /* TKBase.h in Headers */,
 				C10E5042147C8F0A00864795 /* TKVMTNode.h in Headers */,
 				55F82CBA1D7BA61400D6DAC9 /* TKOBJModel.h in Headers */,
 				55F82CB91D7BA5F900D6DAC9 /* TKOpenGLBase.h in Headers */,
 				55F82CCE1D7BAB5800D6DAC9 /* TKShaderProgram.h in Headers */,
 				C1E1503116286A01000CBA7A /* TKPrivateInterfaces.h in Headers */,
-				5517013D1FC8AB8B002C13DE /* TKMDLMeshParser.h in Headers */,
-				5517012F1FC89F76002C13DE /* TKMDLModel.h in Headers */,
-				551701411FC8ACD0002C13DE /* TKMDLParser.h in Headers */,
 				55F82CC01D7BA89E00D6DAC9 /* TKTexture.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4677,23 +4677,18 @@
 				C1E6DAC012BC22BB009D8AD6 /* TKImage.m in Sources */,
 				55F82CC11D7BA8A200D6DAC9 /* TKTexture.m in Sources */,
 				55F82CC41D7BA8CF00D6DAC9 /* TKVTFTexture.mm in Sources */,
-				5517013E1FC8AB8B002C13DE /* TKMDLMeshParser.m in Sources */,
 				55F82CCB1D7BAAF900D6DAC9 /* TKModel.m in Sources */,
 				55F82CC31D7BA8B900D6DAC9 /* TKDDSTexture.mm in Sources */,
 				C1E6DAC212BC22BC009D8AD6 /* TKImageRep.m in Sources */,
 				C1E6DAC412BC22C3009D8AD6 /* TKVTFImageRep.mm in Sources */,
 				55F82CB51D7BA58600D6DAC9 /* TKOBJModel.m in Sources */,
-				551701421FC8ACD0002C13DE /* TKMDLParser.m in Sources */,
 				C12CFB5A12DFB3AE00A08A4B /* TKDDSImageRep.mm in Sources */,
 				C169FDDB147AF94300F9DCF8 /* TKVMTMaterial.m in Sources */,
 				55F82CD61D7BACD900D6DAC9 /* TKValueAdditions.m in Sources */,
 				55F82CCF1D7BAB5800D6DAC9 /* TKShaderProgram.m in Sources */,
 				554331401D8330760052A31D /* TKAppKitAdditions.m in Sources */,
-				551701361FC8A2FD002C13DE /* TKVVDParser.m in Sources */,
 				55F82CB61D7BA58600D6DAC9 /* TKOBJParts.m in Sources */,
 				55F82CC91D7BAA9D00D6DAC9 /* TKShader.m in Sources */,
-				5517013A1FC8A38E002C13DE /* TKVTXParser.m in Sources */,
-				551701301FC89F76002C13DE /* TKMDLModel.m in Sources */,
 				55F82CCA1D7BAACF00D6DAC9 /* TKOpenGLObject.m in Sources */,
 				C18EDFF4147D52CC00EBE2DC /* TKVMTNode.m in Sources */,
 				C12CFB7612DFBCB400A08A4B /* TKFoundationAdditions.m in Sources */,
@@ -4800,6 +4795,8 @@
 				C1C2C552127CBCA0003B24F6 /* MDTableView.m in Sources */,
 				C1C2C554127CBCA0003B24F6 /* MDUserDefaults.m in Sources */,
 				C1C2C556127CBCA0003B24F6 /* MDHLDocument.m in Sources */,
+				551701451FC8B525002C13DE /* TKMDLImporter.m in Sources */,
+				5517014A1FC8B6F7002C13DE /* TKMDLParser.m in Sources */,
 				55F0B9E61FC89B6B00814DDC /* SCNNode+TKDocumentInterop.m in Sources */,
 				C1C2C55C127CBCA0003B24F6 /* MDTextFieldCell.m in Sources */,
 				C1C2C55D127CBCA0003B24F6 /* MDBrowser.m in Sources */,
@@ -4812,6 +4809,7 @@
 				C1C2C564127CBCA0003B24F6 /* MDPathControlView.m in Sources */,
 				C1C2C566127CBCA0003B24F6 /* MDDateFormatter.m in Sources */,
 				C1C2C568127CBCA0003B24F6 /* MDInspectorController.m in Sources */,
+				551701491FC8B6F7002C13DE /* TKVVDParser.m in Sources */,
 				C1C2C569127CBCA0003B24F6 /* MDInspectorView.m in Sources */,
 				C1C2C56A127CBCA0003B24F6 /* MDSelfExpandingTextField.m in Sources */,
 				C1C2C56B127CBCA0003B24F6 /* MDViewOptionsController.m in Sources */,
@@ -4825,6 +4823,7 @@
 				C1C2C573127CBCA0003B24F6 /* MDStash.m in Sources */,
 				C1C2C574127CBCA0003B24F6 /* MDGCFDocument.m in Sources */,
 				C1C2C575127CBCA0003B24F6 /* MDBSPDocument.m in Sources */,
+				551701481FC8B6F7002C13DE /* TKVTXParser.m in Sources */,
 				C1C2C576127CBCA0003B24F6 /* MDNCFDocument.m in Sources */,
 				C1C2C577127CBCA0003B24F6 /* MDPAKDocument.m in Sources */,
 				C1C2C578127CBCA0003B24F6 /* MDVPKDocument.m in Sources */,
@@ -4854,6 +4853,7 @@
 				C1A2DDD413D3B927001ABB83 /* TKImageExportPreviewView.m in Sources */,
 				C1A2DDE213D3BF16001ABB83 /* TKImageExportPreviewOperation.m in Sources */,
 				C1FBD12913E7F41D0020C06F /* TKImageExportTextField.m in Sources */,
+				551701471FC8B6F7002C13DE /* TKMDLMeshParser.m in Sources */,
 				C151173B1443064F0042F13E /* TKImageBrowserItem.m in Sources */,
 				C17D74C51443C8EA0048697D /* TKTextFieldCell.m in Sources */,
 				C17D74EC1443D32D0048697D /* TKTextField.m in Sources */,
