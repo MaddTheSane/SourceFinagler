@@ -1,10 +1,10 @@
 #ifndef NV_CONFIG
 #define NV_CONFIG
 
-#define HAVE_UNISTD_H
-#define HAVE_STDARG_H
-#define HAVE_SIGNAL_H
-#define HAVE_EXECINFO_H
+#define HAVE_UNISTD_H 1
+#define HAVE_STDARG_H 1
+#define HAVE_SIGNAL_H 1
+#define HAVE_EXECINFO_H 1
 //#define HAVE_MALLOC_H
 
 //#define HAVE_OPENMP

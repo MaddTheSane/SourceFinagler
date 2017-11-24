@@ -458,7 +458,7 @@ static OSErr FSGetTotalForkSizes(const FSRef *ref,
 	} while (err == noErr);
 	
 	/* any error result other than errFSNoMoreItems is serious */
-	require(err == errFSNoMoreItems, FSIterateForks);
+	__Require(err == errFSNoMoreItems, FSIterateForks);
 	
 	/* Normal exit */
 	err = noErr;
