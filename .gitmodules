@@ -1,0 +1,3 @@
+[submodule "NVTextureTools"]
+	path = NVTextureTools
+	url = https://github.com/MaddTheSane/nvidia-texture-tools.git

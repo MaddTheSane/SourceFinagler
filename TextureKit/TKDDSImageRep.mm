@@ -9,7 +9,7 @@
 #import <TextureKit/TKDDSImageRep.h>
 #import <Foundation/Foundation.h>
 #include <ApplicationServices/ApplicationServices.h>
-#include <NVTextureTools/NVTextureTools.h>
+#include <NVTT/NVTextureTools.h>
 
 #import "TKFoundationAdditions.h"
 
@@ -721,8 +721,9 @@ static unsigned char *TKCreateRGBADataFromColor32(Color32 *pixels, NSUInteger pi
 #if TK_DEBUG
 	NSLog(@"[%@ %@] magic == 0x%x, %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd),  (unsigned int)magic, NSFileTypeForHFSTypeCode(magic));
 #endif
+	MemoryInputStream *mis = new MemoryInputStream((unsigned char *)[aData bytes], uint([aData length]));
 	
-	DirectDrawSurface *dds = new DirectDrawSurface((unsigned char *)aData.bytes, aData.length);
+	DirectDrawSurface *dds = new DirectDrawSurface(mis);
 	if (dds == 0) {
 		NSLog(@"[%@ %@] new DirectDrawSurface() with data failed!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 		return nil;

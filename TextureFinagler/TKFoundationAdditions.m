@@ -545,12 +545,12 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray<NSValue*> *inRects, BOOL isFlipped)
 @end
 
 
+#include <CommonCrypto/CommonDigest.h>
+
 //#ifdef TEXTUREKIT_EXTERN
 //#error
 //#endif
 //#ifndef TEXTUREKIT_EXTERN
-
-#if 0
 
 @implementation NSData (TKAdditions)
 
@@ -559,14 +559,14 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray<NSValue*> *inRects, BOOL isFlipped)
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	unsigned char digest[SHA_DIGEST_LENGTH];
-	char hashString[(2 * SHA_DIGEST_LENGTH) + 1];
+	unsigned char digest[CC_SHA1_DIGEST_LENGTH];
+	char hashString[(2 * CC_SHA1_DIGEST_LENGTH) + 1];
 	
-	SHA1([self bytes], [self length], digest);
+	CC_SHA1([self bytes], [self length], digest);
 	
 	NSInteger currentIndex = 0;
 	
-	for (currentIndex = 0; currentIndex < SHA_DIGEST_LENGTH; currentIndex++) {
+	for (currentIndex = 0; currentIndex < CC_SHA1_DIGEST_LENGTH; currentIndex++) {
 		sprintf(hashString+currentIndex*2, "%02x", digest[currentIndex]);
 	}
 	hashString[currentIndex * 2] = 0;
@@ -579,14 +579,15 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray<NSValue*> *inRects, BOOL isFlipped)
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	unsigned char digest[SHA_DIGEST_LENGTH];
-	SHA1([self bytes], [self length], digest);
-	return [NSData dataWithBytes:&digest length:SHA_DIGEST_LENGTH];
+	unsigned char digest[CC_SHA1_DIGEST_LENGTH];
+	CC_SHA1([self bytes], [self length], digest);
+	return [NSData dataWithBytes:&digest length:CC_SHA1_DIGEST_LENGTH];
 }
 
 
 @end
 
+#if 0
 
 @implementation NSBundle (TKAdditions)
 

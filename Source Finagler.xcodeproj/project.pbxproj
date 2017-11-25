@@ -25,6 +25,43 @@
 		5543313E1D832FFC0052A31D /* TKFoundationAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = C146091914F3373700B7286B /* TKFoundationAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5543313F1D8330040052A31D /* TKAppKitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = C146091714F3373700B7286B /* TKAppKitAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		554331401D8330760052A31D /* TKAppKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C146091814F3373700B7286B /* TKAppKitAdditions.m */; };
+		554FE6651FC9FFF500727CE0 /* CompressorDX11.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1FEA961125E75C000CA78FF /* CompressorDX11.cpp */; };
+		554FE6671FCA03AD00727CE0 /* ftoi.h in Headers */ = {isa = PBXBuildFile; fileRef = 554FE6661FCA03AD00727CE0 /* ftoi.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		554FE67B1FCA04C700727CE0 /* PackedFloat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554FE6791FCA04C700727CE0 /* PackedFloat.cpp */; };
+		554FE67C1FCA04C700727CE0 /* PackedFloat.h in Headers */ = {isa = PBXBuildFile; fileRef = 554FE67A1FCA04C700727CE0 /* PackedFloat.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		554FE67F1FCA059600727CE0 /* Gamma.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554FE67D1FCA059600727CE0 /* Gamma.cpp */; };
+		554FE6801FCA059600727CE0 /* Gamma.h in Headers */ = {isa = PBXBuildFile; fileRef = 554FE67E1FCA059600727CE0 /* Gamma.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		554FE6811FCA068300727CE0 /* avpcl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554FE5FE1FC9FF8A00727CE0 /* avpcl.cpp */; };
+		554FE6821FCA068300727CE0 /* shapes_two.h in Headers */ = {isa = PBXBuildFile; fileRef = 554FE5FF1FC9FF8A00727CE0 /* shapes_two.h */; };
+		554FE6831FCA068300727CE0 /* tile.h in Headers */ = {isa = PBXBuildFile; fileRef = 554FE6011FC9FF8A00727CE0 /* tile.h */; };
+		554FE6841FCA068300727CE0 /* avpcl.h in Headers */ = {isa = PBXBuildFile; fileRef = 554FE6051FC9FF8A00727CE0 /* avpcl.h */; };
+		554FE6851FCA068300727CE0 /* shapes_three.h in Headers */ = {isa = PBXBuildFile; fileRef = 554FE6061FC9FF8A00727CE0 /* shapes_three.h */; };
+		554FE6861FCA068300727CE0 /* avpcl_mode7.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554FE6081FC9FF8A00727CE0 /* avpcl_mode7.cpp */; };
+		554FE6871FCA068300727CE0 /* avpcl_mode6.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554FE6091FC9FF8A00727CE0 /* avpcl_mode6.cpp */; };
+		554FE6881FCA068300727CE0 /* avpcl_mode4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554FE60A1FC9FF8A00727CE0 /* avpcl_mode4.cpp */; };
+		554FE6891FCA068300727CE0 /* avpcl_mode5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554FE60B1FC9FF8A00727CE0 /* avpcl_mode5.cpp */; };
+		554FE68A1FCA068300727CE0 /* endpts.h in Headers */ = {isa = PBXBuildFile; fileRef = 554FE60C1FC9FF8A00727CE0 /* endpts.h */; };
+		554FE68B1FCA068300727CE0 /* avpcl_mode1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554FE60D1FC9FF8A00727CE0 /* avpcl_mode1.cpp */; };
+		554FE68C1FCA068300727CE0 /* avpcl_mode0.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554FE60E1FC9FF8A00727CE0 /* avpcl_mode0.cpp */; };
+		554FE68D1FCA068300727CE0 /* bits.h in Headers */ = {isa = PBXBuildFile; fileRef = 554FE60F1FC9FF8A00727CE0 /* bits.h */; };
+		554FE68E1FCA068300727CE0 /* avpcl_mode2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554FE62D1FC9FF8A00727CE0 /* avpcl_mode2.cpp */; };
+		554FE68F1FCA068300727CE0 /* avpcl_mode3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554FE6301FC9FF8A00727CE0 /* avpcl_mode3.cpp */; };
+		554FE6901FCA069200727CE0 /* bits.h in Headers */ = {isa = PBXBuildFile; fileRef = C1FEA985125E764700CA78FF /* bits.h */; };
+		554FE6911FCA069200727CE0 /* shapes_two.h in Headers */ = {isa = PBXBuildFile; fileRef = C1FEA987125E764700CA78FF /* shapes_two.h */; };
+		554FE6921FCA069200727CE0 /* tile.h in Headers */ = {isa = PBXBuildFile; fileRef = C1FEA988125E764700CA78FF /* tile.h */; };
+		554FE6931FCA069200727CE0 /* zoh.h in Headers */ = {isa = PBXBuildFile; fileRef = C1FEA98C125E764700CA78FF /* zoh.h */; };
+		554FE6941FCA069200727CE0 /* zoh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1FEA98B125E764700CA78FF /* zoh.cpp */; };
+		554FE6951FCA069200727CE0 /* zohone.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1FEA98D125E764700CA78FF /* zohone.cpp */; };
+		554FE6961FCA069200727CE0 /* zohtwo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1FEA98E125E764700CA78FF /* zohtwo.cpp */; };
+		554FE69D1FCA078A00727CE0 /* avpcl_utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554FE69B1FCA078A00727CE0 /* avpcl_utils.cpp */; };
+		554FE69E1FCA078A00727CE0 /* avpcl_utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 554FE69C1FCA078A00727CE0 /* avpcl_utils.h */; };
+		554FE69F1FCA096200727CE0 /* zoh_utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1FEA989125E764700CA78FF /* zoh_utils.cpp */; };
+		554FE6A21FCA09D900727CE0 /* CompressorDXT5_RGBM.h in Headers */ = {isa = PBXBuildFile; fileRef = 554FE6A01FCA09D800727CE0 /* CompressorDXT5_RGBM.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		554FE6A31FCA09D900727CE0 /* CompressorDXT5_RGBM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554FE6A11FCA09D800727CE0 /* CompressorDXT5_RGBM.cpp */; };
+		554FE6A41FCA09E800727CE0 /* CompressorDX11.h in Headers */ = {isa = PBXBuildFile; fileRef = C1FEA962125E75C000CA78FF /* CompressorDX11.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		554FE6A71FCA0A2600727CE0 /* BlockCompressor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554FE6A51FCA0A2500727CE0 /* BlockCompressor.cpp */; };
+		554FE6A81FCA0A2600727CE0 /* BlockCompressor.h in Headers */ = {isa = PBXBuildFile; fileRef = 554FE6A61FCA0A2600727CE0 /* BlockCompressor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		554FE6AA1FCA0D3C00727CE0 /* CudaCompressorDXT.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C1FEA981125E763700CA78FF /* CudaCompressorDXT.h */; };
 		558672FC1D7E874C00E26A11 /* NVImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA8FD125E71A200CA78FF /* NVImage.framework */; };
 		558673021D7E8BB700E26A11 /* NVCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA7EA125E5C9600CA78FF /* NVCore.framework */; };
 		55B9F2A41D7CB20600641709 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55B9F2681D7CB1EF00641709 /* InfoPlist.strings */; };
@@ -65,8 +102,8 @@
 		C1097AA3125FA11E00D60D27 /* nvtt_wrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = C1FEA970125E75C000CA78FF /* nvtt_wrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C1097AA4125FA11F00D60D27 /* nvtt_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1FEA96F125E75C000CA78FF /* nvtt_wrapper.cpp */; };
 		C1097AA5125FA12000D60D27 /* Compressor.h in Headers */ = {isa = PBXBuildFile; fileRef = C1FEA95C125E75C000CA78FF /* Compressor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C1097AA6125FA12000D60D27 /* CompressorDXT.h in Headers */ = {isa = PBXBuildFile; fileRef = C1FEA964125E75C000CA78FF /* CompressorDXT.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C1097AA7125FA12100D60D27 /* CompressorDXT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1FEA963125E75C000CA78FF /* CompressorDXT.cpp */; };
+		C1097AA6125FA12000D60D27 /* CompressorDXT1.h in Headers */ = {isa = PBXBuildFile; fileRef = C1FEA964125E75C000CA78FF /* CompressorDXT1.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C1097AA7125FA12100D60D27 /* CompressorDXT1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1FEA963125E75C000CA78FF /* CompressorDXT1.cpp */; };
 		C1097AA8125FA12200D60D27 /* CompressorDX9.h in Headers */ = {isa = PBXBuildFile; fileRef = C1FEA95E125E75C000CA78FF /* CompressorDX9.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C1097AA9125FA12200D60D27 /* CompressorDX9.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1FEA95D125E75C000CA78FF /* CompressorDX9.cpp */; };
 		C1097AAA125FA12300D60D27 /* CompressorDX10.h in Headers */ = {isa = PBXBuildFile; fileRef = C1FEA960125E75C000CA78FF /* CompressorDX10.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -211,7 +248,7 @@
 		C16A68F41600B62B0038A8B1 /* HLKitDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = C16A68F21600B6170038A8B1 /* HLKitDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C16A68F51600B62C0038A8B1 /* HLKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C16A68F11600B6170038A8B1 /* HLKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C16D5DAC136D39C400453365 /* VTF.h in Headers */ = {isa = PBXBuildFile; fileRef = C1B95367124E73EC00E83451 /* VTF.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C174299412A39CA200C54F08 /* NVTextureTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA930125E72E300CA78FF /* NVTextureTools.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		C174299412A39CA200C54F08 /* NVTT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA930125E72E300CA78FF /* NVTT.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		C17429B812A39D9200C54F08 /* NVImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA8FD125E71A200CA78FF /* NVImage.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		C174EED0128A49C000817F81 /* MDCopyOperationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1137867128072C500C87072 /* MDCopyOperationViewController.m */; };
 		C176D4B1145BEF6E00319284 /* TKImageChannelEnabledCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C176D4B0145BEF6E00319284 /* TKImageChannelEnabledCell.m */; };
@@ -220,7 +257,7 @@
 		C179470B12788390008B7EC9 /* NVCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA7EA125E5C9600CA78FF /* NVCore.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		C179470D12788391008B7EC9 /* NVMath.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA8DE125E5DC300CA78FF /* NVMath.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		C179471012788392008B7EC9 /* NVImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA8FD125E71A200CA78FF /* NVImage.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		C179471212788393008B7EC9 /* NVTextureTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA930125E72E300CA78FF /* NVTextureTools.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		C179471212788393008B7EC9 /* NVTT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA930125E72E300CA78FF /* NVTT.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		C17CC5AC1627FF740055D950 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17CC5AB1627FF740055D950 /* Sparkle.framework */; };
 		C17CC69C1628002F0055D950 /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C17CC5AB1627FF740055D950 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C17D74C51443C8EA0048697D /* TKTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C17D74C41443C8EA0048697D /* TKTextFieldCell.m */; };
@@ -271,7 +308,7 @@
 		C18B567B13D52CB60018626D /* NVCore.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA7EA125E5C9600CA78FF /* NVCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C18B567C13D52CB60018626D /* NVMath.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA8DE125E5DC300CA78FF /* NVMath.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C18B567D13D52CB60018626D /* NVImage.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA8FD125E71A200CA78FF /* NVImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C18B567E13D52CB60018626D /* NVTextureTools.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA930125E72E300CA78FF /* NVTextureTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C18B567E13D52CB60018626D /* NVTT.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA930125E72E300CA78FF /* NVTT.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C18EDFF4147D52CC00EBE2DC /* TKVMTNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C10E5041147C8F0A00864795 /* TKVMTNode.m */; };
 		C190888813932B2800656A78 /* VSGameAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C190888713932B2800656A78 /* VSGameAdditions.m */; };
 		C1908B5813935CD000656A78 /* MDImageTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C1908B5713935CD000656A78 /* MDImageTextCell.m */; };
@@ -507,7 +544,7 @@
 		C1C2C763127CC5D3003B24F6 /* NVCore.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA7EA125E5C9600CA78FF /* NVCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C1C2C767127CC5D8003B24F6 /* NVMath.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA8DE125E5DC300CA78FF /* NVMath.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C1C2C76E127CC5DD003B24F6 /* NVImage.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA8FD125E71A200CA78FF /* NVImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C1C2C777127CC5E5003B24F6 /* NVTextureTools.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA930125E72E300CA78FF /* NVTextureTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C1C2C777127CC5E5003B24F6 /* NVTT.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA930125E72E300CA78FF /* NVTT.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C1CA269713A2E1B900235C98 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1CA269613A2E1B900235C98 /* QTKit.framework */; };
 		C1CA27DA13A2E1F900235C98 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1CA27D913A2E1F900235C98 /* Cocoa.framework */; };
 		C1CA27E813A2E20F00235C98 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1CA27D913A2E1F900235C98 /* Cocoa.framework */; };
@@ -537,7 +574,7 @@
 		C1E6DB0312BC236C009D8AD6 /* VTF.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1B95275124E73B200E83451 /* VTF.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		C1E6DB0A12BC2408009D8AD6 /* TextureKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C1E6DB0812BC2408009D8AD6 /* TextureKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C1E6DFEE12BD102D009D8AD6 /* TextureKitDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = C1E6DFCC12BD0B00009D8AD6 /* TextureKitDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C1E6DFFB12BD1091009D8AD6 /* NVTextureTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA930125E72E300CA78FF /* NVTextureTools.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		C1E6DFFB12BD1091009D8AD6 /* NVTT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA930125E72E300CA78FF /* NVTT.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		C1E6E13E12BD50DF009D8AD6 /* NVImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA8FD125E71A200CA78FF /* NVImage.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		C1E6E13F12BD50E0009D8AD6 /* NVMath.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA8DE125E5DC300CA78FF /* NVMath.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		C1E6E14012BD50E1009D8AD6 /* NVCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA7EA125E5C9600CA78FF /* NVCore.framework */; settings = {ATTRIBUTES = (Required, ); }; };
@@ -587,9 +624,7 @@
 		C1FEA9B6125E88A700CA78FF /* DefsGnucDarwin.h in Headers */ = {isa = PBXBuildFile; fileRef = C1FEA8BF125E5D7E00CA78FF /* DefsGnucDarwin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C1FEA9B7125E88A900CA78FF /* FileSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = C1FEA8C4125E5D7E00CA78FF /* FileSystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C1FEA9B8125E88AA00CA78FF /* FileSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1FEA8C3125E5D7E00CA78FF /* FileSystem.cpp */; };
-		C1FEA9BA125E88AC00CA78FF /* Library.h in Headers */ = {isa = PBXBuildFile; fileRef = C1FEA8C7125E5D7E00CA78FF /* Library.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C1FEA9BB125E88AE00CA78FF /* Memory.h in Headers */ = {isa = PBXBuildFile; fileRef = C1FEA8C9125E5D7E00CA78FF /* Memory.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C1FEA9BC125E88AF00CA78FF /* Library.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1FEA8C6125E5D7E00CA78FF /* Library.cpp */; };
 		C1FEA9BD125E88B000CA78FF /* Array.h in Headers */ = {isa = PBXBuildFile; fileRef = C1FEA8BB125E5D7E00CA78FF /* Array.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C1FEA9BE125E88B100CA78FF /* Memory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1FEA8C8125E5D7E00CA78FF /* Memory.cpp */; };
 		C1FEA9BF125E88B200CA78FF /* Ptr.h in Headers */ = {isa = PBXBuildFile; fileRef = C1FEA8CB125E5D7E00CA78FF /* Ptr.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -906,6 +941,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		554FE6A91FCA0D1A00727CE0 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Headers/cuda;
+			dstSubfolderSpec = 1;
+			files = (
+				554FE6AA1FCA0D3C00727CE0 /* CudaCompressorDXT.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C1224D0B13B06EEB009AA0F4 /* Copy Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -921,7 +966,7 @@
 				C18B567C13D52CB60018626D /* NVMath.framework in Copy Frameworks */,
 				C18B567D13D52CB60018626D /* NVImage.framework in Copy Frameworks */,
 				C1898210161A466E00335863 /* NVThread.framework in Copy Frameworks */,
-				C18B567E13D52CB60018626D /* NVTextureTools.framework in Copy Frameworks */,
+				C18B567E13D52CB60018626D /* NVTT.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -963,7 +1008,7 @@
 				C1C2C767127CC5D8003B24F6 /* NVMath.framework in Copy Frameworks */,
 				C1C2C76E127CC5DD003B24F6 /* NVImage.framework in Copy Frameworks */,
 				C180E48A1472937C0001C07F /* NVThread.framework in Copy Frameworks */,
-				C1C2C777127CC5E5003B24F6 /* NVTextureTools.framework in Copy Frameworks */,
+				C1C2C777127CC5E5003B24F6 /* NVTT.framework in Copy Frameworks */,
 				C17CC69C1628002F0055D950 /* Sparkle.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
@@ -978,6 +1023,32 @@
 		256AC3D90F4B6AC300CF3369 /* TKAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TKAppController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		256AC3F00F4B6AF500CF3369 /* SourceFinagler_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceFinagler_Prefix.pch; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		554FE5FE1FC9FF8A00727CE0 /* avpcl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = avpcl.cpp; sourceTree = "<group>"; };
+		554FE5FF1FC9FF8A00727CE0 /* shapes_two.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shapes_two.h; sourceTree = "<group>"; };
+		554FE6011FC9FF8A00727CE0 /* tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tile.h; sourceTree = "<group>"; };
+		554FE6051FC9FF8A00727CE0 /* avpcl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = avpcl.h; sourceTree = "<group>"; };
+		554FE6061FC9FF8A00727CE0 /* shapes_three.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shapes_three.h; sourceTree = "<group>"; };
+		554FE6081FC9FF8A00727CE0 /* avpcl_mode7.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = avpcl_mode7.cpp; sourceTree = "<group>"; };
+		554FE6091FC9FF8A00727CE0 /* avpcl_mode6.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = avpcl_mode6.cpp; sourceTree = "<group>"; };
+		554FE60A1FC9FF8A00727CE0 /* avpcl_mode4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = avpcl_mode4.cpp; sourceTree = "<group>"; };
+		554FE60B1FC9FF8A00727CE0 /* avpcl_mode5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = avpcl_mode5.cpp; sourceTree = "<group>"; };
+		554FE60C1FC9FF8A00727CE0 /* endpts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = endpts.h; sourceTree = "<group>"; };
+		554FE60D1FC9FF8A00727CE0 /* avpcl_mode1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = avpcl_mode1.cpp; sourceTree = "<group>"; };
+		554FE60E1FC9FF8A00727CE0 /* avpcl_mode0.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = avpcl_mode0.cpp; sourceTree = "<group>"; };
+		554FE60F1FC9FF8A00727CE0 /* bits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bits.h; sourceTree = "<group>"; };
+		554FE62D1FC9FF8A00727CE0 /* avpcl_mode2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = avpcl_mode2.cpp; sourceTree = "<group>"; };
+		554FE6301FC9FF8A00727CE0 /* avpcl_mode3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = avpcl_mode3.cpp; sourceTree = "<group>"; };
+		554FE6661FCA03AD00727CE0 /* ftoi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftoi.h; sourceTree = "<group>"; };
+		554FE6791FCA04C700727CE0 /* PackedFloat.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PackedFloat.cpp; sourceTree = "<group>"; };
+		554FE67A1FCA04C700727CE0 /* PackedFloat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PackedFloat.h; sourceTree = "<group>"; };
+		554FE67D1FCA059600727CE0 /* Gamma.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Gamma.cpp; sourceTree = "<group>"; };
+		554FE67E1FCA059600727CE0 /* Gamma.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gamma.h; sourceTree = "<group>"; };
+		554FE69B1FCA078A00727CE0 /* avpcl_utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = avpcl_utils.cpp; sourceTree = "<group>"; };
+		554FE69C1FCA078A00727CE0 /* avpcl_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = avpcl_utils.h; sourceTree = "<group>"; };
+		554FE6A01FCA09D800727CE0 /* CompressorDXT5_RGBM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompressorDXT5_RGBM.h; sourceTree = "<group>"; };
+		554FE6A11FCA09D800727CE0 /* CompressorDXT5_RGBM.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompressorDXT5_RGBM.cpp; sourceTree = "<group>"; };
+		554FE6A51FCA0A2500727CE0 /* BlockCompressor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BlockCompressor.cpp; sourceTree = "<group>"; };
+		554FE6A61FCA0A2600727CE0 /* BlockCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockCompressor.h; sourceTree = "<group>"; };
 		558672FB1D7E857600E26A11 /* cmdline.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = cmdline.h; path = nvtt/tools/cmdline.h; sourceTree = "<group>"; };
 		55B9F2691D7CB1EF00641709 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		55B9F2B71D7D1A0E00641709 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -1079,13 +1150,6 @@
 		C146091714F3373700B7286B /* TKAppKitAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKAppKitAdditions.h; sourceTree = "<group>"; };
 		C146091814F3373700B7286B /* TKAppKitAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TKAppKitAdditions.m; sourceTree = "<group>"; };
 		C146091914F3373700B7286B /* TKFoundationAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKFoundationAdditions.h; sourceTree = "<group>"; };
-		C14CAABA1275E80100BD0CCA /* dxtlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dxtlib.h; sourceTree = "<group>"; };
-		C14CAAF51275E90F00BD0CCA /* ConvertColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConvertColor.h; sourceTree = "<group>"; };
-		C14CAAF61275E90F00BD0CCA /* ddsTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ddsTypes.h; sourceTree = "<group>"; };
-		C14CAAF71275E90F00BD0CCA /* nvdxt_options.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nvdxt_options.h; sourceTree = "<group>"; };
-		C14CAAF81275E90F00BD0CCA /* nvErrorCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nvErrorCodes.h; sourceTree = "<group>"; };
-		C14CAAF91275E90F00BD0CCA /* tPixel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tPixel.h; sourceTree = "<group>"; };
-		C14CAAFA1275E90F00BD0CCA /* tVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tVector.h; sourceTree = "<group>"; };
 		C14CC257123AAD0300610DA6 /* HLInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HLInfo.plist; sourceTree = "<group>"; };
 		C14D206C121B40BC00AB4F96 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		C14DB237123D8C57002D87FE /* TKPrefsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKPrefsController.h; sourceTree = "<group>"; };
@@ -1205,7 +1269,7 @@
 		C180E447147292A40001C07F /* CubeSurface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CubeSurface.h; sourceTree = "<group>"; };
 		C180E448147292A40001C07F /* Surface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Surface.cpp; sourceTree = "<group>"; };
 		C180E449147292A40001C07F /* Surface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Surface.h; sourceTree = "<group>"; };
-		C180E48E147293A80001C07F /* NVThread-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "NVThread-Info.plist"; path = "../NVThread-Info.plist"; sourceTree = "<group>"; };
+		C180E48E147293A80001C07F /* NVThread-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "NVThread-Info.plist"; sourceTree = "<group>"; };
 		C181AC9912557677006810AB /* Source-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Source-Info.plist"; sourceTree = "<group>"; };
 		C181AD951255793B006810AB /* GetMetadataForFile.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GetMetadataForFile.mm; sourceTree = "<group>"; };
 		C181AD971255796E006810AB /* HLSpotlightMain.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = HLSpotlightMain.c; sourceTree = "<group>"; usesTabs = 0; };
@@ -1512,7 +1576,7 @@
 		C1CA2BDA13A2E3E600235C98 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		C1CA2BDC13A2E3E600235C98 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C1CA2BDE13A2E3E600235C98 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C1CB12CB13BBF20D00FCCC7E /* MIT.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = MIT.rtf; sourceTree = "<group>"; };
+		C1CB12CB13BBF20D00FCCC7E /* MIT.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = MIT.rtf; path = "../../NVTT-Helpers/MIT.rtf"; sourceTree = "<group>"; };
 		C1CBE6FA124E2622006526C1 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = System/Library/Frameworks/QuickTime.framework; sourceTree = SDKROOT; };
 		C1CE0253124F9985002E66F8 /* Syntax Definitions */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Syntax Definitions"; sourceTree = "<group>"; };
 		C1CE51C112203985006410E3 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
@@ -1572,14 +1636,12 @@
 		C1F153E01396699600E32057 /* HKWADFile.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HKWADFile.mm; sourceTree = "<group>"; };
 		C1F153E11396699600E32057 /* HKXZPFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKXZPFile.h; sourceTree = "<group>"; };
 		C1F153E21396699600E32057 /* HKXZPFile.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HKXZPFile.mm; sourceTree = "<group>"; };
-		C1F30C3714581E470076558F /* d3d9types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = d3d9types.h; sourceTree = "<group>"; };
-		C1F30C3814581E470076558F /* DXGIFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXGIFormat.h; sourceTree = "<group>"; };
 		C1F5C25914BCF11D0091A36D /* TKVMTMaterialDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKVMTMaterialDocument.h; sourceTree = "<group>"; };
 		C1F5C25A14BCF11E0091A36D /* TKVMTMaterialDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKVMTMaterialDocument.m; sourceTree = "<group>"; };
 		C1FBD12713E7F41D0020C06F /* TKImageExportTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKImageExportTextField.h; sourceTree = "<group>"; };
 		C1FBD12813E7F41D0020C06F /* TKImageExportTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKImageExportTextField.m; sourceTree = "<group>"; };
 		C1FEA7EA125E5C9600CA78FF /* NVCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NVCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C1FEA7EB125E5C9600CA78FF /* NVCore-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "NVCore-Info.plist"; path = "../NVCore-Info.plist"; sourceTree = "<group>"; };
+		C1FEA7EB125E5C9600CA78FF /* NVCore-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NVCore-Info.plist"; sourceTree = "<group>"; };
 		C1FEA8BB125E5D7E00CA78FF /* Array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Array.h; sourceTree = "<group>"; };
 		C1FEA8BC125E5D7E00CA78FF /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
 		C1FEA8BD125E5D7E00CA78FF /* Debug.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Debug.cpp; sourceTree = "<group>"; };
@@ -1590,8 +1652,6 @@
 		C1FEA8C2125E5D7E00CA78FF /* DefsVcWin32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefsVcWin32.h; sourceTree = "<group>"; };
 		C1FEA8C3125E5D7E00CA78FF /* FileSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FileSystem.cpp; sourceTree = "<group>"; };
 		C1FEA8C4125E5D7E00CA78FF /* FileSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileSystem.h; sourceTree = "<group>"; };
-		C1FEA8C6125E5D7E00CA78FF /* Library.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Library.cpp; sourceTree = "<group>"; };
-		C1FEA8C7125E5D7E00CA78FF /* Library.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Library.h; sourceTree = "<group>"; };
 		C1FEA8C8125E5D7E00CA78FF /* Memory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Memory.cpp; sourceTree = "<group>"; };
 		C1FEA8C9125E5D7E00CA78FF /* Memory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Memory.h; sourceTree = "<group>"; };
 		C1FEA8CA125E5D7E00CA78FF /* NVCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVCore.h; sourceTree = "<group>"; };
@@ -1606,7 +1666,7 @@
 		C1FEA8D5125E5D7E00CA78FF /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
 		C1FEA8D6125E5D7E00CA78FF /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		C1FEA8DE125E5DC300CA78FF /* NVMath.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NVMath.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C1FEA8DF125E5DC300CA78FF /* NVMath-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "NVMath-Info.plist"; path = "../NVMath-Info.plist"; sourceTree = "<group>"; };
+		C1FEA8DF125E5DC300CA78FF /* NVMath-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NVMath-Info.plist"; sourceTree = "<group>"; };
 		C1FEA8EC125E718D00CA78FF /* Box.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Box.h; sourceTree = "<group>"; };
 		C1FEA8ED125E718D00CA78FF /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
 		C1FEA8EE125E718D00CA78FF /* Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
@@ -1620,7 +1680,7 @@
 		C1FEA8F6125E718D00CA78FF /* Plane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Plane.h; sourceTree = "<group>"; };
 		C1FEA8F7125E718D00CA78FF /* Vector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector.h; sourceTree = "<group>"; };
 		C1FEA8FD125E71A200CA78FF /* NVImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NVImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C1FEA8FE125E71A200CA78FF /* NVImage-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "NVImage-Info.plist"; path = "../NVImage-Info.plist"; sourceTree = "<group>"; };
+		C1FEA8FE125E71A200CA78FF /* NVImage-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NVImage-Info.plist"; sourceTree = "<group>"; };
 		C1FEA910125E723B00CA78FF /* BlockDXT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BlockDXT.cpp; sourceTree = "<group>"; };
 		C1FEA911125E723B00CA78FF /* BlockDXT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockDXT.h; sourceTree = "<group>"; };
 		C1FEA912125E723B00CA78FF /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
@@ -1628,7 +1688,7 @@
 		C1FEA914125E723B00CA78FF /* ColorBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorBlock.h; sourceTree = "<group>"; };
 		C1FEA915125E723B00CA78FF /* ColorSpace.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ColorSpace.cpp; sourceTree = "<group>"; };
 		C1FEA916125E723B00CA78FF /* ColorSpace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorSpace.h; sourceTree = "<group>"; };
-		C1FEA917125E723B00CA78FF /* DirectDrawSurface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DirectDrawSurface.cpp; sourceTree = "<group>"; };
+		C1FEA917125E723B00CA78FF /* DirectDrawSurface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 2; path = DirectDrawSurface.cpp; sourceTree = "<group>"; };
 		C1FEA918125E723B00CA78FF /* DirectDrawSurface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectDrawSurface.h; sourceTree = "<group>"; };
 		C1FEA919125E723B00CA78FF /* Filter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Filter.cpp; sourceTree = "<group>"; };
 		C1FEA91A125E723B00CA78FF /* Filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Filter.h; sourceTree = "<group>"; };
@@ -1646,12 +1706,12 @@
 		C1FEA926125E723B00CA78FF /* Quantize.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Quantize.cpp; sourceTree = "<group>"; };
 		C1FEA927125E723B00CA78FF /* Quantize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quantize.h; sourceTree = "<group>"; };
 		C1FEA928125E723B00CA78FF /* TgaFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TgaFile.h; sourceTree = "<group>"; };
-		C1FEA930125E72E300CA78FF /* NVTextureTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NVTextureTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C1FEA931125E72E300CA78FF /* NVTextureTools-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "NVTextureTools-Info.plist"; path = "../NVTextureTools-Info.plist"; sourceTree = "<group>"; };
+		C1FEA930125E72E300CA78FF /* NVTT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NVTT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1FEA931125E72E300CA78FF /* NVTextureTools-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NVTextureTools-Info.plist"; sourceTree = "<group>"; };
 		C1FEA946125E739700CA78FF /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
 		C1FEA947125E739700CA78FF /* posh.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = posh.c; sourceTree = "<group>"; };
 		C1FEA948125E739700CA78FF /* posh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = posh.h; sourceTree = "<group>"; };
-		C1FEA94B125E73B700CA78FF /* nvconfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nvconfig.h; sourceTree = "<group>"; };
+		C1FEA94B125E73B700CA78FF /* nvconfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = nvconfig.h; path = "../../NVTT-Helpers/nvconfig.h"; sourceTree = "<group>"; };
 		C1FEA959125E75C000CA78FF /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
 		C1FEA95A125E75C000CA78FF /* CompressionOptions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompressionOptions.cpp; sourceTree = "<group>"; };
 		C1FEA95B125E75C000CA78FF /* CompressionOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompressionOptions.h; sourceTree = "<group>"; };
@@ -1662,8 +1722,8 @@
 		C1FEA960125E75C000CA78FF /* CompressorDX10.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompressorDX10.h; sourceTree = "<group>"; };
 		C1FEA961125E75C000CA78FF /* CompressorDX11.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompressorDX11.cpp; sourceTree = "<group>"; };
 		C1FEA962125E75C000CA78FF /* CompressorDX11.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompressorDX11.h; sourceTree = "<group>"; };
-		C1FEA963125E75C000CA78FF /* CompressorDXT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompressorDXT.cpp; sourceTree = "<group>"; };
-		C1FEA964125E75C000CA78FF /* CompressorDXT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompressorDXT.h; sourceTree = "<group>"; };
+		C1FEA963125E75C000CA78FF /* CompressorDXT1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompressorDXT1.cpp; sourceTree = "<group>"; };
+		C1FEA964125E75C000CA78FF /* CompressorDXT1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompressorDXT1.h; sourceTree = "<group>"; };
 		C1FEA965125E75C000CA78FF /* CompressorRGB.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompressorRGB.cpp; sourceTree = "<group>"; };
 		C1FEA966125E75C000CA78FF /* CompressorRGB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompressorRGB.h; sourceTree = "<group>"; };
 		C1FEA969125E75C000CA78FF /* Context.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Context.cpp; sourceTree = "<group>"; };
@@ -1694,8 +1754,8 @@
 		C1FEA986125E764700CA78FF /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
 		C1FEA987125E764700CA78FF /* shapes_two.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shapes_two.h; sourceTree = "<group>"; };
 		C1FEA988125E764700CA78FF /* tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tile.h; sourceTree = "<group>"; };
-		C1FEA989125E764700CA78FF /* utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = utils.cpp; sourceTree = "<group>"; };
-		C1FEA98A125E764700CA78FF /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
+		C1FEA989125E764700CA78FF /* zoh_utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = zoh_utils.cpp; sourceTree = "<group>"; };
+		C1FEA98A125E764700CA78FF /* zoh_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zoh_utils.h; sourceTree = "<group>"; };
 		C1FEA98B125E764700CA78FF /* zoh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = zoh.cpp; sourceTree = "<group>"; };
 		C1FEA98C125E764700CA78FF /* zoh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zoh.h; sourceTree = "<group>"; };
 		C1FEA98D125E764700CA78FF /* zohone.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = zohone.cpp; sourceTree = "<group>"; };
@@ -1785,7 +1845,7 @@
 				C1E6DACA12BC232F009D8AD6 /* ApplicationServices.framework in Frameworks */,
 				C1CA27EB13A2E21800235C98 /* Cocoa.framework in Frameworks */,
 				C1E6DB0312BC236C009D8AD6 /* VTF.framework in Frameworks */,
-				C1E6DFFB12BD1091009D8AD6 /* NVTextureTools.framework in Frameworks */,
+				C1E6DFFB12BD1091009D8AD6 /* NVTT.framework in Frameworks */,
 				C1E6E13E12BD50DF009D8AD6 /* NVImage.framework in Frameworks */,
 				C1E6E13F12BD50E0009D8AD6 /* NVMath.framework in Frameworks */,
 				C1E6E14012BD50E1009D8AD6 /* NVCore.framework in Frameworks */,
@@ -1823,7 +1883,7 @@
 				C179470D12788391008B7EC9 /* NVMath.framework in Frameworks */,
 				C179471012788392008B7EC9 /* NVImage.framework in Frameworks */,
 				C14803F8147C271500FD7A0A /* NVThread.framework in Frameworks */,
-				C179471212788393008B7EC9 /* NVTextureTools.framework in Frameworks */,
+				C179471212788393008B7EC9 /* NVTT.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1861,7 +1921,7 @@
 			files = (
 				C1C2C637127CBED1003B24F6 /* ApplicationServices.framework in Frameworks */,
 				C1C2C681127CBF8C003B24F6 /* VTF.framework in Frameworks */,
-				C174299412A39CA200C54F08 /* NVTextureTools.framework in Frameworks */,
+				C174299412A39CA200C54F08 /* NVTT.framework in Frameworks */,
 				C17429B812A39D9200C54F08 /* NVImage.framework in Frameworks */,
 				C1CA27EA13A2E21700235C98 /* Cocoa.framework in Frameworks */,
 				C187D97E1635A61400F30B64 /* TextureKit.framework in Frameworks */,
@@ -1994,7 +2054,7 @@
 				C1FEA8DE125E5DC300CA78FF /* NVMath.framework */,
 				C1FEA8FD125E71A200CA78FF /* NVImage.framework */,
 				C180E37914728E1B0001C07F /* NVThread.framework */,
-				C1FEA930125E72E300CA78FF /* NVTextureTools.framework */,
+				C1FEA930125E72E300CA78FF /* NVTT.framework */,
 				C1D4494B12602E5100A027EF /* decompress */,
 				C17D8F781642AAC40044039F /* ddsFinagler */,
 			);
@@ -2064,6 +2124,31 @@
 				C1594EA11384F247009CE606 /* usbOverdriveNote.png */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		554FE5FB1FC9FF8A00727CE0 /* bc7 */ = {
+			isa = PBXGroup;
+			children = (
+				554FE69B1FCA078A00727CE0 /* avpcl_utils.cpp */,
+				554FE69C1FCA078A00727CE0 /* avpcl_utils.h */,
+				554FE5FE1FC9FF8A00727CE0 /* avpcl.cpp */,
+				554FE5FF1FC9FF8A00727CE0 /* shapes_two.h */,
+				554FE6011FC9FF8A00727CE0 /* tile.h */,
+				554FE6051FC9FF8A00727CE0 /* avpcl.h */,
+				554FE6061FC9FF8A00727CE0 /* shapes_three.h */,
+				554FE6081FC9FF8A00727CE0 /* avpcl_mode7.cpp */,
+				554FE6091FC9FF8A00727CE0 /* avpcl_mode6.cpp */,
+				554FE60A1FC9FF8A00727CE0 /* avpcl_mode4.cpp */,
+				554FE60B1FC9FF8A00727CE0 /* avpcl_mode5.cpp */,
+				554FE60C1FC9FF8A00727CE0 /* endpts.h */,
+				554FE60D1FC9FF8A00727CE0 /* avpcl_mode1.cpp */,
+				554FE60E1FC9FF8A00727CE0 /* avpcl_mode0.cpp */,
+				554FE60F1FC9FF8A00727CE0 /* bits.h */,
+				554FE62D1FC9FF8A00727CE0 /* avpcl_mode2.cpp */,
+				554FE6301FC9FF8A00727CE0 /* avpcl_mode3.cpp */,
+			);
+			name = bc7;
+			path = ../bc7;
 			sourceTree = "<group>";
 		};
 		55B973DA1D7B50FC005D5808 /* Source Finagler */ = {
@@ -2304,19 +2389,6 @@
 				C12DB4B4125FADE00051A751 /* TKDDSImageRep.mm */,
 			);
 			name = DDS;
-			sourceTree = "<group>";
-		};
-		C14CAAFB1275E91200BD0CCA /* dds */ = {
-			isa = PBXGroup;
-			children = (
-				C14CAAF51275E90F00BD0CCA /* ConvertColor.h */,
-				C14CAAF61275E90F00BD0CCA /* ddsTypes.h */,
-				C14CAAF71275E90F00BD0CCA /* nvdxt_options.h */,
-				C14CAAF81275E90F00BD0CCA /* nvErrorCodes.h */,
-				C14CAAF91275E90F00BD0CCA /* tPixel.h */,
-				C14CAAFA1275E90F00BD0CCA /* tVector.h */,
-			);
-			path = dds;
 			sourceTree = "<group>";
 		};
 		C14DB21C123D8BCD002D87FE /* TKPrefs */ = {
@@ -3234,8 +3306,6 @@
 		C1E936A81606ACB60056438A /* unused */ = {
 			isa = PBXGroup;
 			children = (
-				C1FEA962125E75C000CA78FF /* CompressorDX11.h */,
-				C1FEA961125E75C000CA78FF /* CompressorDX11.cpp */,
 				C1FEA96D125E75C000CA78FF /* NVTextureTools.cpp */,
 			);
 			name = unused;
@@ -3358,10 +3428,6 @@
 		C1FEA7B0125E5BDD00CA78FF /* NVTextureTools framework */ = {
 			isa = PBXGroup;
 			children = (
-				C14CAABA1275E80100BD0CCA /* dxtlib.h */,
-				C1F30C3714581E470076558F /* d3d9types.h */,
-				C1F30C3814581E470076558F /* DXGIFormat.h */,
-				C14CAAFB1275E91200BD0CCA /* dds */,
 				C1CB12CB13BBF20D00FCCC7E /* MIT.rtf */,
 				C1FEA94B125E73B700CA78FF /* nvconfig.h */,
 				C1FEA93D125E736A00CA78FF /* poshlib */,
@@ -3373,8 +3439,9 @@
 				C1D4494512602E1900A027EF /* command-line tools */,
 			);
 			name = "NVTextureTools framework";
-			path = NVTextureTools;
+			path = NVTextureTools/src;
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 		C1FEA7B1125E5BFD00CA78FF /* NVCore */ = {
 			isa = PBXGroup;
@@ -3389,8 +3456,6 @@
 				C1FEA8C3125E5D7E00CA78FF /* FileSystem.cpp */,
 				C12B4DA913B7179B0096FC0E /* ForEach.h */,
 				C1E9368F1606A7E60056438A /* Hash.h */,
-				C1FEA8C7125E5D7E00CA78FF /* Library.h */,
-				C1FEA8C6125E5D7E00CA78FF /* Library.cpp */,
 				C1FEA8C9125E5D7E00CA78FF /* Memory.h */,
 				C1FEA8C8125E5D7E00CA78FF /* Memory.cpp */,
 				C1FEA8CB125E5D7E00CA78FF /* Ptr.h */,
@@ -3446,7 +3511,12 @@
 		C1FEA7B3125E5C0D00CA78FF /* NVMath */ = {
 			isa = PBXGroup;
 			children = (
+				554FE67D1FCA059600727CE0 /* Gamma.cpp */,
+				554FE67E1FCA059600727CE0 /* Gamma.h */,
+				554FE6791FCA04C700727CE0 /* PackedFloat.cpp */,
+				554FE67A1FCA04C700727CE0 /* PackedFloat.h */,
 				C1FEA8F4125E718D00CA78FF /* NVMath.h */,
+				554FE6661FCA03AD00727CE0 /* ftoi.h */,
 				C1FEA8EC125E718D00CA78FF /* Box.h */,
 				C180E2FA14728BE90001C07F /* Box.inl */,
 				C1E936911606A8340056438A /* Box.cpp */,
@@ -3484,6 +3554,8 @@
 				C1E936A11606AC4B0056438A /* nvtt.cpp */,
 				C1305BDF12F08FBD00D68170 /* ClusterFit.h */,
 				C1305BDE12F08FBD00D68170 /* ClusterFit.cpp */,
+				554FE6A61FCA0A2600727CE0 /* BlockCompressor.h */,
+				554FE6A51FCA0A2500727CE0 /* BlockCompressor.cpp */,
 				C1FEA95B125E75C000CA78FF /* CompressionOptions.h */,
 				C1FEA95A125E75C000CA78FF /* CompressionOptions.cpp */,
 				C1FEA970125E75C000CA78FF /* nvtt_wrapper.h */,
@@ -3493,8 +3565,12 @@
 				C1FEA95D125E75C000CA78FF /* CompressorDX9.cpp */,
 				C1FEA960125E75C000CA78FF /* CompressorDX10.h */,
 				C1FEA95F125E75C000CA78FF /* CompressorDX10.cpp */,
-				C1FEA964125E75C000CA78FF /* CompressorDXT.h */,
-				C1FEA963125E75C000CA78FF /* CompressorDXT.cpp */,
+				C1FEA964125E75C000CA78FF /* CompressorDXT1.h */,
+				C1FEA963125E75C000CA78FF /* CompressorDXT1.cpp */,
+				C1FEA962125E75C000CA78FF /* CompressorDX11.h */,
+				C1FEA961125E75C000CA78FF /* CompressorDX11.cpp */,
+				554FE6A01FCA09D800727CE0 /* CompressorDXT5_RGBM.h */,
+				554FE6A11FCA09D800727CE0 /* CompressorDXT5_RGBM.cpp */,
 				C1FEA966125E75C000CA78FF /* CompressorRGB.h */,
 				C1FEA965125E75C000CA78FF /* CompressorRGB.cpp */,
 				C1FEA96A125E75C000CA78FF /* Context.h */,
@@ -3521,6 +3597,7 @@
 				C1FEA9AF125E774800CA78FF /* Resources */,
 				C1E936A81606ACB60056438A /* unused */,
 				C1FEA955125E757B00CA78FF /* bc6h */,
+				554FE5FB1FC9FF8A00727CE0 /* bc7 */,
 			);
 			name = NVTextureTools;
 			path = nvtt;
@@ -3533,7 +3610,8 @@
 				C1FEA947125E739700CA78FF /* posh.c */,
 				C1FEA946125E739700CA78FF /* CMakeLists.txt */,
 			);
-			path = poshlib;
+			name = poshlib;
+			path = ../extern/poshlib;
 			sourceTree = "<group>";
 		};
 		C1FEA93E125E737200CA78FF /* unused */ = {
@@ -3667,15 +3745,16 @@
 				C1FEA985125E764700CA78FF /* bits.h */,
 				C1FEA987125E764700CA78FF /* shapes_two.h */,
 				C1FEA988125E764700CA78FF /* tile.h */,
-				C1FEA98A125E764700CA78FF /* utils.h */,
-				C1FEA989125E764700CA78FF /* utils.cpp */,
+				C1FEA98A125E764700CA78FF /* zoh_utils.h */,
+				C1FEA989125E764700CA78FF /* zoh_utils.cpp */,
 				C1FEA98C125E764700CA78FF /* zoh.h */,
 				C1FEA98B125E764700CA78FF /* zoh.cpp */,
 				C1FEA98D125E764700CA78FF /* zohone.cpp */,
 				C1FEA98E125E764700CA78FF /* zohtwo.cpp */,
 				C1FEA986125E764700CA78FF /* CMakeLists.txt */,
 			);
-			path = bc6h;
+			name = bc6h;
+			path = ../bc6h;
 			sourceTree = "<group>";
 		};
 		C1FEA9AF125E774800CA78FF /* Resources */ = {
@@ -3884,7 +3963,6 @@
 				C1FEA9B4125E88A400CA78FF /* Debug.h in Headers */,
 				C1FEA9B6125E88A700CA78FF /* DefsGnucDarwin.h in Headers */,
 				C1FEA9B7125E88A900CA78FF /* FileSystem.h in Headers */,
-				C1FEA9BA125E88AC00CA78FF /* Library.h in Headers */,
 				C1FEA9BB125E88AE00CA78FF /* Memory.h in Headers */,
 				C1FEA9BD125E88B000CA78FF /* Array.h in Headers */,
 				C1E9368E1606A6C70056438A /* Array.inl in Headers */,
@@ -3916,7 +3994,10 @@
 				C180E35E14728D100001C07F /* Plane.inl in Headers */,
 				C1FEA9F9125E8A9200CA78FF /* Plane.h in Headers */,
 				C1FEA9F7125E8A8E00CA78FF /* Vector.h in Headers */,
+				554FE67C1FCA04C700727CE0 /* PackedFloat.h in Headers */,
+				554FE6801FCA059600727CE0 /* Gamma.h in Headers */,
 				C1305C0012F0919300D68170 /* SimdVector_SSE.h in Headers */,
+				554FE6671FCA03AD00727CE0 /* ftoi.h in Headers */,
 				C1305C0112F0919400D68170 /* SimdVector_VE.h in Headers */,
 				C1305C0212F0919500D68170 /* SimdVector.h in Headers */,
 				C180E35C14728D050001C07F /* Matrix.inl in Headers */,
@@ -3929,14 +4010,25 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				554FE6931FCA069200727CE0 /* zoh.h in Headers */,
+				554FE6831FCA068300727CE0 /* tile.h in Headers */,
+				554FE68D1FCA068300727CE0 /* bits.h in Headers */,
+				554FE6901FCA069200727CE0 /* bits.h in Headers */,
+				554FE6841FCA068300727CE0 /* avpcl.h in Headers */,
 				C1FEAA22125E8C5100CA78FF /* NVImage.h in Headers */,
+				554FE6851FCA068300727CE0 /* shapes_three.h in Headers */,
 				C1FEAA2D125E8C6200CA78FF /* BlockDXT.h in Headers */,
 				C1FEAA2B125E8C5F00CA78FF /* ColorBlock.h in Headers */,
 				C1FEAA23125E8C5400CA78FF /* FloatImage.h in Headers */,
 				C1FEAA25125E8C5500CA78FF /* Filter.h in Headers */,
+				554FE6921FCA069200727CE0 /* tile.h in Headers */,
 				C1FEAA27125E8C5800CA78FF /* Image.h in Headers */,
 				C1FEAA29125E8C5C00CA78FF /* ImageIO.h in Headers */,
+				554FE6911FCA069200727CE0 /* shapes_two.h in Headers */,
+				554FE69E1FCA078A00727CE0 /* avpcl_utils.h in Headers */,
+				554FE6821FCA068300727CE0 /* shapes_two.h in Headers */,
 				C1FEAA2F125E8C6600CA78FF /* DirectDrawSurface.h in Headers */,
+				554FE68A1FCA068300727CE0 /* endpts.h in Headers */,
 				C1FEAA33125E8C6B00CA78FF /* NormalMap.h in Headers */,
 				C1FEAA39125E8C7800CA78FF /* PixelFormat.h in Headers */,
 				C1305B8C12F08EF200D68170 /* ErrorMetric.h in Headers */,
@@ -3949,13 +4041,15 @@
 			files = (
 				C1097A9E125FA11800D60D27 /* NVTextureTools.h in Headers */,
 				C1E936A61606AC4B0056438A /* nvtt.h in Headers */,
+				554FE6A81FCA0A2600727CE0 /* BlockCompressor.h in Headers */,
 				C1097AA3125FA11E00D60D27 /* nvtt_wrapper.h in Headers */,
 				C1305BE112F08FBD00D68170 /* ClusterFit.h in Headers */,
 				C1097ABB125FA13100D60D27 /* CompressionOptions.h in Headers */,
 				C1097AA5125FA12000D60D27 /* Compressor.h in Headers */,
 				C1097AA8125FA12200D60D27 /* CompressorDX9.h in Headers */,
 				C1097AAA125FA12300D60D27 /* CompressorDX10.h in Headers */,
-				C1097AA6125FA12000D60D27 /* CompressorDXT.h in Headers */,
+				C1097AA6125FA12000D60D27 /* CompressorDXT1.h in Headers */,
+				554FE6A21FCA09D900727CE0 /* CompressorDXT5_RGBM.h in Headers */,
 				C1097AAE125FA12600D60D27 /* CompressorRGB.h in Headers */,
 				C1097AA1125FA11D00D60D27 /* Context.h in Headers */,
 				C180E457147293160001C07F /* CubeSurface.h in Headers */,
@@ -3967,6 +4061,7 @@
 				C1097AB7125FA12E00D60D27 /* OutputOptions.h in Headers */,
 				C1097AB9125FA12F00D60D27 /* InputOptions.h in Headers */,
 				C1097ABD125FA13200D60D27 /* OptimalCompressDXT.h in Headers */,
+				554FE6A41FCA09E800727CE0 /* CompressorDX11.h in Headers */,
 				C1097ABF125FA13400D60D27 /* QuickCompressDXT.h in Headers */,
 				C180E459147293190001C07F /* Surface.h in Headers */,
 				C1305BD012F08F8100D68170 /* TaskDispatcher.h in Headers */,
@@ -4282,14 +4377,15 @@
 			productReference = C1FEA8FD125E71A200CA78FF /* NVImage.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		C1FEA92F125E72E300CA78FF /* NVTextureTools */ = {
+		C1FEA92F125E72E300CA78FF /* NVTT */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C1FEA934125E72E400CA78FF /* Build configuration list for PBXNativeTarget "NVTextureTools" */;
+			buildConfigurationList = C1FEA934125E72E400CA78FF /* Build configuration list for PBXNativeTarget "NVTT" */;
 			buildPhases = (
 				C1FEA92B125E72E300CA78FF /* Headers */,
 				C1FEA92C125E72E300CA78FF /* Resources */,
 				C1FEA92D125E72E300CA78FF /* Sources */,
 				C1FEA92E125E72E300CA78FF /* Frameworks */,
+				554FE6A91FCA0D1A00727CE0 /* CopyFiles */,
 			);
 			buildRules = (
 				C1862CF3164290360019B703 /* PBXBuildRule */,
@@ -4300,9 +4396,9 @@
 				C1FEA9F5125E8A3600CA78FF /* PBXTargetDependency */,
 				C180E464147293510001C07F /* PBXTargetDependency */,
 			);
-			name = NVTextureTools;
+			name = NVTT;
 			productName = NVTextureTools;
-			productReference = C1FEA930125E72E300CA78FF /* NVTextureTools.framework */;
+			productReference = C1FEA930125E72E300CA78FF /* NVTT.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		C1FEAB30125F633100CA78FF /* Source Addon Finagler */ = {
@@ -4361,7 +4457,7 @@
 				C1FEA8DD125E5DC300CA78FF /* NVMath */,
 				C1FEA8FC125E71A200CA78FF /* NVImage */,
 				C180E37814728E1B0001C07F /* NVThread */,
-				C1FEA92F125E72E300CA78FF /* NVTextureTools */,
+				C1FEA92F125E72E300CA78FF /* NVTT */,
 				C155218011D9954B00CCEDD3 /* Distribution */,
 				C1D4494A12602E5100A027EF /* decompress */,
 				C17D8F771642AAC40044039F /* ddsFinagler */,
@@ -4848,7 +4944,6 @@
 				C1FEA9B3125E88A000CA78FF /* posh.c in Sources */,
 				C1FEA9B5125E88A400CA78FF /* Debug.cpp in Sources */,
 				C1FEA9B8125E88AA00CA78FF /* FileSystem.cpp in Sources */,
-				C1FEA9BC125E88AF00CA78FF /* Library.cpp in Sources */,
 				C1FEA9BE125E88B100CA78FF /* Memory.cpp in Sources */,
 				C1FEA9C4125E88B800CA78FF /* StrLib.cpp in Sources */,
 				C1FEA9C7125E88BE00CA78FF /* TextWriter.cpp in Sources */,
@@ -4863,7 +4958,9 @@
 				C1FEA9FA125E8A9200CA78FF /* Plane.cpp in Sources */,
 				C1FEA9FD125E8A9700CA78FF /* Half.cpp in Sources */,
 				C1FEA9FE125E8A9900CA78FF /* Fitting.cpp in Sources */,
+				554FE67B1FCA04C700727CE0 /* PackedFloat.cpp in Sources */,
 				C180E36114728D190001C07F /* SphericalHarmonic.cpp in Sources */,
+				554FE67F1FCA059600727CE0 /* Gamma.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4871,15 +4968,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				554FE69D1FCA078A00727CE0 /* avpcl_utils.cpp in Sources */,
+				554FE6871FCA068300727CE0 /* avpcl_mode6.cpp in Sources */,
 				C1FEAA24125E8C5400CA78FF /* FloatImage.cpp in Sources */,
 				C1FEAA26125E8C5600CA78FF /* Filter.cpp in Sources */,
 				C1FEAA28125E8C5900CA78FF /* Image.cpp in Sources */,
+				554FE6941FCA069200727CE0 /* zoh.cpp in Sources */,
 				C1FEAA2A125E8C5C00CA78FF /* ImageIO.cpp in Sources */,
 				C1FEAA2C125E8C5F00CA78FF /* ColorBlock.cpp in Sources */,
+				554FE6881FCA068300727CE0 /* avpcl_mode4.cpp in Sources */,
 				C1FEAA2E125E8C6300CA78FF /* BlockDXT.cpp in Sources */,
 				C1FEAA30125E8C6600CA78FF /* DirectDrawSurface.cpp in Sources */,
+				554FE68B1FCA068300727CE0 /* avpcl_mode1.cpp in Sources */,
+				554FE6961FCA069200727CE0 /* zohtwo.cpp in Sources */,
+				554FE68E1FCA068300727CE0 /* avpcl_mode2.cpp in Sources */,
+				554FE68C1FCA068300727CE0 /* avpcl_mode0.cpp in Sources */,
+				554FE6891FCA068300727CE0 /* avpcl_mode5.cpp in Sources */,
+				554FE6951FCA069200727CE0 /* zohone.cpp in Sources */,
 				C1FEAA34125E8C6B00CA78FF /* NormalMap.cpp in Sources */,
+				554FE6861FCA068300727CE0 /* avpcl_mode7.cpp in Sources */,
+				554FE68F1FCA068300727CE0 /* avpcl_mode3.cpp in Sources */,
+				554FE6811FCA068300727CE0 /* avpcl.cpp in Sources */,
 				C1305B8D12F08EF300D68170 /* ErrorMetric.cpp in Sources */,
+				554FE69F1FCA096200727CE0 /* zoh_utils.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4893,7 +5004,8 @@
 				C1097ABA125FA13000D60D27 /* CompressionOptions.cpp in Sources */,
 				C1097AA9125FA12200D60D27 /* CompressorDX9.cpp in Sources */,
 				C1097AAB125FA12400D60D27 /* CompressorDX10.cpp in Sources */,
-				C1097AA7125FA12100D60D27 /* CompressorDXT.cpp in Sources */,
+				C1097AA7125FA12100D60D27 /* CompressorDXT1.cpp in Sources */,
+				554FE6651FC9FFF500727CE0 /* CompressorDX11.cpp in Sources */,
 				C1097AAF125FA12700D60D27 /* CompressorRGB.cpp in Sources */,
 				C1097AA2125FA11D00D60D27 /* Context.cpp in Sources */,
 				C180E458147293170001C07F /* CubeSurface.cpp in Sources */,
@@ -4901,6 +5013,7 @@
 				C1097AC5125FA14000D60D27 /* CudaUtils.cpp in Sources */,
 				C1097AB8125FA12F00D60D27 /* InputOptions.cpp in Sources */,
 				C1097ABC125FA13200D60D27 /* OptimalCompressDXT.cpp in Sources */,
+				554FE6A31FCA09D900727CE0 /* CompressorDXT5_RGBM.cpp in Sources */,
 				C1097AB6125FA12E00D60D27 /* OutputOptions.cpp in Sources */,
 				C1097ABE125FA13300D60D27 /* QuickCompressDXT.cpp in Sources */,
 				C1097AB4125FA12C00D60D27 /* SingleColorLookup.cpp in Sources */,
@@ -4909,6 +5022,7 @@
 				C1097ACD125FA15000D60D27 /* colourfit.cpp in Sources */,
 				C1097AD3125FA15500D60D27 /* colourset.cpp in Sources */,
 				C1097AC8125FA14800D60D27 /* fastclusterfit.cpp in Sources */,
+				554FE6A71FCA0A2600727CE0 /* BlockCompressor.cpp in Sources */,
 				C1097ACF125FA15100D60D27 /* maths.cpp in Sources */,
 				C1097ACB125FA14D00D60D27 /* weightedclusterfit.cpp in Sources */,
 			);
@@ -5005,7 +5119,7 @@
 		};
 		C179470A1278836F008B7EC9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C1FEA92F125E72E300CA78FF /* NVTextureTools */;
+			target = C1FEA92F125E72E300CA78FF /* NVTT */;
 			targetProxy = C17947091278836F008B7EC9 /* PBXContainerItemProxy */;
 		};
 		C17D8F871642AAFB0044039F /* PBXTargetDependency */ = {
@@ -5070,7 +5184,7 @@
 		};
 		C1E6DA6E12BC223B009D8AD6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C1FEA92F125E72E300CA78FF /* NVTextureTools */;
+			target = C1FEA92F125E72E300CA78FF /* NVTT */;
 			targetProxy = C1E6DA6D12BC223B009D8AD6 /* PBXContainerItemProxy */;
 		};
 		C1F1579313969E3100E32057 /* PBXTargetDependency */ = {
@@ -5363,6 +5477,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = NVTextureTools/extern/poshlib;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
@@ -5407,6 +5522,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = NVTextureTools/extern/poshlib;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
@@ -5673,7 +5789,8 @@
 					"NVTHREAD_SHARED=1",
 					"NVTHREAD_EXPORTS=1",
 				);
-				INFOPLIST_FILE = "NVTextureTools/NVThread-Info.plist";
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "NVTextureTools/src/nvthread/NVThread-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks/";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nvidia.NVThread.framework;
 				PRODUCT_NAME = NVThread;
@@ -5700,7 +5817,8 @@
 					"NVTHREAD_SHARED=1",
 					"NVTHREAD_EXPORTS=1",
 				);
-				INFOPLIST_FILE = "NVTextureTools/NVThread-Info.plist";
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "NVTextureTools/src/nvthread/NVThread-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks/";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nvidia.NVThread.framework;
 				PRODUCT_NAME = NVThread;
@@ -5725,7 +5843,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				HEADER_SEARCH_PATHS = (
 					"VTF/**",
-					"\"$(SRCROOT)/NVTextureTools\"",
+					"$(inherited)",
 				);
 				INFOPLIST_FILE = VTF/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks/";
@@ -5748,7 +5866,7 @@
 				GCC_WARN_SHADOW = NO;
 				HEADER_SEARCH_PATHS = (
 					"VTF/**",
-					"\"$(SRCROOT)/NVTextureTools\"",
+					"$(inherited)",
 				);
 				INFOPLIST_FILE = VTF/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks/";
@@ -5770,7 +5888,10 @@
 				FRAMEWORK_VERSION = A;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				HEADER_SEARCH_PATHS = "HL/**";
+				HEADER_SEARCH_PATHS = (
+					"HL/**",
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = HL/HLInfo.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks/";
 				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.HL.framework;
@@ -5790,7 +5911,10 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				HEADER_SEARCH_PATHS = "HL/**";
+				HEADER_SEARCH_PATHS = (
+					"HL/**",
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = HL/HLInfo.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks/";
 				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.HL.framework;
@@ -5817,10 +5941,11 @@
 					"\"$(SRCROOT)/SteamKit\"",
 					"\"$(SRCROOT)/SourceFinagler\"",
 					"\"$(SRCROOT)/TextureFinagler\"",
+					"$(inherited)",
 				);
 				INFOPLIST_FILE = "SourceFinagler/SourceFinagler-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks/";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks/ @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -5847,10 +5972,11 @@
 					"\"$(SRCROOT)/SteamKit\"",
 					"\"$(SRCROOT)/SourceFinagler\"",
 					"\"$(SRCROOT)/TextureFinagler\"",
+					"$(inherited)",
 				);
 				INFOPLIST_FILE = "SourceFinagler/SourceFinagler-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks/";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks/ @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -5967,7 +6093,8 @@
 					"NVCORE_EXPORTS=1",
 					"NVCORE_SHARED=1",
 				);
-				INFOPLIST_FILE = "NVTextureTools/NVCore-Info.plist";
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "NVTextureTools/src/nvcore/NVCore-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks/";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nvidia.NVCore.framework;
 				PRODUCT_NAME = NVCore;
@@ -5993,7 +6120,8 @@
 					"NVCORE_EXPORTS=1",
 					"NVCORE_SHARED=1",
 				);
-				INFOPLIST_FILE = "NVTextureTools/NVCore-Info.plist";
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "NVTextureTools/src/nvcore/NVCore-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks/";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nvidia.NVCore.framework;
 				PRODUCT_NAME = NVCore;
@@ -6020,7 +6148,8 @@
 					"NVMATH_EXPORTS=1",
 					"NVMATH_SHARED=1",
 				);
-				INFOPLIST_FILE = "NVTextureTools/NVMath-Info.plist";
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "NVTextureTools/src/nvmath/NVMath-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks/";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nvidia.NVMath.framework;
 				PRODUCT_NAME = NVMath;
@@ -6046,7 +6175,8 @@
 					"NVMATH_EXPORTS=1",
 					"NVMATH_SHARED=1",
 				);
-				INFOPLIST_FILE = "NVTextureTools/NVMath-Info.plist";
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "NVTextureTools/src/nvmath/NVMath-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks/";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nvidia.NVMath.framework;
 				PRODUCT_NAME = NVMath;
@@ -6073,7 +6203,11 @@
 					"NVIMAGE_EXPORTS=1",
 					"NVIMAGE_SHARED=1",
 				);
-				INFOPLIST_FILE = "NVTextureTools/NVImage-Info.plist";
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/NVTextureTools/src\"",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "NVTextureTools/src/nvimage/NVImage-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks/";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nvidia.NVImage.framework;
 				PRODUCT_NAME = NVImage;
@@ -6099,7 +6233,11 @@
 					"NVIMAGE_EXPORTS=1",
 					"NVIMAGE_SHARED=1",
 				);
-				INFOPLIST_FILE = "NVTextureTools/NVImage-Info.plist";
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/NVTextureTools/src\"",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "NVTextureTools/src/nvimage/NVImage-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks/";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nvidia.NVImage.framework;
 				PRODUCT_NAME = NVImage;
@@ -6126,15 +6264,18 @@
 					"NVTT_EXPORTS=1",
 					"NVTT_SHARED=1",
 				);
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/NVTextureTools\"";
-				INFOPLIST_FILE = "NVTextureTools/NVTextureTools-Info.plist";
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/NVTextureTools/src\"",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "NVTextureTools/src/nvtt/NVTextureTools-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "/Library/Frameworks @executable_path/../Frameworks/";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/NVTextureTools\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nvidia.NVTextureTools.framework;
-				PRODUCT_NAME = NVTextureTools;
+				PRODUCT_NAME = NVTT;
 				SKIP_INSTALL = YES;
 				WARNING_CFLAGS = (
 					"-Wno-nonportable-include-path",
@@ -6157,15 +6298,18 @@
 					"NVTT_EXPORTS=1",
 					"NVTT_SHARED=1",
 				);
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/NVTextureTools\"";
-				INFOPLIST_FILE = "NVTextureTools/NVTextureTools-Info.plist";
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/NVTextureTools/src\"",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "NVTextureTools/src/nvtt/NVTextureTools-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "/Library/Frameworks @executable_path/../Frameworks/";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/NVTextureTools\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nvidia.NVTextureTools.framework;
-				PRODUCT_NAME = NVTextureTools;
+				PRODUCT_NAME = NVTT;
 				SKIP_INSTALL = YES;
 				WARNING_CFLAGS = (
 					"-Wno-nonportable-include-path",
@@ -6383,7 +6527,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C1FEA934125E72E400CA78FF /* Build configuration list for PBXNativeTarget "NVTextureTools" */ = {
+		C1FEA934125E72E400CA78FF /* Build configuration list for PBXNativeTarget "NVTT" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C1FEA932125E72E400CA78FF /* Debug */,

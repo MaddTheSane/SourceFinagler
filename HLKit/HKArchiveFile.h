@@ -25,18 +25,18 @@ typedef NS_ENUM(NSUInteger, HKArchiveFileType) {
 	HKArchiveFileTypeVPK		= 9,
 	HKArchiveFileTypeSGA		= 10,
 	
-	HKArchiveFileNoType			NS_SWIFT_UNAVAILABLE("Use .none instead") DEPRECATED_MSG_ATTRIBUTE("Use HKArchiveFileTypeNone instead") = 0,
-	HKArchiveFileBSPType		NS_SWIFT_UNAVAILABLE("Use .BSP instead") DEPRECATED_MSG_ATTRIBUTE("Use HKArchiveFileTypeBSP instead") = 1,
-	HKArchiveFileGCFType		NS_SWIFT_UNAVAILABLE("Use .GCF instead") DEPRECATED_MSG_ATTRIBUTE("Use HKArchiveFileTypeGCF instead") = 2,
-	HKArchiveFilePAKType		NS_SWIFT_UNAVAILABLE("Use .PAK instead") DEPRECATED_MSG_ATTRIBUTE("Use HKArchiveFileTypePAK instead") = 3,
-	HKArchiveFileVBSPType		NS_SWIFT_UNAVAILABLE("Use .VBSP instead") DEPRECATED_MSG_ATTRIBUTE("Use HKArchiveFileTypeVBSP instead") = 4,
-	HKArchiveFileWADType		NS_SWIFT_UNAVAILABLE("Use .WAD instead") DEPRECATED_MSG_ATTRIBUTE("Use HKArchiveFileTypeWAD instead") = 5,
-	HKArchiveFileXZPType		NS_SWIFT_UNAVAILABLE("Use .XYP instead") DEPRECATED_MSG_ATTRIBUTE("Use HKArchiveFileTypeXZP instead") = 6,
-	HKArchiveFileZIPType		NS_SWIFT_UNAVAILABLE("Use .ZIP instead") DEPRECATED_MSG_ATTRIBUTE("Use HKArchiveFileTypeZIP instead") = 7,
-	HKArchiveFileNCFType		NS_SWIFT_UNAVAILABLE("Use .NCF instead") DEPRECATED_MSG_ATTRIBUTE("Use HKArchiveFileTypeNCF instead") = 8,
-	HKArchiveFileVPKType		NS_SWIFT_UNAVAILABLE("Use .VPK instead") DEPRECATED_MSG_ATTRIBUTE("Use HKArchiveFileTypeVPK instead") = 9,
-	HKArchiveFileSGAType		NS_SWIFT_UNAVAILABLE("Use .SGA instead") DEPRECATED_MSG_ATTRIBUTE("Use HKArchiveFileTypeSGA instead") = 10
 };
+static const HKArchiveFileType HKArchiveFileNoType API_DEPRECATED_WITH_REPLACEMENT("HKArchiveFileTypeNone", macosx(10.0, 10.2)) = HKArchiveFileTypeNone;
+static const HKArchiveFileType HKArchiveFileBSPType API_DEPRECATED_WITH_REPLACEMENT("HKArchiveFileTypeBSP", macosx(10.0, 10.2)) = HKArchiveFileTypeBSP;
+static const HKArchiveFileType HKArchiveFileGCFType API_DEPRECATED_WITH_REPLACEMENT("HKArchiveFileTypeGCF", macosx(10.0, 10.2)) = HKArchiveFileTypeGCF;
+static const HKArchiveFileType HKArchiveFilePAKType API_DEPRECATED_WITH_REPLACEMENT("HKArchiveFileTypePAK", macosx(10.0, 10.2)) = HKArchiveFileTypePAK;
+static const HKArchiveFileType HKArchiveFileVBSPType API_DEPRECATED_WITH_REPLACEMENT("HKArchiveFileTypeVBSP", macosx(10.0, 10.2)) = HKArchiveFileTypeVBSP;
+static const HKArchiveFileType HKArchiveFileWADType API_DEPRECATED_WITH_REPLACEMENT("HKArchiveFileTypeWAD", macosx(10.0, 10.2)) = HKArchiveFileTypeWAD;
+static const HKArchiveFileType HKArchiveFileXZPType API_DEPRECATED_WITH_REPLACEMENT("HKArchiveFileTypeXZP", macosx(10.0, 10.2)) = HKArchiveFileTypeXZP;
+static const HKArchiveFileType HKArchiveFileZIPType API_DEPRECATED_WITH_REPLACEMENT("HKArchiveFileTypeZIP", macosx(10.0, 10.2)) = HKArchiveFileTypeZIP;
+static const HKArchiveFileType HKArchiveFileNCFType API_DEPRECATED_WITH_REPLACEMENT("HKArchiveFileTypeNCF", macosx(10.0, 10.2)) = HKArchiveFileTypeNCF;
+static const HKArchiveFileType HKArchiveFileVPKType API_DEPRECATED_WITH_REPLACEMENT("HKArchiveFileTypeVPK", macosx(10.0, 10.2)) = HKArchiveFileTypeVPK;
+static const HKArchiveFileType HKArchiveFileSGAType API_DEPRECATED_WITH_REPLACEMENT("HKArchiveFileTypeSGA", macosx(10.0, 10.2)) = HKArchiveFileTypeSGA;
 
 
 @interface HKArchiveFile : NSObject {

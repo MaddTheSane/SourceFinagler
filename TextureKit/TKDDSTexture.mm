@@ -16,7 +16,7 @@
 	#include <OpenGL/glext.h>
 #endif
 
-#include <NVTextureTools/NVTextureTools.h>
+#include <NVTT/NVTextureTools.h>
 
 
 
@@ -48,8 +48,9 @@ static const TKDDSTextureFormatMapping TKDDSTextureFormatMappingTable[] = {
 		OSType magic = 0;
 		[aData getBytes:&magic length:sizeof(magic)];
 		magic = NSSwapBigIntToHost(magic);
+		MemoryInputStream *mis = new MemoryInputStream((unsigned char *)[aData bytes], uint([aData length]));
 		
-		DirectDrawSurface *dds = new DirectDrawSurface((unsigned char *)[aData bytes], uint([aData length]));
+		DirectDrawSurface *dds = new DirectDrawSurface(mis);
 		
 		if (dds == 0) {
 			NSLog(@"[%@ %@] new DirectDrawSurface() with data failed!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));

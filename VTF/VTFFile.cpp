@@ -71,7 +71,7 @@
 
 #ifdef USE_NVTT
 
-#	include <NVTextureTools/NVTextureTools.h>
+#	include <NVTT/NVTextureTools.h>
 //#	include <NVMath/NVMath.h>
 
 using namespace nv;

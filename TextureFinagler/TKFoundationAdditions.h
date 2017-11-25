@@ -205,31 +205,31 @@ typedef NS_OPTIONS(NSUInteger, TKBookmarkResolutionOptions) {
 #if (TK_BUILDING_WITH_FOUNDATION_NSDATE_ADDITIONS)
 
 @interface NSDate (TKAdditions)
-+ (id)dateByRoundingDownToNearestMinute;
-+ (id)dateByRoundingUpToNearestMinute;
-+ (id)dateByAddingTwoAndRoundingUpToNearestMinute;
-+ (id)midnightYesterdayMorning;
-+ (id)midnightThisMorning;
-+ (id)midnightTonight;
-+ (id)midnightTomorrowNight;
++ (instancetype)dateByRoundingDownToNearestMinute;
++ (instancetype)dateByRoundingUpToNearestMinute;
++ (instancetype)dateByAddingTwoAndRoundingUpToNearestMinute;
++ (instancetype)midnightYesterdayMorning;
++ (instancetype)midnightThisMorning;
++ (instancetype)midnightTonight;
++ (instancetype)midnightTomorrowNight;
 - (BOOL)isEarlierThanDate:(NSDate *)aDate;
 - (BOOL)isLaterThanDate:(NSDate *)aDate;
 - (BOOL)isEarlierThanOrEqualToDate:(NSDate *)aDate;
 - (BOOL)isLaterThanOrEqualToDate:(NSDate *)aDate;
-- (id)dateByRoundingDownToNearestMinute;
-- (id)dateByRoundingUpToNearestMinute;
-- (id)dateByAddingTwoAndRoundingUpToNearestMinute;
-- (id)midnightOfMorning;
-- (id)midnightOfEvening;
-- (id)midnightOfYesterdayMorning;
-- (id)midnightOfTomorrowEvening;
-- (id)baseWeekly; // take receiver's time of day and shift it to the first day of the week
+- (instancetype)dateByRoundingDownToNearestMinute;
+- (instancetype)dateByRoundingUpToNearestMinute;
+- (instancetype)dateByAddingTwoAndRoundingUpToNearestMinute;
+- (instancetype)midnightOfMorning;
+- (instancetype)midnightOfEvening;
+- (instancetype)midnightOfYesterdayMorning;
+- (instancetype)midnightOfTomorrowEvening;
+- (instancetype)baseWeekly; //!< take receiver's time of day and shift it to the first day of the week
 //- (id)baseWeeklyForDate:(id)aDate; // basically the reverse of -baseWeekly; given that the receiver is a baseWeekly's time of day, transpose the time to the specified 'aDate'
-- (id)baseMonthly; // take receiver's time of day and shift it to the first day of the month
-- (id)dateByTransposingToCurrentDay;
-- (id)dateByTransposingToFirstDayOfCurrentWeek;
-- (id)dateByTransposingToFirstDayOfCurrentMonth;
-- (id)dateBySynchronizingToTimeOfDayOfDate:(NSDate *)aDate;
+- (instancetype)baseMonthly; //!< take receiver's time of day and shift it to the first day of the month
+- (instancetype)dateByTransposingToCurrentDay;
+- (instancetype)dateByTransposingToFirstDayOfCurrentWeek;
+- (instancetype)dateByTransposingToFirstDayOfCurrentMonth;
+- (instancetype)dateBySynchronizingToTimeOfDayOfDate:(NSDate *)aDate;
 @end
 #endif
 

@@ -1,7 +1,7 @@
 #include <CoreServices/CoreServices.h>
 #include "HLSpotlightMain.h"
 #import <Cocoa/Cocoa.h>
-#include <NVTextureTools/NVTextureTools.h>
+#include <NVTT/NVTextureTools.h>
 #include <VTF/VTF.h>
 #import <TextureKit/TextureKit.h>
 
@@ -137,8 +137,9 @@ BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *cont
 			NSLog(@"MDGetMetadataFromImageWithContentsOfFile(): file at filePath \"%@\" does not appear to be a valid DDS; magic == 0x%x, %@", filePath, (unsigned int)magic, NSFileTypeForHFSTypeCode(magic));
 			return NO;
 		}
+		MemoryInputStream *mis = new MemoryInputStream((unsigned char *)[data bytes], uint([data length]));
 		
-		DirectDrawSurface *dds = new DirectDrawSurface((unsigned char *)[data bytes], (uint)[data length]);
+		DirectDrawSurface *dds = new DirectDrawSurface(mis);
 		if (!dds->isValid() || !dds->isSupported() || (dds->width() > 65535 || (dds->height() > 65535))) {
 			if (!dds->isValid()) {
 				NSLog(@"MDGetMetadataFromImageWithContentsOfFile(): file at filePath \"%@\": dds image is not valid, info follows:", filePath);

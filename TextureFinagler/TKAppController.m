@@ -268,11 +268,11 @@ static NSArray *appClassNames = nil;
 		webpageMenuItem.image = webAppImage;
 	}
 	
-	MDShouldShowInspector = [[userDefaults objectForKey:MDShouldShowInspectorKey] boolValue];
-	MDShouldShowViewOptions = [[userDefaults objectForKey:MDShouldShowViewOptionsKey] boolValue];
-	MDShouldShowQuickLook = [[userDefaults objectForKey:MDShouldShowQuickLookKey] boolValue];
+	MDShouldShowInspector = [userDefaults boolForKey:MDShouldShowInspectorKey];
+	MDShouldShowViewOptions = [userDefaults boolForKey:MDShouldShowViewOptionsKey];
+	MDShouldShowQuickLook = [userDefaults boolForKey:MDShouldShowQuickLookKey];
 	
-	TKShouldShowImageInspector = [[userDefaults objectForKey:TKShouldShowImageInspectorKey] boolValue];
+	TKShouldShowImageInspector = [userDefaults boolForKey:TKShouldShowImageInspectorKey];
 	
 	
 	if (MDShouldShowViewOptions) {
