@@ -11,12 +11,17 @@
 @implementation TKMDLImporter
 {
 	NSOperationQueue *tmpQueue;
+	NSURL *mdlFile, *vvdFile, *vtxFile, *phyFile;
+	NSError *errorEncountered;
 }
 
-- (nullable instancetype)initWithMDLFile:(NSURL*)mdlFile vvdFile:(NSURL*)vvdFile vtxFile:(NSURL*)vtxFile phyFile:(NSURL*)phyFile error:(NSError**)error
+- (nullable instancetype)initWithMDLFile:(NSURL*)mdlFile1 vvdFile:(NSURL*)vvdFile1 vtxFile:(NSURL*)vtxFile1 phyFile:(NSURL*)phyFile1 error:(NSError**)error
 {
 	if (self = [super init]) {
-		
+		mdlFile = mdlFile1;
+		vvdFile = vvdFile1;
+		vtxFile = vtxFile1;
+		phyFile = phyFile1;
 	}
 	return self;
 }
@@ -33,6 +38,10 @@
 		
 	}];
 	NSBlockOperation *parseVTX = [NSBlockOperation blockOperationWithBlock:^{
+		
+	}];
+	
+	[finalParse setCompletionBlock:^{
 		
 	}];
 	[finalParse addDependency:parseVVD];
