@@ -209,11 +209,7 @@ TEXTUREKIT_EXTERN NSString * const TKImageRoundModeKey;
 + (NSArray<TKImageRep*> *)imageRepsWithImageReps:(NSArray<NSBitmapImageRep*> *)bitmapImageReps;
 
 
-+ (TKDXTCompressionQuality)defaultDXTCompressionQuality;
-+ (void)setDefaultDXTCompressionQuality:(TKDXTCompressionQuality)aQuality;
-#if __has_feature(objc_class_property)
 @property (class) TKDXTCompressionQuality defaultDXTCompressionQuality;
-#endif
 
 @property (readonly, nonatomic, assign) NSUInteger sliceIndex;
 @property (readonly, nonatomic, assign) TKFace face;

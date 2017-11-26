@@ -48,16 +48,16 @@ extern NSString *__nonnull const MDResourceFileErrorDomain;
 NS_ASSUME_NONNULL_BEGIN
 
 //! read-only; which fork is determined automatically
-- (nullable instancetype)initWithContentsOfFile:(NSString *)aPath error:(NSError *__nullable*__nullable)outError NS_SWIFT_NAME(init(contentsOf:));
+- (nullable instancetype)initWithContentsOfFile:(NSString *)aPath error:(NSError *__nullable*__nullable)outError;
 - (nullable instancetype)initWithContentsOfURL:(NSURL *)aURL error:(NSError *__nullable*__nullable)outError;
 
 
 //! read/write; the 'updating' comes from NSFileHandle
-- (nullable instancetype)initForUpdatingWithContentsOfFile:(NSString *)aPath fork:(MDFork)aFork error:(NSError *__nullable*__nullable)outError NS_SWIFT_NAME(init(forUpdatingWithContentsOf:fork:));
+- (nullable instancetype)initForUpdatingWithContentsOfFile:(NSString *)aPath fork:(MDFork)aFork error:(NSError *__nullable*__nullable)outError;
 - (nullable instancetype)initForUpdatingWithContentsOfURL:(NSURL *)aURL fork:(MDFork)aFork error:(NSError *__nullable*__nullable)outError;
 
 
-- (nullable instancetype)initWithContentsOfFile:(NSString *)aPath permission:(MDPermission)aPermission fork:(MDFork)aFork error:(NSError *__nullable*__nullable)outError NS_SWIFT_NAME(init(contentsOf:permission:fork:));
+- (nullable instancetype)initWithContentsOfFile:(NSString *)aPath permission:(MDPermission)aPermission fork:(MDFork)aFork error:(NSError *__nullable*__nullable)outError;
 - (nullable instancetype)initWithContentsOfURL:(NSURL *)aURL permission:(MDPermission)aPermission fork:(MDFork)aFork error:(NSError *__nullable*__nullable)outError;
 
 

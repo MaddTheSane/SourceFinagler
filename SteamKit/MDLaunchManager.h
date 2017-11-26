@@ -26,10 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 	// for performance reporting
 	NSDate		*agentLaunchDate;
 }
-+ (MDLaunchManager *)defaultManager; // singleton
-#if __has_feature(objc_class_property)
 @property (class, readonly, retain) MDLaunchManager *defaultManager;
-#endif
 
 @property (retain) NSDate *agentLaunchDate;
 

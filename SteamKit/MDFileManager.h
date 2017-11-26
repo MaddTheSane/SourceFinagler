@@ -28,10 +28,7 @@ NS_ENUM(NSInteger) {
 	NSFileManager	*fileManager;
 
 }
-+ (MDFileManager *)defaultManager;
-#if __has_feature(objc_class_property)
 @property (class, readonly, retain) MDFileManager *defaultManager;
-#endif
 
 /// returns all HFS+ info as well as resource fork sizes
 - (nullable NSDictionary *)attributesOfItemAtPath:(NSString *)path error:(NSError **)outError;

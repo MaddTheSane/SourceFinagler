@@ -76,11 +76,7 @@ typedef NS_ENUM(NSUInteger, VSSourceFinaglerLaunchAgentStatus) {
 }
 
 /** Get the shared instance of VSSteamManager. This method will create an instance of \c VSSteamManager if it has not been created yet. You should not attempt to instantiate instances of \c VSSteamManager yourself, and you should not attempt to subclass <code>VSSteamManager</code>. */
-+ (VSSteamManager *)defaultManager; // singleton
-#if __has_feature(objc_class_property)
-/** Get the shared instance of VSSteamManager. This method will create an instance of \c VSSteamManager if it has not been created yet. You should not attempt to instantiate instances of \c VSSteamManager yourself, and you should not attempt to subclass <code>VSSteamManager</code>. */
 @property (class, readonly, retain) VSSteamManager *defaultManager;
-#endif
 
 @property (assign) id <VSSteamManagerDelegate> delegate;
 
@@ -105,11 +101,7 @@ typedef NS_ENUM(NSUInteger, VSSourceFinaglerLaunchAgentStatus) {
 @property (assign) BOOL monitoringGames;
 
 
-+ (VSGameLaunchOptions)defaultPersistentOptions;
-+ (void)setDefaultPersistentOptions:(VSGameLaunchOptions)options;
-#if __has_feature(objc_class_property)
 @property (class) VSGameLaunchOptions defaultPersistentOptions;
-#endif
 
 - (VSGameLaunchOptions)persistentOptionsForGame:(VSGame *)game;
 - (BOOL)setPersistentOptions:(VSGameLaunchOptions)options forGame:(VSGame *)game error:(NSError **)outError;

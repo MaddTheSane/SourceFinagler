@@ -90,11 +90,7 @@ NS_ENUM(OSType) {
 + (instancetype)imageRepWithData:(NSData *)aData;
 - (instancetype)initWithData:(NSData *)aData;
 
-+ (TKVTFFormat)defaultFormat;
-+ (void)setDefaultFormat:(TKVTFFormat)aFormat;
-#if __has_feature(objc_class_property)
 @property (class) TKVTFFormat defaultFormat;
-#endif
 
 
 + (NSData *)VTFRepresentationOfImageRepsInArray:(NSArray<TKImageRep*> *)tkImageReps options:(NSDictionary<NSString*,id> *)options;

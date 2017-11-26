@@ -66,10 +66,7 @@
 	BOOL												appIsTerminating;
 }
 
-+ (TKImageInspectorController *)sharedController;
-#if __has_feature(objc_class_property)
 @property (class, readonly, retain) TKImageInspectorController *sharedController;
-#endif
 
 @property (assign) IBOutlet id <TKImageInspectorDataSource> dataSource;
 

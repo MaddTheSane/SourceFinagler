@@ -115,11 +115,7 @@ NS_ENUM(OSType) {
 + (instancetype)imageRepWithData:(NSData *)aData;
 - (instancetype)initWithData:(NSData *)aData;
 
-+ (TKDDSFormat)defaultFormat;
-+ (void)setDefaultFormat:(TKDDSFormat)aFormat;
-#if __has_feature(objc_class_property)
 @property (class) TKDDSFormat defaultFormat;
-#endif
 
 
 
