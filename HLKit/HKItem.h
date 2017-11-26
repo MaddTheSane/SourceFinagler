@@ -11,7 +11,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef NS_ENUM(NSInteger, HKErrors) {
+HLKIT_EXTERN NSErrorDomain const HKErrorDomain;
+HLKIT_EXTERN NSString * const HKErrorMessageKey;
+HLKIT_EXTERN NSString * const HKSystemErrorMessageKey;
+
+
+typedef NS_ERROR_ENUM(HKErrorDomain, HKErrors) {
 	HKErrorNotExtractable = 1
 };
 
@@ -25,11 +30,6 @@ typedef NS_ENUM(NSUInteger, HKFileType) {
 	HKFileTypeOther				= 6,
 	HKFileTypeNotExtractable	= 7
 };
-
-
-HLKIT_EXTERN NSString * const HKErrorDomain;
-HLKIT_EXTERN NSString * const HKErrorMessageKey;
-HLKIT_EXTERN NSString * const HKSystemErrorMessageKey;
 
 
 @interface HKItem : HKNode {
@@ -48,7 +48,7 @@ HLKIT_EXTERN NSString * const HKSystemErrorMessageKey;
 	NSString			*hasMipmaps;
 	
 	
-	NSString			*type; // UTI
+	NSString			*type; //!< UTI
 	HKFileType			fileType;
 	
 	BOOL				isExtractable;
@@ -68,6 +68,7 @@ HLKIT_EXTERN NSString * const HKSystemErrorMessageKey;
 
 @property (nonatomic, copy, nullable) NSString *path;
 
+//! UTI
 @property (nonatomic, copy) NSString *type;
 @property (nonatomic, copy) NSString *dimensions;
 @property (nonatomic, copy) NSString *version;

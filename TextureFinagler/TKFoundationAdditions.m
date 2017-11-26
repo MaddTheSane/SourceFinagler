@@ -211,10 +211,19 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray<NSValue*> *inRects, BOOL isFlipped)
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	return [self stringWithPascalString:aPStr encoding:kCFStringEncodingMacRoman];
+	return [self stringWithPascalString:aPStr cfencoding:kCFStringEncodingMacRoman];
 }
 
-+ (NSString *)stringWithPascalString:(ConstStr255Param)aPStr encoding:(CFStringEncoding)encoding;
++ (NSString *)stringWithPascalString:(ConstStr255Param)aPStr encoding:(NSStringEncoding)encoding;
+{
+#if TK_DEBUG
+	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+#endif
+	return [self stringWithPascalString:aPStr cfencoding:CFStringConvertNSStringEncodingToEncoding(encoding)];
+}
+
+
++ (NSString *)stringWithPascalString:(ConstStr255Param)aPStr cfencoding:(CFStringEncoding)encoding;
 {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -222,7 +231,7 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray<NSValue*> *inRects, BOOL isFlipped)
 	return CFBridgingRelease(CFStringCreateWithPascalString(kCFAllocatorDefault, aPStr, encoding));
 }
 
-- (BOOL)pascalString:(StringPtr)aBuffer length:(SInt16)aLength encoding:(CFStringEncoding)encoding
+- (BOOL)pascalString:(StringPtr)aBuffer length:(SInt16)aLength cfencoding:(CFStringEncoding)encoding
 {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -230,8 +239,16 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray<NSValue*> *inRects, BOOL isFlipped)
 	return CFStringGetPascalString((CFStringRef)self, aBuffer, aLength, encoding);
 }
 
+- (BOOL)pascalString:(StringPtr)aBuffer length:(SInt16)aLength encoding:(NSStringEncoding)encoding
+{
+#if TK_DEBUG
+	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+#endif
+	return [self pascalString:aBuffer length:aLength cfencoding:CFStringConvertNSStringEncodingToEncoding(encoding)];
+}
+
 - (BOOL)pascalString:(StringPtr)aBuffer length:(SInt16)aLength {
-	return [self pascalString:aBuffer length:aLength encoding:kCFStringEncodingMacRoman];
+	return [self pascalString:aBuffer length:aLength cfencoding:kCFStringEncodingMacRoman];
 }
 
 - (NSComparisonResult)caseInsensitiveNumericalCompare:(NSString *)string {
@@ -571,7 +588,7 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray<NSValue*> *inRects, BOOL isFlipped)
 	}
 	hashString[currentIndex * 2] = 0;
 	
-	return [NSString stringWithUTF8String:(const char *)hashString];
+	return @(hashString);
 }
 
 
@@ -587,10 +604,8 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray<NSValue*> *inRects, BOOL isFlipped)
 
 @end
 
-#if 0
 
 @implementation NSBundle (TKAdditions)
-
 
 - (NSString *)checksumForAuxiliaryLibrary:(NSString *)dylibName {
 #if TK_DEBUG
@@ -601,7 +616,7 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray<NSValue*> *inRects, BOOL isFlipped)
 	if (executablePath && dylibName) {
 		NSString *dylibPath = [[executablePath stringByDeletingLastPathComponent] stringByAppendingPathComponent:dylibName];
 		
-		NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
+		NSFileManager *fileManager = [[NSFileManager alloc] init];
 		BOOL isDir;
 		
 		if ([fileManager fileExistsAtPath:dylibPath isDirectory:&isDir] && !isDir) {
@@ -619,8 +634,6 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray<NSValue*> *inRects, BOOL isFlipped)
 }
 
 @end
-
-#endif
 
 
 NSString *NSStringForAppleScriptListFromPaths(NSArray<NSString*> *paths) {

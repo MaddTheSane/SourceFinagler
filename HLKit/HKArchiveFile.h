@@ -64,7 +64,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (HKArchiveFileType)fileTypeForData:(NSData *)aData;
 
 
-- (nullable instancetype)initWithContentsOfFile:(NSString *)aPath;
+- (nullable instancetype)initWithContentsOfFile:(NSString *)aPath NS_REFINED_FOR_SWIFT;
 - (nullable instancetype)initWithContentsOfFile:(NSString *)aPath showInvisibleItems:(BOOL)showInvisibleItems sortDescriptors:(nullable NSArray<NSSortDescriptor*> *)sortDescriptors error:(NSError *__nullable*__nullable)outError;
 
 

@@ -54,12 +54,12 @@ TKFOUNDATION_EXTERN NSString *NSStringForAppleScriptListFromPaths(NSArray<NSStri
 //		Declared in NSURL.h.
 
 typedef NS_OPTIONS(NSUInteger, TKBookmarkCreationOptions) {
-	TKBookmarkCreationUseAliasManager			= ( 1UL << 0 ),
+	TKBookmarkCreationUseAliasManager NS_ENUM_DEPRECATED(10_0, 10_8, NA, NA) = ( 1UL << 0 ),
 	TKBookmarkCreationMinimalBookmark			= ( 1UL << 9 ),
 	TKBookmarkCreationSuitableForBookmarkFile	= ( 1UL << 10 ),
 	TKBookmarkCreationWithSecurityScope NS_ENUM_AVAILABLE(10_7, NA) = ( 1UL << 11 ),
 	TKBookmarkCreationSecurityScopeAllowOnlyReadAccess NS_ENUM_AVAILABLE(10_7, NA) = ( 1UL << 12 ),
-	TKBookmarkCreationDefaultOptions			= TKBookmarkCreationUseAliasManager,
+	TKBookmarkCreationDefaultOptions			= TKBookmarkCreationSuitableForBookmarkFile,
 };
 
 
@@ -96,10 +96,11 @@ typedef NS_OPTIONS(NSUInteger, TKBookmarkResolutionOptions) {
 @property (readonly, copy) NSString *stringByAbbreviatingFilenameTo31Characters;
 @property (readonly) NSSize sizeForStringWithSavedFrame;
 + (NSString *)stringWithPascalString:(ConstStr255Param)aPStr;
-+ (NSString *)stringWithPascalString:(ConstStr255Param)aPStr encoding:(CFStringEncoding)encoding;
-//- (BOOL)getFSSpec:(FSSpec *)anFSSpec;
++ (NSString *)stringWithPascalString:(ConstStr255Param)aPStr encoding:(NSStringEncoding)encoding;
++ (NSString *)stringWithPascalString:(ConstStr255Param)aPStr cfencoding:(CFStringEncoding)encoding;
 - (BOOL)pascalString:(StringPtr)aBuffer length:(SInt16)aLength;
-- (BOOL)pascalString:(StringPtr)aBuffer length:(SInt16)aLength encoding:(CFStringEncoding)encoding;
+- (BOOL)pascalString:(StringPtr)aBuffer length:(SInt16)aLength encoding:(NSStringEncoding)encoding;
+- (BOOL)pascalString:(StringPtr)aBuffer length:(SInt16)aLength cfencoding:(CFStringEncoding)encoding;
 
 - (NSComparisonResult)caseInsensitiveNumericalCompare:(NSString *)string;
 - (NSComparisonResult)localizedCaseInsensitiveNumericalCompare:(NSString *)string;
@@ -205,31 +206,31 @@ typedef NS_OPTIONS(NSUInteger, TKBookmarkResolutionOptions) {
 #if (TK_BUILDING_WITH_FOUNDATION_NSDATE_ADDITIONS)
 
 @interface NSDate (TKAdditions)
-+ (instancetype)dateByRoundingDownToNearestMinute;
-+ (instancetype)dateByRoundingUpToNearestMinute;
-+ (instancetype)dateByAddingTwoAndRoundingUpToNearestMinute;
-+ (instancetype)midnightYesterdayMorning;
-+ (instancetype)midnightThisMorning;
-+ (instancetype)midnightTonight;
-+ (instancetype)midnightTomorrowNight;
++ (NSDate*)dateByRoundingDownToNearestMinute;
++ (NSDate*)dateByRoundingUpToNearestMinute;
++ (NSDate*)dateByAddingTwoAndRoundingUpToNearestMinute;
++ (NSDate*)midnightYesterdayMorning;
++ (NSDate*)midnightThisMorning;
++ (NSDate*)midnightTonight;
++ (NSDate*)midnightTomorrowNight;
 - (BOOL)isEarlierThanDate:(NSDate *)aDate;
 - (BOOL)isLaterThanDate:(NSDate *)aDate;
 - (BOOL)isEarlierThanOrEqualToDate:(NSDate *)aDate;
 - (BOOL)isLaterThanOrEqualToDate:(NSDate *)aDate;
-- (instancetype)dateByRoundingDownToNearestMinute;
-- (instancetype)dateByRoundingUpToNearestMinute;
-- (instancetype)dateByAddingTwoAndRoundingUpToNearestMinute;
-- (instancetype)midnightOfMorning;
-- (instancetype)midnightOfEvening;
-- (instancetype)midnightOfYesterdayMorning;
-- (instancetype)midnightOfTomorrowEvening;
-- (instancetype)baseWeekly; //!< take receiver's time of day and shift it to the first day of the week
+- (NSDate*)dateByRoundingDownToNearestMinute;
+- (NSDate*)dateByRoundingUpToNearestMinute;
+- (NSDate*)dateByAddingTwoAndRoundingUpToNearestMinute;
+- (NSDate*)midnightOfMorning;
+- (NSDate*)midnightOfEvening;
+- (NSDate*)midnightOfYesterdayMorning;
+- (NSDate*)midnightOfTomorrowEvening;
+- (NSDate*)baseWeekly; //!< take receiver's time of day and shift it to the first day of the week
 //- (id)baseWeeklyForDate:(id)aDate; // basically the reverse of -baseWeekly; given that the receiver is a baseWeekly's time of day, transpose the time to the specified 'aDate'
-- (instancetype)baseMonthly; //!< take receiver's time of day and shift it to the first day of the month
-- (instancetype)dateByTransposingToCurrentDay;
-- (instancetype)dateByTransposingToFirstDayOfCurrentWeek;
-- (instancetype)dateByTransposingToFirstDayOfCurrentMonth;
-- (instancetype)dateBySynchronizingToTimeOfDayOfDate:(NSDate *)aDate;
+- (NSDate*)baseMonthly; //!< take receiver's time of day and shift it to the first day of the month
+- (NSDate*)dateByTransposingToCurrentDay;
+- (NSDate*)dateByTransposingToFirstDayOfCurrentWeek;
+- (NSDate*)dateByTransposingToFirstDayOfCurrentMonth;
+- (NSDate*)dateBySynchronizingToTimeOfDayOfDate:(NSDate *)aDate;
 @end
 #endif
 
