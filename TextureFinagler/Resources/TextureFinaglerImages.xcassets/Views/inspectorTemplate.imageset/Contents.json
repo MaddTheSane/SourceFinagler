@@ -2,6 +2,10 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "OAInfoTemplate.pdf"
+    },
+    {
+      "idiom" : "universal",
       "filename" : "inspectorLion.png",
       "scale" : "1x"
     },

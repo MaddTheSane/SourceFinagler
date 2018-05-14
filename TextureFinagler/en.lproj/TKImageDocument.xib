@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
-        <plugIn identifier="com.apple.imagekit.ibplugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
+        <plugIn identifier="com.apple.imagekit.ibplugin" version="14109"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TKImageDocument">
@@ -312,17 +313,17 @@
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="91D37AAB-54EA-4FE0-85C0-645B53749AB7" label="Zoom" paletteLabel="Zoom" id="101106">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="118" height="25"/>
+                        <size key="minSize" width="118" height="23"/>
                         <size key="maxSize" width="130" height="25"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="101113">
-                            <rect key="frame" x="0.0" y="14" width="118" height="25"/>
+                            <rect key="frame" x="0.0" y="14" width="122" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="momentary" id="101114">
                                 <font key="font" metaFont="system"/>
                                 <segments>
-                                    <segment toolTip="Zoom Out" image="zoomOutLionTemplate" width="38" tag="-1"/>
-                                    <segment toolTip="Display at actual size" image="actualSizeLionTemplate" width="38"/>
-                                    <segment toolTip="Zoom In" image="zoomInLionTemplate" width="38" tag="1">
+                                    <segment toolTip="Zoom Out" image="zoomOutTemplate" width="38" tag="-1"/>
+                                    <segment toolTip="Display at actual size" image="actualSizeTemplate" width="38"/>
+                                    <segment toolTip="Zoom In" image="zoomInTemplate" width="38" tag="1">
                                         <nil key="label"/>
                                     </segment>
                                 </segments>
@@ -334,15 +335,15 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="39CB5D84-5F5D-4C22-BA08-408A5F60576D" label="Zoom to Fit" paletteLabel="Zoom to Fit" id="101107">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="38" height="25"/>
+                        <size key="minSize" width="38" height="23"/>
                         <size key="maxSize" width="42" height="25"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="101111">
-                            <rect key="frame" x="16" y="14" width="38" height="25"/>
+                            <rect key="frame" x="13" y="14" width="42" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="momentary" id="101112">
                                 <font key="font" metaFont="system"/>
                                 <segments>
-                                    <segment toolTip="Zoom to fit" image="zoomToFitLionTemplate" width="36"/>
+                                    <segment toolTip="Zoom to fit" image="zoomToFitTemplate" width="36"/>
                                 </segments>
                             </segmentedCell>
                             <connections>
@@ -352,18 +353,18 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="78568B1E-0553-42E9-91A7-3785F08B228D" label="Tool" paletteLabel="Tool" id="101098">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="71" height="25"/>
+                        <size key="minSize" width="71" height="23"/>
                         <size key="maxSize" width="75" height="25"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="101119">
-                            <rect key="frame" x="0.0" y="14" width="71" height="25"/>
+                            <rect key="frame" x="0.0" y="14" width="75" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="101120">
                                 <font key="font" metaFont="system"/>
                                 <segments>
-                                    <segment toolTip="Move" image="grabLion" width="34" selected="YES" tag="1">
+                                    <segment toolTip="Move" image="grab" width="34" selected="YES" tag="1">
                                         <nil key="label"/>
                                     </segment>
-                                    <segment toolTip="Select" image="selectionLion" width="34" tag="2">
+                                    <segment toolTip="Select" image="selection" width="34" tag="2">
                                         <nil key="label"/>
                                     </segment>
                                 </segments>
@@ -375,15 +376,15 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="8C5D995E-8BBD-4FF2-A09C-9F77851C0DD0" label="Crop" paletteLabel="Crop" id="101097">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="34" height="25"/>
+                        <size key="minSize" width="34" height="23"/>
                         <size key="maxSize" width="38" height="25"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="101121">
-                            <rect key="frame" x="0.0" y="14" width="34" height="25"/>
+                            <rect key="frame" x="0.0" y="14" width="38" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="momentary" id="101122">
                                 <font key="font" metaFont="system"/>
                                 <segments>
-                                    <segment image="cropLionTemplate" width="32"/>
+                                    <segment image="cropTemplate" width="32"/>
                                 </segments>
                             </segmentedCell>
                             <connections>
@@ -391,17 +392,17 @@
                             </connections>
                         </segmentedControl>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="85F22C9B-EE68-462F-8BDE-7FCBE97E5934" label="Inspector" paletteLabel="Inspector" id="101108">
+                    <toolbarItem implicitItemIdentifier="85F22C9B-EE68-462F-8BDE-7FCBE97E5934" label="Inspector" paletteLabel="Inspector" image="inspectorTemplate" id="101108">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="32" height="25"/>
+                        <size key="minSize" width="32" height="23"/>
                         <size key="maxSize" width="36" height="25"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="101109">
-                            <rect key="frame" x="13" y="14" width="32" height="25"/>
+                            <rect key="frame" x="11" y="14" width="36" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="momentary" id="101110">
                                 <font key="font" metaFont="system"/>
                                 <segments>
-                                    <segment toolTip="Show the Inspector" image="inspectorLion" width="30"/>
+                                    <segment toolTip="Show the Inspector" image="inspectorTemplate" width="30"/>
                                 </segments>
                             </segmentedCell>
                             <connections>
@@ -411,10 +412,10 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="B8A4CD4A-52FE-4AD8-AB40-4C16C331E693" label="Play" paletteLabel="Play" id="101100">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="32" height="25"/>
+                        <size key="minSize" width="32" height="23"/>
                         <size key="maxSize" width="36" height="25"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="101115">
-                            <rect key="frame" x="0.0" y="14" width="32" height="25"/>
+                            <rect key="frame" x="0.0" y="14" width="36" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="momentary" id="101116">
                                 <font key="font" metaFont="system"/>
@@ -429,19 +430,19 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="A1680904-B6DD-4D54-918C-EEBEF527779C" label="View" paletteLabel="View" id="101099">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="112" height="25"/>
+                        <size key="minSize" width="112" height="23"/>
                         <size key="maxSize" width="116" height="25"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="101117">
-                            <rect key="frame" x="0.0" y="14" width="112" height="25"/>
+                            <rect key="frame" x="0.0" y="14" width="116" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectAny" id="101118">
                                 <font key="font" metaFont="system"/>
                                 <segments>
                                     <segment toolTip="View faces for environment map images" image="viewFaceBrowserTemplate" width="36" tag="1"/>
-                                    <segment toolTip="View timeline for animated images" image="viewFrameBrowser" width="36" selected="YES" tag="1">
+                                    <segment toolTip="View timeline for animated images" image="viewFrameBrowserTemplate" width="36" selected="YES" tag="1">
                                         <nil key="label"/>
                                     </segment>
-                                    <segment toolTip="View mipmaps" image="viewMipmapBrowser" width="36" selected="YES" tag="2">
+                                    <segment toolTip="View mipmaps" image="viewMipmapBrowserTemplate" width="36" selected="YES" tag="2">
                                         <nil key="label"/>
                                     </segment>
                                 </segments>
@@ -1108,16 +1109,16 @@
     </objects>
     <resources>
         <image name="NSRightFacingTriangleTemplate" width="9" height="12"/>
-        <image name="actualSizeLionTemplate" width="18" height="18"/>
-        <image name="cropLionTemplate" width="20" height="18"/>
-        <image name="grabLion" width="18" height="18"/>
-        <image name="inspectorLion" width="18" height="18"/>
-        <image name="selectionLion" width="16" height="18"/>
+        <image name="actualSizeTemplate" width="18" height="18"/>
+        <image name="cropTemplate" width="20" height="18"/>
+        <image name="grab" width="18" height="18"/>
+        <image name="inspectorTemplate" width="18" height="18"/>
+        <image name="selection" width="16" height="18"/>
         <image name="viewFaceBrowserTemplate" width="16" height="16"/>
-        <image name="viewFrameBrowser" width="16" height="16"/>
-        <image name="viewMipmapBrowser" width="16" height="16"/>
-        <image name="zoomInLionTemplate" width="18" height="18"/>
-        <image name="zoomOutLionTemplate" width="18" height="18"/>
-        <image name="zoomToFitLionTemplate" width="20" height="18"/>
+        <image name="viewFrameBrowserTemplate" width="16" height="16"/>
+        <image name="viewMipmapBrowserTemplate" width="16" height="16"/>
+        <image name="zoomInTemplate" width="18" height="18"/>
+        <image name="zoomOutTemplate" width="18" height="18"/>
+        <image name="zoomToFitTemplate" width="20" height="18"/>
     </resources>
 </document>

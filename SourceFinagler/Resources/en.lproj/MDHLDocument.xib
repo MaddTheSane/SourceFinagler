@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
         <capability name="box content view" minToolsVersion="7.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MDHLDocument">
@@ -393,7 +394,6 @@ Gw
                             <rect key="frame" x="0.0" y="0.0" width="560" height="305"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </view>
-                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
                     <customView id="1056" userLabel="pathControlInspectorView" customClass="MDInspectorView">
@@ -448,10 +448,10 @@ Gw
             <toolbar key="toolbar" implicitIdentifier="3337ECFC-C9DA-4102-BAC4-9B12F02B5D5A" showsBaselineSeparator="NO" displayMode="iconAndLabel" sizeMode="regular" id="736">
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="3C4142C8-6C80-4E2C-99CB-9AF1682A1DDF" label="View" paletteLabel="View" toolTip="Show items in a list or in columns" id="741">
-                        <size key="minSize" width="51" height="25"/>
-                        <size key="maxSize" width="51" height="25"/>
+                        <size key="minSize" width="51" height="23"/>
+                        <size key="maxSize" width="55" height="25"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="745">
-                            <rect key="frame" x="0.0" y="14" width="51" height="25"/>
+                            <rect key="frame" x="0.0" y="14" width="55" height="23"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <segmentedCell key="cell" state="on" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="746">
                                 <font key="font" metaFont="system"/>
@@ -511,16 +511,16 @@ Gw
                             <action selector="toggleShowQuickLook:" target="-1" id="964"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="F4523772-0AF3-4828-B261-6295AAA84ECA" label="Inspector" paletteLabel="Inspector" toolTip="See information about the selected files and folders" id="2211">
-                        <size key="minSize" width="36" height="25"/>
-                        <size key="maxSize" width="36" height="25"/>
+                    <toolbarItem implicitItemIdentifier="F4523772-0AF3-4828-B261-6295AAA84ECA" label="Inspector" paletteLabel="Inspector" toolTip="See information about the selected files and folders" image="inspectorTemplate" id="2211">
+                        <size key="minSize" width="36" height="23"/>
+                        <size key="maxSize" width="40" height="25"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="2209">
-                            <rect key="frame" x="11" y="14" width="36" height="25"/>
+                            <rect key="frame" x="9" y="14" width="40" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="momentary" id="2210">
                                 <font key="font" metaFont="system"/>
                                 <segments>
-                                    <segment image="inspectorLion" width="34"/>
+                                    <segment image="inspectorTemplate" width="34"/>
                                 </segments>
                             </segmentedCell>
                         </segmentedControl>
@@ -548,7 +548,6 @@ Gw
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="740"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="743"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarCustomizeToolbarItem" id="737"/>
-                    <toolbarItem implicitItemIdentifier="NSToolbarSeparatorItem" id="744"/>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="741"/>
@@ -575,11 +574,11 @@ Gw
                     <rect key="frame" x="0.0" y="0.0" width="560" height="330"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="AaB-3S-iSh">
-                        <rect key="frame" x="0.0" y="23" width="560" height="307"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <rect key="frame" x="0.0" y="0.0" width="560" height="330"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" autosaveName="outlineView" headerView="1081" indentationPerLevel="16" autoresizesOutlineColumn="YES" outlineTableColumn="1082" id="1080" customClass="MDOutlineView">
-                                <rect key="frame" x="0.0" y="0.0" width="560" height="19"/>
+                                <rect key="frame" x="0.0" y="0.0" width="560" height="307"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -639,7 +638,6 @@ Gw
                                 </connections>
                             </outlineView>
                         </subviews>
-                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="1079">
                         <rect key="frame" x="0.0" y="315" width="545" height="15"/>
@@ -754,7 +752,7 @@ Gw
         <image name="NSListViewTemplate" width="14" height="10"/>
         <image name="NSQuickLookTemplate" width="19" height="12"/>
         <image name="fileIndicator" width="16" height="16"/>
-        <image name="inspectorLion" width="18" height="18"/>
+        <image name="inspectorTemplate" width="18" height="18"/>
         <image name="readOnlyIndicator" width="16" height="16"/>
     </resources>
 </document>
