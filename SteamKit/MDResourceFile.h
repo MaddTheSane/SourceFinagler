@@ -26,12 +26,12 @@ typedef NS_OPTIONS(char, MDPermission) {
 	MDPermissionReadWrite				= 0x03
 };
 
+extern NSErrorDomain __nonnull const MDResourceFileErrorDomain;
 
-NS_ENUM(NSInteger) {
+NS_ERROR_ENUM(MDResourceFileErrorDomain) {
 	MDResourceFileCorruptResourceFileError				= 4998,
 };
 
-extern NSString *__nonnull const MDResourceFileErrorDomain;
 
 
 @interface MDResourceFile : NSObject {

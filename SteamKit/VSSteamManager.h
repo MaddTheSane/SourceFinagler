@@ -136,6 +136,10 @@ NS_ENUM(NSInteger) {
 	VSSourceAddonGameNotFoundError						= 6005
 };
 
+#if 0
+}
+#endif
+
 @interface VSSteamManager (VSAddonsSupport)
 
 - (BOOL)installAddonAtPath:(NSString *)sourceFilePath method:(VSSourceAddonInstallMethod)installMethod resultingPath:(NSString **)resultingPath resultingGame:(VSGame **)resultingGame overwrite:(BOOL)overwriteExisting error:(NSError **)outError;

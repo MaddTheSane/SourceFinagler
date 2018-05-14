@@ -12,8 +12,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 HLKIT_EXTERN NSErrorDomain const HKErrorDomain;
-HLKIT_EXTERN NSString * const HKErrorMessageKey;
-HLKIT_EXTERN NSString * const HKSystemErrorMessageKey;
+HLKIT_EXTERN NSErrorUserInfoKey const HKErrorMessageKey;
+HLKIT_EXTERN NSErrorUserInfoKey const HKSystemErrorMessageKey;
 
 
 typedef NS_ERROR_ENUM(HKErrorDomain, HKErrors) {
