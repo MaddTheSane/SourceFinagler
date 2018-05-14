@@ -108,19 +108,8 @@
 //		[[NSColor blackColor] set];
 //		[NSBezierPath strokeRect:imageRect];
 		
-		// Flip images that don't agree with our flipped state
-		BOOL isFlipped = controlView.flipped != [self.image isFlipped];
-		if (isFlipped) {
-			[[NSGraphicsContext currentContext] saveGraphicsState];
-			NSAffineTransform *transform = [[NSAffineTransform alloc] init];
-			[transform translateXBy:0.0 yBy:(cellFrame.origin.y + cellFrame.size.height)];
-			[transform scaleXBy:1.0 yBy:-1.0];
-			[transform translateXBy:0.0 yBy:-cellFrame.origin.y];
-			[transform concat];
-		}
 //		NSLog(@"[%@ %@] drawing image", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-		[self.image drawInRect:imageRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
-		if (isFlipped) [[NSGraphicsContext currentContext] restoreGraphicsState];
+		[self.image drawInRect:imageRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
 	}
 	CGFloat inset = (TK_INSET_HORIZ + imageSize.width + TK_INTER_SPACE);
 	cellFrame.origin.x += inset;

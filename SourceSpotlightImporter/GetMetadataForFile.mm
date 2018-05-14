@@ -58,7 +58,7 @@ BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *cont
 	
 	OSType magic = 0;
 	[data getBytes:&magic length:sizeof(magic)];
-	magic = NSSwapBigIntToHost(magic);
+	magic = CFSwapInt32BigToHost(magic);
 	
 	if ([contentTypeUTI isEqualToString:TKSFTextureImageType]) {
 		TKImage *sfti = [[TKImage alloc] initWithData:data firstRepresentationOnly:NO];
@@ -179,7 +179,7 @@ BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *cont
 		
 		[attributes setObject:@(theWidth) forKey:(NSString *)kMDItemPixelWidth];
 		[attributes setObject:@(theHeight) forKey:(NSString *)kMDItemPixelHeight];
-		[attributes setObject:@(theWidth * theHeight) forKey:(id)kMDItemPixelCount];
+		[attributes setObject:@(theWidth * theHeight) forKey:(NSString *)kMDItemPixelCount];
 		if (theCompression) [attributes setObject:theCompression forKey:@"com_markdouma_image_compression"];
 		
 		return YES;
