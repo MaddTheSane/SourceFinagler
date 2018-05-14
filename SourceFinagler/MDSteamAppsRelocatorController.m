@@ -175,23 +175,36 @@ NSString * const MDSteamBundleIdentifierKey = @"com.valvesoftware.steam";
 	}
 }
 
-- (BOOL)panel:(id)sender shouldShowFilename:(NSString *)filename {
+-(BOOL)panel:(id)sender shouldEnableURL:(NSURL *)url {
 #if VS_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
+	id<NSCopying, NSCoding, NSSecureCoding, NSObject> urlPassedID;
+	id<NSCopying, NSCoding, NSSecureCoding, NSObject> defaultSteamPathID;
+
+	if (![url getResourceValue:&urlPassedID forKey:NSURLFileResourceIdentifierKey error:NULL]) {
+		return YES;
+	}
+	
 	if (currentURL) {
-		if ([filename isEqualToString:currentURL.path]) {
+		id<NSCopying, NSCoding, NSSecureCoding, NSObject> currentID;
+		if (![currentURL getResourceValue:&currentID forKey:NSURLFileResourceIdentifierKey error:NULL]) {
+			return YES;
+		}
+		if ([currentID isEqual:urlPassedID]) {
 			NSLog(@"returning no");
 			return NO;
 		}
 	}
 	
-	if ([filename isEqualToString:[steamManager defaultSteamAppsPath]]) {
+	if (![[NSURL fileURLWithPath:[steamManager defaultSteamAppsPath]] getResourceValue:&defaultSteamPathID forKey:NSURLFileResourceIdentifierKey error:NULL]) {
+		return YES;
+	}
+	if ([urlPassedID isEqual:defaultSteamPathID]) {
 		return NO;
 	}
 	return YES;
 }
-
 
 - (IBAction)browse:(id)sender {
 #if VS_DEBUG

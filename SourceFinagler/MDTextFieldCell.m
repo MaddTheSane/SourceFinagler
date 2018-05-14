@@ -117,18 +117,6 @@
 	return self;
 }
 
-- (instancetype)initImageCell:(NSImage *)value {
-#if MD_DEBUG
-	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-#endif
-	if ((self = [super initImageCell:value])) {
-		image = value;
-		leftEdgePadding = MD_LEFT_EDGE_PADDING;
-		[self initAttributes];
-	}
-	return self;
-}
-
 - (instancetype)init {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));

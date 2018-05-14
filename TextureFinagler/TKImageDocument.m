@@ -729,13 +729,13 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 				
 				NSData *imageData = nil;
 				
-				if ([exportPreset.fileType.lowercaseString isEqualToString:TKVTFFileType]) {
+				if ([self->exportPreset.fileType.lowercaseString isEqualToString:TKVTFFileType]) {
 					
-					imageData = [TKVTFImageRep VTFRepresentationOfImageRepsInArray:image.representations usingPreset:exportPreset];
+					imageData = [TKVTFImageRep VTFRepresentationOfImageRepsInArray:self->image.representations usingPreset:self->exportPreset];
 					
-				} else if ([exportPreset.fileType.lowercaseString isEqualToString:TKDDSFileType]) {
+				} else if ([self->exportPreset.fileType.lowercaseString isEqualToString:TKDDSFileType]) {
 					
-					imageData = [TKDDSImageRep DDSRepresentationOfImageRepsInArray:image.representations usingPreset:exportPreset];
+					imageData = [TKDDSImageRep DDSRepresentationOfImageRepsInArray:self->image.representations usingPreset:self->exportPreset];
 				}
 				
 				if (imageData) {
