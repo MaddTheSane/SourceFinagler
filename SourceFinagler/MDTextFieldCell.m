@@ -311,20 +311,10 @@
 	}
 	
 	if (image) {
-		BOOL isFlipped = controlView.flipped != image.isFlipped;
-		if (isFlipped) {
-			NSLog(@"isFlipped");
-			[[NSGraphicsContext currentContext] saveGraphicsState];
-			NSAffineTransform *transform = [[NSAffineTransform alloc] init];
-			[transform translateXBy:0.0 yBy:(cellFrame.origin.y + cellFrame.size.height)];
-			[transform scaleXBy:0.0 yBy:-1.0];
-			[transform translateXBy:0.0 yBy:-cellFrame.origin.y];
-			[transform concat];
-		}
-		[image drawAtPoint:imagePoint fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:(isEnabled ? 1.0 : 0.5)];
-		if (isFlipped) [[NSGraphicsContext currentContext] restoreGraphicsState];
-		
-//		[image compositeToPoint:imagePoint operation:NSCompositeSourceOver fraction:(isEnabled ? 1.0 : 0.5)];
+		NSRect aDrawRect;
+		aDrawRect.origin = imagePoint;
+		aDrawRect.size = image.size;
+		[image drawInRect:aDrawRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:(isEnabled ? 1.0 : 0.5) respectFlipped:YES hints:nil];
 	}
 	
 	NSAttributedString *richText = [[NSAttributedString alloc] initWithString:self.stringValue attributes:attributes];
@@ -383,10 +373,13 @@
 	
 	if (image) {
 		imageSize = image.size;
-		imagePoint = [self calculatedImagePointForFrame:cellFrame imageSize:imageSize isFlipped:[dragImage isFlipped]];
+		imagePoint = [self calculatedImagePointForFrame:cellFrame imageSize:imageSize isFlipped:NO];
 		
 		[dragImage lockFocus];
-		[image compositeToPoint:imagePoint operation:NSCompositeSourceOver fraction:0.37];
+		NSRect aDrawRect;
+		aDrawRect.origin = imagePoint;
+		aDrawRect.size = imageSize;
+		[image drawInRect:aDrawRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:0.37 respectFlipped:YES hints:nil];
 		[dragImage unlockFocus];
 	}
 	
@@ -394,7 +387,7 @@
 	
 	NSAttributedString *richText = [[NSAttributedString alloc] initWithString:self.stringValue attributes:attributes];
 	
-	NSRect richTextRect = [self calculatedRichTextRectForFrame:cellFrame richText:richText fontSize:self.font.pointSize imageSize:imageSize isFlipped:[dragImage isFlipped]];
+	NSRect richTextRect = [self calculatedRichTextRectForFrame:cellFrame richText:richText fontSize:self.font.pointSize imageSize:imageSize isFlipped:NO];
 	
 	[dragImage lockFocus];
 	[richText drawInRect:richTextRect];

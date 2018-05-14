@@ -53,8 +53,14 @@ NSString *NSStringFromDefaultsKeyPath(NSString *defaultsKey) {
 	if (appName == nil) {
 		appName = NSLocalizedString(@"This application", @"");
 	}
-	NSInteger choice = NSRunCriticalAlertPanel([NSString stringWithFormat:NSLocalizedString(@"%@ encountered an error while trying to load the \"%@\" user interface file.", @""), appName, nibName], NSLocalizedString(@"Please reinstall the application.", @""), NSLocalizedString(@"Quit", @""), nil, nil);
-	if (choice == NSAlertDefaultReturn) [NSApp terminate:nil];	
+	NSAlert *alert = [NSAlert new];
+	alert.alertStyle = NSAlertStyleCritical;
+	alert.messageText = [NSString stringWithFormat:NSLocalizedString(@"%@ encountered an error while trying to load the \"%@\" user interface file.", @""), appName, nibName];
+	alert.informativeText = NSLocalizedString(@"Please reinstall the application.", @"");
+	[alert addButtonWithTitle:NSLocalizedString(@"Quit", @"")];
+	
+	NSModalResponse choice = [alert runModal];
+	if (choice == NSAlertFirstButtonReturn) [NSApp terminate:nil];	
 }
 
 @end

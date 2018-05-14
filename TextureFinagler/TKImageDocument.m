@@ -470,7 +470,9 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 		
 		[alert setShowsSuppressionButton:YES];
 		
-		[alert beginSheetModalForWindow:imageWindow modalDelegate:self didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) contextInfo:NULL];
+		[alert beginSheetModalForWindow:imageWindow completionHandler:^(NSModalResponse returnCode) {
+			[self alertDidEnd:alert returnCode:returnCode contextInfo:NULL];
+		}];
 	}
 }
 
