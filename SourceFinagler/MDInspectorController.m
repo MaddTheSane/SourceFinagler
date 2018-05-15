@@ -126,7 +126,7 @@
 			
 			kindField.stringValue = [NSString stringWithFormat:NSLocalizedString(@"%lu documents", @""), (unsigned long)newSelectedItems.count];
 			
-			iconImageView.image = [NSImage imageNamed:@"multipleItems"];
+			iconImageView.image = [NSImage imageNamed:NSImageNameMultipleDocuments];
 			
 			dateModifiedField.objectValue = newDocument.fileModificationDate;
 			
