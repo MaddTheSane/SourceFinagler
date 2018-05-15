@@ -3437,7 +3437,7 @@
 			name = "NVTextureTools framework";
 			path = NVTextureTools/src;
 			sourceTree = "<group>";
-			usesTabs = 0;
+			usesTabs = 1;
 		};
 		C1FEA7B1125E5BFD00CA78FF /* NVCore */ = {
 			isa = PBXGroup;
