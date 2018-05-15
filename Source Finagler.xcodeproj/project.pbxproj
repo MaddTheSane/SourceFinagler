@@ -1773,7 +1773,7 @@
 		C1FEA997125E766800CA78FF /* colourfit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = colourfit.h; sourceTree = "<group>"; };
 		C1FEA998125E766800CA78FF /* colourset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = colourset.cpp; sourceTree = "<group>"; };
 		C1FEA999125E766800CA78FF /* colourset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = colourset.h; sourceTree = "<group>"; };
-		C1FEA99A125E766800CA78FF /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		C1FEA99A125E766800CA78FF /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; usesTabs = 1; };
 		C1FEA99B125E766800CA78FF /* fastclusterfit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fastclusterfit.cpp; sourceTree = "<group>"; };
 		C1FEA99C125E766800CA78FF /* fastclusterfit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fastclusterfit.h; sourceTree = "<group>"; };
 		C1FEA99D125E766800CA78FF /* fastclusterlookup.inl */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = fastclusterlookup.inl; sourceTree = "<group>"; };
