@@ -64,6 +64,7 @@
 		554FE6AA1FCA0D3C00727CE0 /* CudaCompressorDXT.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C1FEA981125E763700CA78FF /* CudaCompressorDXT.h */; };
 		558672FC1D7E874C00E26A11 /* NVImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA8FD125E71A200CA78FF /* NVImage.framework */; };
 		558673021D7E8BB700E26A11 /* NVCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA7EA125E5C9600CA78FF /* NVCore.framework */; };
+		5595728B20AA58ED00E169B6 /* SimdVector_libsimd.h in Headers */ = {isa = PBXBuildFile; fileRef = 5595728A20AA58ED00E169B6 /* SimdVector_libsimd.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		55B9F2A41D7CB20600641709 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55B9F2681D7CB1EF00641709 /* InfoPlist.strings */; };
 		55B9F2B81D7D1A0E00641709 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55B9F2B71D7D1A0E00641709 /* Images.xcassets */; };
 		55B9F2BB1D7D1A2100641709 /* Shared.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55B9F2BA1D7D1A2100641709 /* Shared.xcassets */; };
@@ -1050,6 +1051,7 @@
 		554FE6A51FCA0A2500727CE0 /* BlockCompressor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BlockCompressor.cpp; sourceTree = "<group>"; };
 		554FE6A61FCA0A2600727CE0 /* BlockCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockCompressor.h; sourceTree = "<group>"; };
 		558672FB1D7E857600E26A11 /* cmdline.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = cmdline.h; path = nvtt/tools/cmdline.h; sourceTree = "<group>"; };
+		5595728A20AA58ED00E169B6 /* SimdVector_libsimd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimdVector_libsimd.h; sourceTree = "<group>"; };
 		55B9F2691D7CB1EF00641709 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		55B9F2B71D7D1A0E00641709 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		55B9F2BA1D7D1A2100641709 /* Shared.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Shared.xcassets; sourceTree = "<group>"; };
@@ -1114,7 +1116,7 @@
 		C12F1056147B724400F398DE /* HLKit.exp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.exports; path = HLKit.exp; sourceTree = "<group>"; };
 		C1305B6312F08DD700D68170 /* SimdVector_SSE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimdVector_SSE.h; sourceTree = "<group>"; };
 		C1305B6412F08DD700D68170 /* SimdVector_VE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimdVector_VE.h; sourceTree = "<group>"; };
-		C1305B6512F08DD700D68170 /* SimdVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimdVector.h; sourceTree = "<group>"; };
+		C1305B6512F08DD700D68170 /* SimdVector.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = SimdVector.h; sourceTree = "<group>"; };
 		C1305B7712F08E6E00D68170 /* ErrorMetric.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ErrorMetric.cpp; sourceTree = "<group>"; };
 		C1305B7812F08E6E00D68170 /* ErrorMetric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorMetric.h; sourceTree = "<group>"; };
 		C1305BCD12F08F8100D68170 /* TaskDispatcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TaskDispatcher.cpp; sourceTree = "<group>"; };
@@ -3533,6 +3535,7 @@
 				C1FEA8F5125E718D00CA78FF /* Plane.cpp */,
 				C1305B6312F08DD700D68170 /* SimdVector_SSE.h */,
 				C1305B6412F08DD700D68170 /* SimdVector_VE.h */,
+				5595728A20AA58ED00E169B6 /* SimdVector_libsimd.h */,
 				C1305B6512F08DD700D68170 /* SimdVector.h */,
 				C1FEA8F7125E718D00CA78FF /* Vector.h */,
 				C180E35714728CC20001C07F /* Vector.inl */,
@@ -4003,6 +4006,7 @@
 				C180E35C14728D050001C07F /* Matrix.inl in Headers */,
 				C180E36014728D180001C07F /* SphericalHarmonic.h in Headers */,
 				C180E36214728D1D0001C07F /* Vector.inl in Headers */,
+				5595728B20AA58ED00E169B6 /* SimdVector_libsimd.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

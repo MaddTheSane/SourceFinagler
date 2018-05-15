@@ -32,7 +32,10 @@ static NSDate *MDNilDate = nil;
 @synthesize relative;
 
 + (void)initialize {
-	MDNilDate = [NSDate dateWithTimeIntervalSinceReferenceDate:MDNilDateTimeIntervalSinceReferenceDate];
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		MDNilDate = [NSDate dateWithTimeIntervalSinceReferenceDate:MDNilDateTimeIntervalSinceReferenceDate];
+	});
 }
 
 - (instancetype)initWithStyle:(MDDateFormatterStyle)aStyle isRelative:(BOOL)value {
