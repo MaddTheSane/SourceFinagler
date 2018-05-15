@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
-        <plugIn identifier="com.apple.QTKitIBPlugin" version="10117"/>
+        <plugIn identifier="com.apple.AVKitIBPlugin" version="14109"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
         <capability name="box content view" minToolsVersion="7.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MDInspectorController">
@@ -83,12 +84,9 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <box verticalHuggingPriority="750" boxType="separator" titlePosition="noTitle" id="666">
+                    <box verticalHuggingPriority="750" boxType="separator" id="666">
                         <rect key="frame" x="0.0" y="389" width="265" height="5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <font key="titleFont" metaFont="system"/>
                     </box>
                     <button horizontalHuggingPriority="750" verticalHuggingPriority="750" id="667">
                         <rect key="frame" x="7" y="374" width="13" height="13"/>
@@ -112,12 +110,9 @@
                             <action selector="performClick:" target="667" id="701"/>
                         </connections>
                     </button>
-                    <box verticalHuggingPriority="750" boxType="separator" titlePosition="noTitle" id="703">
+                    <box verticalHuggingPriority="750" boxType="separator" id="703">
                         <rect key="frame" x="0.0" y="309" width="265" height="5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <font key="titleFont" metaFont="system"/>
                     </box>
                     <button horizontalHuggingPriority="750" verticalHuggingPriority="750" id="705">
                         <rect key="frame" x="7" y="184" width="13" height="13"/>
@@ -235,12 +230,9 @@
                             <action selector="performClick:" target="1217" id="1237"/>
                         </connections>
                     </button>
-                    <box verticalHuggingPriority="750" boxType="separator" titlePosition="noTitle" id="1219">
+                    <box verticalHuggingPriority="750" boxType="separator" id="1219">
                         <rect key="frame" x="0.0" y="198" width="265" height="5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <font key="titleFont" metaFont="system"/>
                     </box>
                     <customView id="1220" customClass="MDInspectorView">
                         <rect key="frame" x="0.0" y="201" width="265" height="92"/>
@@ -407,7 +399,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="245" height="170"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
-                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </box>
                         </subviews>
@@ -454,15 +445,15 @@
             <rect key="frame" x="0.0" y="0.0" width="245" height="170"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <qtMovieView preservesAspectRatio="YES" id="1036">
+                <avPlayerView controlsStyle="inline" showsFrameSteppingButtons="YES" id="1036">
                     <rect key="frame" x="0.0" y="0.0" width="245" height="170"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="fillColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <binding destination="1026" name="movie" keyPath="representedObject.movie" id="1107"/>
                     </connections>
-                </qtMovieView>
+                </avPlayerView>
             </subviews>
+            <point key="canvasLocation" x="37" y="254"/>
         </customView>
         <customView id="1031" userLabel="soundViewView" customClass="MDTransparentView">
             <rect key="frame" x="0.0" y="0.0" width="245" height="170"/>

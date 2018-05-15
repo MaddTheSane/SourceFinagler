@@ -1,6 +1,9 @@
 {
   "images" : [
     {
+      "idiom" : "universal"
+    },
+    {
       "idiom" : "universal",
       "filename" : "zoomInLionTemplate.png",
       "scale" : "1x"

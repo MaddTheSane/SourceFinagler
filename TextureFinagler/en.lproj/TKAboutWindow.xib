@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TKAboutWindowController">
@@ -19,13 +20,13 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="185" y="366" width="300" height="204"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="97">
                 <rect key="frame" x="0.0" y="0.0" width="300" height="204"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="101">
-                        <rect key="frame" x="18" y="104" width="264" height="18"/>
+                        <rect key="frame" x="92" y="104" width="116" height="18"/>
                         <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" alignment="center" title="Source Finagler" id="102">
                             <font key="font" metaFont="systemBold" size="14"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -41,7 +42,7 @@
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="103"/>
                     </imageView>
                     <textField verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="99">
-                        <rect key="frame" x="18" y="82" width="264" height="14"/>
+                        <rect key="frame" x="74" y="82" width="152" height="14"/>
                         <textFieldCell key="cell" controlSize="small" selectable="YES" sendsActionOnEndEditing="YES" alignment="center" title="Source Finagler 2.0.2 (202)" placeholderString="Source Finagler 2.0.2 (202)" id="104">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -49,7 +50,7 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="98">
-                        <rect key="frame" x="35" y="20" width="229" height="28"/>
+                        <rect key="frame" x="37" y="20" width="225" height="28"/>
                         <textFieldCell key="cell" controlSize="small" selectable="YES" sendsActionOnEndEditing="YES" alignment="center" title="Copyright © 2004-2011 Mark Douma. All rights reserved." id="105">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -69,14 +70,14 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="98" secondAttribute="bottom" constant="20" symbolic="YES" id="0CZ-2N-5lA"/>
-                    <constraint firstItem="101" firstAttribute="leading" secondItem="97" secondAttribute="leading" constant="20" symbolic="YES" id="5Ur-Rz-oGx"/>
-                    <constraint firstItem="98" firstAttribute="leading" secondItem="97" secondAttribute="leading" constant="37" id="Ad5-ff-rMp"/>
+                    <constraint firstItem="101" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="97" secondAttribute="leading" constant="20" symbolic="YES" id="5Ur-Rz-oGx"/>
+                    <constraint firstItem="98" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="97" secondAttribute="leading" constant="20" symbolic="YES" id="Ad5-ff-rMp"/>
                     <constraint firstItem="98" firstAttribute="centerX" secondItem="97" secondAttribute="centerX" id="Kou-XP-KYc"/>
+                    <constraint firstItem="106" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="97" secondAttribute="leading" constant="20" symbolic="YES" id="Mcg-fx-Rsk"/>
                     <constraint firstItem="101" firstAttribute="centerX" secondItem="97" secondAttribute="centerX" id="Mmv-Ng-iEJ"/>
+                    <constraint firstItem="99" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="97" secondAttribute="leading" constant="20" symbolic="YES" id="OAH-wy-Hnj"/>
                     <constraint firstItem="100" firstAttribute="top" secondItem="97" secondAttribute="top" constant="10" id="Ojz-L9-YXh"/>
-                    <constraint firstItem="101" firstAttribute="trailing" secondItem="99" secondAttribute="trailing" id="VFD-xM-Yvp"/>
                     <constraint firstItem="106" firstAttribute="centerX" secondItem="97" secondAttribute="centerX" id="Xls-XE-2oe"/>
-                    <constraint firstItem="101" firstAttribute="leading" secondItem="99" secondAttribute="leading" id="bm2-ht-m9z"/>
                     <constraint firstItem="101" firstAttribute="top" secondItem="100" secondAttribute="bottom" constant="8" symbolic="YES" id="dcz-CC-RU3"/>
                     <constraint firstItem="99" firstAttribute="centerX" secondItem="97" secondAttribute="centerX" id="h2E-px-POt"/>
                     <constraint firstItem="99" firstAttribute="top" secondItem="101" secondAttribute="bottom" constant="8" symbolic="YES" id="lN6-8e-J7M"/>

@@ -2,12 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "checkerboard.png",
+      "filename" : "icon_32x32.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "checkerboard copy.png",
       "scale" : "2x"
     },
     {

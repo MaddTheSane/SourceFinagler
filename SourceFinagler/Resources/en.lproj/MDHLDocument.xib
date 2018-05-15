@@ -575,7 +575,7 @@ Gw
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="AaB-3S-iSh">
                         <rect key="frame" x="0.0" y="0.0" width="560" height="330"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" autosaveName="outlineView" headerView="1081" indentationPerLevel="16" autoresizesOutlineColumn="YES" outlineTableColumn="1082" id="1080" customClass="MDOutlineView">
                                 <rect key="frame" x="0.0" y="0.0" width="560" height="307"/>
