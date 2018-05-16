@@ -1127,7 +1127,7 @@
 		C1305B7812F08E6E00D68170 /* ErrorMetric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 2; path = ErrorMetric.h; sourceTree = "<group>"; };
 		C1305BCD12F08F8100D68170 /* TaskDispatcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TaskDispatcher.cpp; sourceTree = "<group>"; };
 		C1305BCE12F08F8100D68170 /* TaskDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskDispatcher.h; sourceTree = "<group>"; };
-		C1305BDE12F08FBD00D68170 /* ClusterFit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClusterFit.cpp; sourceTree = "<group>"; usesTabs = 0; };
+		C1305BDE12F08FBD00D68170 /* ClusterFit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClusterFit.cpp; sourceTree = "<group>"; };
 		C1305BDF12F08FBD00D68170 /* ClusterFit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClusterFit.h; sourceTree = "<group>"; };
 		C132DF73124D521B00A8DE04 /* LGPL.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = LGPL.rtf; path = ../LGPL.rtf; sourceTree = "<group>"; };
 		C1351911139479C40074B5EA /* Acknowledgments.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = Acknowledgments.rtf; path = SourceFinagler/Acknowledgments.rtf; sourceTree = "<group>"; };
@@ -3469,7 +3469,7 @@
 			name = "NVTextureTools framework";
 			path = NVTextureTools/src;
 			sourceTree = "<group>";
-			usesTabs = 1;
+			usesTabs = 0;
 		};
 		C1FEA7B1125E5BFD00CA78FF /* NVCore */ = {
 			isa = PBXGroup;
@@ -3537,7 +3537,6 @@
 			name = NVImage;
 			path = nvimage;
 			sourceTree = "<group>";
-			usesTabs = 0;
 		};
 		C1FEA7B3125E5C0D00CA78FF /* NVMath */ = {
 			isa = PBXGroup;
@@ -3634,7 +3633,6 @@
 			name = NVTextureTools;
 			path = nvtt;
 			sourceTree = "<group>";
-			usesTabs = 0;
 		};
 		C1FEA93D125E736A00CA78FF /* poshlib */ = {
 			isa = PBXGroup;
