@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -11,7 +12,7 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <menu title="AMainMenu" systemMenu="main" id="29">
             <items>
                 <menuItem title="Source Finagler" id="56">
@@ -655,7 +656,6 @@ CA
                     <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="590"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="591"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="592"/>
-                    <toolbarItem implicitItemIdentifier="NSToolbarSeparatorItem" id="589"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarCustomizeToolbarItem" id="593"/>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
@@ -696,7 +696,7 @@ CA
         </customObject>
     </objects>
     <resources>
-        <image name="config" width="512" height="512"/>
+        <image name="config" width="32" height="32"/>
         <image name="mouse" width="32" height="32"/>
         <image name="steamApps" width="512" height="512"/>
     </resources>
