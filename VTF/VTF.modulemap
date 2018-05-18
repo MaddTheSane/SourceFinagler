@@ -1,0 +1,149 @@
+framework module VTF {
+	umbrella header "VTF.h"
+	
+	explicit module Float16 {
+		requires cplusplus
+		header "Float16.h"
+		export *
+	}
+	
+	explicit module Proc {
+		header "Proc.h"
+		export *
+	}
+	
+	module Error {
+		requires cplusplus
+		header "Error.h"
+		export *
+	}
+	
+	explicit module Writers {
+		requires cplusplus
+		header "Writers.h"
+		
+		module Writer {
+			header "Writer.h"
+			export *
+		}
+		
+		module File {
+			header "FileWriter.h"
+			export *
+		}
+		
+		module Memory {
+			header "MemoryWriter.h"
+			export *
+		}
+		
+		module Proc {
+			header "ProcWriter.h"
+			export *
+		}
+		
+		export *
+	}
+	
+	explicit module Readers {
+		requires cplusplus
+		header "Readers.h"
+		
+		module Reader {
+			header "Reader.h"
+			export *
+		}
+		
+		module File {
+			header "FileReader.h"
+			export *
+		}
+		
+		module Memory {
+			header "MemoryReader.h"
+			export *
+		}
+		
+		module Proc {
+			header "ProcReader.h"
+			export *
+		}
+		
+		export *
+	}
+
+	
+	explicit module Files {
+		requires cplusplus
+		
+		module VTF {
+			module Format {
+				header "VTFFormat.h"
+				export *
+			}
+			
+			module File {
+				header "VTFFile.h"
+				export *
+			}
+			
+			module Math {
+				header "VTFMathlib.h"
+				export *
+			}
+			
+			export *
+		}
+		
+		module VMT {
+			module File {
+				header "VMTFile.h"
+				export *
+			}
+			
+			module Nodes {
+				header "VMTNodes.h"
+				
+				module Node {
+					header "VMTNode.h"
+					export *
+				}
+				
+				module Group {
+					header "VMTGroupNode.h"
+					export *
+				}
+				
+				module Value {
+					header "VMTValueNode.h"
+					
+					explicit module String {
+						header "VMTStringNode.h"
+						export *
+					}
+					
+					explicit module Integer {
+						header "VMTIntegerNode.h"
+						export *
+					}
+					
+					explicit module Single {
+						header "VMTSingleNode.h"
+						export *
+					}
+					
+					export *
+				}
+				
+				export *
+			}
+			
+			export *
+		}
+		
+		export *
+	}
+	
+	export *
+	module * { export * }
+}

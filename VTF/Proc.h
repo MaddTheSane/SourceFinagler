@@ -59,7 +59,6 @@ typedef vlUInt (*PWriteTellProc) (vlVoid *);
 
 #ifdef __cplusplus
 }
-#endif
 
 namespace VTFLib
 {
@@ -78,7 +77,6 @@ namespace VTFLib
 	extern PWriteTellProc pWriteTellProc;
 }
 
-#ifdef __cplusplus
 extern "C" {
 #endif
 

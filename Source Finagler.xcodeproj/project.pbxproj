@@ -1011,6 +1011,7 @@
 		256AC3D90F4B6AC300CF3369 /* TKAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TKAppController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		256AC3F00F4B6AF500CF3369 /* SourceFinagler_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceFinagler_Prefix.pch; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		55408DC120AF8757001F7979 /* VTF.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = VTF.modulemap; sourceTree = "<group>"; };
 		554FE5FE1FC9FF8A00727CE0 /* avpcl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = avpcl.cpp; sourceTree = "<group>"; };
 		554FE5FF1FC9FF8A00727CE0 /* shapes_two.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shapes_two.h; sourceTree = "<group>"; };
 		554FE6011FC9FF8A00727CE0 /* tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tile.h; sourceTree = "<group>"; };
@@ -2748,6 +2749,7 @@
 		C1B9525C124E734200E83451 /* VTF framework */ = {
 			isa = PBXGroup;
 			children = (
+				55408DC120AF8757001F7979 /* VTF.modulemap */,
 				C1B95354124E73EC00E83451 /* Readme.txt */,
 				C135198813947C190074B5EA /* LGPL.txt */,
 				C1B95367124E73EC00E83451 /* VTF.h */,
@@ -5816,6 +5818,7 @@
 				);
 				INFOPLIST_FILE = VTF/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks/";
+				MODULEMAP_FILE = VTF/VTF.modulemap;
 				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.VTF.framework;
 				PRODUCT_NAME = VTF;
 				SKIP_INSTALL = YES;
@@ -5840,6 +5843,7 @@
 				);
 				INFOPLIST_FILE = VTF/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks/";
+				MODULEMAP_FILE = VTF/VTF.modulemap;
 				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.VTF.framework;
 				PRODUCT_NAME = VTF;
 				SKIP_INSTALL = YES;

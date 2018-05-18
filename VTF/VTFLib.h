@@ -100,6 +100,7 @@
 #define VTFLIB_H
 
 #include "stdafx.h"
+#ifdef __cplusplus
 #include "Error.h"
 #include "VTFFile.h"
 #include "VMTFile.h"
@@ -147,6 +148,8 @@ namespace VTFLib
 
 	extern vlUInt uiVMTParseMode;
 }
+
+#endif
 
 #define VL_VERSION			132			//!< VTFLib version as integer
 #define VL_VERSION_STRING	"1.3.2"		//!< VTFLib version as string

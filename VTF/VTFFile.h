@@ -106,7 +106,6 @@ typedef struct tagSVTFCreateOptions
 
 #ifdef __cplusplus
 }
-#endif
 
 namespace VTFLib
 {
@@ -763,4 +762,5 @@ namespace VTFLib
 	};
 }
 
+#endif
 #endif
