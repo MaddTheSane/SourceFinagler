@@ -13,6 +13,7 @@
 #define HLLIB_H
 
 #include "stdafx.h"
+#ifdef __cplusplus
 #include "Error.h"
 #include "Package.h"
 
@@ -55,7 +56,6 @@ namespace HLLib
 	extern hlBool bForceDefragment;
 }
 
-#ifdef __cplusplus
 extern "C" {
 #endif
 

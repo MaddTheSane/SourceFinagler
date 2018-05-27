@@ -228,7 +228,7 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray<NSValue*> *inRects, BOOL isFlipped)
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	return CFBridgingRelease(CFStringCreateWithPascalString(kCFAllocatorDefault, aPStr, encoding));
+	return [self stringWithString:CFBridgingRelease(CFStringCreateWithPascalString(kCFAllocatorDefault, aPStr, encoding))];
 }
 
 - (BOOL)pascalString:(StringPtr)aBuffer length:(SInt16)aLength cfencoding:(CFStringEncoding)encoding
@@ -320,7 +320,6 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray<NSValue*> *inRects, BOOL isFlipped)
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	NSData *bookmarkData = nil;
-	if (outError) *outError = nil;
 	NSString *path = self.stringByResolvingSymlinksInPath.stringByStandardizingPath;
 	
 	NSFileManager *fileManager = [[NSFileManager alloc] init];

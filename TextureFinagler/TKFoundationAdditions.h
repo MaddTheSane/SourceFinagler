@@ -95,9 +95,9 @@ typedef NS_OPTIONS(NSUInteger, TKBookmarkResolutionOptions) {
 @property (readonly, copy) NSString *stringByAssuringUniqueFilename;
 @property (readonly, copy) NSString *stringByAbbreviatingFilenameTo31Characters;
 @property (readonly) NSSize sizeForStringWithSavedFrame;
-+ (NSString *)stringWithPascalString:(ConstStr255Param)aPStr;
-+ (NSString *)stringWithPascalString:(ConstStr255Param)aPStr encoding:(NSStringEncoding)encoding;
-+ (NSString *)stringWithPascalString:(ConstStr255Param)aPStr cfencoding:(CFStringEncoding)encoding;
++ (instancetype)stringWithPascalString:(ConstStr255Param)aPStr;
++ (instancetype)stringWithPascalString:(ConstStr255Param)aPStr encoding:(NSStringEncoding)encoding;
++ (instancetype)stringWithPascalString:(ConstStr255Param)aPStr cfencoding:(CFStringEncoding)encoding;
 - (BOOL)pascalString:(StringPtr)aBuffer length:(SInt16)aLength;
 - (BOOL)pascalString:(StringPtr)aBuffer length:(SInt16)aLength encoding:(NSStringEncoding)encoding;
 - (BOOL)pascalString:(StringPtr)aBuffer length:(SInt16)aLength cfencoding:(CFStringEncoding)encoding;

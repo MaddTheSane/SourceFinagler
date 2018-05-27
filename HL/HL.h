@@ -17,7 +17,9 @@
 
 #import <HL/HLLib.h>
 #import <HL/Wrapper.h>
+#ifdef __cplusplus
 #import <HL/DirectoryItems.h>
 #import <HL/Mappings.h>
 #import <HL/Packages.h>
 #import <HL/Streams.h>
+#endif

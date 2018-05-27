@@ -46,13 +46,13 @@ static inline NSString *NSStringFromTKVMTNodeKind(TKVMTNodeKind kind) {
 
 @end
 
-@interface TKVMTNode (TKPrivate)
+@interface TKVMTNode ()
 
 //- (id)initWithString:(NSString *)string error:(NSError **)outError;
 //
 //- (BOOL)parseNodeString:(NSString *)string error:(NSError **)outError;
 
-- (void)setChildren:(NSArray *)anArray;
+@property (readwrite, copy) NSArray<TKVMTNode*> *children;
 
 @end
 
