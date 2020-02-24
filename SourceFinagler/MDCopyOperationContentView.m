@@ -34,8 +34,7 @@
 static inline NSArray *MDReversedArray(NSArray *array) {
 	NSMutableArray *reversedArray = [NSMutableArray array];
 	NSEnumerator *enumerator = [array reverseObjectEnumerator];
-	id object = nil;
-	while ((object = [enumerator nextObject])) {
+	for (id object in enumerator) {
 		[reversedArray addObject:object];
 	}
 	return reversedArray;

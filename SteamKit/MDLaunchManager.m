@@ -220,7 +220,14 @@ static MDLaunchManager *sharedManager = nil;
 		
 		@synchronized(self) {
 				NSDictionary *job = [NSDictionary dictionaryWithContentsOfFile:path];
-				if (job) success = (BOOL)SMJobSubmit(kSMDomainUserLaunchd, (CFDictionaryRef)job, NULL, (CFErrorRef *)outError);
+				
+			if (job) {
+				CFErrorRef tmpErr;
+				success = (BOOL)SMJobSubmit(kSMDomainUserLaunchd, (CFDictionaryRef)job, NULL, &tmpErr);
+				if (outError) {
+					*outError = CFBridgingRelease(tmpErr);
+				}
+			}
 		}
 	}
 	return success;
@@ -246,7 +253,11 @@ static MDLaunchManager *sharedManager = nil;
 #endif
 			}
 			
-			success = (BOOL)SMJobRemove(kSMDomainUserLaunchd, (CFStringRef)label, NULL, NO, (CFErrorRef *)outError);
+			CFErrorRef tmpErr;
+			success = (BOOL)SMJobRemove(kSMDomainUserLaunchd, (CFStringRef)label, NULL, NO, &tmpErr);
+			if (outError) {
+				*outError = CFBridgingRelease(tmpErr);
+			}
 		}
 	}
 	return success;

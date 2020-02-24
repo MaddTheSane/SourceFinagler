@@ -10,6 +10,8 @@
 #import <Foundation/Foundation.h>
 #include <CoreServices/CoreServices.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class MDResource;
 
 typedef NS_ENUM(UInt8, MDFork) {
@@ -44,8 +46,6 @@ NS_ERROR_ENUM(MDResourceFileErrorDomain) {
 	MDResource					*customIconResource;
 	
 }
-
-NS_ASSUME_NONNULL_BEGIN
 
 //! read-only; which fork is determined automatically
 - (nullable instancetype)initWithContentsOfFile:(NSString *)aPath error:(NSError *__nullable*__nullable)outError;

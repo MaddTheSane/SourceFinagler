@@ -50,9 +50,9 @@ NSString * const TKApplicationBundleIdentifier = @"com.markdouma.SourceFinagler"
 	}
 }
 
-// Return the names of NSDocument subclasses supported by this application.
-// In this app, the only class is "ImageDoc".
-//
+/// Return the names of NSDocument subclasses supported by this application.
+/// In this app, the only class is "ImageDoc".
+///
 - (NSArray *)documentClassNames {
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 	static NSArray *documentClassNames = nil;
@@ -72,8 +72,8 @@ NSString * const TKApplicationBundleIdentifier = @"com.markdouma.SourceFinagler"
 	return documentClassNames;
 }
 
-// Return the name of the document type that should be used when opening a URL
-// • For ImageIO images: "In this app, we return the UTI type returned by CGImageSourceGetType."
+/// Return the name of the document type that should be used when opening a URL
+/// • For ImageIO images: "In this app, we return the UTI type returned by CGImageSourceGetType."
 - (NSString *)typeForContentsOfURL:(NSURL *)absURL error:(NSError **)outError {
 //	NSLog(@"[%@ %@] absURL == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), absURL);
 	
@@ -109,10 +109,10 @@ NSString * const TKApplicationBundleIdentifier = @"com.markdouma.SourceFinagler"
 	return documentUTType;
 }
 
-// Given a document type name, return the subclass of NSDocument
-// that should be instantiated when opening a document of that type.
-// In this app, the only class is "ImageDoc".
-//
+/// Given a document type name, return the subclass of NSDocument
+/// that should be instantiated when opening a document of that type.
+/// In this app, the only class is "ImageDoc".
+///
 - (Class)documentClassForType:(NSString *)typeName {
 //	NSLog(@"[%@ %@] type == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), typeName);
 	
@@ -123,9 +123,9 @@ NSString * const TKApplicationBundleIdentifier = @"com.markdouma.SourceFinagler"
     return [[NSBundle mainBundle] classNamed:@"TKImageDocument"];
 }
 
-// Given a document type name, return a string describing the document 
-// type that is fit to present to the user.
-//
+/// Given a document type name, return a string describing the document
+/// type that is fit to present to the user.
+///
 - (NSString *)displayNameForType:(NSString *)typeName {
 //	NSLog(@"[%@ %@] typeName == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), typeName);
 	
@@ -135,10 +135,10 @@ NSString * const TKApplicationBundleIdentifier = @"com.markdouma.SourceFinagler"
     return TKImageIOLocalizedString(typeName);
 }
 
-// Given a document type, return an array of corresponding file name extensions 
-// and HFS file type strings of the sort returned by NSFileTypeForHFSTypeCode().
-// In this app, 'typeName' is a UTI type so we can call UTTypeCopyDeclaration().
-//
+/// Given a document type, return an array of corresponding file name extensions
+/// and HFS file type strings of the sort returned by NSFileTypeForHFSTypeCode().
+/// In this app, 'typeName' is a UTI type so we can call UTTypeCopyDeclaration().
+///
 - (NSArray *)fileExtensionsFromType:(NSString *)typeName {
 //	NSLog(@"[%@ %@] typeName == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), typeName);
 	

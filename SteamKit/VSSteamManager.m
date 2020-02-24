@@ -920,9 +920,9 @@ static inline NSDictionary *VSMakeLaunchAgentPlist(NSString *jobLabel, NSArray *
 								MDFileHasCustomIcon: @YES};
 	
 	NSDictionary *infoPlist = game.infoDictionary;
-	NSString *errorDescription = nil;
+	NSError *errorDescription = nil;
 	
-	NSData *propertyListData = [NSPropertyListSerialization dataFromPropertyList:infoPlist format:NSPropertyListXMLFormat_v1_0 errorDescription:&errorDescription];
+	NSData *propertyListData = [NSPropertyListSerialization dataWithPropertyList:infoPlist format:NSPropertyListXMLFormat_v1_0 options:0 error:&errorDescription];
 	
 	if (propertyListData) {
 		NSString *propertyListString = [[[NSString alloc] initWithData:propertyListData encoding:NSUTF8StringEncoding] autorelease];

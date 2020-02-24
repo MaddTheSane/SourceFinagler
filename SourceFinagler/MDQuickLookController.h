@@ -30,7 +30,7 @@ extern NSString * const MDQuickLookEndFrameKey;
 	
 }
 
-+ (MDQuickLookController *)sharedQuickLookController;
+@property (class, readonly) MDQuickLookController *sharedQuickLookController;
 
 @property (retain) NSArray *items;
 @property (retain) MDHLDocument *document;
