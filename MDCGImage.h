@@ -23,4 +23,4 @@ __private_extern CGImageRef __nullable MDCGImageCreateCopyWithSize(CGImageRef __
 #ifdef __cplusplus
 }
 #endif
-	
+

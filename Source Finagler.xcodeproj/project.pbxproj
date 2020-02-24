@@ -4386,7 +4386,8 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = "Mark Douma LLC";
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Source Finagler" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -5486,6 +5487,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = sourceFinagler;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -5504,6 +5506,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = sourceFinagler;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SourceFinagler/SourceFinagler_Prefix.pch;
@@ -5693,6 +5696,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -5717,6 +5721,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ddsFinagler/ddsFinagler-Prefix.pch";
@@ -5890,6 +5895,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = sourceFinagler;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(BUILD_DIR)\"/**",
@@ -5922,6 +5928,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = sourceFinagler;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(BUILD_DIR)\"/**",
@@ -6021,6 +6028,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -6034,6 +6042,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				INSTALL_PATH = /usr/local/bin;
@@ -6295,6 +6304,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = sourceFinagler;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6322,6 +6332,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = sourceFinagler;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
