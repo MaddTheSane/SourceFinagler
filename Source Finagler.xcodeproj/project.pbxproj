@@ -667,19 +667,6 @@
 		C1FF5A39145E6571005F36D5 /* TKBase.h in Headers */ = {isa = PBXBuildFile; fileRef = C187D8A11635900700F30B64 /* TKBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
-/* Begin PBXBuildRule section */
-		C1862CF3164290360019B703 /* PBXBuildRule */ = {
-			isa = PBXBuildRule;
-			compilerSpec = com.apple.compilers.proxy.script;
-			filePatterns = "*.cu";
-			fileType = pattern.proxy;
-			isEditable = 1;
-			outputFiles = (
-			);
-			script = "nvcc \"$INPUT_FILE_NAME\"";
-		};
-/* End PBXBuildRule section */
-
 /* Begin PBXContainerItemProxy section */
 		558672FE1D7E887E00E26A11 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -4361,7 +4348,6 @@
 				554FE6A91FCA0D1A00727CE0 /* CopyFiles */,
 			);
 			buildRules = (
-				C1862CF3164290360019B703 /* PBXBuildRule */,
 			);
 			dependencies = (
 				C1FEA9F1125E8A3600CA78FF /* PBXTargetDependency */,
