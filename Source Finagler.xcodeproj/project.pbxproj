@@ -179,7 +179,6 @@
 		C12CFB7612DFBCB400A08A4B /* TKFoundationAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C1AF851912C6294B00027B75 /* TKFoundationAdditions.m */; };
 		C12D372D12E14CD200397411 /* MDScopeBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = C12D372C12E14CD200397411 /* MDScopeBarView.m */; };
 		C12F1022147B6B0300F398DE /* TextureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17319B21298D11400C29732 /* TextureKit.framework */; };
-		C12F102C147B6B2400F398DE /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1CA269613A2E1B900235C98 /* QTKit.framework */; };
 		C12F104C147B719100F398DE /* VTFFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C12F104A147B716C00F398DE /* VTFFile.cpp */; };
 		C12F10CB147B75A900F398DE /* TextureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17319B21298D11400C29732 /* TextureKit.framework */; };
 		C12F10D8147B75AA00F398DE /* VTF.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1B95275124E73B200E83451 /* VTF.framework */; };
@@ -533,7 +532,6 @@
 		C1C2C767127CC5D8003B24F6 /* NVMath.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA8DE125E5DC300CA78FF /* NVMath.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C1C2C76E127CC5DD003B24F6 /* NVImage.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA8FD125E71A200CA78FF /* NVImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C1C2C777127CC5E5003B24F6 /* NVTT.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA930125E72E300CA78FF /* NVTT.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C1CA269713A2E1B900235C98 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1CA269613A2E1B900235C98 /* QTKit.framework */; };
 		C1CA27DA13A2E1F900235C98 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1CA27D913A2E1F900235C98 /* Cocoa.framework */; };
 		C1CA27E813A2E20F00235C98 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1CA27D913A2E1F900235C98 /* Cocoa.framework */; };
 		C1CA27EA13A2E21700235C98 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1CA27D913A2E1F900235C98 /* Cocoa.framework */; };
@@ -1056,7 +1054,6 @@
 		C10E5041147C8F0A00864795 /* TKVMTNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKVMTNode.m; sourceTree = "<group>"; };
 		C11116FD149151360040E4B5 /* TKOBJParts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKOBJParts.h; sourceTree = "<group>"; };
 		C11116FE149151360040E4B5 /* TKOBJParts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKOBJParts.m; sourceTree = "<group>"; };
-		C111985D139AC60E0052E767 /* AppleScriptObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleScriptObjC.framework; path = System/Library/Frameworks/AppleScriptObjC.framework; sourceTree = SDKROOT; };
 		C1137866128072C500C87072 /* MDCopyOperationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCopyOperationViewController.h; sourceTree = "<group>"; };
 		C1137867128072C500C87072 /* MDCopyOperationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCopyOperationViewController.m; sourceTree = "<group>"; };
 		C116F85812D5301400551787 /* TKImageDocumentAccessoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKImageDocumentAccessoryViewController.h; sourceTree = "<group>"; };
@@ -1532,7 +1529,6 @@
 		C1C2C661127CBEF7003B24F6 /* SourceImage.qlgenerator */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SourceImage.qlgenerator; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1C9AE1E139A708800C32D8A /* SourceFinaglerAgent-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SourceFinaglerAgent-Info.plist"; sourceTree = "<group>"; };
 		C1C9AE21139A70E600C32D8A /* SourceFinaglerAgentMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceFinaglerAgentMain.m; sourceTree = "<group>"; };
-		C1CA269613A2E1B900235C98 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = System/Library/Frameworks/QTKit.framework; sourceTree = SDKROOT; };
 		C1CA27D913A2E1F900235C98 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		C1CA284F13A2E2C100235C98 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		C1CA2B2013A2E32300235C98 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
@@ -1541,7 +1537,6 @@
 		C1CA2BDC13A2E3E600235C98 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C1CA2BDE13A2E3E600235C98 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C1CB12CB13BBF20D00FCCC7E /* MIT.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = MIT.rtf; path = "../../NVTT-Helpers/MIT.rtf"; sourceTree = "<group>"; };
-		C1CBE6FA124E2622006526C1 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = System/Library/Frameworks/QuickTime.framework; sourceTree = SDKROOT; };
 		C1CE0253124F9985002E66F8 /* Syntax Definitions */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Syntax Definitions"; sourceTree = "<group>"; };
 		C1CE51C112203985006410E3 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		C1D00790160D302C0045EEC3 /* TKAppController.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TKAppController.plist; sourceTree = "<group>"; };
@@ -1797,7 +1792,6 @@
 				C1F1579F13969EAB00E32057 /* CoreServices.framework in Frameworks */,
 				C1CA27F113A2E28900235C98 /* Cocoa.framework in Frameworks */,
 				C12F1022147B6B0300F398DE /* TextureKit.framework in Frameworks */,
-				C12F102C147B6B2400F398DE /* QTKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1868,7 +1862,6 @@
 				C145AF1712BD8F22005D7E21 /* TextureKit.framework in Frameworks */,
 				C140E9261388B77300027DD6 /* SteamKit.framework in Frameworks */,
 				C155C9C813A06907008151E7 /* HLKit.framework in Frameworks */,
-				C1CA269713A2E1B900235C98 /* QTKit.framework in Frameworks */,
 				C1CA27DA13A2E1F900235C98 /* Cocoa.framework in Frameworks */,
 				C1CA285013A2E2C100235C98 /* Quartz.framework in Frameworks */,
 				C1CA2B2B13A2E38D00235C98 /* WebKit.framework in Frameworks */,
@@ -1981,7 +1974,6 @@
 				C1A112E311D66720008BBABD /* CoreFoundation.framework */,
 				C1A112E911D66720008BBABD /* Security.framework */,
 				C1A112E511D66720008BBABD /* CoreServices.framework */,
-				C1CA269613A2E1B900235C98 /* QTKit.framework */,
 				C1CA284F13A2E2C100235C98 /* Quartz.framework */,
 				C14D206C121B40BC00AB4F96 /* ServiceManagement.framework */,
 				C1CA2B2013A2E32300235C98 /* QuickLook.framework */,
@@ -3238,11 +3230,9 @@
 				C17025D612847FA70056A23D /* SystemConfiguration.framework */,
 				C1537AC91294F80E0056DDE1 /* VideoDecodeAcceleration.framework */,
 				C1537CA512956BA50056DDE1 /* IOSurface.framework */,
-				C1CBE6FA124E2622006526C1 /* QuickTime.framework */,
 				C145AC6012BD69D1005D7E21 /* CoreAudio.framework */,
 				C145AC6212BD69D1005D7E21 /* CoreAudioKit.framework */,
 				C145AC6412BD69D1005D7E21 /* CoreVideo.framework */,
-				C111985D139AC60E0052E767 /* AppleScriptObjC.framework */,
 			);
 			name = unused;
 			sourceTree = "<group>";

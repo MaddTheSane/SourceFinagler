@@ -1306,7 +1306,7 @@ static NSInteger copyTag = 0;
 			if ([destination isKindOfClass:[NSString class]]) {
 				destination = (NSString *)destination;
 				
-				NSDictionary *itemsAndPaths = copyOperation.itemsAndPaths;
+				NSDictionary<NSString*,HKItem*> *itemsAndPaths = copyOperation.itemsAndPaths;
 				NSArray *allItems = itemsAndPaths.allValues;
 				
 				
@@ -1339,7 +1339,7 @@ static NSInteger copyTag = 0;
 				NSUInteger totalItemCount = allItems.count;
 				NSUInteger currentItemIndex = 0;
 				
-				NSArray *relativeDestinationPaths = itemsAndPaths.allKeys;
+				NSArray<NSString*> *relativeDestinationPaths = itemsAndPaths.allKeys;
 				
 				for (NSString *relativeDestinationPath in relativeDestinationPaths) {
 					

@@ -29,7 +29,7 @@ typedef NS_ENUM(NSUInteger, TKImageType) {
 
 TEXTUREKIT_EXTERN NSString * const TKSFTextureImageType;		// UTI Type
 TEXTUREKIT_EXTERN NSString * const TKSFTextureImageFileType;	// filename extension
-TEXTUREKIT_EXTERN NSString * const TKSFTextureImagePboardType;
+TEXTUREKIT_EXTERN NSPasteboardType const TKSFTextureImagePboardType;
 
 TEXTUREKIT_EXTERN NSData * TKSFTextureImageMagicData;
 
