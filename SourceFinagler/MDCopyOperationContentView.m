@@ -31,7 +31,7 @@
 	return YES;
 }
 
-static inline NSArray *MDReversedArray(NSArray *array) {
+__unused static inline NSArray *MDReversedArray(NSArray *array) {
 	NSMutableArray *reversedArray = [NSMutableArray array];
 	NSEnumerator *enumerator = [array reverseObjectEnumerator];
 	for (id object in enumerator) {
