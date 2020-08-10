@@ -325,26 +325,10 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray<NSValue*> *inRects, BOOL isFlipped)
 	NSFileManager *fileManager = [[NSFileManager alloc] init];
 	
 	if ([fileManager fileExistsAtPath:path]) {
-		AliasHandle alias = NULL;
-		OSErr err = noErr;
 		FSRef itemRef;
 		if ([path getFSRef:&itemRef error:outError]) {
-			if (options & TKBookmarkCreationUseAliasManager) {
-				err = FSNewAlias(NULL, &itemRef, &alias);
-				if (err == noErr) {
-					HLock((Handle)alias);
-					bookmarkData = [[NSData alloc] initWithBytes:*alias length:GetHandleSize((Handle)alias)];
-					HUnlock((Handle)alias);
-					if (alias) DisposeHandle((Handle)alias);
-					
-				} else {
-					NSLog(@"[%@ %@] FSNewAlias() returned %hi", NSStringFromClass([self class]), NSStringFromSelector(_cmd), err);
-					if (outError) *outError = [NSError errorWithDomain:NSOSStatusErrorDomain code:err userInfo:nil];
-				}
-			} else {
-				NSURL *fileURL = [NSURL fileURLWithPath:path];
-				return [fileURL bookmarkDataWithOptions:(NSURLBookmarkCreationOptions)options includingResourceValuesForKeys:nil relativeToURL:nil error:outError];
-			}
+			NSURL *fileURL = [NSURL fileURLWithPath:path];
+			return [fileURL bookmarkDataWithOptions:(NSURLBookmarkCreationOptions)(options & ~(TKBookmarkCreationOptions)(1)) includingResourceValuesForKeys:nil relativeToURL:nil error:outError];
 		}
 	} else {
 		NSLog(@"[%@ %@] no file exists at %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), path);

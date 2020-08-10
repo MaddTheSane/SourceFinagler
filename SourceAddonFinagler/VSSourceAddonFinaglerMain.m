@@ -6,6 +6,7 @@
 //  Copyright 2010 Mark Douma LLC. All rights reserved.
 //
 
+#include <TargetConditionals.h>
 
 #pragma mark -
 #pragma mark PowerPC
@@ -39,7 +40,7 @@ int main(int argc, char *argv[]) {
 #pragma mark -
 #pragma mark Intel
 
-#if TARGET_CPU_X86 || TARGET_CPU_X86_64
+#if TARGET_CPU_X86 || TARGET_CPU_X86_64 || TARGET_CPU_ARM64
 
 #import <Cocoa/Cocoa.h>
 #import "TKAppKitAdditions.h"
