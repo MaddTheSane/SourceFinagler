@@ -170,7 +170,7 @@ typedef CF_OPTIONS(vlUInt32, VTFImageFlag)
 };
 
 //! VTF image cubemap face indices.
-typedef enum tagVTFCubeMapFace
+typedef CF_ENUM(int, VTFCubeMapFace)
 {
 	CUBEMAP_FACE_RIGHT = 0,		// +x
 	CUBEMAP_FACE_LEFT,			// -x
@@ -180,10 +180,10 @@ typedef enum tagVTFCubeMapFace
 	CUBEMAP_FACE_DOWN,			// -z
 	CUBEMAP_FACE_SphereMap,		// fall back
 	CUBEMAP_FACE_COUNT
-} VTFCubeMapFace;
+};
 
 //! MIP map reduction filter indices.
-typedef enum tagVTFMipmapFilter
+typedef CF_ENUM(int, VTFMipmapFilter)
 {
 #if defined(USE_NVDXT)
     MIPMAP_FILTER_POINT = 0,
@@ -207,10 +207,10 @@ typedef enum tagVTFMipmapFilter
 	MIPMAP_FILTER_KAISER,
 	MIPMAP_FILTER_COUNT
 #endif
-} VTFMipmapFilter;
+};
 
 //! MIP map sharpen filter indices.
-typedef enum tagVTFSharpenFilter
+typedef CF_ENUM(int, VTFSharpenFilter)
 {
 #if defined(USE_NVDXT)
 	SHARPEN_FILTER_NONE = 0,
@@ -238,23 +238,23 @@ typedef enum tagVTFSharpenFilter
 	SHARPEN_FILTER_DEFAULT = 0,
 	SHARPEN_FILTER_COUNT
 #endif
-} VTFSharpenFilter;
+};
 
 #define DXT_QUALITY_BASE 68
 
-typedef enum tagDXTQuality
+typedef CF_ENUM(int, VTFDXTQuality)
 {
 	DXT_QUALITY_LOW,
 	DXT_QUALITY_MEDIUM,
 	DXT_QUALITY_HIGH,
 	DXT_QUALITY_HIGHEST,
 	DXT_QUALITY_COUNT
-} VTFDXTQuality;
+};
 
 #define KERNEL_FILTER_BASE 1040
 
 //! Normal map creation kernel size indices.
-typedef enum tagVTFKernelFilter
+typedef CF_ENUM(int, VTFKernelFilter)
 {
 #if defined(USE_NVDXT)
 	KERNEL_FILTER_4X = 0,
@@ -271,12 +271,12 @@ typedef enum tagVTFKernelFilter
 	KERNEL_FILTER_9X9,
 	KERNEL_FILTER_COUNT
 #endif
-} VTFKernelFilter;
+};
 
 #define HEIGHT_CONVERSION_METHOD_BASE 1009
 
 //! Normal map height conversion method indices.
-typedef enum tagVTFHeightConversionMethod
+typedef CF_ENUM(int, VTFHeightConversionMethod)
 {
 #if defined(USE_NVDXT)
     HEIGHT_CONVERSION_METHOD_ALPHA = 0,
@@ -294,28 +294,28 @@ typedef enum tagVTFHeightConversionMethod
 	HEIGHT_CONVERSION_METHOD_DEFAULT = 1,
 	HEIGHT_CONVERSION_METHOD_COUNT
 #endif
-} VTFHeightConversionMethod;
+};
 
 #define NORMAL_ALPHA_RESULT_BASE 1033
 
 //! Normal map alpha channel handling indices.
-typedef enum tagVTFNormalAlphaResult
+typedef CF_ENUM(int, VTFNormalAlphaResult)
 {
 #if defined(USE_NVDXT)
 	NORMAL_ALPHA_RESULT_NOCHANGE = 0,
     NORMAL_ALPHA_RESULT_HEIGHT,
     NORMAL_ALPHA_RESULT_BLACK,
     NORMAL_ALPHA_RESULT_WHITE,
-	NORMAL_ALPHA_RESULT_DEFAULT = NORMAL_ALPHA_RESULT_NOCHANGE,
-	NORMAL_ALPHA_RESULT_COUNT
+	NORMAL_ALPHA_RESULT_COUNT,
+	NORMAL_ALPHA_RESULT_DEFAULT = NORMAL_ALPHA_RESULT_NOCHANGE
 #else
 	NORMAL_ALPHA_RESULT_DEFAULT = 0,
 	NORMAL_ALPHA_RESULT_COUNT
 #endif
-} VTFNormalAlphaResult;
+};
 
 //! Image re-size handling method indices.
-typedef enum tagVTFResizeMethod
+typedef CF_ENUM(int, VTFResizeMethod)
 {
 #if defined(USE_NVDXT)
     RESIZE_NEAREST_POWER2 = 0,
@@ -330,11 +330,11 @@ typedef enum tagVTFResizeMethod
 	RESIZE_SET,
 	RESIZE_COUNT
 #endif
-} VTFResizeMethod;
+};
 
 //! Spheremap creation look direction indices.
 //--------------------------------------------
-typedef enum tagVTFLookDir
+typedef CF_ENUM(int, VTFLookDir)
 {
 	LOOK_DOWN_X = 0,
 	LOOK_DOWN_NEGX,
@@ -342,17 +342,17 @@ typedef enum tagVTFLookDir
 	LOOK_DOWN_NEGY,
 	LOOK_DOWN_Z,
 	LOOK_DOWN_NEGZ
-} VTFLookDir;
+};
 
 #define MAKE_VTF_RSRC_ID(a, b, c) ((vlUInt)(((vlByte)a) | ((vlByte)b << 8) | ((vlByte)c << 16)))
 #define MAKE_VTF_RSRC_IDF(a, b, c, d) ((vlUInt)(((vlByte)a) | ((vlByte)b << 8) | ((vlByte)c << 16) | ((vlByte)d << 24)))
 
 //! Resource entry type flags.
 //--------------------------------------------
-typedef enum tagVTFResourceEntryTypeFlag
+typedef CF_OPTIONS(vlByte, VTFResourceEntryTypeFlag)
 {
 	RSRCF_HAS_NO_DATA_CHUNK = 0x02
-} VTFResourceEntryTypeFlag;
+};
 
 //! Resource entry type idendifiers.
 //--------------------------------------------

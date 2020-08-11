@@ -234,7 +234,9 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 #if VS_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	[NSApp beginSheet:usbOverdriveWindow modalForWindow:self.view.window modalDelegate:self didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:) contextInfo:NULL];
+	[self.view.window beginSheet:usbOverdriveWindow completionHandler:^(NSModalResponse returnCode) {
+		[self sheetDidEnd:self->usbOverdriveWindow returnCode:returnCode contextInfo:NULL];
+	}];
 	
 }
 
@@ -242,7 +244,7 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 #if VS_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	[NSApp endSheet:usbOverdriveWindow];
+	[self.view.window endSheet:usbOverdriveWindow];
 }
 
 - (void)sheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {

@@ -59,7 +59,7 @@ typedef NS_ENUM(NSUInteger, HKFileType) {
 + (NSImage *)iconForItem:(HKItem *)anItem;
 + (NSImage *)copiedImageForItem:(HKItem *)anItem;
 
-- (instancetype)initWithParent:(HKNode *)aParent childNodes:(NSArray *)theChildren sortDescriptors:(NSArray *)aSortDescriptors container:(id)aContainer NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithParent:(nullable HKNode *)aParent childNodes:(nullable NSArray<HKNode*> *)theChildren sortDescriptors:(nullable NSArray<NSSortDescriptor*> *)aSortDescriptors container:(nullable id)aContainer NS_DESIGNATED_INITIALIZER;
 - (instancetype)init;
 - (BOOL)writeToFile:(NSString *)aPath assureUniqueFilename:(BOOL)assureUniqueFilename resultingPath:(NSString *__nullable*__nullable)resultingPath error:(NSError **)outError;
 

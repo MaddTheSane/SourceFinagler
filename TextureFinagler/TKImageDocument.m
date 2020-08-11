@@ -676,18 +676,17 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	
 	imageExportController.image = image;
 	
-	[NSApp beginSheet:imageExportController.window
-	   modalForWindow:imageWindow
-		modalDelegate:self
-	   didEndSelector:@selector(exportSheetDidEnd:returnCode:contextInfo:) contextInfo:NULL];
+	[imageWindow beginSheet:imageExportController.window completionHandler:^(NSModalResponse returnCode) {
+		[self exportSheetDidEnd:self->imageExportController.window returnCode:returnCode contextInfo:NULL];
+	}];
 }
 
 - (IBAction)cancel:(id)sender {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	[self setExportPreset:nil];
-	[NSApp endSheet:imageExportController.window];
+	self.exportPreset = nil;
+	[imageWindow endSheet:imageExportController.window];
 }
 
 - (IBAction)exportWithPreset:(TKImageExportPreset *)preset {
@@ -695,7 +694,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	self.exportPreset = preset;
-	[NSApp endSheet:imageExportController.window];
+	[imageWindow endSheet:imageExportController.window];
 }
 
 - (void)exportSheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
@@ -723,7 +722,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 		
 		savePanel.nameFieldStringValue = initialFilename;
 		
-		[savePanel beginSheetModalForWindow:imageWindow completionHandler:^(NSInteger result) {
+		[savePanel beginSheetModalForWindow:imageWindow completionHandler:^(NSModalResponse result) {
 			if (result == NSFileHandlingPanelOKButton) {
 				NSURL *URL = savePanel.URL;
 				
