@@ -50,7 +50,8 @@ static const TKDDSTextureFormatMapping TKDDSTextureFormatMappingTable[] = {
 		magic = NSSwapBigIntToHost(magic);
 		MemoryInputStream *mis = new MemoryInputStream((unsigned char *)[aData bytes], uint([aData length]));
 		
-		DirectDrawSurface *dds = new DirectDrawSurface(mis);
+		DirectDrawSurface *dds = new DirectDrawSurface();
+		dds->load(mis);
 		
 		if (dds == 0) {
 			NSLog(@"[%@ %@] new DirectDrawSurface() with data failed!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));

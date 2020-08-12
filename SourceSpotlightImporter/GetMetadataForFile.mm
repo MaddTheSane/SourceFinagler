@@ -139,7 +139,8 @@ BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *cont
 		}
 		MemoryInputStream *mis = new MemoryInputStream((unsigned char *)[data bytes], uint([data length]));
 		
-		DirectDrawSurface *dds = new DirectDrawSurface(mis);
+		DirectDrawSurface *dds = new DirectDrawSurface();
+		dds->load(mis);
 		if (!dds->isValid() || !dds->isSupported() || (dds->width() > 65535 || (dds->height() > 65535))) {
 			if (!dds->isValid()) {
 				NSLog(@"MDGetMetadataFromImageWithContentsOfFile(): file at filePath \"%@\": dds image is not valid, info follows:", filePath);

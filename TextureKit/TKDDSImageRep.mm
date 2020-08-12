@@ -723,7 +723,8 @@ static unsigned char *TKCreateRGBADataFromColor32(Color32 *pixels, NSUInteger pi
 #endif
 	MemoryInputStream *mis = new MemoryInputStream((unsigned char *)[aData bytes], uint([aData length]));
 	
-	DirectDrawSurface *dds = new DirectDrawSurface(mis);
+	DirectDrawSurface *dds = new DirectDrawSurface();
+	dds->load(mis);
 	if (dds == 0) {
 		NSLog(@"[%@ %@] new DirectDrawSurface() with data failed!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 		return nil;
@@ -758,10 +759,10 @@ static unsigned char *TKCreateRGBADataFromColor32(Color32 *pixels, NSUInteger pi
 	
 	for (NSUInteger mipmap = 0; mipmap < mipmapCount; mipmap++) {
 		for (NSUInteger faceIndex = 0; faceIndex < faceCount; faceIndex++) {
-			Image nvImage;
-			dds->mipmap(&nvImage, faceIndex, mipmap);
+			Image nvImage = Image();
+			imageFromDDS(&nvImage, *dds, faceIndex, mipmap);
 			NSUInteger length = 0;
-			unsigned char *bytes = TKCreateRGBADataFromColor32(nvImage.pixels(), nvImage.width() * nvImage.height(), (nvImage.format() == Image::Format_ARGB ? 32 : 24), &length);
+			unsigned char *bytes = TKCreateRGBADataFromColor32(nvImage.pixels(), nvImage.width * nvImage.height, (nvImage.format == Image::Format_ARGB ? 32 : 24), &length);
 			if (bytes) {
 				NSData *convertedData = [[NSData alloc] initWithBytes:bytes length:length];
 				::free(bytes);
@@ -769,11 +770,11 @@ static unsigned char *TKCreateRGBADataFromColor32(Color32 *pixels, NSUInteger pi
 				convertedData = nil;
 				CGColorSpaceRef colorSpace = CGColorSpaceCreateWithName(kCGColorSpaceGenericRGB);
 				NSUInteger bitsPerPixel = (dds->hasAlpha() ? 32 : 24);
-				CGImageRef imageRef = CGImageCreate(nvImage.width(),
-													nvImage.height(),
+				CGImageRef imageRef = CGImageCreate(nvImage.width,
+													nvImage.height,
 													8,
 													32,
-													nvImage.width() * 4,
+													nvImage.width * 4,
 													colorSpace,
 													(bitsPerPixel == 32 ? kCGImageAlphaLast : kCGImageAlphaNoneSkipLast),
 													provider,
