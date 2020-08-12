@@ -21,10 +21,10 @@
 #define MD_DEBUG 0
 
 
-static inline NSString *NSStringFromAutoresizingMask(NSAutoresizingMaskOptions mask) {
+__unused static inline NSString *NSStringFromAutoresizingMask(NSAutoresizingMaskOptions mask) {
 	NSMutableString *description = [NSMutableString string];
 	if (mask == NSViewNotSizable) {
-		[description appendString:@"NSViewNotSizable"];
+		[description setString:@"NSViewNotSizable"];
 		return description;
 	}
 	if (mask & NSViewMinXMargin) [description appendString:@"NSViewMinXMargin | "];

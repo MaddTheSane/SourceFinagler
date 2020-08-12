@@ -34,7 +34,7 @@
 	return self;
 }
 
-static inline NSString *NSStringFromAutoresizingMask(NSAutoresizingMaskOptions mask) {
+__unused static inline NSString *NSStringFromAutoresizingMask(NSAutoresizingMaskOptions mask) {
 	NSMutableString *description = [NSMutableString string];
 	if (mask == NSViewNotSizable) {
 		[description appendString:@"NSViewNotSizable"];
