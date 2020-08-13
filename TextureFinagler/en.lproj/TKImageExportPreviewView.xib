@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17147" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
-        <plugIn identifier="com.apple.imagekit.ibplugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17147"/>
+        <plugIn identifier="com.apple.imagekit.ibplugin" version="17147"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TKImageExportPreviewViewController">
@@ -19,9 +20,8 @@
             <rect key="frame" x="0.0" y="0.0" width="264" height="240"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField verticalHuggingPriority="750" id="8" customClass="TKImageExportTextField">
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8" customClass="TKImageExportTextField">
                     <rect key="frame" x="35" y="10" width="121" height="14"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="RGBA16161616F" id="10">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -37,9 +37,8 @@ IA
                         </binding>
                     </connections>
                 </textField>
-                <textField verticalHuggingPriority="750" id="7" customClass="TKImageExportTextField">
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7" customClass="TKImageExportTextField">
                     <rect key="frame" x="7" y="10" width="101" height="14"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="DDS" id="11">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -53,14 +52,15 @@ IA
                         </binding>
                     </connections>
                 </textField>
-                <ikImageView wantsLayer="YES" zoomFactor="1.0" supportsDragAndDrop="NO" doubleClickOpensImageEditPanel="NO" id="9" customClass="TKImageView">
+                <ikImageView wantsLayer="YES" zoomFactor="0.0" supportsDragAndDrop="NO" doubleClickOpensImageEditPanel="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9" customClass="TKImageView">
                     <rect key="frame" x="7" y="33" width="250" height="200"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" red="0.50002289" green="0.50002289" blue="0.50002289" alpha="1" colorSpace="deviceRGB"/>
                 </ikImageView>
-                <textField verticalHuggingPriority="750" id="5" customClass="TKImageExportTextField">
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5" customClass="TKImageExportTextField">
                     <rect key="frame" x="181" y="10" width="76" height="14"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="72" id="vra-x6-NM1"/>
+                    </constraints>
                     <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" alignment="right" id="24">
                         <byteCountFormatter key="formatter" adaptive="NO" id="dZv-0Z-dZu">
                             <byteCountFormatterUnits key="allowedUnits" bytes="YES"/>
@@ -73,14 +73,30 @@ IA
                         <binding destination="-2" name="value" keyPath="representedObject.imageFileSize" id="26"/>
                     </connections>
                 </textField>
-                <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" id="4">
+                <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="4">
                     <rect key="frame" x="161" y="9" width="16" height="16"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                 </progressIndicator>
             </subviews>
+            <constraints>
+                <constraint firstItem="7" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="9" id="5tq-b2-g8L"/>
+                <constraint firstItem="9" firstAttribute="top" secondItem="1" secondAttribute="top" constant="7" id="9hO-ap-Koy"/>
+                <constraint firstItem="4" firstAttribute="leading" secondItem="8" secondAttribute="trailing" constant="7" id="BG9-MC-XyK"/>
+                <constraint firstItem="9" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="7" id="BH0-u9-b8k"/>
+                <constraint firstItem="8" firstAttribute="baseline" secondItem="5" secondAttribute="baseline" id="Uqr-e9-Zck"/>
+                <constraint firstAttribute="bottom" secondItem="4" secondAttribute="bottom" constant="9" id="WUj-BJ-x5r"/>
+                <constraint firstItem="9" firstAttribute="centerX" secondItem="1" secondAttribute="centerX" id="ZW7-vV-0ch"/>
+                <constraint firstItem="5" firstAttribute="leading" secondItem="4" secondAttribute="trailing" constant="6" id="gOJ-Ju-VEE"/>
+                <constraint firstItem="8" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="37" id="iBS-UM-9pN"/>
+                <constraint firstItem="4" firstAttribute="top" secondItem="9" secondAttribute="bottom" constant="8" symbolic="YES" id="jRS-pC-g1H"/>
+                <constraint firstAttribute="trailing" secondItem="5" secondAttribute="trailing" constant="9" id="mN9-Qm-VyP"/>
+                <constraint firstItem="4" firstAttribute="centerY" secondItem="5" secondAttribute="centerY" id="n9c-AU-iIi"/>
+                <constraint firstItem="7" firstAttribute="baseline" secondItem="8" secondAttribute="baseline" id="w4d-Q2-7Ka"/>
+                <constraint firstItem="4" firstAttribute="leading" secondItem="7" secondAttribute="trailing" constant="55" id="wOy-nl-A4L"/>
+            </constraints>
             <connections>
                 <outlet property="viewController" destination="-2" id="32"/>
             </connections>
+            <point key="canvasLocation" x="122" y="154"/>
         </customView>
     </objects>
 </document>

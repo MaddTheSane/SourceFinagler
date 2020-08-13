@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17147" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
-        <capability name="box content view" minToolsVersion="7.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17147"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MDViewOptionsController">
@@ -17,40 +17,41 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="View Options" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="viewOptions" animationBehavior="default" id="217" userLabel="window" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" utility="YES" nonactivatingPanel="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="206" y="615" width="200" height="244"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
             <value key="minSize" type="size" width="200" height="244"/>
             <view key="contentView" id="218">
                 <rect key="frame" x="0.0" y="0.0" width="200" height="244"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <box boxType="oldStyle" borderType="none" titlePosition="noTitle" id="240">
+                    <box fixedFrame="YES" boxType="oldStyle" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="240">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="244"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <view key="contentView" id="dR3-HY-xqL">
                             <rect key="frame" x="0.0" y="0.0" width="200" height="244"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </view>
-                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
                 </subviews>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="255"/>
             </connections>
+            <point key="canvasLocation" x="122" y="150"/>
         </window>
         <customView id="239" userLabel="noViewOptions">
             <rect key="frame" x="0.0" y="0.0" width="200" height="244"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <textField verticalHuggingPriority="750" id="242">
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="242">
                     <rect key="frame" x="17" y="20" width="166" height="201"/>
-                    <autoresizingMask key="autoresizingMask"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="201" id="mdt-PW-NwC"/>
+                    </constraints>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="There are no view options for the &quot;%@&quot; window." id="582">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
@@ -58,12 +59,18 @@
                     </textFieldCell>
                 </textField>
             </subviews>
+            <constraints>
+                <constraint firstItem="242" firstAttribute="leading" secondItem="239" secondAttribute="leading" constant="19" id="0iD-qG-qNJ"/>
+                <constraint firstAttribute="bottom" secondItem="242" secondAttribute="bottom" constant="20" symbolic="YES" id="EDc-Rc-b0W"/>
+                <constraint firstItem="242" firstAttribute="centerX" secondItem="239" secondAttribute="centerX" id="w0x-tM-CSu"/>
+            </constraints>
+            <point key="canvasLocation" x="122" y="474"/>
         </customView>
         <customView id="373" userLabel="listViewOptions">
             <rect key="frame" x="0.0" y="0.0" width="200" height="244"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <button tag="1" id="478">
+                <button fixedFrame="YES" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="478">
                     <rect key="frame" x="19" y="79" width="163" height="18"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <buttonCell key="cell" type="check" title="Kind" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="595">
@@ -74,7 +81,7 @@
                         <binding destination="649" name="value" keyPath="values.MDShouldShowKindColumn" id="654"/>
                     </connections>
                 </button>
-                <button tag="2" id="640">
+                <button fixedFrame="YES" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="640">
                     <rect key="frame" x="19" y="42" width="166" height="18"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <buttonCell key="cell" type="check" title="Show non-extractable files" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="641">
@@ -85,7 +92,7 @@
                         <binding destination="649" name="value" keyPath="values.MDShouldShowInvisibleItems" id="662"/>
                     </connections>
                 </button>
-                <textField verticalHuggingPriority="750" id="477">
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="477">
                     <rect key="frame" x="19" y="119" width="164" height="14"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Show columns:" id="594">
@@ -94,7 +101,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button id="476">
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="476">
                     <rect key="frame" x="19" y="96" width="163" height="18"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <buttonCell key="cell" type="check" title="Size" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="593">
@@ -105,10 +112,10 @@
                         <binding destination="649" name="value" keyPath="values.MDShouldShowSizeColumn" id="653"/>
                     </connections>
                 </button>
-                <button tag="16" id="374">
+                <button fixedFrame="YES" tag="16" translatesAutoresizingMaskIntoConstraints="NO" id="374">
                     <rect key="frame" x="98" y="201" width="16" height="16"/>
                     <autoresizingMask key="autoresizingMask"/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="genericDocument16" imagePosition="only" alignment="center" alternateImage="genericDocument16" tag="16" id="588">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="genericDocument16" imagePosition="only" alignment="center" alternateImage="genericDocument16" tag="16" imageScaling="proportionallyDown" id="588">
                         <behavior key="behavior" lightByContents="YES"/>
                         <font key="font" metaFont="system" size="10"/>
                     </buttonCell>
@@ -116,10 +123,10 @@
                         <action selector="changeListViewIconSize:" target="-2" id="661"/>
                     </connections>
                 </button>
-                <button tag="32" id="375">
+                <button fixedFrame="YES" tag="32" translatesAutoresizingMaskIntoConstraints="NO" id="375">
                     <rect key="frame" x="132" y="201" width="32" height="32"/>
                     <autoresizingMask key="autoresizingMask"/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="genericDocument32" imagePosition="only" alignment="center" alternateImage="genericDocument32" tag="32" id="589">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="genericDocument32" imagePosition="only" alignment="center" alternateImage="genericDocument32" tag="32" imageScaling="proportionallyDown" id="589">
                         <behavior key="behavior" lightByContents="YES"/>
                         <font key="font" metaFont="system" size="10"/>
                     </buttonCell>
@@ -127,7 +134,7 @@
                         <action selector="changeListViewIconSize:" target="-2" id="660"/>
                     </connections>
                 </button>
-                <matrix verticalHuggingPriority="750" allowsEmptySelection="NO" autosizesCells="NO" id="376">
+                <matrix verticalHuggingPriority="750" fixedFrame="YES" allowsEmptySelection="NO" autosizesCells="NO" translatesAutoresizingMaskIntoConstraints="NO" id="376">
                     <rect key="frame" x="87" y="174" width="80" height="18"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -155,7 +162,7 @@
                         <binding destination="649" name="selectedTag" keyPath="values.MDListViewIconSize" id="658"/>
                     </connections>
                 </matrix>
-                <popUpButton verticalHuggingPriority="750" id="377">
+                <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="377">
                     <rect key="frame" x="74" y="143" width="73" height="22"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <popUpButtonCell key="cell" type="push" title="12" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="12" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="388" id="590">
@@ -177,7 +184,7 @@
                         <binding destination="649" name="selectedTag" keyPath="values.MDListViewFontSize" id="652"/>
                     </connections>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" id="378">
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="378">
                     <rect key="frame" x="19" y="148" width="57" height="14"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" title="Text size:" id="591">
@@ -186,7 +193,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" id="379">
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="379">
                     <rect key="frame" x="19" y="198" width="55" height="14"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" title="Icon size:" id="592">
@@ -195,20 +202,18 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="638">
+                <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="638">
                     <rect key="frame" x="20" y="66" width="160" height="5"/>
                     <autoresizingMask key="autoresizingMask"/>
-                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <font key="titleFont" metaFont="system"/>
                 </box>
             </subviews>
+            <point key="canvasLocation" x="-152" y="165"/>
         </customView>
         <customView id="396" userLabel="browserViewOptions">
             <rect key="frame" x="0.0" y="0.0" width="200" height="244"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <textField verticalHuggingPriority="750" id="534">
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="534">
                     <rect key="frame" x="19" y="130" width="67" height="14"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" title="Arrange by:" id="601">
@@ -217,7 +222,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button tag="1" id="533">
+                <button fixedFrame="YES" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="533">
                     <rect key="frame" x="19" y="160" width="161" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Show preview column" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="600">
@@ -228,7 +233,7 @@
                         <binding destination="649" name="value" keyPath="values.MDBrowserShouldShowPreview" id="657"/>
                     </connections>
                 </button>
-                <popUpButton verticalHuggingPriority="750" id="532">
+                <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="532">
                     <rect key="frame" x="84" y="125" width="100" height="22"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <popUpButtonCell key="cell" type="push" title="Name" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="541" id="599">
@@ -246,7 +251,7 @@
                         <binding destination="649" name="selectedTag" keyPath="values.MDBrowserSortBy" id="659"/>
                     </connections>
                 </popUpButton>
-                <button id="530">
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="530">
                     <rect key="frame" x="19" y="177" width="161" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Show icons" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="598">
@@ -257,7 +262,7 @@
                         <binding destination="649" name="value" keyPath="values.MDBrowserShouldShowIcons" id="656"/>
                     </connections>
                 </button>
-                <textField verticalHuggingPriority="750" id="529">
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="529">
                     <rect key="frame" x="19" y="208" width="57" height="14"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" title="Text size:" id="597">
@@ -266,7 +271,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton verticalHuggingPriority="750" id="528">
+                <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="528">
                     <rect key="frame" x="74" y="203" width="73" height="22"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <popUpButtonCell key="cell" type="push" title="12" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="12" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="552" id="596">
@@ -288,7 +293,7 @@
                         <binding destination="649" name="selectedTag" keyPath="values.MDBrowserFontAndIconSize" id="655"/>
                     </connections>
                 </popUpButton>
-                <button tag="2" id="643">
+                <button fixedFrame="YES" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="643">
                     <rect key="frame" x="19" y="90" width="166" height="18"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <buttonCell key="cell" type="check" title="Show non-extractable files" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="645">
@@ -299,14 +304,12 @@
                         <binding destination="649" name="value" keyPath="values.MDShouldShowInvisibleItems" id="663"/>
                     </connections>
                 </button>
-                <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="644">
+                <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="644">
                     <rect key="frame" x="20" y="114" width="160" height="5"/>
                     <autoresizingMask key="autoresizingMask"/>
-                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <font key="titleFont" metaFont="system"/>
                 </box>
             </subviews>
+            <point key="canvasLocation" x="-287" y="-144"/>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="649"/>
     </objects>

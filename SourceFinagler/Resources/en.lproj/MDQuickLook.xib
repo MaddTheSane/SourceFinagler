@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17147" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.AVKitIBPlugin" version="14109"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="14109"/>
-        <capability name="box content view" minToolsVersion="7.0"/>
+        <plugIn identifier="com.apple.AVKitIBPlugin" version="17147"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17147"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="17147"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -22,17 +21,17 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" resizable="YES" utility="YES" nonactivatingPanel="YES" HUD="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
             <rect key="contentRect" x="346" y="804" width="322" height="244"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1600" height="1178"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
             <value key="minSize" type="size" width="322" height="244"/>
             <view key="contentView" id="2">
                 <rect key="frame" x="0.0" y="0.0" width="322" height="244"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <customView id="7">
+                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7">
                         <rect key="frame" x="101" y="8" width="120" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button id="10" customClass="MDQuickLookControlButton">
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="10" customClass="MDQuickLookControlButton">
                                 <rect key="frame" x="44" y="0.0" width="32" height="32"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <buttonCell key="cell" type="square" title="Play" bezelStyle="shadowlessSquare" image="play" imagePosition="only" alignment="center" inset="2" id="11">
@@ -44,7 +43,7 @@
                                     <action selector="playPause:" target="-2" id="70"/>
                                 </connections>
                             </button>
-                            <button id="8" customClass="MDQuickLookControlButton">
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8" customClass="MDQuickLookControlButton">
                                 <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <buttonCell key="cell" type="square" title="Previous" bezelStyle="shadowlessSquare" image="leftArrow" imagePosition="only" alignment="center" inset="2" id="13">
@@ -56,7 +55,7 @@
                                     <action selector="showPreviousItem:" target="-2" id="71"/>
                                 </connections>
                             </button>
-                            <button id="9" customClass="MDQuickLookControlButton">
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9" customClass="MDQuickLookControlButton">
                                 <rect key="frame" x="88" y="0.0" width="32" height="32"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <buttonCell key="cell" type="square" title="Next" bezelStyle="shadowlessSquare" image="rightArrow" imagePosition="only" alignment="center" inset="2" id="12">
@@ -70,7 +69,7 @@
                             </button>
                         </subviews>
                     </customView>
-                    <box autoresizesSubviews="NO" focusRingType="none" boxType="custom" borderType="none" titlePosition="noTitle" id="81">
+                    <box autoresizesSubviews="NO" focusRingType="none" fixedFrame="YES" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="81">
                         <rect key="frame" x="0.0" y="48" width="322" height="196"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <view key="contentView" id="wTt-W2-fRf">
@@ -84,6 +83,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="28"/>
             </connections>
+            <point key="canvasLocation" x="122" y="149"/>
         </window>
         <viewController id="105" userLabel="previewViewController" customClass="MDQuickLookPreviewViewController">
             <connections>
@@ -103,40 +103,41 @@
             <rect key="frame" x="0.0" y="0.0" width="322" height="196"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="74">
+                <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="74">
                     <rect key="frame" x="0.0" y="0.0" width="322" height="196"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <clipView key="contentView" id="o1Y-6u-Bsw">
-                        <rect key="frame" x="1" y="1" width="320" height="194"/>
+                    <clipView key="contentView" drawsBackground="NO" id="o1Y-6u-Bsw">
+                        <rect key="frame" x="1" y="1" width="305" height="194"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView editable="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" allowsUndo="YES" allowsImageEditing="YES" usesRuler="YES" allowsNonContiguousLayout="YES" spellingCorrection="YES" id="77">
                                 <rect key="frame" x="0.0" y="1" width="320" height="194"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <size key="minSize" width="320" height="194"/>
+                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <size key="minSize" width="305" height="194"/>
                                 <size key="maxSize" width="800" height="10000000"/>
                                 <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="76">
                         <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="75">
-                        <rect key="frame" x="305" y="1" width="16" height="194"/>
+                        <rect key="frame" x="306" y="1" width="15" height="194"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
             </subviews>
+            <point key="canvasLocation" x="122" y="449"/>
         </customView>
         <customView id="78" userLabel="imageViewView">
             <rect key="frame" x="0.0" y="0.0" width="322" height="196"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView id="67">
+                <imageView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="67">
                     <rect key="frame" x="0.0" y="0.0" width="322" height="196"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" id="68"/>
@@ -145,12 +146,13 @@
                     </connections>
                 </imageView>
             </subviews>
+            <point key="canvasLocation" x="122" y="-158"/>
         </customView>
         <customView id="85" userLabel="movieViewView">
             <rect key="frame" x="0.0" y="0.0" width="322" height="196"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <avPlayerView controlsStyle="inline" id="88">
+                <avPlayerView fixedFrame="YES" controlsStyle="inline" translatesAutoresizingMaskIntoConstraints="NO" id="88">
                     <rect key="frame" x="0.0" y="0.0" width="322" height="196"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <connections>
@@ -164,11 +166,11 @@
             <rect key="frame" x="0.0" y="0.0" width="322" height="196"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <customView id="131" customClass="MDImageView">
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="131" customClass="MDImageView">
                     <rect key="frame" x="103" y="40" width="116" height="116"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <button id="100">
+                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="100">
                             <rect key="frame" x="43" y="43" width="30" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="play" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="101">
@@ -187,7 +189,7 @@
             <rect key="frame" x="0.0" y="0.0" width="322" height="196"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <webView id="91">
+                <webView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="91">
                     <rect key="frame" x="0.0" y="0.0" width="322" height="196"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12">

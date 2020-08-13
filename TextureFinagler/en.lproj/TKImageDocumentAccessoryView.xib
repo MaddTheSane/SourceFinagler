@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17147" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
-        <capability name="box content view" minToolsVersion="7.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17147"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TKImageDocumentAccessoryViewController">
@@ -24,17 +24,17 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="1" userLabel="view">
             <rect key="frame" x="0.0" y="0.0" width="396" height="153"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <popUpButton verticalHuggingPriority="750" id="2">
+                <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2">
                     <rect key="frame" x="143" y="117" width="236" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="push" title="Source Finagler Texture Image" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="5" id="3">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="menu"/>
                         <menu key="menu" title="OtherViews" id="4">
                             <items>
                                 <menuItem title="Source Finagler Texture Image" state="on" id="5"/>
@@ -47,7 +47,7 @@
                         <action selector="changeFormat:" target="-2" id="44"/>
                     </connections>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" id="8">
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8">
                     <rect key="frame" x="70" y="123" width="71" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Format:" id="9">
@@ -56,7 +56,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <box autoresizesSubviews="NO" boxType="custom" borderType="none" titlePosition="noTitle" id="23">
+                <box autoresizesSubviews="NO" fixedFrame="YES" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="23">
                     <rect key="frame" x="20" y="20" width="356" height="95"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <view key="contentView" id="Piq-qh-uCd">
@@ -67,17 +67,18 @@
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </box>
             </subviews>
+            <point key="canvasLocation" x="122" y="154"/>
         </customView>
         <customView id="126" userLabel="compressionView">
             <rect key="frame" x="0.0" y="0.0" width="356" height="95"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <popUpButton verticalHuggingPriority="750" id="129">
+                <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="129">
                     <rect key="frame" x="123" y="66" width="166" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="push" title="RGBA16161616F" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="134" id="130">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="menu"/>
                         <menu key="menu" title="OtherViews" id="131">
                             <items>
                                 <menuItem title="RGBA16161616F" state="on" id="134"/>
@@ -90,7 +91,7 @@
                         <action selector="changeCompression:" target="-2" id="137"/>
                     </connections>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" id="128">
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="128">
                     <rect key="frame" x="16" y="72" width="105" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Compression:" id="135">
@@ -99,7 +100,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button id="127">
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="127">
                     <rect key="frame" x="124" y="41" width="94" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Mipmaps" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="136">
@@ -111,6 +112,7 @@
                     </connections>
                 </button>
             </subviews>
+            <point key="canvasLocation" x="-879" y="132"/>
         </customView>
         <menu title="OtherViews" id="86" userLabel="ddsMenu">
             <items>
@@ -124,6 +126,7 @@
                 <menuItem title="BC4 (ATI1)" tag="6" id="88"/>
                 <menuItem title="BC5 (3DC, ATI2)" tag="7" id="87"/>
             </items>
+            <point key="canvasLocation" x="-14" y="391"/>
         </menu>
         <menu id="46" userLabel="vtfMenu">
             <items>
@@ -245,17 +248,18 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
             </items>
+            <point key="canvasLocation" x="-13" y="-541"/>
         </menu>
         <customView id="26" userLabel="tiffCompressionView">
             <rect key="frame" x="0.0" y="0.0" width="356" height="95"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <popUpButton verticalHuggingPriority="750" id="32">
+                <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="32">
                     <rect key="frame" x="123" y="66" width="166" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="push" title="None" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="1" imageScaling="proportionallyDown" inset="2" selectedItem="147" id="35">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="menu"/>
                         <menu key="menu" title="tiffMenu" id="36">
                             <items>
                                 <menuItem title="None" state="on" tag="1" id="147"/>
@@ -268,7 +272,7 @@
                         <binding destination="115" name="selectedTag" keyPath="selection.tiffCompression" id="150"/>
                     </connections>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" id="33">
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="33">
                     <rect key="frame" x="16" y="72" width="105" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Compression:" id="34">
@@ -277,7 +281,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button id="98">
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="98">
                     <rect key="frame" x="124" y="41" width="70" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Alpha" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="99">
@@ -294,12 +298,13 @@
                     </connections>
                 </button>
             </subviews>
+            <point key="canvasLocation" x="-456" y="291"/>
         </customView>
         <customView id="18" userLabel="jpegQualityView">
             <rect key="frame" x="0.0" y="0.0" width="356" height="95"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <slider verticalHuggingPriority="750" id="19">
+                <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="19">
                     <rect key="frame" x="124" y="59" width="160" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <sliderCell key="cell" state="on" alignment="left" maxValue="1" doubleValue="0.5" tickMarkPosition="below" numberOfTickMarks="11" sliderType="linear" id="20"/>
@@ -307,7 +312,7 @@
                         <binding destination="115" name="value" keyPath="selection.jpegQuality" id="116"/>
                     </connections>
                 </slider>
-                <textField verticalHuggingPriority="750" id="21">
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="21">
                     <rect key="frame" x="16" y="67" width="105" height="16"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Quality:" id="22">
@@ -316,7 +321,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" id="27">
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="27">
                     <rect key="frame" x="113" y="40" width="27" height="11"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Least" id="28">
@@ -325,7 +330,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" id="29">
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="29">
                     <rect key="frame" x="264" y="40" width="27" height="11"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Best" id="30">
@@ -334,7 +339,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button id="155">
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="155">
                     <rect key="frame" x="124" y="13" width="70" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Alpha" bezelStyle="regularSquare" imagePosition="left" alignment="left" enabled="NO" state="on" inset="2" id="156">
@@ -350,7 +355,7 @@
                         <binding destination="115" name="value" keyPath="selection.saveAlpha" id="157"/>
                     </connections>
                 </button>
-                <imageView id="158">
+                <imageView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="158">
                     <rect key="frame" x="97" y="14" width="16" height="16"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSCaution" id="159"/>
@@ -363,12 +368,13 @@
                     </connections>
                 </imageView>
             </subviews>
+            <point key="canvasLocation" x="-456" y="-139"/>
         </customView>
         <customView id="160" userLabel="jpeg2000QualityView">
             <rect key="frame" x="0.0" y="0.0" width="356" height="95"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <slider verticalHuggingPriority="750" id="166">
+                <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="166">
                     <rect key="frame" x="124" y="59" width="160" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <sliderCell key="cell" state="on" alignment="left" maxValue="1" doubleValue="0.80000000000000004" tickMarkPosition="below" numberOfTickMarks="11" sliderType="linear" id="167"/>
@@ -376,7 +382,7 @@
                         <binding destination="115" name="value" keyPath="selection.jpegQuality" id="173"/>
                     </connections>
                 </slider>
-                <textField verticalHuggingPriority="750" id="165">
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="165">
                     <rect key="frame" x="16" y="67" width="105" height="16"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Quality:" id="168">
@@ -385,7 +391,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" id="164">
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="164">
                     <rect key="frame" x="113" y="40" width="27" height="11"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Least" id="169">
@@ -394,7 +400,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" id="163">
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="163">
                     <rect key="frame" x="257" y="40" width="41" height="11"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Lossless" id="170">
@@ -403,7 +409,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button id="162">
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="162">
                     <rect key="frame" x="124" y="13" width="70" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Alpha" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="171">
@@ -420,16 +426,18 @@
                     </connections>
                 </button>
             </subviews>
+            <point key="canvasLocation" x="-456" y="22"/>
         </customView>
         <customView id="112" userLabel="blankView">
             <rect key="frame" x="0.0" y="0.0" width="356" height="95"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <point key="canvasLocation" x="122" y="-36"/>
         </customView>
         <customView id="120" userLabel="alphaView">
             <rect key="frame" x="0.0" y="0.0" width="356" height="40"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <button id="121">
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="121">
                     <rect key="frame" x="124" y="17" width="72" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Alpha" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="122">
@@ -446,6 +454,7 @@
                     </connections>
                 </button>
             </subviews>
+            <point key="canvasLocation" x="-321" y="154"/>
         </customView>
         <objectController id="115" userLabel="mediator">
             <declaredKeys>

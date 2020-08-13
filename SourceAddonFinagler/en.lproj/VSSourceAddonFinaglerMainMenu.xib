@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17147" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
-        <capability name="box content view" minToolsVersion="7.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17147"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -203,6 +202,7 @@
                     </menu>
                 </menuItem>
             </items>
+            <point key="canvasLocation" x="122" y="154"/>
         </menu>
         <customObject id="821" userLabel="VSSourceAddonController" customClass="VSSourceAddonController">
             <connections>
@@ -227,38 +227,40 @@
             <windowStyleMask key="styleMask" titled="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
             <rect key="contentRect" x="325" y="585" width="540" height="426"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
             <value key="minSize" type="size" width="440" height="146"/>
             <view key="contentView" id="918">
                 <rect key="frame" x="0.0" y="0.0" width="540" height="426"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView id="922">
+                    <imageView translatesAutoresizingMaskIntoConstraints="NO" id="922">
                         <rect key="frame" x="20" y="342" width="64" height="64"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="64" id="yg9-nT-13s"/>
+                        </constraints>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="935"/>
                     </imageView>
-                    <textField verticalHuggingPriority="750" id="921">
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="921">
                         <rect key="frame" x="95" y="389" width="428" height="17"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Source Addon Installation" id="936">
                             <font key="font" metaFont="systemBold"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField verticalHuggingPriority="750" id="920">
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="920">
                         <rect key="frame" x="95" y="367" width="428" height="14"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="The following items were successfully installed:" id="937">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button verticalHuggingPriority="750" id="919">
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="919">
                         <rect key="frame" x="436" y="12" width="90" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="78" id="d8Z-F4-hZ0"/>
+                        </constraints>
                         <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="938">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -270,9 +272,8 @@ DQ
                             <action selector="ok:" target="821" id="1069"/>
                         </connections>
                     </button>
-                    <box autoresizesSubviews="NO" boxType="custom" borderType="none" titlePosition="noTitle" id="1068">
+                    <box autoresizesSubviews="NO" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="1068">
                         <rect key="frame" x="20" y="48" width="500" height="286"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <view key="contentView" id="fdj-xU-eR8">
                             <rect key="frame" x="0.0" y="0.0" width="500" height="286"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -280,20 +281,39 @@ DQ
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="922" firstAttribute="top" secondItem="918" secondAttribute="top" constant="20" symbolic="YES" id="6jY-kc-0f0"/>
+                    <constraint firstItem="1068" firstAttribute="top" secondItem="920" secondAttribute="bottom" constant="33" id="Bhw-DH-SNv"/>
+                    <constraint firstItem="922" firstAttribute="top" secondItem="921" secondAttribute="top" id="C1i-RG-YM8"/>
+                    <constraint firstItem="922" firstAttribute="leading" secondItem="918" secondAttribute="leading" constant="20" symbolic="YES" id="FQl-fn-bcV"/>
+                    <constraint firstItem="921" firstAttribute="leading" secondItem="922" secondAttribute="trailing" constant="13" id="FRf-bS-o0L"/>
+                    <constraint firstItem="922" firstAttribute="leading" secondItem="1068" secondAttribute="leading" id="MKh-02-ScQ"/>
+                    <constraint firstItem="922" firstAttribute="centerY" secondItem="920" secondAttribute="centerY" id="OqD-kv-ifR"/>
+                    <constraint firstAttribute="bottom" secondItem="919" secondAttribute="bottom" constant="19" id="QcS-Nj-3dS"/>
+                    <constraint firstItem="921" firstAttribute="trailing" secondItem="920" secondAttribute="trailing" id="XHO-YO-XEi"/>
+                    <constraint firstItem="1068" firstAttribute="trailing" secondItem="919" secondAttribute="trailing" id="bRg-Xd-F64"/>
+                    <constraint firstItem="921" firstAttribute="leading" secondItem="920" secondAttribute="leading" id="ehW-B1-gTT"/>
+                    <constraint firstItem="1068" firstAttribute="top" secondItem="922" secondAttribute="bottom" constant="8" id="hMp-Ht-3Ea"/>
+                    <constraint firstItem="920" firstAttribute="top" secondItem="921" secondAttribute="bottom" constant="8" symbolic="YES" id="m2M-X7-Naw"/>
+                    <constraint firstAttribute="trailing" secondItem="921" secondAttribute="trailing" constant="19" id="qft-3v-EmU"/>
+                    <constraint firstItem="919" firstAttribute="top" secondItem="1068" secondAttribute="bottom" constant="8" id="rzu-32-yn3"/>
+                    <constraint firstAttribute="trailing" secondItem="1068" secondAttribute="trailing" constant="20" symbolic="YES" id="sLu-zg-b9I"/>
+                </constraints>
             </view>
             <connections>
                 <outlet property="delegate" destination="821" id="1019"/>
             </connections>
+            <point key="canvasLocation" x="122" y="-153"/>
         </window>
         <customView id="1063" userLabel="comboView">
             <rect key="frame" x="0.0" y="0.0" width="500" height="279"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <splitView dividerStyle="thin" id="1064">
+                <splitView fixedFrame="YES" dividerStyle="thin" translatesAutoresizingMaskIntoConstraints="NO" id="1064">
                     <rect key="frame" x="0.0" y="0.0" width="500" height="279"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <box autoresizesSubviews="NO" boxType="custom" borderType="none" titlePosition="noTitle" id="1066">
+                        <box autoresizesSubviews="NO" fixedFrame="YES" boxType="custom" borderType="none" titlePosition="noTitle" id="1066">
                             <rect key="frame" x="0.0" y="0.0" width="500" height="139"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <view key="contentView" id="ZzE-dW-CuC">
@@ -302,7 +322,7 @@ DQ
                             </view>
                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </box>
-                        <box autoresizesSubviews="NO" boxType="custom" borderType="none" titlePosition="noTitle" id="1065">
+                        <box autoresizesSubviews="NO" fixedFrame="YES" boxType="custom" borderType="none" titlePosition="noTitle" id="1065">
                             <rect key="frame" x="0.0" y="140" width="500" height="139"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <view key="contentView" id="oaV-UU-yVW">
@@ -321,12 +341,13 @@ DQ
                     </connections>
                 </splitView>
             </subviews>
+            <point key="canvasLocation" x="-13" y="-596"/>
         </customView>
         <customView id="945" userLabel="successView">
             <rect key="frame" x="0.0" y="0.0" width="500" height="140"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="946">
+                <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="946">
                     <rect key="frame" x="0.0" y="0.0" width="500" height="116"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="weB-91-jhW">
@@ -342,7 +363,6 @@ DQ
                                 <tableColumns>
                                     <tableColumn identifier="fileName" editable="NO" width="233" minWidth="40" maxWidth="1000" id="952">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="   Addon file">
-                                            <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
                                         </tableHeaderCell>
@@ -356,7 +376,6 @@ DQ
                                     </tableColumn>
                                     <tableColumn identifier="gameName" editable="NO" width="259" minWidth="10" maxWidth="3.4028234663852886e+38" id="951">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="   Game">
-                                            <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                         </tableHeaderCell>
@@ -390,7 +409,7 @@ DQ
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
-                <textField verticalHuggingPriority="750" id="1001">
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1001">
                     <rect key="frame" x="0.0" y="124" width="270" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="The following items were successfully installed:" id="1002">
@@ -400,12 +419,13 @@ DQ
                     </textFieldCell>
                 </textField>
             </subviews>
+            <point key="canvasLocation" x="-148" y="-871"/>
         </customView>
         <customView id="963" userLabel="problemView">
             <rect key="frame" x="0.0" y="0.0" width="500" height="140"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="964">
+                <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="964">
                     <rect key="frame" x="0.0" y="0.0" width="500" height="116"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="bq1-7C-x60">
@@ -421,7 +441,6 @@ DQ
                                 <tableColumns>
                                     <tableColumn identifier="fileName" editable="NO" width="183" minWidth="40" maxWidth="1000" id="969">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="   Addon file">
-                                            <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
                                         </tableHeaderCell>
@@ -435,7 +454,6 @@ DQ
                                     </tableColumn>
                                     <tableColumn identifier="problem" editable="NO" width="309" minWidth="10" maxWidth="3.4028234663852886e+38" id="970">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="   Problem">
-                                            <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                         </tableHeaderCell>
@@ -469,7 +487,7 @@ DQ
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
-                <textField verticalHuggingPriority="750" id="1004">
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1004">
                     <rect key="frame" x="0.0" y="124" width="375" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="The following items could not be installed because of problems:" id="1005">
@@ -479,30 +497,29 @@ DQ
                     </textFieldCell>
                 </textField>
             </subviews>
+            <point key="canvasLocation" x="-580" y="-619"/>
         </customView>
         <window title="Source Addon Finagler Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="prefs" animationBehavior="default" id="367" userLabel="prefsWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
             <rect key="contentRect" x="309" y="906" width="398" height="91"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1600" height="1178"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
             <value key="minSize" type="size" width="398" height="91"/>
             <value key="maxSize" type="size" width="398" height="91"/>
             <view key="contentView" id="368">
                 <rect key="frame" x="0.0" y="0.0" width="398" height="91"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField verticalHuggingPriority="750" id="828">
-                        <rect key="frame" x="17" y="53" width="111" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="828">
+                        <rect key="frame" x="17" y="54" width="127" height="16"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Install Addon by:" id="829">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <popUpButton verticalHuggingPriority="750" id="830">
-                        <rect key="frame" x="130" y="47" width="251" height="26"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="830">
+                        <rect key="frame" x="148" y="48" width="233" height="25"/>
                         <popUpButtonCell key="cell" type="push" title="moving to Addons folder" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="1" imageScaling="proportionallyDown" inset="2" selectedItem="833" id="831">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="menu"/>
@@ -517,19 +534,31 @@ DQ
                             <binding destination="894" name="selectedTag" keyPath="values.VSSourceAddonInstallMethod" id="1089"/>
                         </connections>
                     </popUpButton>
-                    <button hidden="YES" id="857">
-                        <rect key="frame" x="131" y="21" width="249" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <button hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="857">
+                        <rect key="frame" x="148" y="22" width="232" height="18"/>
                         <buttonCell key="cell" type="check" title="Reveal installed Addon(s) in Finder" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="858">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                     </button>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="828" firstAttribute="baseline" secondItem="830" secondAttribute="baseline" id="6fK-5Q-vCB"/>
+                    <constraint firstItem="830" firstAttribute="centerX" secondItem="857" secondAttribute="centerX" id="CSW-a1-FLd"/>
+                    <constraint firstItem="857" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="368" secondAttribute="leading" constant="20" symbolic="YES" id="Cuj-z4-gBU"/>
+                    <constraint firstItem="830" firstAttribute="trailing" secondItem="857" secondAttribute="trailing" id="EhX-mP-M0a"/>
+                    <constraint firstItem="857" firstAttribute="top" secondItem="830" secondAttribute="bottom" constant="13" id="G2S-Ib-O1K"/>
+                    <constraint firstItem="830" firstAttribute="leading" secondItem="828" secondAttribute="trailing" constant="8" symbolic="YES" id="Lrd-rS-nOY"/>
+                    <constraint firstItem="830" firstAttribute="top" secondItem="368" secondAttribute="top" constant="19" id="aK7-kf-ugW"/>
+                    <constraint firstItem="828" firstAttribute="leading" secondItem="368" secondAttribute="leading" constant="19" id="alO-ft-Iz5"/>
+                    <constraint firstAttribute="trailing" secondItem="830" secondAttribute="trailing" constant="20" symbolic="YES" id="fvK-3y-Evz"/>
+                    <constraint firstItem="828" firstAttribute="firstBaseline" secondItem="830" secondAttribute="firstBaseline" id="hiA-DN-75F"/>
+                </constraints>
             </view>
             <connections>
                 <outlet property="delegate" destination="821" id="1020"/>
             </connections>
+            <point key="canvasLocation" x="-715" y="-818"/>
         </window>
         <menu id="911" userLabel="tableViewMenu">
             <items>
@@ -551,43 +580,60 @@ DQ
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="235" y="403" width="375" height="117"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
             <view key="contentView" id="1078">
                 <rect key="frame" x="0.0" y="0.0" width="375" height="117"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView id="1079">
+                    <imageView translatesAutoresizingMaskIntoConstraints="NO" id="1079">
                         <rect key="frame" x="20" y="38" width="64" height="64"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="64" id="KYe-TV-Pqt"/>
+                            <constraint firstAttribute="height" constant="64" id="ZGE-FE-Bzk"/>
+                        </constraints>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="1084"/>
                     </imageView>
-                    <textField verticalHuggingPriority="750" id="1080">
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="1080">
                         <rect key="frame" x="95" y="85" width="263" height="17"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Source Addon Installation" id="1083">
                             <font key="font" metaFont="systemBold"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField verticalHuggingPriority="750" id="1081">
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="1081">
                         <rect key="frame" x="95" y="63" width="263" height="14"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="Copying items…" id="1082">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <progressIndicator verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="bar" id="1085">
+                    <progressIndicator verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="1085">
                         <rect key="frame" x="96" y="25" width="261" height="20"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     </progressIndicator>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="1079" secondAttribute="bottom" constant="38" id="3Or-z4-mU9"/>
+                    <constraint firstItem="1081" firstAttribute="top" secondItem="1080" secondAttribute="bottom" constant="8" symbolic="YES" id="9s5-6m-0jm"/>
+                    <constraint firstItem="1079" firstAttribute="top" secondItem="1078" secondAttribute="top" constant="15" id="BaE-8h-SQ6"/>
+                    <constraint firstItem="1085" firstAttribute="top" secondItem="1081" secondAttribute="bottom" constant="19" id="Duh-Ai-TKu"/>
+                    <constraint firstItem="1079" firstAttribute="leading" secondItem="1078" secondAttribute="leading" constant="20" symbolic="YES" id="Vfe-kQ-r9g"/>
+                    <constraint firstItem="1079" firstAttribute="top" secondItem="1080" secondAttribute="top" id="Zdj-Vc-sLJ"/>
+                    <constraint firstItem="1080" firstAttribute="leading" secondItem="1081" secondAttribute="leading" id="cI5-Cd-Uxb"/>
+                    <constraint firstItem="1081" firstAttribute="centerX" secondItem="1085" secondAttribute="centerX" id="gcO-kD-4Bg"/>
+                    <constraint firstItem="1080" firstAttribute="leading" secondItem="1079" secondAttribute="trailing" constant="13" id="naZ-Wy-uQU"/>
+                    <constraint firstItem="1085" firstAttribute="leading" secondItem="1079" secondAttribute="trailing" constant="12" id="qga-5A-DPB"/>
+                    <constraint firstItem="1079" firstAttribute="centerY" secondItem="1081" secondAttribute="centerY" id="rlb-Ve-pzb"/>
+                    <constraint firstAttribute="bottom" secondItem="1085" secondAttribute="bottom" constant="26" id="spZ-LG-ek3"/>
+                    <constraint firstAttribute="trailing" secondItem="1085" secondAttribute="trailing" constant="18" id="u2B-fX-uHV"/>
+                    <constraint firstItem="1080" firstAttribute="trailing" secondItem="1081" secondAttribute="trailing" id="zjn-dl-XhW"/>
+                </constraints>
             </view>
+            <point key="canvasLocation" x="-716" y="-1031"/>
         </window>
     </objects>
     <resources>
-        <image name="NSApplicationIcon" width="128" height="128"/>
+        <image name="NSApplicationIcon" width="32" height="32"/>
     </resources>
 </document>
