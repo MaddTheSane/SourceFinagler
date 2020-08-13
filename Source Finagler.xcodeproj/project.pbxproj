@@ -575,8 +575,6 @@
 		C1F153E41396699600E32057 /* HKBSPFile.mm in Sources */ = {isa = PBXBuildFile; fileRef = C1F153C41396699600E32057 /* HKBSPFile.mm */; };
 		C1F153E51396699600E32057 /* HKFile.h in Headers */ = {isa = PBXBuildFile; fileRef = C1F153C51396699600E32057 /* HKFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C1F153E61396699600E32057 /* HKFile.mm in Sources */ = {isa = PBXBuildFile; fileRef = C1F153C61396699600E32057 /* HKFile.mm */; };
-		C1F153E91396699600E32057 /* HKFileHandle.h in Headers */ = {isa = PBXBuildFile; fileRef = C1F153C91396699600E32057 /* HKFileHandle.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C1F153EA1396699600E32057 /* HKFileHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F153CA1396699600E32057 /* HKFileHandle.m */; };
 		C1F153EB1396699600E32057 /* HKFolder.h in Headers */ = {isa = PBXBuildFile; fileRef = C1F153CB1396699600E32057 /* HKFolder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C1F153EC1396699600E32057 /* HKFolder.mm in Sources */ = {isa = PBXBuildFile; fileRef = C1F153CC1396699600E32057 /* HKFolder.mm */; };
 		C1F153EF1396699600E32057 /* HKGCFFile.h in Headers */ = {isa = PBXBuildFile; fileRef = C1F153CF1396699600E32057 /* HKGCFFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1571,8 +1569,6 @@
 		C1F153C61396699600E32057 /* HKFile.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HKFile.mm; sourceTree = "<group>"; };
 		C1F153C71396699600E32057 /* HKFileAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKFileAdditions.h; sourceTree = "<group>"; };
 		C1F153C81396699600E32057 /* HKFileAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKFileAdditions.m; sourceTree = "<group>"; };
-		C1F153C91396699600E32057 /* HKFileHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKFileHandle.h; sourceTree = "<group>"; };
-		C1F153CA1396699600E32057 /* HKFileHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKFileHandle.m; sourceTree = "<group>"; };
 		C1F153CB1396699600E32057 /* HKFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKFolder.h; sourceTree = "<group>"; };
 		C1F153CC1396699600E32057 /* HKFolder.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HKFolder.mm; sourceTree = "<group>"; };
 		C1F153CD1396699600E32057 /* HKFolderAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKFolderAdditions.h; sourceTree = "<group>"; };
@@ -3291,8 +3287,6 @@
 				C1F15404139669A600E32057 /* Model */,
 				C1F153D31396699600E32057 /* HKPrivateInterfaces.h */,
 				C1F153D41396699600E32057 /* HKPrivateInterfaces.mm */,
-				C1F153C91396699600E32057 /* HKFileHandle.h */,
-				C1F153CA1396699600E32057 /* HKFileHandle.m */,
 			);
 			name = "HLKit framework";
 			path = HLKit;
@@ -3755,7 +3749,6 @@
 			files = (
 				C1F153E31396699600E32057 /* HKBSPFile.h in Headers */,
 				C1F153E51396699600E32057 /* HKFile.h in Headers */,
-				C1F153E91396699600E32057 /* HKFileHandle.h in Headers */,
 				C1F153EB1396699600E32057 /* HKFolder.h in Headers */,
 				C1F153EF1396699600E32057 /* HKGCFFile.h in Headers */,
 				C1F153F11396699600E32057 /* HKArchiveFile.h in Headers */,
@@ -4624,7 +4617,6 @@
 			files = (
 				C1F153E41396699600E32057 /* HKBSPFile.mm in Sources */,
 				C1F153E61396699600E32057 /* HKFile.mm in Sources */,
-				C1F153EA1396699600E32057 /* HKFileHandle.m in Sources */,
 				C1F153EC1396699600E32057 /* HKFolder.mm in Sources */,
 				C1F153F01396699600E32057 /* HKGCFFile.mm in Sources */,
 				C1F153F21396699600E32057 /* HKArchiveFile.mm in Sources */,

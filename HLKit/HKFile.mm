@@ -10,7 +10,6 @@
 #import <HLKit/HKFolder.h>
 #import <TextureKit/TKFoundationAdditions.h>
 #import "HKPrivateInterfaces.h"
-#import <HLKit/HKFileHandle.h>
 #include <HL/HL.h>
 #include <CoreServices/CoreServices.h>
 
@@ -34,7 +33,8 @@ using namespace HLLib::Streams;
 {
 @private
 	const CDirectoryFile *_privateData;
-	HKFileHandle *_fH;
+	NSFileHandle *_fH;
+	NSURL *_fileURL;
 	IStream *_iS;
 }
 
@@ -203,7 +203,8 @@ using namespace HLLib::Streams;
 	
 	if (resultingPath) *resultingPath = aPath;
 	
-	_fH = [HKFileHandle fileHandleForWritingAtPath:aPath];
+	_fH = [NSFileHandle fileHandleForWritingAtPath:aPath];
+	_fileURL = [NSURL fileURLWithPath:aPath];
 	if (_fH == nil) {
 		NSLog(@"[%@ %@] failed to create fileHandle at path == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), aPath);
 		return NO;
@@ -286,7 +287,7 @@ using namespace HLLib::Streams;
 	_privateData->GetPackage()->ReleaseStream(_iS);
 	_iS = 0;
 	
-	NSString *filePath = (_fH).path;
+	NSString *filePath = _fileURL.path;
 	
 	[_fH closeFile];
 	_fH = nil;
@@ -321,7 +322,7 @@ using namespace HLLib::Streams;
 	}
 	if (assureUniqueFilename) aPath = aPath.stringByAssuringUniqueFilename;
 	
-	HKFileHandle *fileHandle = [HKFileHandle fileHandleForWritingAtPath:aPath];
+	NSFileHandle *fileHandle = [NSFileHandle fileHandleForWritingAtPath:aPath];
 	if (fileHandle == nil) {
 		NSLog(@"[%@ %@] failed to create fileHandle at path == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), aPath);
 		return NO;

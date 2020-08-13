@@ -25,5 +25,3 @@
 #import <HLKit/HKFolder.h>
 #import <HLKit/HKFolderAdditions.h>
 
-#import <HLKit/HKFileHandle.h>
-
