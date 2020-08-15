@@ -19,8 +19,6 @@
 .objc_class_name_HKFile
 .objc_class_name_HKFolder
 
-.objc_class_name_HKFileHandle
-
 _HKErrorDomain
 _HKErrorMessageKey
 _HKSystemErrorMessageKey

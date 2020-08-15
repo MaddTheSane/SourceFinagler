@@ -40,7 +40,7 @@ typedef NS_OPTIONS(NSUInteger, TKImageContentMask) {
 };
 
 
-static inline TKImageContentMask TKImageContentMaskForImage(TKImage *anImage) {
+__unused static inline TKImageContentMask TKImageContentMaskForImage(TKImage *anImage) {
 	TKImageContentMask imageContentMask = 0;
 	if (anImage.depthTexture) imageContentMask |= TKImageContentSlicesMask;
 	if (anImage.cubemap || anImage.isSpheremap) imageContentMask |= TKImageContentFacesMask;
