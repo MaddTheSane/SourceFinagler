@@ -203,7 +203,10 @@ static BOOL vtfInitialized = NO;
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	static NSArray *types = nil;
-	if (types == nil) types = [[NSArray alloc] initWithObjects:TKVTFType, nil];
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		types = [[NSArray alloc] initWithObjects:TKVTFType, nil];
+	});
 	return types;
 }
 
@@ -215,7 +218,10 @@ static BOOL vtfInitialized = NO;
 //	NSLog(@"[%@ %@] superTypes == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), superTypes);
 	
 	static NSArray *fileTypes = nil;
-	if (fileTypes == nil) fileTypes = [[NSArray alloc] initWithObjects:TKVTFFileType, nil];
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		fileTypes = [[NSArray alloc] initWithObjects:TKVTFFileType, nil];
+	});
 	return fileTypes;
 }
 
@@ -224,14 +230,14 @@ static BOOL vtfInitialized = NO;
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	static NSArray *imageUnfilteredPasteboardTypes = nil;
-	
-	if (imageUnfilteredPasteboardTypes == nil) {
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
 		NSArray *types = [super imageUnfilteredPasteboardTypes];
 #if TK_DEBUG
 //		NSLog(@"[%@ %@] super's imageUnfilteredPasteboardTypes == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), types);
 #endif
 		imageUnfilteredPasteboardTypes = [types arrayByAddingObject:TKVTFPboardType];
-	}
+	});
 	return imageUnfilteredPasteboardTypes;
 }
 
@@ -248,7 +254,7 @@ static BOOL vtfInitialized = NO;
 	if (aData.length < 4) return NO;
 	OSType magic = 0;
 	[aData getBytes:&magic length:sizeof(magic)];
-	magic = NSSwapBigIntToHost(magic);
+	magic = CFSwapInt32BigToHost(magic);
 	return (magic == TKVTFMagic);
 }
 

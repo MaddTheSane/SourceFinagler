@@ -9,8 +9,10 @@
 #ifndef SUVERSIONCOMPARISONPROTOCOL_H
 #define SUVERSIONCOMPARISONPROTOCOL_H
 
-#import <Cocoa/Cocoa.h>
-#import "SUExport.h"
+#import <Foundation/Foundation.h>
+#import <Sparkle/SUExport.h>
+
+NS_ASSUME_NONNULL_BEGIN
 
 /*!
     Provides version comparison facilities for Sparkle.
@@ -27,4 +29,5 @@
 
 @end
 
+NS_ASSUME_NONNULL_END
 #endif

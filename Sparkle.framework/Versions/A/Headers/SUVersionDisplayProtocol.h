@@ -6,8 +6,8 @@
 //  Copyright 2009 Elgato Systems GmbH. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
-#import "SUExport.h"
+#import <Foundation/Foundation.h>
+#import <Sparkle/SUExport.h>
 
 /*!
     Applies special display formatting to version numbers.
@@ -20,6 +20,6 @@
     Both versions are provided so that important distinguishing information
     can be displayed while also leaving out unnecessary/confusing parts.
 */
-- (void)formatVersion:(NSString **)inOutVersionA andVersion:(NSString **)inOutVersionB;
+- (void)formatVersion:(NSString *_Nonnull*_Nonnull)inOutVersionA andVersion:(NSString *_Nonnull*_Nonnull)inOutVersionB;
 
 @end
