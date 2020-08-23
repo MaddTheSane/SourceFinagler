@@ -1557,7 +1557,6 @@
 		C1E936931606A83F0056438A /* Color.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Color.cpp; sourceTree = "<group>"; };
 		C1E936951606A8550056438A /* Matrix.cpp */ = {isa = PBXFileReference; fileEncoding = 12; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 2; path = Matrix.cpp; sourceTree = "<group>"; };
 		C1E936971606A8820056438A /* Vector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vector.cpp; sourceTree = "<group>"; };
-		C1E9369C1606AAB30056438A /* ValveTextureFormat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ValveTextureFormat.h; sourceTree = "<group>"; };
 		C1E936A11606AC4B0056438A /* nvtt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = nvtt.cpp; sourceTree = "<group>"; };
 		C1E936A21606AC4B0056438A /* nvtt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nvtt.h; sourceTree = "<group>"; };
 		C1EEE1991450A6D700CB8ED6 /* TKGrayscaleFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKGrayscaleFilter.h; sourceTree = "<group>"; };
@@ -3612,7 +3611,6 @@
 				C1FEA926125E723B00CA78FF /* Quantize.cpp */,
 				C1FEA925125E723B00CA78FF /* PsdFile.h */,
 				C1FEA928125E723B00CA78FF /* TgaFile.h */,
-				C1E9369C1606AAB30056438A /* ValveTextureFormat.h */,
 			);
 			name = unused;
 			sourceTree = "<group>";
