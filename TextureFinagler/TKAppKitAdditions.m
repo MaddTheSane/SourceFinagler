@@ -415,7 +415,7 @@ static NSView *blankView() {
 @implementation NSWorkspace (TKAdditions)
 
 // TODO: For 10.5+, rewrite to use Scripting Bridge rather than NSAppleScript
-- (BOOL)revealInFinder:(NSArray *)filePaths {
+- (BOOL)revealInFinder:(NSArray<NSString*> *)filePaths {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -454,8 +454,11 @@ static NSView *blankView() {
 			return appURLs.firstObject.path;
 		}
 	}
-	if (aBundleIdentifier || aNameWithDotApp || creator) {
-		FSRef fileRef;
+	if (aBundleIdentifier && !(aNameWithDotApp || creator)) {
+		NSArray<NSURL*> *urlArray = CFBridgingRelease(LSCopyApplicationURLsForBundleIdentifier((__bridge CFStringRef)aBundleIdentifier, NULL));
+		absolutePath = urlArray.firstObject.path;
+	} else if (aBundleIdentifier || aNameWithDotApp || creator) {
+		CFURLRef fileRef;
 		OSType creatorCode = kLSUnknownCreator;
 		if (creator) {
 			OSType creatorType = NSHFSTypeCodeFromFileType(creator);
@@ -465,10 +468,12 @@ static NSView *blankView() {
 		}
 		
 		OSStatus status = noErr;
-		status = LSFindApplicationForInfo(creatorCode, (aBundleIdentifier ? (__bridge CFStringRef)aBundleIdentifier : NULL), (aNameWithDotApp ? (__bridge CFStringRef)aNameWithDotApp : NULL), &fileRef, NULL);
+		status = LSFindApplicationForInfo(creatorCode, (aBundleIdentifier ? (__bridge CFStringRef)aBundleIdentifier : NULL), (aNameWithDotApp ? (__bridge CFStringRef)aNameWithDotApp : NULL), NULL, &fileRef);
 		
 		if (status == noErr) {
-			absolutePath = [NSString stringWithFSRef:&fileRef];
+			NSURL *aFile = (__bridge NSURL*)fileRef;
+			absolutePath = aFile.path;
+			CFRelease(fileRef);
 		}
 	}
 	return absolutePath;

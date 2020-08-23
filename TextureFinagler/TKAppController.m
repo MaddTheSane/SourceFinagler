@@ -316,13 +316,13 @@ static NSArray *appClassNames = nil;
 	currentVersion = [[[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey] integerValue];
 	
 	if (currentVersion > previousVersion || needSourceAddonFinaglerRegister) {
-		NSString *sourceAddonFinaglerPath = [[NSBundle mainBundle] pathForResource:@"Source Addon Finagler" ofType:@"app"];
-		if (sourceAddonFinaglerPath) {
-			OSStatus status = LSRegisterURL((__bridge CFURLRef)[NSURL fileURLWithPath:sourceAddonFinaglerPath], true);
+		NSURL *sourceAddonFinaglerURL = [[NSBundle mainBundle] URLForResource:@"Source Addon Finagler" withExtension:@"app"];
+		if (sourceAddonFinaglerURL) {
+			OSStatus status = LSRegisterURL((__bridge CFURLRef)sourceAddonFinaglerURL, true);
 			if (status) {
 				NSLog(@"[%@ %@] LSRegisterURL() returned %d", NSStringFromClass([self class]), NSStringFromSelector(_cmd), (int)status);
 			} else {
-				[[NSUserDefaults standardUserDefaults] setObject:@(currentVersion) forKey:TKLastSourceAddonFinaglerVersionKey];
+				[[NSUserDefaults standardUserDefaults] setInteger:currentVersion forKey:TKLastSourceAddonFinaglerVersionKey];
 			}
 		}
 	}
@@ -612,7 +612,7 @@ static NSArray *appClassNames = nil;
 }
 
 - (IBAction)email:(id)sender {
-	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[[NSString stringWithFormat:TKEmailDynamicURLString, NSUserName()] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[[NSString stringWithFormat:TKEmailDynamicURLString, NSUserName()] stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet]]];
 }
 
 - (IBAction)chat:(id)sender {

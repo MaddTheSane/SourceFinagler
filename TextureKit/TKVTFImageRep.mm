@@ -178,7 +178,7 @@ NSString * const TKVTFFileType		= @"vtf";
 NSString * const TKVTFPboardType	= @"com.valvesoftware.source.vtf";
 
 
-@interface TKVTFImageRep (TKPrivate)
+@interface TKVTFImageRep ()
 + (NSArray *)imageRepsWithData:(NSData *)aData firstRepresentationOnly:(BOOL)firstRepOnly;
 @end
 
