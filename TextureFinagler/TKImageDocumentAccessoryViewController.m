@@ -35,7 +35,7 @@ static NSString * const TKImageDocumentJPEG2000QualityKey			= @"TKImageDocumentJ
 static NSString * const TKImageDocumentSaveAlphaKey					= @"TKImageDocumentSaveAlpha";
 
 
-static NSMutableDictionary *displayNameAndUTITypes = nil;
+static NSMutableDictionary<NSString*,NSString*> *displayNameAndUTITypes = nil;
 
 
 
@@ -83,21 +83,21 @@ static NSMutableDictionary *displayNameAndUTITypes = nil;
 		document = aDocument;
 		self.image = document.image;
 		
-		self.imageUTType = [[NSUserDefaults standardUserDefaults] objectForKey:TKImageDocumentLastSavedFormatTypeKey];
+		self.imageUTType = [[NSUserDefaults standardUserDefaults] stringForKey:TKImageDocumentLastSavedFormatTypeKey];
 		
 		if (imageUTTypes == nil) imageUTTypes = [[document class] writableTypes];
 		
-		vtfFormat = [[[NSUserDefaults standardUserDefaults] objectForKey:TKImageDocumentVTFFormatKey] unsignedIntegerValue];
-		ddsFormat = [[[NSUserDefaults standardUserDefaults] objectForKey:TKImageDocumentDDSFormatKey] unsignedIntegerValue];
+		vtfFormat = [[NSUserDefaults standardUserDefaults] integerForKey:TKImageDocumentVTFFormatKey];
+		ddsFormat = [[NSUserDefaults standardUserDefaults] integerForKey:TKImageDocumentDDSFormatKey];
 		
-		tiffCompression = [[[NSUserDefaults standardUserDefaults] objectForKey:TKImageDocumentTIFFCompressionKey] unsignedIntegerValue];
+		tiffCompression = [[NSUserDefaults standardUserDefaults] integerForKey:TKImageDocumentTIFFCompressionKey];
 		
-		jpegQuality = [[[NSUserDefaults standardUserDefaults] objectForKey:TKImageDocumentJPEGQualityKey] doubleValue];
-		jpeg2000Quality = [[[NSUserDefaults standardUserDefaults] objectForKey:TKImageDocumentJPEG2000QualityKey] doubleValue];
+		jpegQuality = [[NSUserDefaults standardUserDefaults] doubleForKey:TKImageDocumentJPEGQualityKey];
+		jpeg2000Quality = [[NSUserDefaults standardUserDefaults] doubleForKey:TKImageDocumentJPEG2000QualityKey];
 		
-		saveAlpha = [[[NSUserDefaults standardUserDefaults] objectForKey:TKImageDocumentSaveAlphaKey] boolValue];
+		saveAlpha = [[NSUserDefaults standardUserDefaults] boolForKey:TKImageDocumentSaveAlphaKey];
 		
-		generateMipmaps = [[[NSUserDefaults standardUserDefaults] objectForKey:TKImageDocumentGenerateMipmapsKey] boolValue];
+		generateMipmaps = [[NSUserDefaults standardUserDefaults] boolForKey:TKImageDocumentGenerateMipmapsKey];
 	}
 	return self;
 }
@@ -193,7 +193,7 @@ static NSMutableDictionary *displayNameAndUTITypes = nil;
 	
 	if (filenameExtensions.count) {
 		filenameExtension = filenameExtensions[0];
-		if (filenameExtension) savePanel.allowedFileTypes = @[filenameExtension];
+		if (filenameExtension) savePanel.allowedFileTypes = @[filenameExtension, utiType];
 	}
 	
 	if ([imageUTType isEqual:TKDDSType] ||
@@ -290,13 +290,13 @@ static NSMutableDictionary *displayNameAndUTITypes = nil;
 #endif
 	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 	[userDefaults setObject:imageUTType forKey:TKImageDocumentLastSavedFormatTypeKey];
-	[userDefaults setObject:@(vtfFormat) forKey:TKImageDocumentVTFFormatKey];
-	[userDefaults setObject:@(ddsFormat) forKey:TKImageDocumentDDSFormatKey];
-	[userDefaults setObject:@(jpegQuality) forKey:TKImageDocumentJPEGQualityKey];
-	[userDefaults setObject:@(jpeg2000Quality) forKey:TKImageDocumentJPEG2000QualityKey];
-	[userDefaults setObject:@(tiffCompression) forKey:TKImageDocumentTIFFCompressionKey];
-	[userDefaults setObject:@(saveAlpha) forKey:TKImageDocumentSaveAlphaKey];
-	[userDefaults setObject:@(generateMipmaps) forKey:TKImageDocumentGenerateMipmapsKey];
+	[userDefaults setInteger:vtfFormat forKey:TKImageDocumentVTFFormatKey];
+	[userDefaults setInteger:ddsFormat forKey:TKImageDocumentDDSFormatKey];
+	[userDefaults setDouble:jpegQuality forKey:TKImageDocumentJPEGQualityKey];
+	[userDefaults setDouble:jpeg2000Quality forKey:TKImageDocumentJPEG2000QualityKey];
+	[userDefaults setInteger:tiffCompression forKey:TKImageDocumentTIFFCompressionKey];
+	[userDefaults setBool:saveAlpha forKey:TKImageDocumentSaveAlphaKey];
+	[userDefaults setBool:generateMipmaps forKey:TKImageDocumentGenerateMipmapsKey];
 }
 
 
@@ -304,7 +304,7 @@ static NSMutableDictionary *displayNameAndUTITypes = nil;
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	NSMutableDictionary *imgProperties = [NSMutableDictionary dictionary];
+	NSMutableDictionary *imgProperties = [NSMutableDictionary dictionaryWithCapacity:3];
 	
 	BOOL imageHasAlpha = image.hasAlpha;
 	
