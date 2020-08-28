@@ -461,7 +461,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	if ([[[NSUserDefaults standardUserDefaults] objectForKey:TKImageDocumentDoNotShowWarningAgainKey] boolValue] == NO) {
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:TKImageDocumentDoNotShowWarningAgainKey] == NO) {
 		NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"The image-creation and manipulation feature is still a work in progress.", @"")
 									   informativeText:NSLocalizedString(@"Many operations do not work properly yet.", @"")
 										   firstButton:NSLocalizedString(@"OK", @"")
@@ -471,17 +471,10 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 		[alert setShowsSuppressionButton:YES];
 		
 		[alert beginSheetModalForWindow:imageWindow completionHandler:^(NSModalResponse returnCode) {
-			[self alertDidEnd:alert returnCode:returnCode contextInfo:NULL];
+			if (alert.suppressionButton.state == NSOnState) {
+				[[NSUserDefaults standardUserDefaults] setBool:YES forKey:TKImageDocumentDoNotShowWarningAgainKey];
+			}
 		}];
-	}
-}
-
-- (void)alertDidEnd:(NSAlert *)alert returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
-#if TK_DEBUG
-	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-#endif
-	if (alert.suppressionButton.state == NSOnState) {
-		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:TKImageDocumentDoNotShowWarningAgainKey];
 	}
 }
 
