@@ -20,6 +20,7 @@
 #define TK_DEBUG 1
 
 static NSSet *nonImageUTTypes = nil;
+static NSSet *ourImageUTTypes = nil;
 NSString * const TKApplicationBundleIdentifier = @"com.markdouma.SourceFinagler";
 
 
@@ -47,6 +48,7 @@ NSString * const TKApplicationBundleIdentifier = @"com.markdouma.SourceFinagler"
 			}
 		}
 		nonImageUTTypes = [NSSet setWithArray:supportedDocTypes];
+		ourImageUTTypes = [NSSet setWithArray:@[@"com.valvesoftware.source.vtf", TKSFTextureImageType]];
 	}
 }
 
@@ -129,7 +131,7 @@ NSString * const TKApplicationBundleIdentifier = @"com.markdouma.SourceFinagler"
 - (NSString *)displayNameForType:(NSString *)typeName {
 //	NSLog(@"[%@ %@] typeName == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), typeName);
 	
-	if ([nonImageUTTypes containsObject:typeName]) {
+	if ([nonImageUTTypes containsObject:typeName] || [ourImageUTTypes containsObject:typeName]) {
 		return [super displayNameForType:typeName];
 	}
     return TKImageIOLocalizedString(typeName);
