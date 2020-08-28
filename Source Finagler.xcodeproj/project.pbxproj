@@ -151,9 +151,7 @@
 		C1097AD1125FA15300D60D27 /* colourblock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1FEA994125E766800CA78FF /* colourblock.cpp */; };
 		C1097AD2125FA15400D60D27 /* colourset.h in Headers */ = {isa = PBXBuildFile; fileRef = C1FEA999125E766800CA78FF /* colourset.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C1097AD3125FA15500D60D27 /* colourset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1FEA998125E766800CA78FF /* colourset.cpp */; };
-		C1097AD6125FA15700D60D27 /* simd_sse.h in Headers */ = {isa = PBXBuildFile; fileRef = C1FEA9A3125E766800CA78FF /* simd_sse.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C1097AD7125FA15700D60D27 /* simd_ve.h in Headers */ = {isa = PBXBuildFile; fileRef = C1FEA9A4125E766800CA78FF /* simd_ve.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C1097AD8125FA15800D60D27 /* simd.h in Headers */ = {isa = PBXBuildFile; fileRef = C1FEA9A5125E766800CA78FF /* simd.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C1097AD6125FA15700D60D27 /* simd.h in Headers */ = {isa = PBXBuildFile; fileRef = C1FEA9A3125E766800CA78FF /* simd.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C1097AE2125FA18200D60D27 /* ConvolveKernel.cu in Resources */ = {isa = PBXBuildFile; fileRef = C1FEA97F125E763700CA78FF /* ConvolveKernel.cu */; };
 		C1097AE3125FA18200D60D27 /* CompressKernel.cu in Resources */ = {isa = PBXBuildFile; fileRef = C1FEA97E125E763700CA78FF /* CompressKernel.cu */; };
 		C10A898D16026EB200791BEC /* HKFolderAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = C1F153CD1396699600E32057 /* HKFolderAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1734,9 +1732,7 @@
 		C1FEA9A0125E766800CA78FF /* rangefit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rangefit.cpp; sourceTree = "<group>"; };
 		C1FEA9A1125E766800CA78FF /* rangefit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rangefit.h; sourceTree = "<group>"; };
 		C1FEA9A2125E766800CA78FF /* simd_3dnow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simd_3dnow.h; sourceTree = "<group>"; };
-		C1FEA9A3125E766800CA78FF /* simd_sse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = simd_sse.h; sourceTree = "<group>"; };
-		C1FEA9A4125E766800CA78FF /* simd_ve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = simd_ve.h; sourceTree = "<group>"; };
-		C1FEA9A5125E766800CA78FF /* simd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = simd.h; sourceTree = "<group>"; };
+		C1FEA9A3125E766800CA78FF /* simd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = simd.h; sourceTree = "<group>"; };
 		C1FEA9A6125E766800CA78FF /* singlechannelfit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = singlechannelfit.cpp; sourceTree = "<group>"; };
 		C1FEA9A7125E766800CA78FF /* singlechannelfit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = singlechannelfit.h; sourceTree = "<group>"; };
 		C1FEA9A8125E766800CA78FF /* singlecolourfit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = singlecolourfit.cpp; sourceTree = "<group>"; };
@@ -3643,29 +3639,28 @@
 				C1FEA9AD125E766800CA78FF /* weightedclusterfit.cpp */,
 				C1FEA997125E766800CA78FF /* colourfit.h */,
 				C1FEA996125E766800CA78FF /* colourfit.cpp */,
+				C1FEA992125E766800CA78FF /* clusterfit.h */,
+				C1FEA991125E766800CA78FF /* clusterfit.cpp */,
 				C1FEA99F125E766800CA78FF /* maths.h */,
 				C1FEA99E125E766800CA78FF /* maths.cpp */,
 				C1FEA995125E766800CA78FF /* colourblock.h */,
 				C1FEA994125E766800CA78FF /* colourblock.cpp */,
 				C1FEA999125E766800CA78FF /* colourset.h */,
 				C1FEA998125E766800CA78FF /* colourset.cpp */,
-				C1FEA9A3125E766800CA78FF /* simd_sse.h */,
-				C1FEA9A4125E766800CA78FF /* simd_ve.h */,
-				C1FEA9A5125E766800CA78FF /* simd.h */,
+				C1FEA9A3125E766800CA78FF /* simd.h */,
 				C1FEA993125E766800CA78FF /* CMakeLists.txt */,
 				C1FEA954125E757100CA78FF /* unused */,
 			);
 			name = Squish;
 			path = squish;
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		C1FEA954125E757100CA78FF /* unused */ = {
 			isa = PBXGroup;
 			children = (
 				C1FEA990125E766800CA78FF /* alpha.h */,
 				C1FEA98F125E766800CA78FF /* alpha.cpp */,
-				C1FEA992125E766800CA78FF /* clusterfit.h */,
-				C1FEA991125E766800CA78FF /* clusterfit.cpp */,
 				C1FEA9A1125E766800CA78FF /* rangefit.h */,
 				C1FEA9A0125E766800CA78FF /* rangefit.cpp */,
 				C1FEA9A7125E766800CA78FF /* singlechannelfit.h */,
@@ -4014,9 +4009,7 @@
 				C1097AC6125FA14700D60D27 /* config.h in Headers */,
 				C1097AD0125FA15200D60D27 /* colourblock.h in Headers */,
 				C1097ACE125FA15000D60D27 /* maths.h in Headers */,
-				C1097AD7125FA15700D60D27 /* simd_ve.h in Headers */,
-				C1097AD6125FA15700D60D27 /* simd_sse.h in Headers */,
-				C1097AD8125FA15800D60D27 /* simd.h in Headers */,
+				C1097AD6125FA15700D60D27 /* simd.h in Headers */,
 				C1097ACC125FA14E00D60D27 /* colourfit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
