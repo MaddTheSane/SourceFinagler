@@ -448,16 +448,13 @@ static NSView *blankView() {
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	NSString *absolutePath = nil;
-	if (aBundleIdentifier && !aNameWithDotApp && !creator) {
+	if (aBundleIdentifier && !(aNameWithDotApp || creator)) {
 		NSArray<NSURL*> *appURLs = CFBridgingRelease(LSCopyApplicationURLsForBundleIdentifier((__bridge CFStringRef)aBundleIdentifier, NULL));
 		if (appURLs && appURLs.count > 0) {
 			return appURLs.firstObject.path;
 		}
 	}
-	if (aBundleIdentifier && !(aNameWithDotApp || creator)) {
-		NSArray<NSURL*> *urlArray = CFBridgingRelease(LSCopyApplicationURLsForBundleIdentifier((__bridge CFStringRef)aBundleIdentifier, NULL));
-		absolutePath = urlArray.firstObject.path;
-	} else if (aBundleIdentifier || aNameWithDotApp || creator) {
+	if (aBundleIdentifier || aNameWithDotApp || creator) {
 		CFURLRef fileRef;
 		OSType creatorCode = kLSUnknownCreator;
 		if (creator) {

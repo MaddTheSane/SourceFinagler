@@ -1682,7 +1682,6 @@
 		C1FEA96A125E75C000CA78FF /* Context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Context.h; sourceTree = "<group>"; };
 		C1FEA96B125E75C000CA78FF /* InputOptions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InputOptions.cpp; sourceTree = "<group>"; };
 		C1FEA96C125E75C000CA78FF /* InputOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputOptions.h; sourceTree = "<group>"; };
-		C1FEA96D125E75C000CA78FF /* NVTextureTools.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NVTextureTools.cpp; sourceTree = "<group>"; };
 		C1FEA96E125E75C000CA78FF /* NVTextureTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVTextureTools.h; sourceTree = "<group>"; };
 		C1FEA96F125E75C000CA78FF /* nvtt_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = nvtt_wrapper.cpp; sourceTree = "<group>"; };
 		C1FEA970125E75C000CA78FF /* nvtt_wrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nvtt_wrapper.h; sourceTree = "<group>"; };
@@ -3245,14 +3244,6 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		C1E936A81606ACB60056438A /* unused */ = {
-			isa = PBXGroup;
-			children = (
-				C1FEA96D125E75C000CA78FF /* NVTextureTools.cpp */,
-			);
-			name = unused;
-			sourceTree = "<group>";
-		};
 		C1EEE1C11450ABEF00CB8ED6 /* filter */ = {
 			isa = PBXGroup;
 			children = (
@@ -3537,7 +3528,6 @@
 				C1FEA953125E756500CA78FF /* Squish */,
 				C1FEA959125E75C000CA78FF /* CMakeLists.txt */,
 				C1FEA9AF125E774800CA78FF /* Resources */,
-				C1E936A81606ACB60056438A /* unused */,
 				C1FEA955125E757B00CA78FF /* bc6h */,
 				554FE5FB1FC9FF8A00727CE0 /* bc7 */,
 			);
