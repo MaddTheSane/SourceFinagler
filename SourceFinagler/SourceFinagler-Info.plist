@@ -1762,27 +1762,6 @@
 		<dict>
 			<key>UTTypeConformsTo</key>
 			<array>
-				<string>public.image</string>
-			</array>
-			<key>UTTypeDescription</key>
-			<string>Microsoft DDS Image</string>
-			<key>UTTypeIconFile</key>
-			<string>DDS</string>
-			<key>UTTypeIdentifier</key>
-			<string>com.microsoft.dds</string>
-			<key>UTTypeReferenceURL</key>
-			<string></string>
-			<key>UTTypeTagSpecification</key>
-			<dict>
-				<key>public.filename-extension</key>
-				<array>
-					<string>dds</string>
-				</array>
-			</dict>
-		</dict>
-		<dict>
-			<key>UTTypeConformsTo</key>
-			<array>
 				<string>public.source-code</string>
 			</array>
 			<key>UTTypeDescription</key>
@@ -1819,26 +1798,6 @@
 				<key>public.filename-extension</key>
 				<array>
 					<string>nuc</string>
-				</array>
-			</dict>
-		</dict>
-		<dict>
-			<key>UTTypeConformsTo</key>
-			<array>
-				<string>public.data</string>
-				<string>public.executable</string>
-			</array>
-			<key>UTTypeDescription</key>
-			<string>Linux dynamic library</string>
-			<key>UTTypeIconFile</key>
-			<string>SO</string>
-			<key>UTTypeIdentifier</key>
-			<string>public.linux-so</string>
-			<key>UTTypeTagSpecification</key>
-			<dict>
-				<key>public.filename-extension</key>
-				<array>
-					<string>so</string>
 				</array>
 			</dict>
 		</dict>
@@ -1887,28 +1846,6 @@
 		<dict>
 			<key>UTTypeConformsTo</key>
 			<array>
-				<string>public.data</string>
-				<string>public.3d-content</string>
-			</array>
-			<key>UTTypeDescription</key>
-			<string>Digital Asset Exchange (DAE)</string>
-			<key>UTTypeIconFile</key>
-			<string>DAE</string>
-			<key>UTTypeIdentifier</key>
-			<string>org.khronos.collada.digital-asset-exchange</string>
-			<key>UTTypeReferenceURL</key>
-			<string></string>
-			<key>UTTypeTagSpecification</key>
-			<dict>
-				<key>public.filename-extension</key>
-				<array>
-					<string>dae</string>
-				</array>
-			</dict>
-		</dict>
-		<dict>
-			<key>UTTypeConformsTo</key>
-			<array>
 				<string>com.apple.package</string>
 				<string>public.composite-content</string>
 				<string>public.3d-content</string>
@@ -1926,6 +1863,80 @@
 				<key>public.filename-extension</key>
 				<array>
 					<string>daed</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
+	<key>UTImportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.image</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Microsoft DDS Image</string>
+			<key>UTTypeIconFile</key>
+			<string>DDS</string>
+			<key>UTTypeIdentifier</key>
+			<string>com.microsoft.dds</string>
+			<key>UTTypeReferenceURL</key>
+			<string></string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>com.apple.nspboard-type</key>
+				<array>
+					<string>com.microsoft.dds</string>
+				</array>
+				<key>public.filename-extension</key>
+				<array>
+					<string>dds</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+				<string>public.3d-content</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Digital Asset Exchange (DAE)</string>
+			<key>UTTypeIconFile</key>
+			<string>DAE</string>
+			<key>UTTypeIdentifier</key>
+			<string>org.khronos.collada.digital-asset-exchange</string>
+			<key>UTTypeReferenceURL</key>
+			<string></string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>dae</string>
+				</array>
+				<key>public.mime-type</key>
+				<array>
+					<string>model/vnd.collada+xml</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+				<string>public.executable</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Linux dynamic library</string>
+			<key>UTTypeIconFile</key>
+			<string>SO</string>
+			<key>UTTypeIdentifier</key>
+			<string>public.linux-so</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>so</string>
 				</array>
 			</dict>
 		</dict>

@@ -303,7 +303,10 @@ static TKDDSFormat defaultDDSFormat = TKDDSFormatDefault;
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	static NSArray *types = nil;
-	if (types == nil) types = [[NSArray alloc] initWithObjects:TKDDSType, nil];
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		types = @[TKDDSType];
+	});
 	return types;
 }
 
@@ -668,11 +671,11 @@ static TKDDSFormat defaultDDSFormat = TKDDSFormatDefault;
 	return [ddsData copy];
 }
 
-static unsigned char *TKCreateRGBADataFromColor32(Color32 *pixels, NSUInteger pixelCount, NSUInteger bitsPerPixel, NSUInteger *length) CF_RETURNS_RETAINED;
+static unsigned char *TKCreateRGBADataFromColor32(const Color32 *pixels, NSUInteger pixelCount, NSUInteger bitsPerPixel, NSUInteger *length);
 
 //static unsigned char *TKCreateRGBADataFromColor32(Color32 *pixels, NSUInteger pixelCount, NSUInteger bitsPerPixel, NSUInteger *length) NS_RETURNS_RETAINED;
 
-static unsigned char *TKCreateRGBADataFromColor32(Color32 *pixels, NSUInteger pixelCount, NSUInteger bitsPerPixel, NSUInteger *length) {
+static unsigned char *TKCreateRGBADataFromColor32(const Color32 *pixels, NSUInteger pixelCount, NSUInteger bitsPerPixel, NSUInteger *length) {
 	if (pixels == NULL || pixelCount == 0 || bitsPerPixel == 0 || (bitsPerPixel != 24 && bitsPerPixel != 32) || length == NULL) {
 		NSLog(@"TKCreateRGBADataFromColor32() invalid parameters!");
 		return NULL;
@@ -693,10 +696,8 @@ static unsigned char *TKCreateRGBADataFromColor32(Color32 *pixels, NSUInteger pi
 	
 	cp[3] = 0xff;	// default alpha if alpha channel isn't present
 	
-	Color32 pixel;
-	
 	for (unsigned int i = 0; i < pixelCount; i++) {
-		pixel = pixels[i];
+		const Color32 & pixel = pixels[i];
 		cp[0] = pixel.r;	/* set R component of col	*/
 		cp[1] = pixel.g;	/* set G component of col	*/
 		cp[2] = pixel.b;	/* set B component of col	*/
