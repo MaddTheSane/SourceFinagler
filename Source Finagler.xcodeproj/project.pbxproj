@@ -1623,7 +1623,7 @@
 		C1FEA8DF125E5DC300CA78FF /* NVMath-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NVMath-Info.plist"; sourceTree = "<group>"; };
 		C1FEA8EC125E718D00CA78FF /* Box.h */ = {isa = PBXFileReference; fileEncoding = 12; lastKnownFileType = sourcecode.c.h; lineEnding = 2; path = Box.h; sourceTree = "<group>"; };
 		C1FEA8ED125E718D00CA78FF /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
-		C1FEA8EE125E718D00CA78FF /* Color.h */ = {isa = PBXFileReference; fileEncoding = 12; lastKnownFileType = sourcecode.c.h; lineEnding = 2; path = Color.h; sourceTree = "<group>"; };
+		C1FEA8EE125E718D00CA78FF /* Color.h */ = {isa = PBXFileReference; fileEncoding = 12; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Color.h; sourceTree = "<group>"; };
 		C1FEA8EF125E718D00CA78FF /* Fitting.cpp */ = {isa = PBXFileReference; fileEncoding = 12; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 2; path = Fitting.cpp; sourceTree = "<group>"; };
 		C1FEA8F0125E718D00CA78FF /* Fitting.h */ = {isa = PBXFileReference; fileEncoding = 12; lastKnownFileType = sourcecode.c.h; lineEnding = 2; path = Fitting.h; sourceTree = "<group>"; };
 		C1FEA8F1125E718D00CA78FF /* Half.cpp */ = {isa = PBXFileReference; fileEncoding = 12; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 2; path = Half.cpp; sourceTree = "<group>"; };
@@ -1730,7 +1730,6 @@
 		C1FEA99F125E766800CA78FF /* maths.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = maths.h; sourceTree = "<group>"; };
 		C1FEA9A0125E766800CA78FF /* rangefit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rangefit.cpp; sourceTree = "<group>"; };
 		C1FEA9A1125E766800CA78FF /* rangefit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rangefit.h; sourceTree = "<group>"; };
-		C1FEA9A2125E766800CA78FF /* simd_3dnow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simd_3dnow.h; sourceTree = "<group>"; };
 		C1FEA9A3125E766800CA78FF /* simd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = simd.h; sourceTree = "<group>"; };
 		C1FEA9A6125E766800CA78FF /* singlechannelfit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = singlechannelfit.cpp; sourceTree = "<group>"; };
 		C1FEA9A7125E766800CA78FF /* singlechannelfit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = singlechannelfit.h; sourceTree = "<group>"; };
@@ -3660,7 +3659,6 @@
 				C1FEA9AA125E766800CA78FF /* singlecolourlookup.inl */,
 				C1FEA9AC125E766800CA78FF /* squish.h */,
 				C1FEA9AB125E766800CA78FF /* squish.cpp */,
-				C1FEA9A2125E766800CA78FF /* simd_3dnow.h */,
 			);
 			name = unused;
 			sourceTree = "<group>";

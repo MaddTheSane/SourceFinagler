@@ -137,7 +137,7 @@ BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *cont
 			NSLog(@"MDGetMetadataFromImageWithContentsOfFile(): file at filePath \"%@\" does not appear to be a valid DDS; magic == 0x%x, %@", filePath, (unsigned int)magic, NSFileTypeForHFSTypeCode(magic));
 			return NO;
 		}
-		MemoryInputStream *mis = new MemoryInputStream((unsigned char *)[data bytes], uint([data length]));
+		MemoryInputStream *mis = new MemoryInputStream((const unsigned char *)[data bytes], uint([data length]));
 		
 		DirectDrawSurface *dds = new DirectDrawSurface();
 		dds->load(mis);

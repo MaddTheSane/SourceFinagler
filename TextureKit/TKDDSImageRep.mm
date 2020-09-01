@@ -764,8 +764,7 @@ static unsigned char *TKCreateRGBADataFromColor32(Color32 *pixels, NSUInteger pi
 			NSUInteger length = 0;
 			unsigned char *bytes = TKCreateRGBADataFromColor32(nvImage.pixels(), nvImage.width * nvImage.height, (nvImage.format == Image::Format_ARGB ? 32 : 24), &length);
 			if (bytes) {
-				NSData *convertedData = [[NSData alloc] initWithBytes:bytes length:length];
-				::free(bytes);
+				NSData *convertedData = [[NSData alloc] initWithBytesNoCopy:bytes length:length freeWhenDone:YES];
 				CGDataProviderRef provider = CGDataProviderCreateWithCFData((CFDataRef)convertedData);
 				convertedData = nil;
 				CGColorSpaceRef colorSpace = CGColorSpaceCreateWithName(kCGColorSpaceGenericRGB);
