@@ -682,7 +682,7 @@ static unsigned char *TKCreateRGBADataFromColor32(const Color32 *pixels, NSUInte
 	}
 	NSUInteger newLength = pixelCount * 4;
 	
-	int col;
+	unsigned int col;
 	unsigned char *cp = (unsigned char *)&col;
 	
 	unsigned int *bytes = (unsigned int *)malloc(newLength);
@@ -697,7 +697,7 @@ static unsigned char *TKCreateRGBADataFromColor32(const Color32 *pixels, NSUInte
 	cp[3] = 0xff;	// default alpha if alpha channel isn't present
 	
 	for (unsigned int i = 0; i < pixelCount; i++) {
-		const Color32 & pixel = pixels[i];
+		const Color32 pixel = pixels[i];
 		cp[0] = pixel.r;	/* set R component of col	*/
 		cp[1] = pixel.g;	/* set G component of col	*/
 		cp[2] = pixel.b;	/* set B component of col	*/
@@ -722,7 +722,7 @@ static unsigned char *TKCreateRGBADataFromColor32(const Color32 *pixels, NSUInte
 #if TK_DEBUG
 	NSLog(@"[%@ %@] magic == 0x%x, %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd),  (unsigned int)magic, NSFileTypeForHFSTypeCode(magic));
 #endif
-	MemoryInputStream *mis = new MemoryInputStream((unsigned char *)[aData bytes], uint([aData length]));
+	MemoryInputStream *mis = new MemoryInputStream((const unsigned char *)[aData bytes], uint([aData length]));
 	
 	DirectDrawSurface *dds = new DirectDrawSurface();
 	dds->load(mis);
@@ -768,7 +768,7 @@ static unsigned char *TKCreateRGBADataFromColor32(const Color32 *pixels, NSUInte
 				NSData *convertedData = [[NSData alloc] initWithBytesNoCopy:bytes length:length freeWhenDone:YES];
 				CGDataProviderRef provider = CGDataProviderCreateWithCFData((CFDataRef)convertedData);
 				convertedData = nil;
-				CGColorSpaceRef colorSpace = CGColorSpaceCreateWithName(kCGColorSpaceGenericRGB);
+				CGColorSpaceRef colorSpace = CGColorSpaceCreateWithName(nvImage.sRGB ? kCGColorSpaceSRGB : kCGColorSpaceGenericRGB);
 				NSUInteger bitsPerPixel = (dds->hasAlpha() ? 32 : 24);
 				CGImageRef imageRef = CGImageCreate(nvImage.width,
 													nvImage.height,
