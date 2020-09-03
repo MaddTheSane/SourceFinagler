@@ -211,8 +211,8 @@ NSString * const TKDDSPboardType	= @"com.microsoft.dds";
 
 
 
-@interface TKDDSImageRep (TKPrivate)
-+ (NSArray *)imageRepsWithData:(NSData *)aData firstRepresentationOnly:(BOOL)firstRepOnly;
+@interface TKDDSImageRep ()
++ (NSArray<__kindof NSImageRep*> *)imageRepsWithData:(NSData *)aData firstRepresentationOnly:(BOOL)firstRepOnly;
 @end
 
 
@@ -905,7 +905,7 @@ static unsigned char *TKCreateRGBADataFromColor32(const Color32 *pixels, NSUInte
 @end
 
 
-#pragma pack(1)
+#pragma pack(push,1)
 
 typedef struct TKColor24 {
 	UInt8	x;
@@ -921,7 +921,7 @@ typedef struct TKColor32 {
 	UInt8	w;
 } TKColor32;
 
-#pragma pack()
+#pragma pack(pop)
 
 
 NS_ENUM(uint32_t) {

@@ -22,12 +22,13 @@ NS_ASSUME_NONNULL_BEGIN
 **********************************************************************/
 
 
-typedef NS_ENUM(NSInteger, MDDateFormatterStyle) {    // date and time format styles
-    MDDateFormatterNoStyle		=	kCFDateFormatterNoStyle,
-    MDDateFormatterShortStyle	=	kCFDateFormatterShortStyle,
-    MDDateFormatterMediumStyle	=	kCFDateFormatterMediumStyle,
-    MDDateFormatterLongStyle	=	kCFDateFormatterLongStyle,
-    MDDateFormatterFullStyle	=	kCFDateFormatterFullStyle
+//! date and time format styles
+typedef NS_ENUM(NSInteger, MDDateFormatterStyle) {
+    MDDateFormatterNoStyle		NS_SWIFT_NAME(none) =	kCFDateFormatterNoStyle,
+    MDDateFormatterShortStyle	NS_SWIFT_NAME(short) =	kCFDateFormatterShortStyle,
+    MDDateFormatterMediumStyle	NS_SWIFT_NAME(medium) =	kCFDateFormatterMediumStyle,
+    MDDateFormatterLongStyle	NS_SWIFT_NAME(long) =	kCFDateFormatterLongStyle,
+    MDDateFormatterFullStyle	NS_SWIFT_NAME(full) =	kCFDateFormatterFullStyle
 };
 
 IB_DESIGNABLE

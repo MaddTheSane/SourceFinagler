@@ -245,6 +245,9 @@ static NSDate *MDNilDate = nil;
 	
 	if (date) {
 		returnValue = YES;
+		if (anObject) {
+			*anObject = date;
+		}
 	}
 	
 	return returnValue;
