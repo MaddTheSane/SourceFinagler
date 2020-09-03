@@ -22,6 +22,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		550EB3032500715A006BC291 /* nvconfig.h in Headers */ = {isa = PBXBuildFile; fileRef = C1FEA94B125E73B700CA78FF /* nvconfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		552B5B5024E35FA90077398A /* icbc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552B5B4E24E35FA90077398A /* icbc.cpp */; };
 		552B5B5124E35FA90077398A /* icbc.h in Headers */ = {isa = PBXBuildFile; fileRef = 552B5B4F24E35FA90077398A /* icbc.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		552B5B5224E36BD50077398A /* clusterfit.h in Headers */ = {isa = PBXBuildFile; fileRef = C1FEA992125E766800CA78FF /* clusterfit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1624,7 +1625,7 @@
 		C1FEA8EC125E718D00CA78FF /* Box.h */ = {isa = PBXFileReference; fileEncoding = 12; lastKnownFileType = sourcecode.c.h; lineEnding = 2; path = Box.h; sourceTree = "<group>"; };
 		C1FEA8ED125E718D00CA78FF /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
 		C1FEA8EE125E718D00CA78FF /* Color.h */ = {isa = PBXFileReference; fileEncoding = 12; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Color.h; sourceTree = "<group>"; };
-		C1FEA8EF125E718D00CA78FF /* Fitting.cpp */ = {isa = PBXFileReference; fileEncoding = 12; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 2; path = Fitting.cpp; sourceTree = "<group>"; };
+		C1FEA8EF125E718D00CA78FF /* Fitting.cpp */ = {isa = PBXFileReference; fileEncoding = 12; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 2; path = Fitting.cpp; sourceTree = "<group>"; usesTabs = 1; };
 		C1FEA8F0125E718D00CA78FF /* Fitting.h */ = {isa = PBXFileReference; fileEncoding = 12; lastKnownFileType = sourcecode.c.h; lineEnding = 2; path = Fitting.h; sourceTree = "<group>"; };
 		C1FEA8F1125E718D00CA78FF /* Half.cpp */ = {isa = PBXFileReference; fileEncoding = 12; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 2; path = Half.cpp; sourceTree = "<group>"; };
 		C1FEA8F2125E718D00CA78FF /* Half.h */ = {isa = PBXFileReference; fileEncoding = 12; lastKnownFileType = sourcecode.c.h; lineEnding = 2; path = Half.h; sourceTree = "<group>"; };
@@ -3900,6 +3901,7 @@
 				C1FEA9C9125E88C100CA78FF /* Timer.h in Headers */,
 				C1FEA9CA125E88C300CA78FF /* Utils.h in Headers */,
 				C12B4DAA13B7179C0096FC0E /* ForEach.h in Headers */,
+				550EB3032500715A006BC291 /* nvconfig.h in Headers */,
 				C1E936901606A7E60056438A /* Hash.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4164,8 +4166,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C1C2C5A5127CBCA0003B24F6 /* Build configuration list for PBXNativeTarget "Source Finagler" */;
 			buildPhases = (
-				C1C2C4E2127CBCA0003B24F6 /* Resources */,
 				C1C2C543127CBCA0003B24F6 /* Sources */,
+				C1C2C4E2127CBCA0003B24F6 /* Resources */,
 				C1C2C595127CBCA0003B24F6 /* Frameworks */,
 				C1C2C5A0127CBCA0003B24F6 /* Copy Frameworks */,
 				C1968A0314F5606500ACFD02 /* Copy QuickLook generator */,
