@@ -30,13 +30,13 @@ NSString * const HKErrorDomain				= @"HKErrorDomain";
 NSString * const HKErrorMessageKey			= @"HKErrorMessage";
 NSString * const HKSystemErrorMessageKey	= @"HKSystemErrorMessage";
 
-static BOOL iconsInitialized = NO;
 static NSImage *folderImage = nil;
 static NSImage *fileImage = nil;
 static NSMutableDictionary *icons = nil;
 
 static void HKInitializeIcons() {
-	if (iconsInitialized == NO) {
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
 		icons = [[NSMutableDictionary alloc] init];
 		if (folderImage == nil) {
 			folderImage = [[NSWorkspace sharedWorkspace] iconForFileType:NSFileTypeForHFSTypeCode(kGenericFolderIcon)];
@@ -44,8 +44,7 @@ static void HKInitializeIcons() {
 		if (fileImage == nil) {
 			fileImage = [[NSWorkspace sharedWorkspace] iconForFileType:NSFileTypeForHFSTypeCode(kGenericDocumentIcon)];
 		}
-		iconsInitialized = YES;
-	}
+	});
 }
 
 @implementation HKItem
@@ -55,7 +54,7 @@ static void HKInitializeIcons() {
 #if HK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	if (iconsInitialized == NO) HKInitializeIcons();
+	HKInitializeIcons();
 }
 
 + (NSImage *)iconForItem:(HKItem *)item {
