@@ -153,13 +153,13 @@ TEXTUREKIT_EXTERN NSData * TKSFTextureImageMagicData;
 - (void)generateMipmapsUsingFilter:(TKMipmapGenerationType)filterType;
 - (void)removeMipmaps;
 
-- (NSData *)DDSRepresentationWithOptions:(NSDictionary *)options;
-- (NSData *)DDSRepresentationUsingFormat:(TKDDSFormat)aFormat quality:(TKDXTCompressionQuality)aQuality options:(NSDictionary *)options;
+- (NSData *)DDSRepresentationWithOptions:(NSDictionary<NSString*,id> *)options;
+- (NSData *)DDSRepresentationUsingFormat:(TKDDSFormat)aFormat quality:(TKDXTCompressionQuality)aQuality options:(NSDictionary<NSString*,id> *)options;
 
-- (NSData *)VTFRepresentationWithOptions:(NSDictionary *)options;
-- (NSData *)VTFRepresentationUsingFormat:(TKVTFFormat)aFormat quality:(TKDXTCompressionQuality)aQuality options:(NSDictionary *)options;
+- (NSData *)VTFRepresentationWithOptions:(NSDictionary<NSString*,id> *)options;
+- (NSData *)VTFRepresentationUsingFormat:(TKVTFFormat)aFormat quality:(TKDXTCompressionQuality)aQuality options:(NSDictionary<NSString*,id> *)options;
 
 
-- (NSData *)dataForType:(NSString *)utiType properties:(NSDictionary *)properties;
+- (NSData *)dataForType:(NSString *)utiType properties:(NSDictionary<NSString*,id> *)properties;
 
 @end

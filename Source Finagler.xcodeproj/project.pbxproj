@@ -23,6 +23,7 @@
 
 /* Begin PBXBuildFile section */
 		550EB3032500715A006BC291 /* nvconfig.h in Headers */ = {isa = PBXBuildFile; fileRef = C1FEA94B125E73B700CA78FF /* nvconfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		55195830256F1C36001BFE51 /* Box.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1E936911606A8340056438A /* Box.cpp */; };
 		552B5B5024E35FA90077398A /* icbc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552B5B4E24E35FA90077398A /* icbc.cpp */; };
 		552B5B5124E35FA90077398A /* icbc.h in Headers */ = {isa = PBXBuildFile; fileRef = 552B5B4F24E35FA90077398A /* icbc.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		552B5B5224E36BD50077398A /* clusterfit.h in Headers */ = {isa = PBXBuildFile; fileRef = C1FEA992125E766800CA78FF /* clusterfit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -4863,6 +4864,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				558FACCE20ABB40300AC7001 /* Matrix.cpp in Sources */,
+				55195830256F1C36001BFE51 /* Box.cpp in Sources */,
 				C1FEA9FA125E8A9200CA78FF /* Plane.cpp in Sources */,
 				C1FEA9FD125E8A9700CA78FF /* Half.cpp in Sources */,
 				C1FEA9FE125E8A9900CA78FF /* Fitting.cpp in Sources */,

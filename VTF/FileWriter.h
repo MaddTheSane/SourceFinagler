@@ -27,7 +27,7 @@ namespace VTFLib
 #ifdef _WIN32
 				HANDLE hFile;
 #else
-				vlInt iFile;
+				int iFile;
 #endif
 				vlChar *cFileName;
 
