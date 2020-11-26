@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -630,25 +630,31 @@ CA
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="249" y="648" width="634" height="397"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
             <value key="minSize" type="size" width="634" height="200"/>
             <view key="contentView" id="372" userLabel="view">
                 <rect key="frame" x="0.0" y="0.0" width="634" height="397"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             </view>
             <toolbar key="toolbar" implicitIdentifier="5E64D79F-E0CC-4B69-8E95-4155789842D0" displayMode="iconAndLabel" sizeMode="regular" id="586">
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="8638A3F1-5CDE-41DF-A9EB-0DF60BFE15C4" label="Steam Apps Re-locator " paletteLabel="Steam Apps Re-locator " image="steamApps" selectable="YES" id="594">
+                        <size key="minSize" width="22" height="22"/>
+                        <size key="maxSize" width="22" height="22"/>
                         <connections>
                             <action selector="switchView:" target="494" id="959"/>
                         </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="2DF3C2DB-1A3E-4D80-8564-82D18A95D540" label="Other Apps Helper" paletteLabel="Other Apps Helper" tag="1" image="mouse" selectable="YES" id="732">
+                        <size key="minSize" width="22" height="22"/>
+                        <size key="maxSize" width="22" height="22"/>
                         <connections>
                             <action selector="switchView:" target="494" id="960"/>
                         </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="1D1A58D8-6D29-4802-B0D8-06E64352AAAB" label="Config Copier" paletteLabel="Config Copier" tag="2" image="config" selectable="YES" id="595">
+                        <size key="minSize" width="22" height="22"/>
+                        <size key="maxSize" width="22" height="22"/>
                         <connections>
                             <action selector="switchView:" target="494" id="961"/>
                         </connections>
@@ -670,6 +676,7 @@ CA
             <connections>
                 <outlet property="delegate" destination="494" id="952"/>
             </connections>
+            <point key="canvasLocation" x="14" y="99"/>
         </window>
         <customObject id="494" userLabel="TKAppController" customClass="TKAppController">
             <connections>

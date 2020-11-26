@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17147" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17147"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -227,7 +227,7 @@
             <windowStyleMask key="styleMask" titled="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
             <rect key="contentRect" x="325" y="585" width="540" height="426"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
             <value key="minSize" type="size" width="440" height="146"/>
             <view key="contentView" id="918">
                 <rect key="frame" x="0.0" y="0.0" width="540" height="426"/>
@@ -257,7 +257,7 @@
                         </textFieldCell>
                     </textField>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="919">
-                        <rect key="frame" x="436" y="12" width="90" height="32"/>
+                        <rect key="frame" x="435" y="12" width="92" height="32"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="78" id="d8Z-F4-hZ0"/>
                         </constraints>
@@ -273,9 +273,9 @@ DQ
                         </connections>
                     </button>
                     <box autoresizesSubviews="NO" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="1068">
-                        <rect key="frame" x="20" y="48" width="500" height="286"/>
+                        <rect key="frame" x="20" y="47" width="500" height="287"/>
                         <view key="contentView" id="fdj-xU-eR8">
-                            <rect key="frame" x="0.0" y="0.0" width="500" height="286"/>
+                            <rect key="frame" x="0.0" y="0.0" width="500" height="287"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </view>
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -351,11 +351,11 @@ DQ
                     <rect key="frame" x="0.0" y="0.0" width="500" height="116"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="weB-91-jhW">
-                        <rect key="frame" x="1" y="0.0" width="498" height="115"/>
+                        <rect key="frame" x="1" y="1" width="498" height="114"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" autosaveName="successTableView" headerView="1009" id="947">
-                                <rect key="frame" x="0.0" y="0.0" width="498" height="92"/>
+                                <rect key="frame" x="0.0" y="0.0" width="498" height="91"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -374,7 +374,7 @@ DQ
                                         <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="fileName"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                     </tableColumn>
-                                    <tableColumn identifier="gameName" editable="NO" width="259" minWidth="10" maxWidth="3.4028234663852886e+38" id="951">
+                                    <tableColumn identifier="gameName" editable="NO" width="250" minWidth="10" maxWidth="3.4028234663852886e+38" id="951">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="   Game">
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -396,15 +396,15 @@ DQ
                             </tableView>
                         </subviews>
                     </clipView>
-                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="948">
+                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="948">
                         <rect key="frame" x="1" y="100" width="484" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="949">
+                    <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="949">
                         <rect key="frame" x="485" y="0.0" width="15" height="101"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <tableHeaderView key="headerView" id="1009">
+                    <tableHeaderView key="headerView" wantsLayer="YES" id="1009">
                         <rect key="frame" x="0.0" y="0.0" width="498" height="23"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
@@ -429,11 +429,11 @@ DQ
                     <rect key="frame" x="0.0" y="0.0" width="500" height="116"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="bq1-7C-x60">
-                        <rect key="frame" x="1" y="0.0" width="498" height="115"/>
+                        <rect key="frame" x="1" y="1" width="498" height="114"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" autosaveName="problemTableView" headerView="991" id="967">
-                                <rect key="frame" x="0.0" y="0.0" width="498" height="92"/>
+                                <rect key="frame" x="0.0" y="0.0" width="498" height="91"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -452,7 +452,7 @@ DQ
                                         <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="fileName"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                     </tableColumn>
-                                    <tableColumn identifier="problem" editable="NO" width="309" minWidth="10" maxWidth="3.4028234663852886e+38" id="970">
+                                    <tableColumn identifier="problem" editable="NO" width="300" minWidth="10" maxWidth="3.4028234663852886e+38" id="970">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="   Problem">
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -474,15 +474,15 @@ DQ
                             </tableView>
                         </subviews>
                     </clipView>
-                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="966">
+                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="966">
                         <rect key="frame" x="0.0" y="101" width="485" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="965">
+                    <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="965">
                         <rect key="frame" x="485" y="17" width="15" height="84"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <tableHeaderView key="headerView" id="991">
+                    <tableHeaderView key="headerView" wantsLayer="YES" id="991">
                         <rect key="frame" x="0.0" y="0.0" width="498" height="23"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
@@ -503,7 +503,7 @@ DQ
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
             <rect key="contentRect" x="309" y="906" width="398" height="91"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
             <value key="minSize" type="size" width="398" height="91"/>
             <value key="maxSize" type="size" width="398" height="91"/>
             <view key="contentView" id="368">
@@ -511,7 +511,7 @@ DQ
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="828">
-                        <rect key="frame" x="17" y="54" width="127" height="16"/>
+                        <rect key="frame" x="17" y="55" width="121" height="16"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Install Addon by:" id="829">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -519,7 +519,7 @@ DQ
                         </textFieldCell>
                     </textField>
                     <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="830">
-                        <rect key="frame" x="148" y="48" width="233" height="25"/>
+                        <rect key="frame" x="141" y="48" width="241" height="25"/>
                         <popUpButtonCell key="cell" type="push" title="moving to Addons folder" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="1" imageScaling="proportionallyDown" inset="2" selectedItem="833" id="831">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="menu"/>
@@ -535,7 +535,7 @@ DQ
                         </connections>
                     </popUpButton>
                     <button hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="857">
-                        <rect key="frame" x="148" y="22" width="232" height="18"/>
+                        <rect key="frame" x="142" y="22" width="236" height="18"/>
                         <buttonCell key="cell" type="check" title="Reveal installed Addon(s) in Finder" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="858">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
@@ -580,7 +580,7 @@ DQ
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="235" y="403" width="375" height="117"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
             <view key="contentView" id="1078">
                 <rect key="frame" x="0.0" y="0.0" width="375" height="117"/>
                 <autoresizingMask key="autoresizingMask"/>

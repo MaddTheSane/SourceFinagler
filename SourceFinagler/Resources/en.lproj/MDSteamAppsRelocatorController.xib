@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
-        <capability name="box content view" minToolsVersion="7.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MDSteamAppsRelocatorController">
             <connections>
                 <outlet property="newPathField" destination="500" id="530"/>
-                <outlet property="statusField" destination="512" id="529"/>
                 <outlet property="view" destination="494" id="528"/>
             </connections>
         </customObject>
@@ -20,19 +18,17 @@
             <rect key="frame" x="0.0" y="0.0" width="667" height="397"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <box autoresizesSubviews="NO" title="To relocate your “SteamApps” folder:" id="495">
-                    <rect key="frame" x="17" y="16" width="633" height="302"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                <box autoresizesSubviews="NO" title="To relocate your “SteamApps” folder:" translatesAutoresizingMaskIntoConstraints="NO" id="495">
+                    <rect key="frame" x="17" y="16" width="633" height="301"/>
                     <view key="contentView" id="BK1-jH-iaZ">
-                        <rect key="frame" x="2" y="2" width="629" height="285"/>
+                        <rect key="frame" x="3" y="3" width="627" height="283"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField verticalHuggingPriority="750" id="500">
-                                <rect key="frame" x="80" y="139" width="427" height="22"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="500">
+                                <rect key="frame" x="75" y="139" width="449" height="21"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="525">
                                     <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
@@ -45,18 +41,16 @@
                                     <outlet property="delegate" destination="-2" id="531"/>
                                 </connections>
                             </textField>
-                            <textField verticalHuggingPriority="750" id="501">
-                                <rect key="frame" x="77" y="169" width="200" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="501">
+                                <rect key="frame" x="73" y="168" width="175" height="16"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" title="New “SteamApps” Location:" id="524">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" id="502">
-                                <rect key="frame" x="509" y="132" width="109" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="502">
+                                <rect key="frame" x="525" y="132" width="89" height="32"/>
                                 <buttonCell key="cell" type="push" title="Browse…" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="523">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -70,63 +64,56 @@
                                     </binding>
                                 </connections>
                             </button>
-                            <textField verticalHuggingPriority="750" id="503">
-                                <rect key="frame" x="15" y="250" width="60" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="503">
+                                <rect key="frame" x="18" y="249" width="51" height="16"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Step 1:" id="522">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" id="504">
-                                <rect key="frame" x="15" y="225" width="60" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="504">
+                                <rect key="frame" x="18" y="225" width="51" height="16"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Step 2:" id="521">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" id="505">
-                                <rect key="frame" x="77" y="250" width="78" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="505">
+                                <rect key="frame" x="73" y="249" width="76" height="16"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" title="Quit Steam." id="520">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" id="506">
-                                <rect key="frame" x="77" y="225" width="540" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="506">
+                                <rect key="frame" x="73" y="225" width="519" height="16"/>
                                 <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" title="Use the Finder to copy or move your “SteamApps” folder to the new desired location." id="519">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" id="507">
-                                <rect key="frame" x="15" y="200" width="60" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="507">
+                                <rect key="frame" x="18" y="201" width="51" height="16"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Step 3:" id="518">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" id="508">
-                                <rect key="frame" x="77" y="200" width="540" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="508">
+                                <rect key="frame" x="73" y="201" width="504" height="16"/>
                                 <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" title="Click Browse to locate the copy of your “SteamApps” folder you created in Step 2. " id="517">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" id="509">
-                                <rect key="frame" x="382" y="14" width="236" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="509">
+                                <rect key="frame" x="406" y="13" width="208" height="32"/>
                                 <buttonCell key="cell" type="push" title="Create Steam Apps Shortcut" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="516">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -148,37 +135,16 @@ DQ
                                     </binding>
                                 </connections>
                             </button>
-                            <textField verticalHuggingPriority="750" id="510">
-                                <rect key="frame" x="15" y="97" width="60" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="510">
+                                <rect key="frame" x="18" y="103" width="51" height="16"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Step 4:" id="515">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" id="511">
-                                <rect key="frame" x="77" y="63" width="487" height="51"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" id="514">
-                                    <font key="font" metaFont="system"/>
-                                    <string key="title">Click Create Steam Apps Shortcut to save the “SteamApps” shortcut in your ~/Library/Application Support/Steam/ folder. (If your original SteamApps folder is still there, it will be renamed to "SteamApps (Original)").</string>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" id="512">
-                                <rect key="frame" x="15" y="24" width="368" height="17"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" id="513">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <button verticalHuggingPriority="750" misplaced="YES" id="598">
-                                <rect key="frame" x="154" y="241" width="118" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="598">
+                                <rect key="frame" x="148" y="239" width="102" height="32"/>
                                 <buttonCell key="cell" type="push" title="Quit Steam" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="599">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -192,12 +158,59 @@ DQ
                                     </binding>
                                 </connections>
                             </button>
+                            <textField horizontalHuggingPriority="750" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="511">
+                                <rect key="frame" x="73" y="71" width="536" height="48"/>
+                                <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" id="514">
+                                    <font key="font" metaFont="system"/>
+                                    <string key="title">Click Create Steam Apps Shortcut to save the “SteamApps” shortcut in your ~/Library/Application Support/Steam/ folder. (If your original SteamApps folder is still there, it will be renamed to "SteamApps (Original)").</string>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="598" firstAttribute="leading" secondItem="505" secondAttribute="trailing" constant="8" symbolic="YES" id="1cy-Mf-Hir"/>
+                            <constraint firstItem="501" firstAttribute="top" secondItem="508" secondAttribute="bottom" constant="17" id="3Nd-cv-Ivu"/>
+                            <constraint firstItem="508" firstAttribute="firstBaseline" secondItem="507" secondAttribute="firstBaseline" id="3SZ-c8-EEI"/>
+                            <constraint firstItem="500" firstAttribute="leading" secondItem="505" secondAttribute="leading" id="3ZG-x3-8zw"/>
+                            <constraint firstItem="502" firstAttribute="firstBaseline" secondItem="500" secondAttribute="firstBaseline" id="4fE-bi-aBW"/>
+                            <constraint firstItem="510" firstAttribute="leading" secondItem="BK1-jH-iaZ" secondAttribute="leading" constant="20" id="5gK-KA-hYk"/>
+                            <constraint firstItem="509" firstAttribute="top" relation="greaterThanOrEqual" secondItem="511" secondAttribute="bottom" constant="8" symbolic="YES" id="6kv-pe-wGV"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="506" secondAttribute="trailing" constant="20" symbolic="YES" id="BAT-0S-Jun"/>
+                            <constraint firstItem="500" firstAttribute="top" secondItem="501" secondAttribute="bottom" constant="8" symbolic="YES" id="BJP-tv-Fv4"/>
+                            <constraint firstItem="502" firstAttribute="leading" secondItem="500" secondAttribute="trailing" constant="8" symbolic="YES" id="CsY-qw-BFI"/>
+                            <constraint firstAttribute="trailing" secondItem="502" secondAttribute="trailing" constant="20" symbolic="YES" id="D1m-H6-f3e"/>
+                            <constraint firstItem="504" firstAttribute="trailing" secondItem="503" secondAttribute="trailing" id="Dam-DS-YkQ"/>
+                            <constraint firstItem="511" firstAttribute="leading" secondItem="505" secondAttribute="leading" id="E1O-tk-D7U"/>
+                            <constraint firstItem="505" firstAttribute="top" secondItem="BK1-jH-iaZ" secondAttribute="top" constant="18" id="Im1-S5-yT0"/>
+                            <constraint firstAttribute="bottom" secondItem="509" secondAttribute="bottom" constant="20" symbolic="YES" id="M4Q-HT-mSU"/>
+                            <constraint firstItem="509" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="BK1-jH-iaZ" secondAttribute="leading" constant="20" symbolic="YES" id="W2s-Mv-eh1"/>
+                            <constraint firstItem="507" firstAttribute="leading" secondItem="BK1-jH-iaZ" secondAttribute="leading" constant="20" id="WJo-7E-I1t"/>
+                            <constraint firstItem="598" firstAttribute="firstBaseline" secondItem="503" secondAttribute="firstBaseline" id="aCR-Ms-BTi"/>
+                            <constraint firstAttribute="trailing" secondItem="509" secondAttribute="trailing" constant="20" id="b20-ZG-S6f"/>
+                            <constraint firstItem="507" firstAttribute="trailing" secondItem="503" secondAttribute="trailing" id="dXn-7e-NiE"/>
+                            <constraint firstItem="511" firstAttribute="top" secondItem="500" secondAttribute="bottom" constant="20" id="dz2-lM-gnX"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="501" secondAttribute="trailing" constant="20" symbolic="YES" id="eeA-Kq-QzQ"/>
+                            <constraint firstItem="506" firstAttribute="top" secondItem="505" secondAttribute="bottom" constant="8" symbolic="YES" id="eh4-6A-LtG"/>
+                            <constraint firstItem="510" firstAttribute="trailing" secondItem="503" secondAttribute="trailing" id="epw-MW-1PQ"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="508" secondAttribute="trailing" constant="20" symbolic="YES" id="fdj-S5-ZZc"/>
+                            <constraint firstAttribute="trailing" secondItem="511" secondAttribute="trailing" constant="20" symbolic="YES" id="gJt-Mp-kAf"/>
+                            <constraint firstItem="511" firstAttribute="firstBaseline" secondItem="510" secondAttribute="firstBaseline" id="gq1-9Q-hta"/>
+                            <constraint firstItem="508" firstAttribute="top" secondItem="506" secondAttribute="bottom" constant="8" symbolic="YES" id="hvO-mQ-zuo"/>
+                            <constraint firstItem="504" firstAttribute="leading" secondItem="BK1-jH-iaZ" secondAttribute="leading" constant="20" id="kZe-D1-UbX"/>
+                            <constraint firstItem="505" firstAttribute="firstBaseline" secondItem="503" secondAttribute="firstBaseline" id="nMK-Pb-z3N"/>
+                            <constraint firstItem="506" firstAttribute="leading" secondItem="505" secondAttribute="leading" id="or2-WR-8M2"/>
+                            <constraint firstItem="506" firstAttribute="firstBaseline" secondItem="504" secondAttribute="firstBaseline" id="pDF-Lv-WV8"/>
+                            <constraint firstItem="508" firstAttribute="leading" secondItem="505" secondAttribute="leading" id="wuE-aA-AoN"/>
+                            <constraint firstItem="503" firstAttribute="leading" secondItem="BK1-jH-iaZ" secondAttribute="leading" constant="20" id="xPv-cB-TH2"/>
+                            <constraint firstItem="505" firstAttribute="leading" secondItem="503" secondAttribute="trailing" constant="8" symbolic="YES" id="xlT-IW-dSF"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="598" secondAttribute="trailing" constant="20" symbolic="YES" id="yhO-dI-Kzn"/>
+                            <constraint firstItem="501" firstAttribute="leading" secondItem="505" secondAttribute="leading" id="zPa-Kd-2xF"/>
+                        </constraints>
                     </view>
                 </box>
-                <pathControl focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" id="496">
-                    <rect key="frame" x="21" y="337" width="485" height="20"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                <pathControl focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="496">
+                    <rect key="frame" x="20" y="337" width="200" height="20"/>
                     <pathCell key="cell" controlSize="small" selectable="YES" refusesFirstResponder="YES" focusRingType="none" alignment="left" id="499">
                         <font key="font" metaFont="smallSystem"/>
                         <url key="url" string="file://localhost/Applications/"/>
@@ -212,18 +225,16 @@ DQ
                         <outlet property="menu" destination="580" id="585"/>
                     </connections>
                 </pathControl>
-                <textField verticalHuggingPriority="750" id="497">
-                    <rect key="frame" x="17" y="364" width="221" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="497">
+                    <rect key="frame" x="17" y="365" width="195" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" title="Current “SteamApps” Location:" id="498">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" id="593">
-                    <rect key="frame" x="508" y="329" width="145" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="593">
+                    <rect key="frame" x="524" y="330" width="130" height="32"/>
                     <buttonCell key="cell" type="push" title="Reveal in Finder" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="594">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -238,6 +249,21 @@ DQ
                     </connections>
                 </button>
             </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="495" secondAttribute="bottom" constant="20" symbolic="YES" id="4nq-YA-lYT"/>
+                <constraint firstItem="495" firstAttribute="centerX" secondItem="494" secondAttribute="centerX" id="AUN-CB-7n9"/>
+                <constraint firstAttribute="trailing" secondItem="593" secondAttribute="trailing" constant="20" symbolic="YES" id="Che-vX-6iQ"/>
+                <constraint firstItem="593" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="496" secondAttribute="trailing" constant="8" symbolic="YES" id="HK8-8O-ryb"/>
+                <constraint firstItem="593" firstAttribute="firstBaseline" secondItem="496" secondAttribute="firstBaseline" id="OY4-B3-9x6"/>
+                <constraint firstItem="496" firstAttribute="top" secondItem="497" secondAttribute="bottom" constant="8" symbolic="YES" id="OoP-5S-qAt"/>
+                <constraint firstItem="497" firstAttribute="top" secondItem="494" secondAttribute="top" constant="16" id="PaG-dt-tfJ"/>
+                <constraint firstItem="497" firstAttribute="leading" secondItem="494" secondAttribute="leading" constant="19" id="gS4-58-lww"/>
+                <constraint firstItem="495" firstAttribute="top" secondItem="593" secondAttribute="bottom" constant="20" symbolic="YES" id="iZG-Vn-1mc"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="497" secondAttribute="trailing" constant="20" symbolic="YES" id="iyW-Nq-28M"/>
+                <constraint firstItem="495" firstAttribute="leading" secondItem="494" secondAttribute="leading" constant="20" symbolic="YES" id="r75-37-UpB"/>
+                <constraint firstItem="495" firstAttribute="leading" secondItem="496" secondAttribute="leading" id="uas-7Q-Gjn"/>
+            </constraints>
+            <point key="canvasLocation" x="13.5" y="120.5"/>
         </customView>
         <objectController id="527" userLabel="mediator">
             <declaredKeys>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17147" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17147"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -48,7 +48,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
             <rect key="contentRect" x="115" y="489" width="560" height="479"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
             <value key="minSize" type="size" width="300" height="100"/>
             <view key="contentView" focusRingType="none" id="83">
                 <rect key="frame" x="0.0" y="0.0" width="560" height="479"/>
@@ -334,11 +334,11 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.91000002619999998" alpha="1" colorSpace="calibratedWhite"/>
                                 </clipView>
-                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="1330">
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="1330">
                                     <rect key="frame" x="-100" y="-100" width="360" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="1329">
+                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="1329">
                                     <rect key="frame" x="544" y="1" width="15" height="99"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -347,7 +347,7 @@
                                 <rect key="frame" x="0.0" y="102" width="560" height="25"/>
                                 <subviews>
                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2199">
-                                        <rect key="frame" x="77" y="3" width="418" height="19"/>
+                                        <rect key="frame" x="76" y="3" width="419" height="19"/>
                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="2200">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -365,7 +365,7 @@ Gw
                                         </buttonCell>
                                     </button>
                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2204">
-                                        <rect key="frame" x="5" y="5" width="67" height="15"/>
+                                        <rect key="frame" x="5" y="5" width="66" height="15"/>
                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Search for:" id="2205">
                                             <font key="font" metaFont="cellTitle"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -509,13 +509,13 @@ Gw
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="EEF227B2-F93E-4772-B3A2-BDDEE0C51972" label="Action" paletteLabel="Action" toolTip="Perform tasks with the selected item" image="NSActionTemplate" id="738">
                         <size key="minSize" width="40" height="19"/>
-                        <size key="maxSize" width="40" height="25"/>
+                        <size key="maxSize" width="47" height="30"/>
                         <popUpButton key="view" verticalHuggingPriority="750" id="747">
-                            <rect key="frame" x="1" y="14" width="40" height="25"/>
+                            <rect key="frame" x="0.0" y="14" width="47" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingMiddle" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" selectedItem="751" id="748">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="menu"/>
+                            <popUpButtonCell key="cell" type="recessed" bezelStyle="recessed" alignment="center" lineBreakMode="truncatingMiddle" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" selectedItem="751" id="748">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                <font key="font" metaFont="systemBold" size="12"/>
                                 <menu key="menu" id="749">
                                     <items>
                                         <menuItem state="on" image="NSActionTemplate" hidden="YES" id="751"/>
@@ -654,7 +654,7 @@ Gw
                                         <sortDescriptor key="sortDescriptorPrototype" selector="compare:" sortKey="size"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                     </tableColumn>
-                                    <tableColumn identifier="kind" editable="NO" width="198" minWidth="10" maxWidth="3.4028234663852886e+38" id="1086">
+                                    <tableColumn identifier="kind" editable="NO" width="169" minWidth="10" maxWidth="3.4028234663852886e+38" id="1086">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="    Kind">
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -679,15 +679,15 @@ Gw
                             </outlineView>
                         </subviews>
                     </clipView>
-                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="1079">
+                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="1079">
                         <rect key="frame" x="0.0" y="315" width="545" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="1078">
+                    <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="1078">
                         <rect key="frame" x="545" y="17" width="15" height="298"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <tableHeaderView key="headerView" id="1081">
+                    <tableHeaderView key="headerView" wantsLayer="YES" id="1081">
                         <rect key="frame" x="0.0" y="0.0" width="560" height="23"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
@@ -789,10 +789,10 @@ Gw
         </objectController>
     </objects>
     <resources>
-        <image name="NSActionTemplate" width="14" height="14"/>
-        <image name="NSColumnViewTemplate" width="16" height="10"/>
-        <image name="NSListViewTemplate" width="14" height="10"/>
-        <image name="NSQuickLookTemplate" width="19" height="12"/>
+        <image name="NSActionTemplate" width="15" height="15"/>
+        <image name="NSColumnViewTemplate" width="18" height="14"/>
+        <image name="NSListViewTemplate" width="16" height="12"/>
+        <image name="NSQuickLookTemplate" width="21" height="13"/>
         <image name="fileIndicator" width="16" height="16"/>
         <image name="inspectorTemplate" width="18" height="18"/>
         <image name="readOnlyIndicator" width="16" height="16"/>
