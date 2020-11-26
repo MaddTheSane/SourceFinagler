@@ -801,11 +801,8 @@ void TKFreeBuffer(vImage_Buffer *buffer) {
 		vImageOverwriteChannels_ARGBFFFF(&rBuffer, &destBuffer, &destBuffer,  0x4, kvImageNoFlags);
 		vImageOverwriteChannels_ARGBFFFF(&aBuffer, &destBuffer, &destBuffer,  0x8, kvImageNoFlags);
 		
-		//NSData *dataRepresentation = [NSData dataWithBytesNoCopy:destBuffer.data length:size.width * size.height * sizeof(float) * 4 freeWhenDone:YES];
+		NSData *dataRepresentation = [NSData dataWithBytesNoCopy:destBuffer.data length:size.width * size.height * sizeof(float) * 4 freeWhenDone:YES];
 		
-		NSData *dataRepresentation = [NSData dataWithBytes:destBuffer.data length:size.width * size.height * sizeof(float) * 4];
-		TKFreeBuffer(&destBuffer);
-
 		return dataRepresentation;
 	} else if ((sourcePixelFormat == TKPixelFormatBGRA || sourcePixelFormat == TKPixelFormatABGR || sourcePixelFormat == TKPixelFormatXBGR || sourcePixelFormat == TKPixelFormatXRGB || sourcePixelFormat == TKPixelFormatRGBX || sourcePixelFormat == TKPixelFormatARGB || sourcePixelFormat == TKPixelFormatRGBA || sourcePixelFormat == TKPixelFormatRGB) && (destPixelFormat == TKPixelFormatARGB || destPixelFormat == TKPixelFormatRGBA)) {
 		vImage_Buffer sourceBuffer;
@@ -935,8 +932,7 @@ void TKFreeBuffer(vImage_Buffer *buffer) {
 		vImageOverwriteChannels_ARGBFFFF(&rBuffer, &destBuffer, &destBuffer,  0x4, kvImageNoFlags);
 		vImageOverwriteChannels_ARGBFFFF(&aBuffer, &destBuffer, &destBuffer,  0x8, kvImageNoFlags);
 		
-		NSData *dataRepresentation = [[NSData alloc] initWithBytes:destBuffer.data length:size.width * size.height * sizeof(float) * 4];
-		TKFreeBuffer(&destBuffer);
+		NSData *dataRepresentation = [[NSData alloc] initWithBytesNoCopy:destBuffer.data length:size.width * size.height * sizeof(float) * 4 freeWhenDone:YES];
 		
 		return dataRepresentation;
 	}

@@ -106,7 +106,7 @@ static inline Format FormatFromTKDDSFormat(TKDDSFormat aFormat) {
 }
 
 struct TKWrapModeMapping {
-	WrapMode		wrapMode;
+	nvtt::WrapMode	wrapMode;
 	TKWrapMode		tkWrapMode;
 };
 static const TKWrapModeMapping TKWrapModeMappingTable[] = {
@@ -991,8 +991,7 @@ static NSData *TKImageDataFromNSData(NSData *inputData, NSUInteger pixelCount, N
 				destPixels[i] = destPixel;
 			}
 			
-			NSData *newData = [NSData dataWithBytes:destPixels length:newLength];
-			free(vBytes);
+			NSData *newData = [NSData dataWithBytesNoCopy:destPixels length:newLength freeWhenDone:YES];
 			return newData;
 			
 		}
@@ -1048,8 +1047,7 @@ static NSData *TKImageDataFromNSData(NSData *inputData, NSUInteger pixelCount, N
 				destPixels[i] = destPixel;
 			}
 			
-			NSData *newData = [NSData dataWithBytes:destPixels length:newLength];
-			free(vBytes);
+			NSData *newData = [NSData dataWithBytesNoCopy:destPixels length:newLength freeWhenDone:YES];
 			return newData;
 			
 		}
