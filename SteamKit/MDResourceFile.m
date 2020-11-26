@@ -96,14 +96,14 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 		return rCode;
 	}	
 	
-	dataLWA = NSSwapBigIntToHost(header.dataFWA) + NSSwapBigIntToHost(header.dataLen);
+	dataLWA = CFSwapInt32BigToHost(header.dataFWA) + CFSwapInt32BigToHost(header.dataLen);
 	
-	mapLWA = NSSwapBigIntToHost(header.mapFWA) + NSSwapBigIntToHost(header.mapLen);
+	mapLWA = CFSwapInt32BigToHost(header.mapFWA) + CFSwapInt32BigToHost(header.mapLen);
 	
-	header.dataFWA = NSSwapBigIntToHost(header.dataFWA);
-	header.mapFWA = NSSwapBigIntToHost(header.mapFWA);
-	header.dataLen = NSSwapBigIntToHost(header.dataLen);
-	header.mapLen = NSSwapBigIntToHost(header.mapLen);
+	header.dataFWA = CFSwapInt32BigToHost(header.dataFWA);
+	header.mapFWA = CFSwapInt32BigToHost(header.mapFWA);
+	header.dataLen = CFSwapInt32BigToHost(header.dataLen);
+	header.mapLen = CFSwapInt32BigToHost(header.mapLen);
 	
 	
 	mapOK = (count == 16 && header.mapLen > 28 && header.dataFWA < 0x01000000 && header.mapFWA < 0x01000000 && dataLWA <= logEOF && mapLWA <= logEOF && (dataLWA <= header.mapFWA || mapLWA <= header.dataFWA));
@@ -117,8 +117,8 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 		
 		rCode = FSReadFork(refNum, fsFromStart, header.mapFWA, count, map, &count);
 		if (!rCode) {
-			typeFWA = NSSwapBigShortToHost(*(UInt16 *)(map + 24));
-			nameFWA = NSSwapBigShortToHost(*(UInt16 *)(map + 26));
+			typeFWA = CFSwapInt16BigToHost(*(UInt16 *)(map + 24));
+			nameFWA = CFSwapInt16BigToHost(*(UInt16 *)(map + 26));
 			
 			mapOK = typeFWA == 28 && nameFWA >= typeFWA && nameFWA <= header.mapLen && !(typeFWA & 1) && !(nameFWA & 1);
 		}
@@ -128,7 +128,7 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 			pType = map + typeFWA;
 			pName = map + nameFWA;
 			pMapEnd = map + header.mapLen;
-			nType = NSSwapBigShortToHost(*(SInt16 *)pType) + 1;
+			nType = CFSwapInt16BigToHost(*(SInt16 *)pType) + 1;
 			pType += 2;
 			pTypeEnd = pType + (nType << 3);
 			
@@ -136,8 +136,8 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 			
 			if (mapOK) {
 				while (pType < pTypeEnd) {
-					nRes = NSSwapBigShortToHost(*(SInt16 *)(pType + 4)) + 1;
-					refFWA = NSSwapBigShortToHost(*(UInt16 *)(pType + 6));
+					nRes = CFSwapInt16BigToHost(*(SInt16 *)(pType + 4)) + 1;
+					refFWA = CFSwapInt16BigToHost(*(UInt16 *)(pType + 6));
 					pRef = map + typeFWA + refFWA;
 					pRefEnd = pRef + 12 * nRes;
 					if (!(mapOK = pRef >= pTypeEnd && pRef < pName && !(refFWA & 1))) {
@@ -145,7 +145,7 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 					}
 					
 					while (pRef < pRefEnd) {
-						resNameFWA = NSSwapBigShortToHost(*(UInt16 *)(pRef + 2));
+						resNameFWA = CFSwapInt16BigToHost(*(UInt16 *)(pRef + 2));
 						if (resNameFWA != 0xFFFF) {
 							pResName = pName + resNameFWA;
 							if (!(mapOK = pResName + *pResName < pMapEnd)) {
@@ -153,7 +153,7 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 							}
 						}
 						
-						resDataFWA = NSSwapBigIntToHost(*(UInt32 *)(pRef + 4)) & 0x00FFFFFF;
+						resDataFWA = CFSwapInt32BigToHost(*(UInt32 *)(pRef + 4)) & 0x00FFFFFF;
 						if (!(mapOK = header.dataFWA + resDataFWA < dataLWA)) {
 							break;
 						}
@@ -234,12 +234,10 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 	
 	BOOL isDir;
 	
-	filePath = aURL.path;
-	
 	BOOL itemExists = ([[NSFileManager defaultManager] fileExistsAtPath:aURL.path isDirectory:&isDir] && !isDir);
 	
 	
-	OSErr			err = noErr;
+	OSStatus		err = noErr;
 	FSRef			fileRef;
 	
 	UInt64			resourceForkSize = 0;
@@ -267,24 +265,22 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 		aFork = MDForkResource;
 	}
 	
-	fork = aFork;
-	permission = aPermission;
-	
 	HFSUniStr255	forkName;
 	
-	if (fork == MDForkResource) {
+	if (aFork == MDForkResource) {
 		err = FSGetResourceForkName(&forkName);
 	} else {
 		err = FSGetDataForkName(&forkName);
 	}
 	
 	if (err != noErr) {
-		NSLog(@"[%@ %@] %@ returned %hi", NSStringFromClass([self class]), NSStringFromSelector(_cmd), (aFork == MDForkResource ? @"FSGetResourceForkName()" : @"FSGetDataForkName()"), err);
+		NSLog(@"[%@ %@] %@ returned %i", NSStringFromClass([self class]), NSStringFromSelector(_cmd), (aFork == MDForkResource ? @"FSGetResourceForkName()" : @"FSGetDataForkName()"), (int)err);
+		if (outError) *outError = [NSError errorWithDomain:NSOSStatusErrorDomain code:err userInfo:nil];
 		return nil;
 	}
 	
-	if (itemExists && ((fork == MDForkResource && resourceForkSize) || (fork == MDForkData && dataForkSize))) {
-		if (![filePath getFSRef:&fileRef error:outError]) {
+	if (itemExists && ((aFork == MDForkResource && resourceForkSize) || (aFork == MDForkData && dataForkSize))) {
+		if (![aURL getFSRef:&fileRef error:outError]) {
 			return nil;
 		}
 		
@@ -294,10 +290,10 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 		
 		if (sane == NO) {
 			
-			NSLog(@"[%@ %@] the resource file at '%@' wasn't sane; MDCheckResourceFileSanity() returned err == %hi", NSStringFromClass([self class]), NSStringFromSelector(_cmd), aURL.path, err);
+			NSLog(@"[%@ %@] the resource file at '%@' wasn't sane; MDCheckResourceFileSanity() returned err == %i", NSStringFromClass([self class]), NSStringFromSelector(_cmd), aURL.path, (int)err);
 			
 			NSLog(@"[%@ %@] ERROR: file appears to be a corrupt %@ and will not be opened...", NSStringFromClass([self class]), NSStringFromSelector(_cmd), (aFork == MDForkResource ? @"resource file" : @"datafork-based resource file"));
-			if (outError) *outError = [NSError errorWithDomain:MDResourceFileErrorDomain code:MDResourceFileCorruptResourceFileError userInfo:nil];
+			if (outError) *outError = [NSError errorWithDomain:MDResourceFileErrorDomain code:MDResourceFileCorruptResourceFileError userInfo:@{NSUnderlyingErrorKey: [NSError errorWithDomain:NSOSStatusErrorDomain code:err userInfo:nil], NSURLErrorKey: aURL}];
 			return nil;
 		}
 	}
@@ -308,6 +304,9 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 		UniCharCount	fileNameLength;
 		NSString		*fileName;
 		
+		filePath = aURL.path;
+		fork = aFork;
+		permission = aPermission;
 		
 		/*
 		 fsCurPerm		= 0x00,
@@ -324,16 +323,17 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 		if (permission == MDPermissionReadWrite ||
 			permission == MDPermissionCurrentAllowable) {
 			
-			if (![aURL.path.stringByDeletingLastPathComponent getFSRef:&parentRef error:outError]) {
+			if (![aURL.URLByDeletingLastPathComponent getFSRef:&parentRef error:outError]) {
 				NSLog(@"[%@ %@] (%@) getFSRef: for parentRef failed", NSStringFromClass([self class]), NSStringFromSelector(_cmd), aURL.path);
 				return nil;
 			}
 			
-			fileName = aURL.path.lastPathComponent;
+			fileName = aURL.lastPathComponent;
 			fileNameLength = fileName.length;
 			
 			if (fileNameLength > NAME_MAX) {
 				NSLog(@"[%@ %@] fileNameLength > NAME_MAX!; aborting...", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+				if (outError) *outError = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileWriteInvalidFileNameError userInfo:@{NSURLErrorKey: aURL}];
 				return nil;
 			}
 			
@@ -358,7 +358,7 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 				err = FSOpenResourceFile(&fileRef, forkName.length, forkName.unicode, permission, &fileReference);
 				
 				if (!(fileReference > 0 && err == noErr)) {
-					NSLog(@"[%@ %@] (%@) an error (%hi) occurred while trying to open the resource file", NSStringFromClass([self class]), NSStringFromSelector(_cmd), aURL.path, err);
+					NSLog(@"[%@ %@] (%@) an error (%i) occurred while trying to open the resource file", NSStringFromClass([self class]), NSStringFromSelector(_cmd), aURL.path, (int)err);
 					
 					if (err == permErr) {
 						NSLog(@"[%@ %@] unable to open resource file with Read-Write access, will retry with Read-Only access...", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -368,7 +368,8 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 						err = FSOpenResourceFile(&fileRef, forkName.length, forkName.unicode, permission, &fileReference);
 						
 						if (!(fileReference > 0 && err == noErr)) {
-							NSLog(@"[%@ %@] tried opening resource file with Read-Only access, but an error (%hi) still occurred while trying to open the resource file!", NSStringFromClass([self class]), NSStringFromSelector(_cmd), err);
+							NSLog(@"[%@ %@] tried opening resource file with Read-Only access, but an error (%i) still occurred while trying to open the resource file!", NSStringFromClass([self class]), NSStringFromSelector(_cmd), (int)err);
+							if (outError) *outError = [NSError errorWithDomain:NSOSStatusErrorDomain code:err userInfo:@{NSURLErrorKey: aURL}];
 							return nil;
 						}
 						
@@ -381,7 +382,8 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 			err = FSOpenResourceFile(&fileRef, forkName.length, forkName.unicode, permission, &fileReference);
 			
 			if ( !(fileReference > 0 && err == noErr)) {
-				NSLog(@"[%@ %@] an error (%hi) occurred while trying to open the resource fork!", NSStringFromClass([self class]), NSStringFromSelector(_cmd), err);
+				NSLog(@"[%@ %@] an error (%i) occurred while trying to open the resource fork!", NSStringFromClass([self class]), NSStringFromSelector(_cmd), (int)err);
+				if (outError) *outError = [NSError errorWithDomain:NSOSStatusErrorDomain code:err userInfo:@{NSURLErrorKey: aURL}];
 				return nil;
 			}
 		}

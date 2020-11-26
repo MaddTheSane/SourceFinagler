@@ -349,7 +349,7 @@ static TKDDSFormat defaultDDSFormat = TKDDSFormatDefault;
 	if (data.length < sizeof(OSType)) return NO;
 	OSType magic = 0;
 	[data getBytes:&magic length:sizeof(magic)];
-	magic = NSSwapBigIntToHost(magic);
+	magic = CFSwapInt32BigToHost(magic);
 	return (magic == TKDDSMagic);
 }
 
@@ -718,7 +718,7 @@ static unsigned char *TKCreateRGBADataFromColor32(const Color32 *pixels, NSUInte
 	
 	OSType magic = 0;
 	[aData getBytes:&magic length:sizeof(magic)];
-	magic = NSSwapBigIntToHost(magic);
+	magic = CFSwapInt32BigToHost(magic);
 #if TK_DEBUG
 	NSLog(@"[%@ %@] magic == 0x%x, %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd),  (unsigned int)magic, NSFileTypeForHFSTypeCode(magic));
 #endif

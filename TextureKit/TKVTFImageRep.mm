@@ -492,7 +492,7 @@ static BOOL vtfInitialized = NO;
 	
 	OSType magic = 0;
 	[aData getBytes:&magic length:sizeof(magic)];
-	magic = NSSwapBigIntToHost(magic);
+	magic = CFSwapInt32BigToHost(magic);
 #if TK_DEBUG
 //	NSLog(@"[%@ %@] magic == 0x%x, %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), magic, NSFileTypeForHFSTypeCode(magic));
 #endif

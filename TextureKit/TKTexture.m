@@ -121,7 +121,7 @@ static inline TKPixelFormatMapping TKPixelFormatMappingForPixelFormat(TKPixelFor
 	} else {
 		OSType magic = 0;
 		[aData getBytes:&magic length:sizeof(magic)];
-		magic = NSSwapBigIntToHost(magic);
+		magic = CFSwapInt32BigToHost(magic);
 		
 		if (magic == TKVTFMagic) {
 			TKVTFTexture *vtfTexture = [[TKVTFTexture alloc] initWithData:aData];

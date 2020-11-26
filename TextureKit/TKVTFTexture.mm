@@ -128,7 +128,7 @@ static inline GLenum TKOpenGLCubeMapFaceFromVTFCubeMapFace(VTFCubeMapFace vtfCub
 	if ((self = [super init])) {
 		OSType magic = 0;
 		[aData getBytes:&magic length:sizeof(magic)];
-		magic = NSSwapBigIntToHost(magic);
+		magic = CFSwapInt32BigToHost(magic);
 		
 		CVTFFile *file = new CVTFFile();
 		if (file == 0) {

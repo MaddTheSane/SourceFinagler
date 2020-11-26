@@ -43,7 +43,7 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 	
 	OSType magic = 0;
 	[imageData getBytes:&magic length:sizeof(magic)];
-	magic = NSSwapBigIntToHost(magic);
+	magic = CFSwapInt32BigToHost(magic);
 	
 	if (magic == TKHTMLErrorMagic) {
 		NSLog(@"GenerateThumbnailForURL(): file at path \"%@\" appears to be an ERROR 404 HTML file rather than a valid VTF", [nsUrl path]);

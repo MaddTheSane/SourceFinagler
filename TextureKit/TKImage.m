@@ -277,7 +277,7 @@ static NSString * const TKImageAllMipmapIndexesKey	= @"allIndexes.mipmapIndexes"
 	OSType magic = 0;
 	if (dataLength > sizeof(OSType)) {
 		[aData getBytes:&magic length:sizeof(magic)];
-		magic = NSSwapBigIntToHost(magic);
+		magic = CFSwapInt32BigToHost(magic);
 	}
 	
 	if (magic == TKVTFMagic || magic == TKDDSMagic) {

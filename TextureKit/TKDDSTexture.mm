@@ -47,7 +47,7 @@ static const TKDDSTextureFormatMapping TKDDSTextureFormatMappingTable[] = {
 	if ((self = [super init])) {
 		OSType magic = 0;
 		[aData getBytes:&magic length:sizeof(magic)];
-		magic = NSSwapBigIntToHost(magic);
+		magic = CFSwapInt32BigToHost(magic);
 		MemoryInputStream *mis = new MemoryInputStream((unsigned char *)[aData bytes], uint([aData length]));
 		
 		DirectDrawSurface *dds = new DirectDrawSurface();
