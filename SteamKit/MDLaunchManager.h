@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #include <launch.h>
 
-// at this time, MDLaunchManager only supports user domain
+/// at this time, \c MDLaunchManager only supports user domain
 typedef NS_ENUM(NSUInteger, MDLaunchDomain) {
 	MDLaunchDomainUser		= 0,
 	

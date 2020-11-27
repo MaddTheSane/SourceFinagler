@@ -13,7 +13,7 @@
 
 #define MD_DEBUG 0
 
-@interface MDLaunchManager (MDPrivate)
+@interface MDLaunchManager ()
 - (BOOL)loadJobWithPath:(NSString *)path inDomain:(MDLaunchDomain)domain error:(NSError **)outError;
 - (BOOL)unloadJobWithLabel:(NSString *)label inDomain:(MDLaunchDomain)domain error:(NSError **)outError;
 @end
@@ -70,8 +70,8 @@ static MDLaunchManager *sharedManager = nil;
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	NSDictionary *job = nil;
-	if (pid > 0 && domain == MDLaunchUserDomain) {
-		NSArray *jobs = CFBridgingRelease(SMCopyAllJobDictionaries((domain == MDLaunchUserDomain ? kSMDomainUserLaunchd : kSMDomainSystemLaunchd)));
+	if (pid > 0 && domain == MDLaunchDomainUser) {
+		NSArray *jobs = CFBridgingRelease(SMCopyAllJobDictionaries((domain == MDLaunchDomainUser ? kSMDomainUserLaunchd : kSMDomainSystemLaunchd)));
 		if (jobs) {
 			for (NSDictionary *aJob in jobs) {
 				if ([aJob[NSStringFromLaunchJobKey(LAUNCH_JOBKEY_PID)] intValue] == pid) {
@@ -90,8 +90,8 @@ static MDLaunchManager *sharedManager = nil;
 #endif
 	NSDictionary *job = nil;
 	
-	if (label && domain == MDLaunchUserDomain) {
-		job = CFBridgingRelease(SMJobCopyDictionary((domain == MDLaunchUserDomain ? kSMDomainUserLaunchd : kSMDomainSystemLaunchd), (__bridge CFStringRef)label));
+	if (label && domain == MDLaunchDomainUser) {
+		job = CFBridgingRelease(SMJobCopyDictionary((domain == MDLaunchDomainUser ? kSMDomainUserLaunchd : kSMDomainSystemLaunchd), (__bridge CFStringRef)label));
 	}
 	return job;
 }
@@ -103,7 +103,7 @@ static MDLaunchManager *sharedManager = nil;
 #endif
 	NSMutableArray *jobs = [NSMutableArray array];
 	
-	if (labels && labels.count && domain == MDLaunchUserDomain) {
+	if (labels && labels.count && domain == MDLaunchDomainUser) {
 		for (NSString *label in labels) {
 			NSDictionary *job = [self jobWithLabel:label inDomain:domain];
 			if (job) [jobs addObject:job];
@@ -118,7 +118,7 @@ static MDLaunchManager *sharedManager = nil;
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	if (launchAgentPlist == nil || domain != MDLaunchUserDomain) return NO;
+	if (launchAgentPlist == nil || domain != MDLaunchDomainUser) return NO;
 	if (outError) *outError = nil;
 	
 	@synchronized(self) {
@@ -132,7 +132,7 @@ static MDLaunchManager *sharedManager = nil;
 		
 		if (![launchAgentPlist writeToFile:jobPath atomically:NO]) return NO;
 		
-		return [self loadJobWithPath:jobPath inDomain:MDLaunchUserDomain error:outError];
+		return [self loadJobWithPath:jobPath inDomain:MDLaunchDomainUser error:outError];
 	}
 	return NO;
 }
@@ -142,7 +142,7 @@ static MDLaunchManager *sharedManager = nil;
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	if (label == nil || domain != MDLaunchUserDomain) {
+	if (label == nil || domain != MDLaunchDomainUser) {
 		if (outError) {
 			*outError = [NSError errorWithDomain:NSOSStatusErrorDomain code:paramErr userInfo:nil];
 		}
@@ -168,7 +168,7 @@ static MDLaunchManager *sharedManager = nil;
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	if (oldJob == nil || newJob == nil || domain != MDLaunchUserDomain) return NO;
+	if (oldJob == nil || newJob == nil || domain != MDLaunchDomainUser) return NO;
 	if (outError) *outError = nil;
 	
 	@synchronized(self) {
@@ -205,18 +205,13 @@ static MDLaunchManager *sharedManager = nil;
 	return YES;
 }
 
-@end
-
-
-@implementation MDLaunchManager (MDPrivate)
-
 - (BOOL)loadJobWithPath:(NSString *)path inDomain:(MDLaunchDomain)domain error:(NSError **)outError {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	BOOL success = NO;
 	if (outError) *outError = nil;
-	if (path && domain == MDLaunchUserDomain) {
+	if (path && domain == MDLaunchDomainUser) {
 		
 		@synchronized(self) {
 				NSDictionary *job = [NSDictionary dictionaryWithContentsOfFile:path];
@@ -241,7 +236,7 @@ static MDLaunchManager *sharedManager = nil;
 #endif
 	BOOL success = NO;
 	if (outError) *outError = nil;
-	if (label && domain == MDLaunchUserDomain) {
+	if (label && domain == MDLaunchDomainUser) {
 		@synchronized(self) {
 			if (agentIsUnloadingSelf && agentLaunchDate) {
 				NSTimeInterval totalElapsedTime = fabs(agentLaunchDate.timeIntervalSinceNow);

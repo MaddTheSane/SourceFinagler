@@ -23,6 +23,7 @@ NS_ENUM(NSInteger) {
 	MDFileLabelUnsupported		= NSNotFound
 };
 
+typedef NSString *MDFileProperty NS_STRING_ENUM;
 
 @interface MDFileManager : NSObject {
 	NSFileManager	*fileManager;
@@ -31,23 +32,23 @@ NS_ENUM(NSInteger) {
 @property (class, readonly, retain) MDFileManager *defaultManager;
 
 /// returns all HFS+ info as well as resource fork sizes
-- (nullable NSDictionary *)attributesOfItemAtPath:(NSString *)path error:(NSError **)outError;
-- (BOOL)setAttributes:(NSDictionary *)attributes ofItemAtPath:(NSString *)path error:(NSError **)error;
+- (nullable NSDictionary<MDFileProperty,id> *)attributesOfItemAtPath:(NSString *)path error:(NSError **)outError;
+- (BOOL)setAttributes:(NSDictionary<MDFileProperty,id> *)attributes ofItemAtPath:(NSString *)path error:(NSError **)error;
 
 /// returns resource fork sizes only
-- (nullable NSDictionary *)fileAttributesAtPath:(NSString *)path traverseLink:(BOOL)yorn;
+- (nullable NSDictionary<MDFileProperty,id> *)fileAttributesAtPath:(NSString *)path traverseLink:(BOOL)yorn;
 
 - (BOOL)isDeletableFileAtPath:(NSString *)path;
 
 @end
 
-extern NSString * const MDFileLabelNumber;
-extern NSString * const MDFileHasCustomIcon;
-extern NSString * const MDFileIsStationery;
-extern NSString * const MDFileNameLocked;
-extern NSString * const MDFileIsPackage;
-extern NSString * const MDFileIsInvisible;
-extern NSString * const MDFileIsAliasFile;
+extern MDFileProperty const MDFileLabelNumber;
+extern MDFileProperty const MDFileHasCustomIcon;
+extern MDFileProperty const MDFileIsStationery;
+extern MDFileProperty const MDFileNameLocked;
+extern MDFileProperty const MDFileIsPackage;
+extern MDFileProperty const MDFileIsInvisible;
+extern MDFileProperty const MDFileIsAliasFile;
 
 @interface NSDictionary (MDFileAttributes)
 - (NSInteger)fileLabelColor;	/**< files & folders	*/
