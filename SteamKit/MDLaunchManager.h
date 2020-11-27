@@ -13,8 +13,6 @@
 typedef NS_ENUM(NSUInteger, MDLaunchDomain) {
 	MDLaunchDomainUser		= 0,
 	
-	MDLaunchUserDomain NS_SWIFT_UNAVAILABLE("Use .User instead") = MDLaunchDomainUser
-
 };
 
 #define NSStringFromLaunchJobKey(cString) @cString
@@ -39,5 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (BOOL)replaceJob:(NSDictionary<NSString*,id> *)oldJob withJob:(NSDictionary<NSString*,id> *)newJob loadNewJobBeforeUnloadingOld:(BOOL)loadNewJobBeforeUnloadingOld inDomain:(MDLaunchDomain)domain error:(NSError *__nullable*__nullable)outError;
 @end
+
+static const MDLaunchDomain MDLaunchUserDomain NS_DEPRECATED_WITH_REPLACEMENT_MAC("MDLaunchDomainUser", 10.5, 10.11) = MDLaunchDomainUser;
 
 NS_ASSUME_NONNULL_END

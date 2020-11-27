@@ -17,13 +17,6 @@ typedef NS_OPTIONS(NSUInteger, TKImageChannelMask) {
 	TKImageChannelMaskBlue		= 1 << 2,
 	TKImageChannelMaskAlpha		= 1 << 3,
 	TKImageChannelMaskRGBA		= TKImageChannelMaskRed | TKImageChannelMaskGreen | TKImageChannelMaskBlue | TKImageChannelMaskAlpha,
-
-	
-	TKImageChannelRedMask		NS_SWIFT_UNAVAILABLE("Use .Red instead") = TKImageChannelMaskRed,
-	TKImageChannelGreenMask		NS_SWIFT_UNAVAILABLE("Use .Green instead") = TKImageChannelMaskGreen,
-	TKImageChannelBlueMask		NS_SWIFT_UNAVAILABLE("Use .Blue instead") = TKImageChannelMaskBlue,
-	TKImageChannelAlphaMask		NS_SWIFT_UNAVAILABLE("Use .Alpha instead") = TKImageChannelMaskAlpha,
-	TKImageChannelRGBAMask		NS_SWIFT_UNAVAILABLE("Use .RGBA instead") = TKImageChannelMaskRGBA
 };
 
 
@@ -60,3 +53,9 @@ typedef NS_OPTIONS(NSUInteger, TKImageChannelMask) {
 + (CIFilter *)filterForChannelMask:(TKImageChannelMask)aChannelMask;
 
 @end
+
+static const TKImageChannelMask TKImageChannelRedMask		NS_DEPRECATED_WITH_REPLACEMENT_MAC("TKImageChannelMaskRed", 10.5, 10.11) = TKImageChannelMaskRed;
+static const TKImageChannelMask TKImageChannelGreenMask		NS_DEPRECATED_WITH_REPLACEMENT_MAC("TKImageChannelMaskGreen", 10.5, 10.11) = TKImageChannelMaskGreen;
+static const TKImageChannelMask TKImageChannelBlueMask		NS_DEPRECATED_WITH_REPLACEMENT_MAC("TKImageChannelMaskBlue", 10.5, 10.11) = TKImageChannelMaskBlue;
+static const TKImageChannelMask TKImageChannelAlphaMask		NS_DEPRECATED_WITH_REPLACEMENT_MAC("TKImageChannelMaskAlpha", 10.5, 10.11) = TKImageChannelMaskAlpha;
+static const TKImageChannelMask TKImageChannelRGBAMask		NS_DEPRECATED_WITH_REPLACEMENT_MAC("TKImageChannelMaskRGBA", 10.5, 10.11) = TKImageChannelMaskRGBA;

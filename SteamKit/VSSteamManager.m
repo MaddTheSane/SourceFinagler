@@ -684,10 +684,10 @@ static inline NSString *VSMakeLabelFromBundleIdentifier(NSString *bundleIdentifi
 			NSString *jobLabel = VSMakeLabelFromBundleIdentifier(bundleIdentifier);
 			MDLaunchManager *launchManager = [MDLaunchManager defaultManager];
 			
-			NSDictionary *existingJob = [launchManager jobWithLabel:jobLabel inDomain:MDLaunchUserDomain];
+			NSDictionary *existingJob = [launchManager jobWithLabel:jobLabel inDomain:MDLaunchDomainUser];
 			if (existingJob) {
 				
-				if (![launchManager removeJobWithLabel:jobLabel inDomain:MDLaunchUserDomain error:outError]) {
+				if (![launchManager removeJobWithLabel:jobLabel inDomain:MDLaunchDomainUser error:outError]) {
 					NSLog(@"[%@ %@] failed to remove existing job!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 					return NO;
 				}
@@ -714,7 +714,7 @@ static inline NSString *VSMakeLabelFromBundleIdentifier(NSString *bundleIdentifi
 					return NO;
 				}
 				
-				if (![launchManager submitJobWithDictionary:launchPlist inDomain:MDLaunchUserDomain error:outError]) {
+				if (![launchManager submitJobWithDictionary:launchPlist inDomain:MDLaunchDomainUser error:outError]) {
 					NSLog(@"[%@ %@] failed to submit job!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 					return NO;
 				}
@@ -793,9 +793,9 @@ static inline NSString *VSMakeLabelFromBundleIdentifier(NSString *bundleIdentifi
 			NSString *jobLabel = VSMakeLabelFromBundleIdentifier(bundleIdentifier);
 			MDLaunchManager *launchManager = [MDLaunchManager defaultManager];
 			
-			NSDictionary *existingJob = [launchManager jobWithLabel:jobLabel inDomain:MDLaunchUserDomain];
+			NSDictionary *existingJob = [launchManager jobWithLabel:jobLabel inDomain:MDLaunchDomainUser];
 			if (existingJob) {
-				if (![launchManager removeJobWithLabel:jobLabel inDomain:MDLaunchUserDomain error:outError]) {
+				if (![launchManager removeJobWithLabel:jobLabel inDomain:MDLaunchDomainUser error:outError]) {
 					NSLog(@"[%@ %@] failed to remove existing job!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 					return NO;
 				}
@@ -804,7 +804,7 @@ static inline NSString *VSMakeLabelFromBundleIdentifier(NSString *bundleIdentifi
 			if (launchAgentExecutablePath) {
 				NSDictionary *launchPlist = VSMakeLaunchAgentPlist(jobLabel, @[launchAgentExecutablePath, game.executablePath], game.executablePath);
 				if (launchPlist == nil) return NO;
-				if (![launchManager submitJobWithDictionary:launchPlist inDomain:MDLaunchUserDomain error:outError]) {
+				if (![launchManager submitJobWithDictionary:launchPlist inDomain:MDLaunchDomainUser error:outError]) {
 					NSLog(@"[%@ %@] failed to submit job!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 					return NO;
 				}
@@ -863,8 +863,8 @@ static inline NSDictionary *VSMakeLaunchAgentPlist(NSString *jobLabel, NSArray *
 		for (NSString *bundleIdentifier in gameBundleIdentifiers) {
 			NSString *jobLabel = VSMakeLabelFromBundleIdentifier(bundleIdentifier);
 			if (jobLabel == nil) continue;
-			NSDictionary *job = [launchManager jobWithLabel:jobLabel inDomain:MDLaunchUserDomain];
-			if (job) [launchManager removeJobWithLabel:jobLabel inDomain:MDLaunchUserDomain error:outError];
+			NSDictionary *job = [launchManager jobWithLabel:jobLabel inDomain:MDLaunchDomainUser];
+			if (job) [launchManager removeJobWithLabel:jobLabel inDomain:MDLaunchDomainUser error:outError];
 		}
 	}
 	[self locateSteamApps];
@@ -1195,14 +1195,14 @@ static inline NSDictionary *VSMakeLaunchAgentPlist(NSString *jobLabel, NSArray *
 	if (sourceFilePath == nil) {
 		if (resultingPath) *resultingPath = nil;
 		if (resultingGame) *resultingGame = nil;
-		if (outError) *outError = [NSError errorWithDomain:VSSourceAddonErrorDomain code:VSSourceAddonNotAValidAddonFileError userInfo:nil];
+		if (outError) *outError = [NSError errorWithDomain:VSSourceAddonErrorDomain code:VSSourceAddonErrorNotAValidAddonFile userInfo:nil];
 		return NO;
 	}
 	
 	if (![sourceFilePath.pathExtension.lowercaseString isEqualToString:@"vpk"]) {
 		if (resultingPath) *resultingPath = nil;
 		if (resultingGame) *resultingGame = nil;
-		if (outError) *outError = [NSError errorWithDomain:VSSourceAddonErrorDomain code:VSSourceAddonNotAValidAddonFileError userInfo:nil];
+		if (outError) *outError = [NSError errorWithDomain:VSSourceAddonErrorDomain code:VSSourceAddonErrorNotAValidAddonFile userInfo:nil];
 		return NO;
 	}
 	
@@ -1217,7 +1217,7 @@ static inline NSDictionary *VSMakeLaunchAgentPlist(NSString *jobLabel, NSArray *
 	
 	if (! ([fileManager fileExistsAtPath:sourceFilePath isDirectory:&isDir] && !isDir)) {
 		NSLog(@"[%@ %@] item at path (%@) is a folder, not a file!", NSStringFromClass([self class]), NSStringFromSelector(_cmd), sourceFilePath);
-		if (outError) *outError = [NSError errorWithDomain:VSSourceAddonErrorDomain code:VSSourceAddonNotAValidAddonFileError userInfo:nil];
+		if (outError) *outError = [NSError errorWithDomain:VSSourceAddonErrorDomain code:VSSourceAddonErrorNotAValidAddonFile userInfo:@{NSFilePathErrorKey: sourceFilePath}];
 		return NO;
 	}
 	
@@ -1231,7 +1231,7 @@ static inline NSDictionary *VSMakeLaunchAgentPlist(NSString *jobLabel, NSArray *
 	
 	if (addonInfoItem == nil || ![addonInfoItem isKindOfClass:[HKFile class]] || addonInfoItem.fileType != HKFileTypeText) {
 		NSLog(@"[%@ %@] item at path (%@) does not appear to contain a valid addoninfo.txt file!", NSStringFromClass([self class]), NSStringFromSelector(_cmd), sourceFilePath);
-		if (outError) *outError = [NSError errorWithDomain:VSSourceAddonErrorDomain code:VSSourceAddonNoAddonInfoFoundError userInfo:nil];
+		if (outError) *outError = [NSError errorWithDomain:VSSourceAddonErrorDomain code:VSSourceAddonErrorNoAddonInfoFound userInfo:nil];
 		return NO;
 	}
 	
@@ -1242,7 +1242,7 @@ static inline NSDictionary *VSMakeLaunchAgentPlist(NSString *jobLabel, NSArray *
 	
 	if (stringValue == nil) {
 		NSLog(@"[%@ %@] could not determine string encoding of addoninfo.txt file!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-		if (outError) *outError = [NSError errorWithDomain:VSSourceAddonErrorDomain code:VSSourceAddonAddonInfoUnreadableError userInfo:nil];
+		if (outError) *outError = [NSError errorWithDomain:VSSourceAddonErrorDomain code:VSSourceAddonErrorAddonInfoUnreadable userInfo:nil];
 		return NO;
 	}
 	
@@ -1279,7 +1279,7 @@ static inline NSDictionary *VSMakeLaunchAgentPlist(NSString *jobLabel, NSArray *
 	if (keyIndex == NSNotFound || !(keyIndex + 1 < count)) {
 		NSLog(@"[%@ %@] failed to find %@ key and/or value in addoninfo.txt in (%@)!", NSStringFromClass([self class]), NSStringFromSelector(_cmd), VSSourceAddonSteamAppIDKey, sourceFilePath);
 		NSLog(@"[%@ %@] stringValue == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), stringValue);
-		if (outError) *outError = [NSError errorWithDomain:VSSourceAddonErrorDomain code:VSSourceAddonNoGameIDFoundInAddonInfoError userInfo:nil];
+		if (outError) *outError = [NSError errorWithDomain:VSSourceAddonErrorDomain code:VSSourceAddonErrorNoGameIDFoundInAddonInfo userInfo:nil];
 		return NO;
 	}
 	
@@ -1304,14 +1304,14 @@ static inline NSDictionary *VSMakeLaunchAgentPlist(NSString *jobLabel, NSArray *
 		NSLog(@"[%@ %@] stringValue == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), stringValue);
 		
 		if (outError) *outError = [NSError errorWithDomain:VSSourceAddonErrorDomain
-													  code:VSSourceAddonGameNotFoundError
+													  code:VSSourceAddonErrorGameNotFound
 												  userInfo:@{VSSourceAddonGameIDKey: @(addonSteamAppID)}];
 		return NO;
 	}
 	NSString *addonsFolderPath = game.addonsFolderPath;
 	if (addonsFolderPath == nil) {
 		NSLog(@"[%@ %@] addonsFolderPath is nil for %@ for (%@)!", NSStringFromClass([self class]), NSStringFromSelector(_cmd), game, sourceFilePath);
-		if (outError) *outError = [NSError errorWithDomain:VSSourceAddonErrorDomain code:VSSourceAddonGameNotFoundError userInfo:nil];
+		if (outError) *outError = [NSError errorWithDomain:VSSourceAddonErrorDomain code:VSSourceAddonErrorGameNotFound userInfo:nil];
 		return NO;
 	}
 	
@@ -1319,7 +1319,7 @@ static inline NSDictionary *VSMakeLaunchAgentPlist(NSString *jobLabel, NSArray *
 	
 	if ([destPath isEqualToString:sourceFilePath]) {
 		NSLog(@"[%@ %@] source and destination item are the same file; not overwriting!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-		if (outError) *outError = [NSError errorWithDomain:VSSourceAddonErrorDomain code:VSSourceAddonSourceFileIsDestinationFileError userInfo:nil];
+		if (outError) *outError = [NSError errorWithDomain:VSSourceAddonErrorDomain code:VSSourceAddonErrorSourceFileIsDestinationFile userInfo:nil];
 		return NO;
 	}
 	

@@ -35,15 +35,15 @@
 	
 	BOOL irHasAlpha = anImageRep.alpha;
 	
-	TKImageChannel *redChannel = [[self class] imageChannelWithImageRep:anImageRep channelMask:TKImageChannelRedMask];
+	TKImageChannel *redChannel = [[self class] imageChannelWithImageRep:anImageRep channelMask:TKImageChannelMaskRed];
 	if (redChannel) [imageChannels addObject:redChannel];
-	TKImageChannel *greenChannel = [[self class] imageChannelWithImageRep:anImageRep channelMask:TKImageChannelGreenMask];
+	TKImageChannel *greenChannel = [[self class] imageChannelWithImageRep:anImageRep channelMask:TKImageChannelMaskGreen];
 	if (greenChannel) [imageChannels addObject:greenChannel];
-	TKImageChannel *blueChannel = [[self class] imageChannelWithImageRep:anImageRep channelMask:TKImageChannelBlueMask];
+	TKImageChannel *blueChannel = [[self class] imageChannelWithImageRep:anImageRep channelMask:TKImageChannelMaskBlue];
 	if (blueChannel) [imageChannels addObject:blueChannel];
 	
 	if (irHasAlpha) {
-		TKImageChannel *alphaChannel = [[self class] imageChannelWithImageRep:anImageRep channelMask:TKImageChannelAlphaMask];
+		TKImageChannel *alphaChannel = [[self class] imageChannelWithImageRep:anImageRep channelMask:TKImageChannelMaskAlpha];
 		if (alphaChannel) [imageChannels addObject:alphaChannel];
 	}
 	return [imageChannels copy];
@@ -61,16 +61,16 @@
 		channelMask = aChannelMask;
 		
 		switch (channelMask) {
-			case TKImageChannelRedMask:
+			case TKImageChannelMaskRed:
 				name = NSLocalizedString(@"Red", @"");
 				break;
-			case TKImageChannelGreenMask:
+			case TKImageChannelMaskGreen:
 				name = NSLocalizedString(@"Green", @"");
 				break;
-			case TKImageChannelBlueMask:
+			case TKImageChannelMaskBlue:
 				name = NSLocalizedString(@"Blue", @"");
 				break;
-			case TKImageChannelAlphaMask:
+			case TKImageChannelMaskAlpha:
 				name = NSLocalizedString(@"Alpha", @"");
 				break;
 			default:
@@ -116,7 +116,7 @@
 	[imageFilter setDefaults];
 	
 	switch (aChannelMask) {
-		case TKImageChannelRedMask: {
+		case TKImageChannelMaskRed: {
 			[imageFilter setValuesForKeysWithDictionary:@{@"inputRVector": [CIVector vectorWithString:@"[1.0 0.0 0.0 0.0]"],
 														 @"inputGVector": [CIVector vectorWithString:@"[1.0 0.0 0.0 0.0]"],
 														 @"inputBVector": [CIVector vectorWithString:@"[1.0 0.0 0.0 0.0]"],
@@ -125,7 +125,7 @@
 			break;
 		}
 			
-		case TKImageChannelGreenMask: {
+		case TKImageChannelMaskGreen: {
 			[imageFilter setValuesForKeysWithDictionary:@{@"inputRVector": [CIVector vectorWithString:@"[0.0 1.0 0.0 0.0]"],
 														 @"inputGVector": [CIVector vectorWithString:@"[0.0 1.0 0.0 0.0]"],
 														 @"inputBVector": [CIVector vectorWithString:@"[0.0 1.0 0.0 0.0]"],
@@ -133,7 +133,7 @@
 			break;
 		}
 			
-		case TKImageChannelBlueMask: {
+		case TKImageChannelMaskBlue: {
 			[imageFilter setValuesForKeysWithDictionary:@{@"inputRVector": [CIVector vectorWithString:@"[0.0 0.0 1.0 0.0]"],
 														 @"inputGVector": [CIVector vectorWithString:@"[0.0 0.0 1.0 0.0]"],
 														 @"inputBVector": [CIVector vectorWithString:@"[0.0 0.0 1.0 0.0]"],
@@ -141,7 +141,7 @@
 			break;
 		}
 			
-		case TKImageChannelAlphaMask : {
+		case TKImageChannelMaskAlpha : {
 			[imageFilter setValuesForKeysWithDictionary:@{@"inputRVector": [CIVector vectorWithString:@"[0.0 0.0 0.0 1.0]"],
 														 @"inputGVector": [CIVector vectorWithString:@"[0.0 0.0 0.0 1.0]"],
 														 @"inputBVector": [CIVector vectorWithString:@"[0.0 0.0 0.0 1.0]"],
@@ -150,7 +150,7 @@
 			break;
 		}
 			
-		case TKImageChannelRGBAMask: {
+		case TKImageChannelMaskRGBA: {
 			[imageFilter setValuesForKeysWithDictionary:@{@"inputRVector": [CIVector vectorWithString:@"[1.0 0.0 0.0 0.0]"],
 														 @"inputGVector": [CIVector vectorWithString:@"[0.0 1.0 0.0 0.0]"],
 														 @"inputBVector": [CIVector vectorWithString:@"[0.0 0.0 1.0 0.0]"],

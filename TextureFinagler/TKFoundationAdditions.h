@@ -36,47 +36,27 @@ TKFOUNDATION_EXTERN NSString *NSStringForAppleScriptListFromPaths(NSArray<NSStri
 	
 
 
-//	Bookmark Data Creation Options
-//	Options used when creating bookmark data.
-//		Constants
-//	NSURLBookmarkCreationPreferFileIDResolution
-//		Option for specifying that an alias created with the bookmark data prefers resolving with its embedded file ID.
-//		Available in Mac OS X v10.6 and later.
-//		Declared in NSURL.h.
-//		
-//	NSURLBookmarkCreationMinimalBookmark
-//		Option for specifying that an alias created with the bookmark data be created with minimal information, which may make it smaller but still able to resolve in certain ways.
-//		Available in Mac OS X v10.6 and later.
-//		Declared in NSURL.h.
-//	NSURLBookmarkCreationSuitableForBookmarkFile
-//		Option for specifying that the bookmark data include properties required to create Finder alias files.
-//		Available in Mac OS X v10.6 and later.
-//		Declared in NSURL.h.
-
 typedef NS_OPTIONS(NSUInteger, TKBookmarkCreationOptions) {
+	/// Use the Classic alias manager. Deprecated, do not use.
 	TKBookmarkCreationUseAliasManager NS_ENUM_DEPRECATED(10_0, 10_8, NA, NA) = ( 1UL << 0 ),
-	TKBookmarkCreationMinimalBookmark			= ( 1UL << 9 ),
-	TKBookmarkCreationSuitableForBookmarkFile	= ( 1UL << 10 ),
-	TKBookmarkCreationWithSecurityScope NS_ENUM_AVAILABLE(10_7, NA) = ( 1UL << 11 ),
-	TKBookmarkCreationSecurityScopeAllowOnlyReadAccess NS_ENUM_AVAILABLE(10_7, NA) = ( 1UL << 12 ),
+	/// Option for specifying that an alias created with the bookmark data be created with minimal information, which may make it smaller but still able to resolve in certain ways.
+	TKBookmarkCreationMinimalBookmark			= NSURLBookmarkCreationMinimalBookmark,
+	/// Option for specifying that the bookmark data include properties required to create Finder alias files.
+	TKBookmarkCreationSuitableForBookmarkFile	= NSURLBookmarkCreationSuitableForBookmarkFile,
+	/// Include information in the bookmark data which allows the same sandboxed process to access the resource after being relaunched.
+	TKBookmarkCreationWithSecurityScope NS_ENUM_AVAILABLE(10_7, NA) = NSURLBookmarkCreationWithSecurityScope,
+	/// If used with kCFURLBookmarkCreationWithSecurityScope, at resolution time only read access to the resource will be granted.
+	TKBookmarkCreationSecurityScopeAllowOnlyReadAccess NS_ENUM_AVAILABLE(10_7, NA) = NSURLBookmarkCreationSecurityScopeAllowOnlyReadAccess,
+	
 	TKBookmarkCreationDefaultOptions			= TKBookmarkCreationSuitableForBookmarkFile,
 };
 
 
-//	Constants
-//	NSURLBookmarkResolutionWithoutUI
-//		Option for specifying that no UI feedback accompany resolution of the bookmark data.
-//		Available in Mac OS X v10.6 and later.
-//		Declared in NSURL.h.
-//	NSURLBookmarkResolutionWithoutMounting
-//		Option for specifying that no volume should be mounted during resolution of the bookmark data.
-//		Available in Mac OS X v10.6 and later.
-//		Declared in NSURL.h.
 typedef NS_OPTIONS(NSUInteger, TKBookmarkResolutionOptions) {
 	TKBookmarkResolutionDefaultOptions		= 1,
-	TKBookmarkResolutionWithoutUI			= ( 1UL << 8 ), /**< don't perform any user interaction during bookmark resolution */
-	TKBookmarkResolutionWithoutMounting		= ( 1UL << 9 ), /**< don't mount a volume during bookmark resolution */
-	TKBookmarkResolutionWithSecurityScope NS_ENUM_AVAILABLE(10_7, NA) = ( 1UL << 10 ) /**< use the secure information included at creation time to provide the ability to access the resource in a sandboxed process */
+	TKBookmarkResolutionWithoutUI			= NSURLBookmarkResolutionWithoutUI, /**< don't perform any user interaction during bookmark resolution */
+	TKBookmarkResolutionWithoutMounting		= NSURLBookmarkResolutionWithoutMounting, /**< don't mount a volume during bookmark resolution */
+	TKBookmarkResolutionWithSecurityScope NS_ENUM_AVAILABLE(10_7, NA) = NSURLBookmarkResolutionWithSecurityScope /**< use the secure information included at creation time to provide the ability to access the resource in a sandboxed process */
 };
 
 
@@ -176,7 +156,6 @@ typedef NS_OPTIONS(NSUInteger, TKBookmarkResolutionOptions) {
 ////////////////////////////////////////////////////////////////
 ////    NSMutableDictionary CATEGORY FOR THREAD-SAFETY
 ////////////////////////////////////////////////////////////////
-
 @interface NSMutableDictionary<KeyType, ObjectType> (TKThreadSafety)
 
 - (ObjectType)threadSafeObjectForKey:(KeyType)aKey usingLock:(NSLock *)aLock;

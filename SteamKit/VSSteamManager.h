@@ -9,12 +9,17 @@
 
 #import <Foundation/NSObject.h>
 #import <Foundation/NSDate.h>
+#import <Foundation/NSError.h>
 #import <SteamKit/SteamKitDefines.h>
 
 
 @class NSString, NSError, NSDictionary, NSMutableDictionary, NSArray;
 @class VSGame;
 
+STEAMKIT_EXTERN NSErrorDomain const VSSourceAddonErrorDomain;
+
+STEAMKIT_EXTERN NSErrorUserInfoKey const VSSourceAddonGameIDKey;
+STEAMKIT_EXTERN NSErrorUserInfoKey const VSSourceAddonFolderNameKey;
 
 @protocol VSSteamManagerDelegate <NSObject>
 - (void)gameDidLaunch:(VSGame *)game;
@@ -33,11 +38,6 @@ typedef NS_ENUM(NSUInteger, VSSteamAppsRelocationType) {
 	VSSteamAppsRelocationUnknown	= 0,
 	VSSteamAppsRelocationNone		= 1,
 	VSSteamAppsRelocationSymlink	= 2,
-	
-	VSSteamAppsUnknownRelocation	NS_SWIFT_UNAVAILABLE("Use .unknown instead") DEPRECATED_MSG_ATTRIBUTE("Use VSSteamAppsRelocationUnknown instead") = 0,
-	VSSteamAppsNoRelocation			NS_SWIFT_UNAVAILABLE("Use .none instead") DEPRECATED_MSG_ATTRIBUTE("Use VSSteamAppsRelocationNone instead") = 1,
-	VSSteamAppsSymlinkRelocation	NS_SWIFT_UNAVAILABLE("Use .symlink instead") DEPRECATED_MSG_ATTRIBUTE("Use VSSteamAppsRelocationSymlink instead") = 2
-
 };
 
 typedef NS_ENUM(NSUInteger, VSSourceFinaglerLaunchAgentStatus) {
@@ -127,18 +127,14 @@ typedef NS_ENUM(NSUInteger, VSSourceAddonInstallMethod) {
 	VSSourceAddonInstallByCopying	= 2
 };
 
-NS_ENUM(NSInteger) {
-	VSSourceAddonNotAValidAddonFileError				= 6000,
-	VSSourceAddonSourceFileIsDestinationFileError		= 6001,
-	VSSourceAddonNoAddonInfoFoundError					= 6002,
-	VSSourceAddonAddonInfoUnreadableError				= 6003,
-	VSSourceAddonNoGameIDFoundInAddonInfoError			= 6004,
-	VSSourceAddonGameNotFoundError						= 6005
+typedef NS_ERROR_ENUM(VSSourceAddonErrorDomain, VSSourceAddonErrors) {
+	VSSourceAddonErrorNotAValidAddonFile				= 6000,
+	VSSourceAddonErrorSourceFileIsDestinationFile		= 6001,
+	VSSourceAddonErrorNoAddonInfoFound					= 6002,
+	VSSourceAddonErrorAddonInfoUnreadable				= 6003,
+	VSSourceAddonErrorNoGameIDFoundInAddonInfo			= 6004,
+	VSSourceAddonErrorGameNotFound						= 6005
 };
-
-#if 0
-}
-#endif
 
 @interface VSSteamManager (VSAddonsSupport)
 
@@ -170,10 +166,15 @@ STEAMKIT_EXTERN NSString * const VSResourceNameKey;
 STEAMKIT_EXTERN NSString * const VSGameIconNameKey;
 STEAMKIT_EXTERN NSString * const VSSteamAppsDirectoryNameKey;
 
+static const VSSourceAddonErrors VSSourceAddonNotAValidAddonFileError NS_DEPRECATED_WITH_REPLACEMENT_MAC("VSSourceAddonErrorNotAValidAddonFile", 10.5, 10.9) = VSSourceAddonErrorNotAValidAddonFile;
+static const VSSourceAddonErrors VSSourceAddonSourceFileIsDestinationFileError NS_DEPRECATED_WITH_REPLACEMENT_MAC("VSSourceAddonErrorSourceFileIsDestinationFile", 10.5, 10.9) = VSSourceAddonErrorSourceFileIsDestinationFile;
+static const VSSourceAddonErrors VSSourceAddonNoAddonInfoFoundError NS_DEPRECATED_WITH_REPLACEMENT_MAC("VSSourceAddonErrorNoAddonInfoFound", 10.5, 10.9) = VSSourceAddonErrorNoAddonInfoFound;
+static const VSSourceAddonErrors VSSourceAddonAddonInfoUnreadableError NS_DEPRECATED_WITH_REPLACEMENT_MAC("VSSourceAddonErrorAddonInfoUnreadable", 10.5, 10.9) = VSSourceAddonErrorAddonInfoUnreadable;
+static const VSSourceAddonErrors VSSourceAddonNoGameIDFoundInAddonInfoError NS_DEPRECATED_WITH_REPLACEMENT_MAC("VSSourceAddonErrorNoGameIDFoundInAddonInfo", 10.5, 10.9) = VSSourceAddonErrorNoGameIDFoundInAddonInfo;
+static const VSSourceAddonErrors VSSourceAddonGameNotFoundError NS_DEPRECATED_WITH_REPLACEMENT_MAC("VSSourceAddonErrorGameNotFound", 10.5, 10.9) = VSSourceAddonErrorGameNotFound;
 
-STEAMKIT_EXTERN NSString * const VSSourceAddonErrorDomain;
-
-STEAMKIT_EXTERN NSString * const VSSourceAddonGameIDKey;
-STEAMKIT_EXTERN NSString * const VSSourceAddonFolderNameKey;
+static const VSSteamAppsRelocationType VSSteamAppsUnknownRelocation	NS_DEPRECATED_WITH_REPLACEMENT_MAC("VSSteamAppsRelocationUnknown", 10.5, 10.11) = VSSteamAppsRelocationUnknown;
+static const VSSteamAppsRelocationType VSSteamAppsNoRelocation			NS_DEPRECATED_WITH_REPLACEMENT_MAC("VSSteamAppsRelocationNone", 10.5, 10.11) = VSSteamAppsRelocationNone;
+static const VSSteamAppsRelocationType VSSteamAppsSymlinkRelocation	 NS_DEPRECATED_WITH_REPLACEMENT_MAC("VSSteamAppsRelocationSymlink", 10.5, 10.11) = VSSteamAppsRelocationSymlink;
 
 // SourceFinaglerAgent

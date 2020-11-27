@@ -368,6 +368,9 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray<NSValue*> *inRects, BOOL isFlipped)
 		return nil;
 	}
 	
+	if (@available(macOS 10.13, *)) {
+		return [NSKeyedUnarchiver unarchivedObjectOfClasses:[NSSet setWithObjects:[NSArray class], [NSSortDescriptor class], nil] fromData:obj error:NULL];
+	}
 	NSArray *toRet = [NSKeyedUnarchiver unarchiveObjectWithData:obj];
 	for (id obj2 in toRet) {
 		if (![obj2 isKindOfClass:[NSSortDescriptor class]]) {
@@ -387,6 +390,9 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray<NSValue*> *inRects, BOOL isFlipped)
 		return nil;
 	}
 	
+	if (@available(macOS 10.13, *)) {
+		return [NSKeyedUnarchiver unarchivedObjectOfClasses:[NSSet setWithObjects:[NSArray class], [NSSortDescriptor class], nil] fromData:obj error:NULL];
+	}
 	NSArray *toRet = [NSKeyedUnarchiver unarchiveObjectWithData:obj];
 	for (id obj2 in toRet) {
 		if (![obj2 isKindOfClass:[NSSortDescriptor class]]) {
@@ -502,10 +508,8 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray<NSValue*> *inRects, BOOL isFlipped)
 	NSMutableString *string = [NSMutableString string];   // full string result
 	NSMutableString *hrStr = [NSMutableString string]; // "human readable" string
 	
-	NSInteger i, len;
-	const unsigned char *b;
-	len = self.length;
-	b = self.bytes;
+	const NSInteger len = self.length;
+	const unsigned char *b = self.bytes;
 	
 	if (len == 0) {
 		return @"<empty>";
@@ -513,7 +517,7 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray<NSValue*> *inRects, BOOL isFlipped)
 	[string appendString:@"\n   "];
 	
 	NSInteger linelen = 16;
-	for (i = 0; i < len; i++) {
+	for (NSInteger i = 0; i < len; i++) {
 		[string appendFormat:@" %02x", b[i]];
 		if (isprint(b[i])) {
 			[hrStr appendFormat:@"%c", b[i]];
@@ -533,7 +537,7 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray<NSValue*> *inRects, BOOL isFlipped)
 	// make sure to print out the remaining hrStr part, aligned of course
 	if ((len % linelen) != 0) {
 		NSInteger bytesRemain = linelen - (len % linelen); // un-printed bytes
-		for (i = 0; i < bytesRemain; i++) {
+		for (NSInteger i = 0; i < bytesRemain; i++) {
 			[string appendString:@"   "];
 		}
 		[string appendFormat:@"    %@\n", hrStr];

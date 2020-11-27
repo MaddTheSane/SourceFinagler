@@ -41,32 +41,32 @@
 			NSInteger errorCode = [inError code];
 			
 			switch (errorCode) {
-				case VSSourceAddonNotAValidAddonFileError : {
+				case VSSourceAddonErrorNotAValidAddonFile : {
 					[self setProblem:NSLocalizedString(@"Not a valid Source addon file", @"")];
 					break;
 				}
 					
-				case VSSourceAddonSourceFileIsDestinationFileError : {
+				case VSSourceAddonErrorSourceFileIsDestinationFile : {
 					[self setProblem:NSLocalizedString(@"This addon file is already installed", @"")];
 					break;
 				}
 					
-				case VSSourceAddonNoAddonInfoFoundError : {
+				case VSSourceAddonErrorNoAddonInfoFound : {
 					[self setProblem:NSLocalizedString(@"No addoninfo.txt file could be found inside the Source addon file", @"")];
 					break;
 				}
 					
-				case VSSourceAddonAddonInfoUnreadableError : {
+				case VSSourceAddonErrorAddonInfoUnreadable : {
 					[self setProblem:NSLocalizedString(@"Couldn't read the addoninfo.txt file inside the Source addon file", @"")];
 					break;
 				}
 					
-				case VSSourceAddonNoGameIDFoundInAddonInfoError : {
+				case VSSourceAddonErrorNoGameIDFoundInAddonInfo : {
 					[self setProblem:NSLocalizedString(@"Didn't find a valid game ID in the addoninfo.txt file inside the Source addon file", @"")];
 					break;
 				}
 					
-				case VSSourceAddonGameNotFoundError : {
+				case VSSourceAddonErrorGameNotFound : {
 					NSInteger gameID = [[[inError userInfo] objectForKey:VSSourceAddonGameIDKey] integerValue];
 					[self setProblem:[NSString stringWithFormat:NSLocalizedString(@"Could not locate installed game for Steam Game ID %ld", @""), gameID]];
 					break;
