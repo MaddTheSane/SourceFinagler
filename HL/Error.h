@@ -14,7 +14,7 @@
 
 #include <stdarg.h>
 
-#include "stdafx.h"
+#include <HL/stdafx.h>
 
 #define ERROR_STRING_SIZE 4096
 

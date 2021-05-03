@@ -12,7 +12,7 @@
 #ifndef DIRECTORYITEM_H
 #define DIRECTORYITEM_H
 
-#include "stdafx.h"
+#include <HL/stdafx.h>
 
 namespace HLLib
 {

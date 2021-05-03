@@ -9,7 +9,7 @@
  * version.
  */
 
-#include "Mapping.h"
-#include "FileMapping.h"
-#include "MemoryMapping.h"
-#include "StreamMapping.h"
+#include <HL/Mapping.h>
+#include <HL/FileMapping.h>
+#include <HL/MemoryMapping.h>
+#include <HL/StreamMapping.h>

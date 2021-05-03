@@ -280,7 +280,7 @@ NSString *TKImageIOLocalizedString(NSString *key) {
 		
 //		imageChannels = [[NSMutableArray alloc] init];
 		
-		imageChannelMask = TKImageChannelRGBAMask;
+		imageChannelMask = TKImageChannelMaskRGBA;
     }
     return self;
 }
@@ -1821,13 +1821,13 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 		
 //		TKImageRep *selectedImageRep = [self selectedImageRep];
 		
-		CIFilter *redChannelFilter = [CIFilter filterForChannelMask:TKImageChannelRedMask];
+		CIFilter *redChannelFilter = [CIFilter filterForChannelMask:TKImageChannelMaskRed];
 		redChannelFilter.name = @"redChannelFilter";
-		CIFilter *greenChannelFilter = [CIFilter filterForChannelMask:TKImageChannelGreenMask];
+		CIFilter *greenChannelFilter = [CIFilter filterForChannelMask:TKImageChannelMaskGreen];
 		greenChannelFilter.name = @"greenChannelFilter";
-		CIFilter *blueChannelFilter = [CIFilter filterForChannelMask:TKImageChannelBlueMask];
+		CIFilter *blueChannelFilter = [CIFilter filterForChannelMask:TKImageChannelMaskBlue];
 		blueChannelFilter.name = @"blueChannelFilter";
-		CIFilter *alphaChannelFilter = [CIFilter filterForChannelMask:TKImageChannelAlphaMask];
+		CIFilter *alphaChannelFilter = [CIFilter filterForChannelMask:TKImageChannelMaskAlpha];
 		alphaChannelFilter.name = @"alphaChannelFilter";
 		
 //		[redChannelFilter setValue:[CIImage imageWithCGImage:[selectedImageRep CGImage]] forKey:kCIInputImageKey];
@@ -1836,7 +1836,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 //		[blueChannelFilter setValue:[greenChannelFilter valueForKey:kCIOutputImageKey] forKey:kCIInputImageKey];
 //		[alphaChannelFilter setValue:[blueChannelFilter valueForKey:kCIOutputImageKey] forKey:kCIInputImageKey];
 		
-		CIFilter *multiChannelFilter = [CIFilter filterForChannelMask:TKImageChannelRGBAMask];
+		CIFilter *multiChannelFilter = [CIFilter filterForChannelMask:TKImageChannelMaskRGBA];
 		multiChannelFilter.name = @"multiChannelFilter";
 //		[multiChannelFilter setValue:[alphaChannelFilter valueForKey:kCIOutputImageKey] forKey:kCIInputImageKey];
 		
@@ -1857,16 +1857,16 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 - (void)applyChannelMasks {
 	[self setupImageChannelMasksIfNecessary];
 	
-	if (imageChannelMask == TKImageChannelRedMask ||
-		imageChannelMask == TKImageChannelGreenMask ||
-		imageChannelMask == TKImageChannelBlueMask ||
-		imageChannelMask == TKImageChannelAlphaMask) {
+	if (imageChannelMask == TKImageChannelMaskRed ||
+		imageChannelMask == TKImageChannelMaskGreen ||
+		imageChannelMask == TKImageChannelMaskBlue ||
+		imageChannelMask == TKImageChannelMaskAlpha) {
 		// single-channel preview
 		
-		[imageView.imageKitLayer setValue:@((BOOL)(imageChannelMask == TKImageChannelRedMask))	forKeyPath:@"filters.redChannelFilter.enabled"];
-		[imageView.imageKitLayer setValue:@((BOOL)(imageChannelMask == TKImageChannelGreenMask)) forKeyPath:@"filters.greenChannelFilter.enabled"];
-		[imageView.imageKitLayer setValue:@((BOOL)(imageChannelMask == TKImageChannelBlueMask)) forKeyPath:@"filters.blueChannelFilter.enabled"];
-		[imageView.imageKitLayer setValue:@((BOOL)(imageChannelMask == TKImageChannelAlphaMask)) forKeyPath:@"filters.alphaChannelFilter.enabled"];
+		[imageView.imageKitLayer setValue:@((BOOL)(imageChannelMask == TKImageChannelMaskRed))	forKeyPath:@"filters.redChannelFilter.enabled"];
+		[imageView.imageKitLayer setValue:@((BOOL)(imageChannelMask == TKImageChannelMaskGreen)) forKeyPath:@"filters.greenChannelFilter.enabled"];
+		[imageView.imageKitLayer setValue:@((BOOL)(imageChannelMask == TKImageChannelMaskBlue)) forKeyPath:@"filters.blueChannelFilter.enabled"];
+		[imageView.imageKitLayer setValue:@((BOOL)(imageChannelMask == TKImageChannelMaskAlpha)) forKeyPath:@"filters.alphaChannelFilter.enabled"];
 		
 		[imageView.imageKitLayer setValue:@NO forKeyPath:@"filters.multiChannelFilter.enabled"];
 		
@@ -1879,10 +1879,10 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 		[imageView.imageKitLayer setValue:@NO forKeyPath:@"filters.blueChannelFilter.enabled"];
 		[imageView.imageKitLayer setValue:@NO forKeyPath:@"filters.alphaChannelFilter.enabled"];
 		
-		[imageView.imageKitLayer setValue:[CIVector vectorWithString:(imageChannelMask & TKImageChannelRedMask) ? @"[1.0 0.0 0.0 0.0]" : @"[0.0 0.0 0.0 0.0]"] forKeyPath:@"filters.multiChannelFilter.inputRVector"];
-		[imageView.imageKitLayer setValue:[CIVector vectorWithString:(imageChannelMask & TKImageChannelGreenMask) ? @"[0.0 1.0 0.0 0.0]" : @"[0.0 0.0 0.0 0.0]"] forKeyPath:@"filters.multiChannelFilter.inputGVector"];
-		[imageView.imageKitLayer setValue:[CIVector vectorWithString:(imageChannelMask & TKImageChannelBlueMask) ? @"[0.0 0.0 1.0 0.0]" : @"[0.0 0.0 0.0 0.0]"] forKeyPath:@"filters.multiChannelFilter.inputBVector"];
-		[imageView.imageKitLayer setValue:[CIVector vectorWithString:(imageChannelMask & TKImageChannelAlphaMask) ? @"[0.0 0.0 0.0 1.0]" : @"[0.0 0.0 0.0 0.0]"] forKeyPath:@"filters.multiChannelFilter.inputAVector"];
+		[imageView.imageKitLayer setValue:[CIVector vectorWithString:(imageChannelMask & TKImageChannelMaskRed) ? @"[1.0 0.0 0.0 0.0]" : @"[0.0 0.0 0.0 0.0]"] forKeyPath:@"filters.multiChannelFilter.inputRVector"];
+		[imageView.imageKitLayer setValue:[CIVector vectorWithString:(imageChannelMask & TKImageChannelMaskGreen) ? @"[0.0 1.0 0.0 0.0]" : @"[0.0 0.0 0.0 0.0]"] forKeyPath:@"filters.multiChannelFilter.inputGVector"];
+		[imageView.imageKitLayer setValue:[CIVector vectorWithString:(imageChannelMask & TKImageChannelMaskBlue) ? @"[0.0 0.0 1.0 0.0]" : @"[0.0 0.0 0.0 0.0]"] forKeyPath:@"filters.multiChannelFilter.inputBVector"];
+		[imageView.imageKitLayer setValue:[CIVector vectorWithString:(imageChannelMask & TKImageChannelMaskAlpha) ? @"[0.0 0.0 0.0 1.0]" : @"[0.0 0.0 0.0 0.0]"] forKeyPath:@"filters.multiChannelFilter.inputAVector"];
 
 		[imageView.imageKitLayer setValue:@YES forKeyPath:@"filters.multiChannelFilter.enabled"];
 

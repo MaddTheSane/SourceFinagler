@@ -12,7 +12,7 @@
 #ifndef VTFWRAPPER_H
 #define VTFWRAPPER_H
 
-#include "stdafx.h"
+#include <VTF/stdafx.h>
 
 #ifdef __cplusplus
 extern "C" {

@@ -12,8 +12,8 @@
 #ifndef DIRECTORYFOLDER_H
 #define DIRECTORYFOLDER_H
 
-#include "DirectoryItem.h"
-#include "DirectoryFile.h"
+#include <HL/DirectoryItem.h>
+#include <HL/DirectoryFile.h>
 
 #include <vector>
 

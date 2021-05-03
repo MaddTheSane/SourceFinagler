@@ -12,8 +12,8 @@
 #ifndef FILEMAPPING_H
 #define FILEMAPPING_H
 
-#include "stdafx.h"
-#include "Mapping.h"
+#include <HL/stdafx.h>
+#include <HL/Mapping.h>
 
 namespace HLLib
 {

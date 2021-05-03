@@ -12,7 +12,7 @@
 #ifndef MAPPING_H
 #define MAPPING_H
 
-#include "stdafx.h"
+#include <HL/stdafx.h>
 
 namespace HLLib
 {

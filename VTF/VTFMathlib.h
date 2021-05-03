@@ -22,7 +22,7 @@
 #ifndef VTFMATHLIB_H
 #define VTFMATHLIB_H
 
-#include "stdafx.h"
+#include <VTF/stdafx.h>
 
 // Defines for data alignment
 //---------------------------

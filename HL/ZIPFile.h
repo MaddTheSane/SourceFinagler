@@ -12,8 +12,8 @@
 #ifndef ZIPFILE_H
 #define ZIPFILE_H
 
-#include "stdafx.h"
-#include "Package.h"
+#include <HL/stdafx.h>
+#include <HL/Package.h>
 
 namespace HLLib
 {

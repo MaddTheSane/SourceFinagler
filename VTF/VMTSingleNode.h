@@ -12,8 +12,8 @@
 #ifndef VMTSINGLENODE_H
 #define VMTSINGLENODE_H
 
-#include "stdafx.h"
-#include "VMTValueNode.h"
+#include <VTF/stdafx.h>
+#include <VTF/VMTValueNode.h>
 
 namespace VTFLib
 {

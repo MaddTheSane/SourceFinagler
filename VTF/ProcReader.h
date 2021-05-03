@@ -12,8 +12,8 @@
 #ifndef PROCREADER_H
 #define PROCREADER_H
 
-#include "stdafx.h"
-#include "Reader.h"
+#include <VTF/stdafx.h>
+#include <VTF/Reader.h>
 
 namespace VTFLib
 {

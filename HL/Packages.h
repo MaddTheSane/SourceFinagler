@@ -9,14 +9,14 @@
  * version.
  */
 
-#include "Package.h"
-#include "BSPFile.h"
-#include "GCFFile.h"
-#include "NCFFile.h"
-#include "PAKFile.h"
-#include "SGAFile.h"
-#include "VBSPFile.h"
-#include "VPKFile.h"
-#include "WADFile.h"
-#include "XZPFile.h"
-#include "ZIPFile.h"
+#include <HL/Package.h>
+#include <HL/BSPFile.h>
+#include <HL/GCFFile.h>
+#include <HL/NCFFile.h>
+#include <HL/PAKFile.h>
+#include <HL/SGAFile.h>
+#include <HL/VBSPFile.h>
+#include <HL/VPKFile.h>
+#include <HL/WADFile.h>
+#include <HL/XZPFile.h>
+#include <HL/ZIPFile.h>

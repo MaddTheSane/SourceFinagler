@@ -9,6 +9,6 @@
  * version.
  */
 
-#include "DirectoryItem.h"
-#include "DirectoryFile.h"
-#include "DirectoryFolder.h"
+#include <HL/DirectoryItem.h>
+#include <HL/DirectoryFile.h>
+#include <HL/DirectoryFolder.h>

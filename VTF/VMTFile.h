@@ -12,10 +12,10 @@
 #ifndef VMTFILE_H
 #define VMTFILE_H
 
-#include "stdafx.h"
-#include "Readers.h"
-#include "Writers.h"
-#include "VMTNodes.h"
+#include <VTF/stdafx.h>
+#include <VTF/Readers.h>
+#include <VTF/Writers.h>
+#include <VTF/VMTNodes.h>
 
 #ifdef __cplusplus
 extern "C" {

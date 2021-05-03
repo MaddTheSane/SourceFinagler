@@ -12,8 +12,8 @@
 #ifndef PROCSTREAM_H
 #define PROCSTREAM_H
 
-#include "stdafx.h"
-#include "Stream.h"
+#include <HL/stdafx.h>
+#include <HL/Stream.h>
 
 namespace HLLib
 {

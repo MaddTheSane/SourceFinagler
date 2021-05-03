@@ -12,8 +12,8 @@
 #ifndef MEMORYWRITER_H
 #define MEMORYWRITER_H
 
-#include "stdafx.h"
-#include "Writer.h"
+#include <VTF/stdafx.h>
+#include <VTF/Writer.h>
 
 namespace VTFLib
 {

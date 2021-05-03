@@ -12,10 +12,10 @@
 #ifndef GCFSTREAM_H
 #define GCFSTREAM_H
 
-#include "stdafx.h"
-#include "Stream.h"
-#include "Mapping.h"
-#include "GCFFile.h"
+#include <HL/stdafx.h>
+#include <HL/Stream.h>
+#include <HL/Mapping.h>
+#include <HL/GCFFile.h>
 
 namespace HLLib
 {

@@ -12,8 +12,8 @@
 #ifndef VMTSTRINGNODE_H
 #define VMTSTRINGNODE_H
 
-#include "stdafx.h"
-#include "VMTValueNode.h"
+#include <VTF/stdafx.h>
+#include <VTF/VMTValueNode.h>
 
 namespace VTFLib
 {

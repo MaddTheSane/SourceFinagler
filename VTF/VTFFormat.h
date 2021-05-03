@@ -34,9 +34,9 @@
 #ifndef VTFFORMAT_H
 #define VTFFORMAT_H
 
-#include "stdafx.h"
+#include <VTF/stdafx.h>
 
-#include "VTFMathlib.h"
+#include <VTF/VTFMathlib.h>
 
 #ifdef __cplusplus
 extern "C" {

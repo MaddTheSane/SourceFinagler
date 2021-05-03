@@ -99,11 +99,11 @@
 #ifndef VTFLIB_H
 #define VTFLIB_H
 
-#include "stdafx.h"
+#include <VTF/stdafx.h>
 #ifdef __cplusplus
-#include "Error.h"
-#include "VTFFile.h"
-#include "VMTFile.h"
+#include <VTF/Error.h>
+#include <VTF/VTFFile.h>
+#include <VTF/VMTFile.h>
 
 #include <vector>
 

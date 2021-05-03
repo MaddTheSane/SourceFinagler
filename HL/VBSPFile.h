@@ -12,8 +12,8 @@
 #ifndef VBSPFILE_H
 #define VBSPFILE_H
 
-#include "stdafx.h"
-#include "Package.h"
+#include <HL/stdafx.h>
+#include <HL/Package.h>
 
 #define HL_VBSP_LUMP_COUNT 64
 

@@ -12,8 +12,8 @@
 #ifndef MEMORYMAPPING_H
 #define MEMORYMAPPING_H
 
-#include "stdafx.h"
-#include "Mapping.h"
+#include <HL/stdafx.h>
+#include <HL/Mapping.h>
 
 namespace HLLib
 {

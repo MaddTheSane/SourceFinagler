@@ -12,7 +12,7 @@
 #ifndef STREAM_H
 #define STREAM_H
 
-#include "stdafx.h"
+#include <HL/stdafx.h>
 
 namespace HLLib
 {

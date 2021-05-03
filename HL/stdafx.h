@@ -471,6 +471,6 @@ typedef hlVoid (*PDefragmentProgressExProc) (const HLDirectoryItem *pFile, hlUIn
 #	define PATH_SEPARATOR_STRING "/"
 #endif
 
-#include "DebugMemory.h"
+#include <HL/DebugMemory.h>
 
 #endif

@@ -12,7 +12,7 @@
 #ifndef WRAPPER_H
 #define WRAPPER_H
 
-#include "stdafx.h"
+#include <HL/stdafx.h>
 
 #ifdef __cplusplus
 extern "C" {

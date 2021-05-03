@@ -12,8 +12,8 @@
 #ifndef NULLSTREAM_H
 #define NULLSTREAM_H
 
-#include "stdafx.h"
-#include "Stream.h"
+#include <HL/stdafx.h>
+#include <HL/Stream.h>
 
 namespace HLLib
 {

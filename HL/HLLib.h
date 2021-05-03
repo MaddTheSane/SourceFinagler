@@ -12,10 +12,10 @@
 #ifndef HLLIB_H
 #define HLLIB_H
 
-#include "stdafx.h"
+#include <HL/stdafx.h>
 #ifdef __cplusplus
-#include "Error.h"
-#include "Package.h"
+#include <HL/Error.h>
+#include <HL/Package.h>
 
 namespace HLLib
 {

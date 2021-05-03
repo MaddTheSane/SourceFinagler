@@ -12,8 +12,8 @@
 #ifndef FILEWRITER_H
 #define FILEWRITER_H
 
-#include "stdafx.h"
-#include "Writer.h"
+#include <VTF/stdafx.h>
+#include <VTF/Writer.h>
 
 namespace VTFLib
 {

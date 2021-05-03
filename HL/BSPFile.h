@@ -12,8 +12,8 @@
 #ifndef BSPFILE_H
 #define BSPFILE_H
 
-#include "stdafx.h"
-#include "Package.h"
+#include <HL/stdafx.h>
+#include <HL/Package.h>
 
 #define HL_BSP_LUMP_COUNT 15
 

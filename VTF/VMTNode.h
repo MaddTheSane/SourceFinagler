@@ -12,7 +12,7 @@
 #ifndef VMTNODE_H
 #define VMTNODE_H
 
-#include "stdafx.h"
+#include <VTF/stdafx.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -30,7 +30,6 @@ typedef enum tagVMTNodeType
 
 #ifdef __cplusplus
 }
-#endif
 
 namespace VTFLib
 {
@@ -62,4 +61,5 @@ namespace VTFLib
 	}
 }
 
+#endif
 #endif

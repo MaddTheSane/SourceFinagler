@@ -12,9 +12,9 @@
 #ifndef STREAMMAPPING_H
 #define STREAMMAPPING_H
 
-#include "stdafx.h"
-#include "Stream.h"
-#include "Mapping.h"
+#include <HL/stdafx.h>
+#include <HL/Stream.h>
+#include <HL/Mapping.h>
 
 namespace HLLib
 {

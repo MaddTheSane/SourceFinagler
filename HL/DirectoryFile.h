@@ -12,8 +12,8 @@
 #ifndef DIRECTORYFILE_H
 #define DIRECTORYFILE_H
 
-#include "DirectoryItem.h"
-#include "Stream.h"
+#include <HL/DirectoryItem.h>
+#include <HL/Stream.h>
 
 namespace HLLib
 {

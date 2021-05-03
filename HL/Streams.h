@@ -9,10 +9,10 @@
  * version.
  */
 
-#include "Stream.h"
-#include "FileStream.h"
-#include "GCFStream.h"
-#include "MappingStream.h"
-#include "MemoryStream.h"
-#include "NullStream.h"
-#include "ProcStream.h"
+#include <HL/Stream.h>
+#include <HL/FileStream.h>
+#include <HL/GCFStream.h>
+#include <HL/MappingStream.h>
+#include <HL/MemoryStream.h>
+#include <HL/NullStream.h>
+#include <HL/ProcStream.h>

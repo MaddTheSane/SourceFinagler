@@ -12,8 +12,8 @@
 #ifndef VMTVALUENODE_H
 #define VMTVALUENODE_H
 
-#include "stdafx.h"
-#include "VMTNode.h"
+#include <VTF/stdafx.h>
+#include <VTF/VMTNode.h>
 
 namespace VTFLib
 {
