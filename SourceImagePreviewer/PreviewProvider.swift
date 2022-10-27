@@ -12,29 +12,7 @@ import UniformTypeIdentifiers
 import TextureKit
 
 class PreviewProvider: QLPreviewProvider, QLPreviewingController {
-    
-
-    /*
-     Use a QLPreviewProvider to provide data-based previews.
-     
-     To set up your extension as a data-based preview extension:
-
-     - Modify the extension's Info.plist by setting
-       <key>QLIsDataBasedPreview</key>
-       <true/>
-     
-     - Add the supported content types to QLSupportedContentTypes array in the extension's Info.plist.
-
-     - Change the NSExtensionPrincipalClass to this class.
-       e.g.
-       <key>NSExtensionPrincipalClass</key>
-       <string>$(PRODUCT_MODULE_NAME).PreviewProvider</string>
-     
-     - Implement providePreview(for:)
-     */
-    
     func providePreview(for request: QLFilePreviewRequest) async throws -> QLPreviewReply {
-    
 		let url = request.fileURL
 		let resVals = try url.resourceValues(forKeys: [.contentTypeKey])
 		guard let contentType = resVals.contentType else {
@@ -78,13 +56,12 @@ class PreviewProvider: QLPreviewProvider, QLPreviewingController {
 				}
 				
 				imageRef = tkImageRep?.cgImage
-
 			}
 		}
 
 		guard let imageRef else {
 			// TODO: Better error thrown
-			throw CocoaError(.featureUnsupported)
+			throw CocoaError(.fileReadCorruptFile)
 		}
 
 		let imageSize = CGSize(width: imageRef.width, height: imageRef.height)

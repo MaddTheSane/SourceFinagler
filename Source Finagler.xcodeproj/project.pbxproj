@@ -74,6 +74,12 @@
 		55633918290A801E0058FA82 /* PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55633917290A801E0058FA82 /* PreviewProvider.swift */; };
 		55633920290A801E0058FA82 /* SourceImagePreviewer.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 55633911290A801D0058FA82 /* SourceImagePreviewer.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5563393E290B15170058FA82 /* TextureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17319B21298D11400C29732 /* TextureKit.framework */; };
+		55633945290B1FD80058FA82 /* QuickLookThumbnailing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55633944290B1FD80058FA82 /* QuickLookThumbnailing.framework */; };
+		55633946290B1FD80058FA82 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55633912290A801D0058FA82 /* Quartz.framework */; };
+		55633949290B1FD80058FA82 /* ThumbnailProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55633948290B1FD80058FA82 /* ThumbnailProvider.swift */; };
+		5563394E290B1FD80058FA82 /* SourceImageThumbnailer.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 55633943290B1FD80058FA82 /* SourceImageThumbnailer.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		55633957290B204B0058FA82 /* MDCGImage.m in Sources */ = {isa = PBXBuildFile; fileRef = C15DD37E126A476300E44BDB /* MDCGImage.m */; };
+		5563395A290B2AB50058FA82 /* TextureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17319B21298D11400C29732 /* TextureKit.framework */; };
 		558672FC1D7E874C00E26A11 /* NVImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA8FD125E71A200CA78FF /* NVImage.framework */; };
 		558673021D7E8BB700E26A11 /* NVCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA7EA125E5C9600CA78FF /* NVCore.framework */; };
 		558FACC220AB93EF00AC7001 /* CompressorETC.h in Headers */ = {isa = PBXBuildFile; fileRef = 558FACC020AB93EE00AC7001 /* CompressorETC.h */; };
@@ -683,6 +689,20 @@
 			remoteGlobalIDString = C17319B11298D11400C29732;
 			remoteInfo = TextureKit;
 		};
+		5563394C290B1FD80058FA82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 55633942290B1FD80058FA82;
+			remoteInfo = SourceImageThumbnailer;
+		};
+		55633958290B2AAA0058FA82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C17319B11298D11400C29732;
+			remoteInfo = TextureKit;
+		};
 		558672FE1D7E887E00E26A11 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
@@ -948,6 +968,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				55633920290A801E0058FA82 /* SourceImagePreviewer.appex in Embed Foundation Extensions */,
+				5563394E290B1FD80058FA82 /* SourceImageThumbnailer.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1060,6 +1081,12 @@
 		55633917290A801E0058FA82 /* PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
 		5563391C290A801E0058FA82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5563391D290A801E0058FA82 /* SourceImageThumbnailer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SourceImageThumbnailer.entitlements; sourceTree = "<group>"; };
+		55633943290B1FD80058FA82 /* SourceImageThumbnailer.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SourceImageThumbnailer.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		55633944290B1FD80058FA82 /* QuickLookThumbnailing.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLookThumbnailing.framework; path = System/Library/Frameworks/QuickLookThumbnailing.framework; sourceTree = SDKROOT; };
+		55633948290B1FD80058FA82 /* ThumbnailProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailProvider.swift; sourceTree = "<group>"; };
+		5563394A290B1FD80058FA82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5563394B290B1FD80058FA82 /* SourceImageThumbnailer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SourceImageThumbnailer.entitlements; sourceTree = "<group>"; };
+		55633954290B203C0058FA82 /* SourceImageThumbnailer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SourceImageThumbnailer-Bridging-Header.h"; sourceTree = "<group>"; };
 		558672FB1D7E857600E26A11 /* cmdline.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = cmdline.h; path = nvtt/tools/cmdline.h; sourceTree = "<group>"; };
 		558FACC020AB93EE00AC7001 /* CompressorETC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompressorETC.h; sourceTree = "<group>"; };
 		558FACC120AB93EF00AC7001 /* CompressorETC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompressorETC.cpp; sourceTree = "<group>"; };
@@ -1793,6 +1820,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		55633940290B1FD80058FA82 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5563395A290B2AB50058FA82 /* TextureKit.framework in Frameworks */,
+				55633945290B1FD80058FA82 /* QuickLookThumbnailing.framework in Frameworks */,
+				55633946290B1FD80058FA82 /* Quartz.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C1224BEA13B06B9A009AA0F4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -2048,6 +2085,7 @@
 				C1D4494B12602E5100A027EF /* decompress */,
 				C17D8F781642AAC40044039F /* ddsFinagler */,
 				55633911290A801D0058FA82 /* SourceImagePreviewer.appex */,
+				55633943290B1FD80058FA82 /* SourceImageThumbnailer.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2070,6 +2108,7 @@
 				C1FEA7B0125E5BDD00CA78FF /* NVTextureTools framework */,
 				C17D8F7C1642AAC40044039F /* ddsFinagler */,
 				55633914290A801E0058FA82 /* SourceImagePreviewer */,
+				55633947290B1FD80058FA82 /* SourceImageThumbnailer */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
@@ -2107,6 +2146,7 @@
 				C17CC5AB1627FF740055D950 /* Sparkle.framework */,
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				55633912290A801D0058FA82 /* Quartz.framework */,
+				55633944290B1FD80058FA82 /* QuickLookThumbnailing.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2153,6 +2193,17 @@
 				5563391D290A801E0058FA82 /* SourceImageThumbnailer.entitlements */,
 			);
 			path = SourceImagePreviewer;
+			sourceTree = "<group>";
+		};
+		55633947290B1FD80058FA82 /* SourceImageThumbnailer */ = {
+			isa = PBXGroup;
+			children = (
+				55633948290B1FD80058FA82 /* ThumbnailProvider.swift */,
+				5563394A290B1FD80058FA82 /* Info.plist */,
+				5563394B290B1FD80058FA82 /* SourceImageThumbnailer.entitlements */,
+				55633954290B203C0058FA82 /* SourceImageThumbnailer-Bridging-Header.h */,
+			);
+			path = SourceImageThumbnailer;
 			sourceTree = "<group>";
 		};
 		558FACC420ABADDD00AC7001 /* rg_etc1_v104 */ = {
@@ -4082,6 +4133,24 @@
 			productReference = 55633911290A801D0058FA82 /* SourceImagePreviewer.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		55633942290B1FD80058FA82 /* SourceImageThumbnailer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5563394F290B1FD90058FA82 /* Build configuration list for PBXNativeTarget "SourceImageThumbnailer" */;
+			buildPhases = (
+				5563393F290B1FD80058FA82 /* Sources */,
+				55633940290B1FD80058FA82 /* Frameworks */,
+				55633941290B1FD80058FA82 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				55633959290B2AAA0058FA82 /* PBXTargetDependency */,
+			);
+			name = SourceImageThumbnailer;
+			productName = SourceImageThumbnailer;
+			productReference = 55633943290B1FD80058FA82 /* SourceImageThumbnailer.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		C1224BEB13B06B9A009AA0F4 /* SourceFinaglerAgent */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C1224C0613B06BBF009AA0F4 /* Build configuration list for PBXNativeTarget "SourceFinaglerAgent" */;
@@ -4261,6 +4330,7 @@
 				C140E9291388B77800027DD6 /* PBXTargetDependency */,
 				C1224D8113B09338009AA0F4 /* PBXTargetDependency */,
 				5563391F290A801E0058FA82 /* PBXTargetDependency */,
+				5563394D290B1FD80058FA82 /* PBXTargetDependency */,
 			);
 			name = "Source Finagler";
 			productInstallPath = "$(HOME)/Applications";
@@ -4435,6 +4505,11 @@
 						CreatedOnToolsVersion = 14.1;
 						ProvisioningStyle = Automatic;
 					};
+					55633942290B1FD80058FA82 = {
+						CreatedOnToolsVersion = 14.1;
+						LastSwiftMigration = 1410;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Source Finagler" */;
@@ -4471,12 +4546,20 @@
 				C1D4494A12602E5100A027EF /* decompress */,
 				C17D8F771642AAC40044039F /* ddsFinagler */,
 				55633910290A801D0058FA82 /* SourceImagePreviewer */,
+				55633942290B1FD80058FA82 /* SourceImageThumbnailer */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		5563390F290A801D0058FA82 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55633941290B1FD80058FA82 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -4670,6 +4753,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				55633918290A801E0058FA82 /* PreviewProvider.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5563393F290B1FD80058FA82 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55633957290B204B0058FA82 /* MDCGImage.m in Sources */,
+				55633949290B1FD80058FA82 /* ThumbnailProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5064,6 +5156,16 @@
 			isa = PBXTargetDependency;
 			target = C17319B11298D11400C29732 /* TextureKit */;
 			targetProxy = 5563393C290B15010058FA82 /* PBXContainerItemProxy */;
+		};
+		5563394D290B1FD80058FA82 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 55633942290B1FD80058FA82 /* SourceImageThumbnailer */;
+			targetProxy = 5563394C290B1FD80058FA82 /* PBXContainerItemProxy */;
+		};
+		55633959290B2AAA0058FA82 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C17319B11298D11400C29732 /* TextureKit */;
+			targetProxy = 55633958290B2AAA0058FA82 /* PBXContainerItemProxy */;
 		};
 		558672FF1D7E887E00E26A11 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -6070,6 +6172,136 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+			};
+			name = "Release-MAS";
+		};
+		55633950290B1FD90058FA82 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = SourceImageThumbnailer/SourceImageThumbnailer.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 250;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SourceImageThumbnailer/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SourceImageThumbnailer;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mark Douma LLC. All rights reserved.";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 2.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.SourceFinagler.SourceImageThumbnailer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "SourceImageThumbnailer/SourceImageThumbnailer-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		55633951290B1FD90058FA82 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = SourceImageThumbnailer/SourceImageThumbnailer.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 250;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SourceImageThumbnailer/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SourceImageThumbnailer;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mark Douma LLC. All rights reserved.";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 2.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.SourceFinagler.SourceImageThumbnailer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "SourceImageThumbnailer/SourceImageThumbnailer-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		55633952290B1FD90058FA82 /* Release-MAS */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = SourceImageThumbnailer/SourceImageThumbnailer.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 250;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SourceImageThumbnailer/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SourceImageThumbnailer;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mark Douma LLC. All rights reserved.";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 2.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.SourceFinagler.SourceImageThumbnailer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "SourceImageThumbnailer/SourceImageThumbnailer-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 			};
@@ -7085,6 +7317,16 @@
 				55633922290A801F0058FA82 /* Debug */,
 				55633923290A801F0058FA82 /* Release */,
 				55633924290A801F0058FA82 /* Release-MAS */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5563394F290B1FD90058FA82 /* Build configuration list for PBXNativeTarget "SourceImageThumbnailer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55633950290B1FD90058FA82 /* Debug */,
+				55633951290B1FD90058FA82 /* Release */,
+				55633952290B1FD90058FA82 /* Release-MAS */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -47,5 +47,3 @@ CGImageRef MDCGImageCreateCopyWithSize(CGImageRef imageRef, CGSize size) {
 	}
 	return newImageRef;
 }
-
-	
