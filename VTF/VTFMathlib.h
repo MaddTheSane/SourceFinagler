@@ -119,6 +119,4 @@ vlInt Intersect(Vector *v);								//!< Vector intersect function.
 	
 }
 
-
-
 #endif //VTF_MATHLIB

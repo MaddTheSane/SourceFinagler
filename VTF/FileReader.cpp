@@ -221,5 +221,3 @@ vlUInt CFileReader::Read(vlVoid *vData, vlUInt uiBytes)
 	return (vlUInt)lBytesRead;
 #endif
 }
-
-

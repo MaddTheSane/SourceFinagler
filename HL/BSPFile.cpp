@@ -120,7 +120,7 @@ CDirectoryFolder *CBSPFile::CreateRoot()
 			continue;
 		}
 
-		sprintf(lpFileName, "%s.bmp", pTexture->lpName);
+		snprintf(lpFileName, sizeof(lpFileName), "%s.bmp", pTexture->lpName);
 
 		// Add the lump as a bitmap.
 		pRoot->AddFile(lpFileName, i);

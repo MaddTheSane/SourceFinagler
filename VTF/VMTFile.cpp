@@ -984,11 +984,11 @@ vlVoid CVMTFile::Save(IO::Writers::IWriter *Writer, CVMTNode *Node, vlUInt uiLev
 		CVMTGroupNode *Group = static_cast<CVMTGroupNode *>(Node);
 
 		this->Indent(Writer, uiLevel);
-		sprintf(cBuffer, "\"%s\"\r\n", Group->GetName());
+		snprintf(cBuffer, sizeof(cBuffer), "\"%s\"\r\n", Group->GetName());
 		Writer->Write(cBuffer, (vlUInt)strlen(cBuffer));
 
 		this->Indent(Writer, uiLevel);
-		sprintf(cBuffer, "{\r\n");
+		snprintf(cBuffer, sizeof(cBuffer), "{\r\n");
 		Writer->Write(cBuffer, (vlUInt)strlen(cBuffer));
 
 		for(vlUInt i = 0; i < Group->GetNodeCount(); i++)
@@ -997,7 +997,7 @@ vlVoid CVMTFile::Save(IO::Writers::IWriter *Writer, CVMTNode *Node, vlUInt uiLev
 		}
 
 		this->Indent(Writer, uiLevel);
-		sprintf(cBuffer, "}\r\n");
+		snprintf(cBuffer, sizeof(cBuffer), "}\r\n");
 		Writer->Write(cBuffer, (vlUInt)strlen(cBuffer));
 	}
 	else if(Node->GetType() == NODE_TYPE_STRING)
@@ -1005,7 +1005,7 @@ vlVoid CVMTFile::Save(IO::Writers::IWriter *Writer, CVMTNode *Node, vlUInt uiLev
 		CVMTStringNode *String = static_cast<CVMTStringNode *>(Node);
 
 		this->Indent(Writer, uiLevel);
-		sprintf(cBuffer, "\"%s\" \"%s\"\r\n", String->GetName(), String->GetValue());
+		snprintf(cBuffer, sizeof(cBuffer), "\"%s\" \"%s\"\r\n", String->GetName(), String->GetValue());
 		Writer->Write(cBuffer, (vlUInt)strlen(cBuffer));
 	}
 	else if(Node->GetType() == NODE_TYPE_INTEGER)
@@ -1013,7 +1013,7 @@ vlVoid CVMTFile::Save(IO::Writers::IWriter *Writer, CVMTNode *Node, vlUInt uiLev
 		CVMTIntegerNode *Integer = static_cast<CVMTIntegerNode *>(Node);
 
 		this->Indent(Writer, uiLevel);
-		sprintf(cBuffer, "\"%s\" %d\r\n", Integer->GetName(), Integer->GetValue());
+		snprintf(cBuffer, sizeof(cBuffer), "\"%s\" %d\r\n", Integer->GetName(), Integer->GetValue());
 		Writer->Write(cBuffer, (vlUInt)strlen(cBuffer));
 	}
 	else if(Node->GetType() == NODE_TYPE_SINGLE)
@@ -1021,7 +1021,7 @@ vlVoid CVMTFile::Save(IO::Writers::IWriter *Writer, CVMTNode *Node, vlUInt uiLev
 		CVMTSingleNode *Single = static_cast<CVMTSingleNode *>(Node);
 
 		this->Indent(Writer, uiLevel);
-		sprintf(cBuffer, "\"%s\" %f\r\n", Single->GetName(), Single->GetValue());
+		snprintf(cBuffer, sizeof(cBuffer), "\"%s\" %f\r\n", Single->GetName(), Single->GetValue());
 		Writer->Write(cBuffer, (vlUInt)strlen(cBuffer));
 	}
 }

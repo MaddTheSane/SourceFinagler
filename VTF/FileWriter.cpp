@@ -212,10 +212,3 @@ vlUInt CFileWriter::Write(vlVoid *vData, vlUInt uiBytes)
 	return (vlUInt)lBytesWritten;
 #endif
 }
-
-
-
-
-
-
-

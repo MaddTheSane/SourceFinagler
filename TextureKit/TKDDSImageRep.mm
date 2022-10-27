@@ -725,8 +725,7 @@ static unsigned char *TKCreateRGBADataFromColor32(const Color32 *pixels, NSUInte
 	MemoryInputStream *mis = new MemoryInputStream((const unsigned char *)[aData bytes], uint([aData length]));
 	
 	DirectDrawSurface *dds = new DirectDrawSurface();
-	dds->load(mis);
-	if (dds == 0) {
+	if (dds == 0 || !dds->load(mis)) {
 		NSLog(@"[%@ %@] new DirectDrawSurface() with data failed!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 		return nil;
 	}
@@ -848,7 +847,7 @@ static unsigned char *TKCreateRGBADataFromColor32(const Color32 *pixels, NSUInte
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	return [[self class] imageRepsWithData:aData firstRepresentationOnly:NO];
+	return [[self class] imageRepsWithData:aData firstRepresentationOnly:NO] ?: @[];
 }
 
 

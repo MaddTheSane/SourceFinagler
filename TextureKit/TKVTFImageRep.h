@@ -6,7 +6,10 @@
 //  Copyright (c) 2010-2013 Mark Douma LLC. All rights reserved.
 //
 
+#import <Cocoa/Cocoa.h>
 #import <TextureKit/TKImageRep.h>
+
+NS_ASSUME_NONNULL_BEGIN
 
 //	http://developer.valvesoftware.com/wiki/Valve_Texture_Format
 //  
@@ -75,7 +78,7 @@ TEXTUREKIT_EXTERN TKVTFFormat TKVTFFormatFromString(NSString *aFormat);
 
 TEXTUREKIT_EXTERN NSString * const TKVTFType;			// UTI Type
 TEXTUREKIT_EXTERN NSString * const TKVTFFileType;		// filename extension
-TEXTUREKIT_EXTERN NSString * const TKVTFPboardType;
+TEXTUREKIT_EXTERN NSPasteboardType const TKVTFPboardType;
 
 
 NS_ENUM(OSType) {
@@ -87,14 +90,16 @@ NS_ENUM(OSType) {
 @interface TKVTFImageRep : TKImageRep <NSCoding, NSCopying>
 
 + (NSArray<TKVTFImageRep*> *)imageRepsWithData:(NSData *)aData;
-+ (instancetype)imageRepWithData:(NSData *)aData;
-- (instancetype)initWithData:(NSData *)aData;
++ (nullable instancetype)imageRepWithData:(NSData *)aData;
+- (nullable instancetype)initWithData:(NSData *)aData;
 
 @property (class) TKVTFFormat defaultFormat;
 
 
-+ (NSData *)VTFRepresentationOfImageRepsInArray:(NSArray<TKImageRep*> *)tkImageReps options:(NSDictionary<NSString*,id> *)options;
++ (nullable NSData *)VTFRepresentationOfImageRepsInArray:(NSArray<TKImageRep*> *)tkImageReps options:(nullable NSDictionary<NSString*,id> *)options;
 
-+ (NSData *)VTFRepresentationOfImageRepsInArray:(NSArray<TKImageRep*> *)tkImageReps usingFormat:(TKVTFFormat)aFormat quality:(TKDXTCompressionQuality)aQuality options:(NSDictionary<NSString*,id> *)options;
++ (nullable NSData *)VTFRepresentationOfImageRepsInArray:(NSArray<TKImageRep*> *)tkImageReps usingFormat:(TKVTFFormat)aFormat quality:(TKDXTCompressionQuality)aQuality options:(nullable NSDictionary<NSString*,id> *)options;
 
 @end
+
+NS_ASSUME_NONNULL_END

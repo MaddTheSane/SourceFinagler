@@ -12,6 +12,8 @@
 #import <TextureKit/TextureKitDefines.h>
 
 
+NS_ASSUME_NONNULL_BEGIN
+
 typedef NS_ENUM(NSUInteger, TKFace) {
 	TKFaceRight				= 0,	// +x
 	TKFaceLeft				= 1,	// -x
@@ -128,8 +130,8 @@ TEXTUREKIT_EXTERN NSString * const TKImageRoundModeKey;
 
 + (NSArray<TKImageRep*> *)imageRepsWithData:(NSData *)aData;
 
-+ (instancetype)imageRepWithData:(NSData *)aData;
-- (instancetype)initWithData:(NSData *)aData;
++ (nullable instancetype)imageRepWithData:(NSData *)aData;
+- (nullable instancetype)initWithData:(NSData *)aData;
 
 - (instancetype)initWithCGImage:(CGImageRef)cgImage sliceIndex:(NSUInteger)aSlice face:(TKFace)aFace frameIndex:(NSUInteger)aFrame mipmapIndex:(NSUInteger)aMipmap;
 
@@ -157,10 +159,10 @@ TEXTUREKIT_EXTERN NSString * const TKImageRoundModeKey;
 
 @property (readonly, copy) NSData *data;
 
-- (NSData *)representationUsingPixelFormat:(TKPixelFormat)aPixelFormat;
-- (NSData *)RGBAData;
+- (nullable NSData *)representationUsingPixelFormat:(TKPixelFormat)aPixelFormat;
+- (nullable NSData *)RGBAData;
 
-+ (NSData *)dataRepresentationOfData:(NSData *)data inPixelFormat:(TKPixelFormat)sourcePixelFormat size:(NSSize)size usingPixelFormat:(TKPixelFormat)destPixelFormat;
++ (nullable NSData *)dataRepresentationOfData:(NSData *)data inPixelFormat:(TKPixelFormat)sourcePixelFormat size:(NSSize)size usingPixelFormat:(TKPixelFormat)destPixelFormat;
 
 
 //+ (NSData *)representationOf
@@ -170,7 +172,7 @@ TEXTUREKIT_EXTERN NSString * const TKImageRoundModeKey;
 
 - (NSArray<TKImageRep*> *)mipmapImageRepsUsingFilter:(TKMipmapGenerationType)filterType;
 
-- (NSArray<TKImageRep*> *)imageRepsByApplyingNormalMapFilterWithHeightEvaluationWeights:(CIVector *)heightEvaluationWeights
+- (nullable NSArray<TKImageRep*> *)imageRepsByApplyingNormalMapFilterWithHeightEvaluationWeights:(CIVector *)heightEvaluationWeights
 															 filterWeights:(CIVector *)aFilterWeights
 																  wrapMode:(TKWrapMode)aWrapMode
 														  normalizeMipmaps:(BOOL)normalizeMipmaps
@@ -182,7 +184,7 @@ TEXTUREKIT_EXTERN NSString * const TKImageRoundModeKey;
 //- (NSData *)representationForType:(NSString *)utiType;
 
 - (NSComparisonResult)compare:(TKImageRep *)imageRep;
-+ (TKImageRep *)imageRepForFace:(TKFace)aFace ofImageRepsInArray:(NSArray<TKImageRep*> *)imageReps;
++ (nullable TKImageRep *)imageRepForFace:(TKFace)aFace ofImageRepsInArray:(NSArray<TKImageRep*> *)imageReps;
 
 @end
 
@@ -200,3 +202,4 @@ TEXTUREKIT_EXTERN NSString * const TKImageRoundModeKey;
 
 @end
 
+NS_ASSUME_NONNULL_END

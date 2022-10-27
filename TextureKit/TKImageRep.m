@@ -383,7 +383,7 @@ static TKDXTCompressionQuality defaultDXTCompressionQuality = TKDXTCompressionQu
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	return [[self class] imageRepsWithData:aData firstRepresentationOnly:NO];
+	return [[self class] imageRepsWithData:aData firstRepresentationOnly:NO] ?: @[];
 }
 
 + (instancetype)imageRepWithData:(NSData *)aData {

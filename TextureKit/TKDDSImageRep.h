@@ -6,8 +6,10 @@
 //  Copyright (c) 2010-2013 Mark Douma LLC. All rights reserved.
 //
 
+#import <Cocoa/Cocoa.h>
 #import <TextureKit/TKImageRep.h>
 
+NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSUInteger, TKDDSFormat) {
 	//	DirectX 9 formats
@@ -112,16 +114,16 @@ NS_ENUM(OSType) {
 
 + (NSArray<TKDDSImageRep*> *)imageRepsWithData:(NSData *)aData;
 
-+ (instancetype)imageRepWithData:(NSData *)aData;
-- (instancetype)initWithData:(NSData *)aData;
++ (nullable instancetype)imageRepWithData:(NSData *)aData;
+- (nullable instancetype)initWithData:(NSData *)aData;
 
 @property (class) TKDDSFormat defaultFormat;
 
 
 
-+ (NSData *)DDSRepresentationOfImageRepsInArray:(NSArray<NSImageRep *> *)tkImageReps options:(NSDictionary *)options;
++ (NSData *)DDSRepresentationOfImageRepsInArray:(NSArray<TKImageRep *> *)tkImageReps options:(nullable NSDictionary<NSString*,id> *)options;
 
-+ (NSData *)DDSRepresentationOfImageRepsInArray:(NSArray<NSImageRep *> *)tkImageReps usingFormat:(TKDDSFormat)aFormat quality:(TKDXTCompressionQuality)aQuality options:(NSDictionary *)options;
++ (NSData *)DDSRepresentationOfImageRepsInArray:(NSArray<TKImageRep *> *)tkImageReps usingFormat:(TKDDSFormat)aFormat quality:(TKDXTCompressionQuality)aQuality options:(nullable NSDictionary<NSString*,id> *)options;
 
 
 @end
@@ -194,5 +196,4 @@ NS_ENUM(OSType) {
 //	
 //};
 
-
-
+NS_ASSUME_NONNULL_END

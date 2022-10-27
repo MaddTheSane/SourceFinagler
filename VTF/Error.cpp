@@ -40,7 +40,7 @@ vlVoid CError::SetFormatted(const vlChar *cFormat, ...)
 
 	va_list ArgumentList;
 	va_start(ArgumentList, cFormat);
-	vsprintf(cBuffer, cFormat, ArgumentList);
+	vsnprintf(cBuffer, sizeof(cBuffer), cFormat, ArgumentList);
 	va_end(ArgumentList);
 
 	this->Set(cBuffer, vlFalse);
@@ -84,5 +84,3 @@ vlVoid CError::Set(const vlChar *cErrorMessage, vlBool bSystemError)
 	this->cErrorMessage = new vlChar[strlen(cBuffer) + 1];
 	strcpy(this->cErrorMessage, cBuffer);
 }
-
-
