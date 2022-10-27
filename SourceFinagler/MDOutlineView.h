@@ -16,7 +16,7 @@ extern NSString * const MDListViewIconSizeKey;
 extern NSString * const MDListViewFontSizeKey;
 	
 
-@interface MDOutlineView : NSOutlineView {
+@interface MDOutlineView : NSOutlineView <NSDraggingSource> {
     IBOutlet NSTableColumn		*nameColumn;
 	IBOutlet NSTableColumn		*kindColumn;
     IBOutlet NSTableColumn		*sizeColumn;

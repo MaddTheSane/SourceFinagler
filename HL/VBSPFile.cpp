@@ -240,11 +240,11 @@ CDirectoryFolder *CVBSPFile::CreateRoot()
 			this->GetFileName(lpTemp, sizeof(lpTemp) - 10);
 			if(*lpTemp == '\0')
 			{
-				sprintf(lpFileName, "lump_l_%d.lmp", i);
+				snprintf(lpFileName, sizeof(lpFileName), "lump_l_%d.lmp", i);
 			}
 			else
 			{
-				sprintf(lpFileName, "%s_l_%d.lmp", lpTemp, i);
+				snprintf(lpFileName, sizeof(lpFileName), "%s_l_%d.lmp", lpTemp, i);
 			}
 			pLumpFolder->AddFile(lpFileName, HL_VBSP_LUMP_COUNT + i);
 		}

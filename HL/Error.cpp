@@ -53,7 +53,7 @@ const hlChar *CError::GetShortFormattedErrorMessage()
 	{
 		if(*this->lpError)
 		{
-			sprintf(this->lpShortFormattedError, "Error: %s", this->lpError);
+			snprintf(this->lpShortFormattedError, sizeof(this->lpShortFormattedError), "Error: %s", this->lpError);
 		}
 		else
 		{
@@ -62,7 +62,7 @@ const hlChar *CError::GetShortFormattedErrorMessage()
 	}
 	else
 	{
-		sprintf(this->lpShortFormattedError, "Error (0x%.8x): %s %s", this->uiSystemError, this->lpError, this->lpSystemError);
+		snprintf(this->lpShortFormattedError, sizeof(this->lpShortFormattedError), "Error (0x%.8x): %s %s", this->uiSystemError, this->lpError, this->lpSystemError);
 	}
 
 	return this->lpShortFormattedError;
@@ -74,7 +74,7 @@ const hlChar *CError::GetLongFormattedErrorMessage()
 	{
 		if(*this->lpError)
 		{
-			sprintf(this->lpLongFormattedError, "Error:\n%s", this->lpError);
+			snprintf(this->lpLongFormattedError, sizeof(this->lpLongFormattedError), "Error:\n%s", this->lpError);
 		}
 		else
 		{
@@ -83,7 +83,7 @@ const hlChar *CError::GetLongFormattedErrorMessage()
 	}
 	else
 	{
-		sprintf(this->lpLongFormattedError, "Error:\n%s\n\nSystem Error (0x%.8x):\n%s", this->lpError, this->uiSystemError, this->lpSystemError);
+		snprintf(this->lpLongFormattedError, sizeof(this->lpLongFormattedError), "Error:\n%s\n\nSystem Error (0x%.8x):\n%s", this->lpError, this->uiSystemError, this->lpSystemError);
 	}
 
 	return this->lpLongFormattedError;
@@ -98,7 +98,7 @@ hlVoid CError::SetErrorMessageFormated(const hlChar *lpFormat, ...)
 {
 	va_list ArgumentList;
 	va_start(ArgumentList, lpFormat);
-	vsprintf(this->lpError, lpFormat, ArgumentList);
+	vsnprintf(this->lpError, sizeof(this->lpError), lpFormat, ArgumentList);
 	va_end(ArgumentList);
 
 	this->uiSystemError = 0;
@@ -114,7 +114,7 @@ hlVoid CError::SetSystemErrorMessageFormated(const hlChar *lpFormat, ...)
 {
 	va_list ArgumentList;
 	va_start(ArgumentList, lpFormat);
-	vsprintf(this->lpError, lpFormat, ArgumentList);
+	vsnprintf(this->lpError, sizeof(this->lpError), lpFormat, ArgumentList);
 	va_end(ArgumentList);
 
 #ifdef _WIN32

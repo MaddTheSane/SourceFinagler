@@ -26,7 +26,7 @@ NS_ENUM(NSInteger) {
 	MDBrowserSortByUndetermined			= NSIntegerMax
 };
 
-@interface MDBrowser : NSBrowser {
+@interface MDBrowser : NSBrowser <NSDraggingSource> {
 	NSArray			*sortDescriptors;
 	
 	NSInteger		fontAndIconSize;

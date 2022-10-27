@@ -291,7 +291,8 @@ NSString * const MDListViewFontSizeKey								= @"MDListViewFontSize";
 /*************************************** NSDraggingSource protocol methods [ SOURCE ] ***********************************************************/
 
 
-- (NSDragOperation)draggingSourceOperationMaskForLocal:(BOOL)isLocal {
+- (NSDragOperation)draggingSession:(NSDraggingSession *)session
+sourceOperationMaskForDraggingContext:(NSDraggingContext)context {
 #if MD_DEBUG
 	NSLog(@" \"%@\" [%@ %@]", [[[[self window] windowController] document] displayName], NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
@@ -302,14 +303,15 @@ NSString * const MDListViewFontSizeKey								= @"MDListViewFontSize";
 
 // use the following method to remove the data from the drag source. (as in dragging to the Trash)
 
-- (void)draggedImage:(NSImage *)image endedAt:(NSPoint)screenPoint operation:(NSDragOperation)operation {
+- (void)draggingSession:(NSDraggingSession *)session endedAtPoint:(NSPoint)screenPoint operation:(NSDragOperation)operation
+{
 #if MD_DEBUG
 		NSLog(@" \"%@\" [%@ %@] forwarding to MDHLDocument...", [[[[self window] windowController] document] displayName], NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	if ([[self delegate] respondsToSelector:@selector(draggedImage:endedAt:operation:)]) {
-		[(MDHLDocument *)[self delegate] draggedImage:image endedAt:screenPoint operation:operation];
+	if ([[self delegate] respondsToSelector:@selector(draggingSession:endedAtPoint:operation:)]) {
+		[(MDHLDocument *)[self delegate] draggingSession:session endedAtPoint:screenPoint operation:operation];
 	}
-	[super draggedImage:image endedAt:screenPoint operation:operation];
+	[super draggingSession:session endedAtPoint:screenPoint operation:operation];
 }
 
 #pragma mark NSDraggingSource

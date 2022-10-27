@@ -1180,11 +1180,11 @@ static NSInteger copyTag = 0;
 #pragma mark <NSDraggingSource>
 
 // this is a source method, use it to remove fonts (which saves changes made to FONDs)
-- (void)draggedImage:(NSImage *)anImage endedAt:(NSPoint)screenPoint operation:(NSDragOperation)operation {
+- (void)draggingSession:(NSDraggingSession *)session endedAtPoint:(NSPoint)screenPoint operation:(NSDragOperation)operation {
 //#if MD_DEBUG
 //	NSLog(@" \"%@\" [%@ %@] dragOperation == %lu", [self displayName], NSStringFromClass([self class]), NSStringFromSelector(_cmd), (unsigned long)operation);
 //#endif
-//	
+//
 //	if (operation & NSDragOperationCopy) {
 //		NSLog(@" \"%@\" [%@ %@] dragOperation == NSDragOperationCopy", [self displayName], NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 //	} else if (operation & NSDragOperationMove) {

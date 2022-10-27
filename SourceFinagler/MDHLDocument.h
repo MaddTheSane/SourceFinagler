@@ -155,6 +155,7 @@ extern NSString * const MDHLDocumentURLKey;
 @property (readonly, copy) NSDate *fileCreationDate;
 @property (readonly, copy) NSNumber *fileSize;
 
+- (void)draggingSession:(NSDraggingSession *)session endedAtPoint:(NSPoint)screenPoint operation:(NSDragOperation)operation;
 
 @end
 
