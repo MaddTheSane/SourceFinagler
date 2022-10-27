@@ -70,6 +70,10 @@
 		554FE6A71FCA0A2600727CE0 /* BlockCompressor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554FE6A51FCA0A2500727CE0 /* BlockCompressor.cpp */; };
 		554FE6A81FCA0A2600727CE0 /* BlockCompressor.h in Headers */ = {isa = PBXBuildFile; fileRef = 554FE6A61FCA0A2600727CE0 /* BlockCompressor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		554FE6AA1FCA0D3C00727CE0 /* CudaCompressorDXT.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C1FEA981125E763700CA78FF /* CudaCompressorDXT.h */; };
+		55633913290A801D0058FA82 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55633912290A801D0058FA82 /* Quartz.framework */; };
+		55633918290A801E0058FA82 /* PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55633917290A801E0058FA82 /* PreviewProvider.swift */; };
+		55633920290A801E0058FA82 /* SourceImagePreviewer.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 55633911290A801D0058FA82 /* SourceImagePreviewer.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5563393E290B15170058FA82 /* TextureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17319B21298D11400C29732 /* TextureKit.framework */; };
 		558672FC1D7E874C00E26A11 /* NVImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA8FD125E71A200CA78FF /* NVImage.framework */; };
 		558673021D7E8BB700E26A11 /* NVCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA7EA125E5C9600CA78FF /* NVCore.framework */; };
 		558FACC220AB93EF00AC7001 /* CompressorETC.h in Headers */ = {isa = PBXBuildFile; fileRef = 558FACC020AB93EE00AC7001 /* CompressorETC.h */; };
@@ -665,6 +669,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5563391E290A801E0058FA82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 55633910290A801D0058FA82;
+			remoteInfo = SourceImageThumbnailer;
+		};
+		5563393C290B15010058FA82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C17319B11298D11400C29732;
+			remoteInfo = TextureKit;
+		};
 		558672FE1D7E887E00E26A11 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
@@ -923,6 +941,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		55633921290A801F0058FA82 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				55633920290A801E0058FA82 /* SourceImagePreviewer.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C1224D0B13B06EEB009AA0F4 /* Copy Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1026,6 +1055,11 @@
 		554FE6A11FCA09D800727CE0 /* CompressorDXT5_RGBM.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompressorDXT5_RGBM.cpp; sourceTree = "<group>"; };
 		554FE6A51FCA0A2500727CE0 /* BlockCompressor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BlockCompressor.cpp; sourceTree = "<group>"; };
 		554FE6A61FCA0A2600727CE0 /* BlockCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockCompressor.h; sourceTree = "<group>"; };
+		55633911290A801D0058FA82 /* SourceImagePreviewer.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SourceImagePreviewer.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		55633912290A801D0058FA82 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
+		55633917290A801E0058FA82 /* PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
+		5563391C290A801E0058FA82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5563391D290A801E0058FA82 /* SourceImageThumbnailer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SourceImageThumbnailer.entitlements; sourceTree = "<group>"; };
 		558672FB1D7E857600E26A11 /* cmdline.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = cmdline.h; path = nvtt/tools/cmdline.h; sourceTree = "<group>"; };
 		558FACC020AB93EE00AC7001 /* CompressorETC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompressorETC.h; sourceTree = "<group>"; };
 		558FACC120AB93EF00AC7001 /* CompressorETC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompressorETC.cpp; sourceTree = "<group>"; };
@@ -1750,6 +1784,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5563390E290A801D0058FA82 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5563393E290B15170058FA82 /* TextureKit.framework in Frameworks */,
+				55633913290A801D0058FA82 /* Quartz.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C1224BEA13B06B9A009AA0F4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -2004,6 +2047,7 @@
 				C1FEA930125E72E300CA78FF /* NVTT.framework */,
 				C1D4494B12602E5100A027EF /* decompress */,
 				C17D8F781642AAC40044039F /* ddsFinagler */,
+				55633911290A801D0058FA82 /* SourceImagePreviewer.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2025,6 +2069,7 @@
 				C1B9525C124E734200E83451 /* VTF framework */,
 				C1FEA7B0125E5BDD00CA78FF /* NVTextureTools framework */,
 				C17D8F7C1642AAC40044039F /* ddsFinagler */,
+				55633914290A801E0058FA82 /* SourceImagePreviewer */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
@@ -2061,6 +2106,7 @@
 			children = (
 				C17CC5AB1627FF740055D950 /* Sparkle.framework */,
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
+				55633912290A801D0058FA82 /* Quartz.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2098,6 +2144,16 @@
 			path = ../bc7;
 			sourceTree = "<group>";
 			usesTabs = 1;
+		};
+		55633914290A801E0058FA82 /* SourceImagePreviewer */ = {
+			isa = PBXGroup;
+			children = (
+				55633917290A801E0058FA82 /* PreviewProvider.swift */,
+				5563391C290A801E0058FA82 /* Info.plist */,
+				5563391D290A801E0058FA82 /* SourceImageThumbnailer.entitlements */,
+			);
+			path = SourceImagePreviewer;
+			sourceTree = "<group>";
 		};
 		558FACC420ABADDD00AC7001 /* rg_etc1_v104 */ = {
 			isa = PBXGroup;
@@ -4008,6 +4064,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		55633910290A801D0058FA82 /* SourceImagePreviewer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55633925290A801F0058FA82 /* Build configuration list for PBXNativeTarget "SourceImagePreviewer" */;
+			buildPhases = (
+				5563390D290A801D0058FA82 /* Sources */,
+				5563390E290A801D0058FA82 /* Frameworks */,
+				5563390F290A801D0058FA82 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5563393D290B15010058FA82 /* PBXTargetDependency */,
+			);
+			name = SourceImagePreviewer;
+			productName = SourceImageThumbnailer;
+			productReference = 55633911290A801D0058FA82 /* SourceImagePreviewer.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		C1224BEB13B06B9A009AA0F4 /* SourceFinaglerAgent */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C1224C0613B06BBF009AA0F4 /* Build configuration list for PBXNativeTarget "SourceFinaglerAgent" */;
@@ -4173,6 +4247,7 @@
 				C1C2C5A0127CBCA0003B24F6 /* Copy Frameworks */,
 				C1968A0314F5606500ACFD02 /* Copy QuickLook generator */,
 				C1968A0514F560DC00ACFD02 /* Copy Spotlight importer */,
+				55633921290A801F0058FA82 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -4185,6 +4260,7 @@
 				C1C2C4D8127CBCA0003B24F6 /* PBXTargetDependency */,
 				C140E9291388B77800027DD6 /* PBXTargetDependency */,
 				C1224D8113B09338009AA0F4 /* PBXTargetDependency */,
+				5563391F290A801E0058FA82 /* PBXTargetDependency */,
 			);
 			name = "Source Finagler";
 			productInstallPath = "$(HOME)/Applications";
@@ -4351,8 +4427,15 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1410;
 				LastUpgradeCheck = 1250;
 				ORGANIZATIONNAME = "Mark Douma LLC";
+				TargetAttributes = {
+					55633910290A801D0058FA82 = {
+						CreatedOnToolsVersion = 14.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Source Finagler" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -4363,6 +4446,7 @@
 				ja,
 				fr,
 				de,
+				Base,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Steam Helper */;
 			projectDirPath = "";
@@ -4386,11 +4470,19 @@
 				C155218011D9954B00CCEDD3 /* Distribution */,
 				C1D4494A12602E5100A027EF /* decompress */,
 				C17D8F771642AAC40044039F /* ddsFinagler */,
+				55633910290A801D0058FA82 /* SourceImagePreviewer */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5563390F290A801D0058FA82 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C1224BE813B06B9A009AA0F4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -4573,6 +4665,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5563390D290A801D0058FA82 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55633918290A801E0058FA82 /* PreviewProvider.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C1224BE913B06B9A009AA0F4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -4955,6 +5055,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		5563391F290A801E0058FA82 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 55633910290A801D0058FA82 /* SourceImagePreviewer */;
+			targetProxy = 5563391E290A801E0058FA82 /* PBXContainerItemProxy */;
+		};
+		5563393D290B15010058FA82 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C17319B11298D11400C29732 /* TextureKit */;
+			targetProxy = 5563393C290B15010058FA82 /* PBXContainerItemProxy */;
+		};
 		558672FF1D7E887E00E26A11 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C1FEA7E9125E5C9600CA78FF /* NVCore */;
@@ -5407,6 +5517,7 @@
 		551957FB256F0F7E001BFE51 /* Release-MAS */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = sourceFinagler;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -5558,6 +5669,7 @@
 		55195801256F0F7E001BFE51 /* Release-MAS */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -5580,6 +5692,7 @@
 		55195802256F0F7E001BFE51 /* Release-MAS */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -5638,6 +5751,7 @@
 		55195805256F0F7E001BFE51 /* Release-MAS */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -5666,6 +5780,7 @@
 		55195806256F0F7E001BFE51 /* Release-MAS */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -5694,6 +5809,7 @@
 		55195807256F0F7E001BFE51 /* Release-MAS */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -5725,6 +5841,7 @@
 		55195808256F0F7E001BFE51 /* Release-MAS */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -5754,6 +5871,7 @@
 		55195809256F0F7E001BFE51 /* Release-MAS */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -5827,6 +5945,133 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/ @executable_path/../Frameworks/";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = "Release-MAS";
+		};
+		55633922290A801F0058FA82 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = SourceImagePreviewer/SourceImageThumbnailer.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 250;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SourceImagePreviewer/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SourceImagePreviewer;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mark Douma LLC. All rights reserved.";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 2.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.SourceFinagler.SourceImagePreviewer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		55633923290A801F0058FA82 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = SourceImagePreviewer/SourceImageThumbnailer.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 250;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SourceImagePreviewer/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SourceImagePreviewer;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mark Douma LLC. All rights reserved.";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 2.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.SourceFinagler.SourceImagePreviewer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		55633924290A801F0058FA82 /* Release-MAS */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = SourceImagePreviewer/SourceImageThumbnailer.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 250;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SourceImagePreviewer/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SourceImagePreviewer;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mark Douma LLC. All rights reserved.";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 2.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.SourceFinagler.SourceImagePreviewer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
 			};
 			name = "Release-MAS";
 		};
@@ -6107,6 +6352,7 @@
 		C17319B41298D11500C29732 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -6130,6 +6376,7 @@
 		C17319B51298D11500C29732 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -6196,6 +6443,7 @@
 		C180E37B14728E1C0001C07F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -6226,6 +6474,7 @@
 		C180E37C14728E1C0001C07F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -6255,6 +6504,7 @@
 		C1B95277124E73B300E83451 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -6280,6 +6530,7 @@
 		C1B95278124E73B300E83451 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -6354,6 +6605,7 @@
 		C1C2C5A6127CBCA0003B24F6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = sourceFinagler;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -6387,6 +6639,7 @@
 		C1C2C5A7127CBCA0003B24F6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = sourceFinagler;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -6515,6 +6768,7 @@
 		C1FEA7EC125E5C9600CA78FF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -6544,6 +6798,7 @@
 		C1FEA7ED125E5C9600CA78FF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -6572,6 +6827,7 @@
 		C1FEA8E0125E5DC300CA78FF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -6601,6 +6857,7 @@
 		C1FEA8E1125E5DC300CA78FF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -6629,6 +6886,7 @@
 		C1FEA8FF125E71A200CA78FF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -6661,6 +6919,7 @@
 		C1FEA900125E71A200CA78FF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -6692,6 +6951,7 @@
 		C1FEA932125E72E400CA78FF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -6728,6 +6988,7 @@
 		C1FEA933125E72E400CA78FF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -6818,6 +7079,16 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		55633925290A801F0058FA82 /* Build configuration list for PBXNativeTarget "SourceImagePreviewer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55633922290A801F0058FA82 /* Debug */,
+				55633923290A801F0058FA82 /* Release */,
+				55633924290A801F0058FA82 /* Release-MAS */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Source Finagler" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

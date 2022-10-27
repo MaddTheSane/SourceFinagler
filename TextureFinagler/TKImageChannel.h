@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <CoreImage/CoreImage.h>
 #import <QuartzCore/QuartzCore.h>
 
 @class TKImageRep;

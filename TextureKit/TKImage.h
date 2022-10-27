@@ -11,6 +11,8 @@
 #import <TextureKit/TKDDSImageRep.h>
 #import <TextureKit/TKVTFImageRep.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class NSIndexSet;
 
 typedef NS_ENUM(NSUInteger, TKImageType) {
@@ -63,7 +65,7 @@ TEXTUREKIT_EXTERN NSData * TKSFTextureImageMagicData;
 	BOOL					hasAlpha;
 }
 
-- (instancetype)initWithData:(NSData *)aData firstRepresentationOnly:(BOOL)firstRepOnly;
+- (nullable instancetype)initWithData:(NSData *)aData firstRepresentationOnly:(BOOL)firstRepOnly;
 
 - (void)removeRepresentations:(NSArray<NSImageRep*> *)imageReps;
 
@@ -100,14 +102,14 @@ TEXTUREKIT_EXTERN NSData * TKSFTextureImageMagicData;
 
 
 /* for depth texture images */
-- (TKImageRep *)representationForSliceIndex:(NSUInteger)sliceIndex;
+- (nullable TKImageRep *)representationForSliceIndex:(NSUInteger)sliceIndex;
 - (void)setRepresentation:(TKImageRep *)representation forSliceIndex:(NSUInteger)sliceIndex;
 - (void)removeRepresentationForSliceIndex:(NSUInteger)sliceIndex;
 
 
 
 /* for static, non-animated texture images */
-- (TKImageRep *)representationForMipmapIndex:(NSUInteger)mipmapIndex;
+- (nullable TKImageRep *)representationForMipmapIndex:(NSUInteger)mipmapIndex;
 - (void)setRepresentation:(TKImageRep *)representation forMipmapIndex:(NSUInteger)mipmapIndex;
 - (void)removeRepresentationForMipmapIndex:(NSUInteger)mipmapIndex;
 
@@ -118,7 +120,7 @@ TEXTUREKIT_EXTERN NSData * TKSFTextureImageMagicData;
 
 
 /* for animated (multi-frame) texture images */
-- (TKImageRep *)representationForFrameIndex:(NSUInteger)frameIndex mipmapIndex:(NSUInteger)mipmapIndex;
+- (nullable TKImageRep *)representationForFrameIndex:(NSUInteger)frameIndex mipmapIndex:(NSUInteger)mipmapIndex;
 - (void)setRepresentation:(TKImageRep *)representation forFrameIndex:(NSUInteger)frameIndex mipmapIndex:(NSUInteger)mipmapIndex;
 - (void)removeRepresentationForFrameIndex:(NSUInteger)frameIndex mipmapIndex:(NSUInteger)mipmapIndex;
 
@@ -130,7 +132,7 @@ TEXTUREKIT_EXTERN NSData * TKSFTextureImageMagicData;
 
 
 /* for multi-sided texture images */
-- (TKImageRep *)representationForFace:(TKFace)aFace mipmapIndex:(NSUInteger)mipmapIndex;
+- (nullable TKImageRep *)representationForFace:(TKFace)aFace mipmapIndex:(NSUInteger)mipmapIndex;
 - (void)setRepresentation:(TKImageRep *)representation forFace:(TKFace)aFace mipmapIndex:(NSUInteger)mipmapIndex;
 - (void)removeRepresentationForFace:(TKFace)aFace mipmapIndex:(NSUInteger)mipmapIndex;
 
@@ -141,7 +143,7 @@ TEXTUREKIT_EXTERN NSData * TKSFTextureImageMagicData;
 
 
 /* for animated (multi-frame), multi-sided texture images */
-- (TKImageRep *)representationForFace:(TKFace)aFace frameIndex:(NSUInteger)frameIndex mipmapIndex:(NSUInteger)mipmapIndex;
+- (nullable TKImageRep *)representationForFace:(TKFace)aFace frameIndex:(NSUInteger)frameIndex mipmapIndex:(NSUInteger)mipmapIndex;
 - (void)setRepresentation:(TKImageRep *)representation forFace:(TKFace)aFace frameIndex:(NSUInteger)frameIndex mipmapIndex:(NSUInteger)mipmapIndex;
 - (void)removeRepresentationForFace:(TKFace)aFace frameIndex:(NSUInteger)frameIndex mipmapIndex:(NSUInteger)mipmapIndex;
 
@@ -153,13 +155,15 @@ TEXTUREKIT_EXTERN NSData * TKSFTextureImageMagicData;
 - (void)generateMipmapsUsingFilter:(TKMipmapGenerationType)filterType;
 - (void)removeMipmaps;
 
-- (NSData *)DDSRepresentationWithOptions:(NSDictionary<NSString*,id> *)options;
-- (NSData *)DDSRepresentationUsingFormat:(TKDDSFormat)aFormat quality:(TKDXTCompressionQuality)aQuality options:(NSDictionary<NSString*,id> *)options;
+- (NSData *)DDSRepresentationWithOptions:(nullable NSDictionary<NSString*,id> *)options;
+- (NSData *)DDSRepresentationUsingFormat:(TKDDSFormat)aFormat quality:(TKDXTCompressionQuality)aQuality options:(nullable NSDictionary<NSString*,id> *)options;
 
-- (NSData *)VTFRepresentationWithOptions:(NSDictionary<NSString*,id> *)options;
-- (NSData *)VTFRepresentationUsingFormat:(TKVTFFormat)aFormat quality:(TKDXTCompressionQuality)aQuality options:(NSDictionary<NSString*,id> *)options;
+- (NSData *)VTFRepresentationWithOptions:(nullable NSDictionary<NSString*,id> *)options;
+- (NSData *)VTFRepresentationUsingFormat:(TKVTFFormat)aFormat quality:(TKDXTCompressionQuality)aQuality options:(nullable NSDictionary<NSString*,id> *)options;
 
 
-- (NSData *)dataForType:(NSString *)utiType properties:(NSDictionary<NSString*,id> *)properties;
+- (NSData *)dataForType:(NSString *)utiType properties:(nullable NSDictionary<NSString*,id> *)properties;
 
 @end
+
+NS_ASSUME_NONNULL_END
