@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -21,11 +21,11 @@
                 <box autoresizesSubviews="NO" title="To relocate your “SteamApps” folder:" translatesAutoresizingMaskIntoConstraints="NO" id="495">
                     <rect key="frame" x="17" y="16" width="633" height="301"/>
                     <view key="contentView" id="BK1-jH-iaZ">
-                        <rect key="frame" x="3" y="3" width="627" height="283"/>
+                        <rect key="frame" x="4" y="5" width="625" height="281"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="500">
-                                <rect key="frame" x="75" y="139" width="449" height="21"/>
+                                <rect key="frame" x="75" y="137" width="447" height="21"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="525">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -42,7 +42,7 @@
                                 </connections>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="501">
-                                <rect key="frame" x="73" y="168" width="175" height="16"/>
+                                <rect key="frame" x="73" y="166" width="175" height="16"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" title="New “SteamApps” Location:" id="524">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -50,7 +50,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="502">
-                                <rect key="frame" x="525" y="132" width="89" height="32"/>
+                                <rect key="frame" x="523" y="130" width="89" height="32"/>
                                 <buttonCell key="cell" type="push" title="Browse…" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="523">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -65,7 +65,7 @@
                                 </connections>
                             </button>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="503">
-                                <rect key="frame" x="18" y="249" width="51" height="16"/>
+                                <rect key="frame" x="18" y="247" width="51" height="16"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Step 1:" id="522">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -73,7 +73,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="504">
-                                <rect key="frame" x="18" y="225" width="51" height="16"/>
+                                <rect key="frame" x="18" y="223" width="51" height="16"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Step 2:" id="521">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -81,7 +81,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="505">
-                                <rect key="frame" x="73" y="249" width="76" height="16"/>
+                                <rect key="frame" x="73" y="247" width="76" height="16"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" title="Quit Steam." id="520">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -89,7 +89,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="506">
-                                <rect key="frame" x="73" y="225" width="519" height="16"/>
+                                <rect key="frame" x="73" y="223" width="519" height="16"/>
                                 <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" title="Use the Finder to copy or move your “SteamApps” folder to the new desired location." id="519">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -97,7 +97,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="507">
-                                <rect key="frame" x="18" y="201" width="51" height="16"/>
+                                <rect key="frame" x="18" y="199" width="51" height="16"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Step 3:" id="518">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -105,7 +105,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="508">
-                                <rect key="frame" x="73" y="201" width="504" height="16"/>
+                                <rect key="frame" x="73" y="199" width="504" height="16"/>
                                 <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" title="Click Browse to locate the copy of your “SteamApps” folder you created in Step 2. " id="517">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -113,7 +113,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="509">
-                                <rect key="frame" x="406" y="13" width="208" height="32"/>
+                                <rect key="frame" x="405" y="13" width="207" height="32"/>
                                 <buttonCell key="cell" type="push" title="Create Steam Apps Shortcut" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="516">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -136,7 +136,7 @@ DQ
                                 </connections>
                             </button>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="510">
-                                <rect key="frame" x="18" y="103" width="51" height="16"/>
+                                <rect key="frame" x="18" y="101" width="51" height="16"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Step 4:" id="515">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -144,7 +144,7 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="598">
-                                <rect key="frame" x="148" y="239" width="102" height="32"/>
+                                <rect key="frame" x="148" y="237" width="102" height="32"/>
                                 <buttonCell key="cell" type="push" title="Quit Steam" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="599">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -159,7 +159,7 @@ DQ
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="750" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="511">
-                                <rect key="frame" x="73" y="71" width="536" height="48"/>
+                                <rect key="frame" x="73" y="69" width="534" height="48"/>
                                 <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" id="514">
                                     <font key="font" metaFont="system"/>
                                     <string key="title">Click Create Steam Apps Shortcut to save the “SteamApps” shortcut in your ~/Library/Application Support/Steam/ folder. (If your original SteamApps folder is still there, it will be renamed to "SteamApps (Original)").</string>

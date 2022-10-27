@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17147" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17147"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -41,7 +41,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
             <rect key="contentRect" x="177" y="558" width="865" height="500"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
             <value key="minSize" type="size" width="830" height="500"/>
             <view key="contentView" id="2">
                 <rect key="frame" x="0.0" y="0.0" width="865" height="500"/>
@@ -454,7 +454,7 @@ Gw
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
             <rect key="contentRect" x="471" y="735" width="381" height="315"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
             <value key="minSize" type="size" width="381" height="315"/>
             <view key="contentView" id="192">
                 <rect key="frame" x="0.0" y="0.0" width="381" height="315"/>
@@ -463,17 +463,17 @@ Gw
                     <scrollView autohidesScrollers="YES" horizontalLineScroll="16" horizontalPageScroll="10" verticalLineScroll="16" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="193">
                         <rect key="frame" x="20" y="49" width="341" height="246"/>
                         <clipView key="contentView" id="IH5-wa-9s8">
-                            <rect key="frame" x="1" y="0.0" width="339" height="245"/>
+                            <rect key="frame" x="1" y="1" width="339" height="244"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" autosaveName="managePresets" rowHeight="14" headerView="197" id="196">
-                                    <rect key="frame" x="0.0" y="0.0" width="339" height="228"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="339" height="227"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
-                                        <tableColumn identifier="name" width="336" minWidth="40" maxWidth="1000" id="198">
+                                        <tableColumn identifier="name" width="327" minWidth="40" maxWidth="1000" id="198">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="   Name">
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
@@ -490,11 +490,11 @@ Gw
                                 </tableView>
                             </subviews>
                         </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="195">
+                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="195">
                             <rect key="frame" x="1" y="230" width="324" height="15"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="194">
+                        <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="194">
                             <rect key="frame" x="325" y="17" width="15" height="213"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
@@ -504,7 +504,7 @@ Gw
                         </tableHeaderView>
                     </scrollView>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="202">
-                        <rect key="frame" x="308" y="13" width="59" height="32"/>
+                        <rect key="frame" x="292" y="13" width="76" height="32"/>
                         <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="203">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -514,7 +514,7 @@ DQ
                         </buttonCell>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="210">
-                        <rect key="frame" x="226" y="13" width="82" height="32"/>
+                        <rect key="frame" x="218" y="13" width="76" height="32"/>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="211">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -553,6 +553,7 @@ Gw
                 </subviews>
                 <constraints>
                     <constraint firstItem="210" firstAttribute="baseline" secondItem="212" secondAttribute="firstBaseline" id="04e-UL-26n"/>
+                    <constraint firstItem="202" firstAttribute="width" secondItem="210" secondAttribute="width" id="3c4-LB-Ax5"/>
                     <constraint firstItem="208" firstAttribute="bottom" secondItem="212" secondAttribute="bottom" id="44G-yY-E6h"/>
                     <constraint firstItem="212" firstAttribute="leading" secondItem="206" secondAttribute="trailing" constant="20" id="6Nr-Gt-6SO"/>
                     <constraint firstAttribute="bottom" secondItem="206" secondAttribute="bottom" constant="20" symbolic="YES" id="98G-gU-DqB"/>
@@ -721,6 +722,7 @@ Gw
             <declaredKeys>
                 <string>previewViewZoomFactor</string>
             </declaredKeys>
+            <classReference key="objectClass" className="TKImageExportController"/>
             <connections>
                 <binding destination="-2" name="contentObject" keyPath="self" id="414"/>
             </connections>
@@ -729,8 +731,8 @@ Gw
     <resources>
         <image name="2upTemplate" width="11" height="10"/>
         <image name="4upTemplate" width="11" height="10"/>
-        <image name="NSAddTemplate" width="11" height="11"/>
-        <image name="NSRemoveTemplate" width="11" height="11"/>
+        <image name="NSAddTemplate" width="18" height="17"/>
+        <image name="NSRemoveTemplate" width="18" height="5"/>
         <image name="handSmall" width="18" height="19"/>
         <image name="zoomIn" width="29" height="19"/>
         <image name="zoomOut" width="29" height="9"/>

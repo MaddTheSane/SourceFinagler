@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17147" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17147"/>
-        <plugIn identifier="com.apple.imagekit.ibplugin" version="17147"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
+        <plugIn identifier="com.apple.imagekit.ibplugin" version="21507"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -34,7 +34,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
             <rect key="contentRect" x="150" y="325" width="1000" height="733"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
             <value key="minSize" type="size" width="550" height="300"/>
             <view key="contentView" id="101095">
                 <rect key="frame" x="0.0" y="0.0" width="1000" height="733"/>
@@ -127,11 +127,11 @@
                                                         </ikImageBrowserView>
                                                     </subviews>
                                                 </clipView>
-                                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="101192">
+                                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="101192">
                                                     <rect key="frame" x="-100" y="-100" width="241" height="15"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
-                                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="101193">
+                                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="101193">
                                                     <rect key="frame" x="186" y="1" width="15" height="503"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
@@ -169,11 +169,11 @@
                                                         </ikImageView>
                                                     </subviews>
                                                 </clipView>
-                                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="101147">
+                                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="101147">
                                                     <rect key="frame" x="1" y="548" width="600" height="15"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
-                                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="101148">
+                                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="101148">
                                                     <rect key="frame" x="601" y="1" width="15" height="547"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
@@ -219,11 +219,11 @@
                                                         </ikImageBrowserView>
                                                     </subviews>
                                                 </clipView>
-                                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="101143">
+                                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="101143">
                                                     <rect key="frame" x="-100" y="-100" width="241" height="15"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
-                                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="101142">
+                                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="101142">
                                                     <rect key="frame" x="186" y="1" width="15" height="503"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
@@ -278,11 +278,11 @@
                                                 </ikImageBrowserView>
                                             </subviews>
                                         </clipView>
-                                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="101151">
+                                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="101151">
                                             <rect key="frame" x="1" y="102" width="401" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
-                                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="101150">
+                                        <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="101150">
                                             <rect key="frame" x="-100" y="-100" width="15" height="114"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
@@ -574,6 +574,7 @@
                 <string>browserViewZoom</string>
                 <string>compressionQuality</string>
             </declaredKeys>
+            <classReference key="objectClass" className="TKImageDocument"/>
             <connections>
                 <binding destination="-2" name="contentObject" keyPath="self" id="100026"/>
             </connections>
@@ -582,7 +583,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" utility="YES" HUD="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
             <rect key="contentRect" x="376" y="684" width="273" height="374"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
             <value key="minSize" type="size" width="273" height="374"/>
             <value key="maxSize" type="size" width="273" height="374"/>
             <view key="contentView" id="101223">
@@ -621,7 +622,7 @@
                         </textFieldCell>
                     </textField>
                     <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101232">
-                        <rect key="frame" x="184" y="322" width="15" height="22"/>
+                        <rect key="frame" x="184" y="323" width="15" height="22"/>
                         <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="101233">
                             <font key="font" metaFont="smallSystem"/>
                         </stepperCell>
@@ -650,7 +651,7 @@
                         </textFieldCell>
                     </textField>
                     <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101242">
-                        <rect key="frame" x="184" y="295" width="15" height="22"/>
+                        <rect key="frame" x="184" y="296" width="15" height="22"/>
                         <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="101243">
                             <font key="font" metaFont="smallSystem"/>
                         </stepperCell>
@@ -679,7 +680,7 @@
                         </textFieldCell>
                     </textField>
                     <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101251">
-                        <rect key="frame" x="184" y="268" width="15" height="22"/>
+                        <rect key="frame" x="184" y="269" width="15" height="22"/>
                         <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="101252">
                             <font key="font" metaFont="smallSystem"/>
                         </stepperCell>
@@ -708,7 +709,7 @@
                         </textFieldCell>
                     </textField>
                     <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101260">
-                        <rect key="frame" x="184" y="241" width="15" height="22"/>
+                        <rect key="frame" x="184" y="242" width="15" height="22"/>
                         <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="101261">
                             <font key="font" metaFont="smallSystem"/>
                         </stepperCell>
@@ -745,7 +746,7 @@
                         </textFieldCell>
                     </textField>
                     <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101277">
-                        <rect key="frame" x="184" y="182" width="15" height="22"/>
+                        <rect key="frame" x="184" y="183" width="15" height="22"/>
                         <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="101299">
                             <font key="font" metaFont="smallSystem"/>
                         </stepperCell>
@@ -774,7 +775,7 @@
                         </textFieldCell>
                     </textField>
                     <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101280">
-                        <rect key="frame" x="184" y="155" width="15" height="22"/>
+                        <rect key="frame" x="184" y="156" width="15" height="22"/>
                         <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="101295">
                             <font key="font" metaFont="smallSystem"/>
                         </stepperCell>
@@ -803,7 +804,7 @@
                         </textFieldCell>
                     </textField>
                     <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101283">
-                        <rect key="frame" x="184" y="128" width="15" height="22"/>
+                        <rect key="frame" x="184" y="129" width="15" height="22"/>
                         <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="101291">
                             <font key="font" metaFont="smallSystem"/>
                         </stepperCell>
@@ -832,7 +833,7 @@
                         </textFieldCell>
                     </textField>
                     <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101286">
-                        <rect key="frame" x="184" y="101" width="15" height="22"/>
+                        <rect key="frame" x="184" y="102" width="15" height="22"/>
                         <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="101287">
                             <font key="font" metaFont="smallSystem"/>
                         </stepperCell>
@@ -841,7 +842,7 @@
                         </connections>
                     </stepper>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101311">
-                        <rect key="frame" x="20" y="18" width="56" height="17"/>
+                        <rect key="frame" x="20" y="20" width="56" height="17"/>
                         <buttonCell key="cell" type="roundRect" title="Preview" bezelStyle="roundedRect" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="101312">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="smallSystem"/>
@@ -851,7 +852,7 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101313">
-                        <rect key="frame" x="209" y="18" width="44" height="17"/>
+                        <rect key="frame" x="209" y="20" width="44" height="17"/>
                         <buttonCell key="cell" type="roundRect" title="Apply" bezelStyle="roundedRect" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="101314">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="smallSystem"/>
@@ -860,8 +861,8 @@
                             <action selector="applyNormalMap:" target="-2" id="101316"/>
                         </connections>
                     </button>
-                    <popUpButton verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="101325">
-                        <rect key="frame" x="17" y="59" width="100" height="22"/>
+                    <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101325">
+                        <rect key="frame" x="16" y="60" width="102" height="22"/>
                         <popUpButtonCell key="cell" type="push" title="Clamp" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="101328" id="101326">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="smallSystem"/>
@@ -877,8 +878,8 @@
                             <binding destination="101235" name="selectedTag" keyPath="selection.normalMapWrapMode" id="101334"/>
                         </connections>
                     </popUpButton>
-                    <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="101331">
-                        <rect key="frame" x="126" y="62" width="129" height="18"/>
+                    <button translatesAutoresizingMaskIntoConstraints="NO" id="101331">
+                        <rect key="frame" x="128" y="64" width="125" height="16"/>
                         <buttonCell key="cell" type="check" title="Normalize Mipmaps" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="101332">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="smallSystem"/>
@@ -994,15 +995,15 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" utility="YES" HUD="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
             <rect key="contentRect" x="376" y="875" width="273" height="183"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
             <value key="minSize" type="size" width="273" height="183"/>
             <value key="maxSize" type="size" width="273" height="374"/>
             <view key="contentView" id="101505">
-                <rect key="frame" x="0.0" y="0.0" width="273" height="183"/>
+                <rect key="frame" x="0.0" y="0.0" width="273" height="187"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101535">
-                        <rect key="frame" x="112" y="133" width="70" height="19"/>
+                        <rect key="frame" x="91" y="137" width="91" height="19"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="101536">
                             <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" minimumFractionDigits="3" maximumFractionDigits="6" id="101537"/>
                             <font key="font" metaFont="smallSystem"/>
@@ -1014,7 +1015,7 @@
                         </connections>
                     </textField>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101534">
-                        <rect key="frame" x="17" y="160" width="136" height="14"/>
+                        <rect key="frame" x="17" y="164" width="136" height="14"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Height Evaluation Factor:" id="101538">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1022,10 +1023,7 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101533">
-                        <rect key="frame" x="46" y="135" width="61" height="14"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="57" id="MIC-6b-nKX"/>
-                        </constraints>
+                        <rect key="frame" x="46" y="139" width="39" height="14"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Red:" id="101539">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1033,7 +1031,7 @@
                         </textFieldCell>
                     </textField>
                     <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101532">
-                        <rect key="frame" x="184" y="131" width="15" height="22"/>
+                        <rect key="frame" x="184" y="136" width="15" height="22"/>
                         <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="101540">
                             <font key="font" metaFont="smallSystem"/>
                         </stepperCell>
@@ -1042,7 +1040,7 @@
                         </connections>
                     </stepper>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101531">
-                        <rect key="frame" x="112" y="106" width="70" height="19"/>
+                        <rect key="frame" x="91" y="110" width="91" height="19"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="101541">
                             <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" minimumFractionDigits="3" maximumFractionDigits="6" id="101542"/>
                             <font key="font" metaFont="smallSystem"/>
@@ -1054,7 +1052,7 @@
                         </connections>
                     </textField>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101530">
-                        <rect key="frame" x="46" y="108" width="61" height="14"/>
+                        <rect key="frame" x="46" y="112" width="39" height="14"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Green:" id="101543">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1062,7 +1060,7 @@
                         </textFieldCell>
                     </textField>
                     <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101529">
-                        <rect key="frame" x="184" y="104" width="15" height="22"/>
+                        <rect key="frame" x="184" y="109" width="15" height="22"/>
                         <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="101544">
                             <font key="font" metaFont="smallSystem"/>
                         </stepperCell>
@@ -1071,7 +1069,7 @@
                         </connections>
                     </stepper>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101528">
-                        <rect key="frame" x="112" y="79" width="70" height="19"/>
+                        <rect key="frame" x="91" y="83" width="91" height="19"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="101545">
                             <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" minimumFractionDigits="3" maximumFractionDigits="6" id="101546"/>
                             <font key="font" metaFont="smallSystem"/>
@@ -1083,7 +1081,7 @@
                         </connections>
                     </textField>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101527">
-                        <rect key="frame" x="46" y="81" width="61" height="14"/>
+                        <rect key="frame" x="46" y="85" width="39" height="14"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Blue:" id="101547">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1091,7 +1089,7 @@
                         </textFieldCell>
                     </textField>
                     <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101526">
-                        <rect key="frame" x="184" y="77" width="15" height="22"/>
+                        <rect key="frame" x="184" y="82" width="15" height="22"/>
                         <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="101548">
                             <font key="font" metaFont="smallSystem"/>
                         </stepperCell>
@@ -1100,7 +1098,7 @@
                         </connections>
                     </stepper>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101525">
-                        <rect key="frame" x="112" y="52" width="70" height="19"/>
+                        <rect key="frame" x="91" y="56" width="91" height="19"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="101549">
                             <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" minimumFractionDigits="3" maximumFractionDigits="6" id="101550"/>
                             <font key="font" metaFont="smallSystem"/>
@@ -1112,7 +1110,7 @@
                         </connections>
                     </textField>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101524">
-                        <rect key="frame" x="46" y="54" width="61" height="14"/>
+                        <rect key="frame" x="46" y="58" width="39" height="14"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Alpha:" id="101551">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1120,7 +1118,7 @@
                         </textFieldCell>
                     </textField>
                     <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101523">
-                        <rect key="frame" x="184" y="50" width="15" height="22"/>
+                        <rect key="frame" x="184" y="55" width="15" height="22"/>
                         <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="101552">
                             <font key="font" metaFont="smallSystem"/>
                         </stepperCell>
@@ -1129,7 +1127,7 @@
                         </connections>
                     </stepper>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101509">
-                        <rect key="frame" x="20" y="18" width="56" height="17"/>
+                        <rect key="frame" x="20" y="19" width="56" height="17"/>
                         <buttonCell key="cell" type="roundRect" title="Preview" bezelStyle="roundedRect" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="101570">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="smallSystem"/>
@@ -1139,7 +1137,7 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101508">
-                        <rect key="frame" x="209" y="18" width="44" height="17"/>
+                        <rect key="frame" x="209" y="19" width="44" height="17"/>
                         <buttonCell key="cell" type="roundRect" title="Apply" bezelStyle="roundedRect" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="101571">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="smallSystem"/>
@@ -1153,7 +1151,7 @@
                     <constraint firstItem="101531" firstAttribute="top" secondItem="101535" secondAttribute="bottom" constant="8" symbolic="YES" id="1Nm-ty-wRv"/>
                     <constraint firstItem="101533" firstAttribute="leading" secondItem="101530" secondAttribute="leading" id="1no-Cv-aoI"/>
                     <constraint firstItem="101531" firstAttribute="leading" secondItem="101528" secondAttribute="leading" id="2ft-ht-oeD"/>
-                    <constraint firstItem="101535" firstAttribute="leading" secondItem="101533" secondAttribute="trailing" constant="7" id="3Ri-i2-efn"/>
+                    <constraint firstItem="101535" firstAttribute="leading" secondItem="101533" secondAttribute="trailing" constant="8" symbolic="YES" id="3Ri-i2-efn"/>
                     <constraint firstItem="101524" firstAttribute="baseline" secondItem="101525" secondAttribute="baseline" id="5b9-xO-Ky0"/>
                     <constraint firstItem="101535" firstAttribute="leading" secondItem="101531" secondAttribute="leading" id="96v-Ch-k4I"/>
                     <constraint firstItem="101508" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="101509" secondAttribute="trailing" constant="8" symbolic="YES" id="Btj-89-lS9"/>
@@ -1165,6 +1163,7 @@
                     <constraint firstItem="101533" firstAttribute="leading" secondItem="101505" secondAttribute="leading" constant="48" id="Jwv-nf-gnU"/>
                     <constraint firstItem="101535" firstAttribute="trailing" secondItem="101531" secondAttribute="trailing" id="Kwm-Mc-qAS"/>
                     <constraint firstItem="101509" firstAttribute="leading" secondItem="101505" secondAttribute="leading" constant="20" symbolic="YES" id="M4c-Nc-Zhe"/>
+                    <constraint firstAttribute="bottom" secondItem="101508" secondAttribute="bottom" constant="20" symbolic="YES" id="MEK-Hk-MBH"/>
                     <constraint firstItem="101534" firstAttribute="top" secondItem="101505" secondAttribute="top" constant="9" id="R8l-Hi-Z47"/>
                     <constraint firstItem="101530" firstAttribute="trailing" secondItem="101527" secondAttribute="trailing" id="S5K-E6-Y2N"/>
                     <constraint firstItem="101525" firstAttribute="top" secondItem="101523" secondAttribute="top" id="SWL-DL-RH2"/>
@@ -1178,7 +1177,7 @@
                     <constraint firstItem="101530" firstAttribute="baseline" secondItem="101531" secondAttribute="baseline" id="bRM-Hz-Mps"/>
                     <constraint firstItem="101528" firstAttribute="trailing" secondItem="101525" secondAttribute="trailing" id="dd6-UG-9wA"/>
                     <constraint firstItem="101526" firstAttribute="leading" secondItem="101523" secondAttribute="leading" id="dtR-Uq-Xgg"/>
-                    <constraint firstItem="101508" firstAttribute="top" secondItem="101525" secondAttribute="bottom" constant="17" id="eLE-f2-2h5"/>
+                    <constraint firstItem="101508" firstAttribute="top" secondItem="101525" secondAttribute="bottom" constant="20" id="eLE-f2-2h5"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="101534" secondAttribute="trailing" constant="20" symbolic="YES" id="jL5-Vt-ZrJ"/>
                     <constraint firstItem="101528" firstAttribute="leading" secondItem="101525" secondAttribute="leading" id="jez-o6-XMp"/>
                     <constraint firstItem="101528" firstAttribute="top" secondItem="101526" secondAttribute="top" id="ktA-ED-sxH"/>
@@ -1195,7 +1194,7 @@
         </window>
     </objects>
     <resources>
-        <image name="NSRightFacingTriangleTemplate" width="9" height="12"/>
+        <image name="NSRightFacingTriangleTemplate" width="12" height="17"/>
         <image name="actualSizeTemplate" width="18" height="18"/>
         <image name="cropTemplate" width="20" height="18"/>
         <image name="grab" width="18" height="18"/>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -347,9 +347,8 @@ DQ
             <rect key="frame" x="0.0" y="0.0" width="500" height="140"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="946">
+                <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="946">
                     <rect key="frame" x="0.0" y="0.0" width="500" height="116"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="weB-91-jhW">
                         <rect key="frame" x="1" y="1" width="498" height="114"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -374,7 +373,7 @@ DQ
                                         <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="fileName"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                     </tableColumn>
-                                    <tableColumn identifier="gameName" editable="NO" width="250" minWidth="10" maxWidth="3.4028234663852886e+38" id="951">
+                                    <tableColumn identifier="gameName" editable="NO" width="221" minWidth="10" maxWidth="3.4028234663852886e+38" id="951">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="   Game">
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -409,9 +408,8 @@ DQ
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1001">
-                    <rect key="frame" x="0.0" y="124" width="270" height="14"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="1001">
+                    <rect key="frame" x="0.0" y="124" width="253" height="14"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="The following items were successfully installed:" id="1002">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -419,15 +417,23 @@ DQ
                     </textFieldCell>
                 </textField>
             </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1001" secondAttribute="trailing" constant="20" symbolic="YES" id="9DC-Vq-Dyc"/>
+                <constraint firstItem="946" firstAttribute="top" secondItem="1001" secondAttribute="bottom" constant="8" symbolic="YES" id="DPv-Ad-l6e"/>
+                <constraint firstItem="1001" firstAttribute="leading" secondItem="945" secondAttribute="leading" constant="2" id="Lzr-3B-gH9"/>
+                <constraint firstAttribute="bottom" secondItem="946" secondAttribute="bottom" id="RVS-Az-eNq"/>
+                <constraint firstItem="946" firstAttribute="leading" secondItem="945" secondAttribute="leading" id="XlE-eb-KcL"/>
+                <constraint firstItem="1001" firstAttribute="top" secondItem="945" secondAttribute="top" constant="2" id="iiM-Go-lgd"/>
+                <constraint firstAttribute="trailing" secondItem="946" secondAttribute="trailing" id="kos-03-bRt"/>
+            </constraints>
             <point key="canvasLocation" x="-148" y="-871"/>
         </customView>
         <customView id="963" userLabel="problemView">
             <rect key="frame" x="0.0" y="0.0" width="500" height="140"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="964">
+                <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="964">
                     <rect key="frame" x="0.0" y="0.0" width="500" height="116"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="bq1-7C-x60">
                         <rect key="frame" x="1" y="1" width="498" height="114"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -452,7 +458,7 @@ DQ
                                         <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="fileName"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                     </tableColumn>
-                                    <tableColumn identifier="problem" editable="NO" width="300" minWidth="10" maxWidth="3.4028234663852886e+38" id="970">
+                                    <tableColumn identifier="problem" editable="NO" width="271" minWidth="10" maxWidth="3.4028234663852886e+38" id="970">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="   Problem">
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -487,9 +493,8 @@ DQ
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1004">
-                    <rect key="frame" x="0.0" y="124" width="375" height="14"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="1004">
+                    <rect key="frame" x="0.0" y="124" width="339" height="14"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="The following items could not be installed because of problems:" id="1005">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -497,6 +502,15 @@ DQ
                     </textFieldCell>
                 </textField>
             </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="964" secondAttribute="trailing" id="Sf4-gF-jeL"/>
+                <constraint firstItem="1004" firstAttribute="leading" secondItem="963" secondAttribute="leading" constant="2" id="Tf2-oe-sCi"/>
+                <constraint firstItem="964" firstAttribute="leading" secondItem="963" secondAttribute="leading" id="Upc-yi-w8W"/>
+                <constraint firstItem="964" firstAttribute="top" secondItem="1004" secondAttribute="bottom" constant="8" symbolic="YES" id="drw-Ph-B49"/>
+                <constraint firstAttribute="bottom" secondItem="964" secondAttribute="bottom" id="rNM-yz-d2m"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1004" secondAttribute="trailing" constant="20" symbolic="YES" id="x37-ph-O0c"/>
+                <constraint firstItem="1004" firstAttribute="top" secondItem="963" secondAttribute="top" constant="2" id="yOD-00-yES"/>
+            </constraints>
             <point key="canvasLocation" x="-580" y="-619"/>
         </customView>
         <window title="Source Addon Finagler Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="prefs" animationBehavior="default" id="367" userLabel="prefsWindow">
@@ -511,7 +525,7 @@ DQ
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="828">
-                        <rect key="frame" x="17" y="55" width="121" height="16"/>
+                        <rect key="frame" x="18" y="54" width="120" height="16"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Install Addon by:" id="829">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -519,7 +533,7 @@ DQ
                         </textFieldCell>
                     </textField>
                     <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="830">
-                        <rect key="frame" x="141" y="48" width="241" height="25"/>
+                        <rect key="frame" x="141" y="47" width="241" height="25"/>
                         <popUpButtonCell key="cell" type="push" title="moving to Addons folder" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="1" imageScaling="proportionallyDown" inset="2" selectedItem="833" id="831">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="menu"/>
@@ -535,7 +549,7 @@ DQ
                         </connections>
                     </popUpButton>
                     <button hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="857">
-                        <rect key="frame" x="142" y="22" width="236" height="18"/>
+                        <rect key="frame" x="142" y="26" width="236" height="18"/>
                         <buttonCell key="cell" type="check" title="Reveal installed Addon(s) in Finder" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="858">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
@@ -545,14 +559,14 @@ DQ
                 <constraints>
                     <constraint firstItem="828" firstAttribute="baseline" secondItem="830" secondAttribute="baseline" id="6fK-5Q-vCB"/>
                     <constraint firstItem="830" firstAttribute="centerX" secondItem="857" secondAttribute="centerX" id="CSW-a1-FLd"/>
-                    <constraint firstItem="857" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="368" secondAttribute="leading" constant="20" symbolic="YES" id="Cuj-z4-gBU"/>
-                    <constraint firstItem="830" firstAttribute="trailing" secondItem="857" secondAttribute="trailing" id="EhX-mP-M0a"/>
-                    <constraint firstItem="857" firstAttribute="top" secondItem="830" secondAttribute="bottom" constant="13" id="G2S-Ib-O1K"/>
+                    <constraint firstItem="857" firstAttribute="top" secondItem="830" secondAttribute="bottom" constant="8" symbolic="YES" id="G2S-Ib-O1K"/>
                     <constraint firstItem="830" firstAttribute="leading" secondItem="828" secondAttribute="trailing" constant="8" symbolic="YES" id="Lrd-rS-nOY"/>
-                    <constraint firstItem="830" firstAttribute="top" secondItem="368" secondAttribute="top" constant="19" id="aK7-kf-ugW"/>
-                    <constraint firstItem="828" firstAttribute="leading" secondItem="368" secondAttribute="leading" constant="19" id="alO-ft-Iz5"/>
+                    <constraint firstItem="830" firstAttribute="top" secondItem="368" secondAttribute="top" constant="20" symbolic="YES" id="aK7-kf-ugW"/>
+                    <constraint firstItem="828" firstAttribute="leading" secondItem="368" secondAttribute="leading" constant="20" symbolic="YES" id="alO-ft-Iz5"/>
                     <constraint firstAttribute="trailing" secondItem="830" secondAttribute="trailing" constant="20" symbolic="YES" id="fvK-3y-Evz"/>
+                    <constraint firstItem="857" firstAttribute="leading" secondItem="830" secondAttribute="leading" id="h4D-dw-J7T"/>
                     <constraint firstItem="828" firstAttribute="firstBaseline" secondItem="830" secondAttribute="firstBaseline" id="hiA-DN-75F"/>
+                    <constraint firstAttribute="trailing" secondItem="857" secondAttribute="trailing" constant="20" symbolic="YES" id="s8h-7H-Z47"/>
                 </constraints>
             </view>
             <connections>

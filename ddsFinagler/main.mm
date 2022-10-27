@@ -22,13 +22,16 @@ int main(int argc, const char * argv[]) {
 	@autoreleasepool {
 		
 		NSArray *arguments = [[NSProcessInfo processInfo] arguments];
-		if (arguments.count == 1) exit(EXIT_FAILURE);
+		if (arguments.count == 1) {
+			return EXIT_FAILURE;
+		}
 		
 		
 		NSArray *filePaths = [arguments subarrayWithRange:NSMakeRange(1, arguments.count - 1)];
 		
 		for (NSString *filePath in filePaths) {
-			DirectDrawSurface *dds = new DirectDrawSurface([filePath fileSystemRepresentation]);
+			DirectDrawSurface *dds = new DirectDrawSurface();
+			dds->load([filePath fileSystemRepresentation]);
 			
 			NSLog(@"ddsInfo() for %@", filePath);
 			
@@ -37,6 +40,6 @@ int main(int argc, const char * argv[]) {
 			printf("\n\n\n");
 		}
 	}
-    return 0;
+    return EXIT_SUCCESS;
 }
 

@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TKPrefsGeneralController">
@@ -12,14 +13,13 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="4" userLabel="view">
             <rect key="frame" x="0.0" y="0.0" width="463" height="233"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <button id="14">
-                    <rect key="frame" x="102" y="133" width="142" height="18"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="14">
+                    <rect key="frame" x="86" y="132" width="142" height="18"/>
                     <buttonCell key="cell" type="check" title="Check for updates:" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="17">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -28,12 +28,11 @@
                         <binding destination="34" name="value" keyPath="automaticallyChecksForUpdates" id="35"/>
                     </connections>
                 </button>
-                <popUpButton verticalHuggingPriority="750" id="13">
-                    <rect key="frame" x="247" y="128" width="110" height="26"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="13">
+                    <rect key="frame" x="231" y="126" width="88" height="27"/>
                     <popUpButtonCell key="cell" type="push" title="Weekly" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="604800" inset="2" selectedItem="21" id="18">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="menu"/>
                         <menu key="menu" title="OtherViews" id="19">
                             <items>
                                 <menuItem title="Daily" tag="86400" id="22"/>
@@ -47,9 +46,8 @@
                         <binding destination="34" name="selectedTag" keyPath="updateCheckInterval" id="37"/>
                     </connections>
                 </popUpButton>
-                <button id="12">
-                    <rect key="frame" x="121" y="110" width="228" height="18"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="12">
+                    <rect key="frame" x="86" y="108" width="223" height="18"/>
                     <buttonCell key="cell" type="check" title="Download updates automatically" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="23">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -58,18 +56,16 @@
                         <binding destination="34" name="value" keyPath="automaticallyDownloadsUpdates" id="36"/>
                     </connections>
                 </button>
-                <textField verticalHuggingPriority="750" id="11">
-                    <rect key="frame" x="140" y="78" width="288" height="28"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" preferredMaxLayoutWidth="284" translatesAutoresizingMaskIntoConstraints="NO" id="11">
+                    <rect key="frame" x="124" y="76" width="269" height="28"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="You will be notified when the updates are ready to be installed." id="24">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button tag="1" id="10">
-                    <rect key="frame" x="102" y="195" width="343" height="18"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                <button tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="10">
+                    <rect key="frame" x="86" y="196" width="250" height="18"/>
                     <buttonCell key="cell" type="check" title="Open Source Finagler’s main window" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="25">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -78,18 +74,16 @@
                         <action selector="changeLaunchTimeOptions:" target="-2" id="39"/>
                     </connections>
                 </button>
-                <textField verticalHuggingPriority="750" id="8">
-                    <rect key="frame" x="40" y="196" width="59" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Settings:" id="27">
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8">
+                    <rect key="frame" x="18" y="197" width="65" height="16"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Settings:" id="27">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button id="7">
-                    <rect key="frame" x="102" y="175" width="343" height="18"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="7">
+                    <rect key="frame" x="86" y="174" width="325" height="18"/>
                     <buttonCell key="cell" type="check" title="Quit Source Finagler when all windows are closed" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="28">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -98,27 +92,24 @@
                         <binding destination="32" name="value" keyPath="values.MDQuitAfterAllWindowsClosed" id="33"/>
                     </connections>
                 </button>
-                <textField verticalHuggingPriority="750" id="5">
-                    <rect key="frame" x="33" y="134" width="66" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Updating:" id="30">
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5">
+                    <rect key="frame" x="18" y="133" width="65" height="16"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Updating:" id="30">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" id="45">
-                    <rect key="frame" x="32" y="40" width="67" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Warnings:" id="46">
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="45">
+                    <rect key="frame" x="18" y="38" width="65" height="16"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Warnings:" id="46">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" id="43">
-                    <rect key="frame" x="98" y="30" width="236" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="43">
+                    <rect key="frame" x="82" y="28" width="225" height="32"/>
                     <buttonCell key="cell" type="push" title="Reset “Don’t Ask Me” Warnings" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="44">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -128,6 +119,40 @@
                     </connections>
                 </button>
             </subviews>
+            <constraints>
+                <constraint firstItem="8" firstAttribute="top" secondItem="4" secondAttribute="top" constant="20" symbolic="YES" id="0Uy-7O-62g"/>
+                <constraint firstItem="45" firstAttribute="firstBaseline" secondItem="43" secondAttribute="firstBaseline" id="2IT-wx-eQx"/>
+                <constraint firstItem="13" firstAttribute="leading" secondItem="14" secondAttribute="trailing" constant="6" id="2Io-Li-Edq"/>
+                <constraint firstItem="7" firstAttribute="top" secondItem="10" secondAttribute="bottom" constant="6" symbolic="YES" id="76G-Kc-IIb"/>
+                <constraint firstItem="11" firstAttribute="top" secondItem="12" secondAttribute="bottom" constant="5" id="ApV-z3-WeS"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="13" secondAttribute="trailing" constant="20" symbolic="YES" id="CKN-Zu-vt7"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="43" secondAttribute="trailing" constant="20" symbolic="YES" id="Dnh-pd-27n"/>
+                <constraint firstItem="10" firstAttribute="leading" secondItem="7" secondAttribute="leading" id="ErE-2W-xWq"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="12" secondAttribute="trailing" constant="20" symbolic="YES" id="Gtq-b1-0g2"/>
+                <constraint firstItem="11" firstAttribute="leading" secondItem="12" secondAttribute="leading" constant="38" id="Jm9-dF-EzV"/>
+                <constraint firstItem="5" firstAttribute="trailing" secondItem="45" secondAttribute="trailing" id="Pnn-uK-UKi"/>
+                <constraint firstItem="12" firstAttribute="leading" secondItem="14" secondAttribute="leading" id="TBn-EL-9ut"/>
+                <constraint firstItem="8" firstAttribute="trailing" secondItem="5" secondAttribute="trailing" id="W2d-Y4-qXa"/>
+                <constraint firstItem="43" firstAttribute="top" secondItem="11" secondAttribute="bottom" constant="21" id="WQK-VF-XSS"/>
+                <constraint firstItem="5" firstAttribute="baseline" secondItem="14" secondAttribute="firstBaseline" id="XAr-KE-sit"/>
+                <constraint firstItem="5" firstAttribute="baseline" secondItem="14" secondAttribute="baseline" id="Xp9-71-QtH"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="10" secondAttribute="trailing" constant="20" symbolic="YES" id="ZLI-Wg-uXt"/>
+                <constraint firstItem="45" firstAttribute="leading" secondItem="8" secondAttribute="leading" id="aMh-3G-A1i"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="11" secondAttribute="trailing" constant="37" id="aUw-bL-JyS"/>
+                <constraint firstItem="8" firstAttribute="leading" secondItem="4" secondAttribute="leading" constant="20" symbolic="YES" id="bEC-Sa-vLY"/>
+                <constraint firstItem="13" firstAttribute="baseline" secondItem="5" secondAttribute="firstBaseline" id="bLf-C6-Owb"/>
+                <constraint firstItem="13" firstAttribute="top" secondItem="7" secondAttribute="bottom" constant="23" id="baF-6N-Gco"/>
+                <constraint firstItem="8" firstAttribute="baseline" secondItem="10" secondAttribute="baseline" id="eJS-fL-gsQ"/>
+                <constraint firstItem="12" firstAttribute="top" secondItem="13" secondAttribute="bottom" constant="5" id="gdW-Ia-n9d"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7" secondAttribute="trailing" constant="20" symbolic="YES" id="iNa-EO-Bg7"/>
+                <constraint firstItem="10" firstAttribute="leading" secondItem="8" secondAttribute="trailing" constant="7" id="mEu-Dc-i61"/>
+                <constraint firstItem="14" firstAttribute="centerY" secondItem="13" secondAttribute="centerY" id="nLd-eY-uMJ"/>
+                <constraint firstItem="7" firstAttribute="leading" secondItem="14" secondAttribute="leading" id="ptO-IG-Ti5"/>
+                <constraint firstItem="43" firstAttribute="leading" secondItem="45" secondAttribute="trailing" constant="8" symbolic="YES" id="tWN-By-yVe"/>
+                <constraint firstItem="5" firstAttribute="leading" secondItem="8" secondAttribute="leading" id="weN-hN-OOs"/>
+                <constraint firstItem="5" firstAttribute="centerY" secondItem="14" secondAttribute="centerY" id="yQx-4g-0Ro"/>
+            </constraints>
+            <point key="canvasLocation" x="47.5" y="-37.5"/>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="32"/>
         <customObject id="34" userLabel="SUUpdater" customClass="SUUpdater"/>
