@@ -200,7 +200,7 @@
                                                     <rect key="frame" x="1" y="1" width="218" height="533"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <ikImageBrowserView autoresizesSubviews="NO" fixedFrame="YES" zoomValue="0.60302269458770752" constrainsToOriginalSize="YES" allowsReordering="YES" animates="YES" translatesAutoresizingMaskIntoConstraints="NO" id="101144" userLabel="mipmapBrowserView">
+                                                        <ikImageBrowserView autoresizesSubviews="NO" fixedFrame="YES" zoomValue="nan" constrainsToOriginalSize="YES" allowsReordering="YES" animates="YES" translatesAutoresizingMaskIntoConstraints="NO" id="101144" userLabel="mipmapBrowserView">
                                                             <rect key="frame" x="0.0" y="0.0" width="218" height="533"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <ikCellsStyle key="cellsStyleMask" shadowed="YES" outlined="YES" titled="YES"/>
@@ -999,7 +999,7 @@
             <value key="minSize" type="size" width="273" height="183"/>
             <value key="maxSize" type="size" width="273" height="374"/>
             <view key="contentView" id="101505">
-                <rect key="frame" x="0.0" y="0.0" width="273" height="187"/>
+                <rect key="frame" x="0.0" y="0.0" width="273" height="198"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101535">
@@ -1164,7 +1164,7 @@
                     <constraint firstItem="101535" firstAttribute="trailing" secondItem="101531" secondAttribute="trailing" id="Kwm-Mc-qAS"/>
                     <constraint firstItem="101509" firstAttribute="leading" secondItem="101505" secondAttribute="leading" constant="20" symbolic="YES" id="M4c-Nc-Zhe"/>
                     <constraint firstAttribute="bottom" secondItem="101508" secondAttribute="bottom" constant="20" symbolic="YES" id="MEK-Hk-MBH"/>
-                    <constraint firstItem="101534" firstAttribute="top" secondItem="101505" secondAttribute="top" constant="9" id="R8l-Hi-Z47"/>
+                    <constraint firstItem="101534" firstAttribute="top" secondItem="101505" secondAttribute="top" constant="20" symbolic="YES" id="R8l-Hi-Z47"/>
                     <constraint firstItem="101530" firstAttribute="trailing" secondItem="101527" secondAttribute="trailing" id="S5K-E6-Y2N"/>
                     <constraint firstItem="101525" firstAttribute="top" secondItem="101523" secondAttribute="top" id="SWL-DL-RH2"/>
                     <constraint firstItem="101528" firstAttribute="top" secondItem="101531" secondAttribute="bottom" constant="8" symbolic="YES" id="Uh0-Rl-RSr"/>

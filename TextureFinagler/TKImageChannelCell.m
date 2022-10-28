@@ -109,7 +109,7 @@
 //		[NSBezierPath strokeRect:imageRect];
 		
 //		NSLog(@"[%@ %@] drawing image", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-		[self.image drawInRect:imageRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
+		[self.image drawInRect:imageRect fromRect:NSZeroRect operation:NSCompositingOperationSourceOver fraction:1.0 respectFlipped:YES hints:nil];
 	}
 	CGFloat inset = (TK_INSET_HORIZ + imageSize.width + TK_INTER_SPACE);
 	cellFrame.origin.x += inset;

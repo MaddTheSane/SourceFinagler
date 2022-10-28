@@ -96,7 +96,7 @@
 			[super drawRect:rect];
 //			[[self image] drawInRect:rect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
 		} else {
-			[self.image drawInRect:rect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:MD_DISABLED_OPACITY];
+			[self.image drawInRect:rect fromRect:NSZeroRect operation:NSCompositingOperationSourceOver fraction:MD_DISABLED_OPACITY];
 		}
 	} else {
 		[super drawRect:rect];

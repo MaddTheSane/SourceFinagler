@@ -93,7 +93,7 @@
 	NSSize imageSize = self.image.size;
 	if (self.image) {
 //		NSLog(@"[%@ %@] drawing image", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-		[self.image drawInRect:imageRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
+		[self.image drawInRect:imageRect fromRect:NSZeroRect operation:NSCompositingOperationSourceOver fraction:1.0 respectFlipped:YES hints:nil];
 	}
 	CGFloat inset = (MD_INSET_HORIZ + imageSize.width + MD_INTER_SPACE);
 	cellFrame.origin.x += inset;

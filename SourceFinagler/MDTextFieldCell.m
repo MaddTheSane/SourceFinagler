@@ -209,7 +209,7 @@
 	CGFloat textWidthFudge = 0.0;
 	
 	if (image == nil) {
-		if (self.alignment == NSLeftTextAlignment) {
+		if (self.alignment == NSTextAlignmentLeft) {
 			textMarginFudge = 15.0;
 			textWidthFudge = -30.0;
 		} else {
@@ -217,7 +217,7 @@
 			textWidthFudge = -30.0;
 		}
 	} else {
-		if (self.alignment == NSLeftTextAlignment) {
+		if (self.alignment == NSTextAlignmentLeft) {
 //			textMarginFudge = 15.0;
 			textWidthFudge = -15.0;
 		} else {
@@ -302,7 +302,7 @@
 		NSRect aDrawRect;
 		aDrawRect.origin = imagePoint;
 		aDrawRect.size = image.size;
-		[image drawInRect:aDrawRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:(isEnabled ? 1.0 : 0.5) respectFlipped:YES hints:nil];
+		[image drawInRect:aDrawRect fromRect:NSZeroRect operation:NSCompositingOperationSourceOver fraction:(isEnabled ? 1.0 : 0.5) respectFlipped:YES hints:nil];
 	}
 	
 	NSAttributedString *richText = [[NSAttributedString alloc] initWithString:self.stringValue attributes:attributes];
@@ -367,7 +367,7 @@
 		NSRect aDrawRect;
 		aDrawRect.origin = imagePoint;
 		aDrawRect.size = imageSize;
-		[image drawInRect:aDrawRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:0.37 respectFlipped:YES hints:nil];
+		[image drawInRect:aDrawRect fromRect:NSZeroRect operation:NSCompositingOperationSourceOver fraction:0.37 respectFlipped:YES hints:nil];
 		[dragImage unlockFocus];
 	}
 	

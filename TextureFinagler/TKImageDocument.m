@@ -623,7 +623,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	[openPanel setCanChooseFiles:YES];
 	
 	[openPanel beginSheetModalForWindow:imageWindow completionHandler:^(NSInteger result) {
-		if (result == NSFileHandlingPanelOKButton) {
+		if (result == NSModalResponseOK) {
 			NSArray *URLs = openPanel.URLs;
 			
 			NSMutableArray *filePaths = [NSMutableArray array];
@@ -716,7 +716,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 		savePanel.nameFieldStringValue = initialFilename;
 		
 		[savePanel beginSheetModalForWindow:imageWindow completionHandler:^(NSModalResponse result) {
-			if (result == NSFileHandlingPanelOKButton) {
+			if (result == NSModalResponseOK) {
 				NSURL *URL = savePanel.URL;
 				
 				NSData *imageData = nil;

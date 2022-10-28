@@ -412,9 +412,9 @@ static OSErr FSGetTotalForkSizes(const FSRef *ref,
 	
 	OSErr			err;
 	CatPositionRec	forkIterator;
-	SInt64			forkSize;
+	SInt64			forkSize=0;
 	SInt64			*forkSizePtr;
-	UInt64			forkPhysicalSize;
+	UInt64			forkPhysicalSize=0;
 	UInt64			*forkPhysicalSizePtr;
 	
 	/* Determine if forkSize needed */

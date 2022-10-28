@@ -642,7 +642,7 @@ static NSInteger copyTag = 0;
 	    /* This method gets called whenever the predicate editor changes, but we only want to create a new predicate when the user hits return.  So check NSApp currentEvent. */
 
     NSEvent *event = NSApp.currentEvent;
-    if (event.type == NSKeyDown) {
+	if (event.type == NSEventTypeKeyDown) {
 		NSString *characters = event.characters;
 		if (characters.length > 0 && [characters characterAtIndex:0] == 0x0D) {
 			/* Get the predicate, which is the object value of our view. */
@@ -1843,7 +1843,7 @@ static NSInteger copyTag = 0;
 	HKArchiveFileType fileType = file.fileType;
 	
 	
-	if (modifierFlags & NSCommandKeyMask) {
+	if (modifierFlags & NSEventModifierFlagCommand) {
 		
 #if MD_DEBUG
 		NSLog(@" \"%@\" [%@ %@] NSCommandKeyMask", self.displayName, NSStringFromClass([self class]), NSStringFromSelector(_cmd));

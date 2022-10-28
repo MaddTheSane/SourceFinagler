@@ -43,9 +43,9 @@
 		NSLog(@" \"%@\" [%@ %@]", [[[[self window] windowController] document] displayName], NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	NSUInteger modifierFlags = event.modifierFlags;
-	if (modifierFlags & NSAlternateKeyMask || modifierFlags & NSCommandKeyMask) {
+	if (modifierFlags & NSEventModifierFlagOption || modifierFlags & NSEventModifierFlagCommand) {
 		return [super mouseDown:event];
-	} else if (modifierFlags & NSControlKeyMask) {
+	} else if (modifierFlags & NSEventModifierFlagControl) {
 		NSInteger rowIndex = [self rowAtPoint:[self convertPoint:event.locationInWindow fromView:nil]];
 		NSIndexSet *selectedRowIndexes = self.selectedRowIndexes;
 		if (rowIndex >= 0) {

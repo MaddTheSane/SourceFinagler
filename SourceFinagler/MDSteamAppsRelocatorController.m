@@ -221,7 +221,7 @@ NSString * const MDSteamBundleIdentifierKey = @"com.valvesoftware.steam";
 	
 	NSInteger result = [openPanel runModal];
 	
-	if (result == NSFileHandlingPanelOKButton) {
+	if (result == NSModalResponseOK) {
 		NSArray *fileURLs = openPanel.URLs;
 		if (fileURLs && fileURLs.count) {
 			NSString *filePath = [fileURLs[0] path];

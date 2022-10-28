@@ -33,7 +33,7 @@
 		return [super drawRect:frame];
 	}
 	image.size = NSMakeSize(frame.size.width, frame.size.height);
-    [image drawAtPoint:NSMakePoint(0.0, 0.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+	[image drawAtPoint:NSMakePoint(0.0, 0.0) fromRect:NSZeroRect operation:NSCompositingOperationSourceOver fraction:1.0];
 }
 
 @end

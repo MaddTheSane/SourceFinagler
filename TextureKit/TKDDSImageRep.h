@@ -121,9 +121,9 @@ NS_ENUM(OSType) {
 
 
 
-+ (NSData *)DDSRepresentationOfImageRepsInArray:(NSArray<TKImageRep *> *)tkImageReps options:(nullable NSDictionary<NSString*,id> *)options;
++ (NSData *)DDSRepresentationOfImageRepsInArray:(NSArray<NSImageRep *> *)tkImageReps options:(nullable NSDictionary<NSString*,id> *)options;
 
-+ (NSData *)DDSRepresentationOfImageRepsInArray:(NSArray<TKImageRep *> *)tkImageReps usingFormat:(TKDDSFormat)aFormat quality:(TKDXTCompressionQuality)aQuality options:(nullable NSDictionary<NSString*,id> *)options;
++ (NSData *)DDSRepresentationOfImageRepsInArray:(NSArray<NSImageRep *> *)tkImageReps usingFormat:(TKDDSFormat)aFormat quality:(TKDXTCompressionQuality)aQuality options:(nullable NSDictionary<NSString*,id> *)options;
 
 
 @end

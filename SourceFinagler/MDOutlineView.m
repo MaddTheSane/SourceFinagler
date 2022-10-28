@@ -254,11 +254,11 @@ NSString * const MDListViewFontSizeKey								= @"MDListViewFontSize";
 	
 	NSUInteger modifierFlags = event.modifierFlags;
 	
-	if (modifierFlags & NSAlternateKeyMask || modifierFlags & NSCommandKeyMask) {
+	if (modifierFlags & NSEventModifierFlagOption || modifierFlags & NSEventModifierFlagCommand) {
 		
 		return [super mouseDown:event];
 		
-	} else if (modifierFlags & NSControlKeyMask) {
+	} else if (modifierFlags & NSEventModifierFlagControl) {
 		
 		NSInteger rowIndex = [self rowAtPoint:[self convertPoint:event.locationInWindow fromView:nil]];
 		

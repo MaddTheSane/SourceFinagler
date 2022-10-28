@@ -96,9 +96,9 @@ NS_ENUM(OSType) {
 @property (class) TKVTFFormat defaultFormat;
 
 
-+ (nullable NSData *)VTFRepresentationOfImageRepsInArray:(NSArray<TKImageRep*> *)tkImageReps options:(nullable NSDictionary<NSString*,id> *)options;
++ (nullable NSData *)VTFRepresentationOfImageRepsInArray:(NSArray<NSImageRep*> *)tkImageReps options:(nullable NSDictionary<NSString*,id> *)options;
 
-+ (nullable NSData *)VTFRepresentationOfImageRepsInArray:(NSArray<TKImageRep*> *)tkImageReps usingFormat:(TKVTFFormat)aFormat quality:(TKDXTCompressionQuality)aQuality options:(nullable NSDictionary<NSString*,id> *)options;
++ (nullable NSData *)VTFRepresentationOfImageRepsInArray:(NSArray<NSImageRep*> *)tkImageReps usingFormat:(TKVTFFormat)aFormat quality:(TKDXTCompressionQuality)aQuality options:(nullable NSDictionary<NSString*,id> *)options;
 
 @end
 
