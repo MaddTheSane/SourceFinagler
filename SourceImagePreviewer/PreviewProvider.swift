@@ -17,7 +17,7 @@ class PreviewProvider: QLPreviewProvider, QLPreviewingController {
 		let resVals = try url.resourceValues(forKeys: [.contentTypeKey])
 		guard let contentType = resVals.contentType else {
 			// TODO: Better error thrown
-			throw CocoaError(.featureUnsupported)
+			throw CocoaError(.featureUnsupported, userInfo: [NSURLErrorKey: url])
 		}
 		
 		let data = try Data(contentsOf: url, options: [.mappedIfSafe])
@@ -60,13 +60,12 @@ class PreviewProvider: QLPreviewProvider, QLPreviewingController {
 		}
 
 		guard let imageRef else {
-			// TODO: Better error thrown
-			throw CocoaError(.fileReadCorruptFile)
+			throw CocoaError(.fileReadCorruptFile, userInfo: [NSURLErrorKey: url])
 		}
 
 		let imageSize = CGSize(width: imageRef.width, height: imageRef.height)
 		
-		let reply = QLPreviewReply.init(contextSize: imageSize, isBitmap: true) { context, reply in
+		let reply = QLPreviewReply(contextSize: imageSize, isBitmap: true) { context, reply in
 			context.saveGState()
 			context.draw(imageRef, in: CGRect(origin: .zero, size: imageSize))
 			context.restoreGState()

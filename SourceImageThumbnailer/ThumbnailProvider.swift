@@ -16,13 +16,16 @@ class ThumbnailProvider: QLThumbnailProvider {
 			let resVals = try url.resourceValues(forKeys: [.contentTypeKey])
 			guard let contentType = resVals.contentType else {
 				// TODO: Better error thrown
-				throw CocoaError(.featureUnsupported)
+				throw CocoaError(.featureUnsupported, userInfo: [NSURLErrorKey: url])
 			}
 			
 			guard contentType == UTType(TKVTFType) || contentType == UTType(TKDDSType) || contentType == UTType(TKSFTextureImageType) else {
 				let errorString = "SourceImageThumbnailer; provideThumbnail(for:_:): contentTypeUTI != VTF or DDS or SFTI; (contentTypeUTI == \(contentType.identifier)"
 
-				throw CocoaError(.fileReadCorruptFile, userInfo: [NSLocalizedDescriptionKey: errorString, NSDebugDescriptionErrorKey: errorString])
+				throw CocoaError(.fileReadCorruptFile, userInfo:
+									[NSLocalizedDescriptionKey: errorString,
+									NSDebugDescriptionErrorKey: errorString,
+												 NSURLErrorKey: url])
 			}
 			
 			let imageData = try Data(contentsOf: url)
@@ -30,7 +33,10 @@ class ThumbnailProvider: QLThumbnailProvider {
 			guard imageData.count >= 4 else {
 				let errorString = "provideThumbnail(for:_:): data length < 4 for file == \(url.lastPathComponent)"
 				
-				throw CocoaError(.fileReadCorruptFile, userInfo: [NSLocalizedDescriptionKey: errorString, NSDebugDescriptionErrorKey: errorString])
+				throw CocoaError(.fileReadCorruptFile, userInfo:
+									[NSLocalizedDescriptionKey: errorString,
+									NSDebugDescriptionErrorKey: errorString,
+												 NSURLErrorKey: url])
 			}
 			
 			do {
@@ -41,7 +47,10 @@ class ThumbnailProvider: QLThumbnailProvider {
 				guard magic != TKHTMLErrorMagic else {
 					let errorString = "File appears to be an ERROR 404 HTML file rather than a valid VTF"
 					
-					throw CocoaError(.fileReadCorruptFile, userInfo: [NSLocalizedDescriptionKey: errorString, NSDebugDescriptionErrorKey: errorString])
+					throw CocoaError(.fileReadCorruptFile, userInfo:
+										[NSLocalizedDescriptionKey: errorString,
+										NSDebugDescriptionErrorKey: errorString,
+													 NSURLErrorKey: url])
 				}
 			}
 			
@@ -91,7 +100,7 @@ class ThumbnailProvider: QLThumbnailProvider {
 			var newSize = theMaxImageSize
 
 			if CGFloat(imageRef.width) > theMaxImageSize.width || CGFloat(imageRef.height) > theMaxImageSize.height {
-				if (newSize.width < newSize.height) {
+				if newSize.width < newSize.height {
 					newSize.height = newSize.width
 				} else {
 					newSize.width = newSize.height
@@ -102,7 +111,8 @@ class ThumbnailProvider: QLThumbnailProvider {
 			
 			let reply = QLThumbnailReply(contextSize: newSize, drawing: { (context) -> Bool in
 				var newImage = imageRef
-				if theMaxImageSize != newSize, let a = MDCGImageCreateCopyWithSize(imageRef, newSize) {
+				if theMaxImageSize != newSize,
+				   let a = MDCGImageCreateCopyWithSize(imageRef, newSize) {
 					newImage = a
 				}
 				context.draw(newImage, in: CGRect(origin: .zero, size: newSize))
