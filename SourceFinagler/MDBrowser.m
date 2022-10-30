@@ -294,9 +294,9 @@ NS_ENUM(unsigned short) {
 #endif
 	NSEventModifierFlags modifierFlags = event.modifierFlags;
 	
-	if (modifierFlags & NSAlternateKeyMask || modifierFlags & NSCommandKeyMask) {
+	if (modifierFlags & NSEventModifierFlagOption || modifierFlags & NSEventModifierFlagCommand) {
 		return [super mouseDown:event];
-	} else if (modifierFlags & NSControlKeyMask) {
+	} else if (modifierFlags & NSEventModifierFlagControl) {
 		NSInteger clickedColumn = self.clickedColumn;
 		NSInteger clickedRow = self.clickedRow;
 		

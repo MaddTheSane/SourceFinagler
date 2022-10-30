@@ -18,12 +18,18 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(FSVolumeRefNum, MDSearchPathDomain) {
-	MDUserDomain	=	kUserDomain,			/**<	~/										*/
-	MDLocalDomain	=	kLocalDomain,			/**< /Library/								*/
-	MDNetworkDomain	=	kNetworkDomain,			/**< /Network/								*/
-	MDSystemDomain	=	kSystemDomain,			/**< /System/									*/
-	MDClassicDomain	=	kClassicDomain,			/**< /System Folder/ (no longer applicable)	*/
-	MDAllDomains	=	kOnAppropriateDisk		/**< varies									*/
+	/** ~/ */
+	MDUserDomain NS_SWIFT_NAME(user)		=	kUserDomain,
+	/** /Library/ */
+	MDLocalDomain NS_SWIFT_NAME(local)		=	kLocalDomain,
+	/** /Network/ */
+	MDNetworkDomain NS_SWIFT_NAME(network)	=	kNetworkDomain,
+	/** /System/ */
+	MDSystemDomain NS_SWIFT_NAME(system)	=	kSystemDomain,
+	/** /System Folder/ (no longer applicable) */
+	MDClassicDomain NS_SWIFT_NAME(classic)	=	kClassicDomain,
+	/** varies */
+	MDAllDomains NS_SWIFT_NAME(all)			=	kOnAppropriateDisk
 };
 
 typedef NS_ENUM(OSType, MDSearchPathDirectory) {
