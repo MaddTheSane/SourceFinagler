@@ -23,6 +23,26 @@
 
 /* Begin PBXBuildFile section */
 		550EB3032500715A006BC291 /* nvconfig.h in Headers */ = {isa = PBXBuildFile; fileRef = C1FEA94B125E73B700CA78FF /* nvconfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		55101A8E290E45A3003CED21 /* sfti Metadata.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 55101A85290E45A2003CED21 /* sfti Metadata.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		55101A93290E45C5003CED21 /* schema.xml in Resources */ = {isa = PBXBuildFile; fileRef = C181ADAE12557982006810AB /* schema.xml */; };
+		55101A94290E45C9003CED21 /* schema.strings in Resources */ = {isa = PBXBuildFile; fileRef = C181ADAF125579A0006810AB /* schema.strings */; };
+		55101A9C290E4631003CED21 /* TextureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17319B21298D11400C29732 /* TextureKit.framework */; };
+		55101AA1290E4F0C003CED21 /* CoreSpotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55101AA0290E4F0C003CED21 /* CoreSpotlight.framework */; };
+		55101AB1290E76B6003CED21 /* CoreSpotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55101AA0290E4F0C003CED21 /* CoreSpotlight.framework */; };
+		55101AB8290E76B6003CED21 /* schema.xml in Resources */ = {isa = PBXBuildFile; fileRef = C181ADAE12557982006810AB /* schema.xml */; };
+		55101AB9290E76B6003CED21 /* schema.strings in Resources */ = {isa = PBXBuildFile; fileRef = C181ADAF125579A0006810AB /* schema.strings */; };
+		55101ACC290E76BC003CED21 /* CoreSpotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55101AA0290E4F0C003CED21 /* CoreSpotlight.framework */; };
+		55101ACE290E76BC003CED21 /* TextureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17319B21298D11400C29732 /* TextureKit.framework */; };
+		55101AD1290E76BC003CED21 /* VTF.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1B95275124E73B200E83451 /* VTF.framework */; };
+		55101AD3290E76BC003CED21 /* schema.xml in Resources */ = {isa = PBXBuildFile; fileRef = C181ADAE12557982006810AB /* schema.xml */; };
+		55101AD4290E76BC003CED21 /* schema.strings in Resources */ = {isa = PBXBuildFile; fileRef = C181ADAF125579A0006810AB /* schema.strings */; };
+		55101AE3290E7A13003CED21 /* ImportExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55101AE2290E7A13003CED21 /* ImportExtension.swift */; };
+		55101AE4290E7A3D003CED21 /* ImportExtensionDDS.mm in Sources */ = {isa = PBXBuildFile; fileRef = 55101ADE290E77A6003CED21 /* ImportExtensionDDS.mm */; };
+		55101AE5290E7A41003CED21 /* ImportExtensionVTF.mm in Sources */ = {isa = PBXBuildFile; fileRef = 55101AE0290E78A3003CED21 /* ImportExtensionVTF.mm */; };
+		55101AE6290E7FC6003CED21 /* VTF Image Metadata.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 55101AD9290E76BC003CED21 /* VTF Image Metadata.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		55101AE9290E7FCC003CED21 /* DDS Image Metadata.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 55101ABE290E76B6003CED21 /* DDS Image Metadata.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		55101AEE290E80AF003CED21 /* NVImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA8FD125E71A200CA78FF /* NVImage.framework */; };
+		55101AEF290E81F2003CED21 /* TextureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17319B21298D11400C29732 /* TextureKit.framework */; };
 		55195830256F1C36001BFE51 /* Box.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1E936911606A8340056438A /* Box.cpp */; };
 		552B5B5024E35FA90077398A /* icbc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552B5B4E24E35FA90077398A /* icbc.cpp */; };
 		552B5B5124E35FA90077398A /* icbc.h in Headers */ = {isa = PBXBuildFile; fileRef = 552B5B4F24E35FA90077398A /* icbc.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -674,6 +694,104 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		55101A8C290E45A3003CED21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 55101A84290E45A2003CED21;
+			remoteInfo = "Source Image Metadata";
+		};
+		55101A97290E4624003CED21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C17319B11298D11400C29732;
+			remoteInfo = TextureKit;
+		};
+		55101AA7290E76B6003CED21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C17319B11298D11400C29732;
+			remoteInfo = TextureKit;
+		};
+		55101AA9290E76B6003CED21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C1B95274124E73B200E83451;
+			remoteInfo = VTF;
+		};
+		55101AC2290E76BC003CED21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C17319B11298D11400C29732;
+			remoteInfo = TextureKit;
+		};
+		55101AC4290E76BC003CED21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C1B95274124E73B200E83451;
+			remoteInfo = VTF;
+		};
+		55101AE7290E7FC6003CED21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 55101AC0290E76BC003CED21;
+			remoteInfo = "VTF Image Metadata";
+		};
+		55101AEA290E7FCC003CED21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 55101AA5290E76B6003CED21;
+			remoteInfo = "DDS Image Metadata";
+		};
+		55101AEC290E80A8003CED21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C1FEA8FC125E71A200CA78FF;
+			remoteInfo = NVImage;
+		};
+		55101AF0290E864D003CED21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C1FEA7E9125E5C9600CA78FF;
+			remoteInfo = NVCore;
+		};
+		55101AF2290E864D003CED21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C1FEA8FC125E71A200CA78FF;
+			remoteInfo = NVImage;
+		};
+		55101AF4290E864D003CED21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C1FEA8DD125E5DC300CA78FF;
+			remoteInfo = NVMath;
+		};
+		55101AF6290E864D003CED21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C1FEA92F125E72E300CA78FF;
+			remoteInfo = NVTT;
+		};
+		55101AF8290E864D003CED21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C180E37814728E1B0001C07F;
+			remoteInfo = NVThread;
+		};
 		5563391E290A801E0058FA82 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
@@ -968,6 +1086,9 @@
 			files = (
 				55633920290A801E0058FA82 /* SourceImagePreviewer.appex in Embed Foundation Extensions */,
 				5563394E290B1FD80058FA82 /* SourceImageThumbnailer.appex in Embed Foundation Extensions */,
+				55101AE6290E7FC6003CED21 /* VTF Image Metadata.appex in Embed Foundation Extensions */,
+				55101AE9290E7FCC003CED21 /* DDS Image Metadata.appex in Embed Foundation Extensions */,
+				55101A8E290E45A3003CED21 /* sfti Metadata.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1044,6 +1165,20 @@
 		256AC3D90F4B6AC300CF3369 /* TKAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TKAppController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		256AC3F00F4B6AF500CF3369 /* SourceFinagler_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceFinagler_Prefix.pch; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		55101A85290E45A2003CED21 /* sfti Metadata.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "sfti Metadata.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		55101A8A290E45A3003CED21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55101A8B290E45A3003CED21 /* Source_Image_Metadata.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Source_Image_Metadata.entitlements; sourceTree = "<group>"; };
+		55101A9E290E4EEE003CED21 /* UniformTypeIdentifiers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UniformTypeIdentifiers.framework; path = System/Library/Frameworks/UniformTypeIdentifiers.framework; sourceTree = SDKROOT; };
+		55101AA0290E4F0C003CED21 /* CoreSpotlight.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreSpotlight.framework; path = System/Library/Frameworks/CoreSpotlight.framework; sourceTree = SDKROOT; };
+		55101ABE290E76B6003CED21 /* DDS Image Metadata.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "DDS Image Metadata.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		55101ABF290E76B7003CED21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Source Image Metadata/DDS/Info.plist"; sourceTree = SOURCE_ROOT; };
+		55101AD9290E76BC003CED21 /* VTF Image Metadata.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "VTF Image Metadata.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		55101ADA290E76BD003CED21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55101ADD290E77A6003CED21 /* ImportExtensionDDS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImportExtensionDDS.h; sourceTree = "<group>"; };
+		55101ADE290E77A6003CED21 /* ImportExtensionDDS.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ImportExtensionDDS.mm; sourceTree = "<group>"; };
+		55101AE0290E78A3003CED21 /* ImportExtensionVTF.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ImportExtensionVTF.mm; sourceTree = "<group>"; };
+		55101AE1290E78A4003CED21 /* ImportExtensionVTF.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImportExtensionVTF.h; sourceTree = "<group>"; };
+		55101AE2290E7A13003CED21 /* ImportExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportExtension.swift; sourceTree = "<group>"; };
 		552B5B4E24E35FA90077398A /* icbc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = icbc.cpp; sourceTree = "<group>"; };
 		552B5B4F24E35FA90077398A /* icbc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = icbc.h; sourceTree = "<group>"; };
 		552B5B5424E36FD80077398A /* Library.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Library.h; sourceTree = "<group>"; };
@@ -1808,6 +1943,35 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		55101A82290E45A2003CED21 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55101AA1290E4F0C003CED21 /* CoreSpotlight.framework in Frameworks */,
+				55101A9C290E4631003CED21 /* TextureKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55101AB0290E76B6003CED21 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55101AEF290E81F2003CED21 /* TextureKit.framework in Frameworks */,
+				55101AEE290E80AF003CED21 /* NVImage.framework in Frameworks */,
+				55101AB1290E76B6003CED21 /* CoreSpotlight.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55101ACB290E76BC003CED21 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55101ACC290E76BC003CED21 /* CoreSpotlight.framework in Frameworks */,
+				55101ACE290E76BC003CED21 /* TextureKit.framework in Frameworks */,
+				55101AD1290E76BC003CED21 /* VTF.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5563390E290A801D0058FA82 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -2055,6 +2219,9 @@
 				C17D8F781642AAC40044039F /* ddsFinagler */,
 				55633911290A801D0058FA82 /* SourceImagePreviewer.appex */,
 				55633943290B1FD80058FA82 /* SourceImageThumbnailer.appex */,
+				55101A85290E45A2003CED21 /* sfti Metadata.appex */,
+				55101ABE290E76B6003CED21 /* DDS Image Metadata.appex */,
+				55101AD9290E76BC003CED21 /* VTF Image Metadata.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2078,6 +2245,7 @@
 				C17D8F7C1642AAC40044039F /* ddsFinagler */,
 				55633914290A801E0058FA82 /* SourceImagePreviewer */,
 				55633947290B1FD80058FA82 /* SourceImageThumbnailer */,
+				55101A86290E45A3003CED21 /* Source Image Metadata */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
@@ -2112,6 +2280,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				55101AA0290E4F0C003CED21 /* CoreSpotlight.framework */,
+				55101A9E290E4EEE003CED21 /* UniformTypeIdentifiers.framework */,
 				C17CC5AB1627FF740055D950 /* Sparkle.framework */,
 				C1537AC21294F80E0056DDE1 /* Accelerate.framework */,
 				C145AC5E12BD69D1005D7E21 /* AGL.framework */,
@@ -2146,6 +2316,46 @@
 				C1CA2BDE13A2E3E600235C98 /* Foundation.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		55101A86290E45A3003CED21 /* Source Image Metadata */ = {
+			isa = PBXGroup;
+			children = (
+				55101ADB290E771F003CED21 /* sfti */,
+				55101ADF290E788F003CED21 /* VTF */,
+				55101ADC290E7797003CED21 /* DDS */,
+				55101A8B290E45A3003CED21 /* Source_Image_Metadata.entitlements */,
+			);
+			path = "Source Image Metadata";
+			sourceTree = "<group>";
+		};
+		55101ADB290E771F003CED21 /* sfti */ = {
+			isa = PBXGroup;
+			children = (
+				55101AE2290E7A13003CED21 /* ImportExtension.swift */,
+				55101A8A290E45A3003CED21 /* Info.plist */,
+			);
+			path = sfti;
+			sourceTree = "<group>";
+		};
+		55101ADC290E7797003CED21 /* DDS */ = {
+			isa = PBXGroup;
+			children = (
+				55101ADD290E77A6003CED21 /* ImportExtensionDDS.h */,
+				55101ADE290E77A6003CED21 /* ImportExtensionDDS.mm */,
+				55101ABF290E76B7003CED21 /* Info.plist */,
+			);
+			path = DDS;
+			sourceTree = "<group>";
+		};
+		55101ADF290E788F003CED21 /* VTF */ = {
+			isa = PBXGroup;
+			children = (
+				55101AE1290E78A4003CED21 /* ImportExtensionVTF.h */,
+				55101AE0290E78A3003CED21 /* ImportExtensionVTF.mm */,
+				55101ADA290E76BD003CED21 /* Info.plist */,
+			);
+			path = VTF;
 			sourceTree = "<group>";
 		};
 		554FE5FB1FC9FF8A00727CE0 /* bc7 */ = {
@@ -4086,6 +4296,63 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		55101A84290E45A2003CED21 /* sfti Metadata */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55101A8F290E45A4003CED21 /* Build configuration list for PBXNativeTarget "sfti Metadata" */;
+			buildPhases = (
+				55101A81290E45A2003CED21 /* Sources */,
+				55101A82290E45A2003CED21 /* Frameworks */,
+				55101A83290E45A2003CED21 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				55101A98290E4624003CED21 /* PBXTargetDependency */,
+			);
+			name = "sfti Metadata";
+			productName = "Source Image Metadata";
+			productReference = 55101A85290E45A2003CED21 /* sfti Metadata.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		55101AA5290E76B6003CED21 /* DDS Image Metadata */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55101ABA290E76B6003CED21 /* Build configuration list for PBXNativeTarget "DDS Image Metadata" */;
+			buildPhases = (
+				55101AAE290E76B6003CED21 /* Sources */,
+				55101AB0290E76B6003CED21 /* Frameworks */,
+				55101AB7290E76B6003CED21 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				55101AED290E80A8003CED21 /* PBXTargetDependency */,
+				55101AA6290E76B6003CED21 /* PBXTargetDependency */,
+				55101AA8290E76B6003CED21 /* PBXTargetDependency */,
+			);
+			name = "DDS Image Metadata";
+			productName = "Source Image Metadata";
+			productReference = 55101ABE290E76B6003CED21 /* DDS Image Metadata.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		55101AC0290E76BC003CED21 /* VTF Image Metadata */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55101AD5290E76BC003CED21 /* Build configuration list for PBXNativeTarget "VTF Image Metadata" */;
+			buildPhases = (
+				55101AC9290E76BC003CED21 /* Sources */,
+				55101ACB290E76BC003CED21 /* Frameworks */,
+				55101AD2290E76BC003CED21 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				55101AC1290E76BC003CED21 /* PBXTargetDependency */,
+				55101AC3290E76BC003CED21 /* PBXTargetDependency */,
+			);
+			name = "VTF Image Metadata";
+			productName = "Source Image Metadata";
+			productReference = 55101AD9290E76BC003CED21 /* VTF Image Metadata.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		55633910290A801D0058FA82 /* SourceImagePreviewer */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 55633925290A801F0058FA82 /* Build configuration list for PBXNativeTarget "SourceImagePreviewer" */;
@@ -4282,8 +4549,8 @@
 			buildConfigurationList = C1C2C5A5127CBCA0003B24F6 /* Build configuration list for PBXNativeTarget "Source Finagler" */;
 			buildPhases = (
 				C1C2C543127CBCA0003B24F6 /* Sources */,
-				C1C2C4E2127CBCA0003B24F6 /* Resources */,
 				C1C2C5A0127CBCA0003B24F6 /* Copy Frameworks */,
+				C1C2C4E2127CBCA0003B24F6 /* Resources */,
 				C1C2C595127CBCA0003B24F6 /* Frameworks */,
 				C1968A0314F5606500ACFD02 /* Copy QuickLook generator */,
 				C1968A0514F560DC00ACFD02 /* Copy Spotlight importer */,
@@ -4292,6 +4559,11 @@
 			buildRules = (
 			);
 			dependencies = (
+				55101AF1290E864D003CED21 /* PBXTargetDependency */,
+				55101AF3290E864D003CED21 /* PBXTargetDependency */,
+				55101AF5290E864D003CED21 /* PBXTargetDependency */,
+				55101AF7290E864D003CED21 /* PBXTargetDependency */,
+				55101AF9290E864D003CED21 /* PBXTargetDependency */,
 				C1C2C4E0127CBCA0003B24F6 /* PBXTargetDependency */,
 				C145AF0012BD8F10005D7E21 /* PBXTargetDependency */,
 				C1C2C5BC127CBCD0003B24F6 /* PBXTargetDependency */,
@@ -4302,6 +4574,9 @@
 				C1224D8113B09338009AA0F4 /* PBXTargetDependency */,
 				5563391F290A801E0058FA82 /* PBXTargetDependency */,
 				5563394D290B1FD80058FA82 /* PBXTargetDependency */,
+				55101A8D290E45A3003CED21 /* PBXTargetDependency */,
+				55101AE8290E7FC6003CED21 /* PBXTargetDependency */,
+				55101AEB290E7FCC003CED21 /* PBXTargetDependency */,
 			);
 			name = "Source Finagler";
 			productInstallPath = "$(HOME)/Applications";
@@ -4472,6 +4747,17 @@
 				LastUpgradeCheck = 1410;
 				ORGANIZATIONNAME = "Mark Douma LLC";
 				TargetAttributes = {
+					55101A84290E45A2003CED21 = {
+						CreatedOnToolsVersion = 14.1;
+						LastSwiftMigration = 1410;
+						ProvisioningStyle = Automatic;
+					};
+					55101AA5290E76B6003CED21 = {
+						ProvisioningStyle = Automatic;
+					};
+					55101AC0290E76BC003CED21 = {
+						ProvisioningStyle = Automatic;
+					};
 					55633910290A801D0058FA82 = {
 						CreatedOnToolsVersion = 14.1;
 						ProvisioningStyle = Automatic;
@@ -4518,11 +4804,41 @@
 				C17D8F771642AAC40044039F /* ddsFinagler */,
 				55633910290A801D0058FA82 /* SourceImagePreviewer */,
 				55633942290B1FD80058FA82 /* SourceImageThumbnailer */,
+				55101A84290E45A2003CED21 /* sfti Metadata */,
+				55101AA5290E76B6003CED21 /* DDS Image Metadata */,
+				55101AC0290E76BC003CED21 /* VTF Image Metadata */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		55101A83290E45A2003CED21 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55101A93290E45C5003CED21 /* schema.xml in Resources */,
+				55101A94290E45C9003CED21 /* schema.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55101AB7290E76B6003CED21 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55101AB8290E76B6003CED21 /* schema.xml in Resources */,
+				55101AB9290E76B6003CED21 /* schema.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55101AD2290E76BC003CED21 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55101AD3290E76BC003CED21 /* schema.xml in Resources */,
+				55101AD4290E76BC003CED21 /* schema.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5563390F290A801D0058FA82 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -4718,6 +5034,30 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		55101A81290E45A2003CED21 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55101AE3290E7A13003CED21 /* ImportExtension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55101AAE290E76B6003CED21 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55101AE4290E7A3D003CED21 /* ImportExtensionDDS.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55101AC9290E76BC003CED21 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55101AE5290E7A41003CED21 /* ImportExtensionVTF.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5563390D290A801D0058FA82 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -5117,6 +5457,76 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		55101A8D290E45A3003CED21 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 55101A84290E45A2003CED21 /* sfti Metadata */;
+			targetProxy = 55101A8C290E45A3003CED21 /* PBXContainerItemProxy */;
+		};
+		55101A98290E4624003CED21 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C17319B11298D11400C29732 /* TextureKit */;
+			targetProxy = 55101A97290E4624003CED21 /* PBXContainerItemProxy */;
+		};
+		55101AA6290E76B6003CED21 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C17319B11298D11400C29732 /* TextureKit */;
+			targetProxy = 55101AA7290E76B6003CED21 /* PBXContainerItemProxy */;
+		};
+		55101AA8290E76B6003CED21 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C1B95274124E73B200E83451 /* VTF */;
+			targetProxy = 55101AA9290E76B6003CED21 /* PBXContainerItemProxy */;
+		};
+		55101AC1290E76BC003CED21 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C17319B11298D11400C29732 /* TextureKit */;
+			targetProxy = 55101AC2290E76BC003CED21 /* PBXContainerItemProxy */;
+		};
+		55101AC3290E76BC003CED21 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C1B95274124E73B200E83451 /* VTF */;
+			targetProxy = 55101AC4290E76BC003CED21 /* PBXContainerItemProxy */;
+		};
+		55101AE8290E7FC6003CED21 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 55101AC0290E76BC003CED21 /* VTF Image Metadata */;
+			targetProxy = 55101AE7290E7FC6003CED21 /* PBXContainerItemProxy */;
+		};
+		55101AEB290E7FCC003CED21 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 55101AA5290E76B6003CED21 /* DDS Image Metadata */;
+			targetProxy = 55101AEA290E7FCC003CED21 /* PBXContainerItemProxy */;
+		};
+		55101AED290E80A8003CED21 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C1FEA8FC125E71A200CA78FF /* NVImage */;
+			targetProxy = 55101AEC290E80A8003CED21 /* PBXContainerItemProxy */;
+		};
+		55101AF1290E864D003CED21 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C1FEA7E9125E5C9600CA78FF /* NVCore */;
+			targetProxy = 55101AF0290E864D003CED21 /* PBXContainerItemProxy */;
+		};
+		55101AF3290E864D003CED21 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C1FEA8FC125E71A200CA78FF /* NVImage */;
+			targetProxy = 55101AF2290E864D003CED21 /* PBXContainerItemProxy */;
+		};
+		55101AF5290E864D003CED21 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C1FEA8DD125E5DC300CA78FF /* NVMath */;
+			targetProxy = 55101AF4290E864D003CED21 /* PBXContainerItemProxy */;
+		};
+		55101AF7290E864D003CED21 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C1FEA92F125E72E300CA78FF /* NVTT */;
+			targetProxy = 55101AF6290E864D003CED21 /* PBXContainerItemProxy */;
+		};
+		55101AF9290E864D003CED21 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C180E37814728E1B0001C07F /* NVThread */;
+			targetProxy = 55101AF8290E864D003CED21 /* PBXContainerItemProxy */;
+		};
 		5563391F290A801E0058FA82 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 55633910290A801D0058FA82 /* SourceImagePreviewer */;
@@ -5535,6 +5945,277 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		55101A90290E45A4003CED21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_ENTITLEMENTS = "Source Image Metadata/Source_Image_Metadata.entitlements";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 250;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Source Image Metadata/VTF/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Source SFTI Image Metadata";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mark Douma LLC. All rights reserved.";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 2.5;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.markdouma.SourceFinagler.sfti-metadata";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		55101A91290E45A4003CED21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_ENTITLEMENTS = "Source Image Metadata/Source_Image_Metadata.entitlements";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 250;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Source Image Metadata/VTF/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Source SFTI Image Metadata";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mark Douma LLC. All rights reserved.";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 2.5;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.markdouma.SourceFinagler.sfti-metadata";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		55101A92290E45A4003CED21 /* Release-MAS */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_ENTITLEMENTS = "Source Image Metadata/Source_Image_Metadata.entitlements";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 250;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Source Image Metadata/VTF/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Source SFTI Image Metadata";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mark Douma LLC. All rights reserved.";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 2.5;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.markdouma.SourceFinagler.sfti-metadata";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = "Release-MAS";
+		};
+		55101ABB290E76B6003CED21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_ENTITLEMENTS = "Source Image Metadata/Source_Image_Metadata.entitlements";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 250;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Source Image Metadata/DDS/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Source DDS Image Metadata";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mark Douma LLC. All rights reserved.";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 2.5;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.markdouma.SourceFinagler.dds-Image-Metadata";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Debug;
+		};
+		55101ABC290E76B6003CED21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_ENTITLEMENTS = "Source Image Metadata/Source_Image_Metadata.entitlements";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 250;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Source Image Metadata/DDS/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Source DDS Image Metadata";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mark Douma LLC. All rights reserved.";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 2.5;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.markdouma.SourceFinagler.dds-Image-Metadata";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Release;
+		};
+		55101ABD290E76B6003CED21 /* Release-MAS */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_ENTITLEMENTS = "Source Image Metadata/Source_Image_Metadata.entitlements";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 250;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Source Image Metadata/DDS/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Source DDS Image Metadata";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mark Douma LLC. All rights reserved.";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 2.5;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.markdouma.SourceFinagler.dds-Image-Metadata";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = "Release-MAS";
+		};
+		55101AD6290E76BC003CED21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_ENTITLEMENTS = "Source Image Metadata/Source_Image_Metadata.entitlements";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 250;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Source Image Metadata/VTF/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Source VTF Image Metadata";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mark Douma LLC. All rights reserved.";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 2.5;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.markdouma.SourceFinagler.vtf-Image-Metadata";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Debug;
+		};
+		55101AD7290E76BC003CED21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_ENTITLEMENTS = "Source Image Metadata/Source_Image_Metadata.entitlements";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 250;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Source Image Metadata/VTF/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Source VTF Image Metadata";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mark Douma LLC. All rights reserved.";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 2.5;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.markdouma.SourceFinagler.vtf-Image-Metadata";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Release;
+		};
+		55101AD8290E76BC003CED21 /* Release-MAS */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_ENTITLEMENTS = "Source Image Metadata/Source_Image_Metadata.entitlements";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 250;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Source Image Metadata/VTF/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Source VTF Image Metadata";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mark Douma LLC. All rights reserved.";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 2.5;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.markdouma.SourceFinagler.vtf-Image-Metadata";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = "Release-MAS";
+		};
 		551957FA256F0F7E001BFE51 /* Release-MAS */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -5604,6 +6285,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 250;
 				DEAD_CODE_STRIPPING = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(BUILD_DIR)\"/**",
@@ -5626,6 +6308,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
+				MARKETING_VERSION = 2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.SourceFinagler;
 				PRODUCT_NAME = "Source Finagler";
 				STRIP_INSTALLED_PRODUCT = YES;
@@ -6828,6 +7511,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 250;
 				DEAD_CODE_STRIPPING = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(BUILD_DIR)\"/**",
@@ -6851,6 +7535,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
+				MARKETING_VERSION = 2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.SourceFinagler;
 				PRODUCT_NAME = "Source Finagler";
 			};
@@ -6864,6 +7549,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 250;
 				DEAD_CODE_STRIPPING = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(BUILD_DIR)\"/**",
@@ -6886,6 +7572,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
+				MARKETING_VERSION = 2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.SourceFinagler;
 				PRODUCT_NAME = "Source Finagler";
 				STRIP_INSTALLED_PRODUCT = YES;
@@ -7317,6 +8004,36 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		55101A8F290E45A4003CED21 /* Build configuration list for PBXNativeTarget "sfti Metadata" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55101A90290E45A4003CED21 /* Debug */,
+				55101A91290E45A4003CED21 /* Release */,
+				55101A92290E45A4003CED21 /* Release-MAS */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		55101ABA290E76B6003CED21 /* Build configuration list for PBXNativeTarget "DDS Image Metadata" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55101ABB290E76B6003CED21 /* Debug */,
+				55101ABC290E76B6003CED21 /* Release */,
+				55101ABD290E76B6003CED21 /* Release-MAS */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		55101AD5290E76BC003CED21 /* Build configuration list for PBXNativeTarget "VTF Image Metadata" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55101AD6290E76BC003CED21 /* Debug */,
+				55101AD7290E76BC003CED21 /* Release */,
+				55101AD8290E76BC003CED21 /* Release-MAS */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		55633925290A801F0058FA82 /* Build configuration list for PBXNativeTarget "SourceImagePreviewer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
