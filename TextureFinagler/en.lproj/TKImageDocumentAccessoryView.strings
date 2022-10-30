@@ -1,0 +1,225 @@
+
+/* Class = "NSMenu"; title = "OtherViews"; ObjectID = "4"; */
+"4.title" = "OtherViews";
+
+/* Class = "NSMenuItem"; title = "Source Finagler Texture Image"; ObjectID = "5"; */
+"5.title" = "Source Finagler Texture Image";
+
+/* Class = "NSMenuItem"; title = "Item 2"; ObjectID = "6"; */
+"6.title" = "Item 2";
+
+/* Class = "NSMenuItem"; title = "Item 3"; ObjectID = "7"; */
+"7.title" = "Item 3";
+
+/* Class = "NSTextFieldCell"; title = "Format:"; ObjectID = "9"; */
+"9.title" = "Format:";
+
+/* Class = "NSTextFieldCell"; title = "Quality:"; ObjectID = "22"; */
+"22.title" = "Quality:";
+
+/* Class = "NSTextFieldCell"; title = "Least"; ObjectID = "28"; */
+"28.title" = "Least";
+
+/* Class = "NSTextFieldCell"; title = "Best"; ObjectID = "30"; */
+"30.title" = "Best";
+
+/* Class = "NSTextFieldCell"; title = "Compression:"; ObjectID = "34"; */
+"34.title" = "Compression:";
+
+/* Class = "NSMenu"; title = "tiffMenu"; ObjectID = "36"; */
+"36.title" = "tiffMenu";
+
+/* Class = "NSMenuItem"; title = "ATI1N"; ObjectID = "47"; */
+"47.title" = "ATI1N";
+
+/* Class = "NSMenuItem"; title = "ATI2N"; ObjectID = "48"; */
+"48.title" = "ATI2N";
+
+/* Class = "NSMenuItem"; title = "NVNULL"; ObjectID = "49"; */
+"49.title" = "NVNULL";
+
+/* Class = "NSMenuItem"; title = "ATIDST24"; ObjectID = "50"; */
+"50.title" = "ATIDST24";
+
+/* Class = "NSMenuItem"; title = "ATIDST16"; ObjectID = "51"; */
+"51.title" = "ATIDST16";
+
+/* Class = "NSMenuItem"; title = "NVRAWZ"; ObjectID = "52"; */
+"52.title" = "NVRAWZ";
+
+/* Class = "NSMenuItem"; title = "NVINTZ"; ObjectID = "53"; */
+"53.title" = "NVINTZ";
+
+/* Class = "NSMenuItem"; title = "NVDST24"; ObjectID = "54"; */
+"54.title" = "NVDST24";
+
+/* Class = "NSMenuItem"; title = "NVDST16"; ObjectID = "55"; */
+"55.title" = "NVDST16";
+
+/* Class = "NSMenuItem"; title = "UVWQ"; ObjectID = "56"; */
+"56.title" = "UVWQ";
+
+/* Class = "NSMenuItem"; title = "UV"; ObjectID = "57"; */
+"57.title" = "UV";
+
+/* Class = "NSMenuItem"; title = "RGBA32323232F"; ObjectID = "58"; */
+"58.title" = "RGBA32323232F";
+
+/* Class = "NSMenuItem"; title = "RGB323232F"; ObjectID = "59"; */
+"59.title" = "RGB323232F";
+
+/* Class = "NSMenuItem"; title = "R32F"; ObjectID = "60"; */
+"60.title" = "R32F";
+
+/* Class = "NSMenuItem"; title = "RGBA16161616"; ObjectID = "61"; */
+"61.title" = "RGBA16161616";
+
+/* Class = "NSMenuItem"; title = "RGBA16161616F"; ObjectID = "62"; */
+"62.title" = "RGBA16161616F";
+
+/* Class = "NSMenuItem"; title = "A"; ObjectID = "63"; */
+"63.title" = "A";
+
+/* Class = "NSMenuItem"; title = "P"; ObjectID = "64"; */
+"64.title" = "P";
+
+/* Class = "NSMenuItem"; title = "BGRA5551"; ObjectID = "65"; */
+"65.title" = "BGRA5551";
+
+/* Class = "NSMenuItem"; title = "UVLX"; ObjectID = "66"; */
+"66.title" = "UVLX";
+
+/* Class = "NSMenuItem"; title = "IA"; ObjectID = "67"; */
+"67.title" = "IA";
+
+/* Class = "NSMenuItem"; title = "I"; ObjectID = "68"; */
+"68.title" = "I";
+
+/* Class = "NSMenuItem"; title = "BGRA4444"; ObjectID = "69"; */
+"69.title" = "BGRA4444";
+
+/* Class = "NSMenuItem"; title = "BGRX5551"; ObjectID = "70"; */
+"70.title" = "BGRX5551";
+
+/* Class = "NSMenuItem"; title = "BGR565"; ObjectID = "71"; */
+"71.title" = "BGR565";
+
+/* Class = "NSMenuItem"; title = "Bluescreen BGR"; ObjectID = "72"; */
+"72.title" = "Bluescreen BGR";
+
+/* Class = "NSMenuItem"; title = "ABGR"; ObjectID = "73"; */
+"73.title" = "ABGR";
+
+/* Class = "NSMenuItem"; title = "BGRX"; ObjectID = "74"; */
+"74.title" = "BGRX";
+
+/* Class = "NSMenuItem"; title = "BGRA"; ObjectID = "75"; */
+"75.title" = "BGRA";
+
+/* Class = "NSMenuItem"; title = "BGR"; ObjectID = "76"; */
+"76.title" = "BGR";
+
+/* Class = "NSMenuItem"; title = "RGB565"; ObjectID = "77"; */
+"77.title" = "RGB565";
+
+/* Class = "NSMenuItem"; title = "Bluescreen RGB"; ObjectID = "78"; */
+"78.title" = "Bluescreen RGB";
+
+/* Class = "NSMenuItem"; title = "ARGB"; ObjectID = "79"; */
+"79.title" = "ARGB";
+
+/* Class = "NSMenuItem"; title = "RGBA"; ObjectID = "80"; */
+"80.title" = "RGBA";
+
+/* Class = "NSMenuItem"; title = "DXT1a"; ObjectID = "81"; */
+"81.title" = "DXT1a";
+
+/* Class = "NSMenuItem"; title = "DXT1"; ObjectID = "82"; */
+"82.title" = "DXT1";
+
+/* Class = "NSMenuItem"; title = "DXT5"; ObjectID = "83"; */
+"83.title" = "DXT5";
+
+/* Class = "NSMenuItem"; title = "DXT3"; ObjectID = "84"; */
+"84.title" = "DXT3";
+
+/* Class = "NSMenuItem"; title = "RGB"; ObjectID = "85"; */
+"85.title" = "RGB";
+
+/* Class = "NSMenu"; title = "OtherViews"; ObjectID = "86"; */
+"86.title" = "OtherViews";
+
+/* Class = "NSMenuItem"; title = "BC5 (3DC, ATI2)"; ObjectID = "87"; */
+"87.title" = "BC5 (3DC, ATI2)";
+
+/* Class = "NSMenuItem"; title = "BC4 (ATI1)"; ObjectID = "88"; */
+"88.title" = "BC4 (ATI1)";
+
+/* Class = "NSMenuItem"; title = "DXT5n"; ObjectID = "89"; */
+"89.title" = "DXT5n";
+
+/* Class = "NSMenuItem"; title = "DXT1a"; ObjectID = "90"; */
+"90.title" = "DXT1a";
+
+/* Class = "NSMenuItem"; title = "RGBA"; ObjectID = "91"; */
+"91.title" = "RGBA";
+
+/* Class = "NSMenuItem"; title = "DXT1"; ObjectID = "92"; */
+"92.title" = "DXT1";
+
+/* Class = "NSMenuItem"; title = "RGB"; ObjectID = "93"; */
+"93.title" = "RGB";
+
+/* Class = "NSMenuItem"; title = "DXT3"; ObjectID = "94"; */
+"94.title" = "DXT3";
+
+/* Class = "NSMenuItem"; title = "DXT5"; ObjectID = "95"; */
+"95.title" = "DXT5";
+
+/* Class = "NSButtonCell"; title = "Alpha"; ObjectID = "99"; */
+"99.title" = "Alpha";
+
+/* Class = "NSButtonCell"; title = "Alpha"; ObjectID = "122"; */
+"122.title" = "Alpha";
+
+/* Class = "NSMenu"; title = "OtherViews"; ObjectID = "131"; */
+"131.title" = "OtherViews";
+
+/* Class = "NSMenuItem"; title = "Item 3"; ObjectID = "132"; */
+"132.title" = "Item 3";
+
+/* Class = "NSMenuItem"; title = "Item 2"; ObjectID = "133"; */
+"133.title" = "Item 2";
+
+/* Class = "NSMenuItem"; title = "RGBA16161616F"; ObjectID = "134"; */
+"134.title" = "RGBA16161616F";
+
+/* Class = "NSTextFieldCell"; title = "Compression:"; ObjectID = "135"; */
+"135.title" = "Compression:";
+
+/* Class = "NSButtonCell"; title = "Mipmaps"; ObjectID = "136"; */
+"136.title" = "Mipmaps";
+
+/* Class = "NSMenuItem"; title = "None"; ObjectID = "147"; */
+"147.title" = "None";
+
+/* Class = "NSMenuItem"; title = "LZW"; ObjectID = "148"; */
+"148.title" = "LZW";
+
+/* Class = "NSMenuItem"; title = "Packbits"; ObjectID = "149"; */
+"149.title" = "Packbits";
+
+/* Class = "NSButtonCell"; title = "Alpha"; ObjectID = "156"; */
+"156.title" = "Alpha";
+
+/* Class = "NSTextFieldCell"; title = "Quality:"; ObjectID = "168"; */
+"168.title" = "Quality:";
+
+/* Class = "NSTextFieldCell"; title = "Least"; ObjectID = "169"; */
+"169.title" = "Least";
+
+/* Class = "NSTextFieldCell"; title = "Lossless"; ObjectID = "170"; */
+"170.title" = "Lossless";
+
+/* Class = "NSButtonCell"; title = "Alpha"; ObjectID = "171"; */
+"171.title" = "Alpha";

@@ -1,0 +1,132 @@
+
+/* Class = "NSWindow"; title = "Info"; ObjectID = "656"; */
+"656.title" = "Info";
+
+/* Class = "NSTextFieldCell"; placeholderString = "--"; ObjectID = "661"; */
+"661.placeholderString" = "--";
+
+/* Class = "NSTextFieldCell"; placeholderString = "--"; ObjectID = "663"; */
+"663.placeholderString" = "--";
+
+/* Class = "NSTextFieldCell"; title = "Modified:"; ObjectID = "665"; */
+"665.title" = "Modified:";
+
+/* Class = "NSTextFieldCell"; title = "Size:"; ObjectID = "684"; */
+"684.title" = "Size:";
+
+/* Class = "NSTextFieldCell"; title = "Where:"; ObjectID = "687"; */
+"687.title" = "Where:";
+
+/* Class = "NSTextFieldCell"; title = "Kind:"; ObjectID = "689"; */
+"689.title" = "Kind:";
+
+/* Class = "NSTextFieldCell"; placeholderString = "--"; ObjectID = "690"; */
+"690.placeholderString" = "--";
+
+/* Class = "NSTextFieldCell"; placeholderString = "--"; ObjectID = "691"; */
+"691.placeholderString" = "--";
+
+/* Class = "NSTextFieldCell"; placeholderString = "--"; ObjectID = "693"; */
+"693.placeholderString" = "--";
+
+/* Class = "NSButtonCell"; title = "General:"; ObjectID = "699"; */
+"699.title" = "General:";
+
+/* Class = "NSButtonCell"; title = "Preview:"; ObjectID = "707"; */
+"707.title" = "Preview:";
+
+/* Class = "NSTextFieldCell"; placeholderString = "--"; ObjectID = "782"; */
+"782.placeholderString" = "--";
+
+/* Class = "NSTextFieldCell"; title = "Dimensions:"; ObjectID = "1227"; */
+"1227.title" = "Dimensions:";
+
+/* Class = "NSTextFieldCell"; title = "Version:"; ObjectID = "1228"; */
+"1228.title" = "Version:";
+
+/* Class = "NSTextFieldCell"; title = "Compression:"; ObjectID = "1229"; */
+"1229.title" = "Compression:";
+
+/* Class = "NSTextFieldCell"; placeholderString = "--"; ObjectID = "1230"; */
+"1230.placeholderString" = "--";
+
+/* Class = "NSTextFieldCell"; placeholderString = "--"; ObjectID = "1231"; */
+"1231.placeholderString" = "--";
+
+/* Class = "NSButtonCell"; title = "More Info:"; ObjectID = "1234"; */
+"1234.title" = "More Info:";
+
+/* Class = "NSTextFieldCell"; placeholderString = "--"; ObjectID = "1242"; */
+"1242.placeholderString" = "--";
+
+/* Class = "NSTextFieldCell"; title = "Alpha channel:"; ObjectID = "1244"; */
+"1244.title" = "Alpha channel:";
+
+/* Class = "NSTextFieldCell"; title = "Mipmaps:"; ObjectID = "1246"; */
+"1246.title" = "Mipmaps:";
+
+/* Class = "NSTextFieldCell"; placeholderString = "--"; ObjectID = "1248"; */
+"1248.placeholderString" = "--";
+
+/* Class = "NSTextFieldCell"; placeholderString = "--"; ObjectID = "1250"; */
+"1250.placeholderString" = "--";
+
+/* Class = "CocoaBindingsConnection"; ibShadowedIsNilPlaceholder = "--"; ObjectID = "1258"; */
+"1258.ibShadowedIsNilPlaceholder" = "--";
+
+/* Class = "CocoaBindingsConnection"; ibShadowedMultipleValuesPlaceholder = "--"; ObjectID = "1258"; */
+"1258.ibShadowedMultipleValuesPlaceholder" = "--";
+
+/* Class = "CocoaBindingsConnection"; ibShadowedNoSelectionPlaceholder = "--"; ObjectID = "1258"; */
+"1258.ibShadowedNoSelectionPlaceholder" = "--";
+
+/* Class = "CocoaBindingsConnection"; ibShadowedNotApplicablePlaceholder = "--"; ObjectID = "1258"; */
+"1258.ibShadowedNotApplicablePlaceholder" = "--";
+
+/* Class = "CocoaBindingsConnection"; ibShadowedIsNilPlaceholder = "--"; ObjectID = "1260"; */
+"1260.ibShadowedIsNilPlaceholder" = "--";
+
+/* Class = "CocoaBindingsConnection"; ibShadowedMultipleValuesPlaceholder = "--"; ObjectID = "1260"; */
+"1260.ibShadowedMultipleValuesPlaceholder" = "--";
+
+/* Class = "CocoaBindingsConnection"; ibShadowedNoSelectionPlaceholder = "--"; ObjectID = "1260"; */
+"1260.ibShadowedNoSelectionPlaceholder" = "--";
+
+/* Class = "CocoaBindingsConnection"; ibShadowedNotApplicablePlaceholder = "--"; ObjectID = "1260"; */
+"1260.ibShadowedNotApplicablePlaceholder" = "--";
+
+/* Class = "CocoaBindingsConnection"; ibShadowedIsNilPlaceholder = "--"; ObjectID = "1267"; */
+"1267.ibShadowedIsNilPlaceholder" = "--";
+
+/* Class = "CocoaBindingsConnection"; ibShadowedMultipleValuesPlaceholder = "--"; ObjectID = "1267"; */
+"1267.ibShadowedMultipleValuesPlaceholder" = "--";
+
+/* Class = "CocoaBindingsConnection"; ibShadowedNoSelectionPlaceholder = "--"; ObjectID = "1267"; */
+"1267.ibShadowedNoSelectionPlaceholder" = "--";
+
+/* Class = "CocoaBindingsConnection"; ibShadowedNotApplicablePlaceholder = "--"; ObjectID = "1267"; */
+"1267.ibShadowedNotApplicablePlaceholder" = "--";
+
+/* Class = "CocoaBindingsConnection"; ibShadowedIsNilPlaceholder = "--"; ObjectID = "1275"; */
+"1275.ibShadowedIsNilPlaceholder" = "--";
+
+/* Class = "CocoaBindingsConnection"; ibShadowedMultipleValuesPlaceholder = "--"; ObjectID = "1275"; */
+"1275.ibShadowedMultipleValuesPlaceholder" = "--";
+
+/* Class = "CocoaBindingsConnection"; ibShadowedNoSelectionPlaceholder = "--"; ObjectID = "1275"; */
+"1275.ibShadowedNoSelectionPlaceholder" = "--";
+
+/* Class = "CocoaBindingsConnection"; ibShadowedNotApplicablePlaceholder = "--"; ObjectID = "1275"; */
+"1275.ibShadowedNotApplicablePlaceholder" = "--";
+
+/* Class = "CocoaBindingsConnection"; ibShadowedIsNilPlaceholder = "--"; ObjectID = "1283"; */
+"1283.ibShadowedIsNilPlaceholder" = "--";
+
+/* Class = "CocoaBindingsConnection"; ibShadowedMultipleValuesPlaceholder = "--"; ObjectID = "1283"; */
+"1283.ibShadowedMultipleValuesPlaceholder" = "--";
+
+/* Class = "CocoaBindingsConnection"; ibShadowedNoSelectionPlaceholder = "--"; ObjectID = "1283"; */
+"1283.ibShadowedNoSelectionPlaceholder" = "--";
+
+/* Class = "CocoaBindingsConnection"; ibShadowedNotApplicablePlaceholder = "--"; ObjectID = "1283"; */
+"1283.ibShadowedNotApplicablePlaceholder" = "--";

@@ -1,0 +1,90 @@
+
+/* Class = "NSWindow"; title = "View Options"; ObjectID = "217"; */
+"217.title" = "View Options";
+
+/* Class = "NSMenuItem"; title = "15"; ObjectID = "384"; */
+"384.title" = "15";
+
+/* Class = "NSMenuItem"; title = "13"; ObjectID = "385"; */
+"385.title" = "13";
+
+/* Class = "NSMenuItem"; title = "16"; ObjectID = "386"; */
+"386.title" = "16";
+
+/* Class = "NSMenuItem"; title = "10"; ObjectID = "387"; */
+"387.title" = "10";
+
+/* Class = "NSMenuItem"; title = "12"; ObjectID = "388"; */
+"388.title" = "12";
+
+/* Class = "NSMenuItem"; title = "14"; ObjectID = "389"; */
+"389.title" = "14";
+
+/* Class = "NSMenuItem"; title = "11"; ObjectID = "390"; */
+"390.title" = "11";
+
+/* Class = "NSMenuItem"; title = "Kind"; ObjectID = "540"; */
+"540.title" = "Kind";
+
+/* Class = "NSMenuItem"; title = "Name"; ObjectID = "541"; */
+"541.title" = "Name";
+
+/* Class = "NSMenuItem"; title = "Size"; ObjectID = "542"; */
+"542.title" = "Size";
+
+/* Class = "NSMenuItem"; title = "15"; ObjectID = "548"; */
+"548.title" = "15";
+
+/* Class = "NSMenuItem"; title = "13"; ObjectID = "549"; */
+"549.title" = "13";
+
+/* Class = "NSMenuItem"; title = "16"; ObjectID = "550"; */
+"550.title" = "16";
+
+/* Class = "NSMenuItem"; title = "10"; ObjectID = "551"; */
+"551.title" = "10";
+
+/* Class = "NSMenuItem"; title = "12"; ObjectID = "552"; */
+"552.title" = "12";
+
+/* Class = "NSMenuItem"; title = "14"; ObjectID = "553"; */
+"553.title" = "14";
+
+/* Class = "NSMenuItem"; title = "11"; ObjectID = "554"; */
+"554.title" = "11";
+
+/* Class = "NSTextFieldCell"; title = "There are no view options for the \"%@\" window."; ObjectID = "582"; */
+"582.title" = "There are no view options for the \"%@\" window.";
+
+/* Class = "NSTextFieldCell"; title = "Text size:"; ObjectID = "591"; */
+"591.title" = "Text size:";
+
+/* Class = "NSTextFieldCell"; title = "Icon size:"; ObjectID = "592"; */
+"592.title" = "Icon size:";
+
+/* Class = "NSButtonCell"; title = "Size"; ObjectID = "593"; */
+"593.title" = "Size";
+
+/* Class = "NSTextFieldCell"; title = "Show columns:"; ObjectID = "594"; */
+"594.title" = "Show columns:";
+
+/* Class = "NSButtonCell"; title = "Kind"; ObjectID = "595"; */
+"595.title" = "Kind";
+
+/* Class = "NSTextFieldCell"; title = "Text size:"; ObjectID = "597"; */
+"597.title" = "Text size:";
+
+/* Class = "NSButtonCell"; title = "Show icons"; ObjectID = "598"; */
+"598.title" = "Show icons";
+
+/* Class = "NSButtonCell"; title = "Show preview column"; ObjectID = "600"; */
+"600.title" = "Show preview column";
+
+/* Class = "NSTextFieldCell"; title = "Arrange by:"; ObjectID = "601"; */
+"601.title" = "Arrange by:";
+
+/* Class = "NSButtonCell"; title = "Show non-extractable files"; ObjectID = "641"; */
+"641.title" = "Show non-extractable files";
+
+/* Class = "NSButtonCell"; title = "Show non-extractable files"; ObjectID = "645"; */
+"645.title" = "Show non-extractable files";

@@ -1,0 +1,315 @@
+
+/* Class = "NSWindow"; title = "Window"; ObjectID = "1"; */
+"1.title" = "Window";
+
+/* Class = "NSMenu"; title = "OtherViews"; ObjectID = "10"; */
+"10.title" = "OtherViews";
+
+/* Class = "NSMenuItem"; title = "VTF BGRA"; ObjectID = "11"; */
+"11.title" = "VTF BGRA";
+
+/* Class = "NSMenuItem"; title = "DDS DXT1"; ObjectID = "12"; */
+"12.title" = "DDS DXT1";
+
+/* Class = "NSMenuItem"; title = "VTF DXT1"; ObjectID = "13"; */
+"13.title" = "VTF DXT1";
+
+/* Class = "NSTextFieldCell"; title = "Preset:"; ObjectID = "15"; */
+"15.title" = "Preset:";
+
+/* Class = "NSTextFieldCell"; title = " File Format:"; ObjectID = "18"; */
+"18.title" = " File Format:";
+
+/* Class = "NSMenu"; title = "OtherViews"; ObjectID = "20"; */
+"20.title" = "OtherViews";
+
+/* Class = "NSMenuItem"; title = "VTF"; ObjectID = "22"; */
+"22.title" = "VTF";
+
+/* Class = "NSMenuItem"; title = "DDS"; ObjectID = "23"; */
+"23.title" = "DDS";
+
+/* Class = "NSMenuItem"; title = "VTF DXT1a"; ObjectID = "24"; */
+"24.title" = "VTF DXT1a";
+
+/* Class = "NSMenuItem"; title = "VTF DXT3"; ObjectID = "25"; */
+"25.title" = "VTF DXT3";
+
+/* Class = "NSMenuItem"; title = "VTF DXT5"; ObjectID = "26"; */
+"26.title" = "VTF DXT5";
+
+/* Class = "NSMenuItem"; title = "DDS DXT1a"; ObjectID = "27"; */
+"27.title" = "DDS DXT1a";
+
+/* Class = "NSMenuItem"; title = "DDS DXT3"; ObjectID = "28"; */
+"28.title" = "DDS DXT3";
+
+/* Class = "NSMenuItem"; title = "DDS DXT5"; ObjectID = "29"; */
+"29.title" = "DDS DXT5";
+
+/* Class = "NSMenuItem"; title = "DDS RGBA"; ObjectID = "30"; */
+"30.title" = "DDS RGBA";
+
+/* Class = "NSTextFieldCell"; title = "Quality:"; ObjectID = "35"; */
+"35.title" = "Quality:";
+
+/* Class = "NSMenu"; title = "OtherViews"; ObjectID = "37"; */
+"37.title" = "OtherViews";
+
+/* Class = "NSMenuItem"; title = "High"; ObjectID = "38"; */
+"38.title" = "High";
+
+/* Class = "NSMenuItem"; title = "Medium"; ObjectID = "39"; */
+"39.title" = "Medium";
+
+/* Class = "NSMenuItem"; title = "Low"; ObjectID = "40"; */
+"40.title" = "Low";
+
+/* Class = "NSMenuItem"; title = "Highest"; ObjectID = "41"; */
+"41.title" = "Highest";
+
+/* Class = "NSTextFieldCell"; title = "Compression:"; ObjectID = "42"; */
+"42.title" = "Compression:";
+
+/* Class = "NSMenu"; title = "OtherViews"; ObjectID = "44"; */
+"44.title" = "OtherViews";
+
+/* Class = "NSMenuItem"; title = "BC5 (3DC, ATI2)"; ObjectID = "45"; */
+"45.title" = "BC5 (3DC, ATI2)";
+
+/* Class = "NSMenuItem"; title = "BC4 (ATI1)"; ObjectID = "46"; */
+"46.title" = "BC4 (ATI1)";
+
+/* Class = "NSMenuItem"; title = "DXT5n"; ObjectID = "47"; */
+"47.title" = "DXT5n";
+
+/* Class = "NSMenuItem"; title = "DXT1a"; ObjectID = "48"; */
+"48.title" = "DXT1a";
+
+/* Class = "NSMenuItem"; title = "RGBA"; ObjectID = "49"; */
+"49.title" = "RGBA";
+
+/* Class = "NSMenuItem"; title = "DXT1"; ObjectID = "50"; */
+"50.title" = "DXT1";
+
+/* Class = "NSMenuItem"; title = "RGB"; ObjectID = "51"; */
+"51.title" = "RGB";
+
+/* Class = "NSMenuItem"; title = "DXT3"; ObjectID = "52"; */
+"52.title" = "DXT3";
+
+/* Class = "NSMenuItem"; title = "DXT5"; ObjectID = "53"; */
+"53.title" = "DXT5";
+
+/* Class = "NSButtonCell"; title = "Generate mipmaps"; ObjectID = "55"; */
+"55.title" = "Generate mipmaps";
+
+/* Class = "NSButtonCell"; title = "Save"; ObjectID = "60"; */
+"60.title" = "Save";
+
+/* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "62"; */
+"62.title" = "Cancel";
+
+/* Class = "NSSegmentedCell"; 112.ibShadowedToolTips[0] = "2 variations"; ObjectID = "112"; */
+"112.ibShadowedToolTips[0]" = "2 variations";
+
+/* Class = "NSSegmentedCell"; 112.ibShadowedToolTips[1] = "4 variations"; ObjectID = "112"; */
+"112.ibShadowedToolTips[1]" = "4 variations";
+
+/* Class = "NSMenuItem"; title = "Custom"; ObjectID = "189"; */
+"189.title" = "Custom";
+
+/* Class = "NSMenuItem"; title = "Manage Presets…"; ObjectID = "190"; */
+"190.title" = "Manage Presets…";
+
+/* Class = "NSWindow"; title = "Manage Preset Sheet"; ObjectID = "191"; */
+"191.title" = "Manage Preset Sheet";
+
+/* Class = "NSTableColumn"; headerCell.title = "   Name"; ObjectID = "198"; */
+"198.headerCell.title" = "   Name";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "201"; */
+"201.title" = "Text Cell";
+
+/* Class = "NSButtonCell"; title = "OK"; ObjectID = "203"; */
+"203.title" = "OK";
+
+/* Class = "NSButtonCell"; title = "Gradient Button"; ObjectID = "207"; */
+"207.title" = "Gradient Button";
+
+/* Class = "NSButtonCell"; title = "Gradient Button"; ObjectID = "209"; */
+"209.title" = "Gradient Button";
+
+/* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "211"; */
+"211.title" = "Cancel";
+
+/* Class = "NSButtonCell"; title = "Rename"; ObjectID = "213"; */
+"213.title" = "Rename";
+
+/* Class = "NSMenuItem"; title = "RGB"; ObjectID = "222"; */
+"222.title" = "RGB";
+
+/* Class = "NSMenuItem"; title = "DXT3"; ObjectID = "223"; */
+"223.title" = "DXT3";
+
+/* Class = "NSMenuItem"; title = "DXT5"; ObjectID = "224"; */
+"224.title" = "DXT5";
+
+/* Class = "NSMenu"; title = "OtherViews"; ObjectID = "225"; */
+"225.title" = "OtherViews";
+
+/* Class = "NSMenuItem"; title = "DXT5"; ObjectID = "226"; */
+"226.title" = "DXT5";
+
+/* Class = "NSMenuItem"; title = "DXT3"; ObjectID = "227"; */
+"227.title" = "DXT3";
+
+/* Class = "NSMenuItem"; title = "RGB"; ObjectID = "228"; */
+"228.title" = "RGB";
+
+/* Class = "NSMenuItem"; title = "DXT1"; ObjectID = "229"; */
+"229.title" = "DXT1";
+
+/* Class = "NSMenuItem"; title = "RGBA"; ObjectID = "230"; */
+"230.title" = "RGBA";
+
+/* Class = "NSMenuItem"; title = "DXT1a"; ObjectID = "231"; */
+"231.title" = "DXT1a";
+
+/* Class = "NSMenuItem"; title = "DXT5n"; ObjectID = "232"; */
+"232.title" = "DXT5n";
+
+/* Class = "NSMenuItem"; title = "BC4 (ATI1)"; ObjectID = "233"; */
+"233.title" = "BC4 (ATI1)";
+
+/* Class = "NSMenuItem"; title = "BC5 (3DC, ATI2)"; ObjectID = "234"; */
+"234.title" = "BC5 (3DC, ATI2)";
+
+/* Class = "NSMenuItem"; title = "DXT1"; ObjectID = "235"; */
+"235.title" = "DXT1";
+
+/* Class = "NSMenuItem"; title = "DXT1a"; ObjectID = "236"; */
+"236.title" = "DXT1a";
+
+/* Class = "NSMenuItem"; title = "RGBA"; ObjectID = "237"; */
+"237.title" = "RGBA";
+
+/* Class = "NSMenuItem"; title = "ARGB"; ObjectID = "238"; */
+"238.title" = "ARGB";
+
+/* Class = "NSMenuItem"; title = "Bluescreen RGB"; ObjectID = "239"; */
+"239.title" = "Bluescreen RGB";
+
+/* Class = "NSMenuItem"; title = "RGB565"; ObjectID = "240"; */
+"240.title" = "RGB565";
+
+/* Class = "NSMenuItem"; title = "BGR"; ObjectID = "241"; */
+"241.title" = "BGR";
+
+/* Class = "NSMenuItem"; title = "BGRA"; ObjectID = "242"; */
+"242.title" = "BGRA";
+
+/* Class = "NSMenuItem"; title = "BGRX"; ObjectID = "243"; */
+"243.title" = "BGRX";
+
+/* Class = "NSMenuItem"; title = "ABGR"; ObjectID = "244"; */
+"244.title" = "ABGR";
+
+/* Class = "NSMenuItem"; title = "Bluescreen BGR"; ObjectID = "245"; */
+"245.title" = "Bluescreen BGR";
+
+/* Class = "NSMenuItem"; title = "BGR565"; ObjectID = "246"; */
+"246.title" = "BGR565";
+
+/* Class = "NSMenuItem"; title = "BGRX5551"; ObjectID = "247"; */
+"247.title" = "BGRX5551";
+
+/* Class = "NSMenuItem"; title = "BGRA4444"; ObjectID = "249"; */
+"249.title" = "BGRA4444";
+
+/* Class = "NSMenuItem"; title = "I"; ObjectID = "250"; */
+"250.title" = "I";
+
+/* Class = "NSMenuItem"; title = "IA"; ObjectID = "251"; */
+"251.title" = "IA";
+
+/* Class = "NSMenuItem"; title = "UVLX"; ObjectID = "252"; */
+"252.title" = "UVLX";
+
+/* Class = "NSMenuItem"; title = "BGRA5551"; ObjectID = "253"; */
+"253.title" = "BGRA5551";
+
+/* Class = "NSMenuItem"; title = "P"; ObjectID = "254"; */
+"254.title" = "P";
+
+/* Class = "NSMenuItem"; title = "A"; ObjectID = "255"; */
+"255.title" = "A";
+
+/* Class = "NSMenuItem"; title = "RGBA16161616F"; ObjectID = "256"; */
+"256.title" = "RGBA16161616F";
+
+/* Class = "NSMenuItem"; title = "RGBA16161616"; ObjectID = "257"; */
+"257.title" = "RGBA16161616";
+
+/* Class = "NSMenuItem"; title = "R32F"; ObjectID = "258"; */
+"258.title" = "R32F";
+
+/* Class = "NSMenuItem"; title = "RGB323232F"; ObjectID = "259"; */
+"259.title" = "RGB323232F";
+
+/* Class = "NSMenuItem"; title = "RGBA32323232F"; ObjectID = "260"; */
+"260.title" = "RGBA32323232F";
+
+/* Class = "NSMenuItem"; title = "UV"; ObjectID = "261"; */
+"261.title" = "UV";
+
+/* Class = "NSMenuItem"; title = "UVWQ"; ObjectID = "262"; */
+"262.title" = "UVWQ";
+
+/* Class = "NSMenuItem"; title = "NVDST16"; ObjectID = "263"; */
+"263.title" = "NVDST16";
+
+/* Class = "NSMenuItem"; title = "NVDST24"; ObjectID = "264"; */
+"264.title" = "NVDST24";
+
+/* Class = "NSMenuItem"; title = "NVINTZ"; ObjectID = "265"; */
+"265.title" = "NVINTZ";
+
+/* Class = "NSMenuItem"; title = "NVRAWZ"; ObjectID = "266"; */
+"266.title" = "NVRAWZ";
+
+/* Class = "NSMenuItem"; title = "ATIDST16"; ObjectID = "267"; */
+"267.title" = "ATIDST16";
+
+/* Class = "NSMenuItem"; title = "ATIDST24"; ObjectID = "268"; */
+"268.title" = "ATIDST24";
+
+/* Class = "NSMenuItem"; title = "NVNULL"; ObjectID = "269"; */
+"269.title" = "NVNULL";
+
+/* Class = "NSMenuItem"; title = "ATI2N"; ObjectID = "271"; */
+"271.title" = "ATI2N";
+
+/* Class = "NSMenuItem"; title = "ATI1N"; ObjectID = "272"; */
+"272.title" = "ATI1N";
+
+/* Class = "NSButtonCell"; title = "Manage Presets"; ObjectID = "280"; */
+"280.title" = "Manage Presets";
+
+/* Class = "NSMenuItem"; title = "Original"; ObjectID = "323"; */
+"323.title" = "Original";
+
+/* Class = "NSMenu"; title = "OtherViews"; ObjectID = "417"; */
+"417.title" = "OtherViews";
+
+/* Class = "NSMenuItem"; title = "Box"; ObjectID = "418"; */
+"418.title" = "Box";
+
+/* Class = "NSMenuItem"; title = "Triangle"; ObjectID = "419"; */
+"419.title" = "Triangle";
+
+/* Class = "NSMenuItem"; title = "Kaiser"; ObjectID = "420"; */
+"420.title" = "Kaiser";
+
+/* Class = "NSTextFieldCell"; title = " Mipmap Filter:"; ObjectID = "422"; */
+"422.title" = " Mipmap Filter:";

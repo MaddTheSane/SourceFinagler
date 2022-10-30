@@ -20,7 +20,10 @@ static NSColor *separatorColor = nil;
 @implementation MDCopyOperationSeparatorView
 
 + (void)initialize {
-	if (separatorColor == nil) separatorColor = [NSColor colorWithCalibratedRed:184.0/255.0 green:184.0/255.0 blue:184.0/255.0 alpha:1.0];
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		separatorColor = [NSColor colorWithCalibratedRed:184.0/255.0 green:184.0/255.0 blue:184.0/255.0 alpha:1.0];
+	});
 }
 
 

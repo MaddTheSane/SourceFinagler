@@ -37,6 +37,6 @@ typedef NS_ENUM(NSUInteger, MDCopyOperationViewBackgroundColorType) {
 
 - (void)switchColorType;
 
-+ (NSSize)copyOperationViewSize;
+@property (class, readonly) NSSize copyOperationViewSize;
 
 @end

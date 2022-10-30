@@ -42,8 +42,8 @@
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="103"/>
                     </imageView>
                     <textField verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="99">
-                        <rect key="frame" x="75" y="80" width="151" height="14"/>
-                        <textFieldCell key="cell" controlSize="small" selectable="YES" sendsActionOnEndEditing="YES" alignment="center" title="Source Finagler 2.0.2 (202)" placeholderString="Source Finagler 2.0.2 (202)" id="104">
+                        <rect key="frame" x="74" y="80" width="152" height="14"/>
+                        <textFieldCell key="cell" controlSize="small" selectable="YES" sendsActionOnEndEditing="YES" alignment="center" title="Source Finagler 2.5.0 (250)" placeholderString="Source Finagler 2.0.2 (202)" id="104">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -86,7 +86,7 @@
                     <constraint firstItem="106" firstAttribute="top" secondItem="99" secondAttribute="bottom" constant="8" symbolic="YES" id="vuX-rc-QjB"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="48" y="-46"/>
+            <point key="canvasLocation" x="48" y="-46.5"/>
         </window>
     </objects>
     <resources>

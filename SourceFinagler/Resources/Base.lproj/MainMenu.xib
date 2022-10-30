@@ -660,7 +660,11 @@ CA
                             <action selector="switchView:" target="494" id="961"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="590"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="590">
+                        <connections>
+                            <action selector="print:" target="-1" id="LVE-CC-j9C"/>
+                        </connections>
+                    </toolbarItem>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="591"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="592"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarCustomizeToolbarItem" id="593"/>

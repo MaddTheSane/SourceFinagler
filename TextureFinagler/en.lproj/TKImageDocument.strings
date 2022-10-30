@@ -1,0 +1,192 @@
+
+/* Class = "NSMenuItem"; title = "Copy"; ObjectID = "101070"; */
+"101070.title" = "Copy";
+
+/* Class = "NSMenuItem"; title = "Paste"; ObjectID = "101072"; */
+"101072.title" = "Paste";
+
+/* Class = "NSMenuItem"; title = "Generate Mipmaps"; ObjectID = "101078"; */
+"101078.title" = "Generate Mipmaps";
+
+/* Class = "NSMenu"; title = "Generate Mipmaps"; ObjectID = "101079"; */
+"101079.title" = "Generate Mipmaps";
+
+/* Class = "NSMenuItem"; title = "Using Box Filter"; ObjectID = "101080"; */
+"101080.title" = "Using Box Filter";
+
+/* Class = "NSMenuItem"; title = "Using Triangle Filter"; ObjectID = "101082"; */
+"101082.title" = "Using Triangle Filter";
+
+/* Class = "NSMenuItem"; title = "Using Kaiser Filter"; ObjectID = "101083"; */
+"101083.title" = "Using Kaiser Filter";
+
+/* Class = "NSWindow"; title = "Untitled"; ObjectID = "101094"; */
+"101094.title" = "Untitled";
+
+/* Class = "NSToolbarItem"; label = "Crop"; ObjectID = "101097"; */
+"101097.label" = "Crop";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Crop"; ObjectID = "101097"; */
+"101097.paletteLabel" = "Crop";
+
+/* Class = "NSToolbarItem"; label = "Tool"; ObjectID = "101098"; */
+"101098.label" = "Tool";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Tool"; ObjectID = "101098"; */
+"101098.paletteLabel" = "Tool";
+
+/* Class = "NSToolbarItem"; label = "View"; ObjectID = "101099"; */
+"101099.label" = "View";
+
+/* Class = "NSToolbarItem"; paletteLabel = "View"; ObjectID = "101099"; */
+"101099.paletteLabel" = "View";
+
+/* Class = "NSToolbarItem"; label = "Play"; ObjectID = "101100"; */
+"101100.label" = "Play";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Play"; ObjectID = "101100"; */
+"101100.paletteLabel" = "Play";
+
+/* Class = "NSToolbarItem"; label = "Zoom"; ObjectID = "101106"; */
+"101106.label" = "Zoom";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Zoom"; ObjectID = "101106"; */
+"101106.paletteLabel" = "Zoom";
+
+/* Class = "NSToolbarItem"; label = "Zoom to Fit"; ObjectID = "101107"; */
+"101107.label" = "Zoom to Fit";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Zoom to Fit"; ObjectID = "101107"; */
+"101107.paletteLabel" = "Zoom to Fit";
+
+/* Class = "NSToolbarItem"; label = "Inspector"; ObjectID = "101108"; */
+"101108.label" = "Inspector";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Inspector"; ObjectID = "101108"; */
+"101108.paletteLabel" = "Inspector";
+
+/* Class = "NSSegmentedCell"; 101110.ibShadowedToolTips[0] = "Show the Inspector"; ObjectID = "101110"; */
+"101110.ibShadowedToolTips[0]" = "Show the Inspector";
+
+/* Class = "NSSegmentedCell"; 101112.ibShadowedToolTips[0] = "Zoom to fit"; ObjectID = "101112"; */
+"101112.ibShadowedToolTips[0]" = "Zoom to fit";
+
+/* Class = "NSSegmentedCell"; 101114.ibShadowedToolTips[0] = "Zoom Out"; ObjectID = "101114"; */
+"101114.ibShadowedToolTips[0]" = "Zoom Out";
+
+/* Class = "NSSegmentedCell"; 101114.ibShadowedToolTips[1] = "Display at actual size"; ObjectID = "101114"; */
+"101114.ibShadowedToolTips[1]" = "Display at actual size";
+
+/* Class = "NSSegmentedCell"; 101114.ibShadowedToolTips[2] = "Zoom In"; ObjectID = "101114"; */
+"101114.ibShadowedToolTips[2]" = "Zoom In";
+
+/* Class = "NSSegmentedCell"; 101116.ibShadowedToolTips[0] = "Play the animated image"; ObjectID = "101116"; */
+"101116.ibShadowedToolTips[0]" = "Play the animated image";
+
+/* Class = "NSSegmentedCell"; 101118.ibShadowedToolTips[0] = "View faces for environment map images"; ObjectID = "101118"; */
+"101118.ibShadowedToolTips[0]" = "View faces for environment map images";
+
+/* Class = "NSSegmentedCell"; 101118.ibShadowedToolTips[1] = "View timeline for animated images"; ObjectID = "101118"; */
+"101118.ibShadowedToolTips[1]" = "View timeline for animated images";
+
+/* Class = "NSSegmentedCell"; 101118.ibShadowedToolTips[2] = "View mipmaps"; ObjectID = "101118"; */
+"101118.ibShadowedToolTips[2]" = "View mipmaps";
+
+/* Class = "NSSegmentedCell"; 101120.ibShadowedToolTips[0] = "Move"; ObjectID = "101120"; */
+"101120.ibShadowedToolTips[0]" = "Move";
+
+/* Class = "NSSegmentedCell"; 101120.ibShadowedToolTips[1] = "Select"; ObjectID = "101120"; */
+"101120.ibShadowedToolTips[1]" = "Select";
+
+/* Class = "NSTextFieldCell"; title = "Zoom:"; ObjectID = "101132"; */
+"101132.title" = "Zoom:";
+
+/* Class = "NSWindow"; title = "Normal Map"; ObjectID = "101222"; */
+"101222.title" = "Normal Map";
+
+/* Class = "NSTextFieldCell"; title = "Height Evaluation Factor:"; ObjectID = "101229"; */
+"101229.title" = "Height Evaluation Factor:";
+
+/* Class = "NSTextFieldCell"; title = "Red:"; ObjectID = "101231"; */
+"101231.title" = "Red:";
+
+/* Class = "NSTextFieldCell"; title = "Green:"; ObjectID = "101244"; */
+"101244.title" = "Green:";
+
+/* Class = "NSTextFieldCell"; title = "Blue:"; ObjectID = "101253"; */
+"101253.title" = "Blue:";
+
+/* Class = "NSTextFieldCell"; title = "Alpha:"; ObjectID = "101262"; */
+"101262.title" = "Alpha:";
+
+/* Class = "NSTextFieldCell"; title = "Normal Map Conversion Filter:"; ObjectID = "101274"; */
+"101274.title" = "Normal Map Conversion Filter:";
+
+/* Class = "NSTextFieldCell"; title = "Large:"; ObjectID = "101288"; */
+"101288.title" = "Large:";
+
+/* Class = "NSTextFieldCell"; title = "Big:"; ObjectID = "101292"; */
+"101292.title" = "Big:";
+
+/* Class = "NSTextFieldCell"; title = "Medium:"; ObjectID = "101296"; */
+"101296.title" = "Medium:";
+
+/* Class = "NSTextFieldCell"; title = "Small:"; ObjectID = "101300"; */
+"101300.title" = "Small:";
+
+/* Class = "NSButtonCell"; title = "Preview"; ObjectID = "101312"; */
+"101312.title" = "Preview";
+
+/* Class = "NSButtonCell"; title = "Apply"; ObjectID = "101314"; */
+"101314.title" = "Apply";
+
+/* Class = "NSMenu"; title = "OtherViews"; ObjectID = "101327"; */
+"101327.title" = "OtherViews";
+
+/* Class = "NSMenuItem"; title = "Clamp"; ObjectID = "101328"; */
+"101328.title" = "Clamp";
+
+/* Class = "NSMenuItem"; title = "Repeat"; ObjectID = "101329"; */
+"101329.title" = "Repeat";
+
+/* Class = "NSMenuItem"; title = "Mirror"; ObjectID = "101330"; */
+"101330.title" = "Mirror";
+
+/* Class = "NSButtonCell"; title = "Normalize Mipmaps"; ObjectID = "101332"; */
+"101332.title" = "Normalize Mipmaps";
+
+/* Class = "NSTextFieldCell"; title = "FACES"; ObjectID = "101338"; */
+"101338.title" = "FACES";
+
+/* Class = "NSTextFieldCell"; title = "MIPMAPS"; ObjectID = "101357"; */
+"101357.title" = "MIPMAPS";
+
+/* Class = "NSTextFieldCell"; title = "FRAMES"; ObjectID = "101359"; */
+"101359.title" = "FRAMES";
+
+/* Class = "NSWindow"; title = "Grayscale"; ObjectID = "101504"; */
+"101504.title" = "Grayscale";
+
+/* Class = "NSTextFieldCell"; title = "Height Evaluation Factor:"; ObjectID = "101538"; */
+"101538.title" = "Height Evaluation Factor:";
+
+/* Class = "NSTextFieldCell"; title = "Red:"; ObjectID = "101539"; */
+"101539.title" = "Red:";
+
+/* Class = "NSTextFieldCell"; title = "Green:"; ObjectID = "101543"; */
+"101543.title" = "Green:";
+
+/* Class = "NSTextFieldCell"; title = "Blue:"; ObjectID = "101547"; */
+"101547.title" = "Blue:";
+
+/* Class = "NSTextFieldCell"; title = "Alpha:"; ObjectID = "101551"; */
+"101551.title" = "Alpha:";
+
+/* Class = "NSButtonCell"; title = "Preview"; ObjectID = "101570"; */
+"101570.title" = "Preview";
+
+/* Class = "NSButtonCell"; title = "Apply"; ObjectID = "101571"; */
+"101571.title" = "Apply";
+
+/* Class = "NSMenuItem"; title = "Remove Mipmaps"; ObjectID = "101605"; */
+"101605.title" = "Remove Mipmaps";

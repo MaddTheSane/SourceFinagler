@@ -1,0 +1,39 @@
+
+/* Class = "NSButtonCell"; title = "Check for updates:"; ObjectID = "17"; */
+"17.title" = "Check for updates:";
+
+/* Class = "NSMenu"; title = "OtherViews"; ObjectID = "19"; */
+"19.title" = "OtherViews";
+
+/* Class = "NSMenuItem"; title = "Monthly"; ObjectID = "20"; */
+"20.title" = "Monthly";
+
+/* Class = "NSMenuItem"; title = "Weekly"; ObjectID = "21"; */
+"21.title" = "Weekly";
+
+/* Class = "NSMenuItem"; title = "Daily"; ObjectID = "22"; */
+"22.title" = "Daily";
+
+/* Class = "NSButtonCell"; title = "Download updates automatically"; ObjectID = "23"; */
+"23.title" = "Download updates automatically";
+
+/* Class = "NSTextFieldCell"; title = "You will be notified when the updates are ready to be installed."; ObjectID = "24"; */
+"24.title" = "You will be notified when the updates are ready to be installed.";
+
+/* Class = "NSButtonCell"; title = "Open Source Finagler’s main window"; ObjectID = "25"; */
+"25.title" = "Open Source Finagler’s main window";
+
+/* Class = "NSTextFieldCell"; title = "Settings:"; ObjectID = "27"; */
+"27.title" = "Settings:";
+
+/* Class = "NSButtonCell"; title = "Quit Source Finagler when all windows are closed"; ObjectID = "28"; */
+"28.title" = "Quit Source Finagler when all windows are closed";
+
+/* Class = "NSTextFieldCell"; title = "Updating:"; ObjectID = "30"; */
+"30.title" = "Updating:";
+
+/* Class = "NSButtonCell"; title = "Reset “Don’t Ask Me” Warnings"; ObjectID = "44"; */
+"44.title" = "Reset “Don’t Ask Me” Warnings";
+
+/* Class = "NSTextFieldCell"; title = "Warnings:"; ObjectID = "46"; */
+"46.title" = "Warnings:";
