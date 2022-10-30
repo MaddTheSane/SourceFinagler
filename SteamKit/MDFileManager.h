@@ -55,7 +55,7 @@ extern MDFileProperty const MDFileIsAliasFile;
 - (BOOL)fileHasCustomIcon;		/**< files & folders	*/
 - (BOOL)fileIsStationery;		/**< files only		*/
 - (BOOL)fileNameLocked;			/**< files & folders	(value isn't used or respected by OS X) */
-- (BOOL)fileIsPackage;			/**< folders only  (NOTE: maps to kHasBundle, which for files, means a 'BNDL' resource. As such, this is pretty much obsolete for files Mac in OS X) */
+- (BOOL)fileIsPackage;			/**< folders only  (NOTE: maps to \c kHasBundle, which for files, means a 'BNDL' resource. As such, this is pretty much obsolete for files Mac in OS X) */
 - (BOOL)fileIsInvisible;		/**< files & folders */
 - (BOOL)fileIsAlias;			/**< files only		*/
 

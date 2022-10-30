@@ -15,23 +15,23 @@
 
 typedef struct TKVMTNodeKindMapping {
 	TKVMTNodeKind	kind;
-	const char		*description;
+	NSString		*description;
 } TKVMTNodeKindMapping;
 
 static const TKVMTNodeKindMapping TKVMTNodeKindMappingTable[] = {
-	{TKVMTNodeKindInvalid,	"TKVMTNodeKindInvalid" },
-	{TKVMTNodeKindGroup,	"TKVMTNodeKindGroup" },
-	{TKVMTNodeKindComment,	"TKVMTNodeKindComment" },
-	{TKVMTNodeKindString,	"TKVMTNodeKindString" },
-	{TKVMTNodeKindInteger,	"TKVMTNodeKindInteger" },
-	{TKVMTNodeKindFloat,	"TKVMTNodeKindFloat" }
+	{TKVMTNodeKindInvalid,	@"TKVMTNodeKindInvalid" },
+	{TKVMTNodeKindGroup,	@"TKVMTNodeKindGroup" },
+	{TKVMTNodeKindComment,	@"TKVMTNodeKindComment" },
+	{TKVMTNodeKindString,	@"TKVMTNodeKindString" },
+	{TKVMTNodeKindInteger,	@"TKVMTNodeKindInteger" },
+	{TKVMTNodeKindFloat,	@"TKVMTNodeKindFloat" }
 };
 static const NSUInteger TKVMTNodeKindMappingTableCount = sizeof(TKVMTNodeKindMappingTable)/sizeof(TKVMTNodeKindMappingTable[0]);
 
 static inline NSString *NSStringFromTKVMTNodeKind(TKVMTNodeKind kind) {
 	for (NSUInteger i = 0; i < TKVMTNodeKindMappingTableCount; i++) {
 		if (TKVMTNodeKindMappingTable[i].kind == kind) {
-			return @(TKVMTNodeKindMappingTable[i].description);
+			return TKVMTNodeKindMappingTable[i].description;
 		}
 	}
 	return @"<Unknown>";

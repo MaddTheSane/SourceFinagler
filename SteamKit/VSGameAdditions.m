@@ -19,7 +19,7 @@
 	if (self.helped) {
 		return [NSColor controlTextColor];
 	}
-	return [NSColor colorWithCalibratedRed:183.0/255.0 green:130.0/255.0 blue:0.0/255.0 alpha:1.0];
+	return [NSColor systemOrangeColor];
 }
 
 - (NSImage *)runningStateImage {

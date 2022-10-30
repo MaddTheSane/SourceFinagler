@@ -14,13 +14,6 @@ class ImportExtension : CSImportExtension {
 	override func update(_ attributes: CSSearchableItemAttributeSet, forFileAt contentURL: URL) throws {
 		let data = try Data(contentsOf: contentURL)
 		
-		guard data.count >= 4 else {
-			throw CocoaError(.fileReadCorruptFile, userInfo:
-								[NSLocalizedDescriptionKey: "[data length] < 4 for file",
-								NSDebugDescriptionErrorKey: "[data length] < 4 for file",
-											 NSURLErrorKey: contentURL])
-		}
-		
 		guard let sfti = TKImage(data: data, firstRepresentationOnly: false) else {
 			throw CocoaError(.fileReadCorruptFile, userInfo:
 								[NSLocalizedDescriptionKey: "Failed to create a TKImage for file!",
