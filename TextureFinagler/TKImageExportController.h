@@ -38,8 +38,8 @@ typedef NS_ENUM(NSInteger, TKPreviewMode) {
 	IBOutlet NSTextField					*mipmapsField;
 	IBOutlet NSPopUpButton					*mipmapsPopUpButton;
 	
-	IBOutlet NSMenu							*vtfMenu;
-	IBOutlet NSMenu							*ddsMenu;
+	NSMenu									*vtfMenu;
+	NSMenu									*ddsMenu;
 	
 	IBOutlet NSView							*dualView;
 	IBOutlet NSBox							*dualViewFirstBox;
@@ -61,7 +61,7 @@ typedef NS_ENUM(NSInteger, TKPreviewMode) {
 	CGFloat									previewViewZoomFactor;
 	
 	
-	__unsafe_unretained TKImageDocument		*document;	// non-retained
+	__weak TKImageDocument					*document;	// non-retained
 	
 	
 	NSMutableDictionary						*presetsAndNames;
@@ -92,10 +92,12 @@ typedef NS_ENUM(NSInteger, TKPreviewMode) {
 
 - (void)cleanup;
 
+@property (strong) IBOutlet NSMenu *vtfMenu;
+@property (strong) IBOutlet NSMenu *ddsMenu;
 
 @property (assign) CGFloat previewViewZoomFactor;
 
-@property (assign) TKImageDocument *document;
+@property (weak) TKImageDocument *document;
 
 @property (nonatomic, retain) TKImageExportPreset *preset;
 

@@ -225,7 +225,7 @@
 		C12F363412D7E46A00D28F26 /* TKImageExportPreview.m in Sources */ = {isa = PBXBuildFile; fileRef = C15594F612B75C8600FD0684 /* TKImageExportPreview.m */; };
 		C12F363512D7E46B00D28F26 /* TKImageExportPreset.m in Sources */ = {isa = PBXBuildFile; fileRef = C1583BC012B3ABA700A4AE2F /* TKImageExportPreset.m */; };
 		C12F363612D7E46C00D28F26 /* TKImageExportPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1583BBA12B3A55E00A4AE2F /* TKImageExportPanel.xib */; };
-		C12F363712D7E46D00D28F26 /* TKImageExportController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1583BB612B3A51300A4AE2F /* TKImageExportController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C12F363712D7E46D00D28F26 /* TKImageExportController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1583BB612B3A51300A4AE2F /* TKImageExportController.m */; };
 		C1305B8C12F08EF200D68170 /* ErrorMetric.h in Headers */ = {isa = PBXBuildFile; fileRef = C1305B7812F08E6E00D68170 /* ErrorMetric.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C1305B8D12F08EF300D68170 /* ErrorMetric.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1305B7712F08E6E00D68170 /* ErrorMetric.cpp */; };
 		C1305BD012F08F8100D68170 /* TaskDispatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = C1305BCE12F08F8100D68170 /* TaskDispatcher.h */; settings = {ATTRIBUTES = (Public, ); }; };

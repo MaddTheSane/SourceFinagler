@@ -55,9 +55,14 @@ NSString * const TKImageExportSavedFrameKey					= @"TKImageExportSavedFrame";
 
 @implementation TKImageExportController
 
-@synthesize image, document, selectedTag, previewViewZoomFactor;
+@synthesize image;
+@synthesize document;
+@synthesize selectedTag;
+@synthesize previewViewZoomFactor;
 @synthesize previewMode;
 @synthesize preset;
+@synthesize ddsMenu;
+@synthesize vtfMenu;
 
 + (void)initialize {
 #if TK_DEBUG
@@ -137,22 +142,8 @@ NSString * const TKImageExportSavedFrameKey					= @"TKImageExportSavedFrame";
 	return self;
 }
 
-- (void)dealloc {
-#if TK_DEBUG
-	NSLog(@"********* [%@ %@] *********", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-#endif
-	[super dealloc];
-}
-
 - (NSString *)windowNibName {
 	return @"TKImageExportPanel";
-}
-
-- (oneway void)release {
-#if TK_DEBUG
-//	NSLog(@"***** [%@ %@] *****", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-#endif
-	[super release];
 }
 
 - (void)cleanup {
@@ -172,24 +163,24 @@ NSString * const TKImageExportSavedFrameKey					= @"TKImageExportSavedFrame";
 	
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	
-	[presetsAndNames release];
+	presetsAndNames = nil;
 	
-	[preset release];
+	preset = nil;
 	
-	[presets release];
+	presets = nil;
 	
-	[previewControllers release];
+	previewControllers = nil;
 	
-	[tagsAndOperations release];
+	tagsAndOperations = nil;
 	
-	[operationQueue release];
+	operationQueue = nil;
 	
-	[image release];
+	image = nil;
 	
 	document = nil;
 	
-	[vtfMenu release];
-	[ddsMenu release];
+	vtfMenu = nil;
+	ddsMenu = nil;
 }
 
 
@@ -267,9 +258,6 @@ NSString * const TKImageExportSavedFrameKey					= @"TKImageExportSavedFrame";
 	
 	[self.window setFrameFromString:[[NSUserDefaults standardUserDefaults] objectForKey:TKImageExportSavedFrameKey]];
 	
-	[vtfMenu retain];
-	[ddsMenu retain];
-	
 	switch (previewMode) {
 		case TKPreviewMode2Up:
 			[self assureInitializationForPreviewMode:TKPreviewMode2Up];
@@ -320,8 +308,8 @@ NSString * const TKImageExportSavedFrameKey					= @"TKImageExportSavedFrame";
 	if (previewMode == TKPreviewMode2Up) {
 		[self assureInitializationForPreviewMode:TKPreviewMode2Up];
 		
-		NSView *firstView = [[[previewControllers[0] view] retain] autorelease];
-		NSView *secondView = [[[previewControllers[1] view] retain] autorelease];
+		NSView *firstView = [previewControllers[0] view];
+		NSView *secondView = [previewControllers[1] view];
 		
 		if (quadViewFirstBox.contentView == firstView) {
 #if TK_DEBUG
@@ -363,8 +351,8 @@ NSString * const TKImageExportSavedFrameKey					= @"TKImageExportSavedFrame";
 	} else if (previewMode == TKPreviewMode4Up) {
 		[self assureInitializationForPreviewMode:TKPreviewMode4Up];
 		
-		NSView *firstView = [[[previewControllers[0] view] retain] autorelease];
-		NSView *secondView = [[[previewControllers[1] view] retain] autorelease];
+		NSView *firstView = [previewControllers[0] view];
+		NSView *secondView = [previewControllers[1] view];
 		
 		if (dualViewFirstBox.contentView == firstView) {
 #if TK_DEBUG
@@ -423,20 +411,20 @@ NSString * const TKImageExportSavedFrameKey					= @"TKImageExportSavedFrame";
 	static BOOL initializedPopUpMenu = NO;
 	
 	if (!initializedPopUpMenu) {
-		NSMutableArray *orderedNames = [[presetsAndNames.allKeys mutableCopy] autorelease];
+		NSMutableArray *orderedNames = [presetsAndNames.allKeys mutableCopy];
 		[orderedNames removeObject:NSLocalizedString(@"Original", @"")];
 		[orderedNames removeObject:NSLocalizedString(@"[Custom]", @"")];
 		[orderedNames sortUsingSelector:@selector(caseInsensitiveNumericalCompare:)];
 		
 		NSMutableArray *menuItems = [NSMutableArray array];
 		
-		NSMenuItem *menuItem = [[[NSMenuItem alloc] initWithTitle:[TKImageExportPreset originalImagePreset].name action:NULL keyEquivalent:@""] autorelease];
+		NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:[TKImageExportPreset originalImagePreset].name action:NULL keyEquivalent:@""];
 		if (menuItem) [menuItems addObject:menuItem];
 		
 		[menuItems addObject:[NSMenuItem separatorItem]];
 		
 		for (NSString *presetName in orderedNames) {
-			NSMenuItem *menuItem = [[[NSMenuItem alloc] initWithTitle:presetName action:NULL keyEquivalent:@""] autorelease];
+			NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:presetName action:NULL keyEquivalent:@""];
 			if (menuItem) [menuItems addObject:menuItem];
 		}
 		
@@ -468,7 +456,7 @@ NSString * const TKImageExportSavedFrameKey					= @"TKImageExportSavedFrame";
 			
 			[presetPopUpButton.menu addItem:[NSMenuItem separatorItem]];
 			
-			NSMenuItem *customMenuItem = [[[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"[Custom]", @"") action:NULL keyEquivalent:@""] autorelease];
+			NSMenuItem *customMenuItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"[Custom]", @"") action:NULL keyEquivalent:@""];
 			
 			if (customMenuItem)
 				[presetPopUpButton.menu addItem:customMenuItem];
@@ -591,8 +579,6 @@ NSString * const TKImageExportSavedFrameKey					= @"TKImageExportSavedFrame";
 	NSLog(@"[%@ %@] preset == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), aPreset);
 #endif
 	
-	[aPreset retain];
-	[preset release];
 	preset = aPreset;
 	
 	[self synchronizeUI];
@@ -722,7 +708,6 @@ NSString * const TKImageExportSavedFrameKey					= @"TKImageExportSavedFrame";
 		[imageExportPreview setImageRep:nil];
 		TKImageExportPreviewOperation *operation = [[TKImageExportPreviewOperation alloc] initWithImageExportPreview:imageExportPreview];
 		[operationQueue addOperation:operation];
-		[operation release];
 	}
 }
 
