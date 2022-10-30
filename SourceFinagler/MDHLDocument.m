@@ -156,7 +156,7 @@ static NSInteger copyTag = 0;
 			
 			/*	enabled is an NSNumber, not a YES or NO value. If enabled is nil, we assume the default sound effect setting, which is enabled. Only if enabled is non-nil do we have an actual YES or NO answer to examine	*/
 			
-			if (enabled) {
+			if (enabled != nil) {
 				MDPlaySoundEffects = (BOOL)enabled.intValue;
 			} else {
 				MDPlaySoundEffects = YES;
@@ -866,7 +866,7 @@ static NSInteger copyTag = 0;
 #endif
 	HKItem *node = (item == nil ? [file items] : item);
 	if (node) return (shouldShowInvisibleItems ? [node childNodeAtIndex:index] : [node visibleChildNodeAtIndex:index]);
-	return nil;
+	return [NSNull null];
 }
 
 /* Return whether item should be shown as a leaf item; that is, an item that can not be expanded into another column. Returning NO does not prevent you from returning 0 from -browser:numberOfChildrenOfItem:.
@@ -989,7 +989,7 @@ static NSInteger copyTag = 0;
 	if (node) {
 		return (shouldShowInvisibleItems ? [node childNodeAtIndex:index] : [node visibleChildNodeAtIndex:index]);
 	}
-	return nil;
+	return [NSNull null];
 }
 
 - (BOOL)outlineView:(NSOutlineView *)anOutlineView isItemExpandable:(id)item {

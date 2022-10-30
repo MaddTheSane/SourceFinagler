@@ -134,7 +134,7 @@ hlBool CFileMapping::OpenInternal(hlUInt uiMode)
 #else
 	printf("CFileMapping::OpenInternal()\n");
 
-	hlInt iMode;
+	hlInt iMode = 0;
 	
 	if((uiMode & HL_MODE_READ) && (uiMode & HL_MODE_WRITE))
 	{

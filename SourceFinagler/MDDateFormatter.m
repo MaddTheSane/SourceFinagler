@@ -68,7 +68,10 @@ static NSDate *MDNilDate = nil;
 
 - (instancetype)init
 {
-	return self = [self initWithStyle:MDDateFormatterMediumStyle isRelative:NO];
+	if (self = [self initWithStyle:MDDateFormatterMediumStyle isRelative:NO]) {
+		
+	}
+	return self;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)coder {

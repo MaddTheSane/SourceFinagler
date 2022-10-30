@@ -112,7 +112,7 @@ static NSArray *appClassNames = nil;
 		
 		/*	enabled is an NSNumber, not a YES or NO value. If enabled is nil, we assume the default sound effect setting, which is enabled. Only if enabled is non-nil do we have an actual YES or NO answer to examine	*/
 		
-		if (enabled) {
+		if (enabled != nil) {
 			MDPlaySoundEffects = (BOOL)enabled.intValue;
 		} else {
 			MDPlaySoundEffects = YES;
@@ -134,19 +134,19 @@ static NSArray *appClassNames = nil;
 		
 		defaultValues[MDDocumentViewModeKey] = @(MDListViewMode);
 		
-		if (finderListViewFontSize) {
+		if (finderListViewFontSize != nil) {
 			defaultValues[MDListViewFontSizeKey] = finderListViewFontSize;
 		} else {
 			defaultValues[MDListViewFontSizeKey] = @defaultFontSize;
 		}
 		
-		if (finderListViewIconSize) {
+		if (finderListViewIconSize != nil) {
 			defaultValues[MDListViewIconSizeKey] = finderListViewIconSize;
 		} else {
 			defaultValues[MDListViewIconSizeKey] = @defaultIconSize;
 		}
 		
-		if (finderColumnViewFontAndIconSize) {
+		if (finderColumnViewFontAndIconSize != nil) {
 			defaultValues[MDBrowserFontAndIconSizeKey] = finderColumnViewFontAndIconSize;
 		} else {
 			defaultValues[MDBrowserFontAndIconSizeKey] = @defaultBrowserViewFontAndIconSize;
@@ -329,9 +329,6 @@ static NSArray *appClassNames = nil;
 	
 	
 	if (needSpotlightReimport == NO) needSpotlightReimport = TK_DEBUG_SPOTLIGHT;
-	
-	previousVersion = 0;
-	currentVersion = 0;
 	
 	previousVersion = [[[NSUserDefaults standardUserDefaults] objectForKey:TKLastSpotlightImporterVersionKey] integerValue];
 	currentVersion = [[[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey] integerValue];

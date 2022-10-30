@@ -48,7 +48,7 @@
 //	}
 	
 	
-	NSString *stringValue = nil;
+	NSString *stringValue = @"";
 	
 	if (selectedIndexes.count == 0) {
 		if (totalCount.unsignedIntegerValue == 0 || totalCount.unsignedIntegerValue >= 2) {

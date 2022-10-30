@@ -155,7 +155,7 @@
 		return ((SCNNode *)item).childNodes[index];
 
 	}
-	return nil;
+	return [NSNull null];
 }
 
 

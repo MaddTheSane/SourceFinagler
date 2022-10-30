@@ -476,7 +476,7 @@ FSIterateForks:
 #endif
 	NSInteger labelColor = MDFileLabelUnsupported;
 	NSNumber *labelColorNum = self[MDFileLabelNumber];
-	if (labelColorNum) {
+	if (labelColorNum != nil) {
 		labelColor = labelColorNum.integerValue;
 	}
 	return labelColor;
@@ -489,7 +489,7 @@ FSIterateForks:
 #endif
 	BOOL setCustomIcon = NO;
 	NSNumber *setCustomIconNum = self[MDFileHasCustomIcon];
-	if (setCustomIconNum) {
+	if (setCustomIconNum != nil) {
 		setCustomIcon = setCustomIconNum.boolValue;
 	}
 	return setCustomIcon;
@@ -502,7 +502,7 @@ FSIterateForks:
 #endif
 	BOOL isStationery = NO;
 	NSNumber *isStationeryNum = self[MDFileIsStationery];
-	if (isStationeryNum) {
+	if (isStationeryNum != nil) {
 		isStationery = isStationeryNum.boolValue;
 	}
 	return isStationery;
@@ -515,7 +515,7 @@ FSIterateForks:
 #endif
 	BOOL nameLocked = NO;
 	NSNumber *nameLockedNum = self[MDFileNameLocked];
-	if (nameLockedNum) {
+	if (nameLockedNum != nil) {
 		nameLocked = nameLockedNum.boolValue;
 	}
 	return nameLocked;
@@ -528,7 +528,7 @@ FSIterateForks:
 #endif
 	BOOL isPackage = NO;
 	NSNumber *isPackageNum = self[MDFileIsPackage];
-	if (isPackageNum) {
+	if (isPackageNum != nil) {
 		isPackage = isPackageNum.boolValue;
 	}
 	return isPackage;
@@ -541,7 +541,7 @@ FSIterateForks:
 #endif
 	BOOL isInvisible = NO;
 	NSNumber *isInvisibleNum = self[MDFileIsInvisible];
-	if (isInvisibleNum) {
+	if (isInvisibleNum != nil) {
 		isInvisible = isInvisibleNum.boolValue;
 	}
 	return isInvisible;
@@ -555,7 +555,7 @@ FSIterateForks:
 	
 	BOOL fileIsAlias = NO;
 	NSNumber *fileIsAliasNum = self[MDFileIsAliasFile];
-	if (fileIsAliasNum) {
+	if (fileIsAliasNum != nil) {
 		fileIsAlias = fileIsAliasNum.boolValue;
 	}
 	return fileIsAlias;

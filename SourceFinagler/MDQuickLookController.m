@@ -60,6 +60,11 @@ static MDQuickLookController *sharedQuickLookController = nil;
 	return self;
 }
 
+- (void)dealloc {
+	
+	[super dealloc];
+}
+
 - (id)retain {
 	return self;
 }
