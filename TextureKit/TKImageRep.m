@@ -13,6 +13,7 @@
 #import <TextureKit/TKVTFImageRep.h>
 
 #include <Accelerate/Accelerate.h>
+#import <UniformTypeIdentifiers/UniformTypeIdentifiers.h>
 
 #import "TKFoundationAdditions.h"
 #import "TKPrivateInterfaces.h"
@@ -206,19 +207,27 @@ static TKDXTCompressionQuality defaultDXTCompressionQuality = TKDXTCompressionQu
 //	NSLog(@"[%@ %@] super's imageUnfilteredFileTypes == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), superTypes);
 	
 	if (handledFileTypes == nil) {
-		NSMutableArray *mFileTypes = [NSMutableArray array];
+		NSMutableArray<NSString*> *mFileTypes = [NSMutableArray array];
 		
 		NSArray *utiTypes = CFBridgingRelease(CGImageSourceCopyTypeIdentifiers());
 		if (utiTypes && utiTypes.count) {
 			for (NSString *utiType in utiTypes) {
-				NSDictionary *utiDeclarations = CFBridgingRelease(UTTypeCopyDeclaration((__bridge CFStringRef)utiType));
-				NSDictionary *utiSpec = utiDeclarations[(NSString *)kUTTypeTagSpecificationKey];
-				if (utiSpec) {
-					id extensions = utiSpec[(NSString *)kUTTagClassFilenameExtension];
-					if ([extensions isKindOfClass:[NSString class]]) {
-						[mFileTypes addObject:extensions];
-					} else {
-						[mFileTypes addObjectsFromArray:extensions];
+				if (@available(macOS 11.0, *)) {
+					UTType *type = [UTType typeWithIdentifier:utiType];
+					NSArray<NSString*> *tags = type.tags[UTTagClassFilenameExtension];
+					if (tags) {
+						[mFileTypes addObjectsFromArray:tags];
+					}
+				} else {
+					NSDictionary *utiDeclarations = CFBridgingRelease(UTTypeCopyDeclaration((__bridge CFStringRef)utiType));
+					NSDictionary *utiSpec = utiDeclarations[(NSString *)kUTTypeTagSpecificationKey];
+					if (utiSpec) {
+						id extensions = utiSpec[(NSString *)kUTTagClassFilenameExtension];
+						if ([extensions isKindOfClass:[NSString class]]) {
+							[mFileTypes addObject:extensions];
+						} else {
+							[mFileTypes addObjectsFromArray:extensions];
+						}
 					}
 				}
 			}

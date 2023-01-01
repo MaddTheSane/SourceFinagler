@@ -468,9 +468,8 @@ static NSView *blankView() {
 		status = LSFindApplicationForInfo(creatorCode, (aBundleIdentifier ? (__bridge CFStringRef)aBundleIdentifier : NULL), (aNameWithDotApp ? (__bridge CFStringRef)aNameWithDotApp : NULL), NULL, &fileRef);
 		
 		if (status == noErr) {
-			NSURL *aFile = (__bridge NSURL*)fileRef;
+			NSURL *aFile = CFBridgingRelease(fileRef);
 			absolutePath = aFile.path;
-			CFRelease(fileRef);
 		}
 	}
 	return absolutePath;

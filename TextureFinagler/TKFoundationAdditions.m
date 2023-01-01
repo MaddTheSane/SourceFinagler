@@ -325,11 +325,8 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray<NSValue*> *inRects, BOOL isFlipped)
 	NSFileManager *fileManager = [[NSFileManager alloc] init];
 	
 	if ([fileManager fileExistsAtPath:path]) {
-		FSRef itemRef;
-		if ([path getFSRef:&itemRef error:outError]) {
 			NSURL *fileURL = [NSURL fileURLWithPath:path];
 			return [fileURL bookmarkDataWithOptions:(NSURLBookmarkCreationOptions)(options & ~(TKBookmarkCreationOptions)(1)) includingResourceValuesForKeys:nil relativeToURL:nil error:outError];
-		}
 	} else {
 		NSLog(@"[%@ %@] no file exists at %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), path);
 		if (outError) *outError = [NSError errorWithDomain:NSOSStatusErrorDomain code:fnfErr userInfo:nil];
