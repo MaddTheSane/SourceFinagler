@@ -10,9 +10,7 @@
 			<true/>
 			<key>QLSupportedContentTypes</key>
 			<array>
-				<string>com.markdouma.texture-image</string>
 				<string>com.valvesoftware.source.vtf</string>
-				<string>com.microsoft.dds</string>
 			</array>
 			<key>QLSupportsSearchableItems</key>
 			<false/>

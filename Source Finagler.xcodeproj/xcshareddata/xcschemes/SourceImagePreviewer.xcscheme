@@ -16,8 +16,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "55633910290A801D0058FA82"
-               BuildableName = "SourceImagePreviewer.appex"
-               BlueprintName = "SourceImagePreviewer"
+               BuildableName = "VTFImagePreviewer.appex"
+               BlueprintName = "VTFImagePreviewer"
                ReferencedContainer = "container:Source Finagler.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

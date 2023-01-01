@@ -91,11 +91,11 @@
 		554FE6A81FCA0A2600727CE0 /* BlockCompressor.h in Headers */ = {isa = PBXBuildFile; fileRef = 554FE6A61FCA0A2600727CE0 /* BlockCompressor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		554FE6AA1FCA0D3C00727CE0 /* CudaCompressorDXT.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C1FEA981125E763700CA78FF /* CudaCompressorDXT.h */; };
 		55633918290A801E0058FA82 /* PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55633917290A801E0058FA82 /* PreviewProvider.swift */; };
-		55633920290A801E0058FA82 /* SourceImagePreviewer.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 55633911290A801D0058FA82 /* SourceImagePreviewer.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		55633920290A801E0058FA82 /* VTFImagePreviewer.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 55633911290A801D0058FA82 /* VTFImagePreviewer.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5563393E290B15170058FA82 /* TextureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17319B21298D11400C29732 /* TextureKit.framework */; };
 		55633945290B1FD80058FA82 /* QuickLookThumbnailing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55633944290B1FD80058FA82 /* QuickLookThumbnailing.framework */; };
 		55633949290B1FD80058FA82 /* ThumbnailProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55633948290B1FD80058FA82 /* ThumbnailProvider.swift */; };
-		5563394E290B1FD80058FA82 /* SourceImageThumbnailer.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 55633943290B1FD80058FA82 /* SourceImageThumbnailer.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5563394E290B1FD80058FA82 /* VTFImageThumbnailer.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 55633943290B1FD80058FA82 /* VTFImageThumbnailer.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		55633957290B204B0058FA82 /* MDCGImage.m in Sources */ = {isa = PBXBuildFile; fileRef = C15DD37E126A476300E44BDB /* MDCGImage.m */; };
 		5563395A290B2AB50058FA82 /* TextureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17319B21298D11400C29732 /* TextureKit.framework */; };
 		5563395B290B421B0058FA82 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1CA284F13A2E2C100235C98 /* Quartz.framework */; };
@@ -1084,8 +1084,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				55633920290A801E0058FA82 /* SourceImagePreviewer.appex in Embed Foundation Extensions */,
-				5563394E290B1FD80058FA82 /* SourceImageThumbnailer.appex in Embed Foundation Extensions */,
+				55633920290A801E0058FA82 /* VTFImagePreviewer.appex in Embed Foundation Extensions */,
+				5563394E290B1FD80058FA82 /* VTFImageThumbnailer.appex in Embed Foundation Extensions */,
 				55101AE6290E7FC6003CED21 /* VTF Image Metadata.appex in Embed Foundation Extensions */,
 				55101AE9290E7FCC003CED21 /* DDS Image Metadata.appex in Embed Foundation Extensions */,
 				55101A8E290E45A3003CED21 /* sfti Metadata.appex in Embed Foundation Extensions */,
@@ -1247,11 +1247,11 @@
 		554FE6A11FCA09D800727CE0 /* CompressorDXT5_RGBM.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompressorDXT5_RGBM.cpp; sourceTree = "<group>"; };
 		554FE6A51FCA0A2500727CE0 /* BlockCompressor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BlockCompressor.cpp; sourceTree = "<group>"; };
 		554FE6A61FCA0A2600727CE0 /* BlockCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockCompressor.h; sourceTree = "<group>"; };
-		55633911290A801D0058FA82 /* SourceImagePreviewer.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SourceImagePreviewer.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		55633911290A801D0058FA82 /* VTFImagePreviewer.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = VTFImagePreviewer.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		55633917290A801E0058FA82 /* PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
 		5563391C290A801E0058FA82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5563391D290A801E0058FA82 /* SourceImageThumbnailer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SourceImageThumbnailer.entitlements; sourceTree = "<group>"; };
-		55633943290B1FD80058FA82 /* SourceImageThumbnailer.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SourceImageThumbnailer.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		55633943290B1FD80058FA82 /* VTFImageThumbnailer.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = VTFImageThumbnailer.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		55633944290B1FD80058FA82 /* QuickLookThumbnailing.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLookThumbnailing.framework; path = System/Library/Frameworks/QuickLookThumbnailing.framework; sourceTree = SDKROOT; };
 		55633948290B1FD80058FA82 /* ThumbnailProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailProvider.swift; sourceTree = "<group>"; };
 		5563394A290B1FD80058FA82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -2236,8 +2236,8 @@
 				C1FEA930125E72E300CA78FF /* NVTT.framework */,
 				C1D4494B12602E5100A027EF /* decompress */,
 				C17D8F781642AAC40044039F /* ddsFinagler */,
-				55633911290A801D0058FA82 /* SourceImagePreviewer.appex */,
-				55633943290B1FD80058FA82 /* SourceImageThumbnailer.appex */,
+				55633911290A801D0058FA82 /* VTFImagePreviewer.appex */,
+				55633943290B1FD80058FA82 /* VTFImageThumbnailer.appex */,
 				55101A85290E45A2003CED21 /* sfti Metadata.appex */,
 				55101ABE290E76B6003CED21 /* DDS Image Metadata.appex */,
 				55101AD9290E76BC003CED21 /* VTF Image Metadata.appex */,
@@ -2262,8 +2262,8 @@
 				C1B9525C124E734200E83451 /* VTF framework */,
 				C1FEA7B0125E5BDD00CA78FF /* NVTextureTools framework */,
 				C17D8F7C1642AAC40044039F /* ddsFinagler */,
-				55633914290A801E0058FA82 /* SourceImagePreviewer */,
-				55633947290B1FD80058FA82 /* SourceImageThumbnailer */,
+				55633914290A801E0058FA82 /* VTFImagePreviewer */,
+				55633947290B1FD80058FA82 /* VTFImageThumbnailer */,
 				55101A86290E45A3003CED21 /* Source Image Metadata */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
@@ -2403,17 +2403,17 @@
 			sourceTree = "<group>";
 			usesTabs = 1;
 		};
-		55633914290A801E0058FA82 /* SourceImagePreviewer */ = {
+		55633914290A801E0058FA82 /* VTFImagePreviewer */ = {
 			isa = PBXGroup;
 			children = (
 				55633917290A801E0058FA82 /* PreviewProvider.swift */,
 				5563391C290A801E0058FA82 /* Info.plist */,
 				5563391D290A801E0058FA82 /* SourceImageThumbnailer.entitlements */,
 			);
-			path = SourceImagePreviewer;
+			path = VTFImagePreviewer;
 			sourceTree = "<group>";
 		};
-		55633947290B1FD80058FA82 /* SourceImageThumbnailer */ = {
+		55633947290B1FD80058FA82 /* VTFImageThumbnailer */ = {
 			isa = PBXGroup;
 			children = (
 				55633948290B1FD80058FA82 /* ThumbnailProvider.swift */,
@@ -2421,7 +2421,7 @@
 				5563394B290B1FD80058FA82 /* SourceImageThumbnailer.entitlements */,
 				55633954290B203C0058FA82 /* SourceImageThumbnailer-Bridging-Header.h */,
 			);
-			path = SourceImageThumbnailer;
+			path = VTFImageThumbnailer;
 			sourceTree = "<group>";
 		};
 		558FACC420ABADDD00AC7001 /* rg_etc1_v104 */ = {
@@ -4372,9 +4372,9 @@
 			productReference = 55101AD9290E76BC003CED21 /* VTF Image Metadata.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		55633910290A801D0058FA82 /* SourceImagePreviewer */ = {
+		55633910290A801D0058FA82 /* VTFImagePreviewer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 55633925290A801F0058FA82 /* Build configuration list for PBXNativeTarget "SourceImagePreviewer" */;
+			buildConfigurationList = 55633925290A801F0058FA82 /* Build configuration list for PBXNativeTarget "VTFImagePreviewer" */;
 			buildPhases = (
 				5563390D290A801D0058FA82 /* Sources */,
 				5563390E290A801D0058FA82 /* Frameworks */,
@@ -4385,14 +4385,14 @@
 			dependencies = (
 				5563393D290B15010058FA82 /* PBXTargetDependency */,
 			);
-			name = SourceImagePreviewer;
+			name = VTFImagePreviewer;
 			productName = SourceImageThumbnailer;
-			productReference = 55633911290A801D0058FA82 /* SourceImagePreviewer.appex */;
+			productReference = 55633911290A801D0058FA82 /* VTFImagePreviewer.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		55633942290B1FD80058FA82 /* SourceImageThumbnailer */ = {
+		55633942290B1FD80058FA82 /* VTFImageThumbnailer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5563394F290B1FD90058FA82 /* Build configuration list for PBXNativeTarget "SourceImageThumbnailer" */;
+			buildConfigurationList = 5563394F290B1FD90058FA82 /* Build configuration list for PBXNativeTarget "VTFImageThumbnailer" */;
 			buildPhases = (
 				5563393F290B1FD80058FA82 /* Sources */,
 				55633940290B1FD80058FA82 /* Frameworks */,
@@ -4403,9 +4403,9 @@
 			dependencies = (
 				55633959290B2AAA0058FA82 /* PBXTargetDependency */,
 			);
-			name = SourceImageThumbnailer;
+			name = VTFImageThumbnailer;
 			productName = SourceImageThumbnailer;
-			productReference = 55633943290B1FD80058FA82 /* SourceImageThumbnailer.appex */;
+			productReference = 55633943290B1FD80058FA82 /* VTFImageThumbnailer.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 		C1224BEB13B06B9A009AA0F4 /* SourceFinaglerAgent */ = {
@@ -4821,8 +4821,8 @@
 				C155218011D9954B00CCEDD3 /* Distribution */,
 				C1D4494A12602E5100A027EF /* decompress */,
 				C17D8F771642AAC40044039F /* ddsFinagler */,
-				55633910290A801D0058FA82 /* SourceImagePreviewer */,
-				55633942290B1FD80058FA82 /* SourceImageThumbnailer */,
+				55633910290A801D0058FA82 /* VTFImagePreviewer */,
+				55633942290B1FD80058FA82 /* VTFImageThumbnailer */,
 				55101A84290E45A2003CED21 /* sfti Metadata */,
 				55101AA5290E76B6003CED21 /* DDS Image Metadata */,
 				55101AC0290E76BC003CED21 /* VTF Image Metadata */,
@@ -5548,7 +5548,7 @@
 		};
 		5563391F290A801E0058FA82 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 55633910290A801D0058FA82 /* SourceImagePreviewer */;
+			target = 55633910290A801D0058FA82 /* VTFImagePreviewer */;
 			targetProxy = 5563391E290A801E0058FA82 /* PBXContainerItemProxy */;
 		};
 		5563393D290B15010058FA82 /* PBXTargetDependency */ = {
@@ -5558,7 +5558,7 @@
 		};
 		5563394D290B1FD80058FA82 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 55633942290B1FD80058FA82 /* SourceImageThumbnailer */;
+			target = 55633942290B1FD80058FA82 /* VTFImageThumbnailer */;
 			targetProxy = 5563394C290B1FD80058FA82 /* PBXContainerItemProxy */;
 		};
 		55633959290B2AAA0058FA82 /* PBXTargetDependency */ = {
@@ -6777,7 +6777,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_ENTITLEMENTS = SourceImagePreviewer/SourceImageThumbnailer.entitlements;
+				CODE_SIGN_ENTITLEMENTS = VTFImagePreviewer/SourceImageThumbnailer.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 250;
@@ -6790,15 +6790,13 @@
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SourceImagePreviewer/Info.plist;
+				INFOPLIST_FILE = VTFImagePreviewer/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SourceImagePreviewer;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mark Douma LLC. All rights reserved.";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 2.5;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.SourceFinagler.SourceImagePreviewer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.SourceFinagler.VTFImagePreviewer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -6813,7 +6811,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_ENTITLEMENTS = SourceImagePreviewer/SourceImageThumbnailer.entitlements;
+				CODE_SIGN_ENTITLEMENTS = VTFImagePreviewer/SourceImageThumbnailer.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
@@ -6823,15 +6821,13 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SourceImagePreviewer/Info.plist;
+				INFOPLIST_FILE = VTFImagePreviewer/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SourceImagePreviewer;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mark Douma LLC. All rights reserved.";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 2.5;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.SourceFinagler.SourceImagePreviewer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.SourceFinagler.VTFImagePreviewer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -6845,7 +6841,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_ENTITLEMENTS = SourceImagePreviewer/SourceImageThumbnailer.entitlements;
+				CODE_SIGN_ENTITLEMENTS = VTFImagePreviewer/SourceImageThumbnailer.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
@@ -6855,15 +6851,13 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SourceImagePreviewer/Info.plist;
+				INFOPLIST_FILE = VTFImagePreviewer/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SourceImagePreviewer;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mark Douma LLC. All rights reserved.";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 2.5;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.SourceFinagler.SourceImagePreviewer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.SourceFinagler.VTFImagePreviewer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -6878,7 +6872,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_ENTITLEMENTS = SourceImageThumbnailer/SourceImageThumbnailer.entitlements;
+				CODE_SIGN_ENTITLEMENTS = VTFImageThumbnailer/SourceImageThumbnailer.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 250;
@@ -6891,20 +6885,20 @@
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SourceImageThumbnailer/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = SourceImageThumbnailer;
+				INFOPLIST_FILE = VTFImageThumbnailer/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = VTFImageThumbnailer;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mark Douma LLC. All rights reserved.";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 2.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.SourceFinagler.SourceImageThumbnailer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.SourceFinagler.VTFImageThumbnailer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "SourceImageThumbnailer/SourceImageThumbnailer-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "VTFImageThumbnailer/SourceImageThumbnailer-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -6916,7 +6910,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_ENTITLEMENTS = SourceImageThumbnailer/SourceImageThumbnailer.entitlements;
+				CODE_SIGN_ENTITLEMENTS = VTFImageThumbnailer/SourceImageThumbnailer.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
@@ -6926,19 +6920,19 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SourceImageThumbnailer/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = SourceImageThumbnailer;
+				INFOPLIST_FILE = VTFImageThumbnailer/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = VTFImageThumbnailer;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mark Douma LLC. All rights reserved.";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 2.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.SourceFinagler.SourceImageThumbnailer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.SourceFinagler.VTFImageThumbnailer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "SourceImageThumbnailer/SourceImageThumbnailer-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "VTFImageThumbnailer/SourceImageThumbnailer-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -6950,7 +6944,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_ENTITLEMENTS = SourceImageThumbnailer/SourceImageThumbnailer.entitlements;
+				CODE_SIGN_ENTITLEMENTS = VTFImageThumbnailer/SourceImageThumbnailer.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
@@ -6960,19 +6954,19 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SourceImageThumbnailer/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = SourceImageThumbnailer;
+				INFOPLIST_FILE = VTFImageThumbnailer/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = VTFImageThumbnailer;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mark Douma LLC. All rights reserved.";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 2.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.SourceFinagler.SourceImageThumbnailer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.SourceFinagler.VTFImageThumbnailer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "SourceImageThumbnailer/SourceImageThumbnailer-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "VTFImageThumbnailer/SourceImageThumbnailer-Bridging-Header.h";
 			};
 			name = "Release-MAS";
 		};
@@ -8072,7 +8066,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		55633925290A801F0058FA82 /* Build configuration list for PBXNativeTarget "SourceImagePreviewer" */ = {
+		55633925290A801F0058FA82 /* Build configuration list for PBXNativeTarget "VTFImagePreviewer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				55633922290A801F0058FA82 /* Debug */,
@@ -8082,7 +8076,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5563394F290B1FD90058FA82 /* Build configuration list for PBXNativeTarget "SourceImageThumbnailer" */ = {
+		5563394F290B1FD90058FA82 /* Build configuration list for PBXNativeTarget "VTFImageThumbnailer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				55633950290B1FD90058FA82 /* Debug */,
