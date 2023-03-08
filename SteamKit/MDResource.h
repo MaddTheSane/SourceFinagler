@@ -36,7 +36,7 @@ typedef NS_OPTIONS(ResAttributes, MDResourceAttributes) {
 
 - (instancetype)initWithType:(ResType)aType index:(ResourceIndex)anIndex error:(NSError **)outError;
 
-- (instancetype)initWithType:(ResType)aType resourceData:(NSData *)aData resourceID:(ResID)anID resourceName:(NSString *)aName resourceIndex:(ResourceIndex)anIndex resourceAttributes:(ResAttributes)anAttributes resChanged:(BOOL)aResChanged copy:(BOOL)shouldCopy error:(NSError **)outError;
+- (instancetype)initWithType:(ResType)aType resourceData:(NSData *)aData resourceID:(ResID)anID resourceName:(NSString *)aName resourceIndex:(ResourceIndex)anIndex resourceAttributes:(MDResourceAttributes)anAttributes resChanged:(BOOL)aResChanged copy:(BOOL)shouldCopy error:(NSError **)outError;
 
 
 - (BOOL)getResourceInfo:(NSError **)outError;

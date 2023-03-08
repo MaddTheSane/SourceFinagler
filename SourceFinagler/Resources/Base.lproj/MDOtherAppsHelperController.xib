@@ -328,7 +328,7 @@ Note: You can also double-click on a game in the list to launch it (it will be h
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="235" y="267" width="489" height="253"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
             <view key="contentView" id="1408">
                 <rect key="frame" x="0.0" y="0.0" width="489" height="253"/>
                 <autoresizingMask key="autoresizingMask"/>

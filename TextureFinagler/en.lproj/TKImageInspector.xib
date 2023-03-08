@@ -18,7 +18,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES" nonactivatingPanel="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
             <rect key="contentRect" x="232" y="707" width="220" height="351"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
             <value key="minSize" type="size" width="220" height="351"/>
             <view key="contentView" id="19">
                 <rect key="frame" x="0.0" y="0.0" width="220" height="351"/>
@@ -44,7 +44,7 @@
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
                                             </tableHeaderCell>
-                                            <buttonCell key="dataCell" type="bevel" bezelStyle="regularSquare" image="eye" imagePosition="only" alignment="left" state="on" inset="2" id="29" customClass="TKImageChannelEnabledCell">
+                                            <buttonCell key="dataCell" type="bevel" bezelStyle="regularSquare" image="eye" catalog="system" imagePosition="only" alignment="left" state="on" inset="2" id="29" customClass="TKImageChannelEnabledCell">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
@@ -97,6 +97,6 @@
         </window>
     </objects>
     <resources>
-        <image name="eye" width="21" height="16"/>
+        <image name="eye" catalog="system" width="21" height="13"/>
     </resources>
 </document>

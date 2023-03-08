@@ -217,10 +217,12 @@ static MDLaunchManager *sharedManager = nil;
 				NSDictionary *job = [NSDictionary dictionaryWithContentsOfFile:path];
 				
 			if (job) {
-				CFErrorRef tmpErr;
+				CFErrorRef tmpErr = NULL;
 				success = (BOOL)SMJobSubmit(kSMDomainUserLaunchd, (CFDictionaryRef)job, NULL, &tmpErr);
 				if (outError) {
 					*outError = CFBridgingRelease(tmpErr);
+				} else if (tmpErr) {
+					CFRelease(tmpErr);
 				}
 			}
 		}
@@ -248,10 +250,12 @@ static MDLaunchManager *sharedManager = nil;
 #endif
 			}
 			
-			CFErrorRef tmpErr;
+			CFErrorRef tmpErr = NULL;
 			success = (BOOL)SMJobRemove(kSMDomainUserLaunchd, (CFStringRef)label, NULL, NO, &tmpErr);
 			if (outError) {
 				*outError = CFBridgingRelease(tmpErr);
+			} else if (tmpErr) {
+				CFRelease(tmpErr);
 			}
 		}
 	}

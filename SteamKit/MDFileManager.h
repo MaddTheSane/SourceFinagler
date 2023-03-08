@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-NS_ENUM(NSInteger) {
+typedef NS_ENUM(NSInteger, MDFileLabel) {
 	MDFileLabelNone				= 0,
 	MDFileLabelGray				= 1,
 	MDFileLabelGreen			= 2,
@@ -51,7 +51,7 @@ extern MDFileProperty const MDFileIsInvisible;
 extern MDFileProperty const MDFileIsAliasFile;
 
 @interface NSDictionary (MDFileAttributes)
-- (NSInteger)fileLabelColor;	/**< files & folders	*/
+- (MDFileLabel)fileLabelColor;	/**< files & folders	*/
 - (BOOL)fileHasCustomIcon;		/**< files & folders	*/
 - (BOOL)fileIsStationery;		/**< files only		*/
 - (BOOL)fileNameLocked;			/**< files & folders	(value isn't used or respected by OS X) */

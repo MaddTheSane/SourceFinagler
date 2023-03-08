@@ -196,7 +196,7 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 
 @implementation MDResourceFile
 @synthesize fileReference;
-@synthesize filePath;
+@synthesize fileURL;
 @synthesize fork;
 @synthesize permission;
 @synthesize plistResource;
@@ -304,7 +304,7 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 		UniCharCount	fileNameLength;
 		NSString		*fileName;
 		
-		filePath = aURL.path;
+		fileURL = aURL;
 		fork = aFork;
 		permission = aPermission;
 		
@@ -665,6 +665,11 @@ OSErr MDCheckResourceFileSanity(const FSRef *fsr, HFSUniStr255 *forkName, Boolea
 	UseResFile(prevRefNumber);
 	err = ResError();
 	return (err == noErr);
+}
+
+
+- (NSString *)filePath {
+	return self.fileURL.path;
 }
 
 

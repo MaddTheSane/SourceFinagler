@@ -28,16 +28,15 @@ typedef NS_OPTIONS(char, MDPermission) {
 	MDPermissionReadWrite				= 0x03
 };
 
-extern NSErrorDomain __nonnull const MDResourceFileErrorDomain;
+extern NSErrorDomain const MDResourceFileErrorDomain;
 
-NS_ERROR_ENUM(MDResourceFileErrorDomain) {
+typedef NS_ERROR_ENUM(MDResourceFileErrorDomain, MDResourceFileErrors) {
 	MDResourceFileCorruptResourceFileError				= 4998,
 };
 
 
 
 @interface MDResourceFile : NSObject {
-	NSString					*filePath;
 	ResFileRefNum				fileReference;
 	MDFork						fork;
 	MDPermission				permission;
@@ -46,6 +45,8 @@ NS_ERROR_ENUM(MDResourceFileErrorDomain) {
 	MDResource					*customIconResource;
 	
 }
+
+- (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
 //! read-only; which fork is determined automatically
 - (nullable instancetype)initWithContentsOfFile:(NSString *)aPath error:(NSError *__nullable*__nullable)outError;
@@ -58,11 +59,12 @@ NS_ERROR_ENUM(MDResourceFileErrorDomain) {
 
 
 - (nullable instancetype)initWithContentsOfFile:(NSString *)aPath permission:(MDPermission)aPermission fork:(MDFork)aFork error:(NSError *__nullable*__nullable)outError;
-- (nullable instancetype)initWithContentsOfURL:(NSURL *)aURL permission:(MDPermission)aPermission fork:(MDFork)aFork error:(NSError *__nullable*__nullable)outError;
+- (nullable instancetype)initWithContentsOfURL:(NSURL *)aURL permission:(MDPermission)aPermission fork:(MDFork)aFork error:(NSError *__nullable*__nullable)outError NS_DESIGNATED_INITIALIZER;
 
 
 @property (readonly) ResFileRefNum fileReference;
 @property (readonly, copy) NSString *filePath;
+@property (readonly, copy) NSURL *fileURL;
 @property (readonly) MDFork fork;
 @property (readonly) MDPermission permission;
 
