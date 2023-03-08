@@ -44,7 +44,7 @@ BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *cont
 	if (attributes == nil || filePath == nil || contentTypeUTI == nil) return NO;
 	
 @autoreleasepool {
-	NSData *data = [[NSData alloc] initWithContentsOfFile:filePath];
+	NSData *data = [[NSData alloc] initWithContentsOfFile:filePath options:NSDataReadingMappedIfSafe error:error];
 	
 	if (data == nil) {
 		NSLog(@"MDGetMetadataFromImageWithContentsOfFile(): data == nil for filePath == %@", filePath);

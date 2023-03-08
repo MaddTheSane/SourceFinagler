@@ -2347,6 +2347,7 @@
 			);
 			path = "Source Image Metadata";
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		55101ADB290E771F003CED21 /* sfti */ = {
 			isa = PBXGroup;

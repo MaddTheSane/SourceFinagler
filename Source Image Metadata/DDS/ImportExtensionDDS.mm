@@ -12,10 +12,87 @@
 
 using namespace nv;
 
+class NSHandleInputStream : public nv::Stream
+{
+	NV_FORBID_COPY(NSHandleInputStream);
+public:
+	NSHandleInputStream(NSFileHandle *stream): _inStr(stream) {}
+	~NSHandleInputStream() {
+		_inStr = nil;
+	}
+	
+	void seek(uint pos) override {
+		NSError *err;
+		[_inStr seekToOffset:pos error:&err];
+		if (!error) {
+			error = err;
+		}
+	}
+	
+	uint tell() const override {
+		return (uint)_inStr.offsetInFile;
+	}
+	
+	uint serialize(void *data, uint len) override {
+		NSError *err;
+		NSData *dat = [_inStr readDataUpToLength:len error:&err];
+		if (!error) {
+			error = err;
+		}
+		[dat getBytes:data length:dat.length];
+		
+		return (uint)dat.length;
+	}
+	
+	uint size() const override {
+		unsigned long long currPos = _inStr.offsetInFile;
+		[_inStr seekToEndOfFile];
+		unsigned long long fullSize = _inStr.offsetInFile;
+		[_inStr seekToFileOffset:currPos];
+		return (uint)fullSize;
+	}
+	
+	bool isSeekable() const override {
+		return true;
+	}
+	
+	bool isAtEnd() const override {
+		unsigned long long currPos = _inStr.offsetInFile;
+		[_inStr seekToEndOfFile];
+		unsigned long long fullSize = _inStr.offsetInFile;
+		[_inStr seekToFileOffset:currPos];
+		return currPos == fullSize;
+	}
+	
+	bool isLoading() const override {
+		return true;
+	}
+	
+	bool isSaving() const override {
+		return false;
+	}
+	
+	bool isError() const override {
+		return error != nil;
+	}
+	
+	void clearError() override {
+		error = nil;
+	}
+	
+private:
+	NSFileHandle *_inStr;
+	NSError *error;
+};
+
 @implementation ImportExtensionDDS
 
 - (BOOL)updateAttributes:(CSSearchableItemAttributeSet *)attributes forFileAtURL:(NSURL *)contentURL error:(NSError **)error {
-	NSData *data = [[NSData alloc] initWithContentsOfURL:contentURL options:0 error:error];
+	NSFileHandle *handle = [NSFileHandle fileHandleForReadingFromURL:contentURL error:error];
+	if (handle == nil) {
+		return NO;
+	}
+	NSData *data = [handle readDataUpToLength:4 error:error];
 	if (data == nil) {
 		return NO;
 	}
@@ -46,7 +123,8 @@ using namespace nv;
 		}
 		return NO;
 	}
-	MemoryInputStream *mis = new MemoryInputStream((const unsigned char *)[data bytes], uint([data length]));
+	[handle seekToFileOffset:0];
+	NSHandleInputStream *mis = new NSHandleInputStream(handle);
 	
 	DirectDrawSurface *dds = new DirectDrawSurface();
 	dds->load(mis);

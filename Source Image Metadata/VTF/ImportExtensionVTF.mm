@@ -15,7 +15,7 @@ using namespace VTFLib;
 @implementation ImportExtensionVTF
 
 - (BOOL)updateAttributes:(CSSearchableItemAttributeSet *)attributes forFileAtURL:(NSURL *)contentURL error:(NSError **)error {
-	NSData *data = [[NSData alloc] initWithContentsOfURL:contentURL options:0 error:error];
+	NSData *data = [[NSData alloc] initWithContentsOfURL:contentURL options:NSDataReadingMappedIfSafe error:error];
 	if (data == nil) {
 		return NO;
 	}
