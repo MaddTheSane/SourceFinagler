@@ -100,11 +100,10 @@ static VSSteamManager *sharedManager = nil;
 @synthesize monitoringGames;
 
 + (VSSteamManager *)defaultManager {
-	@synchronized(self) {
-	if (sharedManager == nil) {
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
 		sharedManager = [[super allocWithZone:NULL] init];
-	}
-	}
+	});
 	return sharedManager;
 }
 
@@ -323,73 +322,71 @@ static NSUInteger locateSteamAppsCount = 0;
 		NSMutableArray *uniqueNewGames = [NSMutableArray array];
 		
 		
-		NSAutoreleasePool *localPool = [[NSAutoreleasePool alloc] init];
-		
-		NSArray *shallowSubpaths = [fileManager contentsOfDirectoryAtPath:steamAppsPath error:&outError];
-		
-		if (shallowSubpaths == nil) {
-			NSLog(@"[%@ %@] failed to get shallowSubpaths; error == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), outError);
-			[localPool release];
-			return;
-		}
-		
-		for (NSString *shallowSubpath in shallowSubpaths) {
-			NSString *fullPath = [steamAppsPath stringByAppendingPathComponent:shallowSubpath];
+		@autoreleasepool {
 			
-			if ( !([fileManager fileExistsAtPath:fullPath isDirectory:&isDir] && isDir)) {
-				continue;
+			NSArray *shallowSubpaths = [fileManager contentsOfDirectoryAtPath:steamAppsPath error:&outError];
+			
+			if (shallowSubpaths == nil) {
+				NSLog(@"[%@ %@] failed to get shallowSubpaths; error == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), outError);
+				return;
 			}
 			
-			// we're inside /SteamApps/markdouma/ or
-			// /SteamApps/common/
-			
-			NSArray *gameFolderNames = [fileManager contentsOfDirectoryAtPath:fullPath error:&outError];
-			
-			if (gameFolderNames == nil) {
-				continue;
-			}
+			for (NSString *shallowSubpath in shallowSubpaths) {
+				NSString *fullPath = [steamAppsPath stringByAppendingPathComponent:shallowSubpath];
 				
-			for (NSString *gameFolderName in gameFolderNames) {
-				
-				NSString *gameFolderFullPath = [fullPath stringByAppendingPathComponent:gameFolderName];
-				
-				if ( !([fileManager fileExistsAtPath:gameFolderFullPath isDirectory:&isDir] && isDir)) {
+				if ( !([fileManager fileExistsAtPath:fullPath isDirectory:&isDir] && isDir)) {
 					continue;
 				}
 				
-				// inside the game folder, look for "hl2_osx", "csgo_osx", or "portal2_osx"
+				// we're inside /SteamApps/markdouma/ or
+				// /SteamApps/common/
 				
-				NSArray *rootContents = [fileManager contentsOfDirectoryAtPath:gameFolderFullPath error:&outError];
+				NSArray *gameFolderNames = [fileManager contentsOfDirectoryAtPath:fullPath error:&outError];
 				
-				if (rootContents == nil) {
+				if (gameFolderNames == nil) {
 					continue;
 				}
 				
-				for (NSString *rootItemName in rootContents) {
-					if ([executableNames containsObject:rootItemName]) {
+				for (NSString *gameFolderName in gameFolderNames) {
 					
-						NSString *fullGamePath = [gameFolderFullPath stringByAppendingPathComponent:rootItemName];
-						
-						VSGame *game = gamePathsAndGames[VSMakeGamePathKey(fullGamePath)];
-						
-						if (game) {
-							[game synchronizeHelped];
-							continue;
-						}
-						NSArray *appInfos = gameBundleIdentifiersAndGames.allValues;
-						
-						for (NSDictionary *appInfo in appInfos) {
-							if ([appInfo[VSGameNameKey] isEqualToString:gameFolderName]) {
-								VSGame *game = [VSGame gameWithPath:fullGamePath infoPlist:appInfo];
-								if (game) [uniqueNewGames addObject:game];
+					NSString *gameFolderFullPath = [fullPath stringByAppendingPathComponent:gameFolderName];
+					
+					if ( !([fileManager fileExistsAtPath:gameFolderFullPath isDirectory:&isDir] && isDir)) {
+						continue;
+					}
+					
+					// inside the game folder, look for "hl2_osx", "csgo_osx", or "portal2_osx"
+					
+					NSArray *rootContents = [fileManager contentsOfDirectoryAtPath:gameFolderFullPath error:&outError];
+					
+					if (rootContents == nil) {
+						continue;
+					}
+					
+					for (NSString *rootItemName in rootContents) {
+						if ([executableNames containsObject:rootItemName]) {
+							
+							NSString *fullGamePath = [gameFolderFullPath stringByAppendingPathComponent:rootItemName];
+							
+							VSGame *game = gamePathsAndGames[VSMakeGamePathKey(fullGamePath)];
+							
+							if (game) {
+								[game synchronizeHelped];
+								continue;
+							}
+							NSArray *appInfos = gameBundleIdentifiersAndGames.allValues;
+							
+							for (NSDictionary *appInfo in appInfos) {
+								if ([appInfo[VSGameNameKey] isEqualToString:gameFolderName]) {
+									VSGame *game = [VSGame gameWithPath:fullGamePath infoPlist:appInfo];
+									if (game) [uniqueNewGames addObject:game];
+								}
 							}
 						}
 					}
 				}
 			}
 		}
-		
-		[localPool release];
 		
 		
 		for (VSGame *newGame in uniqueNewGames) {
@@ -550,7 +547,6 @@ static NSUInteger locateSteamAppsCount = 0;
 	
 	return isValid;
 }
-
 
 
 - (BOOL)relocateSteamAppsToPath:(NSString *)aPath error:(NSError **)outError {

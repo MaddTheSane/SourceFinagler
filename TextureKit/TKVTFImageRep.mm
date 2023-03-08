@@ -232,11 +232,11 @@ static BOOL vtfInitialized = NO;
 	static NSArray *imageUnfilteredPasteboardTypes = nil;
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
-		NSArray *types = [super imageUnfilteredPasteboardTypes];
+//		NSArray *types = [super imageUnfilteredPasteboardTypes];
 #if TK_DEBUG
 //		NSLog(@"[%@ %@] super's imageUnfilteredPasteboardTypes == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), types);
 #endif
-		imageUnfilteredPasteboardTypes = [types arrayByAddingObject:TKVTFPboardType];
+		imageUnfilteredPasteboardTypes = @[TKVTFPboardType];
 	});
 	return imageUnfilteredPasteboardTypes;
 }

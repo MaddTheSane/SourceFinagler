@@ -14,11 +14,12 @@
 #define VS_DEBUG 0
 
 @implementation VSGame
-@synthesize gameID, executablePath, icon, iconPath, displayName, infoDictionary, creatorCode, addonsFolderPath, processIdentifier;
+@synthesize gameID, executableURL, icon, iconURL, displayName, infoDictionary, creatorCode, addonsFolderPath, processIdentifier;
 @synthesize helped = isHelped;
 @synthesize running = isRunning;
 
-@dynamic executableURL;
+@dynamic executablePath;
+@dynamic iconPath;
 
 + (instancetype)gameWithPath:(NSString *)aPath infoPlist:(NSDictionary *)anInfoPlist {
 	return [[[self class] alloc] initWithPath:aPath infoPlist:anInfoPlist];
@@ -27,7 +28,7 @@
 - (instancetype)initWithPath:(NSString *)aPath infoPlist:(NSDictionary *)anInfoPlist {
 	if (aPath && anInfoPlist && (self = [super init])) {
 		isHelped = NO;
-		executablePath = aPath;
+		executableURL = [NSURL fileURLWithPath:aPath];
 		creatorCode = [anInfoPlist[VSGameCreatorCodeKey] unsignedIntValue];
 		infoDictionary = anInfoPlist[VSGameInfoPlistKey];
 		gameID = [anInfoPlist[VSGameIDKey] unsignedIntegerValue];
@@ -36,24 +37,24 @@
 		NSString *shortFolderName = anInfoPlist[VSGameShortNameKey];
 		
 		if (shortFolderName) {
-			self.iconPath = [[[executablePath.stringByDeletingLastPathComponent
-							   stringByAppendingPathComponent:shortFolderName]
-							  stringByAppendingPathComponent:VSResourceNameKey]
-							 stringByAppendingPathComponent:VSGameIconNameKey];
+			self.iconURL = [[[executableURL.URLByDeletingLastPathComponent
+							   URLByAppendingPathComponent:shortFolderName]
+							  URLByAppendingPathComponent:VSResourceNameKey]
+							 URLByAppendingPathComponent:VSGameIconNameKey];
 		}
 		NSFileManager *fileManager = [[NSFileManager alloc] init];
 		BOOL isDir;
 		
-		if ([fileManager fileExistsAtPath:iconPath isDirectory:&isDir] && !isDir) {
-			NSImage *iconImage = [[NSImage alloc] initByReferencingFile:iconPath];
+		if ([fileManager fileExistsAtPath:self.iconPath isDirectory:&isDir] && !isDir) {
+			NSImage *iconImage = [[NSImage alloc] initByReferencingURL:iconURL];
 			self.icon = iconImage;
 		} else {
-			NSLog(@"[%@ %@] file doesn't exist at iconPath == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), iconPath);
+			NSLog(@"[%@ %@] file doesn't exist at iconPath == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), self.iconPath);
 		}
 		if ([anInfoPlist[VSGameSupportsAddonsKey] boolValue]) {
-			NSString *addonsFolder = [[executablePath.stringByDeletingLastPathComponent
-									   stringByAppendingPathComponent:shortFolderName]
-									  stringByAppendingPathComponent:VSSourceAddonFolderNameKey];
+			NSString *addonsFolder = [[executableURL.URLByDeletingLastPathComponent
+									   URLByAppendingPathComponent:shortFolderName]
+									  URLByAppendingPathComponent:VSSourceAddonFolderNameKey].path;
 			if ([fileManager fileExistsAtPath:addonsFolder isDirectory:&isDir] && isDir) {
 				self.addonsFolderPath = addonsFolder;
 			}
@@ -70,9 +71,9 @@
 	VSGame *copy = (VSGame *)[[[self class] allocWithZone:zone] init];
 	copy.gameID = gameID;
 	copy.creatorCode = creatorCode;
-	copy.executablePath = executablePath;
+	copy.executableURL = executableURL;
 	copy.icon = icon;
-	copy.iconPath = iconPath;
+	copy.iconURL = iconURL;
 	copy.displayName = displayName;
 	copy.helped = isHelped;
 	copy.infoDictionary = infoDictionary;
@@ -89,29 +90,34 @@
 	BOOL isDir;
 	
 	NSError *outError = nil;
-	if ( !([fileManager fileExistsAtPath:executablePath isDirectory:&isDir] && !isDir)) {
-		NSLog(@"[%@ %@] no file exists at %@!", NSStringFromClass([self class]), NSStringFromSelector(_cmd), executablePath);
+	if ( !([fileManager fileExistsAtPath:executableURL.path isDirectory:&isDir] && !isDir)) {
+		NSLog(@"[%@ %@] no file exists at %@!", NSStringFromClass([self class]), NSStringFromSelector(_cmd), executableURL.path);
 		return;
 	}
 	
-	NSDictionary *attributes = [fileManager attributesOfItemAtPath:executablePath error:&outError];
+	NSDictionary *attributes = [fileManager attributesOfItemAtPath:executableURL.path error:&outError];
 	if (attributes == nil) {
-		NSLog(@"[%@ %@] failed to get attributes of item at path == %@; error == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), executablePath, outError);
+		NSLog(@"[%@ %@] failed to get attributes of item at path == %@; error == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), executableURL.path, outError);
 		return;
 	}
 	self.helped = ([attributes fileHFSCreatorCode] != 0);
 	
 }
 
-- (NSURL *)executableURL {
-	return [NSURL fileURLWithPath:executablePath];
+- (NSString *)executablePath {
+	return executableURL.path;
 }
 
-- (void)setExecutableURL:(NSURL *)aURL {
-	if (![aURL isFileURL]) {
-		return;
-	}
-	self.executablePath = aURL.path;
+- (void)setExecutablePath:(NSString *)executablePath {
+	self.executableURL = [NSURL fileURLWithPath:executablePath];
+}
+
+- (NSString *)iconPath {
+	return iconURL.path;
+}
+
+- (void)setIconPath:(NSString *)iconPath {
+	iconURL = [NSURL fileURLWithPath:iconPath];
 }
 
 - (NSString *)description {
@@ -140,7 +146,7 @@
 #if VS_DEBUG
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	return (gameID == game.gameID && ([executablePath caseInsensitiveCompare:game.executablePath] == NSOrderedSame));
+	return (gameID == game.gameID && ([executableURL.path caseInsensitiveCompare:game.executablePath] == NSOrderedSame));
 }
 
 @end

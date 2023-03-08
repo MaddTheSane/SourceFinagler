@@ -32,11 +32,14 @@ typedef NSUInteger VSGameID;
 /** Returns the icon of the game. */
 @property (readonly, copy) NSImage *icon;
 
+/** Returns the URL to the icon of the game. */
+@property (readonly, copy) NSURL *iconURL;
+
 /** Returns the path to the icon of the game. */
 @property (readonly, copy) NSString *iconPath;
 
 /** A dictionary, constructed from the game's Info.plist file, that contains information about the game */
-@property (readonly, strong) NSDictionary<NSString*,id> *infoDictionary;
+@property (readonly, copy) NSDictionary<NSString*,id> *infoDictionary;
 
 /** The path to the game's addons directory, or nil if the game doesn't support addons. */
 @property (readonly, copy) NSString *addonsFolderPath;

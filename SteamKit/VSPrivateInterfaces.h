@@ -24,12 +24,13 @@
 @property (readwrite, strong) NSURL *executableURL;
 @property (readwrite, copy) NSString *displayName;
 @property (readwrite, copy) NSString *iconPath;
+@property (readwrite, copy) NSURL *iconURL;
 
 /* Returns the icon of the application. */
 @property (readwrite, copy) NSImage *icon;
 
 
-@property (readwrite, strong) NSDictionary *infoDictionary;
+@property (readwrite, copy) NSDictionary *infoDictionary;
 @property (readwrite, copy) NSString	*addonsFolderPath;
 
 /* Indicates the process identifier (pid) of the application.  Do not rely on this for comparing processes.  Use isEqual: instead.  Not all applications have a pid.  Applications without a pid return -1 from this method. */

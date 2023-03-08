@@ -8,7 +8,8 @@
 
 #import "ImportExtensionDDS.h"
 #import <TextureKit/TKDDSImageRep.h>
-#include <NVTT/NVTextureTools.h>
+#include <NVCore/Stream.h>
+#include <NVImage/DirectDrawSurface.h>
 
 using namespace nv;
 

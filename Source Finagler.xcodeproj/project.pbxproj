@@ -42,7 +42,6 @@
 		55101AE6290E7FC6003CED21 /* VTF Image Metadata.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 55101AD9290E76BC003CED21 /* VTF Image Metadata.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		55101AE9290E7FCC003CED21 /* DDS Image Metadata.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 55101ABE290E76B6003CED21 /* DDS Image Metadata.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		55101AEE290E80AF003CED21 /* NVImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA8FD125E71A200CA78FF /* NVImage.framework */; };
-		55101AEF290E81F2003CED21 /* TextureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17319B21298D11400C29732 /* TextureKit.framework */; };
 		55195830256F1C36001BFE51 /* Box.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1E936911606A8340056438A /* Box.cpp */; };
 		552B5B5024E35FA90077398A /* icbc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552B5B4E24E35FA90077398A /* icbc.cpp */; };
 		552B5B5124E35FA90077398A /* icbc.h in Headers */ = {isa = PBXBuildFile; fileRef = 552B5B4F24E35FA90077398A /* icbc.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1975,7 +1974,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55101AEF290E81F2003CED21 /* TextureKit.framework in Frameworks */,
 				55101AEE290E80AF003CED21 /* NVImage.framework in Frameworks */,
 				55101AB1290E76B6003CED21 /* CoreSpotlight.framework in Frameworks */,
 			);

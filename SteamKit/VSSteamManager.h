@@ -138,7 +138,7 @@ typedef NS_ERROR_ENUM(VSSourceAddonErrorDomain, VSSourceAddonErrors) {
 
 @interface VSSteamManager (VSAddonsSupport)
 
-- (BOOL)installAddonAtPath:(NSString *)sourceFilePath method:(VSSourceAddonInstallMethod)installMethod resultingPath:(NSString **)resultingPath resultingGame:(VSGame **)resultingGame overwrite:(BOOL)overwriteExisting error:(NSError **)outError;
+- (BOOL)installAddonAtPath:(NSString *)sourceFilePath method:(VSSourceAddonInstallMethod)installMethod resultingPath:(NSString *__autoreleasing*)resultingPath resultingGame:(VSGame *__autoreleasing*)resultingGame overwrite:(BOOL)overwriteExisting error:(NSError *__autoreleasing*)outError;
 
 @end
 
