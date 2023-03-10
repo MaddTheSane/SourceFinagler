@@ -190,6 +190,7 @@ private:
 	if (theCompression) {
 		[attributes setValue:theCompression forCustomKey:[[CSCustomAttributeKey alloc] initWithKeyName:@"com_markdouma_image_compression"]];
 	}
+	delete dds;
 	
 	return YES;
 }
