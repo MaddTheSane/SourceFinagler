@@ -150,13 +150,13 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray<NSValue*> *inRects, BOOL isFlipped)
 				NSString *prefix = [filename substringToIndex:29];
 				NSString *lastCharacter = [filename substringFromIndex:filename.length - 1];
 				
-				filename = [NSString stringWithFormat:@"%@%C%@", prefix, (unsigned short)0x2026, lastCharacter];				
+				filename = [NSString stringWithFormat:@"%@\u2026%@", prefix, lastCharacter];
 				
 			} else if (components.count > 1) {
 				NSUInteger lastComponentLength = [components.lastObject length];
 				
 				NSString *suffix = [filename substringFromIndex:filename.length - lastComponentLength - 1];
-				suffix = [[NSString stringWithFormat:@"%C", (unsigned short)0x2026] stringByAppendingString:suffix];
+				suffix = [@"\u2026" stringByAppendingString:suffix];
 				
 				NSString *prefix = [filename substringToIndex:filename.length - lastComponentLength - 2];
 				
@@ -169,7 +169,7 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray<NSValue*> *inRects, BOOL isFlipped)
 			NSString *suffix = [filename substringFromIndex:(pRange.location - 1)];
 			NSString *prefix = [filename substringToIndex:(pRange.location - 1)];
 			
-			suffix = [[NSString stringWithFormat:@"%C", (unsigned short)0x2026] stringByAppendingString:suffix];
+			suffix = [@"\u2026" stringByAppendingString:suffix];
 			
 			NSUInteger allowedPrefixLength = (31 - suffix.length);
 			
@@ -423,7 +423,8 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray<NSValue*> *inRects, BOOL isFlipped)
 		if (anError) {
 			*anError = [NSError
 						errorWithDomain:NSOSStatusErrorDomain code:paramErr
-						userInfo:@{NSLocalizedFailureReasonErrorKey: @"Can only convert from a file: URL scheme"
+						userInfo:@{NSLocalizedFailureReasonErrorKey: @"Can only convert from a file: URL scheme",
+								   NSDebugDescriptionErrorKey: @"Can only convert from a file: URL scheme"
 								   }];
 		}
 		return NO;

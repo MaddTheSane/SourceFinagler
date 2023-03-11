@@ -13,14 +13,14 @@
 
 #define MD_DEBUG 0
 
-static MDFolderManager *sharedManager = nil;
-
 @implementation MDFolderManager
 
 + (MDFolderManager *)defaultManager {
-	if (sharedManager == nil) {
+	static MDFolderManager *sharedManager = nil;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
 		sharedManager = [[super allocWithZone:NULL] init];
-	}
+	});
 	return sharedManager;
 }
 
@@ -173,6 +173,120 @@ static MDFolderManager *sharedManager = nil;
 		err = FSFindFolder(aDomain, aDirectory, create, &folderRef);
 		if (err == noErr) {
 			path = [NSString stringWithFSRef:&folderRef];
+		} else if (err != fnfErr) {
+			NSLog(@"[%@ %@] FSFindFolder() returned %hi", NSStringFromClass([self class]), NSStringFromSelector(_cmd), err);
+			if (outError) *outError = [NSError errorWithDomain:NSOSStatusErrorDomain code:err userInfo:nil];
+		}
+	}
+	return path;
+}
+
+- (NSURL *)URLForDirectory:(MDSearchPathDirectory)aDirectory inDomain:(MDSearchPathDomain)aDomain error:(NSError * _Nullable *)outError {
+	return [self URLForDirectory:aDirectory inDomain:aDomain create:NO error:outError];
+}
+
+- (NSURL *)URLForDirectory:(MDSearchPathDirectory)aDirectory inDomain:(MDSearchPathDomain)aDomain create:(BOOL)create error:(NSError * _Nullable *)outError {
+	NSURL *path = nil;
+	OSErr err = noErr;
+	FSRef folderRef;
+	if (outError) *outError = nil;
+	
+	if ( (aDirectory == MDFontCollectionsDirectory) || (aDirectory == MDFontsDisabledDirectory) || (aDirectory == MDDarwinUserCachesDirectory) ) {
+		NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
+		BOOL isDir;
+		
+		if (aDirectory == MDFontsDisabledDirectory) {
+			err = FSFindFolder(aDomain, MDFontsDirectory, create, &folderRef);
+			
+			if (err == noErr) {
+				path = [NSURL URLWithFSRef:&folderRef];
+				if (path) {
+					NSString *folderName = path.lastPathComponent;
+					
+					path = [path.URLByDeletingLastPathComponent URLByAppendingPathComponent:[folderName stringByAppendingString:@" (Disabled)"]];
+					
+					if ([fileManager fileExistsAtPath:path.path isDirectory:&isDir] && isDir) {
+						
+					} else if ([fileManager fileExistsAtPath:path.path isDirectory:&isDir] && !isDir) {
+						NSLog(@"[%@ %@] \"Fonts (Disabled)\" exists, but is a file, not a directory!", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+						path = nil;
+						
+					} else {
+						NSDictionary *attributes = nil;
+						
+						if (aDomain == MDLocalDomain) {
+							attributes = @{NSFilePosixPermissions: @0775, NSFileOwnerAccountID: @0, NSFileGroupOwnerAccountID: @80};
+							
+						} else {
+							attributes = @{NSFileOwnerAccountID: @(getuid()), NSFileGroupOwnerAccountID: @(getgid())};
+						}
+						
+						if (![fileManager createDirectoryAtURL:path withIntermediateDirectories:YES attributes:attributes error:outError]) {
+							NSLog(@"[%@ %@] failed to createDirectoryAtPath: %@ attributes: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), path, attributes);
+							
+							attributes = @{NSFilePosixPermissions: @0775UL};
+							
+							if (![fileManager createDirectoryAtURL:path withIntermediateDirectories:YES attributes:attributes error:outError]) {
+								NSLog(@"[%@ %@] failed to createDirectoryAtPath: %@ attributes: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), path, attributes);
+							}
+						}
+					}
+				}
+			} else {
+				if (err != fnfErr) {
+					NSLog(@"[%@ %@] FSFindFolder() returned %hi", NSStringFromClass([self class]), NSStringFromSelector(_cmd), err);
+					if (outError) *outError = [NSError errorWithDomain:NSOSStatusErrorDomain code:err userInfo:nil];
+				}
+			}
+		} else if (aDirectory == MDFontCollectionsDirectory) {
+			err = FSFindFolder(aDomain, MDFontCollectionsDirectory, create, &folderRef);
+			
+			if (err == noErr) {
+				path = [NSURL URLWithFSRef:&folderRef];
+			} else {
+				NSLog(@"[%@ %@] initial FSFindFolder() with MDFontCollectionsDirectory returned %hi", NSStringFromClass([self class]), NSStringFromSelector(_cmd), err);
+				err = FSFindFolder(aDomain, MDLibraryDirectory, create, &folderRef);
+				
+				if (err == noErr) {
+					path = [NSURL URLWithFSRef:&folderRef];
+					if (path) {
+						path = [path URLByAppendingPathComponent:@"FontCollections"];
+					}
+					
+					if ( !([fileManager fileExistsAtPath:path.path isDirectory:&isDir] && isDir)) {
+						path = nil;
+					}
+				} else {
+					if (err != fnfErr) {
+						NSLog(@"[%@ %@] FSFindFolder() with MDLibraryDirectory returned %hi", NSStringFromClass([self class]), NSStringFromSelector(_cmd), err);
+						if (outError) *outError = [NSError errorWithDomain:NSOSStatusErrorDomain code:err userInfo:nil];
+						
+					}
+				}
+			}
+		} else if (aDirectory == MDDarwinUserCachesDirectory) {
+			char *buffer = malloc(PATH_MAX + 1);
+			size_t size = 0;
+			size = confstr(_CS_DARWIN_USER_CACHE_DIR, buffer, PATH_MAX + 1);
+			if (size > 0 && buffer != NULL) {
+				path = [NSURL fileURLWithFileSystemRepresentation:buffer isDirectory:YES relativeToURL:nil];
+				if (path) {
+					path = path.URLByStandardizingPath;
+					if ( !([fileManager fileExistsAtPath:path.path isDirectory:&isDir] && isDir)) {
+						path = nil;
+					}
+				}
+			} else {
+				NSLog(@"[%@ %@] size <= 0 || buffer == NULL", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+				if (outError) *outError = [NSError errorWithDomain:NSPOSIXErrorDomain	code:errno userInfo:nil];
+			}
+			if (buffer)
+				free(buffer);
+		}
+	} else {
+		err = FSFindFolder(aDomain, aDirectory, create, &folderRef);
+		if (err == noErr) {
+			path = [NSURL URLWithFSRef:&folderRef];
 		} else if (err != fnfErr) {
 			NSLog(@"[%@ %@] FSFindFolder() returned %hi", NSStringFromClass([self class]), NSStringFromSelector(_cmd), err);
 			if (outError) *outError = [NSError errorWithDomain:NSOSStatusErrorDomain code:err userInfo:nil];

@@ -300,7 +300,7 @@ namespace VTFLib
 
 		vlVoid ComputeResources();	 //!< Computes header VTF directory resources.
 
-		// Interface with out reader/writer classes
+		// Interface with our reader/writer classes
 		vlBool Load(IO::Readers::IReader *Reader, vlBool bHeaderOnly);
 		vlBool Save(IO::Writers::IWriter *Writer) const;
 

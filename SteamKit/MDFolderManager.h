@@ -58,6 +58,8 @@ typedef NS_ENUM(OSType, MDSearchPathDirectory) {
 	MDQuickLookDirectory				=	kQuickLookFolderType,
 	MDServicesDirectory					=	kServicesFolderType,
 	MDColorSyncProfileDirectory			=	kColorSyncProfilesFolderType,
+	MDScreenSaversDirectory				=	kScreenSaversFolderType,
+	MDPreferencePanesDirectory			=	kPreferencePanesFolderType,
 };
 
 
@@ -75,6 +77,9 @@ typedef NS_ENUM(OSType, MDSearchPathDirectory) {
 
 - (nullable NSString *)pathForDirectory:(MDSearchPathDirectory)aDirectory inDomain:(MDSearchPathDomain)aDomain error:(NSError *__nullable*__nullable)outError;
 - (nullable NSString *)pathForDirectory:(MDSearchPathDirectory)aDirectory inDomain:(MDSearchPathDomain)aDomain create:(BOOL)create error:(NSError *__nullable*__nullable)outError;
+
+- (nullable NSURL *)URLForDirectory:(MDSearchPathDirectory)aDirectory inDomain:(MDSearchPathDomain)aDomain error:(NSError *__nullable*__nullable)outError;
+- (nullable NSURL *)URLForDirectory:(MDSearchPathDirectory)aDirectory inDomain:(MDSearchPathDomain)aDomain create:(BOOL)create error:(NSError *__nullable*__nullable)outError;
 
 - (nullable NSString *)pathForDirectory:(MDSearchPathDirectory)aDirectory forItemAtPath:(NSString *)aPath error:(NSError *__nullable*__nullable)outError;
 - (nullable NSString *)pathForDirectory:(MDSearchPathDirectory)aDirectory forItemAtPath:(NSString *)aPath create:(BOOL)create error:(NSError *__nullable*__nullable)outError;

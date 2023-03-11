@@ -1167,6 +1167,7 @@ static NSInteger copyTag = 0;
 }
 
 
+//TODO: migrate to NSFilePromiseReceiver
 - (NSArray *)outlineView:(NSOutlineView *)anOutlineView namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination forDraggedItems:(NSArray *)items {
 #if MD_DEBUG
 	NSLog(@" \"%@\" [%@ %@]", self.displayName, NSStringFromClass([self class]), NSStringFromSelector(_cmd));

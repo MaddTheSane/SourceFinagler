@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CFBundleDevelopmentRegion</key>
-	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
@@ -729,34 +727,12 @@
 			</array>
 		</dict>
 	</array>
-	<key>CFBundleExecutable</key>
-	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleGetInfoString</key>
 	<string>Source Finagler 2.5, © 2010-2012 Mark Douma. All rights reserved.</string>
-	<key>CFBundleIconFile</key>
-	<string>sourceFinagler</string>
-	<key>CFBundleIdentifier</key>
-	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
-	<key>CFBundleInfoDictionaryVersion</key>
-	<string>6.0</string>
-	<key>CFBundleName</key>
-	<string>${PRODUCT_NAME}</string>
-	<key>CFBundlePackageType</key>
-	<string>APPL</string>
-	<key>CFBundleShortVersionString</key>
-	<string>2.5</string>
 	<key>CFBundleSignature</key>
 	<string>H2Oƒ</string>
-	<key>CFBundleVersion</key>
-	<string>250</string>
 	<key>NSAppleScriptEnabled</key>
 	<true/>
-	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2010-2012 Mark Douma. All rights reserved.</string>
-	<key>NSMainNibFile</key>
-	<string>MainMenu</string>
-	<key>NSPrincipalClass</key>
-	<string>NSApplication</string>
 	<key>NSSupportsSuddenTermination</key>
 	<false/>
 	<key>OSAScriptingDefinition</key>
@@ -776,6 +752,8 @@
 			<string>Source Finagler Texture Image</string>
 			<key>UTTypeIconFile</key>
 			<string>SFTI</string>
+			<key>UTTypeIcons</key>
+			<dict/>
 			<key>UTTypeIdentifier</key>
 			<string>com.markdouma.texture-image</string>
 			<key>UTTypeReferenceURL</key>
@@ -788,6 +766,53 @@
 				</array>
 			</dict>
 		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.plain-text</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Wavefront 3D Object Material file</string>
+			<key>UTTypeIconFile</key>
+			<string></string>
+			<key>UTTypeIdentifier</key>
+			<string>com.markdouma.mtl</string>
+			<key>UTTypeReferenceURL</key>
+			<string></string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>mtl</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>com.apple.package</string>
+				<string>public.composite-content</string>
+				<string>public.3d-content</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Digital Asset Exchange (DAE) Document with Attachments</string>
+			<key>UTTypeIconFile</key>
+			<string>DAED</string>
+			<key>UTTypeIdentifier</key>
+			<string>com.markdouma.daed</string>
+			<key>UTTypeReferenceURL</key>
+			<string></string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>daed</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
+	<key>UTImportedTypeDeclarations</key>
+	<array>
 		<dict>
 			<key>UTTypeConformsTo</key>
 			<array>
@@ -1822,53 +1847,6 @@
 				</array>
 			</dict>
 		</dict>
-		<dict>
-			<key>UTTypeConformsTo</key>
-			<array>
-				<string>public.plain-text</string>
-			</array>
-			<key>UTTypeDescription</key>
-			<string>Wavefront 3D Object Material file</string>
-			<key>UTTypeIconFile</key>
-			<string></string>
-			<key>UTTypeIdentifier</key>
-			<string>com.markdouma.mtl</string>
-			<key>UTTypeReferenceURL</key>
-			<string></string>
-			<key>UTTypeTagSpecification</key>
-			<dict>
-				<key>public.filename-extension</key>
-				<array>
-					<string>mtl</string>
-				</array>
-			</dict>
-		</dict>
-		<dict>
-			<key>UTTypeConformsTo</key>
-			<array>
-				<string>com.apple.package</string>
-				<string>public.composite-content</string>
-				<string>public.3d-content</string>
-			</array>
-			<key>UTTypeDescription</key>
-			<string>Digital Asset Exchange (DAE) Document with Attachments</string>
-			<key>UTTypeIconFile</key>
-			<string>DAED</string>
-			<key>UTTypeIdentifier</key>
-			<string>com.markdouma.daed</string>
-			<key>UTTypeReferenceURL</key>
-			<string></string>
-			<key>UTTypeTagSpecification</key>
-			<dict>
-				<key>public.filename-extension</key>
-				<array>
-					<string>daed</string>
-				</array>
-			</dict>
-		</dict>
-	</array>
-	<key>UTImportedTypeDeclarations</key>
-	<array>
 		<dict>
 			<key>UTTypeConformsTo</key>
 			<array>

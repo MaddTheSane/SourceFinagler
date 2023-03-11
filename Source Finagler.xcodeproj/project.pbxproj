@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -4788,7 +4788,7 @@
 				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Source Finagler" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -6005,7 +6005,11 @@
 				INFOPLIST_FILE = "Source Image Metadata/VTF/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Source SFTI Image Metadata";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mark Douma LLC. All rights reserved.";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.markdouma.SourceFinagler.sfti-metadata";
@@ -6037,7 +6041,11 @@
 				INFOPLIST_FILE = "Source Image Metadata/VTF/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Source SFTI Image Metadata";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mark Douma LLC. All rights reserved.";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.markdouma.SourceFinagler.sfti-metadata";
@@ -6068,7 +6076,11 @@
 				INFOPLIST_FILE = "Source Image Metadata/VTF/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Source SFTI Image Metadata";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mark Douma LLC. All rights reserved.";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.markdouma.SourceFinagler.sfti-metadata";
@@ -6100,7 +6112,11 @@
 				INFOPLIST_FILE = "Source Image Metadata/DDS/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Source DDS Image Metadata";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mark Douma LLC. All rights reserved.";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.markdouma.SourceFinagler.dds-Image-Metadata";
@@ -6128,7 +6144,11 @@
 				INFOPLIST_FILE = "Source Image Metadata/DDS/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Source DDS Image Metadata";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mark Douma LLC. All rights reserved.";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.markdouma.SourceFinagler.dds-Image-Metadata";
@@ -6156,7 +6176,11 @@
 				INFOPLIST_FILE = "Source Image Metadata/DDS/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Source DDS Image Metadata";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mark Douma LLC. All rights reserved.";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.markdouma.SourceFinagler.dds-Image-Metadata";
@@ -6187,7 +6211,11 @@
 				INFOPLIST_FILE = "Source Image Metadata/VTF/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Source VTF Image Metadata";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mark Douma LLC. All rights reserved.";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.markdouma.SourceFinagler.vtf-Image-Metadata";
@@ -6215,7 +6243,11 @@
 				INFOPLIST_FILE = "Source Image Metadata/VTF/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Source VTF Image Metadata";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mark Douma LLC. All rights reserved.";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.markdouma.SourceFinagler.vtf-Image-Metadata";
@@ -6243,7 +6275,11 @@
 				INFOPLIST_FILE = "Source Image Metadata/VTF/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Source VTF Image Metadata";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mark Douma LLC. All rights reserved.";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.markdouma.SourceFinagler.vtf-Image-Metadata";
@@ -6304,7 +6340,8 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 				STRIP_INSTALLED_PRODUCT = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				VALID_ARCHS = "$(inherited) x86_64h";
 				WARNING_CFLAGS = (
@@ -6331,6 +6368,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SourceFinagler/SourceFinagler_Prefix.pch;
 				GCC_WARN_SHADOW = NO;
+				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/SteamKit\"",
 					"\"$(SRCROOT)/SourceFinagler\"",
@@ -6339,8 +6377,15 @@
 				);
 				INFOPLIST_FILE = "SourceFinagler/SourceFinagler-Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2010-2012 Mark Douma. All rights reserved.";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				INSTALL_PATH = "$(HOME)/Applications";
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks/ @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@loader_path/../Frameworks",
+					"@executable_path/../Frameworks/",
+					"@executable_path/../Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -6359,12 +6404,20 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 250;
 				DEAD_CODE_STRIPPING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SourceFinagler/SourceFinagler_Prefix.pch;
+				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SourceFinaglerAgent/SourceFinaglerAgent-Info.plist";
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2011-2013 Mark Douma. All rights reserved.";
 				INSTALL_PATH = "$(HOME)/Applications";
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks/";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@loader_path/../Frameworks",
+					"@executable_path/../Frameworks/",
+				);
+				MARKETING_VERSION = 2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.SourceFinaglerAgent;
 				PRODUCT_NAME = SourceFinaglerAgent;
 				SKIP_INSTALL = YES;
@@ -6378,6 +6431,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 250;
 				DEAD_CODE_STRIPPING = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6386,13 +6440,19 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SourceFinagler/SourceFinagler_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "MD_BUILDING_FOR_SOURCE_ADDON_FINAGLER=1";
+				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SourceAddonFinagler/Source Addon Finagler-Info.plist";
+				INFOPLIST_KEY_LSUIElement = NO;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2010-2013 Mark Douma. All rights reserved.";
+				INFOPLIST_KEY_NSMainNibFile = VSSourceAddonFinaglerMainMenu;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
+				MARKETING_VERSION = 2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.SourceAddonFinagler;
 				PRODUCT_NAME = "Source Addon Finagler";
 				SKIP_INSTALL = YES;
@@ -6414,6 +6474,7 @@
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SteamKit/SteamKit_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "__MAC_OS_X_MEMORY_MANAGER_CLEAN__=1";
 				INFOPLIST_FILE = "SteamKit/SteamKit-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks/";
 				LIBRARY_SEARCH_PATHS = (
@@ -6533,7 +6594,9 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SourceSpotlightImporter/Source-Info.plist";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2010-2013 Mark Douma. VTFLib 1.3.2 © 2005-2013 Neil Jedrzejewski & Ryan Gregg.";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../../../Frameworks/";
 				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.mdimporter.Source;
@@ -6551,7 +6614,9 @@
 				DEAD_CODE_STRIPPING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SourceFinagler/SourceFinagler_Prefix.pch;
+				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SourceImageQuickLook/SourceImage-Info.plist";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2010-2013 Mark Douma. VTFLib 1.3.2 © 2005-2013 Neil Jedrzejewski & Ryan Gregg.";
 				INSTALL_PATH = /Library/QuickLook;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../../../Frameworks/";
 				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.qlgenerator.SourceImage;
@@ -6707,7 +6772,10 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "NVTextureTools/src/nvtt/NVTextureTools-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "/Library/Frameworks @executable_path/../Frameworks/";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/Library/Frameworks,
+					"@executable_path/../Frameworks/",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/NVTextureTools\"",
@@ -6744,7 +6812,11 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				INSTALL_PATH = /usr/local/bin;
-				LD_RUNPATH_SEARCH_PATHS = "/Library/Frameworks @executable_path/../Frameworks/ @executable_path/";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/Library/Frameworks,
+					"@executable_path/../Frameworks/",
+					"@executable_path/",
+				);
 				PRODUCT_NAME = decompress;
 			};
 			name = "Release-MAS";
@@ -6764,7 +6836,10 @@
 				GCC_PREFIX_HEADER = "ddsFinagler/ddsFinagler-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/ @executable_path/../Frameworks/";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@loader_path/",
+					"@executable_path/../Frameworks/",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = "Release-MAS";
@@ -6792,7 +6867,11 @@
 				INFOPLIST_FILE = VTFImagePreviewer/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SourceImagePreviewer;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mark Douma LLC. All rights reserved.";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.SourceFinagler.VTFImagePreviewer;
@@ -6823,7 +6902,11 @@
 				INFOPLIST_FILE = VTFImagePreviewer/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SourceImagePreviewer;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mark Douma LLC. All rights reserved.";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.SourceFinagler.VTFImagePreviewer;
@@ -6853,7 +6936,11 @@
 				INFOPLIST_FILE = VTFImagePreviewer/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SourceImagePreviewer;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mark Douma LLC. All rights reserved.";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.SourceFinagler.VTFImagePreviewer;
@@ -6887,7 +6974,11 @@
 				INFOPLIST_FILE = VTFImageThumbnailer/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = VTFImageThumbnailer;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mark Douma LLC. All rights reserved.";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 2.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -6922,7 +7013,11 @@
 				INFOPLIST_FILE = VTFImageThumbnailer/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = VTFImageThumbnailer;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mark Douma LLC. All rights reserved.";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 2.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -6956,7 +7051,11 @@
 				INFOPLIST_FILE = VTFImageThumbnailer/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = VTFImageThumbnailer;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mark Douma LLC. All rights reserved.";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 2.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -7092,7 +7191,8 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 				STRIP_INSTALLED_PRODUCT = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				VALID_ARCHS = "$(inherited) x86_64h";
 				WARNING_CFLAGS = (
@@ -7109,13 +7209,21 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 250;
 				DEAD_CODE_STRIPPING = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SourceFinagler/SourceFinagler_Prefix.pch;
+				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SourceFinaglerAgent/SourceFinaglerAgent-Info.plist";
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2011-2013 Mark Douma. All rights reserved.";
 				INSTALL_PATH = "$(HOME)/Applications";
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks/";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@loader_path/../Frameworks",
+					"@executable_path/../Frameworks/",
+				);
+				MARKETING_VERSION = 2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.SourceFinaglerAgent;
 				PRODUCT_NAME = SourceFinaglerAgent;
 				SKIP_INSTALL = YES;
@@ -7129,12 +7237,20 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 250;
 				DEAD_CODE_STRIPPING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SourceFinagler/SourceFinagler_Prefix.pch;
+				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SourceFinaglerAgent/SourceFinaglerAgent-Info.plist";
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2011-2013 Mark Douma. All rights reserved.";
 				INSTALL_PATH = "$(HOME)/Applications";
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks/";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@loader_path/../Frameworks",
+					"@executable_path/../Frameworks/",
+				);
+				MARKETING_VERSION = 2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.SourceFinaglerAgent;
 				PRODUCT_NAME = SourceFinaglerAgent;
 				SKIP_INSTALL = YES;
@@ -7157,6 +7273,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SteamKit/SteamKit_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "__MAC_OS_X_MEMORY_MANAGER_CLEAN__=1";
 				INFOPLIST_FILE = "SteamKit/SteamKit-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks/";
 				LIBRARY_SEARCH_PATHS = (
@@ -7184,6 +7301,7 @@
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SteamKit/SteamKit_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "__MAC_OS_X_MEMORY_MANAGER_CLEAN__=1";
 				INFOPLIST_FILE = "SteamKit/SteamKit-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks/";
 				LIBRARY_SEARCH_PATHS = (
@@ -7341,7 +7459,10 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/ @executable_path/../Frameworks/";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@loader_path/",
+					"@executable_path/../Frameworks/",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -7361,7 +7482,10 @@
 				GCC_PREFIX_HEADER = "ddsFinagler/ddsFinagler-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/ @executable_path/../Frameworks/";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@loader_path/",
+					"@executable_path/../Frameworks/",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -7552,6 +7676,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SourceFinagler/SourceFinagler_Prefix.pch;
 				GCC_WARN_SHADOW = NO;
+				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/SteamKit\"",
 					"\"$(SRCROOT)/SourceFinagler\"",
@@ -7560,8 +7685,15 @@
 				);
 				INFOPLIST_FILE = "SourceFinagler/SourceFinagler-Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2010-2012 Mark Douma. All rights reserved.";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				INSTALL_PATH = "$(HOME)/Applications";
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks/ @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@loader_path/../Frameworks",
+					"@executable_path/../Frameworks/",
+					"@executable_path/../Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -7589,6 +7721,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SourceFinagler/SourceFinagler_Prefix.pch;
 				GCC_WARN_SHADOW = NO;
+				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/SteamKit\"",
 					"\"$(SRCROOT)/SourceFinagler\"",
@@ -7597,8 +7730,15 @@
 				);
 				INFOPLIST_FILE = "SourceFinagler/SourceFinagler-Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2010-2012 Mark Douma. All rights reserved.";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				INSTALL_PATH = "$(HOME)/Applications";
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks/ @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@loader_path/../Frameworks",
+					"@executable_path/../Frameworks/",
+					"@executable_path/../Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -7618,7 +7758,9 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SourceSpotlightImporter/Source-Info.plist";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2010-2013 Mark Douma. VTFLib 1.3.2 © 2005-2013 Neil Jedrzejewski & Ryan Gregg.";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../../../Frameworks/";
 				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.mdimporter.Source;
@@ -7635,7 +7777,9 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SourceSpotlightImporter/Source-Info.plist";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2010-2013 Mark Douma. VTFLib 1.3.2 © 2005-2013 Neil Jedrzejewski & Ryan Gregg.";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../../../Frameworks/";
 				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.mdimporter.Source;
@@ -7654,7 +7798,9 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SourceFinagler/SourceFinagler_Prefix.pch;
+				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SourceImageQuickLook/SourceImage-Info.plist";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2010-2013 Mark Douma. VTFLib 1.3.2 © 2005-2013 Neil Jedrzejewski & Ryan Gregg.";
 				INSTALL_PATH = /Library/QuickLook;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../../../Frameworks/";
 				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.qlgenerator.SourceImage;
@@ -7672,7 +7818,9 @@
 				DEAD_CODE_STRIPPING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SourceFinagler/SourceFinagler_Prefix.pch;
+				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SourceImageQuickLook/SourceImage-Info.plist";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2010-2013 Mark Douma. VTFLib 1.3.2 © 2005-2013 Neil Jedrzejewski & Ryan Gregg.";
 				INSTALL_PATH = /Library/QuickLook;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../../../Frameworks/";
 				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.qlgenerator.SourceImage;
@@ -7692,7 +7840,11 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INSTALL_PATH = /usr/local/bin;
-				LD_RUNPATH_SEARCH_PATHS = "/Library/Frameworks @executable_path/../Frameworks/ @executable_path/";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/Library/Frameworks,
+					"@executable_path/../Frameworks/",
+					"@executable_path/",
+				);
 				PRODUCT_NAME = decompress;
 			};
 			name = Debug;
@@ -7706,7 +7858,11 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				INSTALL_PATH = /usr/local/bin;
-				LD_RUNPATH_SEARCH_PATHS = "/Library/Frameworks @executable_path/../Frameworks/ @executable_path/";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/Library/Frameworks,
+					"@executable_path/../Frameworks/",
+					"@executable_path/",
+				);
 				PRODUCT_NAME = decompress;
 			};
 			name = Release;
@@ -7923,7 +8079,10 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "NVTextureTools/src/nvtt/NVTextureTools-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "/Library/Frameworks @executable_path/../Frameworks/";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/Library/Frameworks,
+					"@executable_path/../Frameworks/",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/NVTextureTools\"",
@@ -7960,7 +8119,10 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "NVTextureTools/src/nvtt/NVTextureTools-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "/Library/Frameworks @executable_path/../Frameworks/";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/Library/Frameworks,
+					"@executable_path/../Frameworks/",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/NVTextureTools\"",
@@ -7982,6 +8144,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 250;
 				DEAD_CODE_STRIPPING = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -7991,13 +8154,19 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SourceFinagler/SourceFinagler_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "MD_BUILDING_FOR_SOURCE_ADDON_FINAGLER=1";
+				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SourceAddonFinagler/Source Addon Finagler-Info.plist";
+				INFOPLIST_KEY_LSUIElement = NO;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2010-2013 Mark Douma. All rights reserved.";
+				INFOPLIST_KEY_NSMainNibFile = VSSourceAddonFinaglerMainMenu;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
+				MARKETING_VERSION = 2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.SourceAddonFinagler;
 				PRODUCT_NAME = "Source Addon Finagler";
 				SKIP_INSTALL = YES;
@@ -8011,6 +8180,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 250;
 				DEAD_CODE_STRIPPING = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -8019,13 +8189,19 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SourceFinagler/SourceFinagler_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "MD_BUILDING_FOR_SOURCE_ADDON_FINAGLER=1";
+				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SourceAddonFinagler/Source Addon Finagler-Info.plist";
+				INFOPLIST_KEY_LSUIElement = NO;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2010-2013 Mark Douma. All rights reserved.";
+				INFOPLIST_KEY_NSMainNibFile = VSSourceAddonFinaglerMainMenu;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
+				MARKETING_VERSION = 2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.SourceAddonFinagler;
 				PRODUCT_NAME = "Source Addon Finagler";
 				SKIP_INSTALL = YES;

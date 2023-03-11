@@ -8,6 +8,7 @@
 
 #import "TKDocumentController.h"
 #import <TextureKit/TextureKit.h>
+#import <UniformTypeIdentifiers/UniformTypeIdentifiers.h>
 
 #import "TKImageDocument.h"
 
@@ -144,20 +145,25 @@ NSString * const TKApplicationBundleIdentifier = @"com.markdouma.SourceFinagler"
 - (NSArray *)fileExtensionsFromType:(NSString *)typeName {
 //	NSLog(@"[%@ %@] typeName == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), typeName);
 	
-    NSArray *readExts = nil;
-	
-	NSDictionary *utiDeclarations = (NSDictionary *)CFBridgingRelease(UTTypeCopyDeclaration((__bridge CFStringRef)typeName));
-	NSDictionary *utiSpec = utiDeclarations[(NSString *)kUTTypeTagSpecificationKey];
-	if (utiSpec) {
-		id extensions = utiSpec[(NSString *)kUTTagClassFilenameExtension];
-		if ([extensions isKindOfClass:[NSString class]]) {
-			readExts = @[extensions];
-		} else if ([extensions isKindOfClass:[NSArray class]]) {
-			readExts = [NSArray arrayWithArray:extensions];
+	if (@available(macOS 11.0, *)) {
+		UTType *theType = [UTType typeWithIdentifier:typeName];
+		return theType.tags[UTTagClassFilenameExtension];
+	} else {
+		NSArray *readExts = nil;
+		
+		NSDictionary *utiDeclarations = (NSDictionary *)CFBridgingRelease(UTTypeCopyDeclaration((__bridge CFStringRef)typeName));
+		NSDictionary *utiSpec = utiDeclarations[(NSString *)kUTTypeTagSpecificationKey];
+		if (utiSpec) {
+			id extensions = utiSpec[(NSString *)kUTTagClassFilenameExtension];
+			if ([extensions isKindOfClass:[NSString class]]) {
+				readExts = @[extensions];
+			} else if ([extensions isKindOfClass:[NSArray class]]) {
+				readExts = [NSArray arrayWithArray:extensions];
+			}
 		}
+		
+		return readExts;
 	}
-    
-    return readExts;
 }
 
 @end
