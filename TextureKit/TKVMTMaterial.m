@@ -35,7 +35,7 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 };
 
 
-@interface TKToken : NSObject <NSCopying> {
+@interface TKTextureToken : NSObject <NSCopying> {
 	NSString			*stringValue;
 	TKTokenType			type;
 	unichar				charValue;
@@ -60,7 +60,7 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 
 @end
 
-@implementation TKToken
+@implementation TKTextureToken
 @synthesize stringValue;
 @synthesize type;
 @synthesize charValue;
@@ -119,8 +119,8 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 	NSData				*data;
 	NSUInteger			currentDataIndex;
 	
-	TKToken				*currentToken;
-	TKToken				*nextToken;
+	TKTextureToken				*currentToken;
+	TKTextureToken				*nextToken;
 	NSUInteger			lineIndex;
 	
 }
@@ -129,8 +129,8 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 - (instancetype)initWithData:(NSData *)aData;
 
 
-@property (nonatomic, strong) TKToken *currentToken;
-@property (nonatomic, strong) TKToken *nextToken;
+@property (nonatomic, strong) TKTextureToken *currentToken;
+@property (nonatomic, strong) TKTextureToken *nextToken;
 @property (nonatomic, assign) NSUInteger lineIndex;
 
 //	equiv of CByteTokenizer::GetNextToken()
@@ -138,7 +138,7 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 
 // equiv of CByteTokenizer::Next()
 // "Get the current token and return the next one."
-- (TKToken *)nextTokenWithString:(NSString *)aString;
+- (TKTextureToken *)nextTokenWithString:(NSString *)aString;
 
 
 @end
@@ -166,7 +166,7 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 #endif
 	
 	if (currentDataIndex == data.length) {
-		self.nextToken = [TKToken tokenWithType:TKTokenEOF];
+		self.nextToken = [TKTextureToken tokenWithType:TKTokenEOF];
 		return;
 	}
 	
@@ -186,36 +186,36 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 	if (aString) {
 		for (NSUInteger i = 0; i < aString.length; i++) {
 			if (nextChar == [aString characterAtIndex:i]) {
-				self.nextToken = [TKToken tokenWithType:TKTokenSpecial char:[aString characterAtIndex:i]];
+				self.nextToken = [TKTextureToken tokenWithType:TKTokenSpecial char:[aString characterAtIndex:i]];
 				return;
 			}
 		}
 		
-		self.nextToken = [TKToken charTokenWithChar:nextChar];
+		self.nextToken = [TKTextureToken charTokenWithChar:nextChar];
 		return;
 	}
 	
 	if (nextChar == '\r' || nextChar == '\n') {
-		self.nextToken = [TKToken tokenWithType:TKTokenNewline char:nextChar];
+		self.nextToken = [TKTextureToken tokenWithType:TKTokenNewline char:nextChar];
 	} else if (isspace(nextChar)) {
-		self.nextToken = [TKToken tokenWithType:TKTokenWhitespace char:nextChar];
+		self.nextToken = [TKTextureToken tokenWithType:TKTokenWhitespace char:nextChar];
 	} else if (nextChar == '/') {
-		self.nextToken = [TKToken tokenWithType:TKTokenForwardSlash char:nextChar];
+		self.nextToken = [TKTextureToken tokenWithType:TKTokenForwardSlash char:nextChar];
 	} else if (nextChar == '\"') {
-		self.nextToken = [TKToken tokenWithType:TKTokenQuote char:nextChar];
+		self.nextToken = [TKTextureToken tokenWithType:TKTokenQuote char:nextChar];
 	} else if (nextChar == '{') {
-		self.nextToken = [TKToken tokenWithType:TKTokenOpenBrace char:nextChar];
+		self.nextToken = [TKTextureToken tokenWithType:TKTokenOpenBrace char:nextChar];
 	} else if (nextChar == '}') {
-		self.nextToken = [TKToken tokenWithType:TKTokenCloseBrace char:nextChar];
+		self.nextToken = [TKTextureToken tokenWithType:TKTokenCloseBrace char:nextChar];
 	} else {
-		self.nextToken = [TKToken charTokenWithChar:nextChar];
+		self.nextToken = [TKTextureToken charTokenWithChar:nextChar];
 	}
 }
 
 
 /// equiv of CByteTokenizer::Next()
 /// "Get the current token and return the next one."
-- (TKToken *)nextTokenWithString:(NSString *)aString {
+- (TKTextureToken *)nextTokenWithString:(NSString *)aString {
 	self.currentToken = nextToken;
 	self.nextToken = nil;
 	
@@ -227,7 +227,7 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 	return currentToken;
 }
 
-- (TKToken *)peek {
+- (TKTextureToken *)peek {
 	return nextToken;
 }
 
@@ -236,26 +236,26 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 // Tokenizes multi byte tokens.
 @interface TKTokenizer : NSObject {
 	TKByteTokenizer		*byteTokenizer;
-	TKToken				*currentToken;
-	TKToken				*nextToken;
+	TKTextureToken		*currentToken;
+	TKTextureToken		*nextToken;
 }
 
 + (instancetype)tokenizerWithByteTokenizer:(TKByteTokenizer *)aByteTokenizer;
 - (instancetype)initWithByteTokenizer:(TKByteTokenizer *)aByteTokenizer;
 
 @property (nonatomic, strong) TKByteTokenizer *byteTokenizer;
-@property (nonatomic, strong) TKToken *currentToken;
-@property (nonatomic, strong) TKToken *nextToken;
+@property (nonatomic, strong) TKTextureToken *currentToken;
+@property (nonatomic, strong) TKTextureToken *nextToken;
 
 //	equiv of CTokenizer::GetNextToken()
 - (void)scan;
 
 
 //  equiv of CTokenizer::Next()
-- (TKToken *)next;
+- (TKTextureToken *)next;
 
 //  equiv of CTokenizer::Peek()
-- (TKToken *)peek;
+- (TKTextureToken *)peek;
 
 //  equiv of CTokenizer::GetLine()
 - (NSUInteger)lineIndex;
@@ -285,7 +285,7 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 
 //	equiv of CTokenizer::GetNextToken()
 - (void)scan {
-	TKToken *token = [byteTokenizer nextTokenWithString:nil];
+	TKTextureToken *token = [byteTokenizer nextTokenWithString:nil];
 	
 	// Consume all whitespace.
 	
@@ -316,9 +316,9 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 			
 			
 			if (token.type == TKTokenEOF) {
-				self.nextToken = [TKToken tokenWithType:TKTokenEOF];
+				self.nextToken = [TKTextureToken tokenWithType:TKTokenEOF];
 			} else {
-				self.nextToken = [TKToken tokenWithType:TKTokenNewline];
+				self.nextToken = [TKTextureToken tokenWithType:TKTokenNewline];
 			}
 			
 			break;
@@ -348,7 +348,7 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 										  description:@"expected closing quote"];
 				
 			} else {
-				self.nextToken = [TKToken stringTokenWithStringValue:mString isQuoted:YES];
+				self.nextToken = [TKTextureToken stringTokenWithStringValue:mString isQuoted:YES];
 			}
 			
 			break;
@@ -368,7 +368,7 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 				
 			}
 			
-			self.nextToken = [TKToken stringTokenWithStringValue:mString isQuoted:NO];
+			self.nextToken = [TKTextureToken stringTokenWithStringValue:mString isQuoted:NO];
 			
 			break;
 		}
@@ -399,7 +399,7 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 
 //  equiv of CTokenizer::Next()
 
-- (TKToken *)next {
+- (TKTextureToken *)next {
 	self.currentToken = nextToken;
 	
 	self.nextToken = nil;
@@ -409,7 +409,7 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 	return currentToken;
 }
 
-- (TKToken *)peek {
+- (TKTextureToken *)peek {
 	return nextToken;
 }
 
@@ -456,7 +456,7 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 - (TKVMTNode *)rootNode {
 	TKVMTNode *groupNode = nil;
 	
-	TKToken *token = [tokenizer next];
+	TKTextureToken *token = [tokenizer next];
 	
 	// Consume all newlines.
 	while (token.type == TKTokenNewline) {
@@ -481,7 +481,7 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 			token = [tokenizer next];
 		}
 		
-		TKToken *peek = [tokenizer peek];
+		TKTextureToken *peek = [tokenizer peek];
 		
 		if (peek.type == TKTokenEOF) {
 			
@@ -513,7 +513,7 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 
 ///	Parse a group starting at the first brace and ending at the last.
 - (void)parseGroupNode:(TKVMTNode *)groupNode {
-	TKToken *token = [tokenizer next];
+	TKTextureToken *token = [tokenizer next];
 	
 	// Consume all newlines.
 	while (token.type == TKTokenNewline) {
@@ -543,7 +543,7 @@ typedef NS_ENUM(NSUInteger, TKTokenType) {
 		
 		// If we have a string we could have a pair or nested group.
 		if (tokenType == TKTokenString || tokenType == TKTokenQuotedString) {
-			TKToken *peek = [tokenizer peek];
+			TKTextureToken *peek = [tokenizer peek];
 			
 			if (peek.type == TKTokenString || peek.type == TKTokenQuotedString) {
 				// We have a pair.
