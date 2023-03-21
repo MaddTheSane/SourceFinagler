@@ -28,11 +28,17 @@ static CIKernel *TKGrayscaleFilterKernel = nil;
 	if ((self = [super init])) {
 		if (TKGrayscaleFilterKernel == nil) {
 			NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-			NSArray *kernels = [CIKernel kernelsWithString:[NSString stringWithContentsOfFile:[bundle pathForResource:@"TKGrayscaleFilter" ofType:@"cikernel"]
-																					 encoding:NSUTF8StringEncoding
-																						error:NULL]];
-			if (kernels.count) {
-				TKGrayscaleFilterKernel = kernels[0];
+			NSURL *metalLibURL = [bundle URLForResource:@"default" withExtension:@"metallib"];
+			NSData *metalLibData = [NSData dataWithContentsOfURL:metalLibURL options:0 error:NULL];
+			
+			TKGrayscaleFilterKernel = [CIKernel kernelWithFunctionName:@"grayscaleFilter" fromMetalLibraryData:metalLibData error:NULL];
+			if (TKGrayscaleFilterKernel == nil) {
+				NSArray *kernels = [CIKernel kernelsWithString:[NSString stringWithContentsOfFile:[bundle pathForResource:@"TKGrayscaleFilter" ofType:@"cikernel"]
+																				encoding:NSUTF8StringEncoding
+																				   error:NULL]];
+				if (kernels.count) {
+					TKGrayscaleFilterKernel = kernels[0];
+				}
 			}
 		}
 		self.redScale = @(1.0/3.0);

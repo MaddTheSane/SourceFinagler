@@ -77,8 +77,10 @@ typedef NS_ENUM(NSUInteger, TKVTFFormat) {
 TEXTUREKIT_EXTERN NSString *NSStringFromVTFFormat(TKVTFFormat aFormat);
 TEXTUREKIT_EXTERN TKVTFFormat TKVTFFormatFromString(NSString *aFormat);
 
-TEXTUREKIT_EXTERN NSString * const TKVTFType;			// UTI Type
-TEXTUREKIT_EXTERN NSString * const TKVTFFileType;		// filename extension
+//! UTI Type
+TEXTUREKIT_EXTERN NSString * const TKVTFType;
+//! filename extension
+TEXTUREKIT_EXTERN NSString * const TKVTFFileType;
 TEXTUREKIT_EXTERN NSPasteboardType const TKVTFPboardType NS_SWIFT_NAME(tkVTF);
 
 

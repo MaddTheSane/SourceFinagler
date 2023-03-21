@@ -98,8 +98,10 @@ typedef NS_ENUM(NSUInteger, TKDDSFormat) {
 TEXTUREKIT_EXTERN NSString *NSStringFromDDSFormat(TKDDSFormat aFormat);
 TEXTUREKIT_EXTERN TKDDSFormat TKDDSFormatFromString(NSString *aFormat);
 
-TEXTUREKIT_EXTERN NSString * const TKDDSType;			// UTI Type
-TEXTUREKIT_EXTERN NSString * const TKDDSFileType;		// filename extension
+//! UTI Type
+TEXTUREKIT_EXTERN NSString * const TKDDSType;
+//! filename extension
+TEXTUREKIT_EXTERN NSString * const TKDDSFileType;
 TEXTUREKIT_EXTERN NSPasteboardType const TKDDSPboardType NS_SWIFT_NAME(tkDDS);
 
 NS_ENUM(OSType) {

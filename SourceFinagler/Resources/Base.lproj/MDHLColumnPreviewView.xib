@@ -24,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
             <subviews>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="15">
-                    <rect key="frame" x="8" y="312" width="50" height="14"/>
+                    <rect key="frame" x="8" y="312" width="49" height="14"/>
                     <buttonCell key="cell" type="square" title="Preview:" bezelStyle="shadowlessSquare" alignment="left" controlSize="small" inset="2" id="16">
                         <behavior key="behavior" lightByContents="YES"/>
                         <font key="font" metaFont="smallSystem"/>

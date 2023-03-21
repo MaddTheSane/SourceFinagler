@@ -101,6 +101,7 @@
 		5563395C290B421B0058FA82 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1CA284F13A2E2C100235C98 /* Quartz.framework */; };
 		558672FC1D7E874C00E26A11 /* NVImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA8FD125E71A200CA78FF /* NVImage.framework */; };
 		558673021D7E8BB700E26A11 /* NVCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA7EA125E5C9600CA78FF /* NVCore.framework */; };
+		558946CB29CA3FF400B17DC0 /* TKGrayscaleFilter.metal in Sources */ = {isa = PBXBuildFile; fileRef = 558946CA29CA3FF400B17DC0 /* TKGrayscaleFilter.metal */; };
 		558FACC220AB93EF00AC7001 /* CompressorETC.h in Headers */ = {isa = PBXBuildFile; fileRef = 558FACC020AB93EE00AC7001 /* CompressorETC.h */; };
 		558FACC320AB93EF00AC7001 /* CompressorETC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 558FACC120AB93EF00AC7001 /* CompressorETC.cpp */; };
 		558FACC920ABADDE00AC7001 /* rg_etc1.h in Headers */ = {isa = PBXBuildFile; fileRef = 558FACC620ABADDD00AC7001 /* rg_etc1.h */; };
@@ -1257,6 +1258,8 @@
 		5563394B290B1FD80058FA82 /* SourceImageThumbnailer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SourceImageThumbnailer.entitlements; sourceTree = "<group>"; };
 		55633954290B203C0058FA82 /* SourceImageThumbnailer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SourceImageThumbnailer-Bridging-Header.h"; sourceTree = "<group>"; };
 		558672FB1D7E857600E26A11 /* cmdline.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = cmdline.h; path = nvtt/tools/cmdline.h; sourceTree = "<group>"; };
+		558946CA29CA3FF400B17DC0 /* TKGrayscaleFilter.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = TKGrayscaleFilter.metal; sourceTree = "<group>"; };
+		558946CC29CA453B00B17DC0 /* TKSingleChannelFilter.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = TKSingleChannelFilter.metal; sourceTree = "<group>"; };
 		558FACC020AB93EE00AC7001 /* CompressorETC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompressorETC.h; sourceTree = "<group>"; };
 		558FACC120AB93EF00AC7001 /* CompressorETC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompressorETC.cpp; sourceTree = "<group>"; };
 		558FACC620ABADDD00AC7001 /* rg_etc1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rg_etc1.h; sourceTree = "<group>"; };
@@ -3557,9 +3560,11 @@
 				C1EEE1991450A6D700CB8ED6 /* TKGrayscaleFilter.h */,
 				C1EEE19A1450A6D700CB8ED6 /* TKGrayscaleFilter.m */,
 				C1EEE1C21450AC0800CB8ED6 /* TKGrayscaleFilter.cikernel */,
+				558946CA29CA3FF400B17DC0 /* TKGrayscaleFilter.metal */,
 				C19EB1CD145586320021185E /* TKSingleChannelFilter.h */,
 				C19EB1CE145586320021185E /* TKSingleChannelFilter.m */,
 				C19EB1E6145586FF0021185E /* TKSingleChannelFilter.cikernel */,
+				558946CC29CA453B00B17DC0 /* TKSingleChannelFilter.metal */,
 				C19EB1D0145586580021185E /* TKMultiChannelFilter.h */,
 				C19EB1D1145586580021185E /* TKMultiChannelFilter.m */,
 				C19EB1E5145586FF0021185E /* TKMultiChannelFilter.cikernel */,
@@ -5311,6 +5316,7 @@
 				C12D372D12E14CD200397411 /* MDScopeBarView.m in Sources */,
 				C190888813932B2800656A78 /* VSGameAdditions.m in Sources */,
 				C1908B5813935CD000656A78 /* MDImageTextCell.m in Sources */,
+				558946CB29CA3FF400B17DC0 /* TKGrayscaleFilter.metal in Sources */,
 				C11CA5E713A4E84D006CC348 /* MDCopyOperationSeparatorView.m in Sources */,
 				C11CA69813A4F9FB006CC348 /* MDCopyOperationContentView.m in Sources */,
 				C1A2DDD413D3B927001ABB83 /* TKImageExportPreviewView.m in Sources */,
@@ -6391,6 +6397,9 @@
 					"\"$(SRCROOT)\"",
 				);
 				MARKETING_VERSION = 2.5;
+				MTLLINKER_FLAGS = "-fcikernel";
+				MTL_COMPILER_FLAGS = "-fcikernel";
+				MTL_LANGUAGE_REVISION = Metal24;
 				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.SourceFinagler;
 				PRODUCT_NAME = "Source Finagler";
 				STRIP_INSTALLED_PRODUCT = YES;
@@ -7699,6 +7708,9 @@
 					"\"$(SRCROOT)\"",
 				);
 				MARKETING_VERSION = 2.5;
+				MTLLINKER_FLAGS = "-fcikernel";
+				MTL_COMPILER_FLAGS = "-fcikernel";
+				MTL_LANGUAGE_REVISION = Metal24;
 				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.SourceFinagler;
 				PRODUCT_NAME = "Source Finagler";
 			};
@@ -7744,6 +7756,9 @@
 					"\"$(SRCROOT)\"",
 				);
 				MARKETING_VERSION = 2.5;
+				MTLLINKER_FLAGS = "-fcikernel";
+				MTL_COMPILER_FLAGS = "-fcikernel";
+				MTL_LANGUAGE_REVISION = Metal24;
 				PRODUCT_BUNDLE_IDENTIFIER = com.markdouma.SourceFinagler;
 				PRODUCT_NAME = "Source Finagler";
 				STRIP_INSTALLED_PRODUCT = YES;
