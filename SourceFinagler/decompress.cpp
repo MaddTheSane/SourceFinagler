@@ -114,7 +114,8 @@ int main(int argc, char *argv[])
  	}
 
 	// Load surface.
-	nv::DirectDrawSurface dds(input.str());
+	nv::DirectDrawSurface dds = nv::DirectDrawSurface();
+    dds.load(input.str());
 	if (!dds.isValid())
 	{
 		fprintf(stderr, "The file '%s' is not a valid DDS file.\n", input.str());
@@ -167,7 +168,7 @@ int main(int argc, char *argv[])
 	{
 		for (uint m = 0; m < mipmapCount; m++)
 		{
-			dds.mipmap(&mipmap, f, m);
+            imageFromDDS(&mipmap, dds, f, m);
 	
 			// set output filename, if we are doing faces and/or mipmaps
 			name.copy(output);
