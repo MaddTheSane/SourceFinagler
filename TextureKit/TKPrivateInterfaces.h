@@ -6,6 +6,7 @@
 //  Copyright (c) 2010-2013 Mark Douma LLC. All rights reserved.
 //
 
+#import <AppKit/AppKit.h>
 #import <TextureKit/TKImageRep.h>
 
 

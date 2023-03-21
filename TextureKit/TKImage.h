@@ -6,7 +6,7 @@
 //  Copyright (c) 2010-2013 Mark Douma LLC. All rights reserved.
 //
 
-#import <AppKit/NSImage.h>
+#import <AppKit/AppKit.h>
 #import <TextureKit/TextureKitDefines.h>
 #import <TextureKit/TKDDSImageRep.h>
 #import <TextureKit/TKVTFImageRep.h>
@@ -31,7 +31,7 @@ typedef NS_ENUM(NSUInteger, TKImageType) {
 
 TEXTUREKIT_EXTERN NSString * const TKSFTextureImageType;		// UTI Type
 TEXTUREKIT_EXTERN NSString * const TKSFTextureImageFileType;	// filename extension
-TEXTUREKIT_EXTERN NSPasteboardType const TKSFTextureImagePboardType;
+TEXTUREKIT_EXTERN NSPasteboardType const TKSFTextureImagePboardType NS_SWIFT_NAME(SFTextureImage);
 
 TEXTUREKIT_EXTERN NSData * TKSFTextureImageMagicData;
 

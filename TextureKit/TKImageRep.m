@@ -105,23 +105,23 @@ NSString * const TKImageRoundModeKey					= @"TKImageRoundMode";
 
 typedef struct TKDXTCompressionQualityDescription {
 	TKDXTCompressionQuality		compressionQuality;
-	const char					*description;
+	NSString					*description;
 } TKDXTCompressionQualityDescription;
 
 static const TKDXTCompressionQualityDescription TKDXTCompressionQualityDescriptionTable[] = {
-	{ TKDXTCompressionQualityLow, "Low" },
-	{ TKDXTCompressionQualityMedium, "Medium" },
-	{ TKDXTCompressionQualityHigh, "High" },
-	{ TKDXTCompressionQualityHighest, "Highest" },
-	{ TKDXTCompressionQualityDefault, "Default" },
-	{ TKDXTCompressionQualityNotApplicable, "N/A" }
+	{ TKDXTCompressionQualityLow, @"Low" },
+	{ TKDXTCompressionQualityMedium, @"Medium" },
+	{ TKDXTCompressionQualityHigh, @"High" },
+	{ TKDXTCompressionQualityHighest, @"Highest" },
+	{ TKDXTCompressionQualityDefault, @"Default" },
+	{ TKDXTCompressionQualityNotApplicable, @"N/A" }
 };
 static const NSUInteger TKDXTCompressionQualityDescriptionTableCount = sizeof(TKDXTCompressionQualityDescriptionTable)/sizeof(TKDXTCompressionQualityDescription);
 
 NSString *NSStringFromDXTCompressionQuality(TKDXTCompressionQuality aQuality) {
 	for (NSUInteger i = 0; i < TKDXTCompressionQualityDescriptionTableCount; i++) {
 		if (TKDXTCompressionQualityDescriptionTable[i].compressionQuality == aQuality) {
-			return @(TKDXTCompressionQualityDescriptionTable[i].description);
+			return TKDXTCompressionQualityDescriptionTable[i].description;
 		}
 	}
 	return @"<Unknown>";
@@ -129,7 +129,7 @@ NSString *NSStringFromDXTCompressionQuality(TKDXTCompressionQuality aQuality) {
 
 TKDXTCompressionQuality TKDXTCompressionQualityFromString(NSString *aQuality) {
 	for (NSUInteger i = 0; i < TKDXTCompressionQualityDescriptionTableCount; i++) {
-		if ([@(TKDXTCompressionQualityDescriptionTable[i].description) isEqualToString:aQuality]) {
+		if ([TKDXTCompressionQualityDescriptionTable[i].description isEqualToString:aQuality]) {
 			return TKDXTCompressionQualityDescriptionTable[i].compressionQuality;
 		}
 	}

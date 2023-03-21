@@ -8,7 +8,7 @@
 
 
 #import <TextureKit/TKOpenGLBase.h>
-#import <Foundation/NSObject.h>
+#import <Foundation/Foundation.h>
 
 
 @interface TKOpenGLObject : NSObject {

@@ -7,11 +7,8 @@
 //
 
 
+#import <Foundation/Foundation.h>
 #import <TextureKit/TKOpenGLObject.h>
-
-
-
-@class NSString, NSURL, NSData;
 
 
 @interface TKTexture : TKOpenGLObject {

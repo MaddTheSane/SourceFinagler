@@ -19,7 +19,7 @@
 - (TKMatrix4)matrix4
 {
 	TKMatrix4 mat = {0};
-	[self getValue:&mat];
+	[self getValue:&mat size:sizeof(mat)];
 	return mat;
 }
 

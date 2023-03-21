@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <TextureKit/TextureKitDefines.h>
 #import <TextureKit/TKImageRep.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -78,7 +79,7 @@ TEXTUREKIT_EXTERN TKVTFFormat TKVTFFormatFromString(NSString *aFormat);
 
 TEXTUREKIT_EXTERN NSString * const TKVTFType;			// UTI Type
 TEXTUREKIT_EXTERN NSString * const TKVTFFileType;		// filename extension
-TEXTUREKIT_EXTERN NSPasteboardType const TKVTFPboardType;
+TEXTUREKIT_EXTERN NSPasteboardType const TKVTFPboardType NS_SWIFT_NAME(tkVTF);
 
 
 NS_ENUM(OSType) {

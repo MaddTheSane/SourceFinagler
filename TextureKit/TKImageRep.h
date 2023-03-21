@@ -9,6 +9,7 @@
 #import <AppKit/NSBitmapImageRep.h>
 #import <CoreImage/CIVector.h>
 #import <Foundation/NSDictionary.h>
+#import <Foundation/NSObjCRuntime.h>
 #import <TextureKit/TextureKitDefines.h>
 
 
@@ -42,8 +43,8 @@ typedef NS_ENUM(NSUInteger, TKDXTCompressionQuality) {
 	TKDXTCompressionQualityNotApplicable	= 1000
 };
 
-TEXTUREKIT_EXTERN NSString *NSStringFromDXTCompressionQuality(TKDXTCompressionQuality aQuality);
-TEXTUREKIT_EXTERN TKDXTCompressionQuality TKDXTCompressionQualityFromString(NSString *aQuality);
+TEXTUREKIT_EXTERN NSString *NSStringFromDXTCompressionQuality(TKDXTCompressionQuality aQuality) NS_SWIFT_NAME(getter:TKDXTCompressionQuality.description(self:));
+TEXTUREKIT_EXTERN TKDXTCompressionQuality TKDXTCompressionQualityFromString(NSString *aQuality) NS_SWIFT_NAME(TKDXTCompressionQuality.init(fromDescription:));
 
 
 typedef NS_ENUM(NSUInteger, TKPixelFormat) {

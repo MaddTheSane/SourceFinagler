@@ -6,7 +6,7 @@
 //  Copyright (c) 2010-2013 Mark Douma LLC. All rights reserved.
 //
 
-#import <Foundation/NSObject.h>
+#import <Foundation/Foundation.h>
 #import <TextureKit/TextureKitDefines.h>
 
 

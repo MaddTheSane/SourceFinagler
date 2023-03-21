@@ -7,6 +7,6 @@
 //
 
 #import <TextureKit/TextureKitDefines.h>
-#import <Foundation/NSValue.h>
+#import <Foundation/Foundation.h>
 
 

@@ -100,7 +100,7 @@ TEXTUREKIT_EXTERN TKDDSFormat TKDDSFormatFromString(NSString *aFormat);
 
 TEXTUREKIT_EXTERN NSString * const TKDDSType;			// UTI Type
 TEXTUREKIT_EXTERN NSString * const TKDDSFileType;		// filename extension
-TEXTUREKIT_EXTERN NSPasteboardType const TKDDSPboardType;
+TEXTUREKIT_EXTERN NSPasteboardType const TKDDSPboardType NS_SWIFT_NAME(tkDDS);
 
 NS_ENUM(OSType) {
 	TKDDSMagic		= 'DDS '
