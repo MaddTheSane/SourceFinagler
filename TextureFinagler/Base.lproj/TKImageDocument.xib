@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
-        <plugIn identifier="com.apple.imagekit.ibplugin" version="21507"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23504"/>
+        <plugIn identifier="com.apple.imagekit.ibplugin" version="23504"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -34,7 +34,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
             <rect key="contentRect" x="150" y="325" width="1000" height="733"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1512" height="944"/>
             <value key="minSize" type="size" width="550" height="300"/>
             <view key="contentView" id="101095">
                 <rect key="frame" x="0.0" y="0.0" width="1000" height="733"/>
@@ -48,7 +48,7 @@
                             <binding destination="100483" name="value" keyPath="selection.zoomFactor" id="101184"/>
                         </connections>
                     </slider>
-                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="101127">
+                    <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="101127">
                         <rect key="frame" x="728" y="8" width="56" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="101130">
@@ -63,7 +63,7 @@
                             <binding destination="100483" name="value" keyPath="selection.zoomFactor" id="101183"/>
                         </connections>
                     </textField>
-                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="101126">
+                    <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="101126">
                         <rect key="frame" x="786" y="8" width="38" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Zoom:" id="101132">
@@ -92,7 +92,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="220" height="584"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="101337" customClass="TKTextField">
+                                            <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="101337" customClass="TKTextField">
                                                 <rect key="frame" x="8" y="565" width="54" height="14"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" title="FACES" id="101338" customClass="TKTextFieldCell">
@@ -184,7 +184,7 @@
                                         <rect key="frame" x="780" y="0.0" width="220" height="584"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="101356" customClass="TKTextField">
+                                            <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="101356" customClass="TKTextField">
                                                 <rect key="frame" x="8" y="565" width="66" height="14"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" title="MIPMAPS" id="101357" customClass="TKTextFieldCell">
@@ -200,12 +200,12 @@
                                                     <rect key="frame" x="1" y="1" width="218" height="533"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <ikImageBrowserView autoresizesSubviews="NO" fixedFrame="YES" zoomValue="0.60302269458770752" constrainsToOriginalSize="YES" allowsReordering="YES" animates="YES" translatesAutoresizingMaskIntoConstraints="NO" id="101144" userLabel="mipmapBrowserView">
+                                                        <ikImageBrowserView autoresizesSubviews="NO" fixedFrame="YES" zoomValue="1" constrainsToOriginalSize="YES" allowsReordering="YES" animates="YES" translatesAutoresizingMaskIntoConstraints="NO" id="101144" userLabel="mipmapBrowserView">
                                                             <rect key="frame" x="0.0" y="0.0" width="218" height="533"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <ikCellsStyle key="cellsStyleMask" shadowed="YES" outlined="YES" titled="YES"/>
                                                             <autoresizingMask key="contentResizingMask" heightSizable="YES"/>
-                                                            <size key="cellSize" width="100" height="100"/>
+                                                            <size key="cellSize" width="198" height="198"/>
                                                             <connections>
                                                                 <outlet property="_dataSource" destination="-2" id="101165"/>
                                                                 <outlet property="_delegate" destination="-2" id="101172"/>
@@ -287,7 +287,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
-                                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="101358" customClass="TKTextField">
+                                    <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="101358" customClass="TKTextField">
                                         <rect key="frame" x="8" y="101" width="61" height="14"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" title="FRAMES" id="101359" customClass="TKTextFieldCell">
@@ -309,7 +309,7 @@
                     </splitView>
                 </subviews>
             </view>
-            <toolbar key="toolbar" implicitIdentifier="628AC581-FCCD-445C-A63E-70C875CE7A52" displayMode="iconAndLabel" sizeMode="regular" id="101096">
+            <toolbar key="toolbar" implicitIdentifier="628AC581-FCCD-445C-A63E-70C875CE7A52" showsBaselineSeparator="NO" displayMode="iconAndLabel" sizeMode="regular" id="101096">
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="91D37AAB-54EA-4FE0-85C0-645B53749AB7" label="Zoom" paletteLabel="Zoom" id="101106">
                         <nil key="toolTip"/>
@@ -410,7 +410,7 @@
                             </connections>
                         </segmentedControl>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="B8A4CD4A-52FE-4AD8-AB40-4C16C331E693" label="Play" paletteLabel="Play" id="101100">
+                    <toolbarItem implicitItemIdentifier="B8A4CD4A-52FE-4AD8-AB40-4C16C331E693" label="Play" paletteLabel="Play" image="NSRightFacingTriangleTemplate" id="101100">
                         <nil key="toolTip"/>
                         <size key="minSize" width="32" height="23"/>
                         <size key="maxSize" width="36" height="25"/>
@@ -584,15 +584,15 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" utility="YES" HUD="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
             <rect key="contentRect" x="376" y="684" width="273" height="374"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1512" height="944"/>
             <value key="minSize" type="size" width="273" height="374"/>
             <value key="maxSize" type="size" width="273" height="374"/>
             <view key="contentView" id="101223">
                 <rect key="frame" x="0.0" y="0.0" width="273" height="374"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101226">
-                        <rect key="frame" x="112" y="324" width="70" height="19"/>
+                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101226">
+                        <rect key="frame" x="101" y="324" width="81" height="19"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="101227">
                             <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" minimumFractionDigits="3" maximumFractionDigits="6" id="101234"/>
                             <font key="font" metaFont="smallSystem"/>
@@ -603,7 +603,7 @@
                             <binding destination="101235" name="value" keyPath="selection.redScale" id="101238"/>
                         </connections>
                     </textField>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101228">
+                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101228">
                         <rect key="frame" x="17" y="351" width="136" height="14"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Height Evaluation Factor:" id="101229">
                             <font key="font" metaFont="smallSystem"/>
@@ -611,11 +611,8 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101230">
-                        <rect key="frame" x="46" y="326" width="61" height="14"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="57" id="3Ft-Cc-nhO"/>
-                        </constraints>
+                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101230">
+                        <rect key="frame" x="46" y="326" width="50" height="14"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Red:" id="101231">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -631,8 +628,8 @@
                             <binding destination="101235" name="value" keyPath="selection.redScale" id="101239"/>
                         </connections>
                     </stepper>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101240">
-                        <rect key="frame" x="112" y="297" width="70" height="19"/>
+                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101240">
+                        <rect key="frame" x="101" y="297" width="81" height="19"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="101245">
                             <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" minimumFractionDigits="3" maximumFractionDigits="6" id="101246"/>
                             <font key="font" metaFont="smallSystem"/>
@@ -643,8 +640,8 @@
                             <binding destination="101235" name="value" keyPath="selection.greenScale" id="101267"/>
                         </connections>
                     </textField>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101241">
-                        <rect key="frame" x="46" y="299" width="61" height="14"/>
+                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101241">
+                        <rect key="frame" x="46" y="299" width="50" height="14"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Green:" id="101244">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -660,8 +657,8 @@
                             <binding destination="101235" name="value" keyPath="selection.greenScale" id="101268"/>
                         </connections>
                     </stepper>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101249">
-                        <rect key="frame" x="112" y="270" width="70" height="19"/>
+                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101249">
+                        <rect key="frame" x="101" y="270" width="81" height="19"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="101254">
                             <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" minimumFractionDigits="3" maximumFractionDigits="6" id="101255"/>
                             <font key="font" metaFont="smallSystem"/>
@@ -672,8 +669,8 @@
                             <binding destination="101235" name="value" keyPath="selection.blueScale" id="101269"/>
                         </connections>
                     </textField>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101250">
-                        <rect key="frame" x="46" y="272" width="61" height="14"/>
+                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101250">
+                        <rect key="frame" x="46" y="272" width="50" height="14"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Blue:" id="101253">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -689,8 +686,8 @@
                             <binding destination="101235" name="value" keyPath="selection.blueScale" id="101270"/>
                         </connections>
                     </stepper>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101258">
-                        <rect key="frame" x="112" y="243" width="70" height="19"/>
+                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101258">
+                        <rect key="frame" x="101" y="243" width="81" height="19"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="101263">
                             <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" minimumFractionDigits="3" maximumFractionDigits="6" id="101264"/>
                             <font key="font" metaFont="smallSystem"/>
@@ -701,8 +698,8 @@
                             <binding destination="101235" name="value" keyPath="selection.alphaScale" id="101271"/>
                         </connections>
                     </textField>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101259">
-                        <rect key="frame" x="46" y="245" width="61" height="14"/>
+                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101259">
+                        <rect key="frame" x="46" y="245" width="50" height="14"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Alpha:" id="101262">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -718,7 +715,7 @@
                             <binding destination="101235" name="value" keyPath="selection.alphaScale" id="101272"/>
                         </connections>
                     </stepper>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101273">
+                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101273">
                         <rect key="frame" x="17" y="211" width="163" height="14"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Normal Map Conversion Filter:" id="101274">
                             <font key="font" metaFont="smallSystem"/>
@@ -726,8 +723,8 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101275">
-                        <rect key="frame" x="112" y="184" width="70" height="19"/>
+                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101275">
+                        <rect key="frame" x="101" y="184" width="81" height="19"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="101301">
                             <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" minimumFractionDigits="3" maximumFractionDigits="6" id="101302"/>
                             <font key="font" metaFont="smallSystem"/>
@@ -738,8 +735,8 @@
                             <binding destination="101235" name="value" keyPath="selection.small" id="101317"/>
                         </connections>
                     </textField>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101276">
-                        <rect key="frame" x="46" y="186" width="61" height="14"/>
+                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101276">
+                        <rect key="frame" x="46" y="186" width="50" height="14"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Small:" id="101300">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -755,8 +752,8 @@
                             <binding destination="101235" name="value" keyPath="selection.small" id="101318"/>
                         </connections>
                     </stepper>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101278">
-                        <rect key="frame" x="112" y="157" width="70" height="19"/>
+                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101278">
+                        <rect key="frame" x="101" y="157" width="81" height="19"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="101297">
                             <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" minimumFractionDigits="3" maximumFractionDigits="6" id="101298"/>
                             <font key="font" metaFont="smallSystem"/>
@@ -767,8 +764,8 @@
                             <binding destination="101235" name="value" keyPath="selection.medium" id="101319"/>
                         </connections>
                     </textField>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101279">
-                        <rect key="frame" x="46" y="159" width="61" height="14"/>
+                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101279">
+                        <rect key="frame" x="46" y="159" width="50" height="14"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Medium:" id="101296">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -784,8 +781,8 @@
                             <binding destination="101235" name="value" keyPath="selection.medium" id="101320"/>
                         </connections>
                     </stepper>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101281">
-                        <rect key="frame" x="112" y="130" width="70" height="19"/>
+                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101281">
+                        <rect key="frame" x="101" y="130" width="81" height="19"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="101293">
                             <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" minimumFractionDigits="3" maximumFractionDigits="6" id="101294"/>
                             <font key="font" metaFont="smallSystem"/>
@@ -796,8 +793,8 @@
                             <binding destination="101235" name="value" keyPath="selection.big" id="101321"/>
                         </connections>
                     </textField>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101282">
-                        <rect key="frame" x="46" y="132" width="61" height="14"/>
+                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101282">
+                        <rect key="frame" x="46" y="132" width="50" height="14"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Big:" id="101292">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -813,8 +810,8 @@
                             <binding destination="101235" name="value" keyPath="selection.big" id="101322"/>
                         </connections>
                     </stepper>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101284">
-                        <rect key="frame" x="112" y="103" width="70" height="19"/>
+                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101284">
+                        <rect key="frame" x="101" y="103" width="81" height="19"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="101289">
                             <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" minimumFractionDigits="3" maximumFractionDigits="6" id="101290"/>
                             <font key="font" metaFont="smallSystem"/>
@@ -825,8 +822,8 @@
                             <binding destination="101235" name="value" keyPath="selection.large" id="101323"/>
                         </connections>
                     </textField>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101285">
-                        <rect key="frame" x="46" y="105" width="61" height="14"/>
+                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101285">
+                        <rect key="frame" x="46" y="105" width="50" height="14"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Large:" id="101288">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -863,7 +860,7 @@
                         </connections>
                     </button>
                     <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101325">
-                        <rect key="frame" x="16" y="60" width="102" height="22"/>
+                        <rect key="frame" x="16" y="60" width="109" height="22"/>
                         <popUpButtonCell key="cell" type="push" title="Clamp" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="101328" id="101326">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="smallSystem"/>
@@ -891,7 +888,7 @@
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="101331" firstAttribute="leading" secondItem="101325" secondAttribute="trailing" constant="15" id="0V3-fo-EGb"/>
+                    <constraint firstItem="101331" firstAttribute="leading" secondItem="101325" secondAttribute="trailing" constant="8" symbolic="YES" id="0V3-fo-EGb"/>
                     <constraint firstItem="101280" firstAttribute="leading" secondItem="101283" secondAttribute="leading" id="0ps-lc-Jxk"/>
                     <constraint firstItem="101228" firstAttribute="top" secondItem="101223" secondAttribute="top" constant="9" id="35L-ua-bnS"/>
                     <constraint firstItem="101249" firstAttribute="top" secondItem="101240" secondAttribute="bottom" constant="8" symbolic="YES" id="3PI-oc-pCQ"/>
@@ -917,7 +914,7 @@
                     <constraint firstItem="101278" firstAttribute="top" secondItem="101280" secondAttribute="top" id="JKi-Os-TMv"/>
                     <constraint firstItem="101281" firstAttribute="leading" secondItem="101284" secondAttribute="leading" id="Jck-tO-YkB"/>
                     <constraint firstItem="101258" firstAttribute="trailing" secondItem="101275" secondAttribute="trailing" id="OBZ-fU-cIg"/>
-                    <constraint firstAttribute="trailing" secondItem="101331" secondAttribute="trailing" constant="20" symbolic="YES" id="Own-Se-eXg"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="101331" secondAttribute="trailing" constant="20" symbolic="YES" id="Own-Se-eXg"/>
                     <constraint firstItem="101230" firstAttribute="leading" secondItem="101223" secondAttribute="leading" constant="48" id="PDk-fr-Lqi"/>
                     <constraint firstItem="101284" firstAttribute="top" secondItem="101286" secondAttribute="top" id="ReJ-ka-AfQ"/>
                     <constraint firstItem="101282" firstAttribute="leading" secondItem="101285" secondAttribute="leading" id="SEu-cA-4Um"/>
@@ -954,10 +951,10 @@
                     <constraint firstItem="101230" firstAttribute="trailing" secondItem="101241" secondAttribute="trailing" id="r5M-Eb-C1j"/>
                     <constraint firstItem="101286" firstAttribute="centerX" secondItem="101331" secondAttribute="centerX" id="r8n-nr-ng3"/>
                     <constraint firstItem="101276" firstAttribute="leading" secondItem="101279" secondAttribute="leading" id="rC0-cj-3NX"/>
-                    <constraint firstItem="101331" firstAttribute="trailing" secondItem="101313" secondAttribute="trailing" id="riQ-za-nbu"/>
                     <constraint firstItem="101281" firstAttribute="top" secondItem="101283" secondAttribute="top" id="sZZ-zo-GuO"/>
                     <constraint firstItem="101325" firstAttribute="leading" secondItem="101311" secondAttribute="leading" id="sbZ-HH-HoP"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="101273" secondAttribute="trailing" constant="20" symbolic="YES" id="st8-Fx-DPa"/>
+                    <constraint firstAttribute="trailing" secondItem="101313" secondAttribute="trailing" constant="20" symbolic="YES" id="t8H-BQ-EgO"/>
                     <constraint firstItem="101249" firstAttribute="trailing" secondItem="101258" secondAttribute="trailing" id="ttH-FW-zq4"/>
                     <constraint firstItem="101284" firstAttribute="top" secondItem="101281" secondAttribute="bottom" constant="8" symbolic="YES" id="ueP-Cn-C8p"/>
                     <constraint firstItem="101277" firstAttribute="leading" secondItem="101280" secondAttribute="leading" id="v0r-lw-Lo6"/>
@@ -996,14 +993,14 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" utility="YES" HUD="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
             <rect key="contentRect" x="376" y="875" width="273" height="183"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1512" height="944"/>
             <value key="minSize" type="size" width="273" height="183"/>
             <value key="maxSize" type="size" width="273" height="374"/>
-            <view key="contentView" misplaced="YES" id="101505">
-                <rect key="frame" x="0.0" y="0.0" width="273" height="183"/>
+            <view key="contentView" id="101505">
+                <rect key="frame" x="0.0" y="0.0" width="273" height="198"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101535">
+                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101535">
                         <rect key="frame" x="91" y="137" width="91" height="19"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="101536">
                             <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" minimumFractionDigits="3" maximumFractionDigits="6" id="101537"/>
@@ -1015,7 +1012,7 @@
                             <binding destination="101235" name="value" keyPath="selection.redScale" id="101582"/>
                         </connections>
                     </textField>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101534">
+                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101534">
                         <rect key="frame" x="17" y="164" width="136" height="14"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Height Evaluation Factor:" id="101538">
                             <font key="font" metaFont="smallSystem"/>
@@ -1023,7 +1020,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101533">
+                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101533">
                         <rect key="frame" x="46" y="139" width="39" height="14"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Red:" id="101539">
                             <font key="font" metaFont="smallSystem"/>
@@ -1040,7 +1037,7 @@
                             <binding destination="101235" name="value" keyPath="selection.redScale" id="101585"/>
                         </connections>
                     </stepper>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101531">
+                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101531">
                         <rect key="frame" x="91" y="110" width="91" height="19"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="101541">
                             <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" minimumFractionDigits="3" maximumFractionDigits="6" id="101542"/>
@@ -1052,7 +1049,7 @@
                             <binding destination="101235" name="value" keyPath="selection.greenScale" id="101591"/>
                         </connections>
                     </textField>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101530">
+                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101530">
                         <rect key="frame" x="46" y="112" width="39" height="14"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Green:" id="101543">
                             <font key="font" metaFont="smallSystem"/>
@@ -1069,7 +1066,7 @@
                             <binding destination="101235" name="value" keyPath="selection.greenScale" id="101590"/>
                         </connections>
                     </stepper>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101528">
+                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101528">
                         <rect key="frame" x="91" y="83" width="91" height="19"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="101545">
                             <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" minimumFractionDigits="3" maximumFractionDigits="6" id="101546"/>
@@ -1081,7 +1078,7 @@
                             <binding destination="101235" name="value" keyPath="selection.blueScale" id="101580"/>
                         </connections>
                     </textField>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101527">
+                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101527">
                         <rect key="frame" x="46" y="85" width="39" height="14"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Blue:" id="101547">
                             <font key="font" metaFont="smallSystem"/>
@@ -1098,7 +1095,7 @@
                             <binding destination="101235" name="value" keyPath="selection.blueScale" id="101583"/>
                         </connections>
                     </stepper>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101525">
+                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101525">
                         <rect key="frame" x="91" y="56" width="91" height="19"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="101549">
                             <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" minimumFractionDigits="3" maximumFractionDigits="6" id="101550"/>
@@ -1110,7 +1107,7 @@
                             <binding destination="101235" name="value" keyPath="selection.alphaScale" id="101596"/>
                         </connections>
                     </textField>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101524">
+                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101524">
                         <rect key="frame" x="46" y="58" width="39" height="14"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Alpha:" id="101551">
                             <font key="font" metaFont="smallSystem"/>

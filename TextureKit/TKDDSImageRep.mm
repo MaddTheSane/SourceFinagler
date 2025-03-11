@@ -21,6 +21,69 @@ static NSData *TKBGRADataFromImageData(NSData *data, NSUInteger pixelCount, NSUI
 using namespace nv;
 using namespace nvtt;
 
+class NSDataInputStream : public nv::Stream
+{
+	NV_FORBID_COPY(NSDataInputStream);
+public:
+	NSDataInputStream(NSData *stream): _inStr([stream copy]), currentOffset(0) {}
+	~NSDataInputStream() {
+		_inStr = nil;
+	}
+	
+	void seek(uint pos) override {
+		nvDebugCheck(!isError());
+		currentOffset = pos;
+		nvDebugCheck(!isError());
+	}
+	
+	uint tell() const override {
+		return currentOffset;
+	}
+	
+	uint serialize(void *data, uint len) override {
+		uint left = _inStr.length - tell();
+		if (len > left) {
+			len = left;
+		}
+
+		[_inStr getBytes:data range:NSMakeRange(currentOffset, len)];
+		currentOffset += len;
+		
+		return len;
+	}
+	
+	uint size() const override {
+		return _inStr.length;
+	}
+	
+	bool isSeekable() const override {
+		return true;
+	}
+	
+	bool isAtEnd() const override {
+		return currentOffset == _inStr.length;
+	}
+	
+	bool isLoading() const override {
+		return true;
+	}
+	
+	bool isSaving() const override {
+		return false;
+	}
+	
+	bool isError() const override {
+		return _inStr == NULL || currentOffset > _inStr.length;
+	}
+	
+	void clearError() override {
+	}
+	
+private:
+	NSData *_inStr;
+	uint currentOffset;
+};
+
 
 struct TKDDSFormatMapping {
 	TKDDSFormat		format;
@@ -722,7 +785,7 @@ static unsigned char *TKCreateRGBADataFromColor32(const Color32 *pixels, NSUInte
 #if TK_DEBUG
 	NSLog(@"[%@ %@] magic == 0x%x, %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd),  (unsigned int)magic, NSFileTypeForHFSTypeCode(magic));
 #endif
-	MemoryInputStream *mis = new MemoryInputStream((const unsigned char *)[aData bytes], uint([aData length]));
+	NSDataInputStream *mis = new NSDataInputStream(aData);
 	
 	DirectDrawSurface *dds = new DirectDrawSurface();
 	if (dds == 0 || !dds->load(mis)) {

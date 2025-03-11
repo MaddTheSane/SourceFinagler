@@ -442,7 +442,14 @@ CGColorRef TKCreatePatternColorWithImage(CGImageRef imageRef);
 	}
 	return YES;
 }
-	
+
+- (void)addCursorRect:(NSRect)rect cursor:(NSCursor *)object
+{
+	//super lazy hack!
+	if (isfinite(rect.origin.x) && isfinite(rect.origin.y)) {
+		[super addCursorRect:rect cursor:object];
+	}
+}
 
 @end
 
