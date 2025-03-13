@@ -1,0 +1,743 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    " Info" : {
+
+    },
+    "--" : {
+
+    },
+    "[Custom]" : {
+
+    },
+    "%@ and %@ were successfully installed." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ and %2$@ were successfully installed."
+          }
+        }
+      }
+    },
+    "%@ EB (%@ bytes)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ EB (%2$@ bytes)"
+          }
+        }
+      }
+    },
+    "%@ GB (%@ bytes)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ GB (%2$@ bytes)"
+          }
+        }
+      }
+    },
+    "%@ item, %@ available" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ item, %2$@ available"
+          }
+        }
+      }
+    },
+    "%@ items were successfully installed." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ items were successfully installed."
+          }
+        }
+      }
+    },
+    "%@ items, %@ available" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ items, %2$@ available"
+          }
+        }
+      }
+    },
+    "%@ KB (%@ bytes)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ KB (%2$@ bytes)"
+          }
+        }
+      }
+    },
+    "%@ MB (%@ bytes)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ MB (%2$@ bytes)"
+          }
+        }
+      }
+    },
+    "%@ of %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ of %2$@"
+          }
+        }
+      }
+    },
+    "%@ PB (%@ bytes)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ PB (%2$@ bytes)"
+          }
+        }
+      }
+    },
+    "%@ TB (%@ bytes)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ TB (%2$@ bytes)"
+          }
+        }
+      }
+    },
+    "%@ was successfully installed." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ was successfully installed."
+          }
+        }
+      }
+    },
+    "%@, " : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@, "
+          }
+        }
+      }
+    },
+    "%f x %f" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$f × %2$f"
+          }
+        }
+      }
+    },
+    "%lu documents" : {
+
+    },
+    "%lu items" : {
+
+    },
+    "%lu of %@ selected, %@ available" : {
+      "comment" : "String for when only 1 item is selected",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%1$lu of %2$@ selected, %3$@ available"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "new",
+                  "value" : "%1$lu of %2$@ selected, %3$@ available"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "%lu of %lu addons were installed." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lu of %2$lu addons were installed."
+          }
+        }
+      }
+    },
+    "%lu Source addons were installed." : {
+
+    },
+    "1 KB" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 KB"
+          }
+        }
+      }
+    },
+    "1 KB (%@ bytes)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 KB (%@ bytes)"
+          }
+        }
+      }
+    },
+    "1 Source addon was installed." : {
+
+    },
+    "Add Images" : {
+
+    },
+    "Alpha" : {
+
+    },
+    "and %@ were successfully installed." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "and %@ were successfully installed."
+          }
+        }
+      }
+    },
+    "as Columns" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "as Columns"
+          }
+        }
+      }
+    },
+    "as List" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "as List"
+          }
+        }
+      }
+    },
+    "Blue" : {
+
+    },
+    "Close Quick Look" : {
+
+    },
+    "Copy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy"
+          }
+        }
+      }
+    },
+    "Copy \"%@\"" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy “%@”"
+          }
+        }
+      }
+    },
+    "Copy %lu Items" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy %lu Items"
+          }
+        }
+      }
+    },
+    "Copy of \"%@\"" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy of “%@”"
+          }
+        }
+      }
+    },
+    "Copy of %lu Items" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy of %lu Items"
+          }
+        }
+      }
+    },
+    "Copying %lu item to \"%@\"" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copying %1$lu item to “%2$@”"
+          }
+        }
+      }
+    },
+    "Copying %lu items to \"%@\"" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copying %1$lu items to “%2$@”"
+          }
+        }
+      }
+    },
+    "Could not locate installed game for Steam Game ID %ld" : {
+
+    },
+    "Couldn't read the addoninfo.txt file inside the Source addon file" : {
+
+    },
+    "Didn't find a valid game ID in the addoninfo.txt file inside the Source addon file" : {
+
+    },
+    "Email: %@" : {
+
+    },
+    "General" : {
+
+    },
+    "Generate Mipmaps" : {
+
+    },
+    "Green" : {
+
+    },
+    "Help Game" : {
+
+    },
+    "Help Games" : {
+
+    },
+    "Hide Faces" : {
+
+    },
+    "Hide Frames" : {
+
+    },
+    "Hide Image Inspector" : {
+
+    },
+    "Hide Inspector" : {
+
+    },
+    "Hide Mipmaps" : {
+
+    },
+    "Hide Path Bar" : {
+
+    },
+    "Hide View Options" : {
+
+    },
+    "Indicates that the items in this window are inside a %@" : {
+
+    },
+    "Indicates that you cannot add or change the contents of this %@" : {
+
+    },
+    "Info" : {
+
+    },
+    "Inside %@" : {
+
+    },
+    "Many operations do not work properly yet." : {
+
+    },
+    "Move Images" : {
+
+    },
+    "Move of \"%@\"" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move of “%@”"
+          }
+        }
+      }
+    },
+    "Move of %lu Items" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move of %lu Items"
+          }
+        }
+      }
+    },
+    "Move to Trash" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move to Trash"
+          }
+        }
+      }
+    },
+    "Multiple Item Info" : {
+
+    },
+    "Multiple items selected" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Multiple items selected"
+          }
+        }
+      }
+    },
+    "No addoninfo.txt file could be found inside the Source addon file" : {
+
+    },
+    "No Changes" : {
+
+    },
+    "No document" : {
+
+    },
+    "No Source addons were installed." : {
+
+    },
+    "Not a valid Source addon file" : {
+
+    },
+    "OK" : {
+
+    },
+    "Original" : {
+
+    },
+    "Other Apps Helper" : {
+
+    },
+    "Paste" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paste"
+          }
+        }
+      }
+    },
+    "Paste Item" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paste Item"
+          }
+        }
+      }
+    },
+    "Paste Items" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paste Items"
+          }
+        }
+      }
+    },
+    "Play" : {
+
+    },
+    "Play the animated image" : {
+
+    },
+    "Please reinstall the application." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please reinstall the application."
+          }
+        }
+      }
+    },
+    "Preparing to copy %lu item" : {
+
+    },
+    "Preparing to copy %lu items" : {
+
+    },
+    "Preparing to copy to \"%@\"" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preparing to copy to “%@”"
+          }
+        }
+      }
+    },
+    "Quick Look" : {
+
+    },
+    "Quick Look \"%@\"" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quick Look “%@”"
+          }
+        }
+      }
+    },
+    "Quick Look %lu Items" : {
+
+    },
+    "Quit" : {
+
+    },
+    "Red" : {
+
+    },
+    "Remove Images" : {
+
+    },
+    "Remove Mipmaps" : {
+
+    },
+    "Show Faces" : {
+
+    },
+    "Show Frames" : {
+
+    },
+    "Show Image Inspector" : {
+
+    },
+    "Show Inspector" : {
+
+    },
+    "Show Mipmaps" : {
+
+    },
+    "Show Path Bar" : {
+
+    },
+    "Show View Options" : {
+
+    },
+    "Size" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Size"
+          }
+        }
+      }
+    },
+    "Sorry, but you need at least Mac OS X 10.6 on an Intel-based Mac to run this application!" : {
+
+    },
+    "Source Addon file" : {
+
+    },
+    "Source Addon Installation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Addon Installation"
+          }
+        }
+      }
+    },
+    "Source Finagler could not locate the file because the following AppleScript error was encountered." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Finagler could not locate the file because the following AppleScript error was encountered."
+          }
+        }
+      }
+    },
+    "Source Finagler is only intended for Intel-based Macs!" : {
+
+    },
+    "Source Game Archive" : {
+
+    },
+    "Source Level" : {
+
+    },
+    "Source Package file" : {
+
+    },
+    "Source Texture Package file" : {
+
+    },
+    "Source Xbox Package file" : {
+
+    },
+    "Steam Apps Re-locator" : {
+
+    },
+    "Steam Cache file" : {
+
+    },
+    "Steam cannot be running" : {
+
+    },
+    "Steam Non-Cache file" : {
+
+    },
+    "Stop" : {
+
+    },
+    "Stop copying" : {
+
+    },
+    "Stop playing the animated image" : {
+
+    },
+    "The image-creation and manipulation feature is still a work in progress." : {
+
+    },
+    "This addon file is already installed" : {
+
+    },
+    "Today" : {
+
+    },
+    "Tomorrow" : {
+
+    },
+    "Unhelp Game" : {
+
+    },
+    "Unhelp Games" : {
+
+    },
+    "Unknown error" : {
+      "comment" : "Unknown error"
+    },
+    "View Options" : {
+
+    },
+    "Visit Webpage" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visit Webpage"
+          }
+        }
+      }
+    },
+    "Yesterday" : {
+
+    },
+    "Zero KB" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zero KB"
+          }
+        }
+      }
+    },
+    "Zero KB (Zero bytes)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zero KB (Zero bytes)"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

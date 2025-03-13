@@ -470,7 +470,7 @@ FSIterateForks:
 @implementation NSDictionary (MDFileAttributes)
 
 /* files & folders	*/
-- (NSInteger)fileLabelColor {
+- (MDFileLabel)fileLabelColor {
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif

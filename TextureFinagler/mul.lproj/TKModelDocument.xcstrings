@@ -1,0 +1,462 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "5.title" : {
+      "comment" : "Class = \"NSWindow\"; title = \"Window\"; ObjectID = \"5\";",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Window"
+          }
+        }
+      }
+    },
+    "100104.ibShadowedToolTips[0]" : {
+      "comment" : "Class = \"NSSegmentedCell\"; 100104.ibShadowedToolTips[0] = \"Show the Node inspector\"; ObjectID = \"100104\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Show the Node inspector"
+          }
+        }
+      }
+    },
+    "100104.ibShadowedToolTips[1]" : {
+      "comment" : "Class = \"NSSegmentedCell\"; 100104.ibShadowedToolTips[1] = \"Show the Node Attributes inspector\"; ObjectID = \"100104\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Show the Node Attributes inspector"
+          }
+        }
+      }
+    },
+    "100104.ibShadowedToolTips[2]" : {
+      "comment" : "Class = \"NSSegmentedCell\"; 100104.ibShadowedToolTips[2] = \"Show the Material inspector\"; ObjectID = \"100104\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Show the Material inspector"
+          }
+        }
+      }
+    },
+    "100199.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Diffuse\"; ObjectID = \"100199\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Diffuse"
+          }
+        }
+      }
+    },
+    "100200.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Ambient\"; ObjectID = \"100200\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Ambient"
+          }
+        }
+      }
+    },
+    "100201.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Specular\"; ObjectID = \"100201\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Specular"
+          }
+        }
+      }
+    },
+    "100202.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Normal\"; ObjectID = \"100202\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Normal"
+          }
+        }
+      }
+    },
+    "100230.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Multiply\"; ObjectID = \"100230\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Multiply"
+          }
+        }
+      }
+    },
+    "100231.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Emission\"; ObjectID = \"100231\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Emission"
+          }
+        }
+      }
+    },
+    "100232.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Transparent\"; ObjectID = \"100232\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Transparent"
+          }
+        }
+      }
+    },
+    "100233.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Reflective\"; ObjectID = \"100233\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Reflective"
+          }
+        }
+      }
+    },
+    "100252.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"ENTITIES\"; ObjectID = \"100252\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "ENTITIES"
+          }
+        }
+      }
+    },
+    "100260.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Text Cell\"; ObjectID = \"100260\";",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Text Cell"
+          }
+        }
+      }
+    },
+    "100262.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"HEADER CELL\"; ObjectID = \"100262\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "HEADER CELL"
+          }
+        }
+      }
+    },
+    "100266.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Table View Cell\"; ObjectID = \"100266\";",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Table View Cell"
+          }
+        }
+      }
+    },
+    "100282.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Text Cell\"; ObjectID = \"100282\";",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Text Cell"
+          }
+        }
+      }
+    },
+    "100284.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"HEADER CELL\"; ObjectID = \"100284\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "HEADER CELL"
+          }
+        }
+      }
+    },
+    "100288.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Table View Cell\"; ObjectID = \"100288\";",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Table View Cell"
+          }
+        }
+      }
+    },
+    "100289.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"SCENE GRAPH\"; ObjectID = \"100289\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "SCENE GRAPH"
+          }
+        }
+      }
+    },
+    "100302.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Name\"; ObjectID = \"100302\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Name"
+          }
+        }
+      }
+    },
+    "100309.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Position\"; ObjectID = \"100309\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Position"
+          }
+        }
+      }
+    },
+    "100317.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"X\"; ObjectID = \"100317\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "X"
+          }
+        }
+      }
+    },
+    "100319.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Y\"; ObjectID = \"100319\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Y"
+          }
+        }
+      }
+    },
+    "100321.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Z\"; ObjectID = \"100321\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Z"
+          }
+        }
+      }
+    },
+    "100335.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Z\"; ObjectID = \"100335\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Z"
+          }
+        }
+      }
+    },
+    "100336.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Y\"; ObjectID = \"100336\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Y"
+          }
+        }
+      }
+    },
+    "100337.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"X\"; ObjectID = \"100337\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "X"
+          }
+        }
+      }
+    },
+    "100338.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Rotation\"; ObjectID = \"100338\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Rotation"
+          }
+        }
+      }
+    },
+    "100352.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Z\"; ObjectID = \"100352\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Z"
+          }
+        }
+      }
+    },
+    "100353.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Y\"; ObjectID = \"100353\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Y"
+          }
+        }
+      }
+    },
+    "100354.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"X\"; ObjectID = \"100354\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "X"
+          }
+        }
+      }
+    },
+    "100355.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Scale\"; ObjectID = \"100355\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Scale"
+          }
+        }
+      }
+    },
+    "100360.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Angle\"; ObjectID = \"100360\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Angle"
+          }
+        }
+      }
+    },
+    "100362.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Hidden\"; ObjectID = \"100362\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Hidden"
+          }
+        }
+      }
+    },
+    "100367.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Opacity\"; ObjectID = \"100367\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Opacity"
+          }
+        }
+      }
+    },
+    "100371.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Axis\"; ObjectID = \"100371\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Axis"
+          }
+        }
+      }
+    },
+    "100376.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Rendering order\"; ObjectID = \"100376\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Rendering order"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

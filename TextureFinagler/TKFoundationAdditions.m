@@ -64,7 +64,7 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray<NSValue*> *inRects, BOOL isFlipped)
 	OSStatus status = noErr;
 	status = FSPathMakeRef((const UInt8 *)self.fileSystemRepresentation, anFSRef, NULL);
 	if (status != noErr) {
-		if (anError) *anError = [NSError errorWithDomain:NSOSStatusErrorDomain code:status userInfo:nil];
+		if (anError) *anError = [NSError errorWithDomain:NSOSStatusErrorDomain code:status userInfo:@{NSFilePathErrorKey: self}];
 	}
 	return (status == noErr);
 }
@@ -422,10 +422,10 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray<NSValue*> *inRects, BOOL isFlipped)
 	if (![self isFileURL]) {
 		if (anError) {
 			*anError = [NSError
-						errorWithDomain:NSOSStatusErrorDomain code:paramErr
+						errorWithDomain:NSCocoaErrorDomain code:NSFileReadUnsupportedSchemeError
 						userInfo:@{NSLocalizedFailureReasonErrorKey: @"Can only convert from a file: URL scheme",
-								   NSDebugDescriptionErrorKey: @"Can only convert from a file: URL scheme"
-								   }];
+								   NSDebugDescriptionErrorKey: @"Can only convert from a file: URL scheme",
+								   NSURLErrorKey: self}];
 		}
 		return NO;
 	}

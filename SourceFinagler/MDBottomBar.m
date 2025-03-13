@@ -56,10 +56,8 @@
 		} else if (totalCount.unsignedIntegerValue == 1) {
 			stringValue = [NSString stringWithFormat:NSLocalizedString(@"%@ item, %@ available", @""), totalCount, [formatter stringForObjectValue:freeSpace]];
 		}
-	} else if (selectedIndexes.count == 1) {
-		stringValue = [NSString stringWithFormat:NSLocalizedString(@"%lu(single) of %@ selected, %@ available", @"String for when only 1 item is selected"), (unsigned long)selectedIndexes.count, totalCount, [formatter stringForObjectValue:freeSpace]];
-	} else if (selectedIndexes.count >= 2) {
-		stringValue = [NSString stringWithFormat:NSLocalizedString(@"%lu(multiple) of %@ selected, %@ available", @"String for when more than one item is selected"), (unsigned long)selectedIndexes.count, totalCount, [formatter stringForObjectValue:freeSpace]];
+	} else {
+		stringValue = [NSString localizedStringWithFormat:NSLocalizedString(@"%lu of %@ selected, %@ available", @"String for when only 1 item is selected"), (unsigned long)selectedIndexes.count, totalCount, [formatter stringForObjectValue:freeSpace]];
 	}
 
 	

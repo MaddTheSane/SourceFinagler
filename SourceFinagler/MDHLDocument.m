@@ -2162,11 +2162,11 @@ static NSInteger copyTag = 0;
 				}
 				
 				if (selectedItem) {
-					menuItem.title = [NSString stringWithFormat:NSLocalizedString(@"Quick Look \"%@\"", @""), selectedItem.name];
+					menuItem.title = [NSString localizedStringWithFormat:NSLocalizedString(@"Quick Look \"%@\"", @""), selectedItem.name];
 				}
 				return YES;
 			} else if (numberOfSelectedRows > 1) {
-				menuItem.title = [NSString stringWithFormat:NSLocalizedString(@"Quick Look %lu Items", @""), (unsigned long)numberOfSelectedRows];
+				menuItem.title = [NSString localizedStringWithFormat:NSLocalizedString(@"Quick Look %lu Items", @""), (unsigned long)numberOfSelectedRows];
 				return YES;
 			}
 		}

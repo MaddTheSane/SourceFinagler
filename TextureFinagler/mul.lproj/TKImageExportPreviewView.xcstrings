@@ -1,0 +1,54 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "10.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"RGBA16161616F\"; ObjectID = \"10\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "RGBA16161616F"
+          }
+        }
+      }
+    },
+    "11.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"DDS\"; ObjectID = \"11\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "DDS"
+          }
+        }
+      }
+    },
+    "80.ibShadowedIsNilPlaceholder" : {
+      "comment" : "Class = \"CocoaBindingsConnection\"; ibShadowedIsNilPlaceholder = \"Original\"; ObjectID = \"80\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Original"
+          }
+        }
+      }
+    },
+    "82.ibShadowedIsNilPlaceholder" : {
+      "comment" : "Class = \"CocoaBindingsConnection\"; ibShadowedIsNilPlaceholder = \" \"; ObjectID = \"82\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : " "
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

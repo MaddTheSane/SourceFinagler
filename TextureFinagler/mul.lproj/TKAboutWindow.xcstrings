@@ -1,0 +1,66 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "102.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Source Finagler\"; ObjectID = \"102\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Source Finagler"
+          }
+        }
+      }
+    },
+    "104.placeholderString" : {
+      "comment" : "Class = \"NSTextFieldCell\"; placeholderString = \"Source Finagler 2.0.2 (202)\"; ObjectID = \"104\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Source Finagler 2.0.2 (202)"
+          }
+        }
+      }
+    },
+    "104.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Source Finagler 2.5.0 (250)\"; ObjectID = \"104\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Source Finagler 2.5.0 (250)"
+          }
+        }
+      }
+    },
+    "105.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Copyright © 2004-2011 Mark Douma. All rights reserved.\"; ObjectID = \"105\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Copyright © 2004-2011 Mark Douma. All rights reserved."
+          }
+        }
+      }
+    },
+    "107.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Acknowledgements…\"; ObjectID = \"107\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Acknowledgements…"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

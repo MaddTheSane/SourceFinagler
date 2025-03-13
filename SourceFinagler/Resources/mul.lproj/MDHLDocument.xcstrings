@@ -1,0 +1,750 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "387.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Help\"; ObjectID = \"387\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Help"
+          }
+        }
+      }
+    },
+    "389.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Show Inspector\"; ObjectID = \"389\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Show Inspector"
+          }
+        }
+      }
+    },
+    "391.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Show View Options\"; ObjectID = \"391\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Show View Options"
+          }
+        }
+      }
+    },
+    "738.label" : {
+      "comment" : "Class = \"NSToolbarItem\"; label = \"Action\"; ObjectID = \"738\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Action"
+          }
+        }
+      }
+    },
+    "738.paletteLabel" : {
+      "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"Action\"; ObjectID = \"738\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Action"
+          }
+        }
+      }
+    },
+    "738.toolTip" : {
+      "comment" : "Class = \"NSToolbarItem\"; toolTip = \"Perform tasks with the selected item\"; ObjectID = \"738\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Perform tasks with the selected item"
+          }
+        }
+      }
+    },
+    "741.label" : {
+      "comment" : "Class = \"NSToolbarItem\"; label = \"View\"; ObjectID = \"741\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "View"
+          }
+        }
+      }
+    },
+    "741.paletteLabel" : {
+      "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"View\"; ObjectID = \"741\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "View"
+          }
+        }
+      }
+    },
+    "741.toolTip" : {
+      "comment" : "Class = \"NSToolbarItem\"; toolTip = \"Show items in a list or in columns\"; ObjectID = \"741\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Show items in a list or in columns"
+          }
+        }
+      }
+    },
+    "752.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Show Inspector\"; ObjectID = \"752\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Show Inspector"
+          }
+        }
+      }
+    },
+    "753.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Show View Options\"; ObjectID = \"753\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Show View Options"
+          }
+        }
+      }
+    },
+    "829.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Show View Options\"; ObjectID = \"829\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Show View Options"
+          }
+        }
+      }
+    },
+    "831.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Show Inspector\"; ObjectID = \"831\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Show Inspector"
+          }
+        }
+      }
+    },
+    "963.label" : {
+      "comment" : "Class = \"NSToolbarItem\"; label = \"Quick Look\"; ObjectID = \"963\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Quick Look"
+          }
+        }
+      }
+    },
+    "963.paletteLabel" : {
+      "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"Quick Look\"; ObjectID = \"963\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Quick Look"
+          }
+        }
+      }
+    },
+    "963.toolTip" : {
+      "comment" : "Class = \"NSToolbarItem\"; toolTip = \"Quick Look\"; ObjectID = \"963\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Quick Look"
+          }
+        }
+      }
+    },
+    "970.label" : {
+      "comment" : "Class = \"NSToolbarItem\"; label = \"Search\"; ObjectID = \"970\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Search"
+          }
+        }
+      }
+    },
+    "970.paletteLabel" : {
+      "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"Search\"; ObjectID = \"970\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Search"
+          }
+        }
+      }
+    },
+    "970.toolTip" : {
+      "comment" : "Class = \"NSToolbarItem\"; toolTip = \"To search, begin typing a word or phrase\"; ObjectID = \"970\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "To search, begin typing a word or phrase"
+          }
+        }
+      }
+    },
+    "991.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Reveal in Finder\"; ObjectID = \"991\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Reveal in Finder"
+          }
+        }
+      }
+    },
+    "992.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Open Enclosing Folder\"; ObjectID = \"992\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Open Enclosing Folder"
+          }
+        }
+      }
+    },
+    "1082.headerCell.title" : {
+      "comment" : "Class = \"NSTableColumn\"; headerCell.title = \"          Name\"; ObjectID = \"1082\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "          Name"
+          }
+        }
+      }
+    },
+    "1083.headerCell.title" : {
+      "comment" : "Class = \"NSTableColumn\"; headerCell.title = \"    Size\"; ObjectID = \"1083\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "    Size"
+          }
+        }
+      }
+    },
+    "1086.headerCell.title" : {
+      "comment" : "Class = \"NSTableColumn\"; headerCell.title = \"    Kind\"; ObjectID = \"1086\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "    Kind"
+          }
+        }
+      }
+    },
+    "1336.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"contains\"; ObjectID = \"1336\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "contains"
+          }
+        }
+      }
+    },
+    "1337.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"begins with\"; ObjectID = \"1337\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "begins with"
+          }
+        }
+      }
+    },
+    "1338.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"ends with\"; ObjectID = \"1338\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "ends with"
+          }
+        }
+      }
+    },
+    "1339.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"is\"; ObjectID = \"1339\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "is"
+          }
+        }
+      }
+    },
+    "1340.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"is not\"; ObjectID = \"1340\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "is not"
+          }
+        }
+      }
+    },
+    "1349.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"matches\"; ObjectID = \"1349\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "matches"
+          }
+        }
+      }
+    },
+    "1423.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Name\"; ObjectID = \"1423\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Name"
+          }
+        }
+      }
+    },
+    "1436.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"File extension\"; ObjectID = \"1436\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "File extension"
+          }
+        }
+      }
+    },
+    "1441.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Kind\"; ObjectID = \"1441\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Kind"
+          }
+        }
+      }
+    },
+    "1442.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"is\"; ObjectID = \"1442\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "is"
+          }
+        }
+      }
+    },
+    "1462.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Size\"; ObjectID = \"1462\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Size"
+          }
+        }
+      }
+    },
+    "1482.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"is\"; ObjectID = \"1482\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "is"
+          }
+        }
+      }
+    },
+    "1483.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"is less than or equal to\"; ObjectID = \"1483\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "is less than or equal to"
+          }
+        }
+      }
+    },
+    "1484.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"is less than\"; ObjectID = \"1484\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "is less than"
+          }
+        }
+      }
+    },
+    "1485.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"is greater than\"; ObjectID = \"1485\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "is greater than"
+          }
+        }
+      }
+    },
+    "1486.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"is greater than or equal to\"; ObjectID = \"1486\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "is greater than or equal to"
+          }
+        }
+      }
+    },
+    "1487.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"is not\"; ObjectID = \"1487\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "is not"
+          }
+        }
+      }
+    },
+    "1496.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"is\"; ObjectID = \"1496\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "is"
+          }
+        }
+      }
+    },
+    "2178.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Source Level\"; ObjectID = \"2178\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Source Level"
+          }
+        }
+      }
+    },
+    "2179.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Source Animation\"; ObjectID = \"2179\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Source Animation"
+          }
+        }
+      }
+    },
+    "2180.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Source Configuration file\"; ObjectID = \"2180\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Source Configuration file"
+          }
+        }
+      }
+    },
+    "2181.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Source List\"; ObjectID = \"2181\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Source List"
+          }
+        }
+      }
+    },
+    "2182.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Source Resource List\"; ObjectID = \"2182\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Source Resource List"
+          }
+        }
+      }
+    },
+    "2183.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Source Model\"; ObjectID = \"2183\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Source Model"
+          }
+        }
+      }
+    },
+    "2184.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Source Color Correction file\"; ObjectID = \"2184\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Source Color Correction file"
+          }
+        }
+      }
+    },
+    "2185.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Source Collision Model\"; ObjectID = \"2185\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Source Collision Model"
+          }
+        }
+      }
+    },
+    "2186.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Source Choreography Data\"; ObjectID = \"2186\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Source Choreography Data"
+          }
+        }
+      }
+    },
+    "2187.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Source Material Type\"; ObjectID = \"2187\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Source Material Type"
+          }
+        }
+      }
+    },
+    "2188.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Source VTF Image\"; ObjectID = \"2188\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Source VTF Image"
+          }
+        }
+      }
+    },
+    "2189.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Source Mesh Strip file\"; ObjectID = \"2189\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Source Mesh Strip file"
+          }
+        }
+      }
+    },
+    "2190.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Source Vertex Data file\"; ObjectID = \"2190\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Source Vertex Data file"
+          }
+        }
+      }
+    },
+    "2191.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Source Sound List\"; ObjectID = \"2191\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Source Sound List"
+          }
+        }
+      }
+    },
+    "2192.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Source Navigation Mesh\"; ObjectID = \"2192\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Source Navigation Mesh"
+          }
+        }
+      }
+    },
+    "2202.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Done\"; ObjectID = \"2202\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Done"
+          }
+        }
+      }
+    },
+    "2205.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Search for:\"; ObjectID = \"2205\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Search for:"
+          }
+        }
+      }
+    },
+    "2211.label" : {
+      "comment" : "Class = \"NSToolbarItem\"; label = \"Inspector\"; ObjectID = \"2211\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Inspector"
+          }
+        }
+      }
+    },
+    "2211.paletteLabel" : {
+      "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"Inspector\"; ObjectID = \"2211\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Inspector"
+          }
+        }
+      }
+    },
+    "2211.toolTip" : {
+      "comment" : "Class = \"NSToolbarItem\"; toolTip = \"See information about the selected files and folders\"; ObjectID = \"2211\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "See information about the selected files and folders"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

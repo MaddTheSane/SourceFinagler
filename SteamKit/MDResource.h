@@ -11,12 +11,18 @@
 
 /** Resource Attribute Masks*/
 typedef NS_OPTIONS(ResAttributes, MDResourceAttributes) {
-	MDResourceAttributeSystemHeap                 = 64,   /**< System or application heap? */
-	MDResourceAttributePurgeable                  = 32,   /**< Purgeable resource? */
-	MDResourceAttributeLocked                     = 16,   /**< Load it in locked? */
-	MDResourceAttributeProtected                  = 8,    /**< Protected? */
-	MDResourceAttributePreload                    = 4,    /**< Load in on OpenResFile? */
-	MDResourceAttributeChanged                    = 2     /**< Resource changed? */
+	/** System or application heap? */
+	MDResourceAttributeSystemHeap                 = 64,
+	/** Purgeable resource? */
+	MDResourceAttributePurgeable                  = 32,
+	/** Load it in locked? */
+	MDResourceAttributeLocked                     = 16,
+	/** Protected? */
+	MDResourceAttributeProtected                  = 8,
+	/** Load in on OpenResFile? */
+	MDResourceAttributePreload                    = 4,
+	/** Resource changed? */
+	MDResourceAttributeChanged                    = 2
 };
 
 

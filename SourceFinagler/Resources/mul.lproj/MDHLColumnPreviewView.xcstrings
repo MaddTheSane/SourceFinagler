@@ -1,0 +1,150 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "16.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Preview:\"; ObjectID = \"16\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Preview:"
+          }
+        }
+      }
+    },
+    "17.placeholderString" : {
+      "comment" : "Class = \"NSTextFieldCell\"; placeholderString = \"--\"; ObjectID = \"17\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "--"
+          }
+        }
+      }
+    },
+    "19.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Name\"; ObjectID = \"19\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Name"
+          }
+        }
+      }
+    },
+    "20.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Dimensions\"; ObjectID = \"20\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Dimensions"
+          }
+        }
+      }
+    },
+    "21.placeholderString" : {
+      "comment" : "Class = \"NSTextFieldCell\"; placeholderString = \"--\"; ObjectID = \"21\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "--"
+          }
+        }
+      }
+    },
+    "22.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Size\"; ObjectID = \"22\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Size"
+          }
+        }
+      }
+    },
+    "23.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Kind\"; ObjectID = \"23\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Kind"
+          }
+        }
+      }
+    },
+    "25.placeholderString" : {
+      "comment" : "Class = \"NSTextFieldCell\"; placeholderString = \"--\"; ObjectID = \"25\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "--"
+          }
+        }
+      }
+    },
+    "26.placeholderString" : {
+      "comment" : "Class = \"NSTextFieldCell\"; placeholderString = \"--\"; ObjectID = \"26\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "--"
+          }
+        }
+      }
+    },
+    "30.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Compression\"; ObjectID = \"30\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Compression"
+          }
+        }
+      }
+    },
+    "31.placeholderString" : {
+      "comment" : "Class = \"NSTextFieldCell\"; placeholderString = \"--\"; ObjectID = \"31\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "--"
+          }
+        }
+      }
+    },
+    "86.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"More info…\"; ObjectID = \"86\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "More info…"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

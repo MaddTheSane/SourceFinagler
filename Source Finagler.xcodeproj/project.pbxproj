@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -25,17 +25,14 @@
 		550EB3032500715A006BC291 /* nvconfig.h in Headers */ = {isa = PBXBuildFile; fileRef = C1FEA94B125E73B700CA78FF /* nvconfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		55101A8E290E45A3003CED21 /* sfti Metadata.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 55101A85290E45A2003CED21 /* sfti Metadata.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		55101A93290E45C5003CED21 /* schema.xml in Resources */ = {isa = PBXBuildFile; fileRef = C181ADAE12557982006810AB /* schema.xml */; };
-		55101A94290E45C9003CED21 /* schema.strings in Resources */ = {isa = PBXBuildFile; fileRef = C181ADAF125579A0006810AB /* schema.strings */; };
 		55101A9C290E4631003CED21 /* TextureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17319B21298D11400C29732 /* TextureKit.framework */; };
 		55101AA1290E4F0C003CED21 /* CoreSpotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55101AA0290E4F0C003CED21 /* CoreSpotlight.framework */; };
 		55101AB1290E76B6003CED21 /* CoreSpotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55101AA0290E4F0C003CED21 /* CoreSpotlight.framework */; };
 		55101AB8290E76B6003CED21 /* schema.xml in Resources */ = {isa = PBXBuildFile; fileRef = C181ADAE12557982006810AB /* schema.xml */; };
-		55101AB9290E76B6003CED21 /* schema.strings in Resources */ = {isa = PBXBuildFile; fileRef = C181ADAF125579A0006810AB /* schema.strings */; };
 		55101ACC290E76BC003CED21 /* CoreSpotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55101AA0290E4F0C003CED21 /* CoreSpotlight.framework */; };
 		55101ACE290E76BC003CED21 /* TextureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17319B21298D11400C29732 /* TextureKit.framework */; };
 		55101AD1290E76BC003CED21 /* VTF.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1B95275124E73B200E83451 /* VTF.framework */; };
 		55101AD3290E76BC003CED21 /* schema.xml in Resources */ = {isa = PBXBuildFile; fileRef = C181ADAE12557982006810AB /* schema.xml */; };
-		55101AD4290E76BC003CED21 /* schema.strings in Resources */ = {isa = PBXBuildFile; fileRef = C181ADAF125579A0006810AB /* schema.strings */; };
 		55101AE3290E7A13003CED21 /* ImportExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55101AE2290E7A13003CED21 /* ImportExtension.swift */; };
 		55101AE4290E7A3D003CED21 /* ImportExtensionDDS.mm in Sources */ = {isa = PBXBuildFile; fileRef = 55101ADE290E77A6003CED21 /* ImportExtensionDDS.mm */; };
 		55101AE5290E7A41003CED21 /* ImportExtensionVTF.mm in Sources */ = {isa = PBXBuildFile; fileRef = 55101AE0290E78A3003CED21 /* ImportExtensionVTF.mm */; };
@@ -109,7 +106,14 @@
 		558FACCD20ABB3B300AC7001 /* KtxFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C12B4DBE13B717EA0096FC0E /* KtxFile.cpp */; };
 		558FACCE20ABB40300AC7001 /* Matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1E936951606A8550056438A /* Matrix.cpp */; };
 		558FACCF20ABB67100AC7001 /* KtxFile.h in Headers */ = {isa = PBXBuildFile; fileRef = C12B4DBF13B717EA0096FC0E /* KtxFile.h */; };
-		55B9F2A41D7CB20600641709 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55B9F2681D7CB1EF00641709 /* InfoPlist.strings */; };
+		55947A3D2D82DABA00170FE1 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 55947A3C2D82DABA00170FE1 /* Localizable.xcstrings */; };
+		55947A3E2D82DABA00170FE1 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 55947A3C2D82DABA00170FE1 /* Localizable.xcstrings */; };
+		55947A402D82DD0F00170FE1 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 55947A3F2D82DD0F00170FE1 /* InfoPlist.xcstrings */; };
+		55947A422D82DD0F00170FE1 /* schema.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 55947A412D82DD0F00170FE1 /* schema.xcstrings */; };
+		55947A432D82DD0F00170FE1 /* schema.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 55947A412D82DD0F00170FE1 /* schema.xcstrings */; };
+		55947A442D82DD0F00170FE1 /* schema.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 55947A412D82DD0F00170FE1 /* schema.xcstrings */; };
+		55947A452D82DD0F00170FE1 /* schema.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 55947A412D82DD0F00170FE1 /* schema.xcstrings */; };
+		55947A472D82DD0F00170FE1 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 55947A462D82DD0F00170FE1 /* InfoPlist.xcstrings */; };
 		55B9F2B81D7D1A0E00641709 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55B9F2B71D7D1A0E00641709 /* Images.xcassets */; };
 		55B9F2BB1D7D1A2100641709 /* Shared.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55B9F2BA1D7D1A2100641709 /* Shared.xcassets */; };
 		55B9F2BC1D7D1A2100641709 /* Shared.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55B9F2BA1D7D1A2100641709 /* Shared.xcassets */; };
@@ -357,7 +361,6 @@
 		C1A2DDD413D3B927001ABB83 /* TKImageExportPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A2DDD313D3B927001ABB83 /* TKImageExportPreviewView.m */; };
 		C1A2DDE213D3BF16001ABB83 /* TKImageExportPreviewOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A2DDE113D3BF16001ABB83 /* TKImageExportPreviewOperation.m */; };
 		C1A92F90143948F200AFAF4F /* TKImageDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1A92F8E143948F200AFAF4F /* TKImageDocument.xib */; };
-		C1AF8A8512CE653F00027B75 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C1C12548123A0EC6004674B4 /* Localizable.strings */; };
 		C1B95374124E73EC00E83451 /* Error.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1B95340124E73EC00E83451 /* Error.cpp */; };
 		C1B95375124E73EC00E83451 /* Error.h in Headers */ = {isa = PBXBuildFile; fileRef = C1B95341124E73EC00E83451 /* Error.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C1B95376124E73EC00E83451 /* FileReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1B95342124E73EC00E83451 /* FileReader.cpp */; };
@@ -480,7 +483,6 @@
 		C1C12752123A97FB004674B4 /* NullStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1C12744123A97FB004674B4 /* NullStream.cpp */; };
 		C1C12753123A97FB004674B4 /* ProcStream.h in Headers */ = {isa = PBXBuildFile; fileRef = C1C12745123A97FB004674B4 /* ProcStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C1C12754123A97FB004674B4 /* ProcStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1C12746123A97FB004674B4 /* ProcStream.cpp */; };
-		C1C2C4E3127CBCA0003B24F6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		C1C2C4E4127CBCA0003B24F6 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		C1C2C4E6127CBCA0003B24F6 /* MDSteamAppsRelocatorController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C13E77DD11C805D900B10F3C /* MDSteamAppsRelocatorController.xib */; };
 		C1C2C4E7127CBCA0003B24F6 /* MDOtherAppsHelperController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C13E77E011C8061500B10F3C /* MDOtherAppsHelperController.xib */; };
@@ -547,7 +549,6 @@
 		C1C2C5A1127CBCA0003B24F6 /* HL.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C1C12634123A54F0004674B4 /* HL.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C1C2C5EA127CBE12003B24F6 /* VTF.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1B95275124E73B200E83451 /* VTF.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		C1C2C62A127CBED1003B24F6 /* schema.xml in Resources */ = {isa = PBXBuildFile; fileRef = C181ADAE12557982006810AB /* schema.xml */; };
-		C1C2C62B127CBED1003B24F6 /* schema.strings in Resources */ = {isa = PBXBuildFile; fileRef = C181ADAF125579A0006810AB /* schema.strings */; };
 		C1C2C62D127CBED1003B24F6 /* GetMetadataForFile.mm in Sources */ = {isa = PBXBuildFile; fileRef = C181AD951255793B006810AB /* GetMetadataForFile.mm */; };
 		C1C2C62E127CBED1003B24F6 /* HLSpotlightMain.c in Sources */ = {isa = PBXBuildFile; fileRef = C181AD971255796E006810AB /* HLSpotlightMain.c */; };
 		C1C2C637127CBED1003B24F6 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C11B279211BDFBB8004D4CC0 /* ApplicationServices.framework */; settings = {ATTRIBUTES = (Required, ); }; };
@@ -688,7 +689,6 @@
 		C1FEAB45125F64A900CA78FF /* VSSourceAddonController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FEAB44125F64A900CA78FF /* VSSourceAddonController.m */; };
 		C1FEAB81125F661800CA78FF /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C11B279211BDFBB8004D4CC0 /* ApplicationServices.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		C1FEAB92125F66BC00CA78FF /* VSSourceAddonFinaglerMain.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FEAB91125F66BC00CA78FF /* VSSourceAddonFinaglerMain.m */; };
-		C1FEABB1125F68B700CA78FF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C1C12548123A0EC6004674B4 /* Localizable.strings */; };
 		C1FEABFE125F69BA00CA78FF /* copy.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C1C12469123A0840004674B4 /* copy.m4a */; };
 		C1FF5A39145E6571005F36D5 /* TKBase.h in Headers */ = {isa = PBXBuildFile; fileRef = C187D8A11635900700F30B64 /* TKBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -1159,7 +1159,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		089C165DFE840E0CC02AAC07 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		256AC3D80F4B6AC300CF3369 /* TKAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TKAppController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		256AC3D90F4B6AC300CF3369 /* TKAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TKAppController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		256AC3F00F4B6AF500CF3369 /* SourceFinagler_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceFinagler_Prefix.pch; sourceTree = "<group>"; };
@@ -1179,43 +1178,24 @@
 		55101AE1290E78A4003CED21 /* ImportExtensionVTF.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImportExtensionVTF.h; sourceTree = "<group>"; };
 		55101AE2290E7A13003CED21 /* ImportExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportExtension.swift; sourceTree = "<group>"; };
 		55101AFA290F2302003CED21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		55101AFB290F230B003CED21 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		55101AFC290F23DF003CED21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TKAboutWindow.xib; sourceTree = "<group>"; };
-		55101AFD290F23E5003CED21 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TKAboutWindow.strings; sourceTree = "<group>"; };
 		55101AFE290F2405003CED21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TKPrefsGeneralController.xib; sourceTree = "<group>"; };
-		55101AFF290F240D003CED21 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TKPrefsGeneralController.strings; sourceTree = "<group>"; };
 		55101B00290F2421003CED21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MDViewOptions.xib; sourceTree = "<group>"; };
-		55101B01290F2427003CED21 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MDViewOptions.strings; sourceTree = "<group>"; };
 		55101B02290F243E003CED21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TKImageDocument.xib; sourceTree = "<group>"; };
-		55101B03290F2444003CED21 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TKImageDocument.strings; sourceTree = "<group>"; };
 		55101B04290F2454003CED21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TKImageDocumentAccessoryView.xib; sourceTree = "<group>"; };
-		55101B05290F245A003CED21 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TKImageDocumentAccessoryView.strings; sourceTree = "<group>"; };
 		55101B06290F2463003CED21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TKImageExportPanel.xib; sourceTree = "<group>"; };
-		55101B07290F246A003CED21 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TKImageExportPanel.strings; sourceTree = "<group>"; };
 		55101B08290F2476003CED21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TKImageExportPreviewView.xib; sourceTree = "<group>"; };
-		55101B09290F247C003CED21 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TKImageExportPreviewView.strings; sourceTree = "<group>"; };
 		55101B0A290F2488003CED21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TKModelDocument.xib; sourceTree = "<group>"; };
-		55101B0B290F2490003CED21 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TKModelDocument.strings; sourceTree = "<group>"; };
 		55101B0C290F270C003CED21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MDOtherAppsHelperController.xib; sourceTree = "<group>"; };
-		55101B0D290F271B003CED21 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MDOtherAppsHelperController.strings; sourceTree = "<group>"; };
 		55101B0E290F2724003CED21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MDSteamAppsRelocatorController.xib; sourceTree = "<group>"; };
-		55101B0F290F272C003CED21 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MDSteamAppsRelocatorController.strings; sourceTree = "<group>"; };
 		55101B10290F2731003CED21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MDInspector.xib; sourceTree = "<group>"; };
-		55101B11290F2739003CED21 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MDInspector.strings; sourceTree = "<group>"; };
 		55101B12290F2742003CED21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MDQuickLook.xib; sourceTree = "<group>"; };
-		55101B13290F2747003CED21 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MDQuickLook.strings; sourceTree = "<group>"; };
 		55101B14290F2752003CED21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MDCopyOperationView.xib; sourceTree = "<group>"; };
-		55101B15290F2759003CED21 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MDCopyOperationView.strings; sourceTree = "<group>"; };
 		55101B16290F2761003CED21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MDHLDocument.xib; sourceTree = "<group>"; };
-		55101B17290F2767003CED21 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MDHLDocument.strings; sourceTree = "<group>"; };
 		55101B18290F276F003CED21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TKPrefs.xib; sourceTree = "<group>"; };
-		55101B19290F2776003CED21 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TKPrefs.strings; sourceTree = "<group>"; };
 		55101B1A290F277E003CED21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MDCopyOperationWindow.xib; sourceTree = "<group>"; };
-		55101B1B290F2783003CED21 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MDCopyOperationWindow.strings; sourceTree = "<group>"; };
 		55101B1C290F278B003CED21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MDHLColumnPreviewView.xib; sourceTree = "<group>"; };
-		55101B1D290F2792003CED21 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MDHLColumnPreviewView.strings; sourceTree = "<group>"; };
 		55101B1E290F27B9003CED21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/VSSourceAddonFinaglerMainMenu.xib; sourceTree = "<group>"; };
-		55101B1F290F27C0003CED21 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/VSSourceAddonFinaglerMainMenu.strings; sourceTree = "<group>"; };
 		552B5B4E24E35FA90077398A /* icbc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = icbc.cpp; sourceTree = "<group>"; };
 		552B5B4F24E35FA90077398A /* icbc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = icbc.h; sourceTree = "<group>"; };
 		552B5B5424E36FD80077398A /* Library.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Library.h; sourceTree = "<group>"; };
@@ -1265,7 +1245,29 @@
 		558FACC620ABADDD00AC7001 /* rg_etc1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rg_etc1.h; sourceTree = "<group>"; };
 		558FACC720ABADDD00AC7001 /* rg_etc1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rg_etc1.cpp; sourceTree = "<group>"; };
 		558FACCC20ABAEDB00AC7001 /* CMakeLists.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
-		55B9F2691D7CB1EF00641709 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		55947A3C2D82DABA00170FE1 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		55947A3F2D82DD0F00170FE1 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		55947A412D82DD0F00170FE1 /* schema.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = schema.xcstrings; sourceTree = "<group>"; };
+		55947A462D82DD0F00170FE1 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		55947A482D82DD9C00170FE1 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/MDHLColumnPreviewView.xcstrings; sourceTree = "<group>"; };
+		55947A492D82DD9C00170FE1 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/MDQuickLook.xcstrings; sourceTree = "<group>"; };
+		55947A4A2D82DD9C00170FE1 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/TKAboutWindow.xcstrings; sourceTree = "<group>"; };
+		55947A4B2D82DD9C00170FE1 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/MDInspector.xcstrings; sourceTree = "<group>"; };
+		55947A4C2D82DD9C00170FE1 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/MDOtherAppsHelperController.xcstrings; sourceTree = "<group>"; };
+		55947A4D2D82DD9C00170FE1 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/VSSourceAddonFinaglerMainMenu.xcstrings; sourceTree = "<group>"; };
+		55947A4E2D82DD9C00170FE1 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/TKImageDocumentAccessoryView.xcstrings; sourceTree = "<group>"; };
+		55947A4F2D82DD9C00170FE1 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/TKModelDocument.xcstrings; sourceTree = "<group>"; };
+		55947A502D82DD9C00170FE1 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/TKPrefs.xcstrings; sourceTree = "<group>"; };
+		55947A512D82DD9C00170FE1 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/TKImageDocument.xcstrings; sourceTree = "<group>"; };
+		55947A522D82DD9C00170FE1 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/TKImageExportPreviewView.xcstrings; sourceTree = "<group>"; };
+		55947A532D82DD9C00170FE1 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/MDSteamAppsRelocatorController.xcstrings; sourceTree = "<group>"; };
+		55947A542D82DD9C00170FE1 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/TKPrefsGeneralController.xcstrings; sourceTree = "<group>"; };
+		55947A552D82DD9D00170FE1 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/MDViewOptions.xcstrings; sourceTree = "<group>"; };
+		55947A562D82DD9D00170FE1 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/TKImageExportPanel.xcstrings; sourceTree = "<group>"; };
+		55947A572D82DD9D00170FE1 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/MDHLDocument.xcstrings; sourceTree = "<group>"; };
+		55947A582D82DD9D00170FE1 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/MDCopyOperationView.xcstrings; sourceTree = "<group>"; };
+		55947A592D82DD9D00170FE1 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/MDCopyOperationWindow.xcstrings; sourceTree = "<group>"; };
+		55947A5A2D82DD9D00170FE1 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/MainMenu.xcstrings; sourceTree = "<group>"; };
 		55B9F2B71D7D1A0E00641709 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		55B9F2BA1D7D1A2100641709 /* Shared.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Shared.xcassets; sourceTree = "<group>"; };
 		55B9F2BF1D7D21FC00641709 /* HLSpotlightMain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HLSpotlightMain.h; sourceTree = "<group>"; };
@@ -1464,7 +1466,6 @@
 		C181AD951255793B006810AB /* GetMetadataForFile.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GetMetadataForFile.mm; sourceTree = "<group>"; };
 		C181AD971255796E006810AB /* HLSpotlightMain.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = HLSpotlightMain.c; sourceTree = "<group>"; usesTabs = 0; };
 		C181ADAE12557982006810AB /* schema.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = schema.xml; sourceTree = "<group>"; usesTabs = 0; };
-		C181ADB0125579A0006810AB /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/schema.strings; sourceTree = "<group>"; };
 		C18250AD1262859600D3F663 /* MDImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDImageView.h; sourceTree = "<group>"; };
 		C18250AE1262859600D3F663 /* MDImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDImageView.m; sourceTree = "<group>"; };
 		C18418091455A9D4007D8EE6 /* TKImageChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKImageChannel.h; sourceTree = "<group>"; };
@@ -1657,7 +1658,6 @@
 		C1C12528123A0CA3004674B4 /* MDStash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDStash.h; sourceTree = "<group>"; };
 		C1C12529123A0CA3004674B4 /* MDStash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDStash.m; sourceTree = "<group>"; };
 		C1C1252B123A0CAE004674B4 /* Source Finagler.sdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "Source Finagler.sdef"; path = "../Source Finagler.sdef"; sourceTree = "<group>"; };
-		C1C12549123A0EC6004674B4 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; lineEnding = 0; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C1C12634123A54F0004674B4 /* HL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1C126A9123A7FC3004674B4 /* MDGCFDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MDGCFDocument.h; sourceTree = "<group>"; };
 		C1C126AA123A7FC3004674B4 /* MDGCFDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MDGCFDocument.m; sourceTree = "<group>"; };
@@ -2285,12 +2285,12 @@
 			isa = PBXGroup;
 			children = (
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
-				C1C12548123A0EC6004674B4 /* Localizable.strings */,
+				55947A3C2D82DABA00170FE1 /* Localizable.xcstrings */,
 				C15521FD11D9A4D600CCEDD3 /* dsa_pub.pem */,
 				C132DF73124D521B00A8DE04 /* LGPL.rtf */,
 				C1C1252B123A0CAE004674B4 /* Source Finagler.sdef */,
 				8D1107310486CEB800E47090 /* SourceFinagler-Info.plist */,
-				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
+				55947A3F2D82DD0F00170FE1 /* InfoPlist.xcstrings */,
 				55B9F2B71D7D1A0E00641709 /* Images.xcassets */,
 				55B9F2BA1D7D1A2100641709 /* Shared.xcassets */,
 			);
@@ -2491,7 +2491,7 @@
 		55B9F2A61D7CB29A00641709 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				55B9F2681D7CB1EF00641709 /* InfoPlist.strings */,
+				55947A462D82DD0F00170FE1 /* InfoPlist.xcstrings */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -2903,7 +2903,7 @@
 				C181AD971255796E006810AB /* HLSpotlightMain.c */,
 				C181AC9912557677006810AB /* Source-Info.plist */,
 				C181ADAE12557982006810AB /* schema.xml */,
-				C181ADAF125579A0006810AB /* schema.strings */,
+				55947A412D82DD0F00170FE1 /* schema.xcstrings */,
 			);
 			name = Source.mdimporter;
 			path = SourceSpotlightImporter;
@@ -4840,7 +4840,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55101A93290E45C5003CED21 /* schema.xml in Resources */,
-				55101A94290E45C9003CED21 /* schema.strings in Resources */,
+				55947A432D82DD0F00170FE1 /* schema.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4849,7 +4849,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55101AB8290E76B6003CED21 /* schema.xml in Resources */,
-				55101AB9290E76B6003CED21 /* schema.strings in Resources */,
+				55947A442D82DD0F00170FE1 /* schema.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4858,7 +4858,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55101AD3290E76BC003CED21 /* schema.xml in Resources */,
-				55101AD4290E76BC003CED21 /* schema.strings in Resources */,
+				55947A452D82DD0F00170FE1 /* schema.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4921,7 +4921,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1B95388124E73EC00E83451 /* Readme.txt in Resources */,
-				55B9F2A41D7CB20600641709 /* InfoPlist.strings in Resources */,
+				55947A472D82DD0F00170FE1 /* InfoPlist.xcstrings in Resources */,
 				C135198B13947C730074B5EA /* LGPL.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4939,12 +4939,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1C2C4E3127CBCA0003B24F6 /* InfoPlist.strings in Resources */,
 				C1C2C4E4127CBCA0003B24F6 /* MainMenu.xib in Resources */,
 				C1C2C4E6127CBCA0003B24F6 /* MDSteamAppsRelocatorController.xib in Resources */,
 				C1C2C4E7127CBCA0003B24F6 /* MDOtherAppsHelperController.xib in Resources */,
 				C1C2C4EB127CBCA0003B24F6 /* dsa_pub.pem in Resources */,
 				C1C2C4F0127CBCA0003B24F6 /* copy.m4a in Resources */,
+				55947A402D82DD0F00170FE1 /* InfoPlist.xcstrings in Resources */,
 				55B9F2BB1D7D1A2100641709 /* Shared.xcassets in Resources */,
 				C1C2C4F6127CBCA0003B24F6 /* moveToTrash.m4a in Resources */,
 				C122434E17B9623F00ADC195 /* TKMaterialPropertyViewController.xib in Resources */,
@@ -4961,10 +4961,10 @@
 				C1C2C51D127CBCA0003B24F6 /* TKPrefsGeneralController.xib in Resources */,
 				C1C2C52A127CBCA0003B24F6 /* LGPL.rtf in Resources */,
 				C1C2C53C127CBCA0003B24F6 /* Source Addon Finagler.app in Resources */,
-				C1AF8A8512CE653F00027B75 /* Localizable.strings in Resources */,
 				C116FA0412D5549700551787 /* TKImageDocumentAccessoryView.xib in Resources */,
 				C12F362F12D7E46400D28F26 /* allDefaultPresets.plist in Resources */,
 				C12F363212D7E46800D28F26 /* TKImageExportPreviewView.xib in Resources */,
+				55947A3D2D82DABA00170FE1 /* Localizable.xcstrings in Resources */,
 				C12F363612D7E46C00D28F26 /* TKImageExportPanel.xib in Resources */,
 				C1279D3612DCB0EB0065F5D7 /* defaultPresets.plist in Resources */,
 				C1351912139479C40074B5EA /* Acknowledgments.rtf in Resources */,
@@ -4986,7 +4986,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1C2C62A127CBED1003B24F6 /* schema.xml in Resources */,
-				C1C2C62B127CBED1003B24F6 /* schema.strings in Resources */,
+				55947A422D82DD0F00170FE1 /* schema.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5032,7 +5032,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55B9F2BD1D7D1A2100641709 /* Shared.xcassets in Resources */,
-				C1FEABB1125F68B700CA78FF /* Localizable.strings in Resources */,
+				55947A3E2D82DABA00170FE1 /* Localizable.xcstrings in Resources */,
 				C1FEABFE125F69BA00CA78FF /* copy.m4a in Resources */,
 				C15DD653126B205500E44BDB /* VSSourceAddonFinaglerMainMenu.xib in Resources */,
 			);
@@ -5749,29 +5749,13 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				089C165DFE840E0CC02AAC07 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		1DDD58140DA1D0A300B32029 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				55101AFA290F2302003CED21 /* Base */,
-				55101AFB290F230B003CED21 /* en */,
+				55947A5A2D82DD9D00170FE1 /* mul */,
 			);
 			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-		55B9F2681D7CB1EF00641709 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				55B9F2691D7CB1EF00641709 /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		C122434C17B9623F00ADC195 /* TKMaterialPropertyViewController.xib */ = {
@@ -5794,7 +5778,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				55101B0E290F2724003CED21 /* Base */,
-				55101B0F290F272C003CED21 /* en */,
+				55947A532D82DD9C00170FE1 /* mul */,
 			);
 			name = MDSteamAppsRelocatorController.xib;
 			path = Resources;
@@ -5804,7 +5788,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				55101B0C290F270C003CED21 /* Base */,
-				55101B0D290F271B003CED21 /* en */,
+				55947A4C2D82DD9C00170FE1 /* mul */,
 			);
 			name = MDOtherAppsHelperController.xib;
 			path = Resources;
@@ -5814,7 +5798,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				55101B04290F2454003CED21 /* Base */,
-				55101B05290F245A003CED21 /* en */,
+				55947A4E2D82DD9C00170FE1 /* mul */,
 			);
 			name = TKImageDocumentAccessoryView.xib;
 			sourceTree = "<group>";
@@ -5823,7 +5807,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				55101B18290F276F003CED21 /* Base */,
-				55101B19290F2776003CED21 /* en */,
+				55947A502D82DD9C00170FE1 /* mul */,
 			);
 			name = TKPrefs.xib;
 			sourceTree = "<group>";
@@ -5832,7 +5816,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				55101AFE290F2405003CED21 /* Base */,
-				55101AFF290F240D003CED21 /* en */,
+				55947A542D82DD9C00170FE1 /* mul */,
 			);
 			name = TKPrefsGeneralController.xib;
 			sourceTree = "<group>";
@@ -5841,7 +5825,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				55101B08290F2476003CED21 /* Base */,
-				55101B09290F247C003CED21 /* en */,
+				55947A522D82DD9C00170FE1 /* mul */,
 			);
 			name = TKImageExportPreviewView.xib;
 			sourceTree = "<group>";
@@ -5850,7 +5834,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				55101B06290F2463003CED21 /* Base */,
-				55101B07290F246A003CED21 /* en */,
+				55947A562D82DD9D00170FE1 /* mul */,
 			);
 			name = TKImageExportPanel.xib;
 			sourceTree = "<group>";
@@ -5859,7 +5843,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				55101B1E290F27B9003CED21 /* Base */,
-				55101B1F290F27C0003CED21 /* en */,
+				55947A4D2D82DD9C00170FE1 /* mul */,
 			);
 			name = VSSourceAddonFinaglerMainMenu.xib;
 			sourceTree = "<group>";
@@ -5868,17 +5852,9 @@
 			isa = PBXVariantGroup;
 			children = (
 				55101B0A290F2488003CED21 /* Base */,
-				55101B0B290F2490003CED21 /* en */,
+				55947A4F2D82DD9C00170FE1 /* mul */,
 			);
 			name = TKModelDocument.xib;
-			sourceTree = "<group>";
-		};
-		C181ADAF125579A0006810AB /* schema.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C181ADB0125579A0006810AB /* en */,
-			);
-			name = schema.strings;
 			sourceTree = "<group>";
 		};
 		C19EB1011455768A0021185E /* TKImageInspector.xib */ = {
@@ -5893,7 +5869,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				55101B02290F243E003CED21 /* Base */,
-				55101B03290F2444003CED21 /* en */,
+				55947A512D82DD9C00170FE1 /* mul */,
 			);
 			name = TKImageDocument.xib;
 			sourceTree = "<group>";
@@ -5902,7 +5878,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				55101AFC290F23DF003CED21 /* Base */,
-				55101AFD290F23E5003CED21 /* en */,
+				55947A4A2D82DD9C00170FE1 /* mul */,
 			);
 			name = TKAboutWindow.xib;
 			sourceTree = "<group>";
@@ -5911,7 +5887,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				55101B14290F2752003CED21 /* Base */,
-				55101B15290F2759003CED21 /* en */,
+				55947A582D82DD9D00170FE1 /* mul */,
 			);
 			name = MDCopyOperationView.xib;
 			path = Resources;
@@ -5921,7 +5897,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				55101B1A290F277E003CED21 /* Base */,
-				55101B1B290F2783003CED21 /* en */,
+				55947A592D82DD9D00170FE1 /* mul */,
 			);
 			name = MDCopyOperationWindow.xib;
 			path = Resources;
@@ -5931,7 +5907,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				55101B1C290F278B003CED21 /* Base */,
-				55101B1D290F2792003CED21 /* en */,
+				55947A482D82DD9C00170FE1 /* mul */,
 			);
 			name = MDHLColumnPreviewView.xib;
 			path = Resources;
@@ -5941,7 +5917,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				55101B10290F2731003CED21 /* Base */,
-				55101B11290F2739003CED21 /* en */,
+				55947A4B2D82DD9C00170FE1 /* mul */,
 			);
 			name = MDInspector.xib;
 			path = Resources;
@@ -5951,7 +5927,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				55101B12290F2742003CED21 /* Base */,
-				55101B13290F2747003CED21 /* en */,
+				55947A492D82DD9C00170FE1 /* mul */,
 			);
 			name = MDQuickLook.xib;
 			path = Resources;
@@ -5961,25 +5937,17 @@
 			isa = PBXVariantGroup;
 			children = (
 				55101B00290F2421003CED21 /* Base */,
-				55101B01290F2427003CED21 /* en */,
+				55947A552D82DD9D00170FE1 /* mul */,
 			);
 			name = MDViewOptions.xib;
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		C1C12548123A0EC6004674B4 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C1C12549123A0EC6004674B4 /* en */,
-			);
-			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		C1D5B01E147BE6F200B0599B /* MDHLDocument.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				55101B16290F2761003CED21 /* Base */,
-				55101B17290F2767003CED21 /* en */,
+				55947A572D82DD9D00170FE1 /* mul */,
 			);
 			name = MDHLDocument.xib;
 			path = Resources;
@@ -6340,6 +6308,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = NVTextureTools/extern/poshlib;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -6347,6 +6316,7 @@
 				SDKROOT = macosx;
 				STRIP_INSTALLED_PRODUCT = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				VALID_ARCHS = "$(inherited) x86_64h";
@@ -7128,6 +7098,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = NVTextureTools/extern/poshlib;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -7135,6 +7106,7 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VALID_ARCHS = "$(inherited) x86_64h";
@@ -7194,6 +7166,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = NVTextureTools/extern/poshlib;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -7201,6 +7174,7 @@
 				SDKROOT = macosx;
 				STRIP_INSTALLED_PRODUCT = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				VALID_ARCHS = "$(inherited) x86_64h";

@@ -1,0 +1,210 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "495.title" : {
+      "comment" : "Class = \"NSBox\"; title = \"To relocate your “SteamApps” folder:\"; ObjectID = \"495\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "To relocate your “SteamApps” folder:"
+          }
+        }
+      }
+    },
+    "498.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Current “SteamApps” Location:\"; ObjectID = \"498\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Current “SteamApps” Location:"
+          }
+        }
+      }
+    },
+    "514.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Click Create Steam Apps Shortcut to save the “SteamApps” shortcut in your ~/Library/Application Support/Steam/ folder. (If your original SteamApps folder is still there, it will be renamed to \\\"SteamApps (Original)\\\").\"; ObjectID = \"514\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Click Create Steam Apps Shortcut to save the “SteamApps” shortcut in your ~/Library/Application Support/Steam/ folder. (If your original SteamApps folder is still there, it will be renamed to \"SteamApps (Original)\")."
+          }
+        }
+      }
+    },
+    "515.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Step 4:\"; ObjectID = \"515\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Step 4:"
+          }
+        }
+      }
+    },
+    "516.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Create Steam Apps Shortcut\"; ObjectID = \"516\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Create Steam Apps Shortcut"
+          }
+        }
+      }
+    },
+    "517.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Click Browse to locate the copy of your “SteamApps” folder you created in Step 2. \"; ObjectID = \"517\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Click Browse to locate the copy of your “SteamApps” folder you created in Step 2. "
+          }
+        }
+      }
+    },
+    "518.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Step 3:\"; ObjectID = \"518\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Step 3:"
+          }
+        }
+      }
+    },
+    "519.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Use the Finder to copy or move your “SteamApps” folder to the new desired location.\"; ObjectID = \"519\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Use the Finder to copy or move your “SteamApps” folder to the new desired location."
+          }
+        }
+      }
+    },
+    "520.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Quit Steam.\"; ObjectID = \"520\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Quit Steam."
+          }
+        }
+      }
+    },
+    "521.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Step 2:\"; ObjectID = \"521\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Step 2:"
+          }
+        }
+      }
+    },
+    "522.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Step 1:\"; ObjectID = \"522\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Step 1:"
+          }
+        }
+      }
+    },
+    "523.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Browse…\"; ObjectID = \"523\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Browse…"
+          }
+        }
+      }
+    },
+    "524.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"New “SteamApps” Location:\"; ObjectID = \"524\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "New “SteamApps” Location:"
+          }
+        }
+      }
+    },
+    "576.ibShadowedIsNilPlaceholder" : {
+      "comment" : "Class = \"CocoaBindingsConnection\"; ibShadowedIsNilPlaceholder = \"<Unknown>\"; ObjectID = \"576\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "<Unknown>"
+          }
+        }
+      }
+    },
+    "581.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Reveal in Finder\"; ObjectID = \"581\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Reveal in Finder"
+          }
+        }
+      }
+    },
+    "594.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Reveal in Finder\"; ObjectID = \"594\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Reveal in Finder"
+          }
+        }
+      }
+    },
+    "599.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Quit Steam\"; ObjectID = \"599\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Quit Steam"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

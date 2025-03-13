@@ -16,6 +16,6 @@
 }
 
 @property (nonatomic, assign) BOOL itemIsInvisible;
-@property (nonatomic, strong) NSImage *image;
+@property (atomic, strong) NSImage *image;
 
 @end

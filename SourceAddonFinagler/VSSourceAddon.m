@@ -68,12 +68,12 @@
 					
 				case VSSourceAddonErrorGameNotFound : {
 					NSInteger gameID = [[[inError userInfo] objectForKey:VSSourceAddonGameIDKey] integerValue];
-					[self setProblem:[NSString stringWithFormat:NSLocalizedString(@"Could not locate installed game for Steam Game ID %ld", @""), gameID]];
+					[self setProblem:[NSString localizedStringWithFormat:NSLocalizedString(@"Could not locate installed game for Steam Game ID %ld", @""), gameID]];
 					break;
 				}
 					
 				default:
-					[self setProblem:NSLocalizedString(@"Unknown error", @"")];
+					[self setProblem:NSLocalizedString(@"Unknown error", @"Unknown error")];
 					break;
 			}
 		}

@@ -1,0 +1,234 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "1044.headerCell.title" : {
+      "comment" : "Class = \"NSTableColumn\"; headerCell.title = \"Game\"; ObjectID = \"1044\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Game"
+          }
+        }
+      }
+    },
+    "1045.headerCell.title" : {
+      "comment" : "Class = \"NSTableColumn\"; headerCell.title = \"   Status\"; ObjectID = \"1045\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "   Status"
+          }
+        }
+      }
+    },
+    "1046.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Text Cell\"; ObjectID = \"1046\";",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Text Cell"
+          }
+        }
+      }
+    },
+    "1047.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Text Cell\"; ObjectID = \"1047\";",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Text Cell"
+          }
+        }
+      }
+    },
+    "1063.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Status:\"; ObjectID = \"1063\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Status:"
+          }
+        }
+      }
+    },
+    "1064.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Not helped\"; ObjectID = \"1064\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Not helped"
+          }
+        }
+      }
+    },
+    "1065.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Portal\"; ObjectID = \"1065\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Portal"
+          }
+        }
+      }
+    },
+    "1067.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Game:\"; ObjectID = \"1067\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Game:"
+          }
+        }
+      }
+    },
+    "1090.ibShadowedToolTip" : {
+      "comment" : "Class = \"NSButton\"; ibShadowedToolTip = \"Refresh status of applications\"; ObjectID = \"1090\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Refresh status of applications"
+          }
+        }
+      }
+    },
+    "1096.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Help Other Apps Recognize Game\"; ObjectID = \"1096\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Help Other Apps Recognize Game"
+          }
+        }
+      }
+    },
+    "1098.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Restore to Default\"; ObjectID = \"1098\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Restore to Default"
+          }
+        }
+      }
+    },
+    "1143.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Reveal in Finder\"; ObjectID = \"1143\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Reveal in Finder"
+          }
+        }
+      }
+    },
+    "1326.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Help/Unhelp Games\"; ObjectID = \"1326\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Help/Unhelp Games"
+          }
+        }
+      }
+    },
+    "1348.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"USB Overdrive Note:\"; ObjectID = \"1348\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "USB Overdrive Note:"
+          }
+        }
+      }
+    },
+    "1350.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"When attempting to target a specific application, the USB Overdrive preference pane for System Preferences has a bug that won’t allow you to choose the plain “hl2_osx” file (after the attempt, System Preferences is unresponsive). Instead, you should choose the special “hl2_osx (for USB Overdrive).app” application bundle, as shown in the image below:\"; ObjectID = \"1350\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "When attempting to target a specific application, the USB Overdrive preference pane for System Preferences has a bug that won’t allow you to choose the plain “hl2_osx” file (after the attempt, System Preferences is unresponsive). Instead, you should choose the special “hl2_osx (for USB Overdrive).app” application bundle, as shown in the image below:"
+          }
+        }
+      }
+    },
+    "1410.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"OK\"; ObjectID = \"1410\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "OK"
+          }
+        }
+      }
+    },
+    "1459.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Use this feature to help allow other Mac OS X applications to better recognize Source games as applications. For example, if you use third-party mouse software such as SteerMouse or USBOverdrive, “helping” Valve’s games will allow you to add a custom profile for each game. It may also help if you are using the Simple Finder and/or Parental controls.\\n\\nNote: You can also double-click on a game in the list to launch it (it will be helped automatically if necessary).\"; ObjectID = \"1459\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Use this feature to help allow other Mac OS X applications to better recognize Source games as applications. For example, if you use third-party mouse software such as SteerMouse or USBOverdrive, “helping” Valve’s games will allow you to add a custom profile for each game. It may also help if you are using the Simple Finder and/or Parental controls.\n\nNote: You can also double-click on a game in the list to launch it (it will be helped automatically if necessary)."
+          }
+        }
+      }
+    },
+    "1475.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"USB Overdrive Tip\"; ObjectID = \"1475\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "USB Overdrive Tip"
+          }
+        }
+      }
+    },
+    "1486.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Automatically help games whenever Steam updates them\"; ObjectID = \"1486\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Automatically help games whenever Steam updates them"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

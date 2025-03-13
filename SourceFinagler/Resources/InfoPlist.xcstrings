@@ -1,0 +1,680 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "C Inline Header Source" : {
+
+    },
+    "CFBundleGetInfoString" : {
+      "comment" : "Get Info string",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Source Finagler 2.5, © 2010-2012 Mark Douma. All rights reserved."
+          }
+        }
+      }
+    },
+    "CFBundleName" : {
+      "comment" : "Bundle name",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Source Finagler"
+          }
+        }
+      }
+    },
+    "com.microsoft.dds" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Microsoft DDS Image"
+          }
+        }
+      }
+    },
+    "com.valvesoftware.source.ain" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Non-Player Character Nodegraph"
+          }
+        }
+      }
+    },
+    "com.valvesoftware.source.ani" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Animation"
+          }
+        }
+      }
+    },
+    "com.valvesoftware.source.bsp" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Level"
+          }
+        }
+      }
+    },
+    "com.valvesoftware.source.cfg" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Configuration file"
+          }
+        }
+      }
+    },
+    "com.valvesoftware.source.dat" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Data file"
+          }
+        }
+      }
+    },
+    "com.valvesoftware.source.fgd" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Game Data file"
+          }
+        }
+      }
+    },
+    "com.valvesoftware.source.gcf" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Steam Cache file"
+          }
+        }
+      }
+    },
+    "com.valvesoftware.source.image" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Combined Choreography Data"
+          }
+        }
+      }
+    },
+    "com.valvesoftware.source.inf" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Setup Information file"
+          }
+        }
+      }
+    },
+    "com.valvesoftware.source.lmp" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Level Patch file"
+          }
+        }
+      }
+    },
+    "com.valvesoftware.source.lst" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source List"
+          }
+        }
+      }
+    },
+    "com.valvesoftware.source.mdl" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Model"
+          }
+        }
+      }
+    },
+    "com.valvesoftware.source.nav" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Navigation Mesh"
+          }
+        }
+      }
+    },
+    "com.valvesoftware.source.ncf" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Steam Non-Cache file"
+          }
+        }
+      }
+    },
+    "com.valvesoftware.source.nuc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Encrypted Squirrel Source Code"
+          }
+        }
+      }
+    },
+    "com.valvesoftware.source.pak" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Package file"
+          }
+        }
+      }
+    },
+    "com.valvesoftware.source.pcf" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Particle file"
+          }
+        }
+      }
+    },
+    "com.valvesoftware.source.phy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Collision Model"
+          }
+        }
+      }
+    },
+    "com.valvesoftware.source.qc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Quake Compile Script"
+          }
+        }
+      }
+    },
+    "com.valvesoftware.source.rad" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Radiosity file"
+          }
+        }
+      }
+    },
+    "com.valvesoftware.source.raw" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Color Correction file"
+          }
+        }
+      }
+    },
+    "com.valvesoftware.source.res" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Resource List"
+          }
+        }
+      }
+    },
+    "com.valvesoftware.source.scr" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Configuration Script file"
+          }
+        }
+      }
+    },
+    "com.valvesoftware.source.smd" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Studio Model Data"
+          }
+        }
+      }
+    },
+    "com.valvesoftware.source.snd" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Sound List"
+          }
+        }
+      }
+    },
+    "com.valvesoftware.source.vas" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Animation Script file"
+          }
+        }
+      }
+    },
+    "com.valvesoftware.source.vbsp" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Detail Prop"
+          }
+        }
+      }
+    },
+    "com.valvesoftware.source.vcd" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Choreography Data"
+          }
+        }
+      }
+    },
+    "com.valvesoftware.source.vdf" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Preference file"
+          }
+        }
+      }
+    },
+    "com.valvesoftware.source.vdm" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Demo Editor file"
+          }
+        }
+      }
+    },
+    "com.valvesoftware.source.vfe" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Expression file"
+          }
+        }
+      }
+    },
+    "com.valvesoftware.source.vmf" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Map file"
+          }
+        }
+      }
+    },
+    "com.valvesoftware.source.vmt" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Material Type"
+          }
+        }
+      }
+    },
+    "com.valvesoftware.source.vpk" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Addon file"
+          }
+        }
+      }
+    },
+    "com.valvesoftware.source.vta" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Vertex Animation Data"
+          }
+        }
+      }
+    },
+    "com.valvesoftware.source.vtf" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source VTF Image"
+          }
+        }
+      }
+    },
+    "com.valvesoftware.source.vtx" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Mesh Strip file"
+          }
+        }
+      }
+    },
+    "com.valvesoftware.source.vvd" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Vertex Data file"
+          }
+        }
+      }
+    },
+    "com.valvesoftware.source.wad" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Texture Package file"
+          }
+        }
+      }
+    },
+    "com.valvesoftware.source.xzp" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Xbox Package file"
+          }
+        }
+      }
+    },
+    "Digital Asset Exchange (DAE)" : {
+
+    },
+    "Digital Asset Exchange (DAE) Document with Attachments" : {
+
+    },
+    "Linux dynamic library" : {
+
+    },
+    "Microsoft DDS Image" : {
+
+    },
+    "NSHumanReadableCopyright" : {
+      "comment" : "Copyright (human-readable)",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Copyright © 2010-2012 Mark Douma. All rights reserved."
+          }
+        }
+      }
+    },
+    "org.squirrel-lang.nut" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Squirrel Source Code"
+          }
+        }
+      }
+    },
+    "public.linux-so" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Linux dynamic library"
+          }
+        }
+      }
+    },
+    "Source Addon file" : {
+
+    },
+    "Source Animation" : {
+
+    },
+    "Source Animation Script file" : {
+
+    },
+    "Source Choreography Data" : {
+
+    },
+    "Source Collision Model" : {
+
+    },
+    "Source Color Correction file" : {
+
+    },
+    "Source Combined Choreography Data" : {
+
+    },
+    "Source Configuration file" : {
+
+    },
+    "Source Configuration Script file" : {
+
+    },
+    "Source Data file" : {
+
+    },
+    "Source Demo Editor file" : {
+
+    },
+    "Source Detail Prop" : {
+
+    },
+    "Source Encrypted Squirrel Source Code" : {
+
+    },
+    "Source Expression file" : {
+
+    },
+    "Source Finagler Texture Image" : {
+
+    },
+    "Source Game Archive" : {
+
+    },
+    "Source Game Data file" : {
+
+    },
+    "Source Level" : {
+
+    },
+    "Source Level Patch file" : {
+
+    },
+    "Source List" : {
+
+    },
+    "Source Map file" : {
+
+    },
+    "Source Material Type" : {
+
+    },
+    "Source Mesh Strip file" : {
+
+    },
+    "Source Model" : {
+
+    },
+    "Source Motion Mapping Template" : {
+
+    },
+    "Source Navigation Mesh" : {
+
+    },
+    "Source Non-Player Character Nodegraph" : {
+
+    },
+    "Source Package file" : {
+
+    },
+    "Source Particle file" : {
+
+    },
+    "Source Portal file" : {
+
+    },
+    "Source Preference file" : {
+
+    },
+    "Source Quake Compile Script" : {
+
+    },
+    "Source Radiosity file" : {
+
+    },
+    "Source Resource List" : {
+
+    },
+    "Source Setup Information file" : {
+
+    },
+    "Source Sound List" : {
+
+    },
+    "Source Studio Model Data" : {
+
+    },
+    "Source Texture Package file" : {
+
+    },
+    "Source Vertex Animation Data" : {
+
+    },
+    "Source Vertex Data file" : {
+
+    },
+    "Source VGUI Layout file" : {
+
+    },
+    "Source VGUI Menu file" : {
+
+    },
+    "Source VGUI Styles file" : {
+
+    },
+    "Source VTF Image" : {
+
+    },
+    "Source Xbox Package file" : {
+
+    },
+    "Squirrel Source Code" : {
+
+    },
+    "Steam Cache file" : {
+
+    },
+    "Steam Installed Resources and File Sizes List" : {
+
+    },
+    "Steam Non-Cache file" : {
+
+    },
+    "Wavefront 3D Object Material file" : {
+
+    }
+  },
+  "version" : "1.0"
+}

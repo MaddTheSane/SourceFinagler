@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23504"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -48,7 +48,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
             <rect key="contentRect" x="115" y="489" width="560" height="479"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1512" height="944"/>
             <value key="minSize" type="size" width="300" height="100"/>
             <view key="contentView" focusRingType="none" id="83">
                 <rect key="frame" x="0.0" y="0.0" width="560" height="479"/>
@@ -346,7 +346,7 @@
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="2203" customClass="MDScopeBarView">
                                 <rect key="frame" x="0.0" y="102" width="560" height="25"/>
                                 <subviews>
-                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2199">
+                                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2199">
                                         <rect key="frame" x="76" y="3" width="419" height="19"/>
                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="2200">
                                             <font key="font" metaFont="smallSystem"/>
@@ -364,7 +364,7 @@ Gw
 </string>
                                         </buttonCell>
                                     </button>
-                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2204">
+                                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2204">
                                         <rect key="frame" x="5" y="5" width="66" height="15"/>
                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Search for:" id="2205">
                                             <font key="font" metaFont="cellTitle"/>
@@ -541,7 +541,7 @@ Gw
                     <toolbarItem implicitItemIdentifier="48D99EB7-778D-4FED-BF62-8BBA1D86B940" label="Quick Look" paletteLabel="Quick Look" toolTip="Quick Look" tag="5" image="NSQuickLookTemplate" id="963">
                         <size key="minSize" width="40" height="25"/>
                         <size key="maxSize" width="40" height="25"/>
-                        <button key="view" verticalHuggingPriority="750" tag="5" id="961">
+                        <button key="view" tag="5" verticalHuggingPriority="750" id="961">
                             <rect key="frame" x="13" y="14" width="40" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSQuickLookTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingMiddle" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="962">
@@ -573,7 +573,7 @@ Gw
                     <toolbarItem implicitItemIdentifier="269BBAC7-3D61-47E5-8F53-1AC91CA1C4AA" label="Search" paletteLabel="Search" toolTip="To search, begin typing a word or phrase" id="970">
                         <size key="minSize" width="228" height="22"/>
                         <size key="maxSize" width="228" height="22"/>
-                        <searchField key="view" wantsLayer="YES" verticalHuggingPriority="750" id="968">
+                        <searchField key="view" wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" id="968">
                             <rect key="frame" x="0.0" y="14" width="228" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" bezelStyle="round" sendsSearchStringImmediately="YES" maximumRecents="10" recentsAutosaveName="searchField" id="969">

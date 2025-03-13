@@ -1,0 +1,162 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "17.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Check for updates:\"; ObjectID = \"17\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Check for updates:"
+          }
+        }
+      }
+    },
+    "19.title" : {
+      "comment" : "Class = \"NSMenu\"; title = \"OtherViews\"; ObjectID = \"19\";",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OtherViews"
+          }
+        }
+      }
+    },
+    "20.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Monthly\"; ObjectID = \"20\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Monthly"
+          }
+        }
+      }
+    },
+    "21.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Weekly\"; ObjectID = \"21\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Weekly"
+          }
+        }
+      }
+    },
+    "22.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Daily\"; ObjectID = \"22\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Daily"
+          }
+        }
+      }
+    },
+    "23.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Download updates automatically\"; ObjectID = \"23\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Download updates automatically"
+          }
+        }
+      }
+    },
+    "24.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"You will be notified when the updates are ready to be installed.\"; ObjectID = \"24\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "You will be notified when the updates are ready to be installed."
+          }
+        }
+      }
+    },
+    "25.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Open Source Finagler’s main window\"; ObjectID = \"25\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Open Source Finagler’s main window"
+          }
+        }
+      }
+    },
+    "27.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Settings:\"; ObjectID = \"27\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Settings:"
+          }
+        }
+      }
+    },
+    "28.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Quit Source Finagler when all windows are closed\"; ObjectID = \"28\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Quit Source Finagler when all windows are closed"
+          }
+        }
+      }
+    },
+    "30.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Updating:\"; ObjectID = \"30\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Updating:"
+          }
+        }
+      }
+    },
+    "44.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Reset “Don’t Ask Me” Warnings\"; ObjectID = \"44\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Reset “Don’t Ask Me” Warnings"
+          }
+        }
+      }
+    },
+    "46.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Warnings:\"; ObjectID = \"46\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Warnings:"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

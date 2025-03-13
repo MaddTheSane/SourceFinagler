@@ -1,0 +1,30 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "16.label" : {
+      "comment" : "Class = \"NSToolbarItem\"; label = \"General\"; ObjectID = \"16\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "General"
+          }
+        }
+      }
+    },
+    "16.paletteLabel" : {
+      "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"General\"; ObjectID = \"16\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "General"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

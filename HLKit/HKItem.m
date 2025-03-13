@@ -34,7 +34,7 @@ static NSImage *folderImage = nil;
 static NSImage *fileImage = nil;
 static NSMutableDictionary *icons = nil;
 
-static void HKInitializeIcons() {
+static void HKInitializeIcons(void) {
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
 		icons = [[NSMutableDictionary alloc] init];

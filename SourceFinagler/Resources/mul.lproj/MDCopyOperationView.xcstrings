@@ -1,0 +1,30 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "33.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Preparing copy of \\\"source\\\" to \\\"destination\\\"\"; ObjectID = \"33\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Preparing copy of \"source\" to \"destination\""
+          }
+        }
+      }
+    },
+    "37.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"0 of 50.2 MB - About 45 minutes remaining\"; ObjectID = \"37\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "0 of 50.2 MB - About 45 minutes remaining"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

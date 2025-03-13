@@ -1,0 +1,78 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "8.ibExternalAccessibilityDescription" : {
+      "comment" : "Class = \"NSButton\"; ibExternalAccessibilityDescription = \"Show Previous Item\"; ObjectID = \"8\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Show Previous Item"
+          }
+        }
+      }
+    },
+    "9.ibExternalAccessibilityDescription" : {
+      "comment" : "Class = \"NSButton\"; ibExternalAccessibilityDescription = \"Show Next Item\"; ObjectID = \"9\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Show Next Item"
+          }
+        }
+      }
+    },
+    "10.ibExternalAccessibilityDescription" : {
+      "comment" : "Class = \"NSButton\"; ibExternalAccessibilityDescription = \"Start Slideshow\"; ObjectID = \"10\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Start Slideshow"
+          }
+        }
+      }
+    },
+    "11.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Play\"; ObjectID = \"11\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Play"
+          }
+        }
+      }
+    },
+    "12.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Next\"; ObjectID = \"12\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Next"
+          }
+        }
+      }
+    },
+    "13.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Previous\"; ObjectID = \"13\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Previous"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

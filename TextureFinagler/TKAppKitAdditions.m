@@ -339,7 +339,7 @@ NSString *NSStringFromDefaultsKeyPath(NSString *defaultsKey) {
 @end
 
 
-static NSView *blankView() {
+static NSView *blankView(void) {
 	static NSView *view = nil;
 	if (!view) {
 		view = [[NSView alloc] init];

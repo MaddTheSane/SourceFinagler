@@ -1,0 +1,18 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "48.title" : {
+      "comment" : "Class = \"NSWindow\"; title = \"Copy\"; ObjectID = \"48\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Copy"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
