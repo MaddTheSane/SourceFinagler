@@ -27,7 +27,7 @@ typedef struct HKArchiveFileTest {
 } HKArchiveFileTest;
 
 
-static HKArchiveFileTest HKArchiveFileTestTable[] = {
+static const HKArchiveFileTest HKArchiveFileTestTable[] = {
 	{ HKArchiveFileTypeBSP, 4, { 0x1e, 0x00, 0x00, 0x00 } },
 	{ HKArchiveFileTypeGCF, 8, { 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00 } },
 	{ HKArchiveFileTypeNCF, 8, { 0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00 } },
@@ -58,7 +58,7 @@ static HKArchiveFileTest HKArchiveFileTestTable[] = {
 	if (dataLength == 0) {
 		return HKArchiveFileTypeNone;
 	}
-	for (HKArchiveFileTest *packageTest = HKArchiveFileTestTable; packageTest->fileType != HKArchiveFileTypeNone; packageTest++) {
+	for (const HKArchiveFileTest *packageTest = HKArchiveFileTestTable; packageTest->fileType != HKArchiveFileTypeNone; packageTest++) {
 		if (packageTest->testDataLength <= dataLength && memcmp(aData.bytes, packageTest->testData, packageTest->testDataLength) == 0) {
 			return packageTest->fileType;
 		}

@@ -105,13 +105,13 @@
 		} else if (newSelectedItems.count > 1) {
 			
 			self.window.representedFilename = @"";
-			[self.window setTitle:NSLocalizedString(@"Multiple Item Info", @"")];
+			[self.window setTitle:NSLocalizedString(@"Multiple Item Info", @"Multiple Item Info")];
 			
 			[previewViewController setRepresentedObject:nil];
 			
 			whereField.stringValue = newDocument.fileURL.path;
 						
-			nameField.stringValue = [NSString stringWithFormat:NSLocalizedString(@"%lu items", @""), (unsigned long)newSelectedItems.count];
+			nameField.stringValue = [NSString localizedStringWithFormat:NSLocalizedString(@"%lu items", @"(count of) items"), (unsigned long)newSelectedItems.count];
 			
 			unsigned long long totalSize = 0;
 			
@@ -124,7 +124,7 @@
 			sizeField.objectValue = @(totalSize);
 			headerSizeField.objectValue = @(totalSize);
 			
-			kindField.stringValue = [NSString stringWithFormat:NSLocalizedString(@"%lu documents", @""), (unsigned long)newSelectedItems.count];
+			kindField.stringValue = [NSString localizedStringWithFormat:NSLocalizedString(@"%lu documents", @"(count of) documents"), (unsigned long)newSelectedItems.count];
 			
 			iconImageView.image = [NSImage imageNamed:NSImageNameMultipleDocuments];
 			

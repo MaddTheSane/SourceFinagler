@@ -1,0 +1,26 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%lu x %lu" : {
+      "comment" : "%1$lu x %2$lu image dimensions",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lu × %2$lu"
+          }
+        }
+      }
+    },
+    "Folder" : {
+      "comment" : "Folder"
+    },
+    "No" : {
+      "comment" : "No"
+    },
+    "Yes" : {
+      "comment" : "Yes"
+    }
+  },
+  "version" : "1.0"
+}

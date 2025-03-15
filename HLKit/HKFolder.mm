@@ -89,7 +89,7 @@ using namespace HLLib;
 #if HK_DEBUG
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	if (kind == nil) kind = NSLocalizedString(@"Folder", @"");
+	if (kind == nil) kind = NSLocalizedStringFromTableInBundle(@"Folder", @"Localizable", [NSBundle bundleForClass:[self class]], @"Folder");
 	return kind;
 }
 

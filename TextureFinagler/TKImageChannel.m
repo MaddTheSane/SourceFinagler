@@ -62,16 +62,16 @@
 		
 		switch (channelMask) {
 			case TKImageChannelMaskRed:
-				name = NSLocalizedString(@"Red", @"");
+				name = NSLocalizedString(@"Red", @"Red channel");
 				break;
 			case TKImageChannelMaskGreen:
-				name = NSLocalizedString(@"Green", @"");
+				name = NSLocalizedString(@"Green", @"Green channel");
 				break;
 			case TKImageChannelMaskBlue:
-				name = NSLocalizedString(@"Blue", @"");
+				name = NSLocalizedString(@"Blue", @"Blue channel");
 				break;
 			case TKImageChannelMaskAlpha:
-				name = NSLocalizedString(@"Alpha", @"");
+				name = NSLocalizedString(@"Alpha", @"Alpha channel");
 				break;
 			default:
 				break;

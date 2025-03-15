@@ -55,7 +55,7 @@ NSString *NSStringFromDefaultsKeyPath(NSString *defaultsKey) {
 	}
 	NSAlert *alert = [NSAlert new];
 	alert.alertStyle = NSAlertStyleCritical;
-	alert.messageText = [NSString stringWithFormat:NSLocalizedString(@"%@ encountered an error while trying to load the \"%@\" user interface file.", @""), appName, nibName];
+	alert.messageText = [NSString localizedStringWithFormat:NSLocalizedString(@"%@ encountered an error while trying to load the \"%@\" user interface file.", @""), appName, nibName];
 	alert.informativeText = NSLocalizedString(@"Please reinstall the application.", @"");
 	[alert addButtonWithTitle:NSLocalizedString(@"Quit", @"")];
 	

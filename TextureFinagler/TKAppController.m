@@ -249,7 +249,7 @@ static NSArray *appClassNames = nil;
 	
 	// from setupUI, since it only needs to be done once
 	
-	emailMenuItem.title = [NSString stringWithFormat:NSLocalizedString(@"Email: %@", @""), TKEmailAddress];
+	emailMenuItem.title = [NSString localizedStringWithFormat:NSLocalizedString(@"Email: %@", @"e-mail"), TKEmailAddress];
 	NSImage *emailAppImage = [[NSWorkspace sharedWorkspace] iconForApplicationForURL:[NSURL URLWithString:TKEmailStaticURLString]];
 	if (emailAppImage) {
 		emailAppImage.size = NSMakeSize(16.0,16.0);

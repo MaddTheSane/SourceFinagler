@@ -101,8 +101,8 @@
 				if (theImage) {
 					self.version = ((TKImage *)theImage).version;
 					self.compression = ((TKImage *)theImage).compression;
-					self.hasMipmaps = (((TKImage *)theImage).hasMipmaps ? NSLocalizedString(@"Yes", @"") : NSLocalizedString(@"No", @""));
-					self.hasAlpha = (((TKImage *)theImage).hasAlpha ? NSLocalizedString(@"Yes", @"") : NSLocalizedString(@"No", @""));
+					self.hasMipmaps = (((TKImage *)theImage).hasMipmaps ? NSLocalizedStringFromTableInBundle(@"Yes", @"Localizable", [NSBundle bundleForClass:[self class]], @"Yes") : NSLocalizedStringFromTableInBundle(@"No", @"Localizable", [NSBundle bundleForClass:[self class]], @"No"));
+					self.hasAlpha = (((TKImage *)theImage).hasAlpha ? NSLocalizedStringFromTableInBundle(@"Yes", @"Localizable", [NSBundle bundleForClass:[self class]], @"Yes") : NSLocalizedStringFromTableInBundle(@"No", @"Localizable", [NSBundle bundleForClass:[self class]], @"No"));
 				}
 			} else {
 				theImage = [[NSImage alloc] initWithData:data];
@@ -110,7 +110,7 @@
 		}
 		if (theImage) {
 			NSSize imageSize = theImage.size;
-			self.dimensions = [NSString stringWithFormat:NSLocalizedString(@"%lu x %lu", @""), (NSUInteger)imageSize.width, (NSUInteger)imageSize.height];
+			self.dimensions = [NSString localizedStringWithFormat:NSLocalizedStringFromTableInBundle(@"%lu x %lu", @"Localizable", [NSBundle bundleForClass:[self class]], @"%1$lu x %2$lu image dimensions"), (NSUInteger)imageSize.width, (NSUInteger)imageSize.height];
 		}
 	} else if (fileType == HKFileTypeOther ||
 			   fileType == HKFileTypeText ||

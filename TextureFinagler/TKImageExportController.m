@@ -412,8 +412,8 @@ NSString * const TKImageExportSavedFrameKey					= @"TKImageExportSavedFrame";
 	
 	if (!initializedPopUpMenu) {
 		NSMutableArray *orderedNames = [presetsAndNames.allKeys mutableCopy];
-		[orderedNames removeObject:NSLocalizedString(@"Original", @"")];
-		[orderedNames removeObject:NSLocalizedString(@"[Custom]", @"")];
+		[orderedNames removeObject:NSLocalizedString(@"Original", @"Original")];
+		[orderedNames removeObject:NSLocalizedString(@"[Custom]", @"[Custom]")];
 		[orderedNames sortUsingSelector:@selector(caseInsensitiveNumericalCompare:)];
 		
 		NSMutableArray *menuItems = [NSMutableArray array];

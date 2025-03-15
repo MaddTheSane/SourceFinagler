@@ -69,7 +69,7 @@ static NSMutableArray *imagePresets = nil;
 #if TK_DEBUG
 			NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-			originalImagePreset = [[[self class] alloc] initWithName:NSLocalizedString(@"Original", @"") fileType:nil compressionFormat:nil compressionQuality:nil mipmapGeneration:TKMipmapGenerationNoMipmaps];
+			originalImagePreset = [[[self class] alloc] initWithName:NSLocalizedString(@"Original", @"Original") fileType:nil compressionFormat:nil compressionQuality:nil mipmapGeneration:TKMipmapGenerationNoMipmaps];
 		}
 	}
 	return originalImagePreset;
@@ -227,8 +227,8 @@ static NSMutableArray *imagePresets = nil;
 }
 
 - (BOOL)isEqualToPreset:(TKImageExportPreset *)preset {
-	if ([preset.name isEqualToString:NSLocalizedString(@"Original", @"")] &&
-		[name isEqualToString:NSLocalizedString(@"Original", @"")] &&
+	if ([preset.name isEqualToString:NSLocalizedString(@"Original", @"Original")] &&
+		[name isEqualToString:NSLocalizedString(@"Original", @"Original")] &&
 		[preset.name isEqualToString:name]) {
 		return YES;
 	}

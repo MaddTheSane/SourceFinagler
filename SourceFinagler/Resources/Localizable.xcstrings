@@ -8,7 +8,7 @@
 
     },
     "[Custom]" : {
-
+      "comment" : "[Custom]"
     },
     "%@ and %@ were successfully installed." : {
       "extractionState" : "manual",
@@ -21,29 +21,8 @@
         }
       }
     },
-    "%@ EB (%@ bytes)" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@ EB (%2$@ bytes)"
-          }
-        }
-      }
-    },
-    "%@ GB (%@ bytes)" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@ GB (%2$@ bytes)"
-          }
-        }
-      }
-    },
     "%@ item, %@ available" : {
+      "comment" : "%@ item, %@ available",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -65,33 +44,12 @@
       }
     },
     "%@ items, %@ available" : {
+      "comment" : "%@ items, %@ available",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "%1$@ items, %2$@ available"
-          }
-        }
-      }
-    },
-    "%@ KB (%@ bytes)" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@ KB (%2$@ bytes)"
-          }
-        }
-      }
-    },
-    "%@ MB (%@ bytes)" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@ MB (%2$@ bytes)"
           }
         }
       }
@@ -102,28 +60,6 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "%1$@ of %2$@"
-          }
-        }
-      }
-    },
-    "%@ PB (%@ bytes)" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@ PB (%2$@ bytes)"
-          }
-        }
-      }
-    },
-    "%@ TB (%@ bytes)" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@ TB (%2$@ bytes)"
           }
         }
       }
@@ -162,10 +98,10 @@
       }
     },
     "%lu documents" : {
-
+      "comment" : "(count of) documents"
     },
     "%lu items" : {
-
+      "comment" : "(count of) items"
     },
     "%lu of %@ selected, %@ available" : {
       "comment" : "String for when only 1 item is selected",
@@ -194,45 +130,49 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$lu of %2$lu addons were installed."
+            "state" : "translated",
+            "value" : "%1$lu of %2$lu add-ons were installed."
           }
         }
       }
     },
     "%lu Source addons were installed." : {
-
-    },
-    "1 KB" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "1 KB"
-          }
-        }
-      }
-    },
-    "1 KB (%@ bytes)" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "1 KB (%@ bytes)"
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lu Source add-on was installed."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lu Source add-ons were installed."
+                }
+              }
+            }
           }
         }
       }
     },
     "1 Source addon was installed." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "One Source add-on was installed."
+          }
+        }
+      }
     },
     "Add Images" : {
 
     },
     "Alpha" : {
-
+      "comment" : "Alpha channel"
     },
     "and %@ were successfully installed." : {
       "extractionState" : "manual",
@@ -268,10 +208,18 @@
       }
     },
     "Blue" : {
-
+      "comment" : "Blue channel"
     },
     "Close Quick Look" : {
-
+      "comment" : "Close QuickLook",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close QuickLook"
+          }
+        }
+      }
     },
     "Copy" : {
       "extractionState" : "manual",
@@ -328,22 +276,24 @@
         }
       }
     },
-    "Copying %lu item to \"%@\"" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Copying %1$lu item to “%2$@”"
-          }
-        }
-      }
-    },
     "Copying %lu items to \"%@\"" : {
       "localizations" : {
         "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Copying %1$lu items to “%2$@”"
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Copying one item to “%2$@”"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Copying %1$lu items to “%2$@”"
+                }
+              }
+            }
           }
         }
       }
@@ -358,7 +308,7 @@
 
     },
     "Email: %@" : {
-
+      "comment" : "e-mail"
     },
     "General" : {
 
@@ -367,7 +317,7 @@
 
     },
     "Green" : {
-
+      "comment" : "Green channel"
     },
     "Help Game" : {
 
@@ -376,43 +326,50 @@
 
     },
     "Hide Faces" : {
-
+      "comment" : "Hide Faces"
     },
     "Hide Frames" : {
-
+      "comment" : "Hide Frames"
     },
     "Hide Image Inspector" : {
 
     },
     "Hide Inspector" : {
-
+      "comment" : "Hide Inspector"
     },
     "Hide Mipmaps" : {
-
+      "comment" : "Hide Mipmaps"
     },
     "Hide Path Bar" : {
-
+      "comment" : "Hide Path Bar"
     },
     "Hide View Options" : {
-
+      "comment" : "Hide View Options"
     },
     "Indicates that the items in this window are inside a %@" : {
-
+      "comment" : "Indicates that the items in this window are inside a %@"
     },
     "Indicates that you cannot add or change the contents of this %@" : {
-
+      "comment" : "Indicates that you cannot add or change the contents of this %@"
     },
     "Info" : {
 
     },
     "Inside %@" : {
-
+      "comment" : "Inside %@"
     },
     "Many operations do not work properly yet." : {
 
     },
     "Move Images" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move Images"
+          }
+        }
+      }
     },
     "Move of \"%@\"" : {
       "extractionState" : "manual",
@@ -448,7 +405,15 @@
       }
     },
     "Multiple Item Info" : {
-
+      "comment" : "Multiple Item Info",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Multiple Item Info"
+          }
+        }
+      }
     },
     "Multiple items selected" : {
       "extractionState" : "manual",
@@ -462,25 +427,77 @@
       }
     },
     "No addoninfo.txt file could be found inside the Source addon file" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No “addoninfo.txt” file could be found inside the Source add-on file"
+          }
+        }
+      }
     },
     "No Changes" : {
-
+      "comment" : "No Changes",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Changes"
+          }
+        }
+      }
     },
     "No document" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No document"
+          }
+        }
+      }
     },
     "No Source addons were installed." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Source addons were installed."
+          }
+        }
+      }
     },
     "Not a valid Source addon file" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not a valid Source addon file"
+          }
+        }
+      }
     },
     "OK" : {
-
+      "comment" : "OK",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
     },
     "Original" : {
-
+      "comment" : "Original",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Original"
+          }
+        }
+      }
     },
     "Other Apps Helper" : {
 
@@ -535,13 +552,31 @@
         }
       }
     },
-    "Preparing to copy %lu item" : {
-
-    },
     "Preparing to copy %lu items" : {
-
+      "comment" : "Preparing to copy %lu items",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Preparing to copy one item"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "new",
+                  "value" : "Preparing to copy %lu items"
+                }
+              }
+            }
+          }
+        }
+      }
     },
     "Preparing to copy to \"%@\"" : {
+      "comment" : "Preparing to copy to \"%@\"",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -552,53 +587,70 @@
       }
     },
     "Quick Look" : {
-
-    },
-    "Quick Look \"%@\"" : {
+      "comment" : "QuickLook",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Quick Look “%@”"
+            "value" : "QuickLook"
+          }
+        }
+      }
+    },
+    "Quick Look \"%@\"" : {
+      "comment" : "Quick Look \"%@\"",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QuickLook “%@”"
           }
         }
       }
     },
     "Quick Look %lu Items" : {
-
+      "comment" : "Quick Look %lu Items",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QuickLook %lu Items"
+          }
+        }
+      }
     },
     "Quit" : {
 
     },
     "Red" : {
-
+      "comment" : "Red channel"
     },
     "Remove Images" : {
 
     },
     "Remove Mipmaps" : {
-
+      "comment" : "Remove Mipmaps"
     },
     "Show Faces" : {
-
+      "comment" : "Show Faces"
     },
     "Show Frames" : {
-
+      "comment" : "Show Frames"
     },
     "Show Image Inspector" : {
 
     },
     "Show Inspector" : {
-
+      "comment" : "Show Inspector"
     },
     "Show Mipmaps" : {
-
+      "comment" : "Show Mipmaps"
     },
     "Show Path Bar" : {
-
+      "comment" : "Show Path Bar"
     },
     "Show View Options" : {
-
+      "comment" : "Show View Options"
     },
     "Size" : {
       "extractionState" : "manual",
@@ -615,7 +667,7 @@
 
     },
     "Source Addon file" : {
-
+      "comment" : "Source Addon file"
     },
     "Source Addon Installation" : {
       "extractionState" : "manual",
@@ -623,7 +675,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Source Addon Installation"
+            "value" : "Source Add-on Installation"
           }
         }
       }
@@ -646,28 +698,28 @@
 
     },
     "Source Level" : {
-
+      "comment" : "Source Level"
     },
     "Source Package file" : {
-
+      "comment" : "Source Package file"
     },
     "Source Texture Package file" : {
-
+      "comment" : "Source Texture Package file"
     },
     "Source Xbox Package file" : {
-
+      "comment" : "Source Xbox Package file"
     },
     "Steam Apps Re-locator" : {
 
     },
     "Steam Cache file" : {
-
+      "comment" : "Steam Cache file"
     },
     "Steam cannot be running" : {
 
     },
     "Steam Non-Cache file" : {
-
+      "comment" : "Steam Non-Cache file"
     },
     "Stop" : {
 
@@ -697,7 +749,15 @@
 
     },
     "Unknown error" : {
-      "comment" : "Unknown error"
+      "comment" : "Unknown error",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unknown error"
+          }
+        }
+      }
     },
     "View Options" : {
 
@@ -715,28 +775,6 @@
     },
     "Yesterday" : {
 
-    },
-    "Zero KB" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zero KB"
-          }
-        }
-      }
-    },
-    "Zero KB (Zero bytes)" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zero KB (Zero bytes)"
-          }
-        }
-      }
     }
   },
   "version" : "1.0"

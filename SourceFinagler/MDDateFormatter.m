@@ -200,7 +200,7 @@ static NSDate *MDNilDate = nil;
 //		NSLog(@"[%@ %@] timeIntervalSinceReferenceDate == %f; MDNilDate == %@, %f", NSStringFromClass([self class]), NSStringFromSelector(_cmd), [anObject timeIntervalSinceReferenceDate], MDNilDate, [MDNilDate timeIntervalSinceReferenceDate]);
 	
 		if ([anObject isEqualToDate:MDNilDate]) {
-			return NSLocalizedString(@"--", @"");
+			return @"--";
 		}
 		
 		NSString *string = nil;

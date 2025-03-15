@@ -1474,16 +1474,11 @@ static NSInteger copyTag = 0;
 		
 		if (stage == MDCopyOperationStagePreparing) {
 			NSString *destination = [dictionary[MDCopyOperationDestinationKey] lastPathComponent];
-			copyOperation.messageText = [NSString stringWithFormat:NSLocalizedString(@"Preparing to copy to \"%@\"", @""), destination.lastPathComponent];
+			copyOperation.messageText = [NSString localizedStringWithFormat:NSLocalizedString(@"Preparing to copy to \"%@\"", @"Preparing to copy to \"%@\""), destination.lastPathComponent];
 			
 			NSUInteger totalItemCount = [dictionary[MDCopyOperationTotalItemCountKey] unsignedIntegerValue];
 			
-			if (totalItemCount == 1) {
-				copyOperation.informativeText = [NSString stringWithFormat:NSLocalizedString(@"Preparing to copy %lu item", @""), totalItemCount];
-				
-			} else {
-				copyOperation.informativeText = [NSString stringWithFormat:NSLocalizedString(@"Preparing to copy %lu items", @""), totalItemCount];
-			}
+			copyOperation.informativeText = [NSString localizedStringWithFormat:NSLocalizedString(@"Preparing to copy %lu items", @"Preparing to copy %lu items"), totalItemCount];
 			
 		} else if (stage == MDCopyOperationStageCopying) {
 			if (copyOperation.indeterminate) {
@@ -1502,13 +1497,9 @@ static NSInteger copyTag = 0;
 			NSNumber *totalBytes = dictionary[MDCopyOperationTotalBytesKey];
 			NSNumber *currentBytes = dictionary[MDCopyOperationCurrentBytesKey];
 			
-			if (totalItemCount == 1) {
-				copyOperation.messageText = [NSString stringWithFormat:NSLocalizedString(@"Copying %lu item to \"%@\"", @""), totalItemCount - currentItemIndex, destination];
-			} else {
-				copyOperation.messageText = [NSString stringWithFormat:NSLocalizedString(@"Copying %lu items to \"%@\"", @""), totalItemCount - currentItemIndex, destination];
-			}
+			copyOperation.messageText = [NSString localizedStringWithFormat:NSLocalizedString(@"Copying %lu items to \"%@\"", @""), totalItemCount - currentItemIndex, destination];
 			
-			copyOperation.informativeText = [NSString stringWithFormat:NSLocalizedString(@"%@ of %@", @""), [fileSizeFormatter stringForObjectValue:currentBytes],
+			copyOperation.informativeText = [NSString localizedStringWithFormat:NSLocalizedString(@"%@ of %@", @""), [fileSizeFormatter stringForObjectValue:currentBytes],
 											   [fileSizeFormatter stringForObjectValue:totalBytes]];
 			
 		} else if (stage == MDCopyOperationStageFinishing) {
@@ -1854,32 +1845,32 @@ static NSInteger copyTag = 0;
 			
 			switch (fileType) {
 				case HKArchiveFileTypeBSP :
-					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that the items in this window are inside a %@", @""), NSLocalizedString(@"Source Level", @"")];
+					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that the items in this window are inside a %@", @"Indicates that the items in this window are inside a %@"), NSLocalizedString(@"Source Level", @"Source Level")];
 					break;
 				case HKArchiveFileTypeGCF :
-					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that the items in this window are inside a %@", @""), NSLocalizedString(@"Steam Cache file", @"")];
+					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that the items in this window are inside a %@", @"Indicates that the items in this window are inside a %@"), NSLocalizedString(@"Steam Cache file", @"Steam Cache file")];
 					break;
 				case HKArchiveFileTypePAK :
-					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that the items in this window are inside a %@", @""), NSLocalizedString(@"Source Package file", @"")];
+					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that the items in this window are inside a %@", @"Indicates that the items in this window are inside a %@"), NSLocalizedString(@"Source Package file", @"Source Package file")];
 					break;
 				case HKArchiveFileTypeVBSP :
-					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that the items in this window are inside a %@", @""), NSLocalizedString(@"Source Level", @"")];
+					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that the items in this window are inside a %@", @"Indicates that the items in this window are inside a %@"), NSLocalizedString(@"Source Level", @"Source Level")];
 					break;
 				case HKArchiveFileTypeWAD :
-					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that the items in this window are inside a %@", @""), NSLocalizedString(@"Source Texture Package file", @"")];
+					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that the items in this window are inside a %@", @"Indicates that the items in this window are inside a %@"), NSLocalizedString(@"Source Texture Package file", @"Source Texture Package file")];
 					break;
 				case HKArchiveFileTypeXZP :
-					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that the items in this window are inside a %@", @""), NSLocalizedString(@"Source Xbox Package file", @"")];
+					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that the items in this window are inside a %@", @"Indicates that the items in this window are inside a %@"), NSLocalizedString(@"Source Xbox Package file", @"Source Xbox Package file")];
 					break;
 				case HKArchiveFileTypeNCF :
-					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that the items in this window are inside a %@", @""), NSLocalizedString(@"Steam Non-Cache file", @"")];
+					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that the items in this window are inside a %@", @"Indicates that the items in this window are inside a %@"), NSLocalizedString(@"Steam Non-Cache file", @"Steam Non-Cache file")];
 					break;
 				case HKArchiveFileTypeVPK :
-					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that the items in this window are inside a %@", @""), NSLocalizedString(@"Source Addon file", @"")];
+					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that the items in this window are inside a %@", @"Indicates that the items in this window are inside a %@"), NSLocalizedString(@"Source Addon file", @"Source Addon file")];
 					break;
 					
 				default:
-					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that the items in this window are inside a %@", @""), NSLocalizedString(@"Steam Cache file", @"")];
+					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that the items in this window are inside a %@", @"Indicates that the items in this window are inside a %@"), NSLocalizedString(@"Steam Cache file", @"Steam Cache file")];
 					break;
 			}
 			
@@ -1887,32 +1878,32 @@ static NSInteger copyTag = 0;
 			
 			switch (fileType) {
 				case HKArchiveFileTypeBSP :
-					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that you cannot add or change the contents of this %@", @""), NSLocalizedString(@"Source Level", @"")];
+					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that you cannot add or change the contents of this %@", @"Indicates that you cannot add or change the contents of this %@"), NSLocalizedString(@"Source Level", @"Source Level")];
 					break;
 				case HKArchiveFileTypeGCF :
-					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that you cannot add or change the contents of this %@", @""), NSLocalizedString(@"Steam Cache file", @"")];
+					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that you cannot add or change the contents of this %@", @"Indicates that you cannot add or change the contents of this %@"), NSLocalizedString(@"Steam Cache file", @"Steam Cache file")];
 					break;
 				case HKArchiveFileTypePAK :
-					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that you cannot add or change the contents of this %@", @""), NSLocalizedString(@"Source Package file", @"")];
+					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that you cannot add or change the contents of this %@", @"Indicates that you cannot add or change the contents of this %@"), NSLocalizedString(@"Source Package file", @"Source Package file")];
 					break;
 				case HKArchiveFileTypeVBSP :
-					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that you cannot add or change the contents of this %@", @""), NSLocalizedString(@"Source Level", @"")];
+					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that you cannot add or change the contents of this %@", @"Indicates that you cannot add or change the contents of this %@"), NSLocalizedString(@"Source Level", @"Source Level")];
 					break;
 				case HKArchiveFileTypeWAD :
-					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that you cannot add or change the contents of this %@", @""), NSLocalizedString(@"Source Texture Package file", @"")];
+					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that you cannot add or change the contents of this %@", @"Indicates that you cannot add or change the contents of this %@"), NSLocalizedString(@"Source Texture Package file", @"Source Texture Package file")];
 					break;
 				case HKArchiveFileTypeXZP :
-					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that you cannot add or change the contents of this %@", @""), NSLocalizedString(@"Source Xbox Package file", @"")];
+					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that you cannot add or change the contents of this %@", @"Indicates that you cannot add or change the contents of this %@"), NSLocalizedString(@"Source Xbox Package file", @"Source Xbox Package file")];
 					break;
 				case HKArchiveFileTypeNCF :
-					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that you cannot add or change the contents of this %@", @""), NSLocalizedString(@"Steam Non-Cache file", @"")];
+					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that you cannot add or change the contents of this %@", @"Indicates that you cannot add or change the contents of this %@"), NSLocalizedString(@"Steam Non-Cache file", @"Steam Non-Cache file")];
 					break;
 				case HKArchiveFileTypeVPK :
-					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that you cannot add or change the contents of this %@", @""), NSLocalizedString(@"Source Addon file", @"")];
+					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that you cannot add or change the contents of this %@", @"Indicates that you cannot add or change the contents of this %@"), NSLocalizedString(@"Source Addon file", @"Source Addon file")];
 					break;
 					
 				default:
-					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Indicates that you cannot add or change the contents of this %@", @""), NSLocalizedString(@"Steam Cache file", @"")];
+					toolTip = [NSString localizedStringWithFormat:NSLocalizedString(@"Indicates that you cannot add or change the contents of this %@", @"Indicates that you cannot add or change the contents of this %@"), NSLocalizedString(@"Steam Cache file", @"Steam Cache file")];
 					break;
 			}
 			
@@ -1922,38 +1913,38 @@ static NSInteger copyTag = 0;
 			
 			switch (fileType) {
 				case HKArchiveFileTypeBSP :
-					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Inside %@", @""), NSLocalizedString(@"Source Level", @"")];
+					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Inside %@", @"Inside %@"), NSLocalizedString(@"Source Level", @"Source Level")];
 					break;
 				case HKArchiveFileTypeGCF :
-					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Inside %@", @""), NSLocalizedString(@"Steam Cache file", @"")];
+					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Inside %@", @"Inside %@"), NSLocalizedString(@"Steam Cache file", @"Steam Cache file")];
 					break;
 				case HKArchiveFileTypePAK :
-					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Inside %@", @""), NSLocalizedString(@"Source Package file", @"")];
+					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Inside %@", @"Inside %@"), NSLocalizedString(@"Source Package file", @"Source Package file")];
 					break;
 				case HKArchiveFileTypeVBSP :
-					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Inside %@", @""), NSLocalizedString(@"Source Level", @"")];
+					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Inside %@", @"Inside %@"), NSLocalizedString(@"Source Level", @"Source Level")];
 					break;
 				case HKArchiveFileTypeWAD :
-					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Inside %@", @""), NSLocalizedString(@"Source Texture Package file", @"")];
+					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Inside %@", @"Inside %@"), NSLocalizedString(@"Source Texture Package file", @"Source Texture Package file")];
 					break;
 				case HKArchiveFileTypeXZP :
-					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Inside %@", @""), NSLocalizedString(@"Source Xbox Package file", @"")];
+					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Inside %@", @"Inside %@"), NSLocalizedString(@"Source Xbox Package file", @"Source Xbox Package file")];
 					break;
 				case HKArchiveFileTypeNCF :
-					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Inside %@", @""), NSLocalizedString(@"Steam Non-Cache file", @"")];
+					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Inside %@", @"Inside %@"), NSLocalizedString(@"Steam Non-Cache file", @"Steam Non-Cache file")];
 					break;
 				case HKArchiveFileTypeVPK :
-					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Inside %@", @""), NSLocalizedString(@"Source Addon file", @"")];
+					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Inside %@", @"Inside %@"), NSLocalizedString(@"Source Addon file", @"Source Addon file")];
 					break;
 					
 				default:
-					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Inside %@", @""), NSLocalizedString(@"Steam Cache file", @"")];
+					toolTip = [NSString stringWithFormat:NSLocalizedString(@"Inside %@", @"Inside %@"), NSLocalizedString(@"Steam Cache file", @"Steam Cache file")];
 					break;
 			}
 		
 		} else if (tag == statusImageViewTag2) {
 			
-			toolTip = NSLocalizedString(@"No Changes", @"");
+			toolTip = NSLocalizedString(@"No Changes", @"No Changes");
 		}
 	}
 	
@@ -2033,9 +2024,9 @@ static NSInteger copyTag = 0;
 		}
 		
 		
-		actionButtonShowViewOptionsMenuItem.title = (MDShouldShowViewOptions ? NSLocalizedString(@"Hide View Options",@"") : NSLocalizedString(@"Show View Options", @""));
+		actionButtonShowViewOptionsMenuItem.title = (MDShouldShowViewOptions ? NSLocalizedString(@"Hide View Options", @"Hide View Options") : NSLocalizedString(@"Show View Options", @"Show View Options"));
 		
-		actionButtonShowInspectorMenuItem.title = (MDShouldShowInspector ? NSLocalizedString(@"Hide Inspector", @"") : NSLocalizedString(@"Show Inspector", @""));
+		actionButtonShowInspectorMenuItem.title = (MDShouldShowInspector ? NSLocalizedString(@"Hide Inspector", @"Hide Inspector") : NSLocalizedString(@"Show Inspector", @"Show Inspector"));
 		
 		
 	} else if (menu == outlineViewMenu) {
@@ -2052,9 +2043,9 @@ static NSInteger copyTag = 0;
 		}
 		
 		
-		outlineViewMenuShowViewOptionsMenuItem.title = (MDShouldShowViewOptions ? NSLocalizedString(@"Hide View Options", @"") : NSLocalizedString(@"Show View Options", @""));
+		outlineViewMenuShowViewOptionsMenuItem.title = (MDShouldShowViewOptions ? NSLocalizedString(@"Hide View Options", @"Hide View Options") : NSLocalizedString(@"Show View Options", @"Show View Options"));
 		
-		outlineViewMenuShowInspectorMenuItem.title = (MDShouldShowInspector ? NSLocalizedString(@"Hide Inspector", @"") : NSLocalizedString(@"Show Inspector", @""));
+		outlineViewMenuShowInspectorMenuItem.title = (MDShouldShowInspector ? NSLocalizedString(@"Hide Inspector", @"Hide Inspector") : NSLocalizedString(@"Show Inspector", @"Show Inspector"));
 		
 		
 	} else if (menu == browserMenu) {
@@ -2070,9 +2061,9 @@ static NSInteger copyTag = 0;
 									   browserMenuShowViewOptionsMenuItem]];
 		}
 		
-		browserMenuShowViewOptionsMenuItem.title = (MDShouldShowViewOptions ? NSLocalizedString(@"Hide View Options", @"") : NSLocalizedString(@"Show View Options", @""));
+		browserMenuShowViewOptionsMenuItem.title = (MDShouldShowViewOptions ? NSLocalizedString(@"Hide View Options", @"Hide View Options") : NSLocalizedString(@"Show View Options", @"Show View Options"));
 		
-		browserMenuShowInspectorMenuItem.title = (MDShouldShowInspector ? NSLocalizedString(@"Hide Inspector", @"") : NSLocalizedString(@"Show Inspector", @""));
+		browserMenuShowInspectorMenuItem.title = (MDShouldShowInspector ? NSLocalizedString(@"Hide Inspector", @"Hide Inspector") : NSLocalizedString(@"Show Inspector", @"Show Inspector"));
 		
 	} else if (menu == pathControlMenu) {
 
@@ -2114,7 +2105,7 @@ static NSInteger copyTag = 0;
 		return YES;
 		
 	} else if (action == @selector(toggleShowPathBar:)) {
-		menuItem.title = (MDShouldShowPathBar ? NSLocalizedString(@"Hide Path Bar", @"") : NSLocalizedString(@"Show Path Bar", @""));
+		menuItem.title = (MDShouldShowPathBar ? NSLocalizedString(@"Hide Path Bar", @"Hide Path Bar") : NSLocalizedString(@"Show Path Bar", @"Show Path Bar"));
 		return YES;
 		
 	} else if (action == @selector(copy:)) {
@@ -2126,7 +2117,7 @@ static NSInteger copyTag = 0;
 		
 	} else if (action == @selector(toggleShowQuickLook:)) {
 		if (MDShouldShowQuickLook) {
-			[menuItem setTitle:NSLocalizedString(@"Close Quick Look", @"")];
+			[menuItem setTitle:NSLocalizedString(@"Close Quick Look", @"Close QuickLook")];
 			return YES;
 		} else {
 			NSInteger numberOfSelectedRows = -1;
@@ -2147,7 +2138,7 @@ static NSInteger copyTag = 0;
 			}
 			
 			if (numberOfSelectedRows == 0) {
-				[menuItem setTitle:NSLocalizedString(@"Quick Look", @"")];
+				[menuItem setTitle:NSLocalizedString(@"Quick Look", @"QuickLook")];
 				return YES;
 			} else if (numberOfSelectedRows == 1) {
 				HKItem *selectedItem = nil;
@@ -2162,11 +2153,11 @@ static NSInteger copyTag = 0;
 				}
 				
 				if (selectedItem) {
-					menuItem.title = [NSString localizedStringWithFormat:NSLocalizedString(@"Quick Look \"%@\"", @""), selectedItem.name];
+					menuItem.title = [NSString localizedStringWithFormat:NSLocalizedString(@"Quick Look \"%@\"", @"Quick Look \"%@\""), selectedItem.name];
 				}
 				return YES;
 			} else if (numberOfSelectedRows > 1) {
-				menuItem.title = [NSString localizedStringWithFormat:NSLocalizedString(@"Quick Look %lu Items", @""), (unsigned long)numberOfSelectedRows];
+				menuItem.title = [NSString localizedStringWithFormat:NSLocalizedString(@"Quick Look %lu Items", @"Quick Look %lu Items"), (unsigned long)numberOfSelectedRows];
 				return YES;
 			}
 		}

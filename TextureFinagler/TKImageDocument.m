@@ -464,7 +464,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:TKImageDocumentDoNotShowWarningAgainKey] == NO) {
 		NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"The image-creation and manipulation feature is still a work in progress.", @"")
 									   informativeText:NSLocalizedString(@"Many operations do not work properly yet.", @"")
-										   firstButton:NSLocalizedString(@"OK", @"")
+										   firstButton:NSLocalizedString(@"OK", @"OK")
 										  secondButton:nil
 										   thirdButton:nil];
 		
@@ -2032,7 +2032,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	[(TKImageDocument *)[self.undoManager prepareWithInvocationTarget:self] generateMipmapsUsingFilter:aFilter];
 	
 	if (!self.undoManager.undoing) {
-		[self.undoManager setActionName:NSLocalizedString(@"Remove Mipmaps", @"")];
+		[self.undoManager setActionName:NSLocalizedString(@"Remove Mipmaps", @"Remove Mipmaps")];
 	}
 	
 	[self reloadData];
@@ -2386,13 +2386,13 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 		}
 	} else if (action == @selector(changeViewMode:)) {
 		if (tag == TKFacesTag) {
-			menuItem.title = (shouldShowFaceBrowserView ? NSLocalizedString(@"Hide Faces", @"") : NSLocalizedString(@"Show Faces", @""));
+			menuItem.title = (shouldShowFaceBrowserView ? NSLocalizedString(@"Hide Faces", @"Hide Faces") : NSLocalizedString(@"Show Faces", @"Show Faces"));
 			
 		} else if (tag == TKFramesTag) {
-			menuItem.title = (shouldShowFrameBrowserView ? NSLocalizedString(@"Hide Frames", @"") : NSLocalizedString(@"Show Frames", @""));
+			menuItem.title = (shouldShowFrameBrowserView ? NSLocalizedString(@"Hide Frames", @"Hide Frames") : NSLocalizedString(@"Show Frames", @"Show Frames"));
 
 		} else if (tag == TKMipmapsTag) {
-			menuItem.title = (shouldShowMipmapBrowserView ? NSLocalizedString(@"Hide Mipmaps", @"") : NSLocalizedString(@"Show Mipmaps", @""));
+			menuItem.title = (shouldShowMipmapBrowserView ? NSLocalizedString(@"Hide Mipmaps", @"Hide Mipmaps") : NSLocalizedString(@"Show Mipmaps", @"Show Mipmaps"));
 
 		}
 	} else if (action == @selector(generateMipmaps:)) {
