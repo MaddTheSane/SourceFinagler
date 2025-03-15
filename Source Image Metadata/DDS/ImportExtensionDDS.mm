@@ -101,7 +101,7 @@ private:
 	if ([data length] < sizeof(OSType)) {
 		if (error) {
 			*error = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadInvalidFileNameError userInfo:
-					  @{NSLocalizedDescriptionKey: @"[data length] < 4 for file",
+					  @{NSLocalizedDescriptionKey: @"File is too small",
 						NSDebugDescriptionErrorKey: @"[data length] < 4 for file",
 						NSURLErrorKey: contentURL
 					  }];

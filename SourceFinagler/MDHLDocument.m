@@ -1497,9 +1497,9 @@ static NSInteger copyTag = 0;
 			NSNumber *totalBytes = dictionary[MDCopyOperationTotalBytesKey];
 			NSNumber *currentBytes = dictionary[MDCopyOperationCurrentBytesKey];
 			
-			copyOperation.messageText = [NSString localizedStringWithFormat:NSLocalizedString(@"Copying %lu items to \"%@\"", @""), totalItemCount - currentItemIndex, destination];
+			copyOperation.messageText = [NSString localizedStringWithFormat:NSLocalizedString(@"Copying %lu items to \"%@\"", @"Copying %lu items to \"%@\""), totalItemCount - currentItemIndex, destination];
 			
-			copyOperation.informativeText = [NSString localizedStringWithFormat:NSLocalizedString(@"%@ of %@", @""), [fileSizeFormatter stringForObjectValue:currentBytes],
+			copyOperation.informativeText = [NSString localizedStringWithFormat:NSLocalizedString(@"%@ of %@", @"%@ of %@"), [fileSizeFormatter stringForObjectValue:currentBytes],
 											   [fileSizeFormatter stringForObjectValue:totalBytes]];
 			
 		} else if (stage == MDCopyOperationStageFinishing) {

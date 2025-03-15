@@ -55,6 +55,7 @@
       }
     },
     "%@ of %@" : {
+      "comment" : "%@ of %@",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -277,6 +278,7 @@
       }
     },
     "Copying %lu items to \"%@\"" : {
+      "comment" : "Copying %lu items to \"%@\"",
       "localizations" : {
         "en" : {
           "variations" : {

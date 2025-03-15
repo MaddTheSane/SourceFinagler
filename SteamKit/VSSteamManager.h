@@ -88,7 +88,8 @@ typedef NS_ENUM(NSUInteger, VSSourceFinaglerLaunchAgentStatus) {
 
 @property (readonly) VSSteamAppsRelocationType steamAppsRelocationType;
 
-- (BOOL)isProposedRelocationPathValid:(NSString *)proposedPath errorDescription:(NSString **)errorDescription;
+- (BOOL)isProposedRelocationPathValid:(NSString *)proposedPath errorDescription:(NSString *__autoreleasing*)errorDescription;
+- (BOOL)isProposedRelocationURLValid:(NSString *)proposedPath error:(NSError *__autoreleasing*)errorDescription UNAVAILABLE_ATTRIBUTE;
 - (BOOL)relocateSteamAppsToPath:(NSString *)aPath error:(NSError **)outError;
 
 

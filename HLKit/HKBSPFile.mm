@@ -53,9 +53,7 @@ using namespace HLLib;
 }
 
 - (NSString *)description {
-	NSMutableString *description = [NSMutableString stringWithString:@""];
-	[description appendFormat:@"\tfilePath == %@\n", filePath];
-	return [NSString stringWithFormat:@"%@", description];
+	return [NSString stringWithFormat:@"\tfilePath == %@\n", filePath];
 }
 
 @end

@@ -491,6 +491,11 @@ static NSUInteger locateSteamAppsCount = 0;
 }
 
 
+- (BOOL)isProposedRelocationURLValid:(NSString *)proposedPath error:(NSError *__autoreleasing*)errorDescription
+{
+	return NO;
+}
+
 
 - (BOOL)isProposedRelocationPathValid:(NSString *)proposedPath errorDescription:(NSString **)errorDescription {
 #if VS_DEBUG
@@ -1355,7 +1360,4 @@ static inline NSDictionary *VSMakeLaunchAgentPlist(NSString *jobLabel, NSArray *
 	
 }
 
-
 @end
-
-
