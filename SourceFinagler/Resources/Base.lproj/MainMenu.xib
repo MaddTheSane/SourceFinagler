@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23504"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -631,13 +631,13 @@ CA
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="249" y="648" width="634" height="397"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1512" height="944"/>
             <value key="minSize" type="size" width="634" height="200"/>
             <view key="contentView" id="372" userLabel="view">
                 <rect key="frame" x="0.0" y="0.0" width="634" height="397"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             </view>
-            <toolbar key="toolbar" implicitIdentifier="5E64D79F-E0CC-4B69-8E95-4155789842D0" displayMode="iconAndLabel" sizeMode="regular" id="586">
+            <toolbar key="toolbar" implicitIdentifier="5E64D79F-E0CC-4B69-8E95-4155789842D0" showsBaselineSeparator="NO" displayMode="iconAndLabel" sizeMode="regular" id="586">
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="8638A3F1-5CDE-41DF-A9EB-0DF60BFE15C4" label="Steam Apps Re-locator " paletteLabel="Steam Apps Re-locator " image="steamApps" selectable="YES" id="594">
                         <size key="minSize" width="22" height="22"/>

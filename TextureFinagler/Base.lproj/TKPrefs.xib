@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23504"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,12 +17,12 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
             <rect key="contentRect" x="277" y="667" width="486" height="391"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1512" height="944"/>
             <view key="contentView" id="14" userLabel="view">
                 <rect key="frame" x="0.0" y="0.0" width="486" height="391"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             </view>
-            <toolbar key="toolbar" implicitIdentifier="7D89BECF-B1FA-44FD-9046-B90C6123DB7D" explicitIdentifier="prefsToolbar" allowsUserCustomization="NO" displayMode="iconAndLabel" sizeMode="regular" id="15">
+            <toolbar key="toolbar" implicitIdentifier="7D89BECF-B1FA-44FD-9046-B90C6123DB7D" explicitIdentifier="prefsToolbar" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconAndLabel" sizeMode="regular" id="15">
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="0E433E3C-2756-420C-8AF5-4E2C53B6138E" label="General" paletteLabel="General" image="NSPreferencesGeneral" selectable="YES" id="16">
                         <nil key="toolTip"/>
