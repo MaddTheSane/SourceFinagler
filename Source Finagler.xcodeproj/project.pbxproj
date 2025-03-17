@@ -118,6 +118,7 @@
 		55B9F2BB1D7D1A2100641709 /* Shared.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55B9F2BA1D7D1A2100641709 /* Shared.xcassets */; };
 		55B9F2BC1D7D1A2100641709 /* Shared.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55B9F2BA1D7D1A2100641709 /* Shared.xcassets */; };
 		55B9F2BD1D7D1A2100641709 /* Shared.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55B9F2BA1D7D1A2100641709 /* Shared.xcassets */; };
+		55D8AB8C2D87F30B00EF2765 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 55D8AB8B2D87F30B00EF2765 /* Sparkle */; };
 		55DEDA4F2D855D5400C5FB62 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 55DEDA4E2D855D0F00C5FB62 /* Localizable.xcstrings */; };
 		55EF66A21D7B7DE800FFF7B2 /* TextureFinaglerImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55EF66A11D7B7DE800FFF7B2 /* TextureFinaglerImages.xcassets */; };
 		55F82CB51D7BA58600D6DAC9 /* TKOBJModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C1958030149117DC0024C716 /* TKOBJModel.m */; };
@@ -297,8 +298,6 @@
 		C179470D12788391008B7EC9 /* NVMath.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA8DE125E5DC300CA78FF /* NVMath.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		C179471012788392008B7EC9 /* NVImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA8FD125E71A200CA78FF /* NVImage.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		C179471212788393008B7EC9 /* NVTT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FEA930125E72E300CA78FF /* NVTT.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		C17CC5AC1627FF740055D950 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17CC5AB1627FF740055D950 /* Sparkle.framework */; };
-		C17CC69C1628002F0055D950 /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C17CC5AB1627FF740055D950 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C17D74C51443C8EA0048697D /* TKTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C17D74C41443C8EA0048697D /* TKTextFieldCell.m */; };
 		C17D74EC1443D32D0048697D /* TKTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C17D74EA1443D0DA0048697D /* TKTextField.m */; };
 		C17D8F7B1642AAC40044039F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17D8F7A1642AAC40044039F /* Foundation.framework */; };
@@ -1152,7 +1151,6 @@
 				C1C2C76E127CC5DD003B24F6 /* NVImage.framework in Copy Frameworks */,
 				C180E48A1472937C0001C07F /* NVThread.framework in Copy Frameworks */,
 				C1C2C777127CC5E5003B24F6 /* NVTT.framework in Copy Frameworks */,
-				C17CC69C1628002F0055D950 /* Sparkle.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1425,7 +1423,6 @@
 		C17845C5148300E700082335 /* TKModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKModel.h; sourceTree = "<group>"; };
 		C17845C6148300E800082335 /* TKModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TKModel.m; sourceTree = "<group>"; };
 		C17A6EEA120A0BC40062CBC6 /* Collaboration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Collaboration.framework; path = System/Library/Frameworks/Collaboration.framework; sourceTree = SDKROOT; };
-		C17CC5AB1627FF740055D950 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		C17D34F212791CCA00962584 /* HLPackageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLPackageManager.h; sourceTree = "<group>"; };
 		C17D34F312791CCA00962584 /* HLPackageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLPackageManager.m; sourceTree = "<group>"; };
 		C17D74C31443C8EA0048697D /* TKTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKTextFieldCell.h; sourceTree = "<group>"; };
@@ -2117,12 +2114,12 @@
 				C140E9261388B77300027DD6 /* SteamKit.framework in Frameworks */,
 				C155C9C813A06907008151E7 /* HLKit.framework in Frameworks */,
 				C1CA27DA13A2E1F900235C98 /* Cocoa.framework in Frameworks */,
+				55D8AB8C2D87F30B00EF2765 /* Sparkle in Frameworks */,
 				C1CA285013A2E2C100235C98 /* Quartz.framework in Frameworks */,
 				C1CA2B2B13A2E38D00235C98 /* WebKit.framework in Frameworks */,
 				C186404A159C2F0D009D15FB /* GLKit.framework in Frameworks */,
 				C186404B159C2F0D009D15FB /* SceneKit.framework in Frameworks */,
 				C186404C159C2F0D009D15FB /* VideoToolbox.framework in Frameworks */,
-				C17CC5AC1627FF740055D950 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2304,7 +2301,6 @@
 			children = (
 				55101AA0290E4F0C003CED21 /* CoreSpotlight.framework */,
 				55101A9E290E4EEE003CED21 /* UniformTypeIdentifiers.framework */,
-				C17CC5AB1627FF740055D950 /* Sparkle.framework */,
 				C1537AC21294F80E0056DDE1 /* Accelerate.framework */,
 				C145AC5E12BD69D1005D7E21 /* AGL.framework */,
 				C1CA2BDA13A2E3E600235C98 /* AppKit.framework */,
@@ -4585,6 +4581,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				55D8AB902D87F36700EF2765 /* PBXTargetDependency */,
 				55101AF1290E864D003CED21 /* PBXTargetDependency */,
 				55101AF3290E864D003CED21 /* PBXTargetDependency */,
 				55101AF5290E864D003CED21 /* PBXTargetDependency */,
@@ -4807,6 +4804,9 @@
 				Base,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Steam Helper */;
+			packageReferences = (
+				55D8AB8A2D87F30B00EF2765 /* XCRemoteSwiftPackageReference "Sparkle" */,
+			);
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -5584,6 +5584,10 @@
 			isa = PBXTargetDependency;
 			target = C1FEA8FC125E71A200CA78FF /* NVImage */;
 			targetProxy = 558673001D7E887E00E26A11 /* PBXContainerItemProxy */;
+		};
+		55D8AB902D87F36700EF2765 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 55D8AB8F2D87F36700EF2765 /* Sparkle */;
 		};
 		C1224C0C13B06C15009AA0F4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -8445,6 +8449,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		55D8AB8A2D87F30B00EF2765 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.7.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		55D8AB8B2D87F30B00EF2765 /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 55D8AB8A2D87F30B00EF2765 /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
+		55D8AB8F2D87F36700EF2765 /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 55D8AB8A2D87F30B00EF2765 /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
 }
