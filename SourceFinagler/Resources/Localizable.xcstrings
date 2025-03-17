@@ -170,7 +170,7 @@
       }
     },
     "Add Images" : {
-
+      "comment" : "Add Images"
     },
     "Alpha" : {
       "comment" : "Alpha channel"
@@ -316,7 +316,7 @@
 
     },
     "Generate Mipmaps" : {
-
+      "comment" : "Generate Mipmaps"
     },
     "Green" : {
       "comment" : "Green channel"
@@ -364,6 +364,7 @@
 
     },
     "Move Images" : {
+      "comment" : "Move Images",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -538,10 +539,10 @@
       }
     },
     "Play" : {
-
+      "comment" : "Play"
     },
     "Play the animated image" : {
-
+      "comment" : "Play the animated image"
     },
     "Please reinstall the application." : {
       "extractionState" : "manual",
@@ -628,7 +629,7 @@
       "comment" : "Red channel"
     },
     "Remove Images" : {
-
+      "comment" : "Remove Images"
     },
     "Remove Mipmaps" : {
       "comment" : "Remove Mipmaps"
@@ -724,13 +725,13 @@
       "comment" : "Steam Non-Cache file"
     },
     "Stop" : {
-
+      "comment" : "Stop"
     },
     "Stop copying" : {
 
     },
     "Stop playing the animated image" : {
-
+      "comment" : "Stop playing the animated image"
     },
     "The image-creation and manipulation feature is still a work in progress." : {
 

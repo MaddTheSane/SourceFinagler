@@ -30,7 +30,7 @@ TEXTUREKIT_EXTERN NSString *TKImageIOLocalizedString(NSString *key);
 @class CIFilter;
 
 
-@interface TKImageDocument : NSDocument <NSSplitViewDelegate, NSMenuDelegate, NSToolbarDelegate, NSWindowDelegate, NSUserInterfaceValidations, TKImageInspectorDataSource> {
+@interface TKImageDocument : NSDocument <NSSplitViewDelegate, NSMenuDelegate, NSToolbarDelegate, NSWindowDelegate, NSUserInterfaceValidations, TKImageInspectorDataSource, NSMenuItemValidation> {
 									  
 	IBOutlet NSWindow							*imageWindow;
 	

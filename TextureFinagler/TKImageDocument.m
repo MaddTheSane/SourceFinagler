@@ -16,6 +16,7 @@
 #import "TKGrayscaleFilter.h"
 #import "TKImageKitAdditions.h"
 #import "MDHLDocument.h"
+#import "GeneratedAssetSymbols.h"
 
 
 #import "TKAppController.h"
@@ -1928,10 +1929,10 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	
 	
 	if ([sender isKindOfClass:[NSSegmentedControl class]]) {
-		[(NSSegmentedControl *)sender setImage:[NSImage imageNamed:(isAnimating ? @"overlayPlay" : @"overlayStop")] forSegment:0];
-		[((NSSegmentedControl *)sender).cell setToolTip:(isAnimating ? NSLocalizedString(@"Play the animated image", @"") : NSLocalizedString(@"Stop playing the animated image", @"")) forSegment:0];
+		[(NSSegmentedControl *)sender setImage:[NSImage imageNamed:(isAnimating ? ACImageNameOverlayPlay : ACImageNameOverlayStop)] forSegment:0];
+		[((NSSegmentedControl *)sender).cell setToolTip:(isAnimating ? NSLocalizedString(@"Play the animated image", @"Play the animated image") : NSLocalizedString(@"Stop playing the animated image", @"Stop playing the animated image")) forSegment:0];
 	}
-	togglePlayToolbarItem.label = (isAnimating ? NSLocalizedString(@"Play", @"") : NSLocalizedString(@"Stop", @""));
+	togglePlayToolbarItem.label = (isAnimating ? NSLocalizedString(@"Play", @"Play") : NSLocalizedString(@"Stop", @"Stop"));
 	
 	
 	if (isAnimating) {
@@ -2003,7 +2004,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	[[self.undoManager prepareWithInvocationTarget:self] removeGeneratedMipmapsUsingFilter:aFilter];
 	
 	if (!self.undoManager.undoing) {
-		[self.undoManager setActionName:NSLocalizedString(@"Generate Mipmaps", @"")];
+		[self.undoManager setActionName:NSLocalizedString(@"Generate Mipmaps", @"Generate Mipmaps")];
 	}
 	
 	[self reloadData];
@@ -2061,7 +2062,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	[[self.undoManager prepareWithInvocationTarget:self] removeRepresentations:representations atMipmapIndexes:mipmapIndexes];
 	
 	if (!self.undoManager.undoing) {
-		[self.undoManager setActionName:NSLocalizedString(@"Add Images", @"")];
+		[self.undoManager setActionName:NSLocalizedString(@"Add Images", @"Add Images")];
 	}
 	
 	[self reloadData];
@@ -2079,7 +2080,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	[[self.undoManager prepareWithInvocationTarget:self] insertRepresentations:representations atMipmapIndexes:mipmapIndexes];
 	
 	if (!self.undoManager.undoing) {
-		[self.undoManager setActionName:NSLocalizedString(@"Remove Images", @"")];
+		[self.undoManager setActionName:NSLocalizedString(@"Remove Images", @"Remove Images")];
 	}
 	
 	[self reloadData];
@@ -2108,7 +2109,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	[[self.undoManager prepareWithInvocationTarget:self] moveRepresentations:representations fromMipmapIndexes:toMipmapIndexes toMipmapIndexes:fromMipmapIndexes];
 	
 	if (!self.undoManager.undoing) {
-		[self.undoManager setActionName:NSLocalizedString(@"Move Images", @"")];
+		[self.undoManager setActionName:NSLocalizedString(@"Move Images", @"Move Images")];
 	}
 	
 	[self reloadData];
@@ -2140,7 +2141,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	[[self.undoManager prepareWithInvocationTarget:self] removeRepresentations:representations atFrameIndexes:frameIndexes mipmapIndexes:mipmapIndexes];
 	
 	if (!self.undoManager.undoing) {
-		[self.undoManager setActionName:NSLocalizedString(@"Add Images", @"")];
+		[self.undoManager setActionName:NSLocalizedString(@"Add Images", @"Add Images")];
 	}
 	
 	[self reloadData];
@@ -2160,7 +2161,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	[[self.undoManager prepareWithInvocationTarget:self] insertRepresentations:representations atFrameIndexes:frameIndexes mipmapIndexes:mipmapIndexes];
 	
 	if (!self.undoManager.undoing) {
-		[self.undoManager setActionName:NSLocalizedString(@"Remove Images", @"")];
+		[self.undoManager setActionName:NSLocalizedString(@"Remove Images", @"Remove Images")];
 	}
 	
 	[self reloadData];
@@ -2190,7 +2191,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	[[self.undoManager prepareWithInvocationTarget:self] moveRepresentations:representations fromFrameIndexes:toFrameIndexes mipmapIndexes:toMipmapIndexes toFrameIndexes:fromFrameIndexes mipmapIndexes:fromMipmapIndexes];
 	
 	if (!self.undoManager.undoing) {
-		[self.undoManager setActionName:NSLocalizedString(@"Move Images", @"")];
+		[self.undoManager setActionName:NSLocalizedString(@"Move Images", @"Move Images")];
 	}
 	
 	[self reloadData];
@@ -2238,7 +2239,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	[[self.undoManager prepareWithInvocationTarget:self] insertRepresentations:representations atFaceIndexes:faceIndexes mipmapIndexes:mipmapIndexes];
 	
 	if (!self.undoManager.undoing) {
-		[self.undoManager setActionName:NSLocalizedString(@"Remove Images", @"")];
+		[self.undoManager setActionName:NSLocalizedString(@"Remove Images", @"Remove Images")];
 	}
 	
 	[self reloadData];
@@ -2266,7 +2267,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	[[self.undoManager prepareWithInvocationTarget:self] moveRepresentations:representations fromFaceIndexes:toFaceIndexes mipmapIndexes:toMipmapIndexes toFaceIndexes:fromFaceIndexes mipmapIndexes:fromMipmapIndexes];
 	
 	if (!self.undoManager.undoing) {
-		[self.undoManager setActionName:NSLocalizedString(@"Move Images", @"")];
+		[self.undoManager setActionName:NSLocalizedString(@"Move Images", @"Move Images")];
 	}
 	
 	[self reloadData];
@@ -2296,7 +2297,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	}
 	
 	if (!self.undoManager.undoing) {
-		[self.undoManager setActionName:NSLocalizedString(@"Add Images", @"")];
+		[self.undoManager setActionName:NSLocalizedString(@"Add Images", @"Add Images")];
 	}
 	
 	[self reloadData];
@@ -2314,7 +2315,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	[[self.undoManager prepareWithInvocationTarget:self] insertRepresentations:representations atFaceIndexes:faceIndexes frameIndexes:frameIndexes mipmapIndexes:mipmapIndexes];
 	
 	if (!self.undoManager.undoing) {
-		[self.undoManager setActionName:NSLocalizedString(@"Remove Images", @"")];
+		[self.undoManager setActionName:NSLocalizedString(@"Remove Images", @"Remove Images")];
 	}
 	
 	[self reloadData];
@@ -2343,7 +2344,7 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	[[self.undoManager prepareWithInvocationTarget:self] moveRepresentations:representations fromFaceIndexes:toFaceIndexes frameIndexes:toFrameIndexes mipmapIndexes:toMipmapIndexes toFaceIndexes:fromFaceIndexes frameIndexes:fromFrameIndexes mipmapIndexes:fromMipmapIndexes];
 
 	if (!self.undoManager.undoing) {
-		[self.undoManager setActionName:NSLocalizedString(@"Move Images", @"")];
+		[self.undoManager setActionName:NSLocalizedString(@"Move Images", @"Move Images")];
 	}
 	
 	[self reloadData];
@@ -2419,12 +2420,12 @@ static CALayer *MDBlueBackgroundLayerWithFrame(NSRect frame) {
 	
 	if (action == @selector(togglePlayAnimation:)) {
 		if (imageView.animating) {
-			[theItem setLabel:NSLocalizedString(@"Stop", @"")];
-			theItem.image = [NSImage imageNamed:@"overlayStop"];
+			[theItem setLabel:NSLocalizedString(@"Stop", @"Stop")];
+			theItem.image = [NSImage imageNamed:ACImageNameOverlayStop];
 			
 		} else {
-			[theItem setLabel:NSLocalizedString(@"Play", @"")];
-			theItem.image = [NSImage imageNamed:@"overlayPlay"];
+			[theItem setLabel:NSLocalizedString(@"Play", @"Play")];
+			theItem.image = [NSImage imageNamed:ACImageNameOverlayPlay];
 		}
 		
 		if (image.frameCount <= 1) return NO;

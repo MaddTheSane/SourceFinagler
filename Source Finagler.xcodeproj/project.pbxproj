@@ -119,6 +119,8 @@
 		55B9F2BC1D7D1A2100641709 /* Shared.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55B9F2BA1D7D1A2100641709 /* Shared.xcassets */; };
 		55B9F2BD1D7D1A2100641709 /* Shared.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55B9F2BA1D7D1A2100641709 /* Shared.xcassets */; };
 		55D8AB8C2D87F30B00EF2765 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 55D8AB8B2D87F30B00EF2765 /* Sparkle */; };
+		55D8AB922D88176100EF2765 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 55D8AB912D88176000EF2765 /* Localizable.xcstrings */; };
+		55D8AB932D88176100EF2765 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 55D8AB912D88176000EF2765 /* Localizable.xcstrings */; };
 		55DEDA4F2D855D5400C5FB62 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 55DEDA4E2D855D0F00C5FB62 /* Localizable.xcstrings */; };
 		55EF66A21D7B7DE800FFF7B2 /* TextureFinaglerImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55EF66A11D7B7DE800FFF7B2 /* TextureFinaglerImages.xcassets */; };
 		55F82CB51D7BA58600D6DAC9 /* TKOBJModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C1958030149117DC0024C716 /* TKOBJModel.m */; };
@@ -1271,6 +1273,7 @@
 		55B9F2BA1D7D1A2100641709 /* Shared.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Shared.xcassets; sourceTree = "<group>"; };
 		55B9F2BF1D7D21FC00641709 /* HLSpotlightMain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HLSpotlightMain.h; sourceTree = "<group>"; };
 		55B9F2C01D7D297B00641709 /* GenerateThumbnails.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GenerateThumbnails.h; sourceTree = "<group>"; };
+		55D8AB912D88176000EF2765 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		55DEDA4E2D855D0F00C5FB62 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		55EF66A11D7B7DE800FFF7B2 /* TextureFinaglerImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = TextureFinaglerImages.xcassets; path = Resources/TextureFinaglerImages.xcassets; sourceTree = "<group>"; };
 		55F82CBB1D7BA77100D6DAC9 /* TKOpenGLDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKOpenGLDrawable.h; sourceTree = "<group>"; };
@@ -2373,6 +2376,7 @@
 				55101AE1290E78A4003CED21 /* ImportExtensionVTF.h */,
 				55101AE0290E78A3003CED21 /* ImportExtensionVTF.mm */,
 				55101ADA290E76BD003CED21 /* Info.plist */,
+				55D8AB912D88176000EF2765 /* Localizable.xcstrings */,
 			);
 			path = VTF;
 			sourceTree = "<group>";
@@ -4862,6 +4866,7 @@
 			files = (
 				55101AD3290E76BC003CED21 /* schema.xml in Resources */,
 				55947A452D82DD0F00170FE1 /* schema.xcstrings in Resources */,
+				55D8AB922D88176100EF2765 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4876,6 +4881,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55D8AB932D88176100EF2765 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

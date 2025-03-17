@@ -23,7 +23,7 @@ using namespace VTFLib;
 	if ([data length] < sizeof(OSType)) {
 		if (error) {
 			*error = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadInvalidFileNameError userInfo:
-					  @{NSLocalizedDescriptionKey: @"[data length] < 4 for file",
+					  @{NSLocalizedDescriptionKey: NSLocalizedString(@"The file too small", @"[data length] < 4 for file"),
 						NSDebugDescriptionErrorKey: @"[data length] < 4 for file",
 						NSURLErrorKey: contentURL
 					  }];
@@ -38,7 +38,7 @@ using namespace VTFLib;
 	if (magic == TKHTMLErrorMagic) {
 		if (error) {
 			*error = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadInvalidFileNameError userInfo:
-					  @{NSLocalizedDescriptionKey: @"file appears to be an ERROR 404 HTML file rather than a valid VTF",
+					  @{NSLocalizedDescriptionKey: NSLocalizedString(@"file appears to be an ERROR 404 HTML file rather than a valid VTF", @"file appears to be an ERROR 404 HTML file rather than a valid VTF"),
 						NSDebugDescriptionErrorKey: @"file appears to be an ERROR 404 HTML file rather than a valid VTF",
 						NSURLErrorKey: contentURL
 					  }];
@@ -51,7 +51,7 @@ using namespace VTFLib;
 	if (file == NULL) {
 		if (error) {
 			*error = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadInvalidFileNameError userInfo:
-					  @{NSLocalizedDescriptionKey: @"CVTFFile() returned NULL",
+					  @{NSLocalizedDescriptionKey: NSLocalizedString(@"CVTFFile() returned NULL", @"CVTFFile() returned NULL"),
 						NSDebugDescriptionErrorKey: @"CVTFFile() returned NULL",
 						NSURLErrorKey: contentURL
 					  }];
@@ -70,10 +70,9 @@ using namespace VTFLib;
 			}
 		} else {
 			if (error) {
-				NSString *errString = [NSString stringWithFormat:@"file->Load() failed! (does not appear to be a valid VTF; magic == 0x%x, %@)", (unsigned int)magic, NSFileTypeForHFSTypeCode(magic)];
 				*error = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadInvalidFileNameError userInfo:
-						  @{NSLocalizedDescriptionKey: errString,
-							NSDebugDescriptionErrorKey: errString,
+						  @{NSLocalizedDescriptionKey: [NSString localizedStringWithFormat:NSLocalizedString(@"file->Load() failed! (does not appear to be a valid VTF; magic == 0x%x, %@)", @"file->Load() failed! (does not appear to be a valid VTF;"), (unsigned int)magic, NSFileTypeForHFSTypeCode(magic)],
+							NSDebugDescriptionErrorKey: [NSString stringWithFormat:@"file->Load() failed! (does not appear to be a valid VTF; magic == 0x%x, %@)", (unsigned int)magic, NSFileTypeForHFSTypeCode(magic)],
 							NSURLErrorKey: contentURL
 						  }];
 			}

@@ -1,0 +1,26 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "CVTFFile() returned NULL" : {
+      "comment" : "CVTFFile() returned NULL"
+    },
+    "file appears to be an ERROR 404 HTML file rather than a valid VTF" : {
+      "comment" : "file appears to be an ERROR 404 HTML file rather than a valid VTF"
+    },
+    "file->Load() failed! (does not appear to be a valid VTF; magic == 0x%x, %@)" : {
+      "comment" : "file->Load() failed! (does not appear to be a valid VTF;",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "file->Load() failed! (does not appear to be a valid VTF; magic == 0x%1$x, %2$@)"
+          }
+        }
+      }
+    },
+    "The file too small" : {
+      "comment" : "[data length] < 4 for file"
+    }
+  },
+  "version" : "1.0"
+}
