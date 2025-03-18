@@ -20,6 +20,8 @@
 #ifndef STDAFX_H
 #define STDAFX_H
 
+#include <stdbool.h>
+
 #ifdef __APPLE__
 #include <CoreFoundation/CFBase.h>
 #elif !(defined(__COREFOUNDATION_CFBASE__) || defined(CF_ENUM))
@@ -56,7 +58,7 @@
 #endif
 
 // Custom data types
-typedef unsigned char	vlBool;				//!< Boolean value 0/1.
+typedef _Bool			vlBool;				//!< Boolean value 0/1.
 typedef char			vlChar;				//!< Single signed character.
 typedef unsigned char	vlByte;				//!< Single unsigned byte.
 typedef signed short	vlShort;			//!< Signed short floating point value.
@@ -86,8 +88,8 @@ typedef uint64_t	vlUInt64;
 
 typedef vlSingle		vlFloat;			//!< Floating point number (same as vlSingled).
 
-#define vlFalse			0
-#define vlTrue			1
+#define vlFalse			false
+#define vlTrue			true
 
 
 #ifdef __cplusplus
