@@ -7,6 +7,9 @@
     "file appears to be an ERROR 404 HTML file rather than a valid VTF" : {
       "comment" : "file appears to be an ERROR 404 HTML file rather than a valid VTF"
     },
+    "file->Load() failed!" : {
+      "comment" : "file->Load() failed!"
+    },
     "file->Load() failed! (does not appear to be a valid VTF; magic == 0x%x, %@)" : {
       "comment" : "file->Load() failed! (does not appear to be a valid VTF;",
       "localizations" : {

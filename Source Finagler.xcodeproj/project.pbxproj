@@ -120,7 +120,7 @@
 		55B9F2BD1D7D1A2100641709 /* Shared.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55B9F2BA1D7D1A2100641709 /* Shared.xcassets */; };
 		55D8AB8C2D87F30B00EF2765 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 55D8AB8B2D87F30B00EF2765 /* Sparkle */; };
 		55D8AB922D88176100EF2765 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 55D8AB912D88176000EF2765 /* Localizable.xcstrings */; };
-		55D8AB932D88176100EF2765 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 55D8AB912D88176000EF2765 /* Localizable.xcstrings */; };
+		55D8AB952D8818A000EF2765 /* ImportExtensionVTFNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D8AB942D88189A00EF2765 /* ImportExtensionVTFNew.swift */; };
 		55DEDA4F2D855D5400C5FB62 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 55DEDA4E2D855D0F00C5FB62 /* Localizable.xcstrings */; };
 		55EF66A21D7B7DE800FFF7B2 /* TextureFinaglerImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55EF66A11D7B7DE800FFF7B2 /* TextureFinaglerImages.xcassets */; };
 		55F82CB51D7BA58600D6DAC9 /* TKOBJModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C1958030149117DC0024C716 /* TKOBJModel.m */; };
@@ -1274,6 +1274,8 @@
 		55B9F2BF1D7D21FC00641709 /* HLSpotlightMain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HLSpotlightMain.h; sourceTree = "<group>"; };
 		55B9F2C01D7D297B00641709 /* GenerateThumbnails.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GenerateThumbnails.h; sourceTree = "<group>"; };
 		55D8AB912D88176000EF2765 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		55D8AB942D88189A00EF2765 /* ImportExtensionVTFNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportExtensionVTFNew.swift; sourceTree = "<group>"; };
+		55D8AB972D8818A200EF2765 /* VTF Image Metadata-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VTF Image Metadata-Bridging-Header.h"; sourceTree = "<group>"; };
 		55DEDA4E2D855D0F00C5FB62 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		55EF66A11D7B7DE800FFF7B2 /* TextureFinaglerImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = TextureFinaglerImages.xcassets; path = Resources/TextureFinaglerImages.xcassets; sourceTree = "<group>"; };
 		55F82CBB1D7BA77100D6DAC9 /* TKOpenGLDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKOpenGLDrawable.h; sourceTree = "<group>"; };
@@ -2373,10 +2375,12 @@
 		55101ADF290E788F003CED21 /* VTF */ = {
 			isa = PBXGroup;
 			children = (
+				55D8AB942D88189A00EF2765 /* ImportExtensionVTFNew.swift */,
 				55101AE1290E78A4003CED21 /* ImportExtensionVTF.h */,
 				55101AE0290E78A3003CED21 /* ImportExtensionVTF.mm */,
 				55101ADA290E76BD003CED21 /* Info.plist */,
 				55D8AB912D88176000EF2765 /* Localizable.xcstrings */,
+				55D8AB972D8818A200EF2765 /* VTF Image Metadata-Bridging-Header.h */,
 			);
 			path = VTF;
 			sourceTree = "<group>";
@@ -4783,6 +4787,7 @@
 						ProvisioningStyle = Automatic;
 					};
 					55101AC0290E76BC003CED21 = {
+						LastSwiftMigration = 1620;
 						ProvisioningStyle = Automatic;
 					};
 					55633910290A801D0058FA82 = {
@@ -4881,7 +4886,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55D8AB932D88176100EF2765 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5087,6 +5091,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55D8AB952D8818A000EF2765 /* ImportExtensionVTFNew.swift in Sources */,
 				55101AE5290E7A41003CED21 /* ImportExtensionVTF.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6181,7 +6186,9 @@
 		55101AD6290E76BC003CED21 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_ENTITLEMENTS = "Source Image Metadata/Source_Image_Metadata.entitlements";
@@ -6210,13 +6217,19 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Source Image Metadata/VTF/VTF Image Metadata-Bridging-Header.h";
+				SWIFT_OBJC_INTEROP_MODE = objcxx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
 			};
 			name = Debug;
 		};
 		55101AD7290E76BC003CED21 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_ENTITLEMENTS = "Source Image Metadata/Source_Image_Metadata.entitlements";
@@ -6242,13 +6255,18 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Source Image Metadata/VTF/VTF Image Metadata-Bridging-Header.h";
+				SWIFT_OBJC_INTEROP_MODE = objcxx;
+				SWIFT_VERSION = 6.0;
 			};
 			name = Release;
 		};
 		55101AD8290E76BC003CED21 /* Release-MAS */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_ENTITLEMENTS = "Source Image Metadata/Source_Image_Metadata.entitlements";
@@ -6274,6 +6292,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Source Image Metadata/VTF/VTF Image Metadata-Bridging-Header.h";
+				SWIFT_OBJC_INTEROP_MODE = objcxx;
+				SWIFT_VERSION = 6.0;
 			};
 			name = "Release-MAS";
 		};
