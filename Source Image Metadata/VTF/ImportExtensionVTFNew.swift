@@ -8,6 +8,8 @@
 
 import Foundation
 import CoreSpotlight
+import VTF
+import TextureKit.TKVTFImageRep
 
 public class ImportExtensionVTFNew: CSImportExtension {
 	public override func update(_ attributes: CSSearchableItemAttributeSet, forFileAt contentURL: URL) throws {

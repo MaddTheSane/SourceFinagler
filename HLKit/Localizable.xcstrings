@@ -2,7 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "%lu x %lu" : {
-      "comment" : "%1$lu x %2$lu image dimensions",
+      "comment" : "%1$lu (width) x %2$lu (height) image dimensions",
       "localizations" : {
         "en" : {
           "stringUnit" : {

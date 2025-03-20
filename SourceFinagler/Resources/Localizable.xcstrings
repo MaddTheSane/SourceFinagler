@@ -159,16 +159,6 @@
         }
       }
     },
-    "1 Source addon was installed." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "One Source add-on was installed."
-          }
-        }
-      }
-    },
     "Add Images" : {
       "comment" : "Add Images"
     },

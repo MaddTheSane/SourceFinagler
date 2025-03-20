@@ -110,7 +110,7 @@
 		}
 		if (theImage) {
 			NSSize imageSize = theImage.size;
-			self.dimensions = [NSString localizedStringWithFormat:NSLocalizedStringFromTableInBundle(@"%lu x %lu", @"Localizable", [NSBundle bundleForClass:[self class]], @"%1$lu x %2$lu image dimensions"), (NSUInteger)imageSize.width, (NSUInteger)imageSize.height];
+			self.dimensions = [NSString localizedStringWithFormat:NSLocalizedStringFromTableInBundle(@"%lu x %lu", @"Localizable", [NSBundle bundleForClass:[self class]], @"%1$lu (width) x %2$lu (height) image dimensions"), (NSUInteger)imageSize.width, (NSUInteger)imageSize.height];
 		}
 	} else if (fileType == HKFileTypeOther ||
 			   fileType == HKFileTypeText ||

@@ -5,7 +5,15 @@
       "comment" : "CVTFFile() returned NULL"
     },
     "file appears to be an ERROR 404 HTML file rather than a valid VTF" : {
-      "comment" : "file appears to be an ERROR 404 HTML file rather than a valid VTF"
+      "comment" : "file appears to be an ERROR 404 HTML file rather than a valid VTF",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The file appears to be a 404 error HTML file rather than a valid VTF"
+          }
+        }
+      }
     },
     "file->Load() failed!" : {
       "comment" : "file->Load() failed!"
@@ -22,7 +30,15 @@
       }
     },
     "The file too small" : {
-      "comment" : "[data length] < 4 for file"
+      "comment" : "[data length] < 4 for file",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The file is too small"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
