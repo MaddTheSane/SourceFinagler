@@ -336,14 +336,14 @@
                     <toolbarItem implicitItemIdentifier="39CB5D84-5F5D-4C22-BA08-408A5F60576D" label="Zoom to Fit" paletteLabel="Zoom to Fit" id="101107">
                         <nil key="toolTip"/>
                         <size key="minSize" width="38" height="23"/>
-                        <size key="maxSize" width="42" height="25"/>
+                        <size key="maxSize" width="44" height="26"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="101111">
-                            <rect key="frame" x="13" y="14" width="42" height="23"/>
+                            <rect key="frame" x="12" y="14" width="44" height="26"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="momentary" id="101112">
                                 <font key="font" metaFont="system"/>
                                 <segments>
-                                    <segment toolTip="Zoom to fit" image="zoomToFitTemplate" width="36"/>
+                                    <segment toolTip="Zoom to fit" image="square.arrowtriangle.4.outward" catalog="system" width="36"/>
                                 </segments>
                             </segmentedCell>
                             <connections>
@@ -354,17 +354,17 @@
                     <toolbarItem implicitItemIdentifier="78568B1E-0553-42E9-91A7-3785F08B228D" label="Tool" paletteLabel="Tool" id="101098">
                         <nil key="toolTip"/>
                         <size key="minSize" width="71" height="23"/>
-                        <size key="maxSize" width="75" height="25"/>
+                        <size key="maxSize" width="81" height="26"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="101119">
-                            <rect key="frame" x="0.0" y="14" width="75" height="23"/>
+                            <rect key="frame" x="0.0" y="14" width="81" height="26"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="101120">
                                 <font key="font" metaFont="system"/>
                                 <segments>
-                                    <segment toolTip="Move" image="grab" width="34" selected="YES" tag="1">
+                                    <segment toolTip="Move" image="cursorarrow" catalog="system" width="34" selected="YES" tag="1">
                                         <nil key="label"/>
                                     </segment>
-                                    <segment toolTip="Select" image="selection" width="34" tag="2">
+                                    <segment toolTip="Select" image="cursorarrow.square" catalog="system" width="34" tag="2">
                                         <nil key="label"/>
                                     </segment>
                                 </segments>
@@ -996,8 +996,8 @@
             <rect key="screenRect" x="0.0" y="0.0" width="1512" height="944"/>
             <value key="minSize" type="size" width="273" height="183"/>
             <value key="maxSize" type="size" width="273" height="374"/>
-            <view key="contentView" id="101505">
-                <rect key="frame" x="0.0" y="0.0" width="273" height="198"/>
+            <view key="contentView" misplaced="YES" id="101505">
+                <rect key="frame" x="0.0" y="0.0" width="273" height="183"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="101535">
@@ -1195,14 +1195,14 @@
         <image name="1.magnifyingglass" catalog="system" width="16" height="15"/>
         <image name="NSRightFacingTriangleTemplate" width="12" height="17"/>
         <image name="crop" catalog="system" width="17" height="16"/>
-        <image name="grab" width="18" height="18"/>
+        <image name="cursorarrow" catalog="system" width="11" height="16"/>
+        <image name="cursorarrow.square" catalog="system" width="15" height="14"/>
         <image name="info.circle.fill" catalog="system" width="15" height="15"/>
         <image name="minus.magnifyingglass" catalog="system" width="16" height="15"/>
         <image name="plus.magnifyingglass" catalog="system" width="16" height="15"/>
-        <image name="selection" width="16" height="18"/>
+        <image name="square.arrowtriangle.4.outward" catalog="system" width="17" height="16"/>
         <image name="viewFaceBrowserTemplate" width="16" height="16"/>
         <image name="viewFrameBrowserTemplate" width="16" height="16"/>
         <image name="viewMipmapBrowserTemplate" width="16" height="16"/>
-        <image name="zoomToFitTemplate" width="20" height="18"/>
     </resources>
 </document>
