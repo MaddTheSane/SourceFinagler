@@ -9,8 +9,8 @@
 import QuickLookThumbnailing
 import TextureKit
 
-class ThumbnailProvider: QLThumbnailProvider {
-    override func provideThumbnail(for request: QLFileThumbnailRequest, _ handler: @escaping (QLThumbnailReply?, Error?) -> Void) {
+public class ThumbnailProvider: QLThumbnailProvider {
+    public override func provideThumbnail(for request: QLFileThumbnailRequest, _ handler: @escaping (QLThumbnailReply?, Error?) -> Void) {
 		do {
 			let url = request.fileURL
 			let imageData = try Data(contentsOf: url)

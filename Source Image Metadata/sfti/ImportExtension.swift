@@ -22,20 +22,20 @@ class ImportExtension : CSImportExtension {
 		}
 		let imageSize = sfti.size
 		
-		attributes.hasAlphaChannel = NSNumber(booleanLiteral: sfti.hasAlpha)
+		attributes.hasAlphaChannel = NSNumber(value: sfti.hasAlpha)
 		if let customAttrib = CSCustomAttributeKey(keyName: "com_markdouma_image_mipmaps") {
-			attributes.setValue(NSNumber(booleanLiteral: sfti.hasMipmaps), forCustomKey: customAttrib)
+			attributes.setValue(NSNumber(value: sfti.hasMipmaps), forCustomKey: customAttrib)
 		}
 		if let customAttrib = CSCustomAttributeKey(keyName: "com_markdouma_image_animated") {
-			attributes.setValue(NSNumber(booleanLiteral: sfti.isAnimated), forCustomKey: customAttrib)
+			attributes.setValue(NSNumber(value: sfti.isAnimated), forCustomKey: customAttrib)
 		}
 		
 		if let customAttrib = CSCustomAttributeKey(keyName: "com_markdouma_image_environment_map") {
-			attributes.setValue(NSNumber(booleanLiteral: sfti.isCubemap || sfti.isSpheremap), forCustomKey: customAttrib)
+			attributes.setValue(NSNumber(value: sfti.isCubemap || sfti.isSpheremap), forCustomKey: customAttrib)
 		}
 
-		attributes.pixelWidth = Int(imageSize.width) as NSNumber
-		attributes.pixelHeight = Int(imageSize.height) as NSNumber
+		attributes.pixelWidth = NSNumber(value: Int(imageSize.width))
+		attributes.pixelHeight = NSNumber(value: Int(imageSize.height))
 		attributes.pixelCount = Int(imageSize.width * imageSize.height) as NSNumber
 	}
 }

@@ -11,8 +11,8 @@ import Quartz
 import UniformTypeIdentifiers
 import TextureKit
 
-class PreviewProvider: QLPreviewProvider, QLPreviewingController {
-    func providePreview(for request: QLFilePreviewRequest) async throws -> QLPreviewReply {
+public class PreviewProvider: QLPreviewProvider, QLPreviewingController {
+	public func providePreview(for request: QLFilePreviewRequest) async throws -> QLPreviewReply {
 		let url = request.fileURL
 		
 		let data = try Data(contentsOf: url, options: [.mappedIfSafe])

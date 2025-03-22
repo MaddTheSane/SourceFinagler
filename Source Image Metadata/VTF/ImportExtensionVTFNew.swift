@@ -54,10 +54,10 @@ public class ImportExtensionVTFNew: CSImportExtension {
 			}
 		}
 		
-		let isEnvironmentMap: Bool = (file.GetFaceCount() > 1)
+		let isEnvironmentMap: Bool = file.GetFaceCount() > 1
 		let hasAlphaChannel = VTFImageFlag(rawValue: file.GetFlags()).contains([.TEXTUREFLAGS_ONEBITALPHA, .TEXTUREFLAGS_EIGHTBITALPHA])
-		let hasMipmaps: Bool = (file.GetMipmapCount() > 1)
-		let isAnimated: Bool = (file.GetFrameCount() > 1)
+		let hasMipmaps: Bool = file.GetMipmapCount() > 1
+		let isAnimated: Bool = file.GetFrameCount() > 1
 		var compression: String? = nil
 		let imageFormatInfo = VTFLib.CVTFFile.GetImageFormatInfo(file.GetFormat())
 		if let imageFormatName = imageFormatInfo.pointee.lpName {
@@ -85,7 +85,7 @@ public class ImportExtensionVTFNew: CSImportExtension {
 		if !theVersion.isEmpty {
 			attributes.version = theVersion
 		}
-		if let compression = compression,
+		if let compression,
 		   let attrib = CSCustomAttributeKey(keyName: "com_markdouma_image_compression") {
 				attributes.setValue(compression as NSString, forCustomKey: attrib)
 		}
