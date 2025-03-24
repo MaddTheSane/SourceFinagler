@@ -19,4 +19,6 @@
 
 //#define HAVE_MAYA
 
+#define HAVE_RGETC 1
+
 #endif // NV_CONFIG

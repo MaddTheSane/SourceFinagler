@@ -2465,6 +2465,8 @@
 		554FE5FB1FC9FF8A00727CE0 /* bc7 */ = {
 			isa = PBXGroup;
 			children = (
+				554FE6051FC9FF8A00727CE0 /* avpcl.h */,
+				554FE5FE1FC9FF8A00727CE0 /* avpcl.cpp */,
 				554FE60E1FC9FF8A00727CE0 /* avpcl_mode0.cpp */,
 				554FE60D1FC9FF8A00727CE0 /* avpcl_mode1.cpp */,
 				554FE62D1FC9FF8A00727CE0 /* avpcl_mode2.cpp */,
@@ -2473,10 +2475,8 @@
 				554FE60B1FC9FF8A00727CE0 /* avpcl_mode5.cpp */,
 				554FE6091FC9FF8A00727CE0 /* avpcl_mode6.cpp */,
 				554FE6081FC9FF8A00727CE0 /* avpcl_mode7.cpp */,
-				554FE69B1FCA078A00727CE0 /* avpcl_utils.cpp */,
 				554FE69C1FCA078A00727CE0 /* avpcl_utils.h */,
-				554FE5FE1FC9FF8A00727CE0 /* avpcl.cpp */,
-				554FE6051FC9FF8A00727CE0 /* avpcl.h */,
+				554FE69B1FCA078A00727CE0 /* avpcl_utils.cpp */,
 				554FE60F1FC9FF8A00727CE0 /* bits.h */,
 				554FE60C1FC9FF8A00727CE0 /* endpts.h */,
 				554FE6061FC9FF8A00727CE0 /* shapes_three.h */,
@@ -4017,24 +4017,24 @@
 		C1FEA953125E756500CA78FF /* Squish */ = {
 			isa = PBXGroup;
 			children = (
+				C1FEA992125E766800CA78FF /* clusterfit.h */,
+				C1FEA991125E766800CA78FF /* clusterfit.cpp */,
+				C1FEA993125E766800CA78FF /* CMakeLists.txt */,
+				C1FEA995125E766800CA78FF /* colourblock.h */,
+				C1FEA994125E766800CA78FF /* colourblock.cpp */,
+				C1FEA997125E766800CA78FF /* colourfit.h */,
+				C1FEA996125E766800CA78FF /* colourfit.cpp */,
+				C1FEA999125E766800CA78FF /* colourset.h */,
+				C1FEA998125E766800CA78FF /* colourset.cpp */,
 				C1FEA99A125E766800CA78FF /* config.h */,
 				C1FEA99C125E766800CA78FF /* fastclusterfit.h */,
 				C1FEA99B125E766800CA78FF /* fastclusterfit.cpp */,
 				C1FEA99D125E766800CA78FF /* fastclusterlookup.inl */,
-				C1FEA9AE125E766800CA78FF /* weightedclusterfit.h */,
-				C1FEA9AD125E766800CA78FF /* weightedclusterfit.cpp */,
-				C1FEA997125E766800CA78FF /* colourfit.h */,
-				C1FEA996125E766800CA78FF /* colourfit.cpp */,
-				C1FEA992125E766800CA78FF /* clusterfit.h */,
-				C1FEA991125E766800CA78FF /* clusterfit.cpp */,
 				C1FEA99F125E766800CA78FF /* maths.h */,
 				C1FEA99E125E766800CA78FF /* maths.cpp */,
-				C1FEA995125E766800CA78FF /* colourblock.h */,
-				C1FEA994125E766800CA78FF /* colourblock.cpp */,
-				C1FEA999125E766800CA78FF /* colourset.h */,
-				C1FEA998125E766800CA78FF /* colourset.cpp */,
 				C1FEA9A3125E766800CA78FF /* simd.h */,
-				C1FEA993125E766800CA78FF /* CMakeLists.txt */,
+				C1FEA9AE125E766800CA78FF /* weightedclusterfit.h */,
+				C1FEA9AD125E766800CA78FF /* weightedclusterfit.cpp */,
 				C1FEA954125E757100CA78FF /* unused */,
 			);
 			name = Squish;
@@ -4067,10 +4067,10 @@
 				C1FEA986125E764700CA78FF /* CMakeLists.txt */,
 				C1FEA987125E764700CA78FF /* shapes_two.h */,
 				C1FEA988125E764700CA78FF /* tile.h */,
-				C1FEA98A125E764700CA78FF /* zoh_utils.h */,
-				C1FEA989125E764700CA78FF /* zoh_utils.cpp */,
 				C1FEA98C125E764700CA78FF /* zoh.h */,
 				C1FEA98B125E764700CA78FF /* zoh.cpp */,
+				C1FEA98A125E764700CA78FF /* zoh_utils.h */,
+				C1FEA989125E764700CA78FF /* zoh_utils.cpp */,
 				C1FEA98D125E764700CA78FF /* zohone.cpp */,
 				C1FEA98E125E764700CA78FF /* zohtwo.cpp */,
 			);
@@ -6928,7 +6928,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"NVTT_EXPORTS=1",
 					"NVTT_SHARED=1",
-					"HAVE_RGETC=1",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				HEADER_SEARCH_PATHS = (
@@ -8257,7 +8256,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"NVTT_EXPORTS=1",
 					"NVTT_SHARED=1",
-					"HAVE_RGETC=1",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				HEADER_SEARCH_PATHS = (
@@ -8299,7 +8297,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"NVTT_EXPORTS=1",
 					"NVTT_SHARED=1",
-					"HAVE_RGETC=1",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				HEADER_SEARCH_PATHS = (
