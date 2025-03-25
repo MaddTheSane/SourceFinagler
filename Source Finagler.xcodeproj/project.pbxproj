@@ -402,7 +402,7 @@
 		C1B95398124E73EC00E83451 /* VMTValueNode.h in Headers */ = {isa = PBXBuildFile; fileRef = C1B95364124E73EC00E83451 /* VMTValueNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C1B95399124E73EC00E83451 /* VMTWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1B95365124E73EC00E83451 /* VMTWrapper.cpp */; };
 		C1B9539A124E73EC00E83451 /* VMTWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = C1B95366124E73EC00E83451 /* VMTWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C1B9539C124E73EC00E83451 /* VTFDXTn.h in Headers */ = {isa = PBXBuildFile; fileRef = C1B95368124E73EC00E83451 /* VTFDXTn.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C1B9539C124E73EC00E83451 /* VTFDXTn.h in Headers */ = {isa = PBXBuildFile; fileRef = C1B95368124E73EC00E83451 /* VTFDXTn.h */; };
 		C1B9539E124E73EC00E83451 /* VTFFile.h in Headers */ = {isa = PBXBuildFile; fileRef = C1B9536A124E73EC00E83451 /* VTFFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C1B9539F124E73EC00E83451 /* VTFFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = C1B9536B124E73EC00E83451 /* VTFFormat.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C1B953A0124E73EC00E83451 /* VTFLib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1B9536C124E73EC00E83451 /* VTFLib.cpp */; };
