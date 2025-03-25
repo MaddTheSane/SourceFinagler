@@ -34,7 +34,6 @@
 #ifndef VTFFORMAT_H
 #define VTFFORMAT_H
 
-#include <CoreFoundation/CFBase.h>
 #include <VTF/stdafx.h>
 
 #include <VTF/VTFMathlib.h>

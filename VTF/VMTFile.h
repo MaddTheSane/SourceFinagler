@@ -31,7 +31,6 @@ typedef enum tagVMTParseMode
 
 #ifdef __cplusplus
 }
-#endif
 
 namespace VTFLib
 {
@@ -72,5 +71,6 @@ namespace VTFLib
 		Nodes::CVMTGroupNode *GetRoot() const;
 	};
 }
+#endif
 
 #endif

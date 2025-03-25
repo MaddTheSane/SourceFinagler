@@ -10,6 +10,7 @@
  */
 
 #include "Proc.h"
+#include "Error.h"
 
 using namespace VTFLib;
 

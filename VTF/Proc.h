@@ -12,8 +12,7 @@
 #ifndef PROC_H
 #define PROC_H
 
-#include "stdafx.h"
-#include "Error.h"
+#include <VTF/stdafx.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -62,19 +61,19 @@ typedef vlUInt (*PWriteTellProc) (vlVoid *);
 
 namespace VTFLib
 {
-	extern PReadCloseProc pReadCloseProc;
-	extern PReadOpenProc pReadOpenProc;
-	extern PReadReadProc pReadReadProc;
-	extern PReadSeekProc pReadSeekProc;
-	extern PReadSizeProc pReadSizeProc;
-	extern PReadTellProc pReadTellProc;
+	VTFLIB_API extern PReadCloseProc pReadCloseProc;
+	VTFLIB_API extern PReadOpenProc pReadOpenProc;
+	VTFLIB_API extern PReadReadProc pReadReadProc;
+	VTFLIB_API extern PReadSeekProc pReadSeekProc;
+	VTFLIB_API extern PReadSizeProc pReadSizeProc;
+	VTFLIB_API extern PReadTellProc pReadTellProc;
 
-	extern PWriteCloseProc pWriteCloseProc;
-	extern PWriteOpenProc pWriteOpenProc;
-	extern PWriteWriteProc pWriteWriteProc;
-	extern PWriteSeekProc pWriteSeekProc;
-	extern PWriteSizeProc pWriteSizeProc;
-	extern PWriteTellProc pWriteTellProc;
+	VTFLIB_API extern PWriteCloseProc pWriteCloseProc;
+	VTFLIB_API extern PWriteOpenProc pWriteOpenProc;
+	VTFLIB_API extern PWriteWriteProc pWriteWriteProc;
+	VTFLIB_API extern PWriteSeekProc pWriteSeekProc;
+	VTFLIB_API extern PWriteSizeProc pWriteSizeProc;
+	VTFLIB_API extern PWriteTellProc pWriteTellProc;
 }
 
 extern "C" {

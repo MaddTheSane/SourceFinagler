@@ -138,9 +138,9 @@ vlUInt CFileReader::Seek(vlLong lOffset, VLSeekMode uiMode)
 	DWORD dwMode = FILE_BEGIN;
 	switch (uiMode)
 	{
-//		case SEEK_MODE_BEGIN:
-//			dwMode = FILE_BEGIN;
-//			break;
+		case SEEK_MODE_BEGIN:
+			dwMode = FILE_BEGIN;
+			break;
 		case SEEK_MODE_CURRENT:
 			dwMode = FILE_CURRENT;
 			break;
@@ -154,9 +154,9 @@ vlUInt CFileReader::Seek(vlLong lOffset, VLSeekMode uiMode)
 	vlInt iMode = SEEK_SET;
 	switch (uiMode)
 	{
-//		case SEEK_MODE_BEGIN:
-//			iMode = SEEK_SET;
-//			break;
+		case SEEK_MODE_BEGIN:
+			iMode = SEEK_SET;
+			break;
 		case SEEK_MODE_CURRENT:
 			iMode = SEEK_CUR;
 			break;
