@@ -46,12 +46,12 @@ hlBool CStreamMapping::GetOpened() const
 	return this->Stream.GetOpened();
 }
 
-hlUInt CStreamMapping::GetMode() const
+HLFileMode CStreamMapping::GetMode() const
 {
 	return this->Stream.GetMode();
 }
 
-hlBool CStreamMapping::OpenInternal(hlUInt uiMode)
+hlBool CStreamMapping::OpenInternal(HLFileMode uiMode)
 {
 	assert(!this->GetOpened());
 
@@ -83,7 +83,7 @@ hlBool CStreamMapping::MapInternal(CView *&pView, hlULongLong uiOffset, hlULongL
 #ifdef _WIN32
 		LastError.SetErrorMessageFormated("Requested view (%I64u, %I64u) does not fit inside mapping, (%I64u, %I64u).", uiOffset, uiLength, 0, this->Stream.GetStreamSize());
 #else
-		LastError.SetErrorMessageFormated("Requested view (%llu, %llu) does not fit inside mapping, (%llu, %llu).", uiOffset, uiLength, 0, this->Stream.GetStreamSize());
+		LastError.SetErrorMessageFormated("Requested view (%llu, %llu) does not fit inside mapping, (%llu, %llu).", uiOffset, uiLength, (unsigned long long)0, this->Stream.GetStreamSize());
 #endif
 		return hlFalse;
 	}

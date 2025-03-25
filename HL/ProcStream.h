@@ -23,7 +23,7 @@ namespace HLLib
 		{
 		private:
 			hlBool bOpened;
-			hlUInt uiMode;
+			HLFileMode uiMode;
 
 			hlVoid *pUserData;
 
@@ -36,9 +36,9 @@ namespace HLLib
 			virtual const hlChar *GetFileName() const;
 
 			virtual hlBool GetOpened() const;
-			virtual hlUInt GetMode() const;
+			virtual HLFileMode GetMode() const;
 
-			virtual hlBool Open(hlUInt uiMode);
+			virtual hlBool Open(HLFileMode uiMode);
 			virtual hlVoid Close();
 
 			virtual hlULongLong GetStreamSize() const;

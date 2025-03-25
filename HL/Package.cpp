@@ -34,17 +34,17 @@ hlBool CPackage::GetOpened() const
 	return this->pMapping != 0;
 }
 
-hlBool CPackage::Open(Streams::IStream &Stream, hlUInt uiMode)
+hlBool CPackage::Open(Streams::IStream &Stream, HLFileMode uiMode)
 {
 	return this->Open(&Stream, uiMode, hlFalse);
 }
 
-hlBool CPackage::Open(Mapping::CMapping &Mapping, hlUInt uiMode)
+hlBool CPackage::Open(Mapping::CMapping &Mapping, HLFileMode uiMode)
 {
 	return this->Open(&Mapping, uiMode, hlFalse);
 }
 
-hlBool CPackage::Open(const hlChar *lpFileName, hlUInt uiMode)
+hlBool CPackage::Open(const hlChar *lpFileName, HLFileMode uiMode)
 {
 	if(uiMode & HL_MODE_NO_FILEMAPPING)
 	{
@@ -56,17 +56,17 @@ hlBool CPackage::Open(const hlChar *lpFileName, hlUInt uiMode)
 	}
 }
 
-hlBool CPackage::Open(hlVoid *lpData, hlUInt uiBufferSize, hlUInt uiMode)
+hlBool CPackage::Open(hlVoid *lpData, hlUInt uiBufferSize, HLFileMode uiMode)
 {
 	return this->Open(new Mapping::CMemoryMapping(lpData, uiBufferSize), uiMode, hlTrue);
 }
 
-hlBool CPackage::Open(hlVoid *pUserData, hlUInt uiMode)
+hlBool CPackage::Open(hlVoid *pUserData, HLFileMode uiMode)
 {
 	return this->Open(new Streams::CProcStream(pUserData), uiMode, hlTrue);
 }
 
-hlBool CPackage::Open(Streams::IStream *pStream, hlUInt uiMode, hlBool bDeleteStream)
+hlBool CPackage::Open(Streams::IStream *pStream, HLFileMode uiMode, hlBool bDeleteStream)
 {
 	this->Close();
 
@@ -94,7 +94,7 @@ hlBool CPackage::Open(Streams::IStream *pStream, hlUInt uiMode, hlBool bDeleteSt
 	return hlTrue;
 }
 
-hlBool CPackage::Open(Mapping::CMapping *pMapping, hlUInt uiMode, hlBool bDeleteMapping)
+hlBool CPackage::Open(Mapping::CMapping *pMapping, HLFileMode uiMode, hlBool bDeleteMapping)
 {
 	this->Close();
 

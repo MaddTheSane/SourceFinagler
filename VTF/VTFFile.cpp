@@ -209,9 +209,7 @@ public:
 		nvAssert(userData != 0);
 	}
 	
-	virtual ~NVOutputHandler() {
-		
-	}
+	virtual ~NVOutputHandler() = default;
 	
     virtual void beginImage(int aSize, int aWidth, int aHeight, int aDepth, int aFace, int aMiplevel) {
 //		printf("NVOutputHandler::beginImage()\n");

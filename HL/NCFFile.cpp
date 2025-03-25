@@ -17,11 +17,18 @@
 
 using namespace HLLib;
 
-#define HL_NCF_FLAG_FILE						0x00004000	// The item is a file.
-#define HL_NCF_FLAG_ENCRYPTED					0x00000100	// The item is encrypted.
-#define HL_NCF_FLAG_BACKUP_LOCAL				0x00000040	// Backup the item before overwriting it.
-#define HL_NCF_FLAG_COPY_LOCAL					0x0000000a	// The item is to be copied to the disk.
-#define HL_NCF_FLAG_COPY_LOCAL_NO_OVERWRITE 	0x00000001	// Don't overwrite the item if copying it to the disk and the item already exists.
+CF_ENUM(hlUInt) {
+	//! The item is a file.
+	HL_NCF_FLAG_FILE					= 0x00004000,
+	//! The item is encrypted.
+	HL_NCF_FLAG_ENCRYPTED				= 0x00000100,
+	//! Backup the item before overwriting it.
+	HL_NCF_FLAG_BACKUP_LOCAL			= 0x00000040,
+	//! The item is to be copied to the disk.
+	HL_NCF_FLAG_COPY_LOCAL				= 0x0000000a,
+	//! Don't overwrite the item if copying it to the disk and the item already exists.
+	HL_NCF_FLAG_COPY_LOCAL_NO_OVERWRITE	= 0x00000001
+};
 
 const char *CNCFFile::lpAttributeNames[] = { "Version", "Cache ID", "Last Version Played" };
 const char *CNCFFile::lpItemAttributeNames[] = { "Encrypted", "Copy Locally", "Overwrite Local Copy", "Backup Local Copy", "Flags" };

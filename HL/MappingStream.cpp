@@ -60,7 +60,7 @@ hlBool CMappingStream::GetOpened() const
 	return this->bOpened;
 }
 
-hlUInt CMappingStream::GetMode() const
+HLFileMode CMappingStream::GetMode() const
 {
 	return this->uiMode;
 }

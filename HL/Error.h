@@ -46,10 +46,10 @@ namespace HLLib
 		const hlChar *GetLongFormattedErrorMessage();
 
 		hlVoid SetErrorMessage(const hlChar *lpError);
-		hlVoid SetErrorMessageFormated(const hlChar *lpFormat, ...);
+		hlVoid SetErrorMessageFormated(const hlChar *lpFormat, ...) __printflike(2,3);
 
 		hlVoid SetSystemErrorMessage(const hlChar *lpError);
-		hlVoid SetSystemErrorMessageFormated(const hlChar *lpFormat, ...);
+		hlVoid SetSystemErrorMessageFormated(const hlChar *lpFormat, ...) __printflike(2,3);
 	};
 }
 

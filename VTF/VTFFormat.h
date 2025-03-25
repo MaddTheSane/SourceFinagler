@@ -34,6 +34,7 @@
 #ifndef VTFFORMAT_H
 #define VTFFORMAT_H
 
+#include <CoreFoundation/CFBase.h>
 #include <VTF/stdafx.h>
 
 #include <VTF/VTFMathlib.h>
@@ -368,7 +369,7 @@ typedef CF_ENUM(vlUInt, VTFResourceEntryType)
 	VTF_RSRC_MAX_DICTIONARY_ENTRIES = 32
 };
 
-#pragma pack(1)
+#pragma pack(push, 1)
 
 //! VTFFileHeader struct.
 /*!
@@ -382,6 +383,9 @@ struct SVTFFileHeader
 	vlUInt			Version[2];						//!< Version[0].version[1] (currently 7.2)
 	vlUInt			HeaderSize;						//!< Size of the header struct (currently 80 bytes)				
 };
+
+#ifdef __cplusplus
+}
 
 //! VTFHeader_70 struct.
 /*!
@@ -499,6 +503,9 @@ struct SVTFHeader_75 : public SVTFHeader_74
 */
 struct CACHE_ALIGN SVTFHeader_75_A : public SVTFHeader_75 {};
 
+extern "C" {
+#endif
+
 struct SVTFResource
 {
 	union
@@ -534,6 +541,9 @@ typedef struct tagSVTFTextureSettingsExResource
 	vlByte Flags3;
 } SVTFTextureSettingsExResource;
 
+#ifdef __cplusplus
+}
+
 struct SVTFHeader : public SVTFHeader_74_A
 {
 	vlByte				Padding3[8];
@@ -541,10 +551,8 @@ struct SVTFHeader : public SVTFHeader_74_A
 	SVTFResourceData	Data[VTF_RSRC_MAX_DICTIONARY_ENTRIES];
 };
 
-#pragma pack()
-
-#ifdef __cplusplus
-}
 #endif
+
+#pragma pack(pop)
 
 #endif // VTFFORMAT_H

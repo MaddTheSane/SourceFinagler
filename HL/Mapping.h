@@ -71,13 +71,13 @@ namespace HLLib
 			virtual const hlChar *GetFileName() const;
 
 			virtual hlBool GetOpened() const = 0;
-			virtual hlUInt GetMode() const = 0;
+			virtual HLFileMode GetMode() const = 0;
 
 			hlUInt GetTotalAllocations() const;
 			hlULongLong GetTotalMemoryAllocated() const;
 			hlULongLong GetTotalMemoryUsed() const;
 
-			hlBool Open(hlUInt uiMode);
+			hlBool Open(HLFileMode uiMode);
 			hlVoid Close();
 
 			virtual hlULongLong GetMappingSize() const = 0;
@@ -89,7 +89,7 @@ namespace HLLib
 			hlBool Commit(CView &View, hlULongLong uiOffset, hlULongLong uiLength);
 
 		private:
-			virtual hlBool OpenInternal(hlUInt uiMode) = 0;
+			virtual hlBool OpenInternal(HLFileMode uiMode) = 0;
 			virtual hlVoid CloseInternal() = 0;
 
 			virtual hlBool MapInternal(CView *&pView, hlULongLong uiOffset, hlULongLong uiLength) = 0;

@@ -20,11 +20,6 @@ CNullStream::CNullStream() : bOpened(hlFalse), uiMode(HL_MODE_INVALID)
 
 }
 
-CNullStream::~CNullStream()
-{
-
-}
-
 HLStreamType CNullStream::GetType() const
 {
 	return HL_STREAM_NULL;
@@ -40,12 +35,12 @@ hlBool CNullStream::GetOpened() const
 	return this->bOpened;
 }
 
-hlUInt CNullStream::GetMode() const
+HLFileMode CNullStream::GetMode() const
 {
 	return this->uiMode;
 }
 
-hlBool CNullStream::Open(hlUInt uiMode)
+hlBool CNullStream::Open(HLFileMode uiMode)
 {
 	this->bOpened = hlTrue;
 	this->uiMode = uiMode;

@@ -29,7 +29,7 @@ namespace HLLib
 			hlInt iFile;
 #endif
 			hlUInt uiAllocationGranularity;
-			hlUInt uiMode;
+			HLFileMode uiMode;
 
 			hlVoid *lpView;
 			hlULongLong uiViewSize;
@@ -45,12 +45,12 @@ namespace HLLib
 			virtual const hlChar *GetFileName() const;
 
 			virtual hlBool GetOpened() const;
-			virtual hlUInt GetMode() const;
+			virtual HLFileMode GetMode() const;
 
 			virtual hlULongLong GetMappingSize() const;
 
 		private:
-			virtual hlBool OpenInternal(hlUInt uiMode);
+			virtual hlBool OpenInternal(HLFileMode uiMode);
 			virtual hlVoid CloseInternal();
 
 			virtual hlBool MapInternal(CView *&pView, hlULongLong uiOffset, hlULongLong uiLength);

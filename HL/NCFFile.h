@@ -24,46 +24,73 @@ namespace HLLib
 
 		struct NCFHeader
 		{
-			hlUInt uiDummy0;			// Always 0x00000001
-			hlUInt uiMajorVersion;		// Always 0x00000002
-			hlUInt uiMinorVersion;		// NCF version number.
+			//! Always `0x00000001`
+			hlUInt uiDummy0;
+			//! Always `0x00000002`
+			hlUInt uiMajorVersion;
+			//! NCF version number.
+			hlUInt uiMinorVersion;
 			hlUInt uiCacheID;
 			hlUInt uiLastVersionPlayed;
 			hlUInt uiDummy3;
 			hlUInt uiDummy4;
-			hlUInt uiFileSize;		// Total size of NCF file in bytes.
-			hlUInt uiBlockSize;		// Size of each data block in bytes.
-			hlUInt uiBlockCount;	// Number of data blocks.
+			//! Total size of NCF file in bytes.
+			hlUInt uiFileSize;
+			//! Size of each data block in bytes.
+			hlUInt uiBlockSize;
+			//! Number of data blocks.
+			hlUInt uiBlockCount;
+			
 			hlUInt uiDummy5;
 		};
 
 		struct NCFDirectoryHeader
 		{
-			hlUInt uiDummy0;				// Always 0x00000004
-			hlUInt uiCacheID;				// Cache ID.
-			hlUInt uiLastVersionPlayed;		// NCF file version.
-			hlUInt uiItemCount;				// Number of items in the directory.	
-			hlUInt uiFileCount;				// Number of files in the directory.
-			hlUInt uiChecksumDataLength;	// Always 0x00008000.  Data per checksum?
-			hlUInt uiDirectorySize;			// Size of lpNCFDirectoryEntries & lpNCFDirectoryNames & lpNCFDirectoryInfo1Entries & lpNCFDirectoryInfo2Entries & lpNCFDirectoryCopyEntries & lpNCFDirectoryLocalEntries in bytes.
-			hlUInt uiNameSize;				// Size of the directory names in bytes.
-			hlUInt uiInfo1Count;			// Number of Info1 entires.
-			hlUInt uiCopyCount;				// Number of files to copy.
-			hlUInt uiLocalCount;			// Number of files to keep local.
+			//! Always `0x00000004`
+			hlUInt uiDummy0;
+			//! Cache ID.
+			hlUInt uiCacheID;
+			//! NCF file version.
+			hlUInt uiLastVersionPlayed;
+			//! Number of items in the directory.
+			hlUInt uiItemCount;
+			//! Number of files in the directory.
+			hlUInt uiFileCount;
+			//! Always `0x00008000`.  Data per checksum?
+			hlUInt uiChecksumDataLength;
+			//! Size of `lpNCFDirectoryEntries` & `lpNCFDirectoryNames` & `lpNCFDirectoryInfo1Entries` & `lpNCFDirectoryInfo2Entries` & `lpNCFDirectoryCopyEntries` & `lpNCFDirectoryLocalEntries` in bytes.
+			hlUInt uiDirectorySize;
+			//! Size of the directory names in bytes.
+			hlUInt uiNameSize;
+			//! Number of Info1 entires.
+			hlUInt uiInfo1Count;
+			//! Number of files to copy.
+			hlUInt uiCopyCount;
+			//! Number of files to keep local.
+			hlUInt uiLocalCount;
+			
 			hlUInt uiDummy1;
 			hlUInt uiDummy2;
-			hlUInt uiChecksum;				// Header checksum.
+			//! Header checksum.
+			hlUInt uiChecksum;
 		};
 
 		struct NCFDirectoryEntry
 		{
-			hlUInt uiNameOffset;		// Offset to the directory item name from the end of the directory items.
-			hlUInt uiItemSize;			// Size of the item.  (If file, file size.  If folder, num items.)
-			hlUInt uiChecksumIndex;		// Checksome index. (0xFFFFFFFF == None).
-			hlUInt uiDirectoryFlags;	// Flags for the directory item.  (0x00000000 == Folder).
-			hlUInt uiParentIndex;		// Index of the parent directory item.  (0xFFFFFFFF == None).
-			hlUInt uiNextIndex;			// Index of the next directory item.  (0x00000000 == None).
-			hlUInt uiFirstIndex;		// Index of the first directory item.  (0x00000000 == None).
+			//! Offset to the directory item name from the end of the directory items.
+			hlUInt uiNameOffset;
+			//! Size of the item.  (If file, file size.  If folder, num items.)
+			hlUInt uiItemSize;
+			//! Checksome index. (`0xFFFFFFFF` == None).
+			hlUInt uiChecksumIndex;
+			//! Flags for the directory item.  (`0x00000000` == Folder).
+			hlUInt uiDirectoryFlags;
+			//! Index of the parent directory item.  (`0xFFFFFFFF` == None).
+			hlUInt uiParentIndex;
+			//! Index of the next directory item.  (`0x00000000` == None).
+			hlUInt uiNextIndex;
+			//! Index of the first directory item.  (`0x00000000` == None).
+			hlUInt uiFirstIndex;
 		};
 
 		struct NCFDirectoryInfo1Entry
@@ -78,18 +105,22 @@ namespace HLLib
 
 		struct NCFDirectoryCopyEntry
 		{
-			hlUInt uiDirectoryIndex;	// Index of the directory item.
+			//! Index of the directory item.
+			hlUInt uiDirectoryIndex;
 		};
 
 		struct NCFDirectoryLocalEntry
 		{
-			hlUInt uiDirectoryIndex;	// Index of the directory item.
+			//! Index of the directory item.
+			hlUInt uiDirectoryIndex;
 		};
 
 		struct NCFUnknownHeader
 		{
-			hlUInt uiDummy0;			// Always 0x00000001
-			hlUInt uiDummy1;			// Always 0x00000000
+			//! Always 0x00000001
+			hlUInt uiDummy0;
+			//! Always 0x00000000
+			hlUInt uiDummy1;
 		};
 
 		struct NCFUnknownEntry
@@ -99,27 +130,36 @@ namespace HLLib
 
 		struct NCFChecksumHeader
 		{
-			hlUInt uiDummy0;			// Always 0x00000001
-			hlUInt uiChecksumSize;		// Size of LPNCFCHECKSUMHEADER & LPNCFCHECKSUMMAPHEADER & in bytes.
+			//! Always 0x00000001
+			hlUInt uiDummy0;
+			//! Size of `LPNCFCHECKSUMHEADER` & `LPNCFCHECKSUMMAPHEADER` & in bytes.
+			hlUInt uiChecksumSize;
 		};
 
 		struct NCFChecksumMapHeader
 		{
-			hlUInt uiDummy0;			// Always 0x14893721
-			hlUInt uiDummy1;			// Always 0x00000001
-			hlUInt uiItemCount;			// Number of items.
-			hlUInt uiChecksumCount;		// Number of checksums.
+			//! Always 0x14893721
+			hlUInt uiDummy0;
+			//! Always `0x00000001`
+			hlUInt uiDummy1;
+			//! Number of items.
+			hlUInt uiItemCount;
+			//! Number of checksums.
+			hlUInt uiChecksumCount;
 		};
 
 		struct NCFChecksumMapEntry
 		{
-			hlUInt uiChecksumCount;			// Number of checksums.
-			hlUInt uiFirstChecksumIndex;	// Index of first checksum.
+			//! Number of checksums.
+			hlUInt uiChecksumCount;
+			//! Index of first checksum.
+			hlUInt uiFirstChecksumIndex;
 		};
 
 		struct NCFChecksumEntry
 		{
-			hlULong uiChecksum;				// Checksum.
+			//! Checksum.
+			hlULong uiChecksum;
 		};
 
 		#pragma pack()

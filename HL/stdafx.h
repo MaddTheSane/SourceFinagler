@@ -9,8 +9,10 @@
  * version.
  */
 
-#ifndef STDAFX_H
-#define STDAFX_H
+#ifndef HL_STDAFX_H
+#define HL_STDAFX_H
+
+#include <stdbool.h>
 
 #ifdef _MSC_VER
 #	ifdef HLLIB_EXPORTS
@@ -47,7 +49,7 @@
 #define CF_ENUM(...) __CF_ENUM_GET_MACRO(__VA_ARGS__, __CF_NAMED_ENUM, __CF_ANON_ENUM)(__VA_ARGS__)
 #endif
 
-typedef unsigned char		hlBool;
+typedef bool				hlBool;
 typedef char				hlChar;
 #ifdef __cplusplus
 typedef wchar_t				hlWChar;

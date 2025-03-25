@@ -28,16 +28,22 @@ namespace HLLib
 		{
 			hlUInt	uiOffset;
 			hlUInt	uiLength;
-			hlUInt	uiVersion;							// Default to zero.
-			hlChar	lpFourCC[4];						// Default to ( char )0, ( char )0, ( char )0, ( char )0.
+			//! Default to zero.
+			hlUInt	uiVersion;
+			//! Default to ( char )0, ( char )0, ( char )0, ( char )0.
+			hlChar	lpFourCC[4];
 		};
 
 		struct VBSPHeader
 		{
-			hlChar		lpSignature[4];					// BSP file signature.
-			hlInt		iVersion;						// BSP file version.
-			VBSPLump	lpLumps[HL_VBSP_LUMP_COUNT];	// Lumps.
-			hlInt		iMapRevision;					// The map's revision (iteration, version) number.
+			//! BSP file signature.
+			hlChar		lpSignature[4];
+			//! BSP file version.
+			hlInt		iVersion;
+			//! Lumps.
+			VBSPLump	lpLumps[HL_VBSP_LUMP_COUNT];
+			//! The map's revision (iteration, version) number.
+			hlInt		iMapRevision;
 		};
 
 		struct ZIPEndOfCentralDirectoryRecord

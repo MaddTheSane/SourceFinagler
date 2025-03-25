@@ -23,7 +23,7 @@ namespace HLLib
 		{
 		private:
 			hlBool bOpened;
-			hlUInt uiMode;
+			HLFileMode uiMode;
 
 			hlVoid *lpData;
 			hlULongLong uiBufferSize;
@@ -38,12 +38,12 @@ namespace HLLib
 			hlULongLong GetBufferSize() const;
 
 			virtual hlBool GetOpened() const;
-			virtual hlUInt GetMode() const;
+			virtual HLFileMode GetMode() const;
 
 			virtual hlULongLong GetMappingSize() const;
 
 		private:
-			virtual hlBool OpenInternal(hlUInt uiMode);
+			virtual hlBool OpenInternal(HLFileMode uiMode);
 			virtual hlVoid CloseInternal();
 
 			virtual hlBool MapInternal(CView *&pView, hlULongLong uiOffset, hlULongLong uiLength);

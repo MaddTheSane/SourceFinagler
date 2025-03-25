@@ -17,8 +17,8 @@
 	\brief Application framework header plus VTFLib custom data types.
 */
 
-#ifndef STDAFX_H
-#define STDAFX_H
+#ifndef VTF_STDAFX_H
+#define VTF_STDAFX_H
 
 #include <stdbool.h>
 
@@ -58,7 +58,7 @@
 #endif
 
 // Custom data types
-typedef _Bool			vlBool;				//!< Boolean value 0/1.
+typedef bool			vlBool;				//!< Boolean value 0/1.
 typedef char			vlChar;				//!< Single signed character.
 typedef unsigned char	vlByte;				//!< Single unsigned byte.
 typedef signed short	vlShort;			//!< Signed short floating point value.

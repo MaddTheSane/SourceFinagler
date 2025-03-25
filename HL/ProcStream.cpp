@@ -40,12 +40,12 @@ hlBool CProcStream::GetOpened() const
 	return this->bOpened;
 }
 
-hlUInt CProcStream::GetMode() const
+HLFileMode CProcStream::GetMode() const
 {
 	return this->uiMode;
 }
 
-hlBool CProcStream::Open(hlUInt uiMode)
+hlBool CProcStream::Open(HLFileMode uiMode)
 {
 	this->Close();
 

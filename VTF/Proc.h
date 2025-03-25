@@ -45,14 +45,14 @@ typedef enum tagVLProc
 
 typedef vlVoid (*PReadCloseProc)(vlVoid *);
 typedef vlBool (*PReadOpenProc) (vlVoid *);
-typedef vlUInt (*PReadReadProc)  (vlVoid *, vlUInt, vlVoid *);
+typedef vlUInt (*PReadReadProc) (vlVoid *, vlUInt, vlVoid *);
 typedef vlUInt (*PReadSeekProc) (vlLong, VLSeekMode, vlVoid *);
 typedef vlUInt (*PReadSizeProc) (vlVoid *);
 typedef vlUInt (*PReadTellProc) (vlVoid *);
 
 typedef vlVoid (*PWriteCloseProc)(vlVoid *);
 typedef vlBool (*PWriteOpenProc) (vlVoid *);
-typedef vlUInt (*PWriteWriteProc)  (vlVoid *, vlUInt, vlVoid *);
+typedef vlUInt (*PWriteWriteProc)(vlVoid *, vlUInt, vlVoid *);
 typedef vlUInt (*PWriteSeekProc) (vlLong, VLSeekMode, vlVoid *);
 typedef vlUInt (*PWriteSizeProc) (vlVoid *);
 typedef vlUInt (*PWriteTellProc) (vlVoid *);

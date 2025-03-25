@@ -45,7 +45,7 @@ hlBool CGCFStream::GetOpened() const
 	return this->bOpened;
 }
 
-hlUInt CGCFStream::GetMode() const
+HLFileMode CGCFStream::GetMode() const
 {
 	return this->uiMode;
 }

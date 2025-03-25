@@ -23,6 +23,7 @@
 
 #include "stdafx.h"
 
+//TODO: migrate to native __fp16 floating-point number.
 struct SFloat16
 {
 private:

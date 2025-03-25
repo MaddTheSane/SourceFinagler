@@ -46,12 +46,12 @@ hlBool CMemoryMapping::GetOpened() const
 	return this->bOpened;
 }
 
-hlUInt CMemoryMapping::GetMode() const
+HLFileMode CMemoryMapping::GetMode() const
 {
 	return this->uiMode;
 }
 
-hlBool CMemoryMapping::OpenInternal(hlUInt uiMode)
+hlBool CMemoryMapping::OpenInternal(HLFileMode uiMode)
 {
 	assert(!this->GetOpened());
 
@@ -93,7 +93,7 @@ hlBool CMemoryMapping::MapInternal(CView *&pView, hlULongLong uiOffset, hlULongL
 #ifdef _WIN32
 		LastError.SetErrorMessageFormated("Requested view (%I64u, %I64u) does not fit inside mapping, (%I64u, %I64u).", uiOffset, uiLength, 0, this->uiBufferSize);
 #else
-		LastError.SetErrorMessageFormated("Requested view (%llu, %llu) does not fit inside mapping, (%llu, %llu).", uiOffset, uiLength, 0, this->uiBufferSize);
+		LastError.SetErrorMessageFormated("Requested view (%llu, %llu) does not fit inside mapping, (%llu, %llu).", uiOffset, uiLength, (unsigned long long)0, this->uiBufferSize);
 #endif
 		return hlFalse;
 	}

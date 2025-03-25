@@ -60,12 +60,12 @@ hlBool CFileMapping::GetOpened() const
 #endif
 }
 
-hlUInt CFileMapping::GetMode() const
+HLFileMode CFileMapping::GetMode() const
 {
 	return this->uiMode;
 }
 
-hlBool CFileMapping::OpenInternal(hlUInt uiMode)
+hlBool CFileMapping::OpenInternal(HLFileMode uiMode)
 {
 	assert(!this->GetOpened());
 

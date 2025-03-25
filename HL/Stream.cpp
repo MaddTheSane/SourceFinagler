@@ -14,6 +14,3 @@
 using namespace HLLib;
 using namespace HLLib::Streams;
 
-IStream::~IStream() {
-
-}

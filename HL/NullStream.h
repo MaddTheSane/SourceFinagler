@@ -23,20 +23,20 @@ namespace HLLib
 		{
 		private:
 			hlBool bOpened;
-			hlUInt uiMode;
+			HLFileMode uiMode;
 
 		public:
 			CNullStream();
-			~CNullStream();
+			~CNullStream() = default;
 
 			virtual HLStreamType GetType() const;
 
 			virtual const hlChar *GetFileName() const;
 
 			virtual hlBool GetOpened() const;
-			virtual hlUInt GetMode() const;
+			virtual HLFileMode GetMode() const;
 
-			virtual hlBool Open(hlUInt uiMode);
+			virtual hlBool Open(HLFileMode uiMode);
 			virtual hlVoid Close();
 
 			virtual hlULongLong GetStreamSize() const;

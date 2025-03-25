@@ -21,16 +21,16 @@ namespace HLLib
 		class HLLIB_API IStream
 		{
 		public:
-			virtual ~IStream();
+			virtual ~IStream() = default;
 
 			virtual HLStreamType GetType() const = 0;
 
 			virtual const hlChar *GetFileName() const = 0;
 
 			virtual hlBool GetOpened() const = 0;
-			virtual hlUInt GetMode() const = 0;
+			virtual HLFileMode GetMode() const = 0;
 
-			virtual hlBool Open(hlUInt uiMode) = 0;
+			virtual hlBool Open(HLFileMode uiMode) = 0;
 			virtual hlVoid Close() = 0;
 
 			virtual hlULongLong GetStreamSize() const = 0;

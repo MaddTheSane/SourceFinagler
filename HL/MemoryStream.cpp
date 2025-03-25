@@ -20,11 +20,6 @@ CMemoryStream::CMemoryStream(hlVoid *lpData, hlULongLong ullBufferSize) : bOpene
 
 }
 
-CMemoryStream::~CMemoryStream()
-{
-
-}
-
 HLStreamType CMemoryStream::GetType() const
 {
 	return HL_STREAM_MEMORY;
@@ -50,7 +45,7 @@ hlBool CMemoryStream::GetOpened() const
 	return this->bOpened;
 }
 
-hlUInt CMemoryStream::GetMode() const
+HLFileMode CMemoryStream::GetMode() const
 {
 	return this->uiMode;
 }

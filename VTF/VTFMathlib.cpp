@@ -10,6 +10,8 @@
  */
 
 #include "VTFMathlib.h"
+#include <cmath>
+#include <math.h>
 
 namespace VTFLib {
 	
@@ -53,7 +55,7 @@ vlInt Intersect(Vector *v)
 	vlInt f;
 	vlSingle x, y, z;
   
-	x = fabs(v->x); y = fabs(v->y); z = fabs(v->z);
+	x = std::abs(v->x); y = std::abs(v->y); z = std::abs(v->z);
 	
 	if (x >= y && x >= z)
 		f = (v->x > 0) ? 2 : 0;

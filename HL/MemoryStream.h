@@ -23,7 +23,7 @@ namespace HLLib
 		{
 		private:
 			hlBool bOpened;
-			hlUInt uiMode;
+			HLFileMode uiMode;
 
 			hlVoid		*lpData;
 			hlULongLong ullBufferSize;
@@ -33,7 +33,7 @@ namespace HLLib
 
 		public:
 			CMemoryStream(hlVoid *lpData, hlULongLong uiBufferSize);
-			~CMemoryStream();
+			~CMemoryStream() = default;
 
 			virtual HLStreamType GetType() const;
 
@@ -42,9 +42,9 @@ namespace HLLib
 			virtual const hlChar *GetFileName() const;
 
 			virtual hlBool GetOpened() const;
-			virtual hlUInt GetMode() const;
+			virtual HLFileMode GetMode() const;
 
-			virtual hlBool Open(hlUInt uiMode);
+			virtual hlBool Open(HLFileMode uiMode);
 			virtual hlVoid Close();
 
 			virtual hlULongLong GetStreamSize() const;

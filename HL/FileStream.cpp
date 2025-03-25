@@ -55,7 +55,7 @@ hlBool CFileStream::GetOpened() const
 #endif
 }
 
-hlUInt CFileStream::GetMode() const
+HLFileMode CFileStream::GetMode() const
 {
 	return this->uiMode;
 }

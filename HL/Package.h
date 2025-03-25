@@ -46,11 +46,11 @@ namespace HLLib
 
 		hlBool GetOpened() const;
 
-		hlBool Open(Streams::IStream &Stream, hlUInt uiMode);
-		hlBool Open(Mapping::CMapping &Mapping, hlUInt uiMode);
-		hlBool Open(const hlChar *lpFileName, hlUInt uiMode);
-		hlBool Open(hlVoid *lpData, hlUInt uiBufferSize, hlUInt uiMode);
-		hlBool Open(hlVoid *pUserData, hlUInt uiMode);
+		hlBool Open(Streams::IStream &Stream, HLFileMode uiMode);
+		hlBool Open(Mapping::CMapping &Mapping, HLFileMode uiMode);
+		hlBool Open(const hlChar *lpFileName, HLFileMode uiMode);
+		hlBool Open(hlVoid *lpData, hlUInt uiBufferSize, HLFileMode uiMode);
+		hlBool Open(hlVoid *pUserData, HLFileMode uiMode);
 		hlVoid Close();
 
 		hlBool Defragment();
@@ -101,8 +101,8 @@ namespace HLLib
 		virtual hlVoid ReleaseStreamInternal(Streams::IStream &Stream) const;
 
 	private:
-		hlBool Open(Streams::IStream *pStream, hlUInt uiMode, hlBool bDeleteStream);
-		hlBool Open(Mapping::CMapping *pMapping, hlUInt uiMode, hlBool bDeleteMapping);
+		hlBool Open(Streams::IStream *pStream, HLFileMode uiMode, hlBool bDeleteStream);
+		hlBool Open(Mapping::CMapping *pMapping, HLFileMode uiMode, hlBool bDeleteMapping);
 	};
 }
 

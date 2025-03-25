@@ -25,7 +25,7 @@ namespace HLLib
 		{
 		private:
 			hlBool bOpened;
-			hlUInt uiMode;
+			HLFileMode uiMode;
 
 			const CGCFFile &GCFFile;
 			hlUInt uiFileID;
@@ -49,7 +49,7 @@ namespace HLLib
 			virtual const hlChar *GetFileName() const;
 
 			virtual hlBool GetOpened() const;
-			virtual hlUInt GetMode() const;
+			virtual HLFileMode GetMode() const;
 
 			virtual hlBool Open(hlUInt uiMode);
 			virtual hlVoid Close();

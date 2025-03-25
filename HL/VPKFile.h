@@ -24,7 +24,9 @@ namespace HLLib
 
 		struct VPKHeader
 		{
-			hlUInt uiSignature;			// Always 0x55aa1234. (Little Endian)
+			//! Always `0x55aa1234`. (Little Endian)
+			hlUInt uiSignature;
+			
 			hlUInt uiVersion;
 			hlUInt uiDirectoryLength;
 		};
@@ -36,7 +38,8 @@ namespace HLLib
 			hlUShort uiArchiveIndex;
 			hlUInt uiEntryOffset;
 			hlUInt uiEntryLength;
-			hlUShort uiDummy0;			// Always 0xffff.
+			//! Always `0xffff`.
+			hlUShort uiDummy0;
 		};
 
 		#pragma pack()
