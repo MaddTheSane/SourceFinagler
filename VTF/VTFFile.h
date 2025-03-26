@@ -35,7 +35,7 @@ extern "C" {
 
 	\see VTFImageFormat
 */
-#pragma pack(1)
+#pragma pack(push, 1)
 typedef struct tagSVTFImageFormatInfo
 {
 	const vlChar *lpName;					//!< Enumeration text equivalent.
@@ -48,7 +48,6 @@ typedef struct tagSVTFImageFormatInfo
 	vlBool	bIsCompressed;			//!< Format is compressed (DXT).
 	vlBool	bIsSupported;			//!< Format is supported by VTFLib.
 } SVTFImageFormatInfo;
-#pragma pack()
 
 //! VTF Creation options struct.
 /*!  
@@ -57,7 +56,6 @@ typedef struct tagSVTFImageFormatInfo
 
 	\see CVTFFile::Create()
 */
-#pragma pack(1)
 typedef struct tagSVTFCreateOptions
 {
 	vlUInt uiVersion[2];								//!< Output image version.
@@ -102,7 +100,7 @@ typedef struct tagSVTFCreateOptions
 
 	vlBool bSphereMap;									//!< Generate a sphere map for six faced environment maps.
 } SVTFCreateOptions;
-#pragma pack()
+#pragma pack(pop)
 
 #ifdef __cplusplus
 }

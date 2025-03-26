@@ -20,7 +20,7 @@ namespace HLLib
 	class HLLIB_API CSGAFile : public CPackage
 	{
 	private:
-		#pragma pack(1)
+		#pragma pack(push,1)
 
 		struct SGAHeader
 		{
@@ -96,12 +96,12 @@ namespace HLLib
 			hlUInt uiCRC32;
 		};
 
-		#pragma pack()
+		#pragma pack(pop)
 
 		class ISGADirectory
 		{
 		public:
-			virtual ~ISGADirectory() = 0;
+			virtual ~ISGADirectory() = default;
 
 		public:
 			virtual hlBool MapDataStructures() = 0;

@@ -285,7 +285,7 @@ struct TKOutputHandler : public OutputHandler {
 		
 	}
 	
-	virtual ~TKOutputHandler() { }
+	virtual ~TKOutputHandler() = default;
 	
     virtual void beginImage(int size, int width, int height, int depth, int face, int miplevel) {
 #if TK_DEBUG
@@ -321,9 +321,7 @@ struct TKMipmapOutputHandler : public OutputHandler {
 		
 	}
 	
-	virtual ~TKMipmapOutputHandler() {
-		
-	}
+	virtual ~TKMipmapOutputHandler() = default;
 	
     virtual void beginImage(int size, int width, int height, int depth, int face, int miplevel) {
 #if TK_DEBUG

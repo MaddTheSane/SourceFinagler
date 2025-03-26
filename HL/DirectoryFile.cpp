@@ -23,11 +23,6 @@ CDirectoryFile::CDirectoryFile(const hlChar *lpName, hlUInt uiID, hlVoid *pData,
 
 }
 
-CDirectoryFile::~CDirectoryFile()
-{
-
-}
-
 HLDirectoryItemType CDirectoryFile::GetType() const
 {
 	return HL_ITEM_FILE;

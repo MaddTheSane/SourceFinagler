@@ -216,11 +216,6 @@ const hlChar *CSGAFile::GetItemAttributeNameInternal(HLPackageAttribute eAttribu
 	return 0;
 }
 
-CSGAFile::ISGADirectory::~ISGADirectory()
-{
-
-}
-
 template<typename TSGADirectoryHeader, typename TSGASection, typename TSGAFolder, typename TSGAFile, typename TSGAFileHeader>
 CSGAFile::CSGADirectory<TSGADirectoryHeader, TSGASection, TSGAFolder, TSGAFile, TSGAFileHeader>::CSGADirectory(CSGAFile& File) : File(File), pHeaderDirectoryView(0), pDirectoryHeader(0), lpSections(0), lpFolders(0), lpFiles(0), lpStringTable(0)
 {

@@ -21,7 +21,7 @@ namespace HLLib
 	{
 	public:
 		CDirectoryFile(const hlChar *lpName, hlUInt uiID, hlVoid *pData, CPackage *pPackage, CDirectoryFolder *pParent);
-		virtual ~CDirectoryFile();
+		virtual ~CDirectoryFile() = default;
 
 		virtual HLDirectoryItemType GetType() const;
 
