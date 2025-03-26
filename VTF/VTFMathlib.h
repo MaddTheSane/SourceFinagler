@@ -110,12 +110,12 @@ class CACHE_ALIGN VectorAligned
 		};
 };
 	
-void VecAdd(Vector *a, Vector *b, Vector *sum);			//!< Vector addition function.
-void VecSub(Vector *a, Vector *b, Vector *diff);		//!< Vector subtraction function.
-void VecScale(Vector *v, vlSingle scale);				//!< Vector scale function.
-vlSingle VecDot(Vector *u, Vector *v);					//!< Vector dot-product function.
-void VecReflect(Vector *axis, Vector *v, Vector *r);	//!< Vector reflect function.
-vlInt Intersect(Vector *v);								//!< Vector intersect function.
+VTFLIB_API void VecAdd(Vector *a, Vector *b, Vector *sum);		//!< Vector addition function.
+VTFLIB_API void VecSub(Vector *a, Vector *b, Vector *diff);		//!< Vector subtraction function.
+VTFLIB_API void VecScale(Vector *v, vlSingle scale);			//!< Vector scale function.
+VTFLIB_API vlSingle VecDot(Vector *u, Vector *v);				//!< Vector dot-product function.
+VTFLIB_API void VecReflect(Vector *axis, Vector *v, Vector *r);	//!< Vector reflect function.
+VTFLIB_API vlInt Intersect(Vector *v);							//!< Vector intersect function.
 	
 }
 

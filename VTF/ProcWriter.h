@@ -21,7 +21,7 @@ namespace VTFLib
 	{
 		namespace Writers
 		{
-			class CProcWriter : public IWriter
+			class VTFLIB_API CProcWriter : public IWriter
 			{
 			private:
 				vlBool bOpened;

@@ -21,7 +21,7 @@ namespace VTFLib
 	{
 		namespace Readers
 		{
-			class CProcReader : public IReader
+			class VTFLIB_API CProcReader : public IReader
 			{
 			private:
 				vlBool bOpened;

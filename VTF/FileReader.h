@@ -21,7 +21,7 @@ namespace VTFLib
 	{
 		namespace Readers
 		{
-			class CFileReader : public IReader
+			class VTFLIB_API CFileReader : public IReader
 			{
 			private:
 #ifdef _WIN32

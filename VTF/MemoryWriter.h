@@ -21,7 +21,7 @@ namespace VTFLib
 	{
 		namespace Writers
 		{
-			class CMemoryWriter : public IWriter
+			class VTFLIB_API CMemoryWriter : public IWriter
 			{
 			private:
 				vlBool bOpened;

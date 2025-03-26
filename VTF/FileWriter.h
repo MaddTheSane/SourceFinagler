@@ -21,7 +21,7 @@ namespace VTFLib
 	{
 		namespace Writers
 		{
-			class CFileWriter : public IWriter
+			class VTFLIB_API CFileWriter : public IWriter
 			{
 			private:
 #ifdef _WIN32

@@ -21,7 +21,7 @@ namespace VTFLib
 	{
 		namespace Readers
 		{
-			class CMemoryReader : public IReader
+			class VTFLIB_API CMemoryReader : public IReader
 			{
 			private:
 				vlBool bOpened;
