@@ -8,7 +8,7 @@
 
 import Foundation
 import CoreSpotlight
-import VTF
+import VTF.Files.VTF.File
 import TextureKit.TKVTFImageRep
 
 public class ImportExtensionVTFNew: CSImportExtension {
@@ -82,9 +82,7 @@ public class ImportExtensionVTFNew: CSImportExtension {
 
 		attributes.pixelWidth = NSNumber(value: theWidth)
 		attributes.pixelHeight = NSNumber(value: theHeight)
-		if !theVersion.isEmpty {
-			attributes.version = theVersion
-		}
+		attributes.version = theVersion
 		if let compression,
 		   let attrib = CSCustomAttributeKey(keyName: "com_markdouma_image_compression") {
 				attributes.setValue(compression as NSString, forCustomKey: attrib)

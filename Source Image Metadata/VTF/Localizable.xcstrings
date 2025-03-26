@@ -16,15 +16,23 @@
       }
     },
     "file->Load() failed!" : {
-      "comment" : "file->Load() failed!"
+      "comment" : "file->Load() failed!",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "File loading failed!"
+          }
+        }
+      }
     },
     "file->Load() failed! (does not appear to be a valid VTF; magic == 0x%x, %@)" : {
       "comment" : "file->Load() failed! (does not appear to be a valid VTF;",
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "file->Load() failed! (does not appear to be a valid VTF; magic == 0x%1$x, %2$@)"
+            "state" : "translated",
+            "value" : "The file does not appear to be a valid VTF; First four bytes are 0x%1$x (%2$@)"
           }
         }
       }
