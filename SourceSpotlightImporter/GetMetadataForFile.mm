@@ -127,7 +127,7 @@ BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *cont
 		
 		[attributes setObject:@(theWidth) forKey:(NSString *)kMDItemPixelWidth];
 		[attributes setObject:@(theHeight) forKey:(NSString *)kMDItemPixelHeight];
-		if (theVersion) [attributes setObject:theVersion forKey:(NSString *)kMDItemVersion];
+		[attributes setObject:theVersion forKey:(NSString *)kMDItemVersion];
 		if (theCompression) [attributes setObject:theCompression forKey:@"com_markdouma_image_compression"];
 		
 		delete file;

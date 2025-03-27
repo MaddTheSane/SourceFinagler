@@ -104,9 +104,7 @@ using namespace VTFLib;
 	
 	attributes.pixelWidth = @(theWidth);
 	attributes.pixelHeight = @(theHeight);
-	if (theVersion) {
-		attributes.version = theVersion;
-	}
+	attributes.version = theVersion;
 	if (theCompression) {
 		[attributes setValue:theCompression forCustomKey:[[CSCustomAttributeKey alloc] initWithKeyName:@"com_markdouma_image_compression"]];
 	}
