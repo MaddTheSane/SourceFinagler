@@ -24,10 +24,8 @@
             </view>
             <toolbar key="toolbar" implicitIdentifier="7D89BECF-B1FA-44FD-9046-B90C6123DB7D" explicitIdentifier="prefsToolbar" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconAndLabel" sizeMode="regular" id="15">
                 <allowedToolbarItems>
-                    <toolbarItem implicitItemIdentifier="0E433E3C-2756-420C-8AF5-4E2C53B6138E" label="General" paletteLabel="General" image="NSPreferencesGeneral" selectable="YES" id="16">
+                    <toolbarItem implicitItemIdentifier="0E433E3C-2756-420C-8AF5-4E2C53B6138E" label="General" paletteLabel="General" image="NSPreferencesGeneral" sizingBehavior="auto" selectable="YES" id="16">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="22" height="22"/>
-                        <size key="maxSize" width="22" height="22"/>
                         <connections>
                             <action selector="changeView:" target="-2" id="26"/>
                         </connections>

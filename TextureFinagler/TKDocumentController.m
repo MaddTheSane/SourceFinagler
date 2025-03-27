@@ -20,15 +20,16 @@
 
 #define TK_DEBUG 1
 
-static NSSet *nonImageUTTypes = nil;
-static NSSet *ourImageUTTypes = nil;
+static NSSet<NSString*> *nonImageUTTypes = nil;
+static NSSet<NSString*> *ourImageUTTypes = nil;
 NSString * const TKApplicationBundleIdentifier = @"com.markdouma.SourceFinagler";
 
 
 @implementation TKDocumentController
 
 + (void)initialize {
-	if (nonImageUTTypes == nil) {
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
 		NSMutableArray *supportedDocTypes = [NSMutableArray array];
 		NSArray *docTypes = [[NSBundle bundleWithIdentifier:TKApplicationBundleIdentifier] objectForInfoDictionaryKey:@"CFBundleDocumentTypes"];
 //		NSLog(@"[%@ %@] docTypes == %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), docTypes);
@@ -42,15 +43,15 @@ NSString * const TKApplicationBundleIdentifier = @"com.markdouma.SourceFinagler"
 				NSArray *contentTypes = docType[@"LSItemContentTypes"];
 				if (contentTypes && contentTypes.count) {
 					NSString *utiType = contentTypes[0];
-					if (![utiType isEqualToString:(NSString *)kUTTypeImage]) {
+					if (!UTTypeConformsTo((__bridge CFStringRef)utiType, kUTTypeImage)) {
 						[supportedDocTypes addObject:utiType];
 					}
 				}
 			}
 		}
-		nonImageUTTypes = [NSSet setWithArray:supportedDocTypes];
-		ourImageUTTypes = [NSSet setWithArray:@[@"com.valvesoftware.source.vtf", TKSFTextureImageType]];
-	}
+		nonImageUTTypes = [[NSSet alloc] initWithArray:supportedDocTypes];
+		ourImageUTTypes = [[NSSet alloc] initWithObjects:@"com.valvesoftware.source.vtf", TKSFTextureImageType, nil];
+	});
 }
 
 /// Return the names of NSDocument subclasses supported by this application.
@@ -59,7 +60,8 @@ NSString * const TKApplicationBundleIdentifier = @"com.markdouma.SourceFinagler"
 - (NSArray *)documentClassNames {
 //	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 	static NSArray *documentClassNames = nil;
-	if (documentClassNames == nil) {
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
 		documentClassNames = @[@"TKImageDocument",
 							   @"TKModelDocument",
 							   @"TKVMTMaterialDocument",
@@ -71,7 +73,7 @@ NSString * const TKApplicationBundleIdentifier = @"com.markdouma.SourceFinagler"
 							   @"MDWADDocument",
 							   @"MDSGADocument",
 							   @"MDXZPDocument"];
-	}
+	});
 	return documentClassNames;
 }
 
