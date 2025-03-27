@@ -44,7 +44,7 @@ typedef NS_ENUM(NSUInteger, TKDXTCompressionQuality) {
 };
 
 TEXTUREKIT_EXTERN NSString *NSStringFromDXTCompressionQuality(TKDXTCompressionQuality aQuality) NS_SWIFT_NAME(getter:TKDXTCompressionQuality.description(self:));
-TEXTUREKIT_EXTERN TKDXTCompressionQuality TKDXTCompressionQualityFromString(NSString *aQuality) NS_SWIFT_NAME(TKDXTCompressionQuality.init(fromDescription:));
+TEXTUREKIT_EXTERN TKDXTCompressionQuality TKDXTCompressionQualityFromString(NSString *aQuality) NS_SWIFT_NAME(TKDXTCompressionQuality.init(_:));
 
 
 typedef NS_ENUM(NSUInteger, TKPixelFormat) {

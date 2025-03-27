@@ -97,7 +97,17 @@ static MDFileManager *sharedManager = nil;
 	if (path == nil) return nil;
 	if (outError) *outError = nil;
 	
-	NSDictionary *attributes = [fileManager attributesOfItemAtPath:path error:outError];
+	return [self attributesOfItemAtURL:[NSURL fileURLWithPath:path] error:outError];
+}
+
+- (NSDictionary *)attributesOfItemAtURL:(NSURL *)path error:(NSError **)outError {
+#if MD_DEBUG
+	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+#endif
+	if (path == nil) return nil;
+	if (outError) *outError = nil;
+	
+	NSDictionary *attributes = [fileManager attributesOfItemAtPath:path.path error:outError];
 	if (attributes == nil)
 		return nil;
 	
@@ -406,9 +416,9 @@ static MDFileManager *sharedManager = nil;
 @end
 
 static OSErr FSGetTotalForkSizes(const FSRef *ref,
-						  UInt64 *totalLogicalSize,	/* can be NULL */
-						  UInt64 *totalPhysicalSize,	/* can be NULL */
-						  ItemCount *forkCount)		/* can be NULL */ {
+								 UInt64 *totalLogicalSize,	/* can be NULL */
+								 UInt64 *totalPhysicalSize,	/* can be NULL */
+								 ItemCount *forkCount)		/* can be NULL */ {
 	
 	OSErr			err;
 	CatPositionRec	forkIterator;
