@@ -905,4 +905,8 @@ static BOOL vtfInitialized = NO;
 	
 }
 
++ (BOOL)supportsSecureCoding {
+	return NO;
+}
+
 @end

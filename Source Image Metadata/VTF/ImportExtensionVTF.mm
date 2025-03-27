@@ -87,7 +87,7 @@ using namespace VTFLib;
 	BOOL hasMipmaps = (file->GetMipmapCount() > 1);
 	BOOL isAnimated = (file->GetFrameCount() > 1);
 	NSString *theCompression = nil;
-	SVTFImageFormatInfo imageFormatInfo = file->GetImageFormatInfo(file->GetFormat());
+	const SVTFImageFormatInfo &imageFormatInfo = file->GetImageFormatInfo(file->GetFormat());
 	if (imageFormatInfo.lpName != NULL) {
 		theCompression = @(imageFormatInfo.lpName);
 	}

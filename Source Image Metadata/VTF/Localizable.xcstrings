@@ -2,7 +2,15 @@
   "sourceLanguage" : "en",
   "strings" : {
     "CVTFFile() returned NULL" : {
-      "comment" : "CVTFFile() returned NULL"
+      "comment" : "CVTFFile() returned NULL",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CVTFFile() returned NULL. Check RAM usage."
+          }
+        }
+      }
     },
     "file appears to be an ERROR 404 HTML file rather than a valid VTF" : {
       "comment" : "file appears to be an ERROR 404 HTML file rather than a valid VTF",

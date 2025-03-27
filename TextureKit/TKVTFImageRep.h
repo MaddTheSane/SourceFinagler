@@ -74,8 +74,8 @@ typedef NS_ENUM(NSUInteger, TKVTFFormat) {
 	TKVTFFormatNone				= 1000
 };
 
-TEXTUREKIT_EXTERN NSString *NSStringFromVTFFormat(TKVTFFormat aFormat);
-TEXTUREKIT_EXTERN TKVTFFormat TKVTFFormatFromString(NSString *aFormat);
+TEXTUREKIT_EXTERN NSString *NSStringFromVTFFormat(TKVTFFormat aFormat) NS_SWIFT_NAME(getter:TKVTFFormat.description(self:));
+TEXTUREKIT_EXTERN TKVTFFormat TKVTFFormatFromString(NSString *aFormat) NS_SWIFT_NAME(TKVTFFormat.init(_:));
 
 //! UTI Type
 TEXTUREKIT_EXTERN NSString * const TKVTFType;
