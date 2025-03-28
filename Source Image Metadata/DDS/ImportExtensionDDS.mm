@@ -13,79 +13,6 @@
 
 using namespace nv;
 
-class NSHandleInputStream : public nv::Stream
-{
-	NV_FORBID_COPY(NSHandleInputStream);
-public:
-	NSHandleInputStream(NSFileHandle *stream): _inStr(stream) {}
-	~NSHandleInputStream() {
-		_inStr = nil;
-	}
-	
-	void seek(uint pos) override {
-		NSError *err;
-		[_inStr seekToOffset:pos error:&err];
-		if (!error) {
-			error = err;
-		}
-	}
-	
-	uint tell() const override {
-		return (uint)_inStr.offsetInFile;
-	}
-	
-	uint serialize(void *data, uint len) override {
-		NSError *err;
-		NSData *dat = [_inStr readDataUpToLength:len error:&err];
-		if (!error) {
-			error = err;
-		}
-		[dat getBytes:data length:dat.length];
-		
-		return (uint)dat.length;
-	}
-	
-	uint size() const override {
-		unsigned long long currPos = _inStr.offsetInFile;
-		[_inStr seekToEndOfFile];
-		unsigned long long fullSize = _inStr.offsetInFile;
-		[_inStr seekToFileOffset:currPos];
-		return (uint)fullSize;
-	}
-	
-	bool isSeekable() const override {
-		return true;
-	}
-	
-	bool isAtEnd() const override {
-		unsigned long long currPos = _inStr.offsetInFile;
-		[_inStr seekToEndOfFile];
-		unsigned long long fullSize = _inStr.offsetInFile;
-		[_inStr seekToFileOffset:currPos];
-		return currPos == fullSize;
-	}
-	
-	bool isLoading() const override {
-		return true;
-	}
-	
-	bool isSaving() const override {
-		return false;
-	}
-	
-	bool isError() const override {
-		return error != nil;
-	}
-	
-	void clearError() override {
-		error = nil;
-	}
-	
-private:
-	NSFileHandle *_inStr;
-	NSError *error;
-};
-
 @implementation ImportExtensionDDS
 
 - (BOOL)updateAttributes:(CSSearchableItemAttributeSet *)attributes forFileAtURL:(NSURL *)contentURL error:(NSError **)error {
@@ -116,7 +43,7 @@ private:
 	if (magic != TKDDSMagic) {
 		if (error) {
 			NSString *errString = [NSString stringWithFormat:@"file does not appear to be a valid DDS; magic == 0x%x, %@", (unsigned int)magic, NSFileTypeForHFSTypeCode(magic)];
-			*error = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadInvalidFileNameError userInfo:
+			*error = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadCorruptFileError userInfo:
 					  @{NSLocalizedDescriptionKey: errString,
 						NSDebugDescriptionErrorKey: errString,
 						NSURLErrorKey: contentURL
@@ -125,14 +52,15 @@ private:
 		return NO;
 	}
 	[handle seekToFileOffset:0];
-	NSHandleInputStream *mis = new NSHandleInputStream(handle);
 	
 	DirectDrawSurface *dds = new DirectDrawSurface();
-	dds->load(mis);
+	dds->load(contentURL.fileSystemRepresentation);
+	[handle closeFile];
+	
 	if (!dds->isValid() || !dds->isSupported() || (dds->width() > 65535 || (dds->height() > 65535))) {
 		if (!dds->isValid()) {
 			if (error) {
-				*error = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadInvalidFileNameError userInfo:
+				*error = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadCorruptFileError userInfo:
 						  @{NSLocalizedDescriptionKey: @"dds image is not valid",
 							NSDebugDescriptionErrorKey: @"dds image is not valid",
 							NSURLErrorKey: contentURL
@@ -140,7 +68,7 @@ private:
 			}
 		} else if (!dds->isSupported()) {
 			if (error) {
-				*error = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadInvalidFileNameError userInfo:
+				*error = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadCorruptFileError userInfo:
 						  @{NSLocalizedDescriptionKey: @"dds image format is not supported",
 							NSDebugDescriptionErrorKey: @"dds image format is not supported",
 							NSURLErrorKey: contentURL
@@ -148,7 +76,7 @@ private:
 			}
 		} else {
 			if (error) {
-				*error = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadInvalidFileNameError userInfo:
+				*error = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadTooLargeError userInfo:
 						  @{NSLocalizedDescriptionKey: @"dds image dimensions are too large",
 							NSDebugDescriptionErrorKey: @"dds image dimensions are too large",
 							NSURLErrorKey: contentURL
