@@ -1,0 +1,61 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "dds image dimensions are too large" : {
+      "comment" : "dds image dimensions are too large",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The DDS dimensions are too large"
+          }
+        }
+      }
+    },
+    "dds image format is not supported" : {
+      "comment" : "dds image format is not supported",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DDS image format is not supported"
+          }
+        }
+      }
+    },
+    "dds image is not valid" : {
+      "comment" : "dds image is not valid",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The DDS image is invalid"
+          }
+        }
+      }
+    },
+    "file does not appear to be a valid DDS; magic == 0x%x, %@" : {
+      "comment" : "file does not appear to be a valid DDS; magic == 0x%x, %@",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The file does not appear to be a valid DDS, magic == 0x%1$x (%2$@)"
+          }
+        }
+      }
+    },
+    "File is too small" : {
+      "comment" : "File is too small",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The file is too small"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

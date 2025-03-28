@@ -22,6 +22,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		550032FF2D973A20008391EE /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 550032FE2D973A20008391EE /* Localizable.xcstrings */; };
+		550033012D973A41008391EE /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 550033002D973A41008391EE /* Localizable.xcstrings */; };
 		550EB3032500715A006BC291 /* nvconfig.h in Headers */ = {isa = PBXBuildFile; fileRef = C1FEA94B125E73B700CA78FF /* nvconfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		55101A8E290E45A3003CED21 /* sfti Metadata.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 55101A85290E45A2003CED21 /* sfti Metadata.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		55101A93290E45C5003CED21 /* schema.xml in Resources */ = {isa = PBXBuildFile; fileRef = C181ADAE12557982006810AB /* schema.xml */; };
@@ -1241,6 +1243,8 @@
 		256AC3D90F4B6AC300CF3369 /* TKAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TKAppController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		256AC3F00F4B6AF500CF3369 /* SourceFinagler_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceFinagler_Prefix.pch; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		550032FE2D973A20008391EE /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		550033002D973A41008391EE /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		55101A85290E45A2003CED21 /* sfti Metadata.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "sfti Metadata.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		55101A8A290E45A3003CED21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55101A8B290E45A3003CED21 /* Source_Image_Metadata.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Source_Image_Metadata.entitlements; sourceTree = "<group>"; };
@@ -2435,6 +2439,7 @@
 			children = (
 				55101AE2290E7A13003CED21 /* ImportExtension.swift */,
 				55101A8A290E45A3003CED21 /* Info.plist */,
+				550032FE2D973A20008391EE /* Localizable.xcstrings */,
 			);
 			path = sfti;
 			sourceTree = "<group>";
@@ -2445,6 +2450,7 @@
 				55101ADD290E77A6003CED21 /* ImportExtensionDDS.h */,
 				55101ADE290E77A6003CED21 /* ImportExtensionDDS.mm */,
 				55101ABF290E76B7003CED21 /* Info.plist */,
+				550033002D973A41008391EE /* Localizable.xcstrings */,
 			);
 			path = DDS;
 			sourceTree = "<group>";
@@ -4941,6 +4947,7 @@
 			files = (
 				55101A93290E45C5003CED21 /* schema.xml in Resources */,
 				55947A432D82DD0F00170FE1 /* schema.xcstrings in Resources */,
+				550032FF2D973A20008391EE /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4950,6 +4957,7 @@
 			files = (
 				55101AB8290E76B6003CED21 /* schema.xml in Resources */,
 				55947A442D82DD0F00170FE1 /* schema.xcstrings in Resources */,
+				550033012D973A41008391EE /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

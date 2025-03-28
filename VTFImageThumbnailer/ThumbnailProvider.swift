@@ -26,7 +26,7 @@ public class ThumbnailProvider: QLThumbnailProvider {
 			
 			do {
 				let magic = imageData.withUnsafeBytes { urbp in
-					urbp.load(as: OSType.self)
+					urbp.load(as: OSType.self).bigEndian
 				}
 				
 				guard magic != TKHTMLErrorMagic else {

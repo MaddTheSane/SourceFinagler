@@ -24,7 +24,6 @@
       }
     },
     "com_markdouma_image_compression" : {
-      "comment" : "The name on the right is what the user will see",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -36,7 +35,6 @@
       }
     },
     "com_markdouma_image_compression.Description" : {
-      "comment" : "The value on the right will be displayed by the Finder etc..",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {

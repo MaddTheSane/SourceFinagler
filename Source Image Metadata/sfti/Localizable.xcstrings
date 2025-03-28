@@ -1,0 +1,9 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Failed to create a TKImage for file!" : {
+      "comment" : "Failed to create a TKImage for file!"
+    }
+  },
+  "version" : "1.0"
+}

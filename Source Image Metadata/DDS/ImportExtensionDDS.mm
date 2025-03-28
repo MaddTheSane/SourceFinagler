@@ -27,8 +27,8 @@ using namespace nv;
 	
 	if ([data length] < sizeof(OSType)) {
 		if (error) {
-			*error = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadInvalidFileNameError userInfo:
-					  @{NSLocalizedDescriptionKey: @"File is too small",
+			*error = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadCorruptFileError userInfo:
+					  @{NSLocalizedDescriptionKey: NSLocalizedString(@"File is too small", @"File is too small"),
 						NSDebugDescriptionErrorKey: @"[data length] < 4 for file",
 						NSURLErrorKey: contentURL
 					  }];
@@ -42,10 +42,9 @@ using namespace nv;
 	
 	if (magic != TKDDSMagic) {
 		if (error) {
-			NSString *errString = [NSString stringWithFormat:@"file does not appear to be a valid DDS; magic == 0x%x, %@", (unsigned int)magic, NSFileTypeForHFSTypeCode(magic)];
 			*error = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadCorruptFileError userInfo:
-					  @{NSLocalizedDescriptionKey: errString,
-						NSDebugDescriptionErrorKey: errString,
+					  @{NSLocalizedDescriptionKey: [NSString localizedStringWithFormat:NSLocalizedString(@"file does not appear to be a valid DDS; magic == 0x%x, %@", @"file does not appear to be a valid DDS; magic == 0x%x, %@"), (unsigned int)magic, NSFileTypeForHFSTypeCode(magic)],
+						NSDebugDescriptionErrorKey: [NSString stringWithFormat:@"file does not appear to be a valid DDS; magic == 0x%x, %@", (unsigned int)magic, NSFileTypeForHFSTypeCode(magic)],
 						NSURLErrorKey: contentURL
 					  }];
 		}
@@ -61,7 +60,7 @@ using namespace nv;
 		if (!dds->isValid()) {
 			if (error) {
 				*error = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadCorruptFileError userInfo:
-						  @{NSLocalizedDescriptionKey: @"dds image is not valid",
+						  @{NSLocalizedDescriptionKey: NSLocalizedString(@"dds image is not valid", @"dds image is not valid"),
 							NSDebugDescriptionErrorKey: @"dds image is not valid",
 							NSURLErrorKey: contentURL
 						  }];
@@ -69,7 +68,7 @@ using namespace nv;
 		} else if (!dds->isSupported()) {
 			if (error) {
 				*error = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadCorruptFileError userInfo:
-						  @{NSLocalizedDescriptionKey: @"dds image format is not supported",
+						  @{NSLocalizedDescriptionKey: NSLocalizedString(@"dds image format is not supported", @"dds image format is not supported"),
 							NSDebugDescriptionErrorKey: @"dds image format is not supported",
 							NSURLErrorKey: contentURL
 						  }];
@@ -77,7 +76,7 @@ using namespace nv;
 		} else {
 			if (error) {
 				*error = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadTooLargeError userInfo:
-						  @{NSLocalizedDescriptionKey: @"dds image dimensions are too large",
+						  @{NSLocalizedDescriptionKey: NSLocalizedString(@"dds image dimensions are too large", @"dds image dimensions are too large"),
 							NSDebugDescriptionErrorKey: @"dds image dimensions are too large",
 							NSURLErrorKey: contentURL
 						  }];
