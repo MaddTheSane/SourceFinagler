@@ -1,0 +1,42 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "18.title" : {
+      "comment" : "Class = \"NSWindow\"; title = \"Inspector\"; ObjectID = \"18\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Inspector"
+          }
+        }
+      }
+    },
+    "27.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Text Cell\"; ObjectID = \"27\";",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Text Cell"
+          }
+        }
+      }
+    },
+    "34.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Channels\"; ObjectID = \"34\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Channels"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

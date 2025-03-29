@@ -1245,6 +1245,8 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		550032FE2D973A20008391EE /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		550033002D973A41008391EE /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		550033022D9835DC008391EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TKImageInspector.xib; sourceTree = "<group>"; };
+		550033042D983600008391EE /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/TKImageInspector.xcstrings; sourceTree = "<group>"; };
 		55101A85290E45A2003CED21 /* sfti Metadata.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "sfti Metadata.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		55101A8A290E45A3003CED21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55101A8B290E45A3003CED21 /* Source_Image_Metadata.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Source_Image_Metadata.entitlements; sourceTree = "<group>"; };
@@ -1599,7 +1601,6 @@
 		C19C1C0C14898DA300EE2B12 /* TKImageKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKImageKitAdditions.m; sourceTree = "<group>"; };
 		C19EB0FB145575BB0021185E /* TKImageInspectorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKImageInspectorController.h; sourceTree = "<group>"; };
 		C19EB0FC145575BB0021185E /* TKImageInspectorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKImageInspectorController.m; sourceTree = "<group>"; };
-		C19EB0FF145576830021185E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TKImageInspector.xib; sourceTree = "<group>"; };
 		C19EB1CD145586320021185E /* TKSingleChannelFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKSingleChannelFilter.h; sourceTree = "<group>"; };
 		C19EB1CE145586320021185E /* TKSingleChannelFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKSingleChannelFilter.m; sourceTree = "<group>"; };
 		C19EB1D0145586580021185E /* TKMultiChannelFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKMultiChannelFilter.h; sourceTree = "<group>"; };
@@ -6030,7 +6031,8 @@
 		C19EB1011455768A0021185E /* TKImageInspector.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C19EB0FF145576830021185E /* en */,
+				550033022D9835DC008391EE /* Base */,
+				550033042D983600008391EE /* mul */,
 			);
 			name = TKImageInspector.xib;
 			sourceTree = "<group>";
@@ -6500,6 +6502,7 @@
 				MTL_FAST_MATH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
+				STRINGS_FILE_OUTPUT_ENCODING = binary;
 				STRIP_INSTALLED_PRODUCT = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -7307,6 +7310,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
+				STRINGS_FILE_OUTPUT_ENCODING = binary;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -7374,6 +7378,7 @@
 				MTL_FAST_MATH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
+				STRINGS_FILE_OUTPUT_ENCODING = binary;
 				STRIP_INSTALLED_PRODUCT = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_EMIT_LOC_STRINGS = YES;

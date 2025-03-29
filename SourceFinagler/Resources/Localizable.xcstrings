@@ -145,7 +145,7 @@
               "one" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%lu Source add-on was installed."
+                  "value" : "One Source add-on was installed."
                 }
               },
               "other" : {
