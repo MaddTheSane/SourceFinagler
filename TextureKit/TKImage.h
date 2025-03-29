@@ -162,7 +162,7 @@ TEXTUREKIT_EXTERN NSData * TKSFTextureImageMagicData;
 - (NSData *)VTFRepresentationUsingFormat:(TKVTFFormat)aFormat quality:(TKDXTCompressionQuality)aQuality options:(nullable NSDictionary<NSString*,id> *)options;
 
 
-- (NSData *)dataForType:(NSString *)utiType properties:(nullable NSDictionary<NSString*,id> *)properties;
+- (nullable NSData *)dataForType:(NSString *)utiType properties:(nullable NSDictionary<NSString*,id> *)properties;
 
 @end
 

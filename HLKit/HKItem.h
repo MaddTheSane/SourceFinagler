@@ -63,7 +63,7 @@ typedef NS_ENUM(NSUInteger, HKFileType) {
 - (instancetype)init;
 - (BOOL)writeToFile:(NSString *)aPath assureUniqueFilename:(BOOL)assureUniqueFilename resultingPath:(NSString *__nullable*__nullable)resultingPath error:(NSError **)outError;
 
-@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy, nullable) NSString *name;
 @property (nonatomic, copy) NSString *nameExtension;
 @property (nonatomic, copy) NSString *kind;
 @property (nonatomic, copy) NSNumber *size;
@@ -83,7 +83,7 @@ typedef NS_ENUM(NSUInteger, HKFileType) {
 @property (nonatomic, assign) HKFileType fileType;
 
 
-- (NSString *)pathRelativeToItem:(HKItem *)anItem;
+- (nullable NSString *)pathRelativeToItem:(HKItem *)anItem;
 
 @property (readonly, copy) NSArray<HKItem*> *descendants;
 @property (readonly, copy) NSArray<HKItem*> *visibleDescendants;

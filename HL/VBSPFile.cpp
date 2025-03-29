@@ -677,7 +677,7 @@ hlVoid CVBSPFile::GetFileName(hlChar *lpBuffer, hlUInt uiBufferSize)
 
 	const hlChar *lpMappingName = this->pMapping->GetFileName();
 
-	if(lpMappingName == 0 && *lpMappingName == '\0')
+	if(lpMappingName == NULL || *lpMappingName == '\0')
 	{
 		*lpBuffer = '\0';
 		return;
@@ -687,7 +687,7 @@ hlVoid CVBSPFile::GetFileName(hlChar *lpBuffer, hlUInt uiBufferSize)
 	const hlChar *lpBackward = strrchr(lpMappingName, '/');
 	const hlChar *lpStart = lpForward > lpBackward ? lpForward : lpBackward;
 
-	if(lpStart == 0)
+	if(lpStart == NULL)
 	{
 		lpStart = lpMappingName;
 	}
@@ -698,7 +698,7 @@ hlVoid CVBSPFile::GetFileName(hlChar *lpBuffer, hlUInt uiBufferSize)
 
 	const hlChar *lpEnd = strrchr(lpStart, '.');
 
-	if(lpEnd == 0)
+	if(lpEnd == NULL)
 	{
 		lpEnd = lpStart + strlen(lpStart);
 	}

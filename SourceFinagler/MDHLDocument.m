@@ -352,7 +352,12 @@ static NSInteger copyTag = 0;
 		
 		statusImageViewTag1 = [statusImageView1 addToolTipRect:statusImageView1.visibleRect owner:self userData:nil];
 		
-		statusImageView2.image = [NSImage imageNamed:@"readOnlyIndicator"];
+		if (@available(macOS 11.0, *)) {
+			statusImageView2.image = [NSImage imageWithSystemSymbolName:@"pencil.slash" accessibilityDescription:@"Read-only"];
+		} else {
+			statusImageView2.image = [NSImage imageNamed:@"pencil.slash"];
+		}
+		
 		
 		statusImageViewTag2 = [statusImageView2 addToolTipRect:statusImageView2.visibleRect owner:self userData:nil];
 	}

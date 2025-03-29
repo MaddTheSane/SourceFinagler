@@ -248,7 +248,7 @@ NSString * const MDSteamBundleIdentifierKey = @"com.valvesoftware.steam";
 #endif
 	NSError *error = nil;
 	if ([steamManager relocateSteamAppsToPath:proposedNewPath error:&error]) {
-		statusField.stringValue = @"Success";
+		statusField.stringValue = NSLocalizedString(@"Success", @"Success");
 		[self setCanCreate:NO];
 		self.currentURL = [NSURL fileURLWithPath:proposedNewPath];
 		[statusField performSelector:@selector(setStringValue:) withObject:@"" afterDelay:10.0];

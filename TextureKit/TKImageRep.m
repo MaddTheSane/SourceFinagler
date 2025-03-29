@@ -409,7 +409,7 @@ static TKDXTCompressionQuality defaultDXTCompressionQuality = TKDXTCompressionQu
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	NSArray *imageReps = [[self class] imageRepsWithData:aData firstRepresentationOnly:YES];
-	return self = imageReps.firstObject;
+	return imageReps.firstObject;
 }
 
 - (instancetype)init {

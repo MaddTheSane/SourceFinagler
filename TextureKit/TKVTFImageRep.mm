@@ -81,7 +81,7 @@ static const TKVTFFormatMapping TKVTFFormatMappingTable[] = {
 	{ TKVTFFormatATI2N,			IMAGE_FORMAT_ATI2N,				TKPixelFormatRGBA,		TKPixelFormatRGBA,							@"ATI2N" },
 	{ TKVTFFormatATI1N,			IMAGE_FORMAT_ATI1N,				TKPixelFormatRGBA,		TKPixelFormatRGBA,							@"ATI1N" }
 };
-static const NSUInteger TKVTFFormatMappingTableCount = sizeof(TKVTFFormatMappingTable)/sizeof(TKVTFFormatMappingTable[0]);
+static const NSUInteger TKVTFFormatMappingTableCount = std::size(TKVTFFormatMappingTable);
 
 
 NSString *NSStringFromVTFFormat(TKVTFFormat aFormat) {
@@ -138,7 +138,7 @@ static const TKVTFMipmapGenerationMapping TKVTFMipmapGenerationMappingTable[] = 
 	{ MIPMAP_FILTER_TRIANGLE, TKMipmapGenerationUsingTriangleFilter },
 	{ MIPMAP_FILTER_KAISER, TKMipmapGenerationUsingKaiserFilter }
 };
-static const NSUInteger TKVTFMipmapGenerationTableCount = sizeof(TKVTFMipmapGenerationMappingTable)/sizeof(TKVTFMipmapGenerationMappingTable[0]);
+static const NSUInteger TKVTFMipmapGenerationTableCount = std::size(TKVTFMipmapGenerationMappingTable);
 
 static inline VTFMipmapFilter VTFMipmapFilterFromTKMipmapGenerationType(TKMipmapGenerationType mipmapGenerationType) {
 	for (NSUInteger i = 0; i < TKVTFMipmapGenerationTableCount; i++) {
@@ -160,7 +160,7 @@ static const TKVTFDXTQualityMapping TKVTFDXTQualityMappingTable[] = {
 	{TKDXTCompressionQualityHigh, DXT_QUALITY_HIGH },
 	{TKDXTCompressionQualityHighest, DXT_QUALITY_HIGHEST }
 };
-static const NSUInteger TKVTFDXTQualityMappingTableCount = sizeof(TKVTFDXTQualityMappingTable)/sizeof(TKVTFDXTQualityMappingTable[0]);
+static const NSUInteger TKVTFDXTQualityMappingTableCount = std::size(TKVTFDXTQualityMappingTable);
 
 static inline VTFDXTQuality VTFDXTQualityFromTKDXTCompressionQuality(TKDXTCompressionQuality compressionQuality) {
 	for (NSUInteger i = 0; i < TKVTFDXTQualityMappingTableCount; i++) {
@@ -866,7 +866,7 @@ static BOOL vtfInitialized = NO;
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	NSArray *imageReps = [[self class] imageRepsWithData:aData firstRepresentationOnly:YES];
-	return self = imageReps.firstObject;
+	return imageReps.firstObject;
 	
 	//if ((imageReps == nil) || !(imageReps.count > 0)) {
 	//	return nil;

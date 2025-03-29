@@ -451,8 +451,8 @@ Gw
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="fileIndicator" id="1279"/>
                             </imageView>
                             <imageView translatesAutoresizingMaskIntoConstraints="NO" id="1276" customClass="MDStatusImageView">
-                                <rect key="frame" x="24" y="4" width="16" height="16"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="readOnlyIndicator" id="1278"/>
+                                <rect key="frame" x="24" y="2.5" width="16" height="20"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="pencil.slash" catalog="system" id="1278"/>
                             </imageView>
                             <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="1277">
                                 <rect key="frame" x="510" y="5" width="16" height="16"/>
@@ -462,9 +462,11 @@ Gw
                             <constraint firstAttribute="trailing" secondItem="1277" secondAttribute="trailing" constant="34" id="6D0-rn-Bq1"/>
                             <constraint firstItem="1275" firstAttribute="centerY" secondItem="1274" secondAttribute="centerY" id="DXa-eB-upS"/>
                             <constraint firstItem="1275" firstAttribute="top" secondItem="1276" secondAttribute="top" id="XM6-tM-zY6"/>
+                            <constraint firstItem="1276" firstAttribute="bottom" secondItem="1275" secondAttribute="bottom" id="bnE-Ci-AMc"/>
                             <constraint firstItem="1277" firstAttribute="top" secondItem="1274" secondAttribute="top" constant="3" id="dNS-tu-foB"/>
                             <constraint firstItem="1275" firstAttribute="leading" secondItem="1274" secondAttribute="leading" constant="8" id="h3K-vZ-Amo"/>
                             <constraint firstItem="1276" firstAttribute="leading" secondItem="1275" secondAttribute="trailing" id="i4Z-dB-1WJ"/>
+                            <constraint firstItem="1276" firstAttribute="width" secondItem="1275" secondAttribute="width" id="q9k-Cg-6OK"/>
                         </constraints>
                     </customView>
                 </subviews>
@@ -607,7 +609,7 @@ Gw
             <connections>
                 <outlet property="delegate" destination="-2" id="166"/>
             </connections>
-            <point key="canvasLocation" x="122" y="124"/>
+            <point key="canvasLocation" x="122" y="123.5"/>
         </window>
         <customView focusRingType="none" id="96" userLabel="outlineViewView" customClass="MDMetalBevelView">
             <rect key="frame" x="0.0" y="0.0" width="560" height="330"/>
@@ -796,6 +798,6 @@ Gw
         <image name="NSQuickLookTemplate" width="26" height="17"/>
         <image name="fileIndicator" width="16" height="16"/>
         <image name="inspectorTemplate" width="18" height="18"/>
-        <image name="readOnlyIndicator" width="16" height="16"/>
+        <image name="pencil.slash" catalog="system" width="13" height="13"/>
     </resources>
 </document>

@@ -22,12 +22,12 @@
 
 typedef NS_ENUM(NSUInteger, TKTokenType) {
 	TKTokenEOF			= 0,	///< No more tokens to read.
-	TKTokenNewline,				///< Token is a newline (\n).
+	TKTokenNewline,				///< Token is a newline `(\n)`.
 	TKTokenWhitespace,			///< Token is any whitespace other than a newline.
-	TKTokenForwardSlash,		///< Token is a forward slash (/).
-	TKTokenQuote,				///< Token is a quote (").
-	TKTokenOpenBrace,			///< Token is an open brace ({).
-	TKTokenCloseBrace,			///< Token is a close brace (}).
+	TKTokenForwardSlash,		///< Token is a forward slash `(/)`.
+	TKTokenQuote,				///< Token is a quote `(")`.
+	TKTokenOpenBrace,			///< Token is an open brace `({)`.
+	TKTokenCloseBrace,			///< Token is a close brace `(})`.
 	TKTokenChar,				///< Token is a char (any char).  Use GetChar().
 	TKTokenString,				///< Token is a string.  Use GetString().
 	TKTokenQuotedString,		

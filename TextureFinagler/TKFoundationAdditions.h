@@ -91,7 +91,7 @@ typedef NS_OPTIONS(NSUInteger, TKBookmarkResolutionOptions) {
 @property (readonly, copy) NSString *slashToColon;
 @property (readonly, copy) NSString *colonToSlash;
 
-@property (readonly, copy) NSString *displayPath;
+@property (readonly, copy, nullable) NSString *displayPath;
 
 @end
 
@@ -148,7 +148,7 @@ typedef NS_OPTIONS(NSUInteger, TKBookmarkResolutionOptions) {
 @end
 
 @interface NSBundle (TKAdditions)
-- (NSString *)checksumForAuxiliaryLibrary:(NSString *)dylibName;
+- (nullable NSString *)checksumForAuxiliaryLibrary:(NSString *)dylibName;
 @end
 #endif
 

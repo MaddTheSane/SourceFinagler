@@ -180,11 +180,7 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {
 	NSUInteger count = gamesController.selectedObjects.count;
-	if (count > 1) {
-		helpButton.title = @"Help Other Apps Recognize Games";
-	} else {
-		helpButton.title = @"Help Other Apps Recognize Game";
-	}
+	helpButton.title = [NSString localizedStringWithFormat:NSLocalizedString(@"Help Other Apps Recognize Games %lu", @"Help Other Apps Recognize Game"), (unsigned long)count];
 }
 
 - (BOOL)tableView:(NSTableView *)aTableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard {

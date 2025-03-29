@@ -62,10 +62,10 @@ extern NSString *NSStringFromDefaultsKeyPath(NSString *defaultsKey);
 @end
 
 @interface NSUserDefaults (TKAdditions)
-- (void)setFont:(NSFont *)aFont forKey:(NSString *)aKey;
-- (NSFont *)fontForKey:(NSString *)aKey;
-- (void)setColor:(NSColor *)aColor forKey:(NSString *)aKey;
-- (NSColor *)colorForKey:(NSString *)aKey;
+- (void)setFont:(nullable NSFont *)aFont forKey:(NSString *)aKey;
+- (nullable NSFont *)fontForKey:(NSString *)aKey;
+- (void)setColor:(nullable NSColor *)aColor forKey:(NSString *)aKey;
+- (nullable NSColor *)colorForKey:(NSString *)aKey;
 @end
 
 @interface NSView (TKAdditions) 
@@ -84,7 +84,7 @@ extern NSString *NSStringFromDefaultsKeyPath(NSString *defaultsKey);
 
 - (BOOL)revealInFinder:(NSArray<NSString*> *)filePaths;
 
-- (NSImage *)iconForApplicationForURL:(NSURL *)aURL;
+- (nullable NSImage *)iconForApplicationForURL:(NSURL *)aURL;
 - (nullable NSString *)absolutePathForAppBundleWithIdentifier:(nullable NSString *)aBundleIdentifier name:(nullable NSString *)aNameWithDotApp creator:(nullable NSString *)creator;
 - (BOOL)launchApplicationAtPath:(NSString *)path arguments:(nullable NSArray<NSString*> *)argv error:(NSError *__nullable*__nullable)outError;
 

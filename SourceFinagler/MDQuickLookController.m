@@ -61,6 +61,8 @@ static MDQuickLookController *sharedQuickLookController = nil;
 }
 
 - (void)dealloc {
+	[document release];
+	[items release];
 	
 	[super dealloc];
 }

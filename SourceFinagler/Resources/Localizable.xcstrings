@@ -159,6 +159,9 @@
         }
       }
     },
+    "<untitled>" : {
+      "comment" : "<untitled> label for unnamed nodes"
+    },
     "Add Images" : {
       "comment" : "Add Images"
     },
@@ -316,6 +319,29 @@
     },
     "Help Games" : {
 
+    },
+    "Help Other Apps Recognize Games %lu" : {
+      "comment" : "Help Other Apps Recognize Game",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Help Other Apps Recognize Game"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Help Other Apps Recognize %lu Games"
+                }
+              }
+            }
+          }
+        }
+      }
     },
     "Hide Faces" : {
       "comment" : "Hide Faces"
@@ -722,6 +748,9 @@
     },
     "Stop playing the animated image" : {
       "comment" : "Stop playing the animated image"
+    },
+    "Success" : {
+      "comment" : "Success"
     },
     "The image-creation and manipulation feature is still a work in progress." : {
 

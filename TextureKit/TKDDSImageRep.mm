@@ -136,7 +136,7 @@ static const TKDDSFormatMapping TKDDSFormatMappingTable[] = {
 //	{ TKDDSFormatBC5, Format_BC5, TKPixelFormatRGBA, @"BC5 (3DC, ATI2)" },
 //	{ TKDDSFormatRGBE, Format_RGBE, TKPixelFormatRGBA /* ?? */, @"RGBE" }
 };
-static const NSUInteger TKDDSFormatMappingTableCount = sizeof(TKDDSFormatMappingTable)/sizeof(TKDDSFormatMappingTable[0]);
+static const NSUInteger TKDDSFormatMappingTableCount = std::size(TKDDSFormatMappingTable);
 	
 	
 NSString *NSStringFromDDSFormat(TKDDSFormat aFormat) {
@@ -175,7 +175,7 @@ static const TKWrapModeMapping TKWrapModeMappingTable[] = {
 	{ WrapMode_Repeat, TKWrapModeRepeat },
 	{ WrapMode_Mirror, TKWrapModeMirror }
 };
-static const NSUInteger TKWrapModeTableCount = sizeof(TKWrapModeMappingTable)/sizeof(TKWrapModeMappingTable[0]);
+static const NSUInteger TKWrapModeTableCount = std::size(TKWrapModeMappingTable);
 
 static inline WrapMode WrapModeFromTKWrapMode(TKWrapMode wrapMode) {
 	for (NSUInteger i = 0; i < TKWrapModeTableCount; i++) {
@@ -195,7 +195,7 @@ static const TKDDSMipmapGenerationMapping TKDDSMipmapGenerationMappingTable[] = 
 	{ MipmapFilter_Triangle, TKMipmapGenerationUsingTriangleFilter },
 	{ MipmapFilter_Kaiser, TKMipmapGenerationUsingKaiserFilter }
 };
-static const NSUInteger TKDDSMipmapGenerationTableCount = sizeof(TKDDSMipmapGenerationMappingTable)/sizeof(TKDDSMipmapGenerationMappingTable[0]);
+static const NSUInteger TKDDSMipmapGenerationTableCount = std::size(TKDDSMipmapGenerationMappingTable);
 
 static inline MipmapFilter DDSMipmapFilterFromTKMipmapGenerationType(TKMipmapGenerationType mipmapGenerationType) {
 	for (NSUInteger i = 0; i < TKDDSMipmapGenerationTableCount; i++) {
@@ -216,7 +216,7 @@ static const TKRoundModeMapping TKRoundModeMappingTable[] = {
 	{ RoundMode_ToNearestPowerOfTwo, TKRoundModeNearestPowerOfTwo },
 	{ RoundMode_ToPreviousPowerOfTwo, TKRoundModePreviousPowerOfTwo }
 };
-static const NSUInteger TKRoundModeTableCount = sizeof(TKRoundModeMappingTable)/sizeof(TKRoundModeMappingTable[0]);
+static const NSUInteger TKRoundModeTableCount = std::size(TKRoundModeMappingTable);
 
 static inline RoundMode RoundModeFromTKRoundMode(TKRoundMode roundMode) {
 	for (NSUInteger i = 0; i < TKRoundModeTableCount; i++) {
@@ -250,7 +250,7 @@ static const TKDDSDXTQualityMapping TKDDSDXTQualityMappingTable[] = {
 	{TKDXTCompressionQualityHigh, Quality_Production },
 	{TKDXTCompressionQualityHighest, Quality_Highest }
 };
-static const NSUInteger TKDDSDXTQualityMappingTableCount = sizeof(TKDDSDXTQualityMappingTable)/sizeof(TKDDSDXTQualityMappingTable[0]);
+static const NSUInteger TKDDSDXTQualityMappingTableCount = std::size(TKDDSDXTQualityMappingTable);
 
 static inline Quality DDSDXTQualityFromTKDXTCompressionQuality(TKDXTCompressionQuality compressionQuality) {
 	for (NSUInteger i = 0; i < TKDDSDXTQualityMappingTableCount; i++) {

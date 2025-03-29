@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23504"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,12 +20,11 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="696" userLabel="view">
-            <rect key="frame" x="0.0" y="0.0" width="634" height="437"/>
+            <rect key="frame" x="0.0" y="0.0" width="649" height="437"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <pathControl focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1053">
-                    <rect key="frame" x="1" y="237" width="633" height="20"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                <pathControl focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1053">
+                    <rect key="frame" x="0.0" y="236" width="649" height="20"/>
                     <pathCell key="cell" controlSize="small" selectable="YES" focusRingType="none" alignment="left" id="1068">
                         <font key="font" metaFont="smallSystem"/>
                         <url key="url" string="file://localhost/Applications/"/>
@@ -35,18 +34,19 @@
                         <binding destination="858" name="value" keyPath="selection.executableURL" id="1484"/>
                     </connections>
                 </pathControl>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1054">
-                    <rect key="frame" x="12" y="208" width="71" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1054">
+                    <rect key="frame" x="18" y="208" width="47" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Game:" id="1067">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1056">
-                    <rect key="frame" x="108" y="208" width="483" height="17"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1056">
+                    <rect key="frame" x="91" y="208" width="489" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="485" id="Dwv-7a-0GG"/>
+                    </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" title="Portal" id="1065">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -56,9 +56,8 @@
                         <binding destination="858" name="value" keyPath="selection.displayName" id="1073"/>
                     </connections>
                 </textField>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1057">
-                    <rect key="frame" x="85" y="183" width="506" height="17"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                <textField focusRingType="none" horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1057">
+                    <rect key="frame" x="69" y="184" width="511" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" title="Not helped" id="1064">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -68,24 +67,22 @@
                         <binding destination="858" name="value" keyPath="selection.helpedStateString" id="1075"/>
                     </connections>
                 </textField>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1058">
-                    <rect key="frame" x="12" y="183" width="71" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1058">
+                    <rect key="frame" x="18" y="184" width="47" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Status:" id="1063">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1039">
-                    <rect key="frame" x="0.0" y="258" width="634" height="179"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1039">
+                    <rect key="frame" x="0.0" y="257" width="649" height="180"/>
                     <clipView key="contentView" id="SfW-JL-MUR">
-                        <rect key="frame" x="1" y="1" width="632" height="177"/>
+                        <rect key="frame" x="1" y="1" width="647" height="178"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" autosaveName="tableView2.0" headerView="1043" id="1042" customClass="MDTableView">
-                                <rect key="frame" x="0.0" y="0.0" width="632" height="154"/>
+                                <rect key="frame" x="0.0" y="0.0" width="647" height="155"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -162,13 +159,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <tableHeaderView key="headerView" wantsLayer="YES" id="1043">
-                        <rect key="frame" x="0.0" y="0.0" width="632" height="23"/>
+                        <rect key="frame" x="0.0" y="0.0" width="647" height="23"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
-                <button toolTip="Refresh status of applications" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1090">
-                    <rect key="frame" x="596" y="206" width="18" height="19"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                <button toolTip="Refresh status of applications" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1090">
+                    <rect key="frame" x="606" y="207" width="23" height="17"/>
                     <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSRefreshTemplate" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1091">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="cellTitle"/>
@@ -177,9 +173,8 @@
                         <action selector="refresh:" target="-2" id="1092"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1095">
-                    <rect key="frame" x="355" y="12" width="265" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1095">
+                    <rect key="frame" x="395" y="13" width="241" height="32"/>
                     <buttonCell key="cell" type="push" title="Help Other Apps Recognize Game" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1096">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -196,9 +191,8 @@ DQ
                         </binding>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1097">
-                    <rect key="frame" x="189" y="12" width="166" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1097">
+                    <rect key="frame" x="253" y="13" width="144" height="32"/>
                     <buttonCell key="cell" type="push" title="Restore to Default" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1098">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -208,9 +202,12 @@ DQ
                         <binding destination="858" name="enabled" keyPath="selection.helped" id="1149"/>
                     </connections>
                 </button>
-                <imageView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1052">
-                    <rect key="frame" x="88" y="208" width="16" height="16"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <imageView translatesAutoresizingMaskIntoConstraints="NO" id="1052">
+                    <rect key="frame" x="71" y="208" width="16" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="A4b-q2-VvR"/>
+                        <constraint firstAttribute="width" constant="16" id="cOF-76-Q4I"/>
+                    </constraints>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="1069"/>
                     <connections>
                         <binding destination="858" name="value" keyPath="selection.icon" id="1076">
@@ -220,9 +217,8 @@ DQ
                         </binding>
                     </connections>
                 </imageView>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1458">
-                    <rect key="frame" x="17" y="86" width="600" height="84"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="1458">
+                    <rect key="frame" x="17" y="87" width="615" height="84"/>
                     <textFieldCell key="cell" controlSize="small" selectable="YES" sendsActionOnEndEditing="YES" allowsEditingTextAttributes="YES" id="1459">
                         <font key="font" metaFont="smallSystem"/>
                         <string key="title">Use this feature to help allow other Mac OS X applications to better recognize Source games as applications. For example, if you use third-party mouse software such as SteerMouse or USBOverdrive, “helping” Valve’s games will allow you to add a custom profile for each game. It may also help if you are using the Simple Finder and/or Parental controls.
@@ -232,13 +228,11 @@ Note: You can also double-click on a game in the list to launch it (it will be h
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1466">
-                    <rect key="frame" x="20" y="20" width="166" height="26"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="1466">
+                    <rect key="frame" x="20" y="20" width="198" height="27"/>
                     <subviews>
-                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1462">
-                            <rect key="frame" x="7" y="3" width="16" height="16"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <button translatesAutoresizingMaskIntoConstraints="NO" id="1462">
+                            <rect key="frame" x="7" y="4" width="32" height="16"/>
                             <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSApplicationIcon" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="1463">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -247,9 +241,8 @@ Note: You can also double-click on a game in the list to launch it (it will be h
                                 <action selector="showUSBOverdriveTip:" target="-2" id="1469"/>
                             </connections>
                         </button>
-                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1464">
-                            <rect key="frame" x="145" y="3" width="16" height="16"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <button translatesAutoresizingMaskIntoConstraints="NO" id="1464">
+                            <rect key="frame" x="161" y="4" width="16" height="16"/>
                             <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="noteIcon" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="1465">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -258,9 +251,8 @@ Note: You can also double-click on a game in the list to launch it (it will be h
                                 <action selector="showUSBOverdriveTip:" target="-2" id="1467"/>
                             </connections>
                         </button>
-                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1474">
-                            <rect key="frame" x="24" y="2" width="118" height="17"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1474">
+                            <rect key="frame" x="40" y="3" width="118" height="17"/>
                             <buttonCell key="cell" type="recessed" title="USB Overdrive Tip" bezelStyle="recessed" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1475">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="cellTitle"/>
@@ -270,10 +262,20 @@ Note: You can also double-click on a game in the list to launch it (it will be h
                             </connections>
                         </button>
                     </subviews>
+                    <constraints>
+                        <constraint firstItem="1464" firstAttribute="leading" secondItem="1474" secondAttribute="trailing" constant="3" id="3Dn-JX-N50"/>
+                        <constraint firstItem="1474" firstAttribute="centerX" secondItem="1466" secondAttribute="centerX" id="KsX-SB-Fr1"/>
+                        <constraint firstItem="1474" firstAttribute="leading" secondItem="1462" secondAttribute="trailing" constant="1" id="QGs-Uf-dW6"/>
+                        <constraint firstItem="1474" firstAttribute="bottom" secondItem="1464" secondAttribute="bottom" id="RQN-YZ-28K"/>
+                        <constraint firstItem="1462" firstAttribute="top" secondItem="1474" secondAttribute="top" id="SGr-OQ-mFJ"/>
+                        <constraint firstItem="1474" firstAttribute="top" secondItem="1464" secondAttribute="top" id="dFa-nc-YAK"/>
+                        <constraint firstItem="1462" firstAttribute="bottom" secondItem="1474" secondAttribute="bottom" id="e5l-VY-ZOW"/>
+                        <constraint firstItem="1462" firstAttribute="top" secondItem="1466" secondAttribute="top" constant="7" id="f5O-tc-P4b"/>
+                        <constraint firstItem="1462" firstAttribute="leading" secondItem="1466" secondAttribute="leading" constant="7" id="zH7-Re-z8i"/>
+                    </constraints>
                 </customView>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1485">
-                    <rect key="frame" x="18" y="57" width="391" height="18"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="1485">
+                    <rect key="frame" x="18" y="58" width="373" height="18"/>
                     <buttonCell key="cell" type="check" title="Automatically help games whenever Steam updates them" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="1486">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -284,6 +286,47 @@ Note: You can also double-click on a game in the list to launch it (it will be h
                     </connections>
                 </button>
             </subviews>
+            <constraints>
+                <constraint firstItem="1056" firstAttribute="trailing" secondItem="1057" secondAttribute="trailing" priority="250" id="0be-8P-f0e"/>
+                <constraint firstItem="1485" firstAttribute="leading" secondItem="696" secondAttribute="leading" constant="20" symbolic="YES" id="2Ld-8g-Jfb"/>
+                <constraint firstItem="1054" firstAttribute="trailing" secondItem="1058" secondAttribute="trailing" id="4Yu-15-InY"/>
+                <constraint firstItem="1097" firstAttribute="baseline" secondItem="1095" secondAttribute="baseline" id="6l7-aA-W6D"/>
+                <constraint firstItem="1039" firstAttribute="top" secondItem="696" secondAttribute="top" id="7dt-DX-pCi"/>
+                <constraint firstAttribute="bottom" secondItem="1466" secondAttribute="bottom" constant="20" symbolic="YES" id="8dR-uo-5ev"/>
+                <constraint firstItem="1090" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1056" secondAttribute="trailing" constant="8" symbolic="YES" id="9AL-rw-tdk"/>
+                <constraint firstAttribute="trailing" secondItem="1095" secondAttribute="trailing" constant="20" symbolic="YES" id="A7I-gG-mYq"/>
+                <constraint firstAttribute="trailing" secondItem="1090" secondAttribute="trailing" constant="20" symbolic="YES" id="AVh-Fb-QPt"/>
+                <constraint firstItem="1039" firstAttribute="trailing" secondItem="1053" secondAttribute="trailing" id="ERQ-bp-lqQ"/>
+                <constraint firstAttribute="bottom" secondItem="1097" secondAttribute="bottom" constant="20" symbolic="YES" id="EzF-a0-bOi"/>
+                <constraint firstItem="1056" firstAttribute="centerY" secondItem="1090" secondAttribute="centerY" id="I8o-tt-my1"/>
+                <constraint firstItem="1056" firstAttribute="top" secondItem="1090" secondAttribute="top" id="JfP-h5-zag"/>
+                <constraint firstItem="1097" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1466" secondAttribute="trailing" constant="42" id="Jm2-qI-y02"/>
+                <constraint firstItem="1054" firstAttribute="leading" secondItem="1058" secondAttribute="leading" id="Lw1-8m-vSL"/>
+                <constraint firstItem="1054" firstAttribute="firstBaseline" secondItem="1056" secondAttribute="firstBaseline" id="Mui-uk-QiS"/>
+                <constraint firstItem="1466" firstAttribute="top" secondItem="1485" secondAttribute="bottom" constant="12" id="OYV-fq-nXj"/>
+                <constraint firstItem="1458" firstAttribute="top" secondItem="1058" secondAttribute="bottom" constant="13" id="Ugx-4D-1wH"/>
+                <constraint firstItem="1057" firstAttribute="top" secondItem="1052" secondAttribute="bottom" constant="8" symbolic="YES" id="UrS-qE-7J7"/>
+                <constraint firstItem="1039" firstAttribute="leading" secondItem="696" secondAttribute="leading" id="Wbg-i3-Rz4"/>
+                <constraint firstItem="1056" firstAttribute="leading" secondItem="1052" secondAttribute="trailing" constant="6" id="ay4-dX-AX7"/>
+                <constraint firstItem="1054" firstAttribute="leading" secondItem="696" secondAttribute="leading" constant="20" symbolic="YES" id="br8-Vx-doQ"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1485" secondAttribute="trailing" constant="20" symbolic="YES" id="dek-sr-FVe"/>
+                <constraint firstItem="1095" firstAttribute="leading" secondItem="1097" secondAttribute="trailing" constant="12" symbolic="YES" id="f3S-hP-bi2"/>
+                <constraint firstItem="1458" firstAttribute="leading" secondItem="696" secondAttribute="leading" constant="19" id="ffL-Gq-A78"/>
+                <constraint firstItem="1039" firstAttribute="centerX" secondItem="1053" secondAttribute="centerX" id="gE9-nC-OjL"/>
+                <constraint firstItem="1057" firstAttribute="leading" secondItem="1058" secondAttribute="trailing" constant="8" symbolic="YES" id="ilP-Xl-HZP"/>
+                <constraint firstItem="1054" firstAttribute="top" secondItem="1053" secondAttribute="bottom" constant="12" id="k8b-MF-68z"/>
+                <constraint firstItem="1053" firstAttribute="top" secondItem="1039" secondAttribute="bottom" constant="1" id="nIP-6Q-axt"/>
+                <constraint firstItem="1058" firstAttribute="top" secondItem="1054" secondAttribute="bottom" constant="8" symbolic="YES" id="pyp-M3-4kR"/>
+                <constraint firstItem="1097" firstAttribute="top" secondItem="1485" secondAttribute="bottom" constant="19" id="r6j-tN-n7u"/>
+                <constraint firstItem="1485" firstAttribute="leading" secondItem="1466" secondAttribute="leading" id="tgb-Rj-5yD"/>
+                <constraint firstItem="1053" firstAttribute="centerX" secondItem="1458" secondAttribute="centerX" id="uG0-Z8-UXu"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1057" secondAttribute="trailing" constant="20" symbolic="YES" id="uP9-tv-6OT"/>
+                <constraint firstItem="1052" firstAttribute="leading" secondItem="1054" secondAttribute="trailing" constant="8" symbolic="YES" id="ujz-gg-qLa"/>
+                <constraint firstItem="1485" firstAttribute="top" secondItem="1458" secondAttribute="bottom" constant="12" id="ulj-FP-i73"/>
+                <constraint firstAttribute="trailing" secondItem="1039" secondAttribute="trailing" id="v1V-KK-1Pw"/>
+                <constraint firstItem="1058" firstAttribute="baseline" secondItem="1057" secondAttribute="baseline" id="xVC-9Q-Sci"/>
+                <constraint firstItem="1054" firstAttribute="baseline" secondItem="1056" secondAttribute="baseline" id="ypT-vV-Red"/>
+            </constraints>
             <point key="canvasLocation" x="122" y="154"/>
         </customView>
         <arrayController objectClassName="VSGame" avoidsEmptySelection="NO" id="858" userLabel="gamesController">
@@ -328,12 +371,12 @@ Note: You can also double-click on a game in the list to launch it (it will be h
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="235" y="267" width="489" height="253"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1512" height="944"/>
             <view key="contentView" id="1408">
                 <rect key="frame" x="0.0" y="0.0" width="489" height="253"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="1349">
+                    <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="1349">
                         <rect key="frame" x="18" y="141" width="453" height="70"/>
                         <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" id="1350">
                             <font key="font" metaFont="smallSystem"/>
@@ -342,7 +385,7 @@ Note: You can also double-click on a game in the list to launch it (it will be h
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="1347">
+                    <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="1347">
                         <rect key="frame" x="18" y="219" width="119" height="14"/>
                         <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="USB Overdrive Note:" id="1348">
                             <font key="font" metaFont="smallSystemBold"/>
@@ -359,9 +402,6 @@ Note: You can also double-click on a game in the list to launch it (it will be h
                     </imageView>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1409">
                         <rect key="frame" x="392" y="13" width="84" height="32"/>
-                        <constraints>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="rP4-FV-Edh"/>
-                        </constraints>
                         <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1410">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -369,6 +409,9 @@ Note: You can also double-click on a game in the list to launch it (it will be h
 DQ
 </string>
                         </buttonCell>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="rP4-FV-Edh"/>
+                        </constraints>
                         <connections>
                             <action selector="ok:" target="-2" id="1473"/>
                         </connections>

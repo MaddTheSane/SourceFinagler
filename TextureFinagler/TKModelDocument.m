@@ -196,7 +196,7 @@
 		
 		SCNNode *node = (SCNNode *)item;
 		
-		view.textField.stringValue = (node.name ? node.name : @"<untitled>");
+		view.textField.stringValue = (node.name ? node.name : NSLocalizedString(@"<untitled>", @"<untitled> label for unnamed nodes"));
 		
 		if (node.light) {
 			view.imageView.image = [NSImage imageNamed:@"entityLight"];

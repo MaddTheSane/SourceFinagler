@@ -72,7 +72,7 @@ NSString *NSStringFromDefaultsKeyPath(NSString *defaultsKey) {
 #if TK_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	NSString *hexValue = nil;
+	NSString *hexValue = @"000";
 	NSColor *convertedColor = [self colorUsingColorSpaceName:NSCalibratedRGBColorSpace];
 	
 	if (convertedColor) {
