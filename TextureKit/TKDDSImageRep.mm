@@ -21,14 +21,12 @@ static NSData *TKBGRADataFromImageData(NSData *data, NSUInteger pixelCount, NSUI
 using namespace nv;
 using namespace nvtt;
 
-class NSDataInputStream : public nv::Stream
+class NSDataInputStream final : public nv::Stream
 {
 	NV_FORBID_COPY(NSDataInputStream);
 public:
 	NSDataInputStream(NSData *stream): _inStr([stream copy]), currentOffset(0) {}
-	~NSDataInputStream() {
-		_inStr = nil;
-	}
+	~NSDataInputStream() = default;
 	
 	void seek(uint pos) override {
 		nvDebugCheck(!isError());
@@ -87,10 +85,10 @@ private:
 
 struct TKDDSFormatMapping {
 	TKDDSFormat		format;
-	D3DFORMAT		d3dFormat;
-	FOURCC			fourcc;
-	DXGI_FORMAT		dxgiFormat;
-	Format			ddsFormat;
+	nv::D3DFORMAT	d3dFormat;
+	nv::FOURCC		fourcc;
+	nv::DXGI_FORMAT	dxgiFormat;
+	nvtt::Format	ddsFormat;
 	TKPixelFormat	pixelFormat;
 	TKPixelFormat	nativePixelFormat;
 	NSString		*description;
@@ -279,7 +277,7 @@ NSString * const TKDDSPboardType	= @"com.microsoft.dds";
 @end
 
 
-struct TKOutputHandler : public OutputHandler {
+struct TKOutputHandler final : public nvtt::OutputHandler {
 	
 	TKOutputHandler(NSMutableData *imageData) : imageData(imageData) {
 		
@@ -315,7 +313,7 @@ struct TKOutputHandler : public OutputHandler {
 };
 
 
-struct TKMipmapOutputHandler : public OutputHandler {
+struct TKMipmapOutputHandler final : public nvtt::OutputHandler {
 	
 	TKMipmapOutputHandler(NSMutableData *imageData) : imageData(imageData) {
 		
