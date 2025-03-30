@@ -203,6 +203,8 @@
 		err = FSGetCatalogInfo(&aPathRef, kFSCatInfoVolume, &catInfo, NULL, NULL, NULL);
 		if (err == noErr) {
 			path = [self pathForDirectory:aDirectory inDomain:catInfo.volume create:create error:outError];
+		} else if (outError) {
+			*outError = [NSError errorWithDomain:NSOSStatusErrorDomain code:err userInfo:nil];
 		}
 	}
 	return path;

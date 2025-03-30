@@ -61,8 +61,7 @@ BOOL TKMouseInRects(NSPoint inPoint, NSArray<NSValue*> *inRects, BOOL isFlipped)
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
 	if (anError) *anError = nil;
-	OSStatus status = noErr;
-	status = FSPathMakeRef((const UInt8 *)self.fileSystemRepresentation, anFSRef, NULL);
+	OSStatus status = FSPathMakeRef((const UInt8 *)self.fileSystemRepresentation, anFSRef, NULL);
 	if (status != noErr) {
 		if (anError) *anError = [NSError errorWithDomain:NSOSStatusErrorDomain code:status userInfo:@{NSFilePathErrorKey: self}];
 	}

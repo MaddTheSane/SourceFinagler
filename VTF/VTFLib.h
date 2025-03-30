@@ -112,41 +112,41 @@ namespace VTFLib
 	typedef std::vector<VTFLib::CVTFFile *> CImageVector;
 	typedef std::vector<VTFLib::CVMTFile *> CMaterialVector;
 
-	extern vlBool bInitialized;
-	extern Diagnostics::CError LastError;
+	VTFLIB_API extern vlBool bInitialized;
+	VTFLIB_API extern Diagnostics::CError LastError;
 
-	extern CVTFFile *Image;
-	extern CImageVector *ImageVector;
+	VTFLIB_API extern CVTFFile *Image;
+	VTFLIB_API extern CImageVector *ImageVector;
 
-	extern CVMTFile *Material;
-	extern CMaterialVector *MaterialVector;
+	VTFLIB_API extern CVMTFile *Material;
+	VTFLIB_API extern CMaterialVector *MaterialVector;
 
-	extern vlUInt uiDXTQuality;
+	VTFLIB_API extern vlUInt uiDXTQuality;
 
-	extern vlSingle sLuminanceWeightR;
-	extern vlSingle sLuminanceWeightG;
-	extern vlSingle sLuminanceWeightB;
+	VTFLIB_API extern vlSingle sLuminanceWeightR;
+	VTFLIB_API extern vlSingle sLuminanceWeightG;
+	VTFLIB_API extern vlSingle sLuminanceWeightB;
 
-	extern vlUShort uiBlueScreenMaskR;
-	extern vlUShort uiBlueScreenMaskG;
-	extern vlUShort uiBlueScreenMaskB;
+	VTFLIB_API extern vlUShort uiBlueScreenMaskR;
+	VTFLIB_API extern vlUShort uiBlueScreenMaskG;
+	VTFLIB_API extern vlUShort uiBlueScreenMaskB;
 
-	extern vlUShort uiBlueScreenClearR;
-	extern vlUShort uiBlueScreenClearG;
-	extern vlUShort uiBlueScreenClearB;
+	VTFLIB_API extern vlUShort uiBlueScreenClearR;
+	VTFLIB_API extern vlUShort uiBlueScreenClearG;
+	VTFLIB_API extern vlUShort uiBlueScreenClearB;
 
-	extern vlSingle sFP16HDRKey;
-	extern vlSingle sFP16HDRShift;
-	extern vlSingle sFP16HDRGamma;
+	VTFLIB_API extern vlSingle sFP16HDRKey;
+	VTFLIB_API extern vlSingle sFP16HDRShift;
+	VTFLIB_API extern vlSingle sFP16HDRGamma;
 
-	extern vlSingle sUnsharpenRadius;
-	extern vlSingle sUnsharpenAmount;
-	extern vlSingle sUnsharpenThreshold;
+	VTFLIB_API extern vlSingle sUnsharpenRadius;
+	VTFLIB_API extern vlSingle sUnsharpenAmount;
+	VTFLIB_API extern vlSingle sUnsharpenThreshold;
 
-	extern vlSingle sXSharpenStrength;
-	extern vlSingle sXSharpenThreshold;
+	VTFLIB_API extern vlSingle sXSharpenStrength;
+	VTFLIB_API extern vlSingle sXSharpenThreshold;
 
-	extern vlUInt uiVMTParseMode;
+	VTFLIB_API extern vlUInt uiVMTParseMode;
 }
 
 #endif

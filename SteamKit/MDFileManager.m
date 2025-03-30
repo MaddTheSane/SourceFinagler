@@ -484,7 +484,7 @@ FSIterateForks:
 #if MD_DEBUG
 	NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #endif
-	NSInteger labelColor = MDFileLabelUnsupported;
+	MDFileLabel labelColor = MDFileLabelUnsupported;
 	NSNumber *labelColorNum = self[MDFileLabelNumber];
 	if (labelColorNum != nil) {
 		labelColor = labelColorNum.integerValue;

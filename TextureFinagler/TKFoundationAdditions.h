@@ -45,7 +45,7 @@ typedef NS_OPTIONS(NSUInteger, TKBookmarkCreationOptions) {
 	TKBookmarkCreationSuitableForBookmarkFile	= NSURLBookmarkCreationSuitableForBookmarkFile,
 	/// Include information in the bookmark data which allows the same sandboxed process to access the resource after being relaunched.
 	TKBookmarkCreationWithSecurityScope NS_ENUM_AVAILABLE(10_7, NA) = NSURLBookmarkCreationWithSecurityScope,
-	/// If used with kCFURLBookmarkCreationWithSecurityScope, at resolution time only read access to the resource will be granted.
+	/// If used with `kCFURLBookmarkCreationWithSecurityScope`, at resolution time only read access to the resource will be granted.
 	TKBookmarkCreationSecurityScopeAllowOnlyReadAccess NS_ENUM_AVAILABLE(10_7, NA) = NSURLBookmarkCreationSecurityScopeAllowOnlyReadAccess,
 	
 	TKBookmarkCreationDefaultOptions			= TKBookmarkCreationSuitableForBookmarkFile,
@@ -59,10 +59,6 @@ typedef NS_OPTIONS(NSUInteger, TKBookmarkResolutionOptions) {
 	TKBookmarkResolutionWithSecurityScope NS_ENUM_AVAILABLE(10_7, NA) = NSURLBookmarkResolutionWithSecurityScope /**< use the secure information included at creation time to provide the ability to access the resource in a sandboxed process */
 };
 
-
-//@interface NSURL (TKAdditions)
-//- (BOOL)getFSRef:(FSRef *)anFSRef;
-//@end
 
 @interface NSString (TKAdditions)
 + (nullable instancetype)stringByResolvingBookmarkData:(NSData *)bookmarkData options:(TKBookmarkResolutionOptions)options bookmarkDataIsStale:(BOOL *)isStale error:(NSError **)outError;

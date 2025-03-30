@@ -9,7 +9,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_OPTIONS(NSUInteger, MDUserDefaultsDomain) {
+typedef NS_ENUM(NSUInteger, MDUserDefaultsDomain) {
 	MDUserDefaultsDomainUser = 1,
 	MDUserDefaultsDomainLocal = 2,
 	MDUserDefaultsDomainLocalAndUser = 3
