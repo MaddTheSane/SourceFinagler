@@ -9,6 +9,7 @@
  * version.
  */
 
+#pragma once
 #ifndef VMTWRAPPER_H
 #define VMTWRAPPER_H
 

@@ -9,6 +9,7 @@
  * version.
  */
 
+#pragma once
 #ifndef VMTVALUENODE_H
 #define VMTVALUENODE_H
 

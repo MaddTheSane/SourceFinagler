@@ -9,6 +9,7 @@
  * version.
  */
 
+#pragma once
 #ifndef VMTNODES_H
 #define VMTNODES_H
 

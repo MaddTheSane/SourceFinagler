@@ -9,6 +9,7 @@
  * version.
  */
 
+#pragma once
 #ifndef PROC_H
 #define PROC_H
 

@@ -17,6 +17,7 @@
 	\brief Header file for the VTFFile class.
 */
 
+#pragma once
 #ifndef VTFFILE_H
 #define VTFFILE_H
 

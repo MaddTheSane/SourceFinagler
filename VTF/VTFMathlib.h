@@ -19,6 +19,7 @@
 	A small collection of math functions and defines used by VTFLib.
 */
 
+#pragma once
 #ifndef VTFMATHLIB_H
 #define VTFMATHLIB_H
 

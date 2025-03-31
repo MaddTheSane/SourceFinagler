@@ -17,6 +17,7 @@
 	\brief Application framework header plus VTFLib custom data types.
 */
 
+#pragma once
 #ifndef VTF_STDAFX_H
 #define VTF_STDAFX_H
 

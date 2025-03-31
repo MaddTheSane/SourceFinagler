@@ -9,6 +9,7 @@
  * version.
  */
 
+#pragma once
 #ifndef VTFWRAPPER_H
 #define VTFWRAPPER_H
 

@@ -9,6 +9,7 @@
  * version.
  */
 
+#pragma once
 #ifndef VMTFILE_H
 #define VMTFILE_H
 

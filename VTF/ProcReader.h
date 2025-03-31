@@ -9,6 +9,7 @@
  * version.
  */
 
+#pragma once
 #ifndef PROCREADER_H
 #define PROCREADER_H
 

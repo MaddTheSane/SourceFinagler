@@ -9,6 +9,7 @@
  * version.
  */
 
+#pragma once
 #ifndef PROCWRITER_H
 #define PROCWRITER_H
 

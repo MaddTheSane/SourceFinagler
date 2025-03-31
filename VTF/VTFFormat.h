@@ -31,6 +31,7 @@
 					- Image data (in relevant format)
 */
 
+#pragma once
 #ifndef VTFFORMAT_H
 #define VTFFORMAT_H
 

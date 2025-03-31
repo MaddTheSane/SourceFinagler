@@ -9,6 +9,7 @@
  * version.
  */
 
+#pragma once
 #ifndef VTFDXTN_H
 #define VTFDXTN_H
 

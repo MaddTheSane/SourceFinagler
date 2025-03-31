@@ -9,6 +9,7 @@
  * version.
  */
 
+#pragma once
 #ifndef VMTSINGLENODE_H
 #define VMTSINGLENODE_H
 

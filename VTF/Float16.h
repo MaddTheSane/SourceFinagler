@@ -15,6 +15,7 @@
 // Format:	16 Bit: seeeeeeeemmmmmmm
 //			32 Bit: seeeeeeeemmmmmmmmmmmmmmmmmmmmmmm
 
+#pragma once
 #ifndef FLOAT16_H
 #define FLOAT16_H
 

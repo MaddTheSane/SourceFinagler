@@ -9,6 +9,7 @@
  * version.
  */
 
+#pragma once
 #ifndef MEMORYREADER_H
 #define MEMORYREADER_H
 

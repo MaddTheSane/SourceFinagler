@@ -17,6 +17,7 @@
 	\brief Error handling class header.
 */
 
+#pragma once
 #ifndef ERROR_H
 #define ERROR_H
 

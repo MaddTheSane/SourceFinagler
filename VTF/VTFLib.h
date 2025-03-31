@@ -96,6 +96,7 @@
 */
 
 
+#pragma once
 #ifndef VTFLIB_H
 #define VTFLIB_H
 

@@ -50,7 +50,6 @@ using namespace nv;
 		}
 		return NO;
 	}
-	[handle seekToFileOffset:0];
 	
 	DirectDrawSurface *dds = new DirectDrawSurface();
 	dds->load(contentURL.fileSystemRepresentation);
