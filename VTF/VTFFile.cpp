@@ -2372,7 +2372,7 @@ vlVoid *CVTFFile::SetResourceData(vlUInt uiType, vlUInt uiSize, vlVoid *lpData)
 
 					vlUInt uiIndex = this->Header->ResourceCount;
 
-					this->Header->Resources[uiIndex].Type = uiType;
+					this->Header->Resources[uiIndex].Type = VTFResourceEntryType(uiType);
 					this->Header->Resources[uiIndex].Data = 0;
 
 					this->Header->Data[uiIndex].Size = 0;

@@ -58,10 +58,12 @@ public class ImportExtensionVTFNew: CSImportExtension {
 		let hasAlphaChannel = VTFImageFlag(rawValue: file.GetFlags()).contains([.TEXTUREFLAGS_ONEBITALPHA]) || VTFImageFlag(rawValue: file.GetFlags()).contains([.TEXTUREFLAGS_EIGHTBITALPHA])
 		let hasMipmaps: Bool = file.GetMipmapCount() > 1
 		let isAnimated: Bool = file.GetFrameCount() > 1
-		var compression: String? = nil
+		let compression: String?
 		let imageFormatInfo = VTFLib.CVTFFile.GetImageFormatInfo(file.GetFormat())
 		if let imageFormatName = imageFormatInfo.pointee.lpName {
 			compression = String(cString: imageFormatName)
+		} else {
+			compression = nil
 		}
 		
 		let theWidth = file.GetWidth()

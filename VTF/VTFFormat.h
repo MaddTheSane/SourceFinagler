@@ -510,11 +510,11 @@ struct SVTFResource
 {
 	union
 	{ 
-		vlUInt Type;
+		VTFResourceEntryType Type;
 		struct
 		{
-			vlByte ID[3];	//!< Unique resource ID
-			vlByte Flags;	//!< Resource flags
+			vlByte ID[3];					//!< Unique resource ID
+			VTFResourceEntryTypeFlag Flags;	//!< Resource flags
 		};
 	};
 	vlUInt Data;	//!< Resource data (e.g. for a  CRC) or offset from start of the file
