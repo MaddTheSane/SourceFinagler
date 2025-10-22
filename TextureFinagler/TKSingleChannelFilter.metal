@@ -11,10 +11,9 @@ using namespace metal;
 #include <CoreImage/CIKernelMetalLib.h>
 
 
-/*
-A Core Image kernel routine that computes a multiply effect.
-The code looks up the source pixel in the sampler and then multiplies it by the value passed to the routine.
-*/
+/// A Core Image kernel routine that computes a multiply effect.
+///
+/// The code looks up the source pixel in the sampler and then multiplies it by the value passed to the routine.
 [[stitchable]]
 float4 singleChannelFilter(coreimage::sampler Image, float redScale, float greenScale, float blueScale, float alphaScale) {
 	float4 originalColor, grayscaleColor;

@@ -104,7 +104,7 @@
 		558FACC220AB93EF00AC7001 /* CompressorETC.h in Headers */ = {isa = PBXBuildFile; fileRef = 558FACC020AB93EE00AC7001 /* CompressorETC.h */; };
 		558FACC320AB93EF00AC7001 /* CompressorETC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 558FACC120AB93EF00AC7001 /* CompressorETC.cpp */; };
 		558FACC920ABADDE00AC7001 /* rg_etc1.h in Headers */ = {isa = PBXBuildFile; fileRef = 558FACC620ABADDD00AC7001 /* rg_etc1.h */; };
-		558FACCA20ABADDE00AC7001 /* rg_etc1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 558FACC720ABADDD00AC7001 /* rg_etc1.cpp */; };
+		558FACCA20ABADDE00AC7001 /* rg_etc1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 558FACC720ABADDD00AC7001 /* rg_etc1.cpp */; settings = {COMPILER_FLAGS = "-fvisibility=hidden"; }; };
 		558FACCD20ABB3B300AC7001 /* KtxFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C12B4DBE13B717EA0096FC0E /* KtxFile.cpp */; };
 		558FACCE20ABB40300AC7001 /* Matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1E936951606A8550056438A /* Matrix.cpp */; };
 		558FACCF20ABB67100AC7001 /* KtxFile.h in Headers */ = {isa = PBXBuildFile; fileRef = C12B4DBF13B717EA0096FC0E /* KtxFile.h */; };
@@ -124,6 +124,11 @@
 		55D8AB922D88176100EF2765 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 55D8AB912D88176000EF2765 /* Localizable.xcstrings */; };
 		55D8AB952D8818A000EF2765 /* ImportExtensionVTFNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D8AB942D88189A00EF2765 /* ImportExtensionVTFNew.swift */; };
 		55DEDA4F2D855D5400C5FB62 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 55DEDA4E2D855D0F00C5FB62 /* Localizable.xcstrings */; };
+		55EB4C8C2EA8677D002D90E3 /* ColorSpace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1FEA915125E723B00CA78FF /* ColorSpace.cpp */; };
+		55EB4C8D2EA867C0002D90E3 /* Quantize.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1FEA926125E723B00CA78FF /* Quantize.cpp */; };
+		55EB4C8E2EA868A9002D90E3 /* ColorSpace.h in Headers */ = {isa = PBXBuildFile; fileRef = C1FEA916125E723B00CA78FF /* ColorSpace.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		55EB4C8F2EA868A9002D90E3 /* Quantize.h in Headers */ = {isa = PBXBuildFile; fileRef = C1FEA927125E723B00CA78FF /* Quantize.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		55EB4C962EA8A8EC002D90E3 /* CMakeLists.txt in Resources */ = {isa = PBXBuildFile; fileRef = 55EB4C902EA8A8EC002D90E3 /* CMakeLists.txt */; };
 		55EF66A21D7B7DE800FFF7B2 /* TextureFinaglerImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55EF66A11D7B7DE800FFF7B2 /* TextureFinaglerImages.xcassets */; };
 		55F82CB51D7BA58600D6DAC9 /* TKOBJModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C1958030149117DC0024C716 /* TKOBJModel.m */; };
 		55F82CB61D7BA58600D6DAC9 /* TKOBJParts.m in Sources */ = {isa = PBXBuildFile; fileRef = C11116FE149151360040E4B5 /* TKOBJParts.m */; };
@@ -637,7 +642,7 @@
 		C1FBD12913E7F41D0020C06F /* TKImageExportTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FBD12813E7F41D0020C06F /* TKImageExportTextField.m */; };
 		C1FEA9B1125E889C00CA78FF /* nvcore.h in Headers */ = {isa = PBXBuildFile; fileRef = C1FEA8CA125E5D7E00CA78FF /* nvcore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C1FEA9B2125E889F00CA78FF /* posh.h in Headers */ = {isa = PBXBuildFile; fileRef = C1FEA948125E739700CA78FF /* posh.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C1FEA9B3125E88A000CA78FF /* posh.c in Sources */ = {isa = PBXBuildFile; fileRef = C1FEA947125E739700CA78FF /* posh.c */; };
+		C1FEA9B3125E88A000CA78FF /* posh.c in Sources */ = {isa = PBXBuildFile; fileRef = C1FEA947125E739700CA78FF /* posh.c */; settings = {COMPILER_FLAGS = "-fvisibility=hidden"; }; };
 		C1FEA9B4125E88A400CA78FF /* Debug.h in Headers */ = {isa = PBXBuildFile; fileRef = C1FEA8BE125E5D7E00CA78FF /* Debug.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C1FEA9B5125E88A400CA78FF /* Debug.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1FEA8BD125E5D7E00CA78FF /* Debug.cpp */; };
 		C1FEA9B6125E88A700CA78FF /* DefsGnucDarwin.h in Headers */ = {isa = PBXBuildFile; fileRef = C1FEA8BF125E5D7E00CA78FF /* DefsGnucDarwin.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1360,6 +1365,11 @@
 		55D8AB942D88189A00EF2765 /* ImportExtensionVTFNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportExtensionVTFNew.swift; sourceTree = "<group>"; };
 		55D8AB972D8818A200EF2765 /* VTF Image Metadata-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VTF Image Metadata-Bridging-Header.h"; sourceTree = "<group>"; };
 		55DEDA4E2D855D0F00C5FB62 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		55EB4C902EA8A8EC002D90E3 /* CMakeLists.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
+		55EB4C912EA8A8EC002D90E3 /* etcdec.cxx */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = etcdec.cxx; sourceTree = "<group>"; };
+		55EB4C922EA8A8EC002D90E3 /* etcpack.cxx */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = etcpack.cxx; sourceTree = "<group>"; };
+		55EB4C932EA8A8EC002D90E3 /* image.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = image.h; sourceTree = "<group>"; };
+		55EB4C942EA8A8EC002D90E3 /* image.cxx */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = image.cxx; sourceTree = "<group>"; };
 		55EF66A11D7B7DE800FFF7B2 /* TextureFinaglerImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = TextureFinaglerImages.xcassets; path = Resources/TextureFinaglerImages.xcassets; sourceTree = "<group>"; };
 		55F82CBB1D7BA77100D6DAC9 /* TKOpenGLDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKOpenGLDrawable.h; sourceTree = "<group>"; };
 		55F82CBD1D7BA7E300D6DAC9 /* TKMath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKMath.h; sourceTree = "<group>"; };
@@ -2529,6 +2539,7 @@
 		558FACCB20ABAE9400AC7001 /* extern */ = {
 			isa = PBXGroup;
 			children = (
+				55EB4C952EA8A8EC002D90E3 /* etcpack */,
 				558FACC420ABADDD00AC7001 /* rg_etc1_v104 */,
 				C1FEA93D125E736A00CA78FF /* poshlib */,
 			);
@@ -2596,6 +2607,19 @@
 			);
 			name = OBJ;
 			sourceTree = "<group>";
+		};
+		55EB4C952EA8A8EC002D90E3 /* etcpack */ = {
+			isa = PBXGroup;
+			children = (
+				55EB4C902EA8A8EC002D90E3 /* CMakeLists.txt */,
+				55EB4C912EA8A8EC002D90E3 /* etcdec.cxx */,
+				55EB4C922EA8A8EC002D90E3 /* etcpack.cxx */,
+				55EB4C932EA8A8EC002D90E3 /* image.h */,
+				55EB4C942EA8A8EC002D90E3 /* image.cxx */,
+			);
+			path = etcpack;
+			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		55F82CD01D7BAB6500D6DAC9 /* Shader */ = {
 			isa = PBXGroup;
@@ -3849,10 +3873,10 @@
 		C1FEA7B3125E5C0D00CA78FF /* NVMath */ = {
 			isa = PBXGroup;
 			children = (
-				554FE67D1FCA059600727CE0 /* Gamma.cpp */,
 				554FE67E1FCA059600727CE0 /* Gamma.h */,
-				554FE6791FCA04C700727CE0 /* PackedFloat.cpp */,
+				554FE67D1FCA059600727CE0 /* Gamma.cpp */,
 				554FE67A1FCA04C700727CE0 /* PackedFloat.h */,
+				554FE6791FCA04C700727CE0 /* PackedFloat.cpp */,
 				C1FEA8F4125E718D00CA78FF /* nvmath.h */,
 				554FE6661FCA03AD00727CE0 /* ftoi.h */,
 				C1FEA8EC125E718D00CA78FF /* Box.h */,
@@ -4003,6 +4027,7 @@
 			);
 			name = unused;
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		C1FEA952125E755D00CA78FF /* CUDA */ = {
 			isa = PBXGroup;
@@ -4351,6 +4376,8 @@
 				C1FEAA25125E8C5500CA78FF /* Filter.h in Headers */,
 				554FE6921FCA069200727CE0 /* tile.h in Headers */,
 				C1FEAA27125E8C5800CA78FF /* Image.h in Headers */,
+				55EB4C8E2EA868A9002D90E3 /* ColorSpace.h in Headers */,
+				55EB4C8F2EA868A9002D90E3 /* Quantize.h in Headers */,
 				C1FEAA29125E8C5C00CA78FF /* ImageIO.h in Headers */,
 				554FE6911FCA069200727CE0 /* shapes_two.h in Headers */,
 				554FE69E1FCA078A00727CE0 /* avpcl_utils.h in Headers */,
@@ -5135,6 +5162,7 @@
 			files = (
 				C1097AE2125FA18200D60D27 /* ConvolveKernel.cu in Resources */,
 				C1097AE3125FA18200D60D27 /* CompressKernel.cu in Resources */,
+				55EB4C962EA8A8EC002D90E3 /* CMakeLists.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5538,7 +5566,9 @@
 				558FACCD20ABB3B300AC7001 /* KtxFile.cpp in Sources */,
 				554FE68F1FCA068300727CE0 /* avpcl_mode3.cpp in Sources */,
 				554FE6811FCA068300727CE0 /* avpcl.cpp in Sources */,
+				55EB4C8D2EA867C0002D90E3 /* Quantize.cpp in Sources */,
 				C1305B8D12F08EF300D68170 /* ErrorMetric.cpp in Sources */,
+				55EB4C8C2EA8677D002D90E3 /* ColorSpace.cpp in Sources */,
 				554FE69F1FCA096200727CE0 /* zoh_utils.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
