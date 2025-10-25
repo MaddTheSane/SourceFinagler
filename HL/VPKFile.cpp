@@ -339,7 +339,9 @@ CDirectoryFolder *CVPKFile::CreateRoot()
 		strcat(lpFileName, ".");
 		strcat(lpFileName, pDirectoryItem->lpExtention);
 
-		pInsertFolder->AddFile(lpFileName, -1, const_cast<VPKDirectoryItem *>(pDirectoryItem));
+		if (pInsertFolder) {
+			pInsertFolder->AddFile(lpFileName, -1, const_cast<VPKDirectoryItem *>(pDirectoryItem));
+		}
 
 		delete []lpFileName;
 	}

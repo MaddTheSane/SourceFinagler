@@ -154,6 +154,7 @@
 		55F82CD51D7BACD900D6DAC9 /* TKValueAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 55F82CD31D7BACD900D6DAC9 /* TKValueAdditions.h */; };
 		55F82CD61D7BACD900D6DAC9 /* TKValueAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F82CD41D7BACD900D6DAC9 /* TKValueAdditions.m */; };
 		55F82CD71D7BAFAD00D6DAC9 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1864047159C2F0C009D15FB /* GLKit.framework */; };
+		55FDAF9F2EACA9F80088E0C9 /* ImportExtensionDDSNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FDAF9E2EACA9E50088E0C9 /* ImportExtensionDDSNew.swift */; };
 		C108DB18163E370800DADFCD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C145E9691248DD3D00AF2D35 /* QuartzCore.framework */; };
 		C1097A83125F9BA300D60D27 /* Box.h in Headers */ = {isa = PBXBuildFile; fileRef = C1FEA8EC125E718D00CA78FF /* Box.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C1097A9E125FA11800D60D27 /* NVTextureTools.h in Headers */ = {isa = PBXBuildFile; fileRef = C1FEA96E125E75C000CA78FF /* NVTextureTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1380,6 +1381,13 @@
 		55F82CD11D7BAC4100D6DAC9 /* TKMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKMath.m; sourceTree = "<group>"; };
 		55F82CD31D7BACD900D6DAC9 /* TKValueAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKValueAdditions.h; sourceTree = "<group>"; };
 		55F82CD41D7BACD900D6DAC9 /* TKValueAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKValueAdditions.m; sourceTree = "<group>"; };
+		55FDAF9E2EACA9E50088E0C9 /* ImportExtensionDDSNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportExtensionDDSNew.swift; sourceTree = "<group>"; };
+		55FDAFA02EACA9FC0088E0C9 /* DDS Image Metadata-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DDS Image Metadata-Bridging-Header.h"; sourceTree = "<group>"; };
+		55FDAFA12EACAC100088E0C9 /* NVCore.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = NVCore.modulemap; sourceTree = "<group>"; };
+		55FDAFA22EACB0500088E0C9 /* NVMath.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = NVMath.modulemap; sourceTree = "<group>"; };
+		55FDAFA32EACB1660088E0C9 /* NVImage.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = NVImage.modulemap; sourceTree = "<group>"; };
+		55FDAFA42EACB2BC0088E0C9 /* NVThread.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = NVThread.modulemap; sourceTree = "<group>"; };
+		55FDAFA52EACB3020088E0C9 /* NVTT.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = NVTT.modulemap; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* SourceFinagler-Info.plist */ = {isa = PBXFileReference; explicitFileType = text.plist.info; fileEncoding = 4; name = "SourceFinagler-Info.plist"; path = "../SourceFinagler-Info.plist"; sourceTree = "<group>"; };
 		C1034A9111C5619C0054740E /* VSSteamManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSSteamManager.h; sourceTree = "<group>"; };
 		C1034A9211C5619C0054740E /* VSSteamManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSSteamManager.m; sourceTree = "<group>"; };
@@ -2458,10 +2466,12 @@
 		55101ADC290E7797003CED21 /* DDS */ = {
 			isa = PBXGroup;
 			children = (
+				55FDAF9E2EACA9E50088E0C9 /* ImportExtensionDDSNew.swift */,
 				55101ADD290E77A6003CED21 /* ImportExtensionDDS.h */,
 				55101ADE290E77A6003CED21 /* ImportExtensionDDS.mm */,
 				55101ABF290E76B7003CED21 /* Info.plist */,
 				550033002D973A41008391EE /* Localizable.xcstrings */,
+				55FDAFA02EACA9FC0088E0C9 /* DDS Image Metadata-Bridging-Header.h */,
 			);
 			path = DDS;
 			sourceTree = "<group>";
@@ -3663,6 +3673,7 @@
 		C1E9369E1606ABB70056438A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				55FDAFA42EACB2BC0088E0C9 /* NVThread.modulemap */,
 				C180E48E147293A80001C07F /* NVThread-Info.plist */,
 			);
 			name = Resources;
@@ -3985,6 +3996,7 @@
 		C1FEA94C125E741200CA78FF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				55FDAFA12EACAC100088E0C9 /* NVCore.modulemap */,
 				C1FEA7EB125E5C9600CA78FF /* NVCore-Info.plist */,
 			);
 			name = Resources;
@@ -3993,6 +4005,7 @@
 		C1FEA94D125E743A00CA78FF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				55FDAFA22EACB0500088E0C9 /* NVMath.modulemap */,
 				C1FEA8DF125E5DC300CA78FF /* NVMath-Info.plist */,
 			);
 			name = Resources;
@@ -4011,6 +4024,7 @@
 			isa = PBXGroup;
 			children = (
 				C1FEA8FE125E71A200CA78FF /* NVImage-Info.plist */,
+				55FDAFA32EACB1660088E0C9 /* NVImage.modulemap */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -4115,6 +4129,7 @@
 			isa = PBXGroup;
 			children = (
 				C1FEA931125E72E300CA78FF /* NVTextureTools-Info.plist */,
+				55FDAFA52EACB3020088E0C9 /* NVTT.modulemap */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -4906,6 +4921,7 @@
 						ProvisioningStyle = Automatic;
 					};
 					55101AA5290E76B6003CED21 = {
+						LastSwiftMigration = 2600;
 						ProvisioningStyle = Automatic;
 					};
 					55101AC0290E76BC003CED21 = {
@@ -5209,6 +5225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55101AE4290E7A3D003CED21 /* ImportExtensionDDS.mm in Sources */,
+				55FDAF9F2EACA9F80088E0C9 /* ImportExtensionDDSNew.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6271,6 +6288,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_ENTITLEMENTS = "Source Image Metadata/Source_Image_Metadata.entitlements";
@@ -6299,6 +6317,10 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Source Image Metadata/DDS/DDS Image Metadata-Bridging-Header.h";
+				SWIFT_OBJC_INTEROP_MODE = objcxx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
 			};
 			name = Debug;
 		};
@@ -6306,6 +6328,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_ENTITLEMENTS = "Source Image Metadata/Source_Image_Metadata.entitlements";
@@ -6331,6 +6354,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Source Image Metadata/DDS/DDS Image Metadata-Bridging-Header.h";
+				SWIFT_OBJC_INTEROP_MODE = objcxx;
+				SWIFT_VERSION = 6.0;
 			};
 			name = Release;
 		};
@@ -6338,6 +6364,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_ENTITLEMENTS = "Source Image Metadata/Source_Image_Metadata.entitlements";
@@ -6363,6 +6390,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Source Image Metadata/DDS/DDS Image Metadata-Bridging-Header.h";
+				SWIFT_OBJC_INTEROP_MODE = objcxx;
+				SWIFT_VERSION = 6.0;
 			};
 			name = "Release-MAS";
 		};
@@ -6856,6 +6886,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "NVTextureTools/src/nvcore/NVCore-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks/";
+				MODULEMAP_FILE = "$(SRCROOT)/NVTextureTools/src/nvcore/NVCore.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nvidia.NVCore.framework;
 				PRODUCT_NAME = NVCore;
 				SKIP_INSTALL = YES;
@@ -6887,6 +6918,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "NVTextureTools/src/nvmath/NVMath-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks/";
+				MODULEMAP_FILE = "$(SRCROOT)/NVTextureTools/src/nvmath/NVMath.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nvidia.NVMath.framework;
 				PRODUCT_NAME = NVMath;
 				SKIP_INSTALL = YES;
@@ -6921,6 +6953,7 @@
 				);
 				INFOPLIST_FILE = "NVTextureTools/src/nvimage/NVImage-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks/";
+				MODULEMAP_FILE = "$(SRCROOT)/NVTextureTools/src/nvimage/NVImage.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nvidia.NVImage.framework;
 				PRODUCT_NAME = NVImage;
 				SKIP_INSTALL = YES;
@@ -6953,6 +6986,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "NVTextureTools/src/nvthread/NVThread-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks/";
+				MODULEMAP_FILE = "$(SRCROOT)/NVTextureTools/src/nvthread/NVThread.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nvidia.NVThread.framework;
 				PRODUCT_NAME = NVThread;
 				SKIP_INSTALL = YES;
@@ -7741,6 +7775,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "NVTextureTools/src/nvthread/NVThread-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks/";
+				MODULEMAP_FILE = "$(SRCROOT)/NVTextureTools/src/nvthread/NVThread.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nvidia.NVThread.framework;
 				PRODUCT_NAME = NVThread;
 				SKIP_INSTALL = YES;
@@ -7773,6 +7808,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "NVTextureTools/src/nvthread/NVThread-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks/";
+				MODULEMAP_FILE = "$(SRCROOT)/NVTextureTools/src/nvthread/NVThread.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nvidia.NVThread.framework;
 				PRODUCT_NAME = NVThread;
 				SKIP_INSTALL = YES;
@@ -8139,6 +8175,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "NVTextureTools/src/nvcore/NVCore-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks/";
+				MODULEMAP_FILE = "$(SRCROOT)/NVTextureTools/src/nvcore/NVCore.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nvidia.NVCore.framework;
 				PRODUCT_NAME = NVCore;
 				SKIP_INSTALL = YES;
@@ -8170,6 +8207,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "NVTextureTools/src/nvcore/NVCore-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks/";
+				MODULEMAP_FILE = "$(SRCROOT)/NVTextureTools/src/nvcore/NVCore.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nvidia.NVCore.framework;
 				PRODUCT_NAME = NVCore;
 				SKIP_INSTALL = YES;
@@ -8202,6 +8240,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "NVTextureTools/src/nvmath/NVMath-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks/";
+				MODULEMAP_FILE = "$(SRCROOT)/NVTextureTools/src/nvmath/NVMath.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nvidia.NVMath.framework;
 				PRODUCT_NAME = NVMath;
 				SKIP_INSTALL = YES;
@@ -8233,6 +8272,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "NVTextureTools/src/nvmath/NVMath-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks/";
+				MODULEMAP_FILE = "$(SRCROOT)/NVTextureTools/src/nvmath/NVMath.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nvidia.NVMath.framework;
 				PRODUCT_NAME = NVMath;
 				SKIP_INSTALL = YES;
@@ -8268,6 +8308,7 @@
 				);
 				INFOPLIST_FILE = "NVTextureTools/src/nvimage/NVImage-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks/";
+				MODULEMAP_FILE = "$(SRCROOT)/NVTextureTools/src/nvimage/NVImage.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nvidia.NVImage.framework;
 				PRODUCT_NAME = NVImage;
 				SKIP_INSTALL = YES;
@@ -8302,6 +8343,7 @@
 				);
 				INFOPLIST_FILE = "NVTextureTools/src/nvimage/NVImage-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks/";
+				MODULEMAP_FILE = "$(SRCROOT)/NVTextureTools/src/nvimage/NVImage.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nvidia.NVImage.framework;
 				PRODUCT_NAME = NVImage;
 				SKIP_INSTALL = YES;

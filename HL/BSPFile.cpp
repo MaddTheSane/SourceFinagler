@@ -356,7 +356,7 @@ hlVoid CBSPFile::GetFileName(hlChar *lpBuffer, hlUInt uiBufferSize)
 
 	const hlChar *lpMappingName = this->pMapping->GetFileName();
 
-	if(lpMappingName == 0 && *lpMappingName == '\0')
+	if(lpMappingName != NULL && *lpMappingName == '\0')
 	{
 		*lpBuffer = '\0';
 		return;

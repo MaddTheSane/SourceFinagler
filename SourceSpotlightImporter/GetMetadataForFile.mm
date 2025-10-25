@@ -42,17 +42,25 @@ using namespace nv;
 
 BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *contentTypeUTI, NSMutableDictionary *attributes, NSError **error) {
 	if (attributes == nil || filePath == nil || contentTypeUTI == nil) return NO;
+	NSError *internalError = nil;
 	
 @autoreleasepool {
-	NSData *data = [[NSData alloc] initWithContentsOfFile:filePath options:NSDataReadingMappedIfSafe error:error];
+	NSData *data = [[NSData alloc] initWithContentsOfFile:filePath options:NSDataReadingMappedIfSafe error:&internalError];
 	
 	if (data == nil) {
 		NSLog(@"MDGetMetadataFromImageWithContentsOfFile(): data == nil for filePath == %@", filePath);
+		if (error) {
+			*error = internalError;
+		}
 		return NO;
 	}
 	
 	if ([data length] < sizeof(OSType)) {
 		NSLog(@"MDGetMetadataFromImageWithContentsOfFile(): [data length] < 4 for filePath == %@", filePath);
+		if (error) {
+			internalError = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadCorruptFileError userInfo:@{NSFilePathErrorKey: filePath}];
+			*error = internalError;
+		}
 		return NO;
 	}
 	
@@ -65,6 +73,10 @@ BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *cont
 		
 		if (sfti == nil) {
 			NSLog(@"MDGetMetadataFromImageWithContentsOfFile(): failed to create a TKImage for file at %@!", filePath);
+			if (error) {
+				internalError = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadCorruptFileError userInfo:@{NSFilePathErrorKey: filePath}];
+				*error = internalError;
+			}
 			return NO;
 		}
 		
@@ -84,21 +96,37 @@ BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *cont
 	} else if ([contentTypeUTI isEqualToString:TKVTFType]) {
 		if (magic == TKHTMLErrorMagic) {
 			NSLog(@"MDGetMetadataFromImageWithContentsOfFile(): file at fileURL \"%@\" appears to be an ERROR 404 HTML file rather than a valid VTF", filePath);
+			if (error) {
+				internalError = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadCorruptFileError userInfo:@{NSFilePathErrorKey: filePath}];
+				*error = internalError;
+			}
 			return NO;
 		}
 		
 		CVTFFile *file = new CVTFFile();
 		
-		if (file == 0) {
+		if (file == nullptr) {
 			NSLog(@"MDGetMetadataFromImageWithContentsOfFile(): CVTFFile() returned NULL (for %@)", filePath);
+			if (error) {
+				internalError = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadCorruptFileError userInfo:@{NSFilePathErrorKey: filePath}];
+				*error = internalError;
+			}
 			return NO;
 		}
 		
 		if (file->Load([data bytes], (vlUInt)[data length], vlTrue) == NO) {
 			if (magic == TKVTFMagic) {
 				NSLog(@"MDGetMetadataFromImageWithContentsOfFile(): file->Load() (for %@) failed!", filePath);
+				if (error) {
+					internalError = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadCorruptFileError userInfo:@{NSFilePathErrorKey: filePath}];
+					*error = internalError;
+				}
 			} else {
 				NSLog(@"MDGetMetadataFromImageWithContentsOfFile(): file->Load() (for %@) failed! (does not appear to be a valid VTF; magic == 0x%x, %@)", filePath, (unsigned int)magic, NSFileTypeForHFSTypeCode(magic));
+				if (error) {
+					internalError = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadCorruptFileError userInfo:@{NSFilePathErrorKey: filePath}];
+					*error = internalError;
+				}
 			}
 			delete file;
 			return NO;
@@ -135,6 +163,10 @@ BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *cont
 	} else if ([contentTypeUTI isEqualToString:TKDDSType]) {
 		if (magic != TKDDSMagic) {
 			NSLog(@"MDGetMetadataFromImageWithContentsOfFile(): file at filePath \"%@\" does not appear to be a valid DDS; magic == 0x%x, %@", filePath, (unsigned int)magic, NSFileTypeForHFSTypeCode(magic));
+			if (error) {
+				internalError = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadCorruptFileError userInfo:@{NSFilePathErrorKey: filePath}];
+				*error = internalError;
+			}
 			return NO;
 		}
 		MemoryInputStream *mis = new MemoryInputStream((const unsigned char *)[data bytes], uint([data length]));
@@ -144,10 +176,22 @@ BOOL MDGetMetadataFromImageWithContentsOfFile(NSString *filePath, NSString *cont
 		if (!dds->isValid() || !dds->isSupported() || (dds->width() > 65535 || (dds->height() > 65535))) {
 			if (!dds->isValid()) {
 				NSLog(@"MDGetMetadataFromImageWithContentsOfFile(): file at filePath \"%@\": dds image is not valid, info follows:", filePath);
+				if (error) {
+					internalError = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadCorruptFileError userInfo:@{NSFilePathErrorKey: filePath}];
+					*error = internalError;
+				}
 			} else if (!dds->isSupported()) {
 				NSLog(@"MDGetMetadataFromImageWithContentsOfFile(): file at filePath \"%@\": dds image format is not supported, info follows:", filePath);
+				if (error) {
+					internalError = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadCorruptFileError userInfo:@{NSFilePathErrorKey: filePath}];
+					*error = internalError;
+				}
 			} else {
 				NSLog(@"MDGetMetadataFromImageWithContentsOfFile(): file at filePath \"%@\": dds image dimensions are too large, info follows:", filePath);
+				if (error) {
+					internalError = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadCorruptFileError userInfo:@{NSFilePathErrorKey: filePath}];
+					*error = internalError;
+				}
 			}
 			dds->printInfo();
 			delete dds;

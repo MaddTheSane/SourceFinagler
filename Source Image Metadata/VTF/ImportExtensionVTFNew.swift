@@ -22,9 +22,8 @@ public class ImportExtensionVTFNew: CSImportExtension {
 													NSURLErrorKey: contentURL])
 		}
 		
-		var magic: OSType = 0
-		data.withUnsafeBytes { ptr in
-			magic = ptr.load(as: OSType.self).bigEndian
+		let magic: OSType = data.withUnsafeBytes { ptr in
+			return ptr.load(as: OSType.self).bigEndian
 		}
 		
 		guard magic != TKHTMLErrorMagic else {
