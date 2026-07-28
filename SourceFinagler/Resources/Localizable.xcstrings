@@ -292,7 +292,7 @@
               "one" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "Copy one Item"
+                  "value" : "Copy One Item"
                 }
               },
               "other" : {
@@ -512,16 +512,48 @@
       }
     },
     "Hide Inspector" : {
-      "comment" : "Hide Inspector"
+      "comment" : "Hide Inspector",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hide Inspector"
+          }
+        }
+      }
     },
     "Hide Mipmaps" : {
-      "comment" : "Hide Mipmaps"
+      "comment" : "Hide Mipmaps",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hide Mipmaps"
+          }
+        }
+      }
     },
     "Hide Path Bar" : {
-      "comment" : "Hide Path Bar"
+      "comment" : "Hide Path Bar",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hide Path Bar"
+          }
+        }
+      }
     },
     "Hide View Options" : {
-      "comment" : "Hide View Options"
+      "comment" : "Hide View Options",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hide View Options"
+          }
+        }
+      }
     },
     "Indicates that the items in this window are inside a %@" : {
       "comment" : "Indicates that the items in this window are inside a %@",

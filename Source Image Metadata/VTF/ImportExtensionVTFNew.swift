@@ -11,9 +11,17 @@ import CoreSpotlight
 import VTF.Files.VTF.File
 import TextureKit.TKVTFImageRep
 
+extension VTFLib.CVTFFile {
+	mutating func load(data: Data, headerOnly: Bool = false) -> Bool {
+		return data.withUnsafeBytes { urbp in
+			self.Load(urbp.baseAddress!, vlUInt(exactly: urbp.count) ?? vlUInt.max, headerOnly)
+		}
+	}
+}
+
 public class ImportExtensionVTFNew: CSImportExtension {
 	public override func update(_ attributes: CSSearchableItemAttributeSet, forFileAt contentURL: URL) throws {
-		let data = try Data(contentsOf: contentURL)
+		let data = try Data(contentsOf: contentURL, options: [.mappedIfSafe])
 		
 		guard data.count > MemoryLayout<OSType>.size else {
 			throw CocoaError(.fileReadCorruptFile,
@@ -35,9 +43,7 @@ public class ImportExtensionVTFNew: CSImportExtension {
 		
 		var file = VTFLib.CVTFFile()
 		
-		let success = data.withUnsafeBytes { urbp in
-			file.Load(urbp.baseAddress!, vlUInt(urbp.count), true)
-		}
+		let success = file.load(data: data, headerOnly: true)
 		
 		guard success else {
 			if magic == TKVTFMagic {
