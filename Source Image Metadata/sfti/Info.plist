@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CSExtensionLabel</key>
-	<string>Source_Image_MetadataImporter</string>
+	<string>Source Image Metadata Importer</string>
 	<key>NSExtension</key>
 	<dict>
 		<key>NSExtensionAttributes</key>

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CSExtensionLabel</key>
-	<string>Source_DDS_Image_MetadataImporter</string>
+	<string>Source/DDS Image Metadata Importer</string>
 	<key>NSExtension</key>
 	<dict>
 		<key>NSExtensionAttributes</key>
@@ -16,7 +16,7 @@
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.spotlight.import</string>
 		<key>NSExtensionPrincipalClass</key>
-		<string>ImportExtension</string>
+		<string>ImportExtensionDDS</string>
 	</dict>
 </dict>
 </plist>

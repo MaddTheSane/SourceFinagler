@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CSExtensionLabel</key>
-	<string>Source_VTF_Image_MetadataImporter</string>
+	<string>Source/VTF Image Metadata Importer</string>
 	<key>NSExtension</key>
 	<dict>
 		<key>NSExtensionAttributes</key>
