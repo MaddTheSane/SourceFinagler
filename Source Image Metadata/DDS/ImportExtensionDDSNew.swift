@@ -39,20 +39,25 @@ public class ImportExtensionDDSNew : CSImportExtension {
 		}
 		
 		var dds = nv.DirectDrawSurface()
-		_=contentURL.withUnsafeFileSystemRepresentation { ubp in
+		let loadSuccess = contentURL.withUnsafeFileSystemRepresentation { ubp in
 			dds.load(ubp)
 		}
 		try? handle.close()
+		guard loadSuccess else {
+			throw CocoaError(.fileReadCorruptFile, userInfo:
+								[NSLocalizedDescriptionKey: NSLocalizedString("dds image is not valid", comment: "dds image is not valid"),
+								NSDebugDescriptionErrorKey: "dds image is not valid",
+											 NSURLErrorKey: contentURL])
+		}
 		
 		if !dds.isValid() || !dds.isSupported() || (dds.width() > 65535 || (dds.height() > 65535)) {
-			if (!dds.isValid()) {
+			if !dds.isValid() {
 //				dds.printInfo()
 				throw CocoaError(.fileReadCorruptFile, userInfo:
 									[NSLocalizedDescriptionKey: NSLocalizedString("dds image is not valid", comment: "dds image is not valid"),
 									NSDebugDescriptionErrorKey: "dds image is not valid",
 												 NSURLErrorKey: contentURL])
-				
-			} else if (!dds.isSupported()) {
+			} else if !dds.isSupported() {
 //				dds.printInfo()
 				throw CocoaError(.fileReadCorruptFile, userInfo:
 									[NSLocalizedDescriptionKey: NSLocalizedString("dds image format is not supported", comment: "dds image format is not supported"),
@@ -95,7 +100,7 @@ public class ImportExtensionDDSNew : CSImportExtension {
 
 		attributes.pixelWidth = NSNumber(value: theWidth)
 		attributes.pixelHeight = NSNumber(value: theHeight)
-		attributes.pixelCount = NSNumber(value: Int64(theWidth * theHeight))
+		attributes.pixelCount = NSNumber(value: UInt64(theWidth) * UInt64(theHeight))
 		if let theCompression,
 		   let customKey = CSCustomAttributeKey(keyName: "com_markdouma_image_compression") {
 			attributes.setValue(theCompression as NSString, forCustomKey: customKey)

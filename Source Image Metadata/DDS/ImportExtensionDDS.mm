@@ -52,8 +52,18 @@ using namespace nv;
 	}
 	
 	DirectDrawSurface *dds = new DirectDrawSurface();
-	dds->load(contentURL.fileSystemRepresentation);
+	bool loadSuccess = dds->load(contentURL.fileSystemRepresentation);
 	[handle closeFile];
+	if (!loadSuccess) {
+		if (error) {
+			*error = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadCorruptFileError userInfo:
+					  @{NSLocalizedDescriptionKey: NSLocalizedString(@"dds image is not valid", @"dds image is not valid"),
+						NSDebugDescriptionErrorKey: @"dds image is not valid",
+						NSURLErrorKey: contentURL
+					  }];
+		}
+		return NO;
+	}
 	
 	if (!dds->isValid() || !dds->isSupported() || (dds->width() > 65535 || (dds->height() > 65535))) {
 		if (!dds->isValid()) {

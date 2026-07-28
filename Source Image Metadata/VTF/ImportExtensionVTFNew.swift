@@ -54,7 +54,10 @@ public class ImportExtensionVTFNew: CSImportExtension {
 		}
 		
 		let isEnvironmentMap: Bool = file.GetFaceCount() > 1
-		let hasAlphaChannel = VTFImageFlag(rawValue: file.GetFlags()).contains([.TEXTUREFLAGS_ONEBITALPHA]) || VTFImageFlag(rawValue: file.GetFlags()).contains([.TEXTUREFLAGS_EIGHTBITALPHA])
+		let hasAlphaChannel = { () -> Bool in
+			let flags = VTFImageFlag(rawValue: file.GetFlags())
+			return flags.contains(.TEXTUREFLAGS_ONEBITALPHA) || flags.contains(.TEXTUREFLAGS_EIGHTBITALPHA)
+		}()
 		let hasMipmaps: Bool = file.GetMipmapCount() > 1
 		let isAnimated: Bool = file.GetFrameCount() > 1
 		let compression: String?
