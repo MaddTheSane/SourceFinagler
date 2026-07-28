@@ -1381,7 +1381,7 @@
 		55F82CD11D7BAC4100D6DAC9 /* TKMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKMath.m; sourceTree = "<group>"; };
 		55F82CD31D7BACD900D6DAC9 /* TKValueAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKValueAdditions.h; sourceTree = "<group>"; };
 		55F82CD41D7BACD900D6DAC9 /* TKValueAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKValueAdditions.m; sourceTree = "<group>"; };
-		55FDAF9E2EACA9E50088E0C9 /* ImportExtensionDDSNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportExtensionDDSNew.swift; sourceTree = "<group>"; };
+		55FDAF9E2EACA9E50088E0C9 /* ImportExtensionDDSNew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportExtensionDDSNew.swift; sourceTree = "<group>"; };
 		55FDAFA02EACA9FC0088E0C9 /* DDS Image Metadata-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DDS Image Metadata-Bridging-Header.h"; sourceTree = "<group>"; };
 		55FDAFA12EACAC100088E0C9 /* NVCore.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = NVCore.modulemap; sourceTree = "<group>"; };
 		55FDAFA22EACB0500088E0C9 /* NVMath.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = NVMath.modulemap; sourceTree = "<group>"; };
@@ -6287,6 +6287,7 @@
 		55101ABB290E76B6003CED21 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -6327,6 +6328,7 @@
 		55101ABC290E76B6003CED21 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -6363,6 +6365,7 @@
 		55101ABD290E76B6003CED21 /* Release-MAS */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;

@@ -74,7 +74,6 @@ public class ImportExtensionDDSNew : CSImportExtension {
 		let hasAlphaChannel: Bool = dds.hasAlpha()
 		let hasMipmaps: Bool = (dds.mipmapCount() > 1)
 		let isEnvironmentMap: Bool = dds.isTextureCube()
-
 		
 		var theCompression: String? = nil
 		if let compression = dds.header.d3d9FormatString() {
