@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="24765" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="24765"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -48,7 +48,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
             <rect key="contentRect" x="115" y="489" width="560" height="479"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1512" height="944"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1512" height="949"/>
             <value key="minSize" type="size" width="300" height="100"/>
             <view key="contentView" focusRingType="none" id="83">
                 <rect key="frame" x="0.0" y="0.0" width="560" height="479"/>
@@ -58,9 +58,9 @@
                         <rect key="frame" x="0.0" y="352" width="560" height="127"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1328">
-                                <rect key="frame" x="0.0" y="0.0" width="560" height="102"/>
+                                <rect key="frame" x="0.0" y="0.0" width="560" height="100"/>
                                 <clipView key="contentView" id="MYg-34-aH5">
-                                    <rect key="frame" x="1" y="1" width="558" height="100"/>
+                                    <rect key="frame" x="1" y="1" width="558" height="98"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <predicateEditor verticalHuggingPriority="750" nestingMode="list" rowHeight="25" id="1331">
@@ -338,16 +338,16 @@
                                     <rect key="frame" x="-100" y="-100" width="360" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="1329">
-                                    <rect key="frame" x="544" y="1" width="15" height="99"/>
+                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="1329">
+                                    <rect key="frame" x="542" y="1" width="17" height="98"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="2203" customClass="MDScopeBarView">
-                                <rect key="frame" x="0.0" y="102" width="560" height="25"/>
+                                <rect key="frame" x="0.0" y="100" width="560" height="27"/>
                                 <subviews>
                                     <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2199">
-                                        <rect key="frame" x="76" y="3" width="419" height="19"/>
+                                        <rect key="frame" x="76" y="2" width="413" height="22"/>
                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="2200">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -355,7 +355,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2201">
-                                        <rect key="frame" x="503" y="3" width="44" height="17"/>
+                                        <rect key="frame" x="497" y="3" width="50" height="20"/>
                                         <buttonCell key="cell" type="roundRect" title="Done" bezelStyle="roundedRect" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2202">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="cellTitle"/>
@@ -365,7 +365,7 @@ Gw
                                         </buttonCell>
                                     </button>
                                     <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2204">
-                                        <rect key="frame" x="5" y="5" width="66" height="15"/>
+                                        <rect key="frame" x="5" y="6" width="66" height="15"/>
                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Search for:" id="2205">
                                             <font key="font" metaFont="cellTitle"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -454,7 +454,7 @@ Gw
                                 <rect key="frame" x="24" y="2.5" width="16" height="20"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="pencil.slash" catalog="system" id="1278"/>
                             </imageView>
-                            <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="1277">
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="1277">
                                 <rect key="frame" x="510" y="5" width="16" height="16"/>
                             </progressIndicator>
                         </subviews>
@@ -620,7 +620,7 @@ Gw
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="AaB-3S-iSh">
                         <rect key="frame" x="0.0" y="0.0" width="560" height="330"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" autosaveName="outlineView" headerView="1081" indentationPerLevel="16" autoresizesOutlineColumn="YES" outlineTableColumn="1082" id="1080" customClass="MDOutlineView">
                                 <rect key="frame" x="0.0" y="0.0" width="560" height="307"/>
@@ -740,6 +740,7 @@ Gw
             <connections>
                 <outlet property="delegate" destination="-2" id="417"/>
             </connections>
+            <point key="canvasLocation" x="-196" y="491"/>
         </menu>
         <menu id="828" userLabel="browserMenu">
             <items>
@@ -760,6 +761,7 @@ Gw
             <connections>
                 <outlet property="delegate" destination="-2" id="835"/>
             </connections>
+            <point key="canvasLocation" x="20" y="475"/>
         </menu>
         <menu id="990" userLabel="pathControlMenu">
             <items>
@@ -780,6 +782,7 @@ Gw
             <connections>
                 <outlet property="delegate" destination="-2" id="996"/>
             </connections>
+            <point key="canvasLocation" x="-423" y="475"/>
         </menu>
         <objectController objectClassName="MDHLDocument" id="2193" userLabel="mediator">
             <declaredKeys>

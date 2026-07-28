@@ -2,13 +2,35 @@
   "sourceLanguage" : "en",
   "strings" : {
     " Info" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " Info"
+          }
+        }
+      }
     },
     "--" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "--"
+          }
+        }
+      }
     },
     "[Custom]" : {
-      "comment" : "[Custom]"
+      "comment" : "[Custom]",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[Custom]"
+          }
+        }
+      }
     },
     "%@ and %@ were successfully installed." : {
       "extractionState" : "manual",
@@ -21,17 +43,6 @@
         }
       }
     },
-    "%@ item, %@ available" : {
-      "comment" : "%@ item, %@ available",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@ item, %2$@ available"
-          }
-        }
-      }
-    },
     "%@ items were successfully installed." : {
       "extractionState" : "manual",
       "localizations" : {
@@ -39,17 +50,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ items were successfully installed."
-          }
-        }
-      }
-    },
-    "%@ items, %@ available" : {
-      "comment" : "%@ items, %@ available",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@ items, %2$@ available"
           }
         }
       }
@@ -99,13 +99,82 @@
       }
     },
     "%lu documents" : {
-      "comment" : "(count of) documents"
+      "comment" : "(count of) documents",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lu document"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "new",
+                  "value" : "%lu documents"
+                }
+              }
+            }
+          }
+        }
+      }
     },
     "%lu items" : {
-      "comment" : "(count of) items"
+      "comment" : "(count of) items",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lu item"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lu items"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "%lu items, %@ available" : {
+      "comment" : "%lu items, %@ available",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "One item, %2$@ available"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "new",
+                  "value" : "%1$lu items, %2$@ available"
+                }
+              },
+              "zero" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Zero items, %2$@ available"
+                }
+              }
+            }
+          }
+        }
+      }
     },
     "%lu of %@ selected, %@ available" : {
-      "comment" : "String for when only 1 item is selected",
+      "comment" : "String for when items are selected",
       "localizations" : {
         "en" : {
           "variations" : {
@@ -160,13 +229,37 @@
       }
     },
     "<untitled>" : {
-      "comment" : "<untitled> label for unnamed nodes"
+      "comment" : "<untitled> label for unnamed nodes",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "<untitled>"
+          }
+        }
+      }
     },
     "Add Images" : {
-      "comment" : "Add Images"
+      "comment" : "Add Images",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add Images"
+          }
+        }
+      }
     },
     "Alpha" : {
-      "comment" : "Alpha channel"
+      "comment" : "Alpha channel",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alpha"
+          }
+        }
+      }
     },
     "and %@ were successfully installed." : {
       "extractionState" : "manual",
@@ -202,7 +295,15 @@
       }
     },
     "Blue" : {
-      "comment" : "Blue channel"
+      "comment" : "Blue channel",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blue"
+          }
+        }
+      }
     },
     "Close Quick Look" : {
       "comment" : "Close QuickLook",
@@ -241,9 +342,21 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Copy %lu Items"
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Copy one Item"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Copy %lu Items"
+                }
+              }
+            }
           }
         }
       }
@@ -263,9 +376,21 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Copy of %lu Items"
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Copy of %lu Item"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Copy of %lu Items"
+                }
+              }
+            }
           }
         }
       }
@@ -294,31 +419,97 @@
       }
     },
     "Could not locate installed game for Steam Game ID %ld" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Could not locate installed game for Steam Game ID %ld"
+          }
+        }
+      }
     },
     "Couldn't read the addoninfo.txt file inside the Source addon file" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn't read the addoninfo.txt file inside the Source addon file"
+          }
+        }
+      }
     },
     "Didn't find a valid game ID in the addoninfo.txt file inside the Source addon file" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Didn't find a valid game ID in the addoninfo.txt file inside the Source addon file"
+          }
+        }
+      }
     },
     "Email: %@" : {
-      "comment" : "e-mail"
+      "comment" : "e-mail",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email: %@"
+          }
+        }
+      }
     },
     "General" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "General"
+          }
+        }
+      }
     },
     "Generate Mipmaps" : {
-      "comment" : "Generate Mipmaps"
+      "comment" : "Generate Mipmaps",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Generate Mipmaps"
+          }
+        }
+      }
     },
     "Green" : {
-      "comment" : "Green channel"
+      "comment" : "Green channel",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Green"
+          }
+        }
+      }
     },
     "Help Game" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Help Game"
+          }
+        }
+      }
     },
     "Help Games" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Help Games"
+          }
+        }
+      }
     },
     "Help Other Apps Recognize Games %lu" : {
       "comment" : "Help Other Apps Recognize Game",
@@ -344,13 +535,36 @@
       }
     },
     "Hide Faces" : {
-      "comment" : "Hide Faces"
+      "comment" : "Hide Faces",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hide Faces"
+          }
+        }
+      }
     },
     "Hide Frames" : {
-      "comment" : "Hide Frames"
+      "comment" : "Hide Frames",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hide Frames"
+          }
+        }
+      }
     },
     "Hide Image Inspector" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hide Image Inspector"
+          }
+        }
+      }
     },
     "Hide Inspector" : {
       "comment" : "Hide Inspector"
@@ -365,19 +579,57 @@
       "comment" : "Hide View Options"
     },
     "Indicates that the items in this window are inside a %@" : {
-      "comment" : "Indicates that the items in this window are inside a %@"
+      "comment" : "Indicates that the items in this window are inside a %@",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indicates that the items in this window are inside a %@"
+          }
+        }
+      }
     },
     "Indicates that you cannot add or change the contents of this %@" : {
-      "comment" : "Indicates that you cannot add or change the contents of this %@"
+      "comment" : "Indicates that you cannot add or change the contents of this %@",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indicates that you cannot add or change the contents of this %@"
+          }
+        }
+      }
     },
     "Info" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Info"
+          }
+        }
+      }
     },
     "Inside %@" : {
-      "comment" : "Inside %@"
+      "comment" : "Inside %@",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inside %@"
+          }
+        }
+      }
     },
     "Many operations do not work properly yet." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Many operations do not work properly yet."
+          }
+        }
+      }
     },
     "Move Images" : {
       "comment" : "Move Images",
@@ -405,9 +657,21 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Move of %lu Items"
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Move of one Item"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Move of %lu Items"
+                }
+              }
+            }
           }
         }
       }
@@ -519,7 +783,14 @@
       }
     },
     "Other Apps Helper" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Other Apps Helper"
+          }
+        }
+      }
     },
     "Paste" : {
       "extractionState" : "manual",
@@ -558,7 +829,15 @@
       "comment" : "Play"
     },
     "Play the animated image" : {
-      "comment" : "Play the animated image"
+      "comment" : "Play the animated image",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Play the animated image"
+          }
+        }
+      }
     },
     "Please reinstall the application." : {
       "extractionState" : "manual",
@@ -639,37 +918,123 @@
       }
     },
     "Quit" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quit"
+          }
+        }
+      }
     },
     "Red" : {
-      "comment" : "Red channel"
+      "comment" : "Red channel",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Red"
+          }
+        }
+      }
     },
     "Remove Images" : {
-      "comment" : "Remove Images"
+      "comment" : "Remove Images",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove Images"
+          }
+        }
+      }
     },
     "Remove Mipmaps" : {
-      "comment" : "Remove Mipmaps"
+      "comment" : "Remove Mipmaps",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove Mipmaps"
+          }
+        }
+      }
     },
     "Show Faces" : {
-      "comment" : "Show Faces"
+      "comment" : "Show Faces",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show Faces"
+          }
+        }
+      }
     },
     "Show Frames" : {
-      "comment" : "Show Frames"
+      "comment" : "Show Frames",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show Frames"
+          }
+        }
+      }
     },
     "Show Image Inspector" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show Image Inspector"
+          }
+        }
+      }
     },
     "Show Inspector" : {
-      "comment" : "Show Inspector"
+      "comment" : "Show Inspector",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show Inspector"
+          }
+        }
+      }
     },
     "Show Mipmaps" : {
-      "comment" : "Show Mipmaps"
+      "comment" : "Show Mipmaps",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show Mipmaps"
+          }
+        }
+      }
     },
     "Show Path Bar" : {
-      "comment" : "Show Path Bar"
+      "comment" : "Show Path Bar",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show Path Bar"
+          }
+        }
+      }
     },
     "Show View Options" : {
-      "comment" : "Show View Options"
+      "comment" : "Show View Options",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show View Options"
+          }
+        }
+      }
     },
     "Size" : {
       "extractionState" : "manual",
@@ -683,10 +1048,25 @@
       }
     },
     "Sorry, but you need at least Mac OS X 10.6 on an Intel-based Mac to run this application!" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sorry, but you need at least Mac OS X 10.6 on an Intel-based Mac to run this application!"
+          }
+        }
+      }
     },
     "Source Addon file" : {
-      "comment" : "Source Addon file"
+      "comment" : "Source Addon file",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Addon file"
+          }
+        }
+      }
     },
     "Source Addon Installation" : {
       "extractionState" : "manual",
@@ -711,64 +1091,213 @@
       }
     },
     "Source Finagler is only intended for Intel-based Macs!" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Finagler is only intended for Intel-based Macs!"
+          }
+        }
+      }
     },
     "Source Game Archive" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Game Archive"
+          }
+        }
+      }
     },
     "Source Level" : {
-      "comment" : "Source Level"
+      "comment" : "Source Level",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Level"
+          }
+        }
+      }
     },
     "Source Package file" : {
-      "comment" : "Source Package file"
+      "comment" : "Source Package file",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Package file"
+          }
+        }
+      }
     },
     "Source Texture Package file" : {
-      "comment" : "Source Texture Package file"
+      "comment" : "Source Texture Package file",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Texture Package file"
+          }
+        }
+      }
     },
     "Source Xbox Package file" : {
-      "comment" : "Source Xbox Package file"
+      "comment" : "Source Xbox Package file",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Xbox Package file"
+          }
+        }
+      }
     },
     "Steam Apps Re-locator" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Steam Apps Relocator"
+          }
+        }
+      }
     },
     "Steam Cache file" : {
-      "comment" : "Steam Cache file"
+      "comment" : "Steam Cache file",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Steam Cache file"
+          }
+        }
+      }
     },
     "Steam cannot be running" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Steam cannot be running"
+          }
+        }
+      }
     },
     "Steam Non-Cache file" : {
-      "comment" : "Steam Non-Cache file"
+      "comment" : "Steam Non-Cache file",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Steam Non-Cache file"
+          }
+        }
+      }
     },
     "Stop" : {
-      "comment" : "Stop"
+      "comment" : "Stop",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop"
+          }
+        }
+      }
     },
     "Stop copying" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop copying"
+          }
+        }
+      }
     },
     "Stop playing the animated image" : {
-      "comment" : "Stop playing the animated image"
+      "comment" : "Stop playing the animated image",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop playing the animated image"
+          }
+        }
+      }
     },
     "Success" : {
-      "comment" : "Success"
+      "comment" : "Success",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Success"
+          }
+        }
+      }
     },
     "The image-creation and manipulation feature is still a work in progress." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The image-creation and manipulation feature is still a work in progress."
+          }
+        }
+      }
     },
     "This addon file is already installed" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This addon file is already installed"
+          }
+        }
+      }
     },
     "Today" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Today"
+          }
+        }
+      }
     },
     "Tomorrow" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tomorrow"
+          }
+        }
+      }
     },
     "Unhelp Game" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unhelp Game"
+          }
+        }
+      }
     },
     "Unhelp Games" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unhelp Games"
+          }
+        }
+      }
     },
     "Unknown error" : {
       "comment" : "Unknown error",
@@ -782,7 +1311,14 @@
       }
     },
     "View Options" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View Options"
+          }
+        }
+      }
     },
     "Visit Webpage" : {
       "extractionState" : "manual",
@@ -796,7 +1332,14 @@
       }
     },
     "Yesterday" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yesterday"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

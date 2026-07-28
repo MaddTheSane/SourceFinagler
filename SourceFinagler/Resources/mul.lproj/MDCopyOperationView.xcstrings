@@ -11,7 +11,8 @@
             "value" : "Preparing copy of \"source\" to \"destination\""
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "37.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"0 of 50.2 MB - About 45 minutes remaining\"; ObjectID = \"37\";",
@@ -23,7 +24,8 @@
             "value" : "0 of 50.2 MB - About 45 minutes remaining"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     }
   },
   "version" : "1.0"

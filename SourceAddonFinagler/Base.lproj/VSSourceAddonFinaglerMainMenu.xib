@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="24765" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="24765"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -227,7 +227,7 @@
             <windowStyleMask key="styleMask" titled="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
             <rect key="contentRect" x="325" y="585" width="540" height="426"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1512" height="949"/>
             <value key="minSize" type="size" width="440" height="146"/>
             <view key="contentView" id="918">
                 <rect key="frame" x="0.0" y="0.0" width="540" height="426"/>
@@ -240,7 +240,7 @@
                         </constraints>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="935"/>
                     </imageView>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="921">
+                    <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="921">
                         <rect key="frame" x="95" y="389" width="428" height="17"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Source Addon Installation" id="936">
                             <font key="font" metaFont="systemBold"/>
@@ -248,7 +248,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="920">
+                    <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="920">
                         <rect key="frame" x="95" y="367" width="428" height="14"/>
                         <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="The following items were successfully installed:" id="937">
                             <font key="font" metaFont="smallSystem"/>
@@ -257,10 +257,7 @@
                         </textFieldCell>
                     </textField>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="919">
-                        <rect key="frame" x="435" y="12" width="92" height="32"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="78" id="d8Z-F4-hZ0"/>
-                        </constraints>
+                        <rect key="frame" x="442" y="19" width="78" height="24"/>
                         <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="938">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -268,14 +265,17 @@
 DQ
 </string>
                         </buttonCell>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="78" id="d8Z-F4-hZ0"/>
+                        </constraints>
                         <connections>
                             <action selector="ok:" target="821" id="1069"/>
                         </connections>
                     </button>
                     <box autoresizesSubviews="NO" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="1068">
-                        <rect key="frame" x="20" y="47" width="500" height="287"/>
+                        <rect key="frame" x="20" y="51" width="500" height="283"/>
                         <view key="contentView" id="fdj-xU-eR8">
-                            <rect key="frame" x="0.0" y="0.0" width="500" height="287"/>
+                            <rect key="frame" x="0.0" y="0.0" width="500" height="283"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </view>
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -287,6 +287,7 @@ DQ
                     <constraint firstItem="922" firstAttribute="top" secondItem="921" secondAttribute="top" id="C1i-RG-YM8"/>
                     <constraint firstItem="922" firstAttribute="leading" secondItem="918" secondAttribute="leading" constant="20" symbolic="YES" id="FQl-fn-bcV"/>
                     <constraint firstItem="921" firstAttribute="leading" secondItem="922" secondAttribute="trailing" constant="13" id="FRf-bS-o0L"/>
+                    <constraint firstItem="919" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="918" secondAttribute="leading" constant="20" symbolic="YES" id="Iwh-Eo-1Di"/>
                     <constraint firstItem="922" firstAttribute="leading" secondItem="1068" secondAttribute="leading" id="MKh-02-ScQ"/>
                     <constraint firstItem="922" firstAttribute="centerY" secondItem="920" secondAttribute="centerY" id="OqD-kv-ifR"/>
                     <constraint firstAttribute="bottom" secondItem="919" secondAttribute="bottom" constant="19" id="QcS-Nj-3dS"/>
@@ -351,7 +352,7 @@ DQ
                     <rect key="frame" x="0.0" y="0.0" width="500" height="116"/>
                     <clipView key="contentView" id="weB-91-jhW">
                         <rect key="frame" x="1" y="1" width="498" height="114"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" autosaveName="successTableView" headerView="1009" id="947">
                                 <rect key="frame" x="0.0" y="0.0" width="498" height="91"/>
@@ -408,7 +409,7 @@ DQ
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="1001">
+                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="1001">
                     <rect key="frame" x="0.0" y="124" width="253" height="14"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="The following items were successfully installed:" id="1002">
                         <font key="font" metaFont="smallSystem"/>
@@ -436,7 +437,7 @@ DQ
                     <rect key="frame" x="0.0" y="0.0" width="500" height="116"/>
                     <clipView key="contentView" id="bq1-7C-x60">
                         <rect key="frame" x="1" y="1" width="498" height="114"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" autosaveName="problemTableView" headerView="991" id="967">
                                 <rect key="frame" x="0.0" y="0.0" width="498" height="91"/>
@@ -493,7 +494,7 @@ DQ
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="1004">
+                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="1004">
                     <rect key="frame" x="0.0" y="124" width="339" height="14"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="The following items could not be installed because of problems:" id="1005">
                         <font key="font" metaFont="smallSystem"/>
@@ -517,15 +518,15 @@ DQ
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
             <rect key="contentRect" x="309" y="906" width="398" height="91"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1512" height="949"/>
             <value key="minSize" type="size" width="398" height="91"/>
             <value key="maxSize" type="size" width="398" height="91"/>
             <view key="contentView" id="368">
                 <rect key="frame" x="0.0" y="0.0" width="398" height="91"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="828">
-                        <rect key="frame" x="18" y="54" width="120" height="16"/>
+                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="828">
+                        <rect key="frame" x="36" y="51" width="105" height="16"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Install Addon by:" id="829">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -533,10 +534,10 @@ DQ
                         </textFieldCell>
                     </textField>
                     <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="830">
-                        <rect key="frame" x="141" y="47" width="241" height="25"/>
+                        <rect key="frame" x="147" y="47" width="231" height="24"/>
                         <popUpButtonCell key="cell" type="push" title="moving to Addons folder" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="1" imageScaling="proportionallyDown" inset="2" selectedItem="833" id="831">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="menu"/>
+                            <font key="font" metaFont="message"/>
                             <menu key="menu" title="OtherViews" id="832">
                                 <items>
                                     <menuItem title="moving to Addons folder" state="on" tag="1" id="833"/>
@@ -549,7 +550,7 @@ DQ
                         </connections>
                     </popUpButton>
                     <button hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="857">
-                        <rect key="frame" x="142" y="26" width="236" height="18"/>
+                        <rect key="frame" x="147" y="7" width="231" height="32"/>
                         <buttonCell key="cell" type="check" title="Reveal installed Addon(s) in Finder" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="858">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
@@ -558,15 +559,14 @@ DQ
                 </subviews>
                 <constraints>
                     <constraint firstItem="828" firstAttribute="baseline" secondItem="830" secondAttribute="baseline" id="6fK-5Q-vCB"/>
-                    <constraint firstItem="830" firstAttribute="centerX" secondItem="857" secondAttribute="centerX" id="CSW-a1-FLd"/>
                     <constraint firstItem="857" firstAttribute="top" secondItem="830" secondAttribute="bottom" constant="8" symbolic="YES" id="G2S-Ib-O1K"/>
                     <constraint firstItem="830" firstAttribute="leading" secondItem="828" secondAttribute="trailing" constant="8" symbolic="YES" id="Lrd-rS-nOY"/>
                     <constraint firstItem="830" firstAttribute="top" secondItem="368" secondAttribute="top" constant="20" symbolic="YES" id="aK7-kf-ugW"/>
-                    <constraint firstItem="828" firstAttribute="leading" secondItem="368" secondAttribute="leading" constant="20" symbolic="YES" id="alO-ft-Iz5"/>
+                    <constraint firstItem="828" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="368" secondAttribute="leading" constant="20" symbolic="YES" id="alO-ft-Iz5"/>
                     <constraint firstAttribute="trailing" secondItem="830" secondAttribute="trailing" constant="20" symbolic="YES" id="fvK-3y-Evz"/>
                     <constraint firstItem="857" firstAttribute="leading" secondItem="830" secondAttribute="leading" id="h4D-dw-J7T"/>
                     <constraint firstItem="828" firstAttribute="firstBaseline" secondItem="830" secondAttribute="firstBaseline" id="hiA-DN-75F"/>
-                    <constraint firstAttribute="trailing" secondItem="857" secondAttribute="trailing" constant="20" symbolic="YES" id="s8h-7H-Z47"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="857" secondAttribute="trailing" constant="20" symbolic="YES" id="s8h-7H-Z47"/>
                 </constraints>
             </view>
             <connections>
@@ -594,7 +594,7 @@ DQ
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="235" y="403" width="375" height="117"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1512" height="949"/>
             <view key="contentView" id="1078">
                 <rect key="frame" x="0.0" y="0.0" width="375" height="117"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -607,24 +607,27 @@ DQ
                         </constraints>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="1084"/>
                     </imageView>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="1080">
-                        <rect key="frame" x="95" y="85" width="263" height="17"/>
+                    <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="1080">
+                        <rect key="frame" x="95" y="85" width="171" height="17"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Source Addon Installation" id="1083">
                             <font key="font" metaFont="systemBold"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="1081">
-                        <rect key="frame" x="95" y="63" width="263" height="14"/>
+                    <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="1081">
+                        <rect key="frame" x="95" y="63" width="88" height="14"/>
                         <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="Copying items…" id="1082">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <progressIndicator verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="1085">
-                        <rect key="frame" x="96" y="25" width="261" height="20"/>
+                    <progressIndicator wantsLayer="YES" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="1085">
+                        <rect key="frame" x="96" y="26" width="261" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="261" id="VBD-le-WI6"/>
+                        </constraints>
                     </progressIndicator>
                 </subviews>
                 <constraints>
@@ -634,14 +637,14 @@ DQ
                     <constraint firstItem="1085" firstAttribute="top" secondItem="1081" secondAttribute="bottom" constant="19" id="Duh-Ai-TKu"/>
                     <constraint firstItem="1079" firstAttribute="leading" secondItem="1078" secondAttribute="leading" constant="20" symbolic="YES" id="Vfe-kQ-r9g"/>
                     <constraint firstItem="1079" firstAttribute="top" secondItem="1080" secondAttribute="top" id="Zdj-Vc-sLJ"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1081" secondAttribute="trailing" constant="20" symbolic="YES" id="ah9-mj-xBT"/>
                     <constraint firstItem="1080" firstAttribute="leading" secondItem="1081" secondAttribute="leading" id="cI5-Cd-Uxb"/>
-                    <constraint firstItem="1081" firstAttribute="centerX" secondItem="1085" secondAttribute="centerX" id="gcO-kD-4Bg"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1080" secondAttribute="trailing" constant="20" symbolic="YES" id="gjy-ob-GlI"/>
                     <constraint firstItem="1080" firstAttribute="leading" secondItem="1079" secondAttribute="trailing" constant="13" id="naZ-Wy-uQU"/>
                     <constraint firstItem="1085" firstAttribute="leading" secondItem="1079" secondAttribute="trailing" constant="12" id="qga-5A-DPB"/>
                     <constraint firstItem="1079" firstAttribute="centerY" secondItem="1081" secondAttribute="centerY" id="rlb-Ve-pzb"/>
                     <constraint firstAttribute="bottom" secondItem="1085" secondAttribute="bottom" constant="26" id="spZ-LG-ek3"/>
                     <constraint firstAttribute="trailing" secondItem="1085" secondAttribute="trailing" constant="18" id="u2B-fX-uHV"/>
-                    <constraint firstItem="1080" firstAttribute="trailing" secondItem="1081" secondAttribute="trailing" id="zjn-dl-XhW"/>
                 </constraints>
             </view>
             <point key="canvasLocation" x="-716" y="-1031"/>

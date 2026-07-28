@@ -59,7 +59,7 @@
 	if (newDocument && newSelectedItems) {
 		
 		if (newSelectedItems.count == 0) {
-			self.window.representedFilename = newDocument.fileURL.path;
+			self.window.representedURL = newDocument.fileURL;
 			self.window.title = [newDocument.displayName stringByAppendingString:NSLocalizedString(@" Info", @"")];
 			
 			previewViewController.representedObject = newDocument;
@@ -150,10 +150,7 @@
 		[kindField setStringValue:NSLocalizedString(@"--", @"")];
 		[sizeField setStringValue:NSLocalizedString(@"--", @"")];
 		[whereField setStringValue:NSLocalizedString(@"--", @"")];
-		
-		
 	}
-	
 }
 
 

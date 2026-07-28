@@ -369,7 +369,7 @@ static NSString * const MDOtherAppsHelperSortDescriptorsKey		= @"MDOtherAppsHelp
 	
 	if (action == @selector(revealInFinder:)) {
 		
-		return count;
+		return count != 0;
 		
 	} else if (action == @selector(toggleHelpApps:)) {
 		if (count) {
