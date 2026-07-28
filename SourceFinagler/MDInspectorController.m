@@ -60,7 +60,7 @@
 		
 		if (newSelectedItems.count == 0) {
 			self.window.representedURL = newDocument.fileURL;
-			self.window.title = [newDocument.displayName stringByAppendingString:NSLocalizedString(@" Info", @"")];
+			self.window.title = [NSString localizedStringWithFormat:NSLocalizedString(@"%@ Info", @"Single file Info"), newDocument.displayName];
 			
 			previewViewController.representedObject = newDocument;
 			
@@ -83,7 +83,7 @@
 			HKItem *item = newSelectedItems[0];
 			
 			self.window.representedFilename = @"";
-			self.window.title = [item.name stringByAppendingString:NSLocalizedString(@" Info", @"")];
+			self.window.title = [NSString localizedStringWithFormat:NSLocalizedString(@"%@ Info", @"Single file Info"), item.name];
 			
 			previewViewController.representedObject = item;
 			

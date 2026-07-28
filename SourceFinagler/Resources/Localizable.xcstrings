@@ -1,16 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    " Info" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : " Info"
-          }
-        }
-      }
-    },
     "--" : {
       "localizations" : {
         "en" : {
@@ -32,24 +22,13 @@
         }
       }
     },
-    "%@ and %@ were successfully installed." : {
-      "extractionState" : "manual",
+    "%@ Info" : {
+      "comment" : "Single file Info",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%1$@ and %2$@ were successfully installed."
-          }
-        }
-      }
-    },
-    "%@ items were successfully installed." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ items were successfully installed."
+            "value" : "%@ Info"
           }
         }
       }
@@ -72,17 +51,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ was successfully installed."
-          }
-        }
-      }
-    },
-    "%@, " : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@, "
           }
         }
       }
@@ -177,21 +145,9 @@
       "comment" : "String for when items are selected",
       "localizations" : {
         "en" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%1$lu of %2$@ selected, %3$@ available"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "new",
-                  "value" : "%1$lu of %2$@ selected, %3$@ available"
-                }
-              }
-            }
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lu of %2$@ selected, %3$@ available"
           }
         }
       }
@@ -257,17 +213,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Alpha"
-          }
-        }
-      }
-    },
-    "and %@ were successfully installed." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "and %@ were successfully installed."
           }
         }
       }
@@ -826,7 +771,15 @@
       }
     },
     "Play" : {
-      "comment" : "Play"
+      "comment" : "Play",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Play"
+          }
+        }
+      }
     },
     "Play the animated image" : {
       "comment" : "Play the animated image",

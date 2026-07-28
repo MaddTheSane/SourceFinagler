@@ -6694,7 +6694,6 @@
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SteamKit/SteamKit_Prefix.pch;
-				GCC_PREPROCESSOR_DEFINITIONS = "__MAC_OS_X_MEMORY_MANAGER_CLEAN__=1";
 				INFOPLIST_FILE = "SteamKit/SteamKit-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks/";
 				LIBRARY_SEARCH_PATHS = (
@@ -7519,7 +7518,6 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SteamKit/SteamKit_Prefix.pch;
-				GCC_PREPROCESSOR_DEFINITIONS = "__MAC_OS_X_MEMORY_MANAGER_CLEAN__=1";
 				INFOPLIST_FILE = "SteamKit/SteamKit-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks/";
 				LIBRARY_SEARCH_PATHS = (
@@ -7547,7 +7545,6 @@
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SteamKit/SteamKit_Prefix.pch;
-				GCC_PREPROCESSOR_DEFINITIONS = "__MAC_OS_X_MEMORY_MANAGER_CLEAN__=1";
 				INFOPLIST_FILE = "SteamKit/SteamKit-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks/";
 				LIBRARY_SEARCH_PATHS = (
