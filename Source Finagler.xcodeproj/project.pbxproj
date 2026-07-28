@@ -500,7 +500,7 @@
 		C1C2C4F0127CBCA0003B24F6 /* copy.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C1C12469123A0840004674B4 /* copy.m4a */; };
 		C1C2C4F6127CBCA0003B24F6 /* moveToTrash.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C1C12472123A0840004674B4 /* moveToTrash.m4a */; };
 		C1C2C501127CBCA0003B24F6 /* TKAboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1C124A7123A0A0C004674B4 /* TKAboutWindow.xib */; };
-		C1C2C502127CBCA0003B24F6 /* MDCopyOperationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1C124A9123A0A0C004674B4 /* MDCopyOperationView.xib */; };
+		C1C2C502127CBCA0003B24F6 /* MDCopyOperationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55101B14290F2752003CED21 /* MDCopyOperationView.xib */; };
 		C1C2C503127CBCA0003B24F6 /* MDCopyOperationWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1C124AB123A0A0C004674B4 /* MDCopyOperationWindow.xib */; };
 		C1C2C504127CBCA0003B24F6 /* MDHLColumnPreviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1C124AD123A0A0C004674B4 /* MDHLColumnPreviewView.xib */; };
 		C1C2C507127CBCA0003B24F6 /* MDInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1C124B5123A0A0C004674B4 /* MDInspector.xib */; };
@@ -1280,7 +1280,7 @@
 		55101B0E290F2724003CED21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MDSteamAppsRelocatorController.xib; sourceTree = "<group>"; };
 		55101B10290F2731003CED21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MDInspector.xib; sourceTree = "<group>"; };
 		55101B12290F2742003CED21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MDQuickLook.xib; sourceTree = "<group>"; };
-		55101B14290F2752003CED21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MDCopyOperationView.xib; sourceTree = "<group>"; };
+		55101B14290F2752003CED21 /* MDCopyOperationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MDCopyOperationView.xib; path = Resources/MDCopyOperationView.xib; sourceTree = "<group>"; };
 		55101B16290F2761003CED21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MDHLDocument.xib; sourceTree = "<group>"; };
 		55101B18290F276F003CED21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TKPrefs.xib; sourceTree = "<group>"; };
 		55101B1A290F277E003CED21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MDCopyOperationWindow.xib; sourceTree = "<group>"; };
@@ -1355,7 +1355,6 @@
 		55947A552D82DD9D00170FE1 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/MDViewOptions.xcstrings; sourceTree = "<group>"; };
 		55947A562D82DD9D00170FE1 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/TKImageExportPanel.xcstrings; sourceTree = "<group>"; };
 		55947A572D82DD9D00170FE1 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/MDHLDocument.xcstrings; sourceTree = "<group>"; };
-		55947A582D82DD9D00170FE1 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/MDCopyOperationView.xcstrings; sourceTree = "<group>"; };
 		55947A592D82DD9D00170FE1 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/MDCopyOperationWindow.xcstrings; sourceTree = "<group>"; };
 		55947A5A2D82DD9D00170FE1 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/MainMenu.xcstrings; sourceTree = "<group>"; };
 		55B9F2B71D7D1A0E00641709 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -2726,7 +2725,7 @@
 				C1137867128072C500C87072 /* MDCopyOperationViewController.m */,
 				C1C1251A123A0C32004674B4 /* MDCopyOperationView.h */,
 				C1C1251B123A0C32004674B4 /* MDCopyOperationView.m */,
-				C1C124A9123A0A0C004674B4 /* MDCopyOperationView.xib */,
+				55101B14290F2752003CED21 /* MDCopyOperationView.xib */,
 				C11CA5E513A4E84D006CC348 /* MDCopyOperationSeparatorView.h */,
 				C11CA5E613A4E84D006CC348 /* MDCopyOperationSeparatorView.m */,
 				C1C1251C123A0C32004674B4 /* MDRolloverButton.h */,
@@ -6100,16 +6099,6 @@
 				55947A4A2D82DD9C00170FE1 /* mul */,
 			);
 			name = TKAboutWindow.xib;
-			sourceTree = "<group>";
-		};
-		C1C124A9123A0A0C004674B4 /* MDCopyOperationView.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				55101B14290F2752003CED21 /* Base */,
-				55947A582D82DD9D00170FE1 /* mul */,
-			);
-			name = MDCopyOperationView.xib;
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		C1C124AB123A0A0C004674B4 /* MDCopyOperationWindow.xib */ = {
